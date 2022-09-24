@@ -1,22 +1,23 @@
 export type Mode = 'production' | 'development'
 
 export type Paths = {
-    entry: string,
-    build: string,
-    html: string,
+    entry: string
+    build: string
+    html: string
+    src: string
 }
 
 export interface BuildWebpackOptions {
     mode: Mode,
-    isDev: boolean,
-    paths: Paths,
-    cssFilename: string,
-    chunkFilename: string,
-    cssFileIdentName: string,
-    port: number,
+    isDev: boolean
+    paths: Paths
+    cssFilename: string
+    chunkFilename: string
+    cssFileIdentName: string
+    port: number
 }
 
 export interface BuildWebpackEnv {
-    mode: Mode,
+    mode: Mode
     port: number
 }

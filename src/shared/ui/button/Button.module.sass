@@ -1,0 +1,19 @@
+@import "src/app/styles/common"
+
+.button
+	@extend .centered
+	padding: 0.5em 1rem
+	font-family: var(--font-family-secondary)
+	font-size: inherit
+	border-radius: var(--border-radius)
+	transition: all 150ms ease-out
+	cursor: pointer
+	user-select: none
+
+	&.blank
+		background-color: transparent
+		border: 1px solid transparent
+		color: var(--theme-navbar-link-color)
+
+	&:hover
+		border-color: var(--theme-link-color)

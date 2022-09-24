@@ -15,15 +15,19 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
         output: {
             filename: chunkFilename,
             path: paths.build,
-            clean: true
+            clean: true,
         },
         plugins:
             buildWebpackPlugins(options), // Plugins
         module: {
-            rules: buildWebpackLoaders(options) // Loaders
+            rules: buildWebpackLoaders(options), // Loaders
         },
         resolve: {
             extensions: ['.tsx', '.ts', '.js', 'jsx'],
+            preferAbsolute: true,
+            modules: [options.paths.src, 'node_modules'],
+            mainFiles: ['index'],
+            alias: {}
         },
         devtool: isDev ? 'inline-source-map' : undefined,
         devServer: isDev ? buildWebpackDevServer(options) : undefined,

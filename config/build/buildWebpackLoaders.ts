@@ -4,11 +4,49 @@ import {BuildWebpackOptions} from "./types/config"
 
 
 export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleSetRule[] {
-    const tsLoader = {
+    const babelLoader = {
+        test: /\.[jt]sx?$/,
+        exclude: /node_modules/,
+        use: [
+            {
+                loader: "babel-loader",
+                options: {
+                    presets: ['@babel/preset-env'],
+                    "plugins": [
+                        [
+                            "i18next-extract",
+                            {
+                                locales: ["ru", "en"],
+                                keyAsDefaultValue: true,
+                            }
+                        ],
+                    ]
+                }
+            }
+        ]
+    }
+
+    const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
     }
+
+    const svgLoader = {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+    }
+
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            }
+        ],
+    }
+
     const stylesLoader = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -26,12 +64,15 @@ export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleS
                 },
             },
             // Compiles Sass to CSS
-            "sass-loader",
+            "sass-loader"
         ],
     }
 
     return [
-        tsLoader,
+        fileLoader,
+        svgLoader,
+        babelLoader,
+        typescriptLoader,
         stylesLoader
     ]
 }
