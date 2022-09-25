@@ -6,8 +6,8 @@ import {classnames} from "shared/lib/helpers/classnames"
 import cls from "./NavLink.module.sass"
 
 export enum NavLinkTheme {
-    PRIMARY = 'primary',
-    SECONDARY = 'secondary',
+    PRIMARY = "primary",
+    SECONDARY = "secondary",
 }
 
 interface NavLinkProps extends LinkProps {
@@ -16,7 +16,9 @@ interface NavLinkProps extends LinkProps {
 }
 
 export const NavLink: FC<NavLinkProps> = (props) => {
-    const {theme = NavLinkTheme.PRIMARY, to, className, children, ...other} = props
+    const {
+        theme = NavLinkTheme.PRIMARY, to, className, children, ...other
+    } = props
 
     return (
         <Link

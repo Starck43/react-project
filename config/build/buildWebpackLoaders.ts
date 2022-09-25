@@ -2,7 +2,6 @@ import webpack from "webpack"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import {BuildWebpackOptions} from "./types/config"
 
-
 export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleSetRule[] {
     const babelLoader = {
         test: /\.[jt]sx?$/,
@@ -11,39 +10,31 @@ export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleS
             {
                 loader: "babel-loader",
                 options: {
-                    presets: ['@babel/preset-env'],
-                    "plugins": [
-                        [
-                            "i18next-extract",
-                            {
-                                locales: ["ru", "en"],
-                                keyAsDefaultValue: true,
-                            }
-                        ],
-                    ]
-                }
-            }
-        ]
+                    presets: ["@babel/preset-env"],
+                    plugins: ["i18next-extract"],
+                },
+            },
+        ],
     }
 
     const typescriptLoader = {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
     }
 
     const svgLoader = {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
     }
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff|woff2)$/i,
         use: [
             {
-                loader: 'file-loader',
-            }
+                loader: "file-loader",
+            },
         ],
     }
 
@@ -51,20 +42,20 @@ export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleS
         test: /\.s[ac]ss$/i,
         use: [
             // Creates `style` nodes from JS strings
-            !options.isDev ? MiniCssExtractPlugin.loader : 'style-loader',
+            !options.isDev ? MiniCssExtractPlugin.loader : "style-loader",
             // Translates CSS into CommonJS
             {
                 loader: "css-loader",
                 options: {
                     modules: {
-                        auto: (resPath: string) => Boolean(resPath.includes('.module.')),
+                        auto: (resPath: string) => Boolean(resPath.includes(".module.")),
                         localIdentName: options.cssFileIdentName,
                         exportLocalsConvention: "camelCase",
-                    }
+                    },
                 },
             },
             // Compiles Sass to CSS
-            "sass-loader"
+            "sass-loader",
         ],
     }
 
@@ -73,6 +64,6 @@ export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleS
         svgLoader,
         babelLoader,
         typescriptLoader,
-        stylesLoader
+        stylesLoader,
     ]
 }

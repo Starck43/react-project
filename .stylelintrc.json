@@ -1,0 +1,38 @@
+{
+  "extends": [
+    "stylelint-config-recommended"
+  ],
+  "customSyntax": "sugarss",
+  "rules": {
+    "indentation": "tab",
+    "linebreaks": "unix",
+    "selector-class-pattern": null,
+    "max-empty-lines": [2,{"ignore": ["comments"]}],
+    "selector-type-no-unknown": [true,{"ignoreTypes": ["/^\\:/"], "ignore": ["custom-elements"]}],
+    "value-keyword-case": ["lower",{"ignoreProperties": ["font-family"], "camelCaseSvgKeywords": true}],
+    "function-url-quotes": "never",
+    "function-no-unknown": null,
+    "at-rule-no-unknown": null,
+    "no-empty-source": null,
+    "declaration-colon-space-after": null,
+    "import-notation": "string",
+    "time-min-milliseconds": 100,
+    "selector-list-comma-newline-after": "always-multi-line",
+    "color-hex-case": "upper",
+    "custom-property-empty-line-before": null,
+    "selector-max-compound-selectors": 4,
+    "no-extra-semicolons": true,
+    "block-no-empty": null,
+    "block-closing-brace-empty-line-before": null,
+    "block-closing-brace-newline-after": null,
+    "block-closing-brace-newline-before": null,
+    "block-closing-brace-space-before": null,
+    "block-opening-brace-newline-after": null,
+    "block-opening-brace-space-after": null,
+    "block-opening-brace-space-before": null,
+    "declaration-block-semicolon-newline-after": null,
+    "declaration-block-semicolon-space-after": null,
+    "declaration-block-semicolon-space-before": null,
+    "declaration-block-trailing-semicolon": null
+  }
+}

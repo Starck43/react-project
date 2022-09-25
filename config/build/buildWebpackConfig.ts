@@ -5,12 +5,13 @@ import {buildWebpackDevServer} from "./buildWebpackDevServer"
 
 import {BuildWebpackOptions} from "./types/config"
 
-
 export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Configuration {
-    const {paths, mode, isDev, chunkFilename} = options
+    const {
+        paths, mode, isDev, chunkFilename,
+    } = options
 
     return {
-        mode: mode,
+        mode,
         entry: paths.entry,
         output: {
             filename: chunkFilename,
@@ -23,13 +24,13 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
             rules: buildWebpackLoaders(options), // Loaders
         },
         resolve: {
-            extensions: ['.tsx', '.ts', '.js', 'jsx'],
+            extensions: [".tsx", ".ts", ".js", "jsx"],
             preferAbsolute: true,
-            modules: [options.paths.src, 'node_modules'],
-            mainFiles: ['index'],
-            alias: {}
+            modules: [options.paths.src, "node_modules"],
+            mainFiles: ["index"],
+            alias: {},
         },
-        devtool: isDev ? 'inline-source-map' : undefined,
+        devtool: isDev ? "inline-source-map" : undefined,
         devServer: isDev ? buildWebpackDevServer(options) : undefined,
     }
 }

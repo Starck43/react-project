@@ -3,11 +3,11 @@ import {Route, Routes} from "react-router-dom"
 
 import {routeConfig} from "shared/config/router"
 
-const AppRouter = () => {
+function AppRouter() {
     return (
         <Suspense fallback={<div>Loading...</div>}>
             <Routes>
-                {Object.values(routeConfig).map(({element, path}) =>
+                {Object.values(routeConfig).map(({element, path}) => (
                     <Route
                         key={path}
                         path={path}
@@ -17,10 +17,10 @@ const AppRouter = () => {
                             </Suspense>
                         )}
                     />
-                )}
+                ))}
             </Routes>
         </Suspense>
-    );
-};
+    )
+}
 
 export default AppRouter

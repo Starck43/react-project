@@ -14,13 +14,16 @@
 	background-color: var(--theme-sidebar-bg-color)
 	border-radius: var(--border-radius)
 	border: 2px solid transparentize(lighten($brand-color, 50%), 0.5)
+
 	@extend .shadow
+
 	transform: none
 	transition: 200ms ease-in-out
 	z-index: 2
 
 	&.sidebar__left
 		margin-right: 0
+
 		&.collapsed
 			transform: translateX(-100%)
 
@@ -29,5 +32,4 @@
 	top: 0
 	left: 100%
 	margin-left: 0.25rem
-
 

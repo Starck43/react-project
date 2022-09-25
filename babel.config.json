@@ -3,6 +3,12 @@
     "@babel/preset-env"
   ],
   "plugins": [
-    "i18next-extract"
+    [
+      "i18next-extract", {
+        "locales": ["en"],
+        "keyAsDefaultValue": true,
+        "outputPath": "public/locales/{{locale}}/{{ns}}.json"
+      }
+    ]
   ]
 }

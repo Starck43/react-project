@@ -1,7 +1,6 @@
 import {MouseEventHandler, useContext, useEffect} from "react"
 import {LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext} from "app/providers/theme-provider/lib/ThemeContext"
 
-
 export interface UseThemeResult {
     theme: Theme
     toggleTheme?: () => void
@@ -18,9 +17,9 @@ const useTheme = (current?: Theme): UseThemeResult => {
     }
 
     useEffect(() => {
-        let root = document.body
+        const root = document.body
         root.className = theme || current || Theme.LIGHT
-    }, [theme])
+    }, [theme, current])
 
     return <UseThemeResult>{theme, toggleTheme}
 }

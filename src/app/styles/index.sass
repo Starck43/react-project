@@ -1,9 +1,9 @@
-@import "vars"
-@import "reset"
-@import "mixins"
-@import "common"
-@import "theme/dark"
-@import "theme/light"
+@import 'vars'
+@import 'reset'
+@import 'mixins'
+@import 'common'
+@import 'theme/dark'
+@import 'theme/light'
 
 
 html
@@ -22,13 +22,15 @@ body
 	width: 100vw
 	height: 100%
 	min-height: 100vh
-
 	font-family: var(--font-family-main)
 	font-size: var(--font-size-main-s)
+
 	@media (min-width: 576px)
 		font-size: var(--font-size-main-m)
+
 	@media (min-width: 992px)
 		font-size: var(--font-size-main-l)
+
 	@media (min-width: 1200px)
 		font-size: var(--font-size-main-xl)
 
@@ -38,6 +40,7 @@ a
 
 a, button
 	opacity: 0.7
+
 	&:hover
 		transition: 150ms all ease-out
 		opacity: 1
@@ -49,13 +52,16 @@ h1, h2, h3, h4
 
 	@media (min-width: 576px)
 		font-size: calc(var(--font-size-title-m) + 0.5vw)
+
 	@media (min-width: 992px)
 		font-size: calc(var(--font-size-title-l) + 0.5vw)
+
 	@media (min-width: 1200px)
 		font-size: calc(var(--font-size-title-xl) + 0.5vw)
 
 h1
 	color: var(--theme-primary-color)
+
 h2
 	color: var(--theme-secondary-color)
 

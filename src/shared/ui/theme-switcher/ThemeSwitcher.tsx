@@ -4,8 +4,8 @@ import {useTranslation} from "react-i18next"
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Button, ThemeButton} from "shared/ui/button/Button"
-import ThemeIcon from "shared/assets/icons/theme-icon.svg"
 
+import ThemeIcon from "shared/assets/icons/theme-icon.svg"
 import cls from "./ThemeSwitcher.module.sass"
 
 
@@ -22,9 +22,8 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({theme, toggleTheme, class
             className={classnames(cls, ["switcher"], {}, [className])}
             onClick={toggleTheme}
         >
-            <ThemeIcon className={cls.svg}/>
+            <ThemeIcon className={cls.svg} />
             {t(theme)}
         </Button>
     )
 }
-

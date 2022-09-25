@@ -6,7 +6,6 @@ import {Button, ThemeButton} from "shared/ui/button/Button"
 
 import cls from "./LanguageSwitcher.module.sass"
 
-
 interface LanguageSwitcherProps {
     className?: string
 }
@@ -14,9 +13,7 @@ interface LanguageSwitcherProps {
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({className}) => {
     const {i18n, t} = useTranslation()
 
-    const toggleLanguage = () => {
-        return i18n.changeLanguage(i18n.language === 'en' ? 'ru' : 'en')
-    }
+    const toggleLanguage = () => i18n.changeLanguage(i18n.language === "en" ? "ru" : "en")
 
     return (
         <Button
@@ -24,8 +21,9 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({className}) => {
             className={classnames(cls, [className], {}, [])}
             onClick={toggleLanguage}
         >
-            {t("выбрать язык")}: <b>{i18n.language}</b>
+            {t("выбрать язык")}
+            :
+            <b>{i18n.language}</b>
         </Button>
     )
 }
-

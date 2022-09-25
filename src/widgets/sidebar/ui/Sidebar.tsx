@@ -9,12 +9,11 @@ import {classnames} from "shared/lib/helpers/classnames"
 import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
 
-
 interface SidebarProps extends UseThemeResult {
     className?: string
 }
 
-export const Sidebar = (props: SidebarProps) => {
+export function Sidebar(props: SidebarProps) {
     const {theme, toggleTheme, className} = props
 
     const [collapsed, setCollapsed] = useState(false)
@@ -24,17 +23,16 @@ export const Sidebar = (props: SidebarProps) => {
     }
 
     return (
-        <div className={classnames(cls, ['sidebar', className], {collapsed: collapsed}, ["sidebar"])}>
+        <div className={classnames(cls, ["sidebar", className], {collapsed}, ["sidebar"])}>
             <CloseButton
-                className={classnames(cls, ['toggle__btn', className], {collapsed: collapsed}, [])}
+                className={classnames(cls, ["toggle__btn", className], {collapsed}, [])}
                 handleClick={toggleSidebar}
             />
 
             <div className="sidebar__container">
-                <ThemeSwitcher theme={theme} toggleTheme={toggleTheme}/>
-                <LanguageSwitcher/>
+                <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
+                <LanguageSwitcher />
             </div>
-
         </div>
     )
 }
