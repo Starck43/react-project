@@ -18,12 +18,11 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({className}) => {
     return (
         <Button
             theme={ThemeButton.BLANK}
-            className={classnames(cls, [className], {}, [])}
+            className={classnames(cls, [], {}, [className])}
             onClick={toggleLanguage}
         >
-            {t("выбрать язык")}
-            :
-            <b>{i18n.language}</b>
+            {t("Русский")}
+
         </Button>
     )
 }

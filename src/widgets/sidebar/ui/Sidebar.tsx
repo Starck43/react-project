@@ -9,13 +9,14 @@ import {classnames} from "shared/lib/helpers/classnames"
 import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
 
+
 interface SidebarProps extends UseThemeResult {
     className?: string
 }
 
 export function Sidebar(props: SidebarProps) {
     const {theme, toggleTheme, className} = props
-
+    // const {media} = useWindowDimensions()
     const [collapsed, setCollapsed] = useState(false)
 
     const toggleSidebar = () => {

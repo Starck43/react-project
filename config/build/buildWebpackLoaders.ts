@@ -32,9 +32,7 @@ export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleS
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff|woff2)$/i,
         use: [
-            {
-                loader: "file-loader",
-            },
+            {loader: "file-loader"},
         ],
     }
 

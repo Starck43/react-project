@@ -15,12 +15,8 @@ i18n
         fallbackLng: "ru",
         debug: __IS_DEV__,
         defaultNS: "translation",
-        interpolation: {
-            escapeValue: false, // not needed for react as it escapes by default
-        },
-        backend: {
-            loadPath: "locales/{{lng}}/{{ns}}.json",
-        },
+        interpolation: {escapeValue: false}, // not needed for react as it escapes by default
+        backend: {loadPath: "locales/{{lng}}/{{ns}}.json"},
     })
 
 export default i18n

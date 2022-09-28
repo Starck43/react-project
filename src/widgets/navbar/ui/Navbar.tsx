@@ -27,17 +27,21 @@ export function Navbar({theme, className}: NavbarProps) {
             <div className={cls.navbar__links}>
                 <NavLink
                     to={RoutesPath[AppRoutes.HOME]}
-                    theme={theme === Theme.LIGHT ? NavLinkTheme.PRIMARY : NavLinkTheme.SECONDARY} // TODO Fix passing theme
+                    theme={theme === Theme.LIGHT
+                        ? NavLinkTheme.PRIMARY
+                        : NavLinkTheme.SECONDARY} // TODO Fix passing theme
                     className="nav-link home"
                 >
-                    {t('Главная')}
+                    {t("Главная")}
                 </NavLink>
                 <NavLink
                     to={RoutesPath[AppRoutes.ABOUT]}
-                    theme={theme === Theme.LIGHT ? NavLinkTheme.PRIMARY : NavLinkTheme.SECONDARY} // TODO Fix passing theme
+                    theme={theme === Theme.LIGHT
+                        ? NavLinkTheme.PRIMARY
+                        : NavLinkTheme.SECONDARY} // TODO Fix passing theme
                     className="nav-link about"
                 >
-                    {t('О себе')}
+                    {t("О себе")}
                 </NavLink>
             </div>
         </nav>

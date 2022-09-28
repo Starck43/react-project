@@ -9,9 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const CloseButton: FC<ButtonProps> = (props) => {
-    const {
-        handleClick, className, children, ...other
-    } = props
+    const {handleClick, className, children, ...other} = props
 
     return (
         <button

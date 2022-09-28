@@ -12,21 +12,17 @@ export function buildWebpackPlugins({
     chunkFilename,
 }: BuildWebpackOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
-        new HtmlWebpackPlugin({
-            template: paths.html,
-        }),
+        new HtmlWebpackPlugin({template: paths.html}),
         new webpack.ProgressPlugin(),
         new MiniCssExtractPlugin({
             filename: cssFilename,
             chunkFilename,
         }),
-        new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(isDev),
-        }),
+        new webpack.DefinePlugin({__IS_DEV__: JSON.stringify(isDev)}),
     ]
 
     if (isDev) {
-        plugins.push(new ReactRefreshWebpackPlugin())
+        plugins.push(new ReactRefreshWebpackPlugin({overlay: false}))
         plugins.push(new webpack.HotModuleReplacementPlugin())
     }
 

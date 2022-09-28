@@ -3,13 +3,7 @@
 @import "src/app/styles/_vars"
 
 .sidebar
-	position: sticky
-	top: 6rem
-	width: 30%
-	max-width: 300px
-	height: 100%
-	min-height: calc(100vh - #{$navbar-height} - 6rem)
-	margin: 4vw
+	position: absolute
 	padding: 1rem
 	background-color: var(--theme-sidebar-bg-color)
 	border-radius: var(--border-radius)
@@ -22,14 +16,47 @@
 	z-index: 2
 
 	&.sidebar__left
+		@include push--absolute($main-padding)
 		margin-right: 0
+		transform: translateX(-100%)
+		&::before
+			content: ""
+			overflow: hidden
+			@include push--absolute
+			background-color: var(--theme-primary-bg-color)
+			border-radius: var(--border-radius)
+			visibility: hidden
+			z-index: -1
 
 		&.collapsed
-			transform: translateX(-100%)
+			transform: none
+			&::before
+				visibility: visible
+
+	@media screen and (min-width: 768px)
+		position: sticky !important
+		width: var(--sidebar-width)
+		height: auto
+		min-height: calc(100vh - #{$navbar-height} - #{$main-padding*2})
+		top: 0 !important
+		left: inherit !important
+		transform: none !important
+		&.sidebar__left
+			right: 0
+			bottom: 0
+			margin-left: 0
+			margin-right: $main-margin
+
+			&.collapsed
+				margin-left: calc(var(--sidebar-width)  * -1)
+
 
 .toggle__btn
 	position: absolute
 	top: 0
 	left: 100%
 	margin-left: 0.25rem
-
+	@media screen and (max-width: 767.99px)
+		&.collapsed
+			left: 0
+			margin: 1rem

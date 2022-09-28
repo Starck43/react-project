@@ -6,9 +6,7 @@ import {buildWebpackDevServer} from "./buildWebpackDevServer"
 import {BuildWebpackOptions} from "./types/config"
 
 export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Configuration {
-    const {
-        paths, mode, isDev, chunkFilename,
-    } = options
+    const {paths, mode, isDev, chunkFilename} = options
 
     return {
         mode,
@@ -20,9 +18,7 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
         },
         plugins:
             buildWebpackPlugins(options), // Plugins
-        module: {
-            rules: buildWebpackLoaders(options), // Loaders
-        },
+        module: {rules: buildWebpackLoaders(options)}, // Loaders
         resolve: {
             extensions: [".tsx", ".ts", ".js", "jsx"],
             preferAbsolute: true,

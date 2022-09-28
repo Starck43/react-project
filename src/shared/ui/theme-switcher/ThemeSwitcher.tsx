@@ -10,20 +10,24 @@ import cls from "./ThemeSwitcher.module.sass"
 
 
 interface ThemeSwitcherProps extends UseThemeResult {
-    className?: string
+	className?: string
 }
 
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({theme, toggleTheme, className}) => {
-    const {t} = useTranslation()
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
+	theme,
+	toggleTheme,
+	className,
+}) => {
+	const {t} = useTranslation()
 
-    return (
-        <Button
-            theme={ThemeButton.BLANK}
-            className={classnames(cls, ["switcher"], {}, [className])}
-            onClick={toggleTheme}
-        >
-            <ThemeIcon className={cls.svg} />
-            {t(theme)}
-        </Button>
-    )
+	return (
+    <Button
+        theme={ThemeButton.BLANK}
+        className={classnames(cls, ["switcher"], {}, [className])}
+        onClick={toggleTheme}
+    >
+        <ThemeIcon className={cls.svg} />
+        {t(theme)}
+    </Button>
+	)
 }

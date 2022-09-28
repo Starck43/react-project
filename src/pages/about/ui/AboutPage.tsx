@@ -10,9 +10,7 @@ function AboutPage() {
             <Title>{t("О нас")}</Title>
 
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, dolorum, est, et harum
-                hic illo inventore ipsam ipsum magnam molestiae natus nisi nostrum porro praesentium
-                saepe sed sequi sunt tempore.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, dolorum, est, et harum hic illo inventore ipsam ipsum magnam molestiae natus nisi nostrum porro praesentium saepe sed sequi sunt tempore.
             </p>
         </div>
     )

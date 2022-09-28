@@ -1,15 +1,15 @@
 {
-  "presets": [
-    "@babel/preset-env",
-    "@babel/preset-typescript"
-  ],
-  "plugins": [
-    [
-      "i18next-extract", {
-        "locales": ["en"],
-        "keyAsDefaultValue": true,
-        "outputPath": "public/locales/{{locale}}/{{ns}}.json"
-      }
-    ]
-  ]
+	"presets": [
+		"@babel/preset-env",
+		"@babel/preset-typescript"
+	],
+	"plugins": [
+		[
+			"i18next-extract", {
+				"locales": ["en","ru"],
+				"keyAsDefaultValue": false,
+				"outputPath": "public/locales/{{locale}}/{{ns}}.json"
+			}
+		]
+	]
 }
