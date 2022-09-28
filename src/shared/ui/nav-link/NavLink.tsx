@@ -12,7 +12,7 @@ export enum NavLinkTheme {
 
 interface NavLinkProps extends LinkProps {
     className?: string
-    theme: NavLinkTheme
+    theme?: NavLinkTheme
 }
 
 export const NavLink: FC<NavLinkProps> = (props) => {
