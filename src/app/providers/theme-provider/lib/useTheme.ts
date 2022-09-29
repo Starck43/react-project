@@ -2,7 +2,7 @@ import {MouseEventHandler, useContext, useEffect} from "react"
 import {LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext} from "app/providers/theme-provider/lib/ThemeContext"
 
 export interface UseThemeResult {
-    theme: Theme
+    theme?: Theme
     toggleTheme?: () => void
 }
 
@@ -19,7 +19,7 @@ const useTheme = (current?: Theme): UseThemeResult => {
     useEffect(() => {
         const root = document.body
         root.className = theme || current || Theme.LIGHT
-    }, [theme, current])
+    }, [ theme, current ])
 
     return <UseThemeResult>{theme, toggleTheme}
 }

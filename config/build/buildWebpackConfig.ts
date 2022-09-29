@@ -6,7 +6,12 @@ import {buildWebpackDevServer} from "./buildWebpackDevServer"
 import {BuildWebpackOptions} from "./types/config"
 
 export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Configuration {
-    const {paths, mode, isDev, chunkFilename} = options
+    const {
+        paths,
+        mode,
+        isDev,
+        chunkFilename,
+    } = options
 
     return {
         mode,
@@ -20,10 +25,10 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
             buildWebpackPlugins(options), // Plugins
         module: {rules: buildWebpackLoaders(options)}, // Loaders
         resolve: {
-            extensions: [".tsx", ".ts", ".js", "jsx"],
+            extensions: [ ".tsx", ".ts", ".js", "jsx" ],
             preferAbsolute: true,
-            modules: [options.paths.src, "node_modules"],
-            mainFiles: ["index"],
+            modules: [ options.paths.src, "node_modules" ],
+            mainFiles: [ "index" ],
             alias: {},
         },
         devtool: isDev ? "inline-source-map" : undefined,

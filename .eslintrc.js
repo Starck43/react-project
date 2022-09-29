@@ -58,7 +58,7 @@ module.exports = {
         "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
         "no-underscore-dangle": "off",
         "no-multiple-empty-lines": "off",
-        "i18next/no-literal-string": [ 1, {markupOnly: true} ],
+        "i18next/no-literal-string": [ 1, {markupOnly: true, onlyAttribute: [ "" ] } ],
         "array-element-newline": [ "error", {
             ArrayExpression: "consistent",
             ArrayPattern: {minItems: 5},
@@ -71,6 +71,12 @@ module.exports = {
                 ExportDeclaration: {multiline: true, minProperties: 3},
             } ],
     },
+    overrides: [
+        {
+            files: ["**/src/**/*.test.{ts,tsx}"],
+            rules: {"i18next/no-literal-string": "off"},
+        },
+    ],
     globals: {__IS_DEV__: true},
     settings: {react: {version: "detect"}},
 }

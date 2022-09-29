@@ -1,6 +1,8 @@
 import webpack from "webpack"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
+import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer"
+
 import {BuildWebpackOptions} from "./types/config"
 
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
@@ -24,6 +26,8 @@ export function buildWebpackPlugins({
     if (isDev) {
         plugins.push(new ReactRefreshWebpackPlugin({overlay: false}))
         plugins.push(new webpack.HotModuleReplacementPlugin())
+        // change openAnalyzer on true to see in browser by address: localhost:8888
+        plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}))
     }
 
     return plugins

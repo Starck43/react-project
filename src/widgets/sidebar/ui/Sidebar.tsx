@@ -26,8 +26,9 @@ export function Sidebar(props: SidebarProps) {
     }
 
     return (
-        <div className={classnames(cls, [ "sidebar", className ], {collapsed}, [ "sidebar" ])}>
+        <div data-testid="sidebar" className={classnames(cls, [ "sidebar", className ], {collapsed}, [ "sidebar" ])}>
             <CloseButton
+                data-testid="sidebar-toggle"
                 className={classnames(cls, [ "toggle__btn", className ], {collapsed}, [])}
                 handleClick={toggleSidebar}
             />

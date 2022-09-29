@@ -1,3 +1,5 @@
+import path from "path"
+
 export default {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -8,27 +10,30 @@ export default {
     // The directory where Jest should store its cached dependency information
     // cacheDirectory: "/private/var/folders/kt/35hkcgs9253gdfq1n79259zh0000gn/T/jest_dx",
 
-  // Automatically clear mock calls, instances and results before every test
-  clearMocks: true,
-  // The test environment that will be used for testing
-  testEnvironment: "jsdom",
-  // An array of regexp pattern strings used to skip coverage collection
-  coveragePathIgnorePatterns: [
-    "/node_modules/",
-  ],
-  // An array of directory names to be searched recursively up from the requiring module's location
-  moduleDirectories: [
-    "node_modules",
-  ],
-  // An array of file extensions your modules use
-  moduleFileExtensions: [
-    "js",
-    "jsx",
-    "ts",
-    "tsx",
-    "json",
-    "node",
-  ],
+    // Automatically clear mock calls, instances and results before every test
+    clearMocks: true,
+    // The test environment that will be used for testing
+    testEnvironment: "jsdom",
+    // An array of regexp pattern strings used to skip coverage collection
+    coveragePathIgnorePatterns: [
+        "/node_modules/",
+    ],
+    // An array of directory names to be searched recursively up from the requiring module's location
+    moduleDirectories: [
+        "node_modules",
+    ],
+    modulePaths: [
+        "<rootDir>src",
+    ],
+    // An array of file extensions your modules use
+    moduleFileExtensions: [
+        "js",
+        "jsx",
+        "ts",
+        "tsx",
+        "json",
+        "node",
+    ],
 
     // The root directory that Jest should scan for tests and modules within
     rootDir: "../../",
@@ -37,10 +42,14 @@ export default {
     testMatch: [
         "<rootDir>src/**/*(*.)@(spec|test).[jt]s?(x)",
     ],
-
+    setupFilesAfterEnv: [ "<rootDir>config/jest/setupTests.ts" ],
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
-
+    moduleNameMapper: {
+        // "\\.(css|less|sass|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
+        "\\.(s[ac]ss)$": "identity-obj-proxy",
+        "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+    },
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
 

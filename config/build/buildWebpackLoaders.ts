@@ -10,8 +10,8 @@ export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleS
             {
                 loader: "babel-loader",
                 options: {
-                    presets: ["@babel/preset-env"],
-                    plugins: ["i18next-extract"],
+                    presets: [ "@babel/preset-env" ],
+                    plugins: [ "i18next-extract" ],
                 },
             },
         ],
@@ -26,7 +26,7 @@ export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleS
     const svgLoader = {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
-        use: ["@svgr/webpack"],
+        use: [ "@svgr/webpack" ],
     }
 
     const fileLoader = {

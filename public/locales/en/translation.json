@@ -1,9 +1,9 @@
 {
-  "light": "light theme",
   "dark": "dark theme",
-  "Страница не найдена": "Page not found",
-  "Русский": "English",
+  "light": "light theme",
   "На главную": "To Home",
+  "Русский": "English",
+  "Страница не найдена": "Page not found",
   "непредвиденная ошибка": "Unexpected error",
   "обновить страницу": "Reload page",
   "что-то пошло не так": "Something went wrong"
