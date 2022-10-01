@@ -11,9 +11,11 @@
     "lint:css:fix": "stylelint \"**/*.s[ac]ss\" --fix",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-    "unit": "jest --config ./config/jest/jest.config.ts",
+    "test:unit": "jest --config ./config/jest/jest.config.ts",
+    "test:ui": "npx loki test",
+    "test:ui:upd": "npx loki update",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "build-storybook": "build-storybook -c ./config/storybook"
+    "storybook:build": "build-storybook -c ./config/storybook"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +35,6 @@
     "@babel/preset-typescript": "^7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
     "@storybook/addon-actions": "^6.5.13-alpha.0",
-    "@storybook/addon-backgrounds": "^6.5.13-alpha.0",
     "@storybook/addon-essentials": "^6.5.13-alpha.0",
     "@storybook/addon-interactions": "^6.5.13-alpha.0",
     "@storybook/addon-links": "^6.5.13-alpha.0",
