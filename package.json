@@ -16,7 +16,7 @@
     "test:ui:upd": "npx loki update",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "storybook:build": "build-storybook -c ./config/storybook"
+    "storybook:build": "build-storybook -c ./config/storybook --quiet"
   },
   "keywords": [],
   "author": "",
@@ -35,13 +35,13 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
-    "@storybook/addon-actions": "^6.5.13-alpha.0",
-    "@storybook/addon-essentials": "^6.5.13-alpha.0",
-    "@storybook/addon-interactions": "^6.5.13-alpha.0",
-    "@storybook/addon-links": "^6.5.13-alpha.0",
-    "@storybook/builder-webpack5": "^6.5.13-alpha.0",
-    "@storybook/manager-webpack5": "^6.5.13-alpha.0",
-    "@storybook/react": "^6.5.13-alpha.0",
+    "@storybook/addon-actions": "^6.5.0",
+    "@storybook/addon-essentials": "^6.5.0",
+    "@storybook/addon-interactions": "^6.5.0",
+    "@storybook/addon-links": "^6.5.0",
+    "@storybook/builder-webpack5": "^6.5.0",
+    "@storybook/manager-webpack5": "^6.5.0",
+    "@storybook/react": "^6.5.0",
     "@storybook/testing-library": "^0.0.14-next.0",
     "@svgr/webpack": "^6.2.1",
     "@testing-library/jest-dom": "^5.16.2",
@@ -101,17 +101,17 @@
   },
   "overrides": {},
   "loki": {
-    "diffingEngine" : "gm",
+    "diffingEngine": "gm",
     "configurations": {
       "chrome.laptop": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "width": 1366,
         "height": 768,
         "deviceScaleFactor": 1,
         "mobile": false
       },
       "chrome.iphone7": {
-        "target": "chrome.docker",
+        "target": "chrome.app",
         "preset": "iPhone 7"
       }
     }
