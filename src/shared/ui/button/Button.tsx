@@ -8,6 +8,7 @@ import cls from "./Button.module.sass"
 
 export enum ThemeButton {
     BLANK = "blank",
+    DEFAULT = "default",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,7 +19,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = (props) => {
     const {
-        theme = ThemeButton.BLANK,
+        theme = ThemeButton.DEFAULT,
         href = null,
         className,
         children,

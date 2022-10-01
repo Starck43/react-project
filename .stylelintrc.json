@@ -1,6 +1,6 @@
 {
   "extends": [
-    "stylelint-config-recommended"
+    "stylelint-config-standard"
   ],
   "customSyntax": "sugarss",
   "rules": {
@@ -12,9 +12,14 @@
     "value-keyword-case": ["lower",{"ignoreProperties": ["font-family"], "camelCaseSvgKeywords": true}],
     "function-url-quotes": "never",
     "function-no-unknown": null,
-    "at-rule-no-unknown": null,
+    "at-rule-no-unknown": [
+      true, {
+        "ignoreAtRules": ["extend"]
+      }
+    ],
     "no-empty-source": null,
     "declaration-colon-space-after": null,
+    "string-quotes": "double",
     "import-notation": "string",
     "time-min-milliseconds": 100,
     "selector-list-comma-newline-after": "always-multi-line",

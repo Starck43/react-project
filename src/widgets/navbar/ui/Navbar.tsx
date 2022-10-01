@@ -1,6 +1,6 @@
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Theme} from "app/providers/theme-provider/lib/ThemeContext"
-import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
+import useTheme, {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 import {useTranslation} from "react-i18next"
 
 import {NavLink, NavLinkTheme} from "shared/ui/nav-link/NavLink"
@@ -9,11 +9,12 @@ import {classnames} from "shared/lib/helpers/classnames"
 import cls from "./Navbar.module.sass"
 
 
-interface NavbarProps extends UseThemeResult {
+interface NavbarProps {
     className?: string
 }
 
-export function Navbar({theme, className}: NavbarProps) {
+export function Navbar({className}: NavbarProps) {
+    const {theme} = useTheme()
     const {t} = useTranslation("navbar")
     /*
         const navbarClick: MouseEventHandler = (e) => {
@@ -23,7 +24,7 @@ export function Navbar({theme, className}: NavbarProps) {
      */
 
     return (
-        <nav className={classnames(cls, ["navbar", className], {}, [])}>
+        <nav className={classnames(cls, [ "navbar", className ], {}, [])}>
             <div className={cls.navbar__links}>
                 <NavLink
                     to={RoutesPath[AppRoutes.HOME]}

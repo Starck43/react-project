@@ -12,7 +12,6 @@ export default (env: BuildWebpackEnv) => {
         isDev,
         chunkFilename: "[name].[contenthash:8].js",
         cssFilename: "css/[name].[contenthash:8].css",
-        cssFileIdentName: isDev ? "[path][name]__[local]--[hash:base64:5]" : "[hash:base64:8]", // different *.module.css classes names for dev or prod mode
         paths: {
             entry: path.resolve(__dirname, "src", "index.tsx"),
             build: path.resolve(__dirname, "build"),

@@ -9,5 +9,5 @@ interface PageLoaderProps {
 }
 
 export const PageLoader = ({className}: PageLoaderProps) => (
-    <Spinner className={classnames(cls, ["page__loader"], {}, [className])} />
+    <Spinner className={classnames(cls, [ "page__loader" ], {}, [ className ])} />
     )

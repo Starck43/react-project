@@ -10,7 +10,7 @@ export enum NavLinkTheme {
     SECONDARY = "secondary",
 }
 
-interface NavLinkProps extends LinkProps {
+export interface NavLinkProps extends LinkProps {
     className?: string
     theme?: NavLinkTheme
 }
@@ -24,7 +24,7 @@ export const NavLink: FC<NavLinkProps> = (props) => {
         <Link
             to={to}
             {...other}
-            className={classnames(cls, ["navLink", theme], {}, [className])}
+            className={classnames(cls, [ "navLink", theme ], {}, [ className ])}
         >
             {children}
         </Link>

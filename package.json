@@ -11,7 +11,9 @@
     "lint:css:fix": "stylelint \"**/*.s[ac]ss\" --fix",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-    "unit": "jest --config ./config/jest/jest.config.ts"
+    "unit": "jest --config ./config/jest/jest.config.ts",
+    "storybook": "start-storybook -p 6006 -c ./config/storybook",
+    "build-storybook": "build-storybook -c ./config/storybook"
   },
   "keywords": [],
   "author": "",
@@ -20,13 +22,9 @@
     "file-loader": "^6.2.0",
     "i18next-browser-languagedetector": "^6.1.3",
     "i18next-http-backend": "^1.3.2",
-    "js-tokens": "^4.0.0",
-    "loose-envify": "^1.4.0",
-    "object-assign": "^4.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.1",
-    "scheduler": "^0.20.2"
+    "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -34,11 +32,19 @@
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@storybook/addon-actions": "^6.5.13-alpha.0",
+    "@storybook/addon-backgrounds": "^6.5.13-alpha.0",
+    "@storybook/addon-essentials": "^6.5.13-alpha.0",
+    "@storybook/addon-interactions": "^6.5.13-alpha.0",
+    "@storybook/addon-links": "^6.5.13-alpha.0",
+    "@storybook/builder-webpack5": "^6.5.13-alpha.0",
+    "@storybook/manager-webpack5": "^6.5.13-alpha.0",
+    "@storybook/react": "^6.5.13-alpha.0",
+    "@storybook/testing-library": "^0.0.14-next.0",
     "@svgr/webpack": "^6.2.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@types/jest": "^27.4.1",
-    "@types/lodash": "^4.14.185",
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
@@ -59,22 +65,28 @@
     "eslint-plugin-promise": "^6.0.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.6.4",
     "html-webpack-plugin": "^5.5.0",
     "i18next": "^21.6.11",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "jest-css-modules": "^2.1.0",
+    "loki": "^0.30.3",
     "mini-css-extract-plugin": "^2.5.3",
+    "postcss": "^8.4.16",
     "postcss-sass": "^0.5.0",
     "react-i18next": "^11.15.5",
     "react-refresh": "^0.12.0",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.54.9",
     "sass-loader": "^13.0.2",
+    "storybook-addon-themes": "^6.1.0",
     "style-loader": "^3.3.1",
-    "stylelint": "^14.5.3",
-    "stylelint-config-recommended": "^9.0.0",
+    "stylelint": "^14.13.0",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-config-standard": "^28.0.0",
     "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-scss": "^4.3.0",
     "sugarss": "^4.0.1",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
@@ -83,5 +95,20 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.7.4"
+  },
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.app",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.app",
+        "preset": "iPhone 7"
+      }
+    }
   }
 }
