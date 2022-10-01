@@ -1,4 +1,7 @@
 {
+  "plugins": [
+    "stylelint-scss"
+  ],
   "extends": [
     "stylelint-config-standard"
   ],
@@ -12,11 +15,7 @@
     "value-keyword-case": ["lower",{"ignoreProperties": ["font-family"], "camelCaseSvgKeywords": true}],
     "function-url-quotes": "never",
     "function-no-unknown": null,
-    "at-rule-no-unknown": [
-      true, {
-        "ignoreAtRules": ["extend"]
-      }
-    ],
+    "at-rule-no-unknown": null,
     "no-empty-source": null,
     "declaration-colon-space-after": null,
     "string-quotes": "double",

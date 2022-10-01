@@ -17,12 +17,16 @@
 
 	&.sidebar__left
 		@include push--absolute($main-padding)
+
 		margin-right: 0
 		transform: translateX(-100%)
+
 		&::before
 			content: ""
 			overflow: hidden
+
 			@include push--absolute
+
 			background-color: var(--theme-primary-bg-color)
 			border-radius: var(--border-radius)
 			visibility: hidden
@@ -30,6 +34,7 @@
 
 		&.collapsed
 			transform: none
+
 			&::before
 				visibility: visible
 
@@ -41,6 +46,7 @@
 		top: 0 !important
 		left: inherit !important
 		transform: none !important
+
 		&.sidebar__left
 			right: 0
 			bottom: 0
@@ -56,6 +62,7 @@
 	top: 0
 	left: 100%
 	margin-left: 0.25rem
+
 	@media screen and (max-width: 767.99px)
 		&.collapsed
 			left: 0

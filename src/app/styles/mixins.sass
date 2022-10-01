@@ -12,6 +12,7 @@
 	position: relative
 	margin-right: $margin
 	margin-left: $margin
+
 	@if ($padding-x != 0)
 		padding-right: $padding-x
 		padding-left: $padding-x
@@ -22,22 +23,29 @@
 		font-family: $f-name
 		font-display: $display
 		font-style: $f-style
+
 		@if $f-weight != 0
 			font-weight: $f-weight
-		src: url($local-url) if($url, #{','} $url format('woff2'), format('woff2'))
+
+		src: url($local-url) if($url, #{","} $url format("woff2"), format("woff2"))
 		@content
 
 
 @mixin font-settings($font, $color:false, $size:false, $case:false, $weight:false, $lh:false)
 	font-family: "#{$font}"
+
 	@if $size
 		font-size: $size
+
 	@if $color
 		color: $color
+
 	@if $case
 		text-transform: $case
+
 	@if $weight
 		font-weight: $weight
+
 	@if $lh
 		line-height: $lh
 
@@ -45,11 +53,13 @@
 //Убираем единицы измерения у чисел
 @function strip-units($size)
 	$number: math.div($size, ($size * 0 + 1))
+
 	@return $number
 
 
 @function em($pixels, $fontsize)
-	$fontsize: $fontsize + 0px
+	$fontsize: $fontsize + 0
+
 	@return math.div($pixels, $fontsize)*1em
 
 
@@ -67,24 +77,30 @@
 //Абсолютное позиционирование в размер родителя
 @mixin push--absolute($t: none, $r: none, $b: none, $l: none)
 	position: absolute
+
 	@if $l == none and $b == none and $r == none
 		@if $t == none
 			top: 0
 			left: 0
 			width: 100%
 			height: 100%
+
 		@else
 			top: $t
 			left: $t
 			right: $t
 			bottom: $t
+
 	@else
 		@if $t != 0
 			top: $t
+
 		@if $r != 0
 			right: $r
+
 		@if $b != 0
 			bottom: $b
+
 		@if $l != 0
 			left: $l
 
@@ -96,9 +112,11 @@
 @mixin blur-background($blur:10px, $color:white, $transparentize:0, $filter_transparentize:0)
 	@supports not (backdrop-filter: blur($blur))
 		background-color: transparentize($color, $transparentize)
+
 	@supports (backdrop-filter: blur($blur)) or (-webkit-backdrop-filter: blur($blur))
 		@if $filter_transparentize != 0
 			background-color: transparentize($color, $filter_transparentize)
+
 		backdrop-filter: blur($blur)
 
 
@@ -106,8 +124,10 @@
 // например: height: calc-height($header-height, $nav-height, $top-bar-height)
 @function calc-height($parent_h, $h1, $h2:0, $h3:0, $h4:0)
 	$h: strip-units($h1) + strip-units($h2) + strip-units($h3)
+
 	@if $h4 != 0
 		@return calc(#{$parent_h} - #{$h}px - #{$h4})
+
 	@else
 		@return calc(#{$parent_h} - #{$h}px)
 
@@ -146,11 +166,13 @@
 	@return $out
 
 
-@mixin pseudo($pos:relative, $content:'')
+@mixin pseudo($pos:relative, $content:"")
 	content: $content
 	display: table
+
 	@if $pos == absolute
 		+push--absolute()
+
 	@else
 		position: $pos
 
@@ -158,18 +180,23 @@
 // Миксин для создания масштабируемыхэлементов(обычно изображения/картинки заднего фона),
 // чтобы поддерживать соотношение. Пример: @include responsive-ratio(16,9)
 @mixin responsive-ratio($x:1, $y:1, $h:0, $pseudo:false,$pos:relative)
-	$padding: unquote(math.div($y, $x)*100+'%')
+	$padding: unquote(math.div($y, $x) *100+"%")
+
 	@if $pseudo
 		position: $pos
+
 		&::before
 			@include pseudo($pos)
+
 			width: 100%
 			padding-bottom: $padding
+
 	@else
 		position: $pos
 		width: 100%
 		height: $h
 		padding-bottom: $padding
+
 	img
 		+push--absolute
 
@@ -177,25 +204,31 @@
 //миксин создает треугольники. Задаются цвет, размер и направление
 @mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false)
 	@include pseudo($pos: $position)
+
 	width: 0
 	height: 0
+
 	@if $round
 		border-radius: 3px
+
 	@if $direction == down
 		border-left: $size solid transparent
 		border-right: $size solid transparent
 		border-top: $size solid $color
-		margin-top: (0 - round( $size / 2.5 ))
+		margin-top: (0 - round($size / 2.5))
+
 	@else if $direction == up
 		border-left: $size solid transparent
 		border-right: $size solid transparent
 		border-bottom: $size solid $color
-		margin-bottom: 0 - round( $size / 2.5 )
+		margin-bottom: 0 - round($size / 2.5)
+
 	@else if $direction == right
 		border-top: $size solid transparent
 		border-bottom: $size solid transparent
 		border-left: $size solid $color
 		margin-right: -$size
+
 	@else if $direction == left
 		border-top: $size solid transparent
 		border-bottom: $size solid transparent
@@ -211,9 +244,7 @@
 
 
 @mixin placeholder($color)
-	::-webkit-input-placeholder
-		color: $color
-	::-moz-placeholder
+	::placeholder
 		color: $color
 
 
@@ -231,11 +262,12 @@
 	@return calc(#{$k} * 100vw + #{$b})
 
 
-$pi: 3.14159265359
+$pi: 3.1416
 $_precision: 10
 
 @function pow($base, $exp)
 	$value: $base
+
 	@if $exp > 1
 		@for $i from 2 through $exp
 			$value: $value * $base
@@ -249,6 +281,7 @@ $_precision: 10
 
 @function fact($num)
 	$fact: 1
+
 	@if $num > 0
 		@for $i from 1 through $num
 			$fact: $fact * $i
@@ -269,6 +302,7 @@ $_precision: 10
 @function sin($angle)
 	$a: _to_unitless_rad($angle)
 	$sin: $a
+
 	@for $n from 1 through $_precision
 		$sin: $sin + (pow(-1, $n) / fact(2 * $n + 1) ) * pow($a, (2 * $n + 1))
 
@@ -278,7 +312,8 @@ $_precision: 10
 @function cos($angle)
 	$a: _to_unitless_rad($angle)
 	$cos: 1
+
 	@for $n from 1 through $_precision
-		$cos: $cos + ( pow(-1,$n) / fact(2*$n) ) * pow($a,2*$n)
+		$cos: $cos + ( pow(-1, $n) / fact(2*$n) ) * pow($a, 2*$n)
 
 	@return $cos
