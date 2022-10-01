@@ -8,7 +8,7 @@ on:
 
 jobs:
   Project_pipeline:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x]
@@ -26,9 +26,9 @@ jobs:
         run: npm run lint:ts
       - name: Linting Production project... [styles]
         run: npm run lint:css
-      - name: Testing Production project...
+      - name: Testing Production project... [jest]
         run: npm run test:unit
-      - name: Building Production project... [storybook]
+      - name: Building screenshots... [storybook]
         run: npm run storybook:build
-      - name: Testing Production project... [screenshots]
+      - name: Testing screenshots... [loki]
         run: npm run test:ui:ci
