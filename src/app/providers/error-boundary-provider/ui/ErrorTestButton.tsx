@@ -1,3 +1,4 @@
+import {t} from "i18next"
 import {useEffect, useState} from "react"
 import {Button} from "shared/ui/button/Button"
 
@@ -14,7 +15,7 @@ export const ErrorTestButton = () => {
 
     return (
         <Button onClick={handleClick}>
-            Throw error
+            {t("throw error")}
         </Button>
     )
 }
