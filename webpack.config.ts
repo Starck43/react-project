@@ -12,6 +12,7 @@ export default (env: BuildWebpackEnv) => {
         isDev,
         chunkFilename: "[name].[contenthash:8].js",
         cssFilename: "css/[name].[contenthash:8].css",
+        cssChunkFilename: "css/[id].[contenthash:8].css",
         paths: {
             entry: path.resolve(__dirname, "src", "index.tsx"),
             build: path.resolve(__dirname, "build"),

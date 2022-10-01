@@ -5,21 +5,18 @@ import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer"
 
 import {BuildWebpackOptions} from "./types/config"
 
+
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
 
 export function buildWebpackPlugins({
-    paths,
-    cssFilename,
-    isDev,
-    chunkFilename,
-}: BuildWebpackOptions): webpack.WebpackPluginInstance[] {
+                                        isDev,
+                                        paths,
+                                        cssFilename,
+                                        cssChunkFilename,
+                                    }: BuildWebpackOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HtmlWebpackPlugin({template: paths.html}),
         new webpack.ProgressPlugin(),
-        new MiniCssExtractPlugin({
-            filename: cssFilename,
-            chunkFilename,
-        }),
         new webpack.DefinePlugin({__IS_DEV__: JSON.stringify(isDev)}),
     ]
 
@@ -28,6 +25,12 @@ export function buildWebpackPlugins({
         plugins.push(new webpack.HotModuleReplacementPlugin())
         // change openAnalyzer on true to see in browser by address: localhost:8888
         plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}))
+    } else {
+        plugins.push(new MiniCssExtractPlugin({
+            filename: cssFilename,
+            chunkFilename: cssChunkFilename,
+            experimentalUseImportModule: true,
+        }))
     }
 
     return plugins

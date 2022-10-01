@@ -6,14 +6,23 @@ export function BuildCssLoader(isDev: boolean) {
         test: /\.s[ac]ss$/i,
         use: [
             // Creates `style` nodes from JS strings
-            !isDev ? MiniCssExtractPlugin.loader : "style-loader",
-            // Translates CSS into CommonJS
+            !isDev
+                ? {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {},
+                }
+                : "style-loader",
             {
+                // Translates CSS into CommonJS
                 loader: "css-loader",
                 options: {
+                    esModule: true,
                     modules: {
                         auto: (resPath: string) => Boolean(resPath.includes(".module.")),
-                        localIdentName: isDev ? "[path][name]__[local]--[hash:base64:5]" : "[hash:base64:8]", // different *.module.css classes names for dev or prod mode
+                        // different *.module.css classes names for dev or prod mode
+                        localIdentName: isDev
+                            ? "[path][name]__[local]--[hash:base64:5]"
+                            : "[hash:base64:8]",
                         exportLocalsConvention: "camelCase",
                     },
                 },

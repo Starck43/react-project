@@ -11,6 +11,7 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
         mode,
         isDev,
         chunkFilename,
+        cssChunkFilename,
     } = options
 
     return {

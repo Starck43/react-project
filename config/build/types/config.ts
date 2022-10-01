@@ -12,6 +12,7 @@ export interface BuildWebpackOptions {
     isDev: boolean
     paths: Paths
     cssFilename: string
+    cssChunkFilename: string
     chunkFilename: string
     port: number
 }
