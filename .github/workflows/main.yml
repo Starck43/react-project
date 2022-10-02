@@ -26,9 +26,13 @@ jobs:
         run: npm run lint:ts
       - name: Linting Production project... [styles]
         run: npm run lint:css
+        if: always()
       - name: Testing Production project... [jest]
         run: npm run test:unit
+        if: always()
       - name: Building screenshots... [storybook]
         run: npm run storybook:build
+        if: always()
       - name: Testing screenshots... [loki]
         run: npm run test:ui:ci
+        if: always()
