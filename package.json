@@ -15,6 +15,9 @@
     "test:ui": "npx loki test",
     "test:ui:upd": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",
+    "test:ui:json": "node scripts/generate-screenshots-report.js",
+    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook --quiet"
   },
@@ -80,6 +83,7 @@
     "postcss-sass": "^0.5.0",
     "react-i18next": "^11.15.5",
     "react-refresh": "^0.12.0",
+    "reg-cli": "^0.17.7",
     "regenerator-runtime": "^0.13.9",
     "sass": "^1.54.9",
     "sass-loader": "^13.0.2",
