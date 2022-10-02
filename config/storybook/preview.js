@@ -1,5 +1,5 @@
 import {addDecorator} from "@storybook/react"
-import "loki/configure-react"
+// import "loki/configure-react"
 import {RouterDecorator} from "../../src/shared/config/storybook/RouterDecorator"
 import {StyleDecorator} from "../../src/shared/config/storybook/StyleDecorator"
 
@@ -12,7 +12,19 @@ export const parameters = {
             date: /Date$/,
         },
     },
-    backgrounds: {disable: true},
+    backgrounds: {
+        default: "primary",
+        values: [
+            {
+                name: "primary",
+                value: "var(--theme-primary-bg-color)",
+            },
+            {
+                name: "secondary",
+                value: "var(--theme-secondary-bg-color)",
+            },
+        ],
+    },
     themes: [
         {
             name: "Light",
