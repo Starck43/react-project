@@ -9,6 +9,7 @@
 			"i18next-extract", {
 				"locales": ["en","ru"],
 				"keyAsDefaultValue": false,
+				"discardOldKeys": true,
 				"outputPath": "public/locales/{{locale}}/{{ns}}.json"
 			}
 		]
