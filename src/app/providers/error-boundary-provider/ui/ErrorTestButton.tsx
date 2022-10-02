@@ -1,12 +1,19 @@
-import {t} from "i18next"
 import {useEffect, useState} from "react"
-import {Button} from "shared/ui/button/Button"
+import {useTranslation} from "react-i18next"
+import {Button, ButtonFeature, ButtonVariant} from "shared/ui/button/Button"
 
 
 // Button for calling Error
 
-export const ErrorTestButton = () => {
+interface ErrorTestProps {
+    minified?: boolean
+    className?: string
+}
+
+export const ErrorTestButton = ({minified, className}: ErrorTestProps) => {
     const [ error, setError ] = useState(false)
+    const {t} = useTranslation()
+
     const handleClick = () => setError(true)
 
     useEffect(() => {
@@ -14,7 +21,12 @@ export const ErrorTestButton = () => {
     }, [ error ])
 
     return (
-        <Button onClick={handleClick}>
+        <Button
+            variant={ButtonVariant.PRIMARY}
+            feature={ButtonFeature.BLANK}
+            className={className}
+            onClick={handleClick}
+        >
             {t("throw error")}
         </Button>
     )

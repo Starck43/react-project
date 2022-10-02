@@ -9,10 +9,11 @@ import cls from "./LanguageSwitcher.module.sass"
 
 
 interface LanguageSwitcherProps {
+    minified?: boolean
     className?: string
 }
 
-export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({className}) => {
+export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({minified = false, className}) => {
     const {i18n, t} = useTranslation()
 
     const toggleLanguage = () => i18n.changeLanguage(i18n.language === "en" ? "ru" : "en")
@@ -24,8 +25,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({className}) => {
             className={classnames(cls, [], {}, [ className ])}
             onClick={toggleLanguage}
         >
-            {t("Русский")}
-
+            {minified ? <span className="icon white">{i18n.language.toUpperCase()}</span> : t("Русский")}
         </Button>
     )
 }
