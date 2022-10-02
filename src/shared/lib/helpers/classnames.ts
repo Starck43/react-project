@@ -13,8 +13,8 @@ export function classnames(
     return [
         ...classes.filter(Boolean).map((classname) => (cls ? cls[classname] : null)),
         ...Object.entries(dict)
-            .filter(([_, value]) => Boolean(value))
-            .map(([classname, _]) => (cls ? cls[classname] : null)),
+            .filter(([ _, value ]) => Boolean(value))
+            .map(([ classname, _ ]) => (cls ? cls[classname] : null)),
         ...additional.filter(Boolean),
     ].join(" ")
 }
