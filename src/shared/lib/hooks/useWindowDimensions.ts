@@ -3,7 +3,7 @@ import {getWindowDimensions} from "../helpers/dom"
 
 
 export const useWindowDimensions = () => {
-    const [windowDimensions, setWindowDimensions] = useState(
+    const [ windowDimensions, setWindowDimensions ] = useState(
         getWindowDimensions(),
     )
 
