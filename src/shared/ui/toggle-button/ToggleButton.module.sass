@@ -1,0 +1,40 @@
+@import "src/app/styles/common"
+@import "src/app/styles/mixins"
+
+.toggle__button
+	@extend .centered
+
+	width: 2.2rem
+	height: 2.2rem
+	padding: 0.2rem
+	border-radius: var(--border-radius)
+	color: var(--theme-primary-text-color)
+	font-size: 2.8rem
+	line-height: 0
+	cursor: pointer
+	transition: all 150ms ease-out
+	background-color: transparent
+	border: 1px solid transparent
+
+	&.down
+		&::before
+			transform: rotate(-90deg)
+
+	&.up
+		&::before
+			transform: rotate(90deg)
+
+	&.right
+		&::before
+			transform: rotate(180deg)
+
+	&::before
+		content: "\2039"
+		transition: all 100ms ease-in-out
+
+		@include push--absolute()
+
+		@extend .centered
+
+	&:hover
+		border-color: var(--theme-navbar-link-color)
