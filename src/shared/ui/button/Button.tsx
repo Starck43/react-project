@@ -1,41 +1,68 @@
-import {ButtonHTMLAttributes, FC} from "react"
+import {ButtonHTMLAttributes, FC, ReactElement} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {NavLink} from "shared/ui/nav-link/NavLink"
 
 import cls from "./Button.module.sass"
 
 
-export enum ThemeButton {
+export enum ButtonVariant {
+    PRIMARY = "primary",
+    SECONDARY = "secondary",
+}
+
+export enum ButtonFeature {
     BLANK = "blank",
-    DEFAULT = "default",
+    INVERTED = "inverted",
+}
+
+export enum ButtonSize {
+    SMALL = "small",
+    NORMAL = "normal",
+    LARGE = "large",
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    theme?: ThemeButton
+    variant?: ButtonVariant
+    feature?: ButtonFeature
+    icon?: ReactElement
+    size?: ButtonSize
+    bordered?: boolean
+    rounded?: boolean
+    shadowed?: boolean
     href?: string
     className?: string
 }
 
 export const Button: FC<ButtonProps> = (props) => {
     const {
-        theme = ThemeButton.DEFAULT,
+        variant = ButtonVariant.PRIMARY,
+        feature,
+        size = ButtonSize.NORMAL,
+        rounded = false,
+        bordered = false,
+        shadowed = false,
         href = null,
         className,
         children,
         ...other
     } = props
+
+
     return (
         <button
             type="button"
             {...other}
-            className={classnames(cls, [ "button", theme ], {}, [ className, theme ])}
+            className={classnames(cls, [ "button", variant, feature, size, href && "is__link" ], {
+                bordered,
+                rounded,
+                shadowed,
+            }, [ "centered", className, variant ])}
         >
             {href
                 ? (
-                    <NavLink to={href}>
+                    <a href={href} className={`${cls.link} centered`}>
                         {children}
-                    </NavLink>
+                    </a>
                 )
                 : children}
         </button>

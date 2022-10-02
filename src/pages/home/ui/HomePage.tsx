@@ -15,7 +15,8 @@ function HomePage() {
             <Sidebar
                 theme={theme}
                 toggleTheme={toggleTheme}
-                className="sidebar__left"
+                position="left"
+                className="sidebar"
             />
             <div className="content">
                 <div className="container">

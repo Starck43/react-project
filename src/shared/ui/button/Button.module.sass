@@ -2,21 +2,74 @@
 @import "src/app/styles/common"
 
 .button
-	@extend .centered
-
-	padding: 0.5em 1rem
 	font-family: var(--font-family-secondary)
-	font-size: inherit
-	border: 1px solid $brand-color
-	border-radius: var(--border-radius)
+	color: $brand-color
+	background-color: $default-btn-color
+	border: 1px solid transparent
+	border-radius: 0.2em
 	transition: all 150ms ease-out
 	cursor: pointer
 	user-select: none
 
+	&.primary
+		color: var(--theme-primary-link-color)
+
+		&.bordered
+			border-color: $brand-color
+
+		&.inverted
+			color: var(--theme-primary-bg-color)
+			background-color: var(--theme-primary-text-color)
+
+		&.shadowed
+			box-shadow: 0 0.3em 1.1em -0.4em var(--theme-primary-box-shadow)
+
+		&:hover
+			border-color: var(--theme-primary-text-color)
+
+
+	&.secondary
+		color: var(--theme-secondary-link-color)
+
+		&.blank
+			color: var(--theme-secondary-text-color)
+
+		&.bordered
+			border-color: var(--theme-secondary-text-color)
+
+		&.inverted
+			color: var(--theme-secondary-bg-color)
+			background-color: var(--theme-secondary-text-color)
+
+		&.shadowed
+			box-shadow: 0 0.3em 1.1em -0.4em var(--theme-secondary-box-shadow)
+
+		&:hover
+			border-color: var(--theme-secondary-text-color)
+
 	&.blank
 		background-color: transparent
-		border: 1px solid transparent
-		color: var(--theme-navbar-link-color)
 
-	&:hover
-		border-color: var(--theme-link-color)
+	&.small
+		font-size: 0.8rem
+
+	&.normal
+		font-size: inherit
+
+	&.large
+		font-size: 1.5rem
+
+	&.rounded
+		border-radius: var(--border-radius)
+
+	&.hover
+		mix-blend-mode: luminosity
+
+	&.underlined
+		border-top-color: transparent
+		border-left-color: transparent
+		border-right-color: transparent
+
+.button:not(.is__link),
+.link
+	padding: $btn-padding $btn-padding * 1.8

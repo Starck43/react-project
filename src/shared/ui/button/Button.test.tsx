@@ -1,5 +1,5 @@
 import {render, screen} from "@testing-library/react"
-import {Button, ThemeButton} from "./Button"
+import {Button, ButtonFeature} from "./Button"
 
 
 describe("Button Tests", () => {
@@ -9,7 +9,7 @@ describe("Button Tests", () => {
     })
 
     test("test theme class", () => {
-        render(<Button theme={ThemeButton.BLANK}>Test</Button>)
+        render(<Button feature={ButtonFeature.BLANK}>Test</Button>)
         expect(screen.getByText("Test")).toHaveClass("blank")
         screen.debug()
     })

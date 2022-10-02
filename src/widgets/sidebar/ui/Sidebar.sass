@@ -1,5 +1,30 @@
+@use "sass:math"
+
+@import "src/app/styles/vars"
 @import "src/app/styles/mixins"
 
+
 .sidebar
-	.sidebar__container > *
-		margin: 0.5rem auto
+	svg
+		width: 1.2em
+		margin-right: 0.5em
+
+		&.white
+			color: white
+
+	.sidebar__container
+		> *
+			margin: 0.5rem auto
+
+	&.collapsed
+		//transform: translateX(-$sidebar-collapsed-w)
+
+		.sidebar__container
+			transform: none
+
+			.minified
+				margin-right: 0
+				padding: $btn-padding
+
+				svg
+					margin-right: 0

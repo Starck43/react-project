@@ -1,7 +1,7 @@
 import {ComponentMeta} from "@storybook/react"
 import React from "react"
 
-import {NavLink, NavLinkProps, NavLinkTheme} from "./NavLink"
+import {NavLink, NavLinkFeature, NavLinkProps} from "./NavLink"
 
 
 export default {
@@ -15,12 +15,12 @@ const Template = (args: NavLinkProps) => <NavLink {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
-    children: "Link Primary",
-    theme: NavLinkTheme.PRIMARY,
+    children: "Link",
+    feature: NavLinkFeature.CLEAR,
 }
 
 export const Secondary = Template.bind({})
 Secondary.args = {
-    children: "Link Secondary",
-    theme: NavLinkTheme.SECONDARY,
+    children: "Link",
+    feature: NavLinkFeature.UNDERLINED,
 }

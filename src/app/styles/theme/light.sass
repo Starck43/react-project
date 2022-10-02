@@ -1,18 +1,19 @@
 @import "../vars"
 
 body.light
+	--theme-primary-link-color: #{$brand-color}
 	--theme-primary-color: #{lighten($brand-color, 20%)}
-	--theme-secondary-color: #{lighten($brand-color, 30%)}
-	--theme-primary-shadow: #{lighten($brand-color, 20%)}
-	--theme-secondary-shadow: #{lighten($brand-color, 30%)}
-
-	--theme-link-color: #{$brand-color}
-
 	--theme-primary-bg-color: #FFF
-	--theme-primary-text-color: #444
+	--theme-primary-text-color: #333
+	--theme-primary-shadow: #{lighten($brand-color, 20%)}
+	--theme-primary-box-shadow: #{transparentize(#000, 0.8)}
 
+	--theme-secondary-link-color: #{$brand-color}
+	--theme-secondary-color: #{lighten($brand-color, 30%)}
 	--theme-secondary-bg-color: #{lighten($brand-color, 10%)}
 	--theme-secondary-text-color: #FFF
+	--theme-secondary-shadow: #{lighten($brand-color, 30%)}
+	--theme-secondary-box-shadow: #{transparentize($brand-color, 0.2)}
 
 	--theme-navbar-bg-color: #{lighten($brand-color, 50%)}
 	--theme-navbar-link-color: #{$brand-color}

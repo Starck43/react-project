@@ -12,14 +12,14 @@
 	@extend .shadow
 
 	transform: none
-	transition: 200ms ease-in-out
+	transition: 250ms ease-in-out
 	z-index: 2
 
-	&.sidebar__left
+	&.left
 		@include push--absolute($main-padding)
 
 		margin-right: 0
-		transform: translateX(-100%)
+		transform: none
 
 		&::before
 			content: ""
@@ -33,7 +33,8 @@
 			z-index: -1
 
 		&.collapsed
-			transform: none
+			padding-right: 2.4vw
+			transform: translateX(calc(-100% - #{$main-padding} + #{$sidebar-collapsed-w}))
 
 			&::before
 				visibility: visible
@@ -47,14 +48,15 @@
 		left: inherit !important
 		transform: none !important
 
-		&.sidebar__left
+		&.left
 			right: 0
 			bottom: 0
 			margin-left: 0
 			margin-right: $main-margin
 
 			&.collapsed
-				margin-left: calc(var(--sidebar-width)  * -1)
+				padding-right: 0.3em
+				margin-left: calc(var(--sidebar-width)  * -1 - #{$main-padding} + #{$sidebar-collapsed-w})
 
 
 .toggle__btn
