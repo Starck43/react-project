@@ -17,6 +17,7 @@
     "function-no-unknown": null,
     "at-rule-no-unknown": null,
     "no-empty-source": null,
+    "no-invalid-position-at-import-rule": [true, {"ignoreAtRules": "use"}],
     "declaration-colon-space-after": null,
     "string-quotes": "double",
     "import-notation": "string",
