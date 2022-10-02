@@ -27,6 +27,7 @@ export function Navbar({className}: NavbarProps) {
             <div className={cls.navbar__links}>
                 {NavbarRoutes.map((item) => (
                     <NavLink key={item} to={RoutesPath[item]} className="navbar__link">
+                        { /* i18next-extract-disable-line */}
                         {t(item)}
                     </NavLink>
                 ))}

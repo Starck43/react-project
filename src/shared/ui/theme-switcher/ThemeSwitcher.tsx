@@ -35,6 +35,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
         onClick={toggleTheme}
     >
         <ThemeIcon className="icon white" />
+        { /* i18next-extract-disable-line */}
         { minified ? null : t(theme)}
     </Button>
 	)
