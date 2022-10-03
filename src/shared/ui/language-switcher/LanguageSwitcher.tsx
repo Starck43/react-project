@@ -3,6 +3,8 @@ import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {Button, ButtonFeature, ButtonVariant} from "shared/ui/button/Button"
+import FlagEnIcon from "shared/assets/icons/flag_en.svg"
+import FlagRuIcon from "shared/assets/icons/flag_ru.svg"
 
 import cls from "./LanguageSwitcher.module.sass"
 
@@ -22,10 +24,13 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({minified = false, c
         <Button
             variant={ButtonVariant.PRIMARY}
             feature={ButtonFeature.BLANK}
-            className={classnames(cls, [], {}, [ className ])}
+            className={classnames(cls, [], {}, [ className, minified && "minified" ])}
             onClick={toggleLanguage}
         >
-            {minified ? <span className="icon white">{i18n.language.toUpperCase()}</span> : t("Русский")}
+            { i18n.language === "en"
+               ? <FlagEnIcon className="icon" />
+               : <FlagRuIcon className="icon" />}
+            {minified ? null : t("Русский")}
         </Button>
     )
 }
