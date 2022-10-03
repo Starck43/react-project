@@ -28,9 +28,7 @@ export function Sidebar(props: SidebarProps) {
     }
 
     useEffect(() => {
-        if (width < 992) {
-            setCollapsed(false)
-        }
+        setCollapsed(width < 992)
     }, [ width ])
 
     return (
@@ -48,7 +46,7 @@ export function Sidebar(props: SidebarProps) {
             )}
 
             <div className={classnames(cls, [], {collapsed}, [ "sidebar__container" ])}>
-                <ThemeSwitcher minified={collapsed} theme={theme} toggleTheme={toggleTheme} className={collapsed ? "minified" : ""} />
+                <ThemeSwitcher minified={collapsed} theme={theme} toggleTheme={toggleTheme} />
                 <LanguageSwitcher minified={collapsed} />
                 <ErrorTestButton minified={collapsed} />
             </div>

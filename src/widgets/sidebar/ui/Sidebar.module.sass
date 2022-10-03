@@ -6,8 +6,9 @@
 	position: absolute
 	padding: 1rem
 	background-color: var(--theme-sidebar-bg-color)
-	border-radius: var(--border-radius)
-	border: 2px solid transparentize(lighten($brand-color, 50%), 0.5)
+	border-top-right-radius: var(--border-radius)
+	border-bottom-right-radius: var(--border-radius)
+	border-right: 2px solid transparentize(lighten($brand-color, 50%), 0.5)
 
 	@extend .shadow
 
@@ -16,28 +17,13 @@
 	z-index: 2
 
 	&.left
-		@include push--absolute($main-padding)
+		@include push--absolute(0, $sidebar-collapsed-w, 0, 0)
 
 		margin-right: 0
-		transform: none
-
-		&::before
-			content: ""
-			overflow: hidden
-
-			@include push--absolute
-
-			background-color: var(--theme-primary-bg-color)
-			border-radius: var(--border-radius)
-			visibility: hidden
-			z-index: -1
 
 		&.collapsed
-			padding-right: 2.4vw
-			transform: translateX(calc(-100% - #{$main-padding} + #{$sidebar-collapsed-w}))
-
-			&::before
-				visibility: visible
+			padding-right: 0.8rem
+			transform: translateX(calc(-100% + #{$sidebar-collapsed-w}))
 
 	@media screen and (min-width: 768px)
 		position: sticky !important
@@ -46,6 +32,8 @@
 		min-height: calc(100vh - #{$navbar-height} - #{$main-padding*2})
 		top: 0 !important
 		left: inherit !important
+		border-top-left-radius: var(--border-radius)
+		border-bottom-left-radius: var(--border-radius)
 		transform: none !important
 
 		&.left
@@ -63,9 +51,4 @@
 	position: absolute
 	top: 0
 	left: 100%
-	margin-left: 0.25rem
-
-	@media screen and (max-width: 767.99px)
-		&.collapsed
-			left: 0
-			margin: 1rem
+	margin: 1rem

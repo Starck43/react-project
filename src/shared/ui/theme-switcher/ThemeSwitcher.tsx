@@ -31,10 +31,10 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
 	return (
     <Button
         feature={ButtonFeature.BLANK}
-        className={classnames(cls, [ "switcher", variant ], {}, [ className ])}
+        className={classnames(cls, [ "switcher", variant ], {}, [ className, minified && "minified" ])}
         onClick={toggleTheme}
     >
-        <ThemeIcon className="icon white" />
+        <ThemeIcon className="icon" />
         { /* i18next-extract-disable-line */}
         { minified ? null : t(theme)}
     </Button>
