@@ -28,6 +28,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize
     bordered?: boolean
     rounded?: boolean
+    squared?: boolean
     shadowed?: boolean
     href?: string
     className?: string
@@ -40,6 +41,7 @@ export const Button: FC<ButtonProps> = (props) => {
         size = ButtonSize.NORMAL,
         rounded = false,
         bordered = false,
+        squared = false,
         shadowed = false,
         href = null,
         className,
@@ -55,6 +57,7 @@ export const Button: FC<ButtonProps> = (props) => {
             className={classnames(cls, [ "button", variant, feature, size, href && "is__link" ], {
                 bordered,
                 rounded,
+                squared,
                 shadowed,
             }, [ "centered", className, variant ])}
         >

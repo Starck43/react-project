@@ -1,0 +1,51 @@
+@import "src/app/styles/vars.sass"
+@import "src/app/styles/common.sass"
+@import "src/app/styles/mixins.sass"
+
+
+.modal
+	@include push--fixed
+
+	display: none
+	transition: 180ms linear
+	pointer-events: none
+	z-index: -1
+
+	.overlay
+		@extend .centered
+
+		width: 100%
+		height: 100%
+		background-color: var(--overlay-bg-color)
+
+	.close__btn
+		position: fixed
+		top: 1rem
+		right: 1rem
+		z-index: 2
+
+		&:not(:hover)
+			color: #FFF !important
+
+	.content
+		width: var(--modal-width)
+		max-height: var(--modal-height)
+		padding: 4vw
+		background-color: var(--theme-modal-bg-color)
+		border: 1px solid var(--theme-modal-border-color)
+		border-radius: var(--border-radius)
+		transition: 150ms ease-out
+		transform: scale(0.8)
+
+	&.open
+		opacity: 0
+		display: block
+		pointer-events: auto
+		z-index: var(--modal-z-index)
+		// backdrop-filter: blur(2px)
+
+		&.show
+			opacity: 1
+
+			.content
+				transform: scale(1)

@@ -1,5 +1,6 @@
 @import "src/app/styles/vars"
 @import "src/app/styles/common"
+@import "src/app/styles/mixins"
 
 .button
 	font-family: var(--font-family-secondary)
@@ -62,14 +63,17 @@
 	&.rounded
 		border-radius: var(--border-radius)
 
-	&.hover
-		mix-blend-mode: luminosity
+	&.squared
+		padding: 0.6em
 
 	&.underlined
 		border-top-color: transparent
 		border-left-color: transparent
 		border-right-color: transparent
 
-.button:not(.is__link),
+	&.hover
+		mix-blend-mode: luminosity
+
+.button:not(.is__link, .square),
 .link
 	padding: $btn-padding $btn-padding * 1.8

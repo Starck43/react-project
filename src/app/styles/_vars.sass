@@ -6,6 +6,8 @@ $sidebar-collapsed-w: 4rem
 $main-padding: 4vw
 $main-margin: 2rem
 $btn-padding: 0.6em
+$nav-link-margin: $btn-padding
+$modal-transition-time: 200ms
 
 \:root
 	--font-family-secondary: "Calibri", #{ $base-fonts }
@@ -38,3 +40,8 @@ $btn-padding: 0.6em
 
 	@media (min-width: 1200px)
 		--sidebar-width: 300px
+
+	--overlay-bg-color: #{transparentize(black, 0.6)}
+	--modal-width: 60%
+	--modal-height: 80%
+	--modal-z-index: 30

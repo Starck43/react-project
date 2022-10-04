@@ -18,7 +18,7 @@ module.exports = {
         sourceType: "module",
     },
     plugins: [
-        "react", "@typescript-eslint", "i18next", // "promise",
+        "react", "@typescript-eslint", "i18next", "react-hooks", // "promise",
     ],
     rules: {
         indent: [
@@ -51,7 +51,8 @@ module.exports = {
         "react/jsx-closing-tag-location": "off",
         "react/function-component-definition": "off",
         "react/jsx-props-no-spreading": "warn",
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": "error",
+        "react-hooks/rules-of-hooks": "error",
         "no-shadow": "off",
         "no-param-reassign": "warn",
         "import/extensions": "off",
@@ -65,6 +66,20 @@ module.exports = {
                 ignoreComments: true,
                 ignoreUrls: true,
                 ignoreStrings: true,
+            },
+        ],
+        "jsx-a11y/no-static-element-interactions": [
+            "error",
+            {
+                handlers: [
+                    "onClick",
+                    "onMouseDown",
+                    "onMouseUp",
+                    "onKeyPress",
+                    "onKeyDown",
+                    "onKeyUp",
+                ],
+                allowExpressionValues: true,
             },
         ],
         "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
@@ -102,8 +117,11 @@ module.exports = {
     },
     overrides: [
         {
-            files: [ "**/src/**/*.test.{ts,tsx}" ],
-            rules: {"i18next/no-literal-string": "off"},
+            files: [ "**/src/**/*.{test,stories}.{ts,tsx}" ],
+            rules: {
+                "i18next/no-literal-string": "off",
+                "max-len": "off",
+            },
         },
     ],
     globals: {__IS_DEV__: true},

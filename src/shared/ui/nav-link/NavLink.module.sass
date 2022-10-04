@@ -1,4 +1,10 @@
+@import "src/app/styles/vars"
+
 .navLink
 	&.navbar__link
 		color: var(--theme-navbar-link-color)
-		margin: 0.5rem 1rem
+		margin: $nav-link-margin $nav-link-margin * 1.8
+		border-bottom: 1px solid transparent
+
+		&:hover
+			border-bottom-color: inherit

@@ -60,11 +60,11 @@
 @function em($pixels, $fontsize)
 	$fontsize: $fontsize + 0
 
-	@return math.div($pixels, $fontsize)*1em
+	@return math.div($pixels, $fontsize) * 1em
 
 
 @function px($em, $fontsize)
-	@return round(strip-units($em) * strip-units($fontsize))*1px
+	@return round(strip-units($em) * strip-units($fontsize)) * 1px
 
 
 //Автоматическое центрирование
@@ -72,6 +72,15 @@
 	margin:
 		left: $margin
 		right: $margin
+
+
+//Абсолютное позиционирование в размер родителя
+@mixin push--fixed($offset: 0)
+	position: fixed
+	top: $offset
+	left: $offset
+	right: $offset
+	bottom: $offset
 
 
 //Абсолютное позиционирование в размер родителя

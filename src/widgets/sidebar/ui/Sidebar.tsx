@@ -1,7 +1,7 @@
 import {ErrorTestButton} from "app/providers/error-boundary-provider"
 
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
-import {useEffect, useState} from "react"
+import React, {useEffect, useState} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
@@ -32,7 +32,7 @@ export function Sidebar(props: SidebarProps) {
     }, [ width ])
 
     return (
-        <div
+        <nav
             data-testid="sidebar"
             className={classnames(cls, [ "sidebar", position ], {collapsed}, [ "sidebar", collapsed && "collapsed", className ])}
         >
@@ -50,6 +50,6 @@ export function Sidebar(props: SidebarProps) {
                 <LanguageSwitcher minified={collapsed} />
                 <ErrorTestButton minified={collapsed} />
             </div>
-        </div>
+        </nav>
     )
 }
