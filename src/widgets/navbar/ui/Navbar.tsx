@@ -31,13 +31,21 @@ export function Navbar({className}: NavbarProps) {
                 {NavbarRoutes.map((item) => (
                     <NavLink key={item} to={RoutesPath[item]} className="navbar__link">
                         { /* i18next-extract-disable-line */}
+                        {/* i18next-extract-disable-next-line */}
                         {t(item)}
                     </NavLink>
                 ))}
             </div>
             <div className={classnames(cls, [ "navbar__icons" ], {}, [ "centered" ])}>
                 {/* eslint-disable-next-line max-len */}
-                <Button feature={ButtonFeature.BLANK} squared onClick={() => setShowAuth(true)}><AuthIcon /></Button>
+                <Button
+                    data-testid="authBtn"
+                    feature={ButtonFeature.BLANK}
+                    squared
+                    onClick={() => setShowAuth(true)}
+                >
+                    <AuthIcon />
+                </Button>
             </div>
             <Modal open={isShowAuth} onClose={toggleAuthModal}>
                 {/* eslint-disable-next-line i18next/no-literal-string */}

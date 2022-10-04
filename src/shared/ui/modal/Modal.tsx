@@ -46,7 +46,9 @@ export const Modal = (props: ModalProps) => {
     useEffect(() => {
         if (open) {
             window.addEventListener("keydown", onPressKey)
-            setShow(true)
+            timeRef.current = setTimeout(() => {
+                setShow(true)
+            }, 0)
         }
         return () => {
             clearTimeout(timeRef.current)
@@ -57,7 +59,7 @@ export const Modal = (props: ModalProps) => {
     return (
         <Portal>
 
-            <div className={classnames(cls, [ "modal" ], {open, show}, [ className ])}>
+            <div data-testid="modal" className={classnames(cls, [ "modal" ], {open, show}, [ className ])}>
                 <CloseButton
                     className={cls.close__btn}
                     handleClick={handleClose}
