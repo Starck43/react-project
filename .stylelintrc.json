@@ -26,6 +26,7 @@
     "time-min-milliseconds": 100,
     "selector-list-comma-newline-after": "always-multi-line",
     "color-hex-case": "upper",
+    "max-line-length": [120, {"ignorePattern": "/box-shadow/"}],
     "custom-property-empty-line-before": null,
     "selector-max-compound-selectors": 4,
     "no-extra-semicolons": true,
