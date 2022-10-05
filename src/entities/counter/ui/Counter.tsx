@@ -1,4 +1,3 @@
-import {StateSchema} from "app/providers/store-provider/config/stateSchema"
 import {getCounterValue} from "entities/counter/model/selectors/getCounterValue/getCounterValue"
 import {useDispatch, useSelector} from "react-redux"
 import {Button, ButtonSize} from "shared/ui/button/Button"
