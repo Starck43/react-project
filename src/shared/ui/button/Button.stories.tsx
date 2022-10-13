@@ -27,3 +27,9 @@ Inverted.args = {
     children: "Button",
     feature: ButtonFeature.INVERTED,
 }
+
+export const Disabled = Template.bind({})
+Disabled.args = {
+    children: "Button",
+    disabled: true,
+}

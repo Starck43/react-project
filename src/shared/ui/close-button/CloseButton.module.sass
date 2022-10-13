@@ -1,21 +1,23 @@
+@import "src/app/styles/vars"
 @import "src/app/styles/common"
 
 .close__button
-	width: 2.2rem
-	height: 2.2rem
-	padding: 0.2rem
+	width: $icon-size
+	height: $icon-size
+	min-width: $icon-size !important
+	padding: 0 !important
+	border: none !important
 	cursor: pointer
 	background-color: transparent !important
 
 	&::before
 		content: "+"
-		font-size: 2.2rem
+		font-size: $icon-size
 		line-height: 0
 		transform: rotate(45deg)
 		transition: all 100ms ease-in-out
 
 	&:hover
-		background-color: var(--theme-primary-text-color) !important
-
 		&::before
+			color: var(--theme-primary-link-color)
 			transform: rotate(135deg)
