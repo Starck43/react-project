@@ -53,12 +53,13 @@ module.exports = {
         "react/jsx-props-no-spreading": "warn",
         "react-hooks/exhaustive-deps": "error",
         "react-hooks/rules-of-hooks": "error",
+        "react/display-name": "off",
+        "react/jsx-one-expression-per-line": "off",
         "no-shadow": "off",
         "no-param-reassign": "off",
         "import/extensions": "off",
         "import/no-extraneous-dependencies": "off",
         "no-undef": "warn",
-        "react/display-name": "off",
         "no-mixed-spaces-and-tabs": [ 2, "smart-tabs" ],
         "max-len": [
             1, {
@@ -107,7 +108,10 @@ module.exports = {
                     multiline: true,
                     minProperties: 5,
                 },
-                ImportDeclaration: "never",
+                ImportDeclaration: {
+                    multiline: true,
+                    minProperties: 3,
+                },
                 ExportDeclaration: {
                     multiline: true,
                     minProperties: 3,
