@@ -10,5 +10,12 @@
 	"comments": [
 		{"id": 1, "body": "some comment about Redux", "postId": 1}
 	],
+	"users": [
+		{
+			"id": 1,
+			"username": "admin",
+			"password": "admin"
+		}
+	],
 	"profile": {"name": "Starck"}
 }

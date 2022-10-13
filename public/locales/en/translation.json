@@ -1,11 +1,13 @@
 {
   "dark": "dark theme",
   "light": "light theme",
-  "throw error": "throw error",
+  "throw error": "Throw error",
   "На главную": "To Home",
   "Русский": "English",
   "Страница не найдена": "Page not found",
   "непредвиденная ошибка": "Unexpected error",
   "обновить страницу": "Reload page",
+  "отмена": "Cancel",
+  "сохранить": "Save",
   "что-то пошло не так": "Something went wrong"
 }

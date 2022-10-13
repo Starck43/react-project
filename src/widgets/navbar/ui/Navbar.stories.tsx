@@ -1,5 +1,6 @@
-import {ComponentMeta} from "@storybook/react"
 import React from "react"
+import {ComponentMeta} from "@storybook/react"
+import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
 import {Navbar} from "./Navbar"
 
@@ -13,4 +14,9 @@ export default {
 const Template = (args: any) => <Navbar {...args} />
 
 export const Default = Template.bind({})
-Default.args = {children: "Navbar"}
+Default.args = {}
+Default.decorators = [ StoreDecorator({}) ]
+
+export const Authenticated = Template.bind({})
+Authenticated.args = {}
+Authenticated.decorators = [ StoreDecorator({user: {authData: {username: "admin", password: "admin"}}}) ]

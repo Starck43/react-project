@@ -1,5 +1,4 @@
 import {ComponentMeta} from "@storybook/react"
-import React from "react"
 
 import {NotFoundPage} from "./NotFoundPage"
 
@@ -13,4 +12,4 @@ export default {
 const Template = (args: any) => <NotFoundPage {...args} />
 
 export const Default = Template.bind({})
-Default.args = {children: "NotFoundPage"}
+Default.args = {}

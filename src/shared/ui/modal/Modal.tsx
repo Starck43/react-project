@@ -1,4 +1,6 @@
-import React, {ReactNode, useCallback, useEffect, useRef, useState} from "react"
+import React, {
+    ReactNode, useCallback, useEffect, useRef, useState,
+} from "react"
 import {classnames} from "shared/lib/helpers/classnames"
 import {CloseButton} from "shared/ui/close-button/CloseButton"
 import {Portal} from "shared/ui/portal/Portal"
@@ -10,21 +12,30 @@ import cls from "./Modal.module.sass"
 const TIME = 180
 
 interface ModalProps {
-    children?: ReactNode
+    header?: ReactNode
+    children: ReactNode
+    footer?: ReactNode
     open?: boolean
     onClose?: () => void
+    lazy?: boolean
     className?: string
+    style?: object
 }
 
 export const Modal = (props: ModalProps) => {
     const {
+        header = null,
         children,
+        footer = null,
         open = false,
         onClose,
+        lazy = false,
         className,
+        style,
     } = props
 
     const [ show, setShow ] = useState(false)
+    const [ isMounted, setIsMounted ] = useState(false)
     const timeRef = useRef<ReturnType<typeof setTimeout>>()
     const preventClick = (e: React.MouseEvent) => e.stopPropagation()
 
@@ -43,6 +54,7 @@ export const Modal = (props: ModalProps) => {
         }
     }, [ handleClose ])
 
+
     useEffect(() => {
         if (open) {
             window.addEventListener("keydown", onPressKey)
@@ -56,14 +68,20 @@ export const Modal = (props: ModalProps) => {
         }
     }, [ open, onPressKey ])
 
+
+    useEffect(() => {
+        if (open) setIsMounted(true)
+    }, [ open ])
+
+    if (lazy && !isMounted) return null
+
     return (
         <Portal>
 
-            <div data-testid="modal" className={classnames(cls, [ "modal" ], {open, show}, [ className ])}>
-                <CloseButton
-                    className={cls.close__btn}
-                    handleClick={handleClose}
-                />
+            <div
+                data-testid="modal"
+                className={classnames(cls, [ "modal" ], {open, show}, [ className ])}
+            >
                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
                 <div className={cls.overlay} role="link" onClick={handleClose}>
                     {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
@@ -71,8 +89,25 @@ export const Modal = (props: ModalProps) => {
                         className={classnames(cls, [ "content" ], {}, [ "shadow" ])}
                         role="link"
                         onClick={preventClick}
+                        style={style}
                     >
-                        {children}
+                        <div className={cls.header}>
+                            {header}
+                            <CloseButton
+                                className={cls.close__btn}
+                                handleClick={handleClose}
+                            />
+                        </div>
+
+                        <div className={cls.body}>
+                            {children}
+                        </div>
+
+                        {footer && (
+                            <div className={cls.footer}>
+                                {footer}
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

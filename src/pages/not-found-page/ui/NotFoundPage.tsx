@@ -3,7 +3,6 @@ import {useTranslation} from "react-i18next"
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Button} from "shared/ui/button/Button"
 import Title from "shared/ui/title/Title"
-
 import {classnames} from "shared/lib/helpers/classnames"
 
 import cls from "./NotFoundPage.module.sass"

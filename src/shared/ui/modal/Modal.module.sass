@@ -3,6 +3,13 @@
 @import "src/app/styles/mixins.sass"
 
 
+.overlay
+	@extend .centered
+
+	width: 100%
+	height: 100%
+	background-color: var(--overlay-bg-color)
+
 .modal
 	@include push--fixed
 
@@ -11,26 +18,30 @@
 	pointer-events: none
 	z-index: -1
 
-	.overlay
-		@extend .centered
+	.header, .footer
+		display: flex
 
-		width: 100%
-		height: 100%
-		background-color: var(--overlay-bg-color)
+	.body, .footer
+		margin-top: 1rem
+
+	.header
+		align-items: baseline
+		justify-content: space-between
+		gap: 1rem
+
+	.footer
+		justify-content: flex-end
+		gap: 0.75rem
 
 	.close__btn
-		position: fixed
-		top: 1rem
-		right: 1rem
+		margin-left: auto
+		flex-grow: 0
 		z-index: 2
-
-		&:not(:hover)
-			color: #FFF !important
 
 	.content
 		width: var(--modal-width)
 		max-height: var(--modal-height)
-		padding: 4vw
+		padding: 2rem
 		background-color: var(--theme-modal-bg-color)
 		border: 1px solid var(--theme-modal-border-color)
 		border-radius: var(--border-radius)

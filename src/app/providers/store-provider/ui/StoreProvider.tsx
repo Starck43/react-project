@@ -1,8 +1,7 @@
-import {DeepPartial} from "@reduxjs/toolkit"
-import {StateSchema} from "app/providers/store-provider/config/stateSchema"
 import {ReactNode} from "react"
 import {Provider} from "react-redux"
-
+import {DeepPartial} from "@reduxjs/toolkit"
+import {StateSchema} from "app/providers/store-provider/config/stateSchema"
 import {createStore} from "app/providers/store-provider/config/store"
 
 
