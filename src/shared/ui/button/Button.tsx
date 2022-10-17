@@ -1,6 +1,4 @@
-import {
-ButtonHTMLAttributes, FC, ReactElement,
-} from "react"
+import {ButtonHTMLAttributes, FC, ReactElement} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 

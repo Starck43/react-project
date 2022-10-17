@@ -52,6 +52,7 @@ const LoginForm = memo(({className}: LoginFormProps) => {
     return (
         <DynamicModuleLoader reducers={initialReducers}>
             <div
+                data-testid="loginForm"
                 className={classnames(cls, [ "login" ], {}, [ className, "centered", "vertical" ])}
             >
                 <Input

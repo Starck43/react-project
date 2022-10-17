@@ -17,7 +17,11 @@ export const Viewer = ({userAuth, userDetails, className}: UserProps) => {
 
     return (userAuth
             ? (
-                <div id={`user-${userAuth.id}`} className={classnames(cls, [ "profile", className ])}>
+                <div
+                    data-testid="userDetails"
+                    id={`user-${userAuth.id}`}
+                    className={classnames(cls, [ "profile", className ])}
+                >
                     <div className={cls.table}>
                         <div className={cls.row}>
                             <span className={cls.cell__title}>{t("ник")}</span>
@@ -51,6 +55,7 @@ export const Viewer = ({userAuth, userDetails, className}: UserProps) => {
                         </Button>
 
                         <Button
+                            data-testid="logoutBtn"
                             feature={ButtonFeature.BLANK}
                             bordered
                             onClick={() => setShowLogout(true)}

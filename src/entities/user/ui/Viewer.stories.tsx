@@ -14,6 +14,6 @@ const Template = (args: UserProps) => <Viewer {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-    user: {username: "admin"},
-    data: {email: "admin@t.me"},
+    userAuth: {username: "admin"},
+    userDetails: {email: "admin@t.me"},
 }
