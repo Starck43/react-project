@@ -1,14 +1,14 @@
-import {getAuthUser} from "entities/user"
 import React from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {NavLink} from "shared/ui/nav-link/NavLink"
-import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {classnames} from "shared/lib/helpers/classnames"
-
 import AuthIcon from "shared/assets/icons/auth.svg"
+
+import {getUser} from "entities/user"
+
 import cls from "./Navbar.module.sass"
 
 
@@ -20,7 +20,7 @@ const NavbarRoutes = [ AppRoutes.HOME, AppRoutes.ABOUT ]
 
 export function Navbar({className}: NavbarProps) {
     const {t} = useTranslation("navbar")
-    const authUser = useSelector(getAuthUser)
+    const {userAuth} = useSelector(getUser)
 
     return (
         <nav className={classnames(cls, [ "navbar", className ], {}, [ "centered" ])}>
@@ -38,9 +38,9 @@ export function Navbar({className}: NavbarProps) {
                     data-testid="authBtn"
                     to={RoutesPath[AppRoutes.AUTH]}
                 >
-                    {!authUser
+                    {!userAuth
                         ? <AuthIcon />
-                        : authUser?.username}
+                        : userAuth?.username}
                 </NavLink>
 
             </div>

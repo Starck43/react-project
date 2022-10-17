@@ -17,7 +17,7 @@ export const CloseButton: FC<ButtonProps> = (props) => {
     return (
         <Button
             type="button"
-            feature={ButtonFeature.INVERTED}
+            feature={ButtonFeature.BLANK}
             rounded
             className={classnames(cls, [ "close__button" ], {}, [ className ])}
             {...other}

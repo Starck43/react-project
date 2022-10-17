@@ -78,15 +78,12 @@ export const Modal = (props: ModalProps) => {
     return (
         <Portal>
 
-            <div
-                data-testid="modal"
-                className={classnames(cls, [ "modal" ], {open, show}, [ className ])}
-            >
+            <div data-testid="modal" className={classnames(cls, [ "modal" ], {open, show})}>
                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
                 <div className={cls.overlay} role="link" onClick={handleClose}>
                     {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
                     <div
-                        className={classnames(cls, [ "content" ], {}, [ "shadow" ])}
+                        className={classnames(cls, [ "content" ], {}, [ className, "shadow" ])}
                         role="link"
                         onClick={preventClick}
                         style={style}

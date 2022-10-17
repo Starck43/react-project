@@ -39,6 +39,23 @@ server.post("/login", (req, res) => {
     }
 })
 
+// Эндпоинт для профиля
+server.get("/profile", (res) => {
+    try {
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"))
+        const {profile} = db
+        console.log(profile)
+        if (profile) {
+            return res.json(profile)
+        }
+
+        return res.status(403).json({message: "Profile not found"})
+    } catch (e) {
+        console.log(e)
+        return res.status(500).json({message: e.message})
+    }
+})
+
 // проверяем, авторизован ли пользователь
 // eslint-disable-next-line
 server.use((req, res, next) => {

@@ -14,8 +14,6 @@ export const ErrorTestButton = ({minified, className}: ErrorTestProps) => {
     const [ error, setError ] = useState(false)
     const {t} = useTranslation()
 
-    const handleClick = () => setError(true)
-
     useEffect(() => {
         if (error) throw new Error()
     }, [ error ])
@@ -25,7 +23,7 @@ export const ErrorTestButton = ({minified, className}: ErrorTestProps) => {
             variant={ButtonVariant.PRIMARY}
             feature={ButtonFeature.BLANK}
             className={className}
-            onClick={handleClick}
+            onClick={() => setError(true)}
         >
             {t("throw error")}
         </Button>

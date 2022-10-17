@@ -63,7 +63,7 @@ module.exports = {
         "no-mixed-spaces-and-tabs": [ 2, "smart-tabs" ],
         "max-len": [
             1, {
-                code: 100,
+                code: 120,
                 ignoreComments: true,
                 ignoreUrls: true,
                 ignoreStrings: true,
@@ -110,11 +110,11 @@ module.exports = {
                 },
                 ImportDeclaration: {
                     multiline: true,
-                    minProperties: 3,
+                    minProperties: 5,
                 },
                 ExportDeclaration: {
                     multiline: true,
-                    minProperties: 3,
+                    minProperties: 5,
                 },
             },
         ],

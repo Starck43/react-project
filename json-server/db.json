@@ -17,5 +17,10 @@
 			"password": "admin"
 		}
 	],
-	"profile": {"name": "Starck"}
+	"profile": {
+		"name": "Jhon",
+		"surname": "McQueen",
+		"email": "john.mcqueen@gmail.com",
+		"phone": ""
+	}
 }
