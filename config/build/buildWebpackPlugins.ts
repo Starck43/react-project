@@ -19,12 +19,12 @@ export function buildWebpackPlugins({
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({__IS_DEV__: JSON.stringify(isDev)}),
     ]
+    // change openAnalyzer on true to see in browser by address: localhost:8888
+    plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}))
 
     if (isDev) {
         plugins.push(new ReactRefreshWebpackPlugin({overlay: false}))
         plugins.push(new webpack.HotModuleReplacementPlugin())
-        // change openAnalyzer on true to see in browser by address: localhost:8888
-        plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}))
     } else {
         plugins.push(new MiniCssExtractPlugin({
             filename: cssFilename,

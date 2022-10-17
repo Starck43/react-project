@@ -5,9 +5,9 @@ import cls from "./PageLoader.module.sass"
 
 
 interface PageLoaderProps {
-	className: string
+	className?: string
 }
 
-export const PageLoader = ({className}: PageLoaderProps) => (
+export const PageLoader = ({className = "lds-roller"}: PageLoaderProps) => (
     <Spinner className={classnames(cls, [ "page__loader" ], {}, [ className ])} />
-    )
+)

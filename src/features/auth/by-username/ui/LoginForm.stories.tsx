@@ -1,16 +1,16 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
-import {Login} from "./Login"
+import LoginForm from "./LoginForm"
 
 
 export default {
-    title: "features/Login",
-    component: Login,
+    title: "features/LoginByUsername",
+    component: LoginForm,
     argTypes: {backgroundColor: {control: "color"}},
-} as ComponentMeta<typeof Login>
+} as ComponentMeta<typeof LoginForm>
 
-const Template: ComponentStory<typeof Login> = () => <Login />
+const Template: ComponentStory<typeof LoginForm> = () => <LoginForm />
 
 export const Default = Template.bind({})
 Default.decorators = [ StoreDecorator({login: {username: "admin", password: "admin"}}) ]
