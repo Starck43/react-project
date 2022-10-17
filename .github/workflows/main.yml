@@ -8,7 +8,7 @@ on:
 
 jobs:
   Project_pipeline:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [16.x]
@@ -34,5 +34,5 @@ jobs:
       - name: Building screenshots... [storybook]
         run: npm run storybook:build
       - name: Testing screenshots... [loki]
-        run: npm run test:ui:upd
+        run: npm run test:ui:ci
         if: always()
