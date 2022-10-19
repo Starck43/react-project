@@ -1,33 +1,35 @@
+import {memo, Suspense} from "react"
+import {Navigate} from "react-router-dom"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import {LoginForm} from "features/auth/by-username"
-import {Viewer} from "entities/user/ui/Viewer"
 import {getUser} from "entities/user"
+import {LoginForm} from "features/auth/by-username"
 
 import Title from "shared/ui/title/Title"
-import {Suspense} from "react"
+import {AppRoutes, RoutesPath} from "shared/config/router"
+
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
 
-const AuthPage = () => {
-    const {userAuth, userDetails} = useSelector(getUser)
+function AuthPage() {
+    const {userAuth} = useSelector(getUser)
     const {t} = useTranslation("auth")
+    const successLoginHandler = () => {
+        console.log("success")
+    }
 
     return (
         <div className="content">
             {userAuth?.username
                 ? (
-                    <div className="container profile-container">
-                        <Title>{t("профиль")}</Title>
-                        <Viewer userAuth={userAuth} userDetails={userDetails} />
-                    </div>
+                    <Navigate to={RoutesPath[AppRoutes.PROFILE]} />
                 )
                 : (
                     <Suspense fallback={<PageLoader />}>
                         <div className="container login-container">
-                            <Title>{t("войти")}</Title>
-                            <LoginForm />
+                            <Title shadowed>{t("войти")}</Title>
+                            <LoginForm onSuccess={successLoginHandler} />
                         </div>
                     </Suspense>
                 )}
@@ -35,4 +37,4 @@ const AuthPage = () => {
     )
 }
 
-export default AuthPage
+export default memo(AuthPage)

@@ -26,3 +26,5 @@ export function createStore(initialState?: StateSchema, asyncReducers?: Reducers
 
     return store
 }
+
+export type AppDispatch = ReturnType<typeof createStore>["dispatch"]

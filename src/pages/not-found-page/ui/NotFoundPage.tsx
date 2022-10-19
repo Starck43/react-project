@@ -1,3 +1,4 @@
+import {memo} from "react"
 import {useTranslation} from "react-i18next"
 
 import {AppRoutes, RoutesPath} from "shared/config/router"
@@ -12,7 +13,7 @@ interface NotFoundPageProps {
 	className?: string
 }
 
-export const NotFoundPage = ({className}: NotFoundPageProps) => {
+function NotFoundPage({className}: NotFoundPageProps) {
 	const {t} = useTranslation()
 	return (
     <div className={classnames(cls, [ "not_found__page" ], {}, [ className, "centered", "vertical" ])}>
@@ -24,3 +25,5 @@ export const NotFoundPage = ({className}: NotFoundPageProps) => {
     </div>
 	)
 }
+
+export default memo(NotFoundPage)

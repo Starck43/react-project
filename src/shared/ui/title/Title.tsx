@@ -1,15 +1,28 @@
-import {ReactNode} from "react"
+import {memo, ReactNode} from "react"
 
-import styles from "./Title.module.sass"
+import {classnames} from "shared/lib/helpers/classnames"
+
+import cls from "./Title.module.sass"
+
+
+export enum TitleCase {
+    FIRST = "firstcase",
+    UPPER = "uppercase",
+    LOWER = "lowercase",
+}
 
 type TitleProps = {
+    align?: string
+    transform?: TitleCase
+    shadowed?: boolean
     children: ReactNode
 }
 
-function Title({children}: TitleProps) {
+const Title = memo((props: TitleProps) => {
+    const {children, align = "center", shadowed = false, transform = TitleCase.FIRST} = props
     return (
-        <h1 className={styles.title}>{children}</h1>
+        <h1 className={classnames(cls, [ "title", align, transform ], {shadowed})}>{children}</h1>
     )
-}
+})
 
 export default Title

@@ -1,11 +1,11 @@
+import {UserProps} from "entities/user/model/types/user"
 import {Logout} from "features/auth/logout"
 import React, {useState} from "react"
 import {useTranslation} from "react-i18next"
 
-import {Profile} from "features/user-profile/ui/Profile"
+import {ProfileForm} from "features/update-user-profile/ui/ProfileForm"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
-import {UserProps} from "entities/user"
 
 import cls from "./Viewer.module.sass"
 
@@ -43,6 +43,10 @@ export const Viewer = ({userAuth, userDetails, className}: UserProps) => {
                             <span className={cls.cell__title}>{t("телефон")}</span>
                             <span className={cls.cell__value}>{userDetails?.phone}</span>
                         </div>
+                        <div className={cls.row}>
+                            <span className={cls.cell__title}>{t("страна")}</span>
+                            <span className={cls.cell__value}>{userDetails?.country}</span>
+                        </div>
                     </div>
 
                     <div className="flex-end g-1 w-100 mt-2">
@@ -65,7 +69,7 @@ export const Viewer = ({userAuth, userDetails, className}: UserProps) => {
                     </div>
 
                     {isShowProfile && (
-                        <Profile
+                        <ProfileForm
                             userAuth={userAuth}
                             userDetails={userDetails}
                             show={isShowProfile}

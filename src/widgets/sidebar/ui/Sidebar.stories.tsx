@@ -1,6 +1,6 @@
 import React from "react"
 import {ComponentMeta} from "@storybook/react"
-import {Sidebar} from "widgets/sidebar"
+import Sidebar from "./Sidebar"
 
 // @6.5.13-alpha.0
 export default {

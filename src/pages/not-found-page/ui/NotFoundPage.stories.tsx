@@ -1,6 +1,5 @@
 import {ComponentMeta} from "@storybook/react"
-
-import {NotFoundPage} from "./NotFoundPage"
+import NotFoundPage from "./NotFoundPage"
 
 
 export default {

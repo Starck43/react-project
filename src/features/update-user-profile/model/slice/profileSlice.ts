@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit"
 
-import {ProfileSchema} from "features/user-profile"
+import {ProfileSchema} from "features/update-user-profile"
 import {updateUserDetails} from "../services/updateUserDetails"
 
 

@@ -1,5 +1,5 @@
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
-import {FC} from "react"
+import {FC, memo} from "react"
 import {useTranslation} from "react-i18next"
 
 import ThemeIcon from "shared/assets/icons/theme-icon.svg"
@@ -19,7 +19,7 @@ interface ThemeSwitcherProps extends UseThemeResult {
 	className?: string
 }
 
-export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
+export const ThemeSwitcher: FC<ThemeSwitcherProps> = memo(({
 	theme,
 	toggleTheme,
 	variant = ThemeSwitcherVariant.PRIMARY,
@@ -39,4 +39,4 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = ({
         { minified ? null : t(theme)}
     </Button>
 	)
-}
+})

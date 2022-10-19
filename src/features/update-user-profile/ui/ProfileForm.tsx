@@ -1,4 +1,5 @@
-import {FormEvent, useState} from "react"
+import {UserProps} from "entities/user/model/types/user"
+import {FormEvent, memo, useState} from "react"
 import {useDispatch} from "react-redux"
 import {useTranslation} from "react-i18next"
 
@@ -8,12 +9,12 @@ import {Button, ButtonFeature} from "shared/ui/button/Button"
 import Input from "shared/ui/input/Input"
 import {Modal} from "shared/ui/modal/Modal"
 
-import {userActions, UserProps} from "entities/user"
+import {userActions} from "entities/user"
 
 // import cls from "./Profile.module.sass"
 
 
-export const Profile = ({userAuth, userDetails, show, closeHandler}: UserProps) => {
+export const ProfileForm = memo(({userAuth, userDetails, show, closeHandler}: UserProps) => {
     const [ userProfile, setUserProfile ] = useState({userAuth, userDetails})
     const dispatch = useDispatch()
     const {t} = useTranslation("auth")
@@ -88,4 +89,4 @@ export const Profile = ({userAuth, userDetails, show, closeHandler}: UserProps) 
             </form>
         </Modal>
     )
-}
+})

@@ -1,6 +1,6 @@
 import {ComponentMeta} from "@storybook/react"
+import {UserProps} from "entities/user/model/types/user"
 
-import {UserProps} from "entities/user"
 import {Viewer} from "./Viewer"
 
 

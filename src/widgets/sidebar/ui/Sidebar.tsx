@@ -1,7 +1,7 @@
 import {ErrorTestButton} from "app/providers/error-boundary-provider"
 
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
-import React, {useEffect, useState} from "react"
+import React, {memo, useEffect, useState} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
@@ -18,7 +18,7 @@ interface SidebarProps extends UseThemeResult {
     className?: string
 }
 
-export function Sidebar(props: SidebarProps) {
+function Sidebar(props: SidebarProps) {
     const {theme, toggleTheme, position = "right", className} = props
     const {width} = useWindowDimensions()
     const [ collapsed, setCollapsed ] = useState(false)
@@ -53,3 +53,5 @@ export function Sidebar(props: SidebarProps) {
         </nav>
     )
 }
+
+export default memo(Sidebar)

@@ -2,7 +2,7 @@ import React from "react"
 import {ComponentMeta} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
-import {Navbar} from "./Navbar"
+import Navbar from "./Navbar"
 
 
 export default {

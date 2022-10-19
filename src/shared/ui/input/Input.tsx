@@ -48,7 +48,7 @@ const Input = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
 
 export default memo(forwardRef(Input))
 
-export const TextArea = (props: TextareaHTMLAttributes<HTMLTextAreaElement>) => {
+export const TextArea = memo((props: TextareaHTMLAttributes<HTMLTextAreaElement>) => {
     const {className, ...other} = props
 
     return (
@@ -57,4 +57,4 @@ export const TextArea = (props: TextareaHTMLAttributes<HTMLTextAreaElement>) => 
             className={classnames(cls, [ "input__textarea", "input" ], {}, [ className ])}
         />
     )
-}
+})

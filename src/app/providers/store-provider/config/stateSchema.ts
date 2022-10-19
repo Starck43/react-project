@@ -4,6 +4,7 @@ import {
 
 import {CounterSchema} from "entities/counter"
 import {UserSchema} from "entities/user"
+import {ViewerSchema} from "entities/viewer"
 import {LoginSchema} from "features/auth/by-username"
 
 
@@ -13,6 +14,7 @@ export interface StateSchema {
 
     // async reducers
     login?: LoginSchema
+    viewer: ViewerSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

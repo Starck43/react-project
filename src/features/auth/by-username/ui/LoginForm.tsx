@@ -1,14 +1,14 @@
-import {memo, useCallback, useEffect} from "react"
-import {useDispatch, useSelector, useStore} from "react-redux"
+import {memo, useCallback} from "react"
+import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import {ReduxStoreWithManager} from "app/providers/store-provider"
 import i18n from "shared/config/i18n/i18n"
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import {classnames} from "shared/lib/helpers/classnames"
+import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
+import Input from "shared/ui/input/Input"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
-import Input from "shared/ui/input/Input"
+import {classnames} from "shared/lib/helpers/classnames"
 
 import {getLoginUsername} from "../model/selectors/getLoginUsername"
 import {getLoginPassword} from "../model/selectors/getLoginPassword"
@@ -22,14 +22,15 @@ import cls from "./LoginForm.module.sass"
 
 export interface LoginFormProps {
     className?: string
+    onSuccess?: ()=> void
 }
 
 const initialReducers: ReducerList = {login: loginReducer}
 
-const LoginForm = memo(({className}: LoginFormProps) => {
+const LoginForm = ({className, onSuccess}: LoginFormProps) => {
     const {t} = useTranslation("auth")
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const username = useSelector(getLoginUsername)
     const password = useSelector(getLoginPassword)
     const error = useSelector(getLoginError)
@@ -44,10 +45,13 @@ const LoginForm = memo(({className}: LoginFormProps) => {
         dispatch(loginActions.setPassword(val))
     }, [ dispatch ])
 
-    const loginClick = useCallback(() => {
+    const loginClick = useCallback(async () => {
         // async post request to server for verifying login data and then dispatching success result
-        dispatch(loginByUsername({username, password}))
-    }, [ dispatch, password, username ])
+        const res = await dispatch(loginByUsername({username, password}))
+        if (res.meta.requestStatus === "fulfilled") {
+            onSuccess()
+        }
+    }, [ onSuccess, dispatch, password, username ])
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
@@ -93,6 +97,6 @@ const LoginForm = memo(({className}: LoginFormProps) => {
             </div>
         </DynamicModuleLoader>
     )
-})
+}
 
-export default LoginForm
+export default memo(LoginForm)

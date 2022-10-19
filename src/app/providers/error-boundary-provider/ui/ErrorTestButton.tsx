@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {memo, useEffect, useState} from "react"
 import {useTranslation} from "react-i18next"
 import {Button, ButtonFeature, ButtonVariant} from "shared/ui/button/Button"
 
@@ -10,7 +10,7 @@ interface ErrorTestProps {
     className?: string
 }
 
-export const ErrorTestButton = ({minified, className}: ErrorTestProps) => {
+export const ErrorTestButton = memo(({minified, className}: ErrorTestProps) => {
     const [ error, setError ] = useState(false)
     const {t} = useTranslation()
 
@@ -28,4 +28,4 @@ export const ErrorTestButton = ({minified, className}: ErrorTestProps) => {
             {t("throw error")}
         </Button>
     )
-}
+})

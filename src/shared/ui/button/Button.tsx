@@ -1,4 +1,6 @@
-import {ButtonHTMLAttributes, FC, ReactElement} from "react"
+import {
+ButtonHTMLAttributes, FC, memo, ReactElement, ReactNode,
+} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
@@ -33,9 +35,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean
     href?: string
     className?: string
+    children?: ReactNode
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = memo((props) => {
     const {
         variant = ButtonVariant.PRIMARY,
         feature,
@@ -74,4 +77,4 @@ export const Button: FC<ButtonProps> = (props) => {
                 : children}
         </button>
     )
-}
+})

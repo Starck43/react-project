@@ -1,3 +1,4 @@
+import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import Title from "shared/ui/title/Title"
 
@@ -7,7 +8,7 @@ function AboutPage() {
 
     return (
         <div className="container">
-            <Title>{t("О нас")}</Title>
+            <Title shadowed>{t("О нас")}</Title>
 
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, dolorum, est, et harum hic illo inventore ipsam ipsum magnam molestiae natus nisi nostrum porro praesentium saepe sed sequi sunt tempore.
@@ -16,4 +17,4 @@ function AboutPage() {
     )
 }
 
-export default AboutPage
+export default memo(AboutPage)

@@ -1,7 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios"
 
-import {User, userActions} from "entities/user"
+import {userActions} from "entities/user"
+import {User} from "entities/user/model/types/user"
 
 
 export const updateUserDetails = createAsyncThunk<User, User, {rejectValue: string}>(

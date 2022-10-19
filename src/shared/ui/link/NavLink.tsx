@@ -36,7 +36,7 @@ export const NavLink: FC<NavLinkProps> = (props) => {
         <Link
             to={to}
             {...other}
-            className={classnames(cls, [ "navLink", variant, feature, className ], {}, [])}
+            className={classnames(cls, [ "link", variant, feature ], {}, [ className ])}
         >
             {children}
         </Link>
