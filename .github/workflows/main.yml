@@ -34,5 +34,5 @@ jobs:
       - name: Building screenshots... [storybook]
         run: npm run storybook:build
       - name: Testing screenshots... [loki]
-        run: npm run test:ui:ci
+        run: npm run test:ui:upd
         if: always()
