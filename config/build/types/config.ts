@@ -15,9 +15,11 @@ export interface BuildWebpackOptions {
     cssChunkFilename: string
     chunkFilename: string
     port: number
+    apiUrl: string
 }
 
 export interface BuildWebpackEnv {
     mode: Mode
     port: number
+    apiUrl: string
 }

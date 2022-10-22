@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 
 import {Button, ButtonFeature} from "./Button"
@@ -13,7 +13,7 @@ export default {
     },
 } as ComponentMeta<typeof Button>
 
-const Template = (args: any) => <Button {...args} />
+const Template: Story = (args) => <Button {...args} />
 
 
 export const Blank = Template.bind({})

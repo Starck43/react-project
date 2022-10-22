@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 
 import {PageError} from "./PageError"
@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof PageError>
 
-const Template = (args: any) => <PageError {...args} />
+const Template: Story = (args) => <PageError {...args} />
 
 export const Default = Template.bind({})
 Default.args = {children: "PageError"}

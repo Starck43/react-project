@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
 import React from "react"
 
 import {NavLink, NavLinkFeature, NavLinkProps} from "./NavLink"
@@ -11,7 +11,7 @@ export default {
     args: {to: "/"},
 } as ComponentMeta<typeof NavLink>
 
-const Template = (args: NavLinkProps) => <NavLink {...args} />
+const Template: ComponentStory<typeof NavLink> = (args: NavLinkProps) => <NavLink {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {

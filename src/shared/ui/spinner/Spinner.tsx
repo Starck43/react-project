@@ -2,7 +2,7 @@ import "./Spinner.sass"
 
 
 interface PageLoaderProps {
-	className: string
+	className?: string
 }
 
 export const Spinner = ({className}: PageLoaderProps) => (

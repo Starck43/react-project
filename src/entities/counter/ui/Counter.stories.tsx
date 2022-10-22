@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
 import {Counter} from "./Counter"
@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Counter>
 
-const Template = (args: any) => <Counter {...args} />
+const Template: Story = (args) => <Counter {...args} />
 
 export const Default = Template.bind({})
 Default.decorators = [ StoreDecorator({counter: {value: 0}}) ]

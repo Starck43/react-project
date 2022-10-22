@@ -1,7 +1,7 @@
-import {ComponentMeta} from "@storybook/react"
+import React from "react"
+import {ComponentMeta, Story} from "@storybook/react"
 import {Theme} from "app/providers/theme-provider"
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
-import React from "react"
 
 import {ThemeSwitcher} from "./ThemeSwitcher"
 
@@ -12,7 +12,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ThemeSwitcher>
 
-const Template = (args: UseThemeResult) => <ThemeSwitcher {...args} />
+const Template: Story = (args: UseThemeResult) => <ThemeSwitcher {...args} />
 
 export const Default = Template.bind({})
 Default.args = {theme: Theme.LIGHT}

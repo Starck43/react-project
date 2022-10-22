@@ -1,4 +1,3 @@
-import {DeepPartial} from "@reduxjs/toolkit"
 import {StateSchema} from "app/providers/store-provider"
 import {getLoginLoading} from "features/auth/by-username/model/selectors/getLoginLoading"
 

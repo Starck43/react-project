@@ -11,7 +11,10 @@ export default {
     // cacheDirectory: "/private/var/folders/kt/35hkcgs9253gdfq1n79259zh0000gn/T/jest_dx",
 
     // A set of global variables that need to be available in all test environments
-    globals: {__IS_DEV__: true},
+    globals: {
+        __IS_DEV__: true,
+        __API__: "",
+    },
 
     // Automatically clear mock calls, instances and results before every test
     clearMocks: true,

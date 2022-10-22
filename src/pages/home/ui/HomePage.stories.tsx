@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 
 import HomePage from "./HomePage"
 
@@ -9,7 +9,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof HomePage>
 
-const Template = (args: any) => <HomePage {...args} />
+const Template: Story = (args) => <HomePage {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

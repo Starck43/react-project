@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 import {Info, InfoProps, InfoStatus} from "./Info"
 
@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Info>
 
-const Template = (args: InfoProps) => <Info {...args} />
+const Template: Story = (args: InfoProps) => <Info {...args} />
 
 
 export const Default = Template.bind({})

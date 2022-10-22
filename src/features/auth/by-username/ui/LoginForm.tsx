@@ -3,8 +3,8 @@ import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
 import i18n from "shared/config/i18n/i18n"
-import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
+import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import Input from "shared/ui/input/Input"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
@@ -14,8 +14,8 @@ import {getLoginUsername} from "../model/selectors/getLoginUsername"
 import {getLoginPassword} from "../model/selectors/getLoginPassword"
 import {getLoginLoading} from "../model/selectors/getLoginLoading"
 import {getLoginError} from "../model/selectors/getLoginError"
-import {loginActions, loginReducer} from "../model/slice/loginSlice"
 import {loginByUsername} from "../model/services/loginByUsername"
+import {loginActions, loginReducer} from "../model/slice/loginSlice"
 
 import cls from "./LoginForm.module.sass"
 
@@ -49,7 +49,7 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
         // async post request to server for verifying login data and then dispatching success result
         const res = await dispatch(loginByUsername({username, password}))
         if (res.meta.requestStatus === "fulfilled") {
-            onSuccess()
+            onSuccess?.()
         }
     }, [ onSuccess, dispatch, password, username ])
 

@@ -1,4 +1,5 @@
 import React, {
+    MutableRefObject,
     ReactNode, useCallback, useEffect, useRef, useState,
 } from "react"
 import {classnames} from "shared/lib/helpers/classnames"
@@ -16,13 +17,13 @@ interface ModalProps {
     children: ReactNode
     footer?: ReactNode
     open?: boolean
-    onClose?: () => void
+    onClose: () => void
     lazy?: boolean
     className?: string
     style?: object
 }
 
-export const Modal = (props: ModalProps) => {
+export const Modal = (props: DeepPartial<ModalProps>) => {
     const {
         header = null,
         children,
@@ -36,13 +37,14 @@ export const Modal = (props: ModalProps) => {
 
     const [ show, setShow ] = useState(false)
     const [ isMounted, setIsMounted ] = useState(false)
-    const timeRef = useRef<ReturnType<typeof setTimeout>>()
+    const timeRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
     const preventClick = (e: React.MouseEvent) => e.stopPropagation()
 
     const handleClose = useCallback(() => {
         if (onClose) {
             setShow(false)
             timeRef.current = setTimeout(() => {
+                // @ts-ignore
                 onClose()
             }, TIME)
         }

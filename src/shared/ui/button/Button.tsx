@@ -1,5 +1,5 @@
 import {
-ButtonHTMLAttributes, FC, memo, ReactElement, ReactNode,
+FC, memo, ReactElement, ReactNode, ButtonHTMLAttributes,
 } from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
@@ -47,7 +47,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
         bordered = false,
         squared = false,
         shadowed = false,
-        disabled = null,
+        disabled = false,
         href = null,
         className,
         children,
@@ -60,7 +60,7 @@ export const Button: FC<ButtonProps> = memo((props) => {
             type="button"
             disabled={disabled}
             {...other}
-            className={classnames(cls, [ "button", variant, feature, size, href && "is__link" ], {
+            className={classnames(cls, [ "button", variant, feature, size, href ? "is__link" : "" ], {
                 bordered,
                 rounded,
                 squared,

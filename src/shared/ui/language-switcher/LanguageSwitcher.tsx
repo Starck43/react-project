@@ -9,7 +9,6 @@ import FlagRuIcon from "shared/assets/icons/flag_ru.svg"
 import cls from "./LanguageSwitcher.module.sass"
 
 
-
 interface LanguageSwitcherProps {
     minified?: boolean
     className?: string
@@ -24,7 +23,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({minified = fal
         <Button
             variant={ButtonVariant.PRIMARY}
             feature={ButtonFeature.BLANK}
-            className={classnames(cls, [], {}, [ className, minified && "minified" ])}
+            className={classnames(cls, [], {}, [ className, minified ? "minified" : "" ])}
             onClick={toggleLanguage}
         >
             { i18n.language === "en"

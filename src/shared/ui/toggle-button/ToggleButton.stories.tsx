@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 
 import {ToggleButton, ToggleButtonProps} from "./ToggleButton"
@@ -10,7 +10,7 @@ export default {
     // argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ToggleButton>
 
-const Template = (args: ToggleButtonProps) => <ToggleButton {...args} />
+const Template: Story = (args: ToggleButtonProps) => <ToggleButton {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

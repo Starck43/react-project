@@ -9,15 +9,19 @@ import {BuildWebpackOptions} from "./types/config"
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin")
 
 export function buildWebpackPlugins({
-                                        isDev,
-                                        paths,
-                                        cssFilename,
-                                        cssChunkFilename,
-                                    }: BuildWebpackOptions): webpack.WebpackPluginInstance[] {
+    isDev,
+    paths,
+    cssFilename,
+    cssChunkFilename,
+    apiUrl,
+}: BuildWebpackOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HtmlWebpackPlugin({template: paths.html}),
         new webpack.ProgressPlugin(),
-        new webpack.DefinePlugin({__IS_DEV__: JSON.stringify(isDev)}),
+        new webpack.DefinePlugin({
+            __IS_DEV__: JSON.stringify(isDev),
+            __API__: JSON.stringify(apiUrl),
+        }),
     ]
 
     if (isDev) {

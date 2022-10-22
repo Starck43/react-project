@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import NotFoundPage from "./NotFoundPage"
 
 
@@ -8,7 +8,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof NotFoundPage>
 
-const Template = (args: any) => <NotFoundPage {...args} />
+const Template: Story = (args) => <NotFoundPage {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

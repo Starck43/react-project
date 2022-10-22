@@ -1,7 +1,7 @@
-import {ErrorTestButton} from "app/providers/error-boundary-provider"
-
-import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 import React, {memo, useEffect, useState} from "react"
+
+import {ErrorTestButton} from "app/providers/error-boundary-provider"
+import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
@@ -13,7 +13,7 @@ import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
 
 
-interface SidebarProps extends UseThemeResult {
+export interface SidebarProps extends UseThemeResult {
     position?: string
     className?: string
 }
@@ -34,7 +34,7 @@ function Sidebar(props: SidebarProps) {
     return (
         <nav
             data-testid="sidebar"
-            className={classnames(cls, [ "sidebar", position ], {collapsed}, [ "sidebar", collapsed && "collapsed", className ])}
+            className={classnames(cls, [ "sidebar", position ], {collapsed}, [ "sidebar", collapsed ? "collapsed" : "", className ])}
         >
             {width < 992 && (
                 <ToggleButton

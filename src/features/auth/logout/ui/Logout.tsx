@@ -19,7 +19,7 @@ export const Logout = ({username, show, closeHandler}: LogoutProps) => {
 
     const logoutClick = () => {
         dispatch(userActions.resetAuthData())
-        closeHandler()
+        closeHandler?.()
     }
 
     return (

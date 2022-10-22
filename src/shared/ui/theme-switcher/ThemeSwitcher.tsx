@@ -1,3 +1,4 @@
+import {Theme} from "app/providers/theme-provider"
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 import {FC, memo} from "react"
 import {useTranslation} from "react-i18next"
@@ -20,7 +21,7 @@ interface ThemeSwitcherProps extends UseThemeResult {
 }
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = memo(({
-	theme,
+	theme = Theme.LIGHT,
 	toggleTheme,
 	variant = ThemeSwitcherVariant.PRIMARY,
 	minified = false,
@@ -31,7 +32,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = memo(({
 	return (
     <Button
         feature={ButtonFeature.BLANK}
-        className={classnames(cls, [ "switcher", variant ], {}, [ className, minified && "minified" ])}
+        className={classnames(cls, [ "switcher", variant ], {}, [ className, minified ? "minified" : "" ])}
         onClick={toggleTheme}
     >
         <ThemeIcon className="icon" />

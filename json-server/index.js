@@ -40,7 +40,7 @@ server.post("/login", (req, res) => {
 })
 
 // Эндпоинт для профиля
-server.get("/profile", (res) => {
+server.get("/profile", (req, res) => {
     try {
         const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"))
         const {profile} = db

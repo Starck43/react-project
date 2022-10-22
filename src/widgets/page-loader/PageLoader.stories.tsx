@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 
 import {PageLoader} from "./PageLoader"
@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof PageLoader>
 
-const Template = (args: any) => <PageLoader {...args} />
+const Template: Story = (args) => <PageLoader {...args} />
 
 export const Default = Template.bind({})
-Default.args = {className: "lds-roller"}
+Default.args = {}

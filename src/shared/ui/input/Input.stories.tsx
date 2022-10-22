@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 
 import Input from "./Input"
 
@@ -8,7 +8,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Input>
 
-const Template = (args: any) => <Input {...args} />
+const Template: Story = (args) => <Input {...args} />
 
 export const Default = Template.bind({})
 Default.args = {rounded: true, value: "text..."}

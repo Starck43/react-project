@@ -1,4 +1,4 @@
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 
 import {Spinner} from "./Spinner"
@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Spinner>
 
-const Template = (args: any) => <Spinner {...args} />
+const Template: Story = (args) => <Spinner {...args} />
 
 export const Default = Template.bind({})
 Default.args = {className: "lds-roller"}

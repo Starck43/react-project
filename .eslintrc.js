@@ -59,7 +59,7 @@ module.exports = {
         "no-param-reassign": "off",
         "import/extensions": "off",
         "import/no-extraneous-dependencies": "off",
-        "no-undef": "warn",
+        "no-undef": "off",
         "no-mixed-spaces-and-tabs": [ 2, "smart-tabs" ],
         "max-len": [
             1, {
@@ -129,6 +129,9 @@ module.exports = {
             },
         },
     ],
-    globals: {__IS_DEV__: true},
+    globals: {
+        __IS_DEV__: true,
+        __API__: true,
+    },
     settings: {react: {version: "detect"}},
 }

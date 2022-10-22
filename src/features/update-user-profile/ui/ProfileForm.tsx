@@ -1,30 +1,36 @@
-import {UserProps} from "entities/user/model/types/user"
 import {FormEvent, memo, useState} from "react"
 import {useDispatch} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import {loginActions} from "features/auth/by-username/model/slice/loginSlice"
-
-import {Button, ButtonFeature} from "shared/ui/button/Button"
 import Input from "shared/ui/input/Input"
 import {Modal} from "shared/ui/modal/Modal"
+import {Button, ButtonFeature} from "shared/ui/button/Button"
+
+import {loginActions} from "features/auth/by-username/model/slice/loginSlice"
 
 import {userActions} from "entities/user"
+import {Viewer} from "entities/viewer"
 
 // import cls from "./Profile.module.sass"
 
+export interface ViewerProps {
+    data: Viewer
+    show: boolean
+    closeHandler?: () => void
+}
 
-export const ProfileForm = memo(({userAuth, userDetails, show, closeHandler}: UserProps) => {
-    const [ userProfile, setUserProfile ] = useState({userAuth, userDetails})
+
+export const ProfileForm = memo(({data, show, closeHandler}: ViewerProps) => {
+    const [ userProfile, setUserProfile ] = useState({data})
     const dispatch = useDispatch()
     const {t} = useTranslation("auth")
 
     const updateProfileClick = (e: FormEvent) => {
         e.preventDefault()
-        dispatch(loginActions.setUsername(userProfile.userAuth.username))
-        dispatch(loginActions.setPassword(userProfile.userAuth.password))
-        dispatch(userActions.updateProfileData(userProfile.userDetails))
-        closeHandler()
+        if (userProfile.data?.username != null) dispatch(loginActions.setUsername(userProfile.data?.username))
+        // dispatch(loginActions.setPassword(userProfile.data.password))
+        dispatch(userActions.updateProfileData(userProfile.data))
+        closeHandler?.()
     }
 
     return (
@@ -37,41 +43,44 @@ export const ProfileForm = memo(({userAuth, userDetails, show, closeHandler}: Us
             <form onSubmit={(e) => updateProfileClick(e)}>
                 <Input
                     name="username"
-                    value={userProfile.userAuth.username}
-                    onChange={(val) => setUserProfile({...userProfile, userAuth: {...userAuth, username: val}})}
+                    value={userProfile.data.username}
+                    onChange={(val) => setUserProfile({...userProfile, data: {...userProfile.data, username: val}})}
                     placeholder={t("имя")}
                     className="mb-1"
                 />
-                <Input
-                    name="password"
-                    type="password"
-                    value={userProfile.userAuth.password}
-                    onChange={(val) => setUserProfile({...userProfile, userAuth: {...userAuth, password: val}})}
-                    placeholder={t("пароль")}
-                    className="mb-1"
-                />
+                {
+                    /*                <Input
+                     name="password"
+                     type="password"
+                     value={userProfile.data.password}
+                     onChange={(val) => setUserProfile({...userProfile, data: {...userProfile.data, password: val}})}
+                     placeholder={t("пароль")}
+                     className="mb-1"
+                     />
+                     */
+                }
                 <Input
                     name="name"
-                    value={userProfile.userDetails?.name}
-                    onChange={(val) => setUserProfile({...userProfile, userDetails: {...userDetails, name: val}})}
+                    value={userProfile.data.name}
+                    onChange={(val) => setUserProfile({...userProfile, data: {...userProfile.data, name: val}})}
                     placeholder={t("имя")}
                     className="mb-1"
                 />
                 <Input
                     name="surname"
-                    value={userProfile.userDetails?.surname}
+                    value={userProfile.data.surname}
                     placeholder={t("фамилия")}
                     className="mb-1"
                 />
                 <Input
                     name="email"
-                    value={userProfile.userDetails?.email}
+                    value={userProfile.data.email}
                     placeholder={t("email")}
                     className="mb-1"
                 />
                 <Input
                     name="phone"
-                    value={userProfile.userDetails?.phone}
+                    value={userProfile.data.phone}
                     placeholder={t("телефон")}
                     className="mb-1"
                 />

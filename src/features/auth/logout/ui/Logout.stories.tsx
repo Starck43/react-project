@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Logout>
 
-const Template: ComponentStory<typeof Logout> = (args: any) => <Logout {...args} />
+const Template: ComponentStory<typeof Logout> = (args) => <Logout {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

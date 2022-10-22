@@ -1,23 +1,21 @@
-import React from "react"
-import {ComponentMeta, Story} from "@storybook/react"
+import {ComponentMeta, ComponentStory, Story} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
-import ProfilePage from "./ProfilePage"
+import {ProfileCard} from "./ProfileCard"
 
 
 export default {
-    title: "pages/ProfilePage",
-    component: ProfilePage,
+    title: "entities/ProfileCard",
+    component: ProfileCard,
     argTypes: {backgroundColor: {control: "color"}},
-} as ComponentMeta<typeof ProfilePage>
+} as ComponentMeta<typeof ProfileCard>
 
-const Template: Story = (args) => <ProfilePage {...args} />
+const Template: Story = (args) => <ProfileCard {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}
 Default.decorators = [
     StoreDecorator({
-        user: {userAuth: {username: "admin", password: "admin"}},
         viewer: {
             data: {
                 username: "admin",

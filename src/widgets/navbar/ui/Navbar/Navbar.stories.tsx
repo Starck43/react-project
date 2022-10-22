@@ -1,5 +1,5 @@
 import React from "react"
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
 import Navbar from "./Navbar"
@@ -11,7 +11,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Navbar>
 
-const Template = (args: any) => <Navbar {...args} />
+const Template: Story = (args) => <Navbar {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

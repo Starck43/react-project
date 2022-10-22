@@ -10,12 +10,14 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof LoginForm>
 
-const Template: ComponentStory<typeof LoginForm> = () => <LoginForm />
+const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />
 
 export const Default = Template.bind({})
+Default.args = {}
 Default.decorators = [ StoreDecorator({login: {username: "admin", password: "admin"}}) ]
 
 export const Error = Template.bind({})
+Error.args = {}
 Error.decorators = [ StoreDecorator({
     login: {
         username: "admin",
@@ -25,4 +27,5 @@ Error.decorators = [ StoreDecorator({
 }) ]
 
 export const Loading = Template.bind({})
+Loading.args = {}
 Loading.decorators = [ StoreDecorator({login: {isLoading: true}}) ]

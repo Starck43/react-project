@@ -1,7 +1,8 @@
 import {Country} from "shared/const/common"
 
 export interface Viewer {
-    id?: string
+    id: string
+    username?: string
     email: string
     name?: string
     surname?: string

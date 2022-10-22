@@ -1,5 +1,5 @@
 import React from "react"
-import {ComponentMeta} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
 import AuthPage from "./AuthPage"
@@ -11,7 +11,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof AuthPage>
 
-const Template = (args: any) => <AuthPage {...args} />
+const Template: Story = (args) => <AuthPage {...args} />
 
 export const Login = Template.bind({})
 Login.args = {}

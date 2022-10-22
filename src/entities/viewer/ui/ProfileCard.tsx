@@ -1,51 +1,54 @@
-import {UserProps} from "entities/user/model/types/user"
-import {Logout} from "features/auth/logout"
 import React, {useState} from "react"
+import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
+import {getProfileData} from "entities/viewer/model/selectors/getProfileData"
+import {getProfileError} from "entities/viewer/model/selectors/getProfileError"
+import {getProfileLoading} from "entities/viewer/model/selectors/getProfileLoading"
+
+import {Logout} from "features/auth/logout"
 import {ProfileForm} from "features/update-user-profile/ui/ProfileForm"
-import {classnames} from "shared/lib/helpers/classnames"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 
-import cls from "./Viewer.module.sass"
+import cls from "./ProfileCard.module.sass"
 
 
-export const Viewer = ({userAuth, userDetails, className}: UserProps) => {
+export const ProfileCard = () => {
     const [ isShowLogout, setShowLogout ] = useState(false)
     const [ isShowProfile, setShowProfile ] = useState(false)
     const {t} = useTranslation("auth")
 
-    return (userAuth
+    const data = useSelector(getProfileData)
+    const isLoading = useSelector(getProfileLoading)
+    const error = useSelector(getProfileError)
+
+    return (data
             ? (
-                <div
-                    data-testid="userDetails"
-                    id={`user-${userAuth.id}`}
-                    className={classnames(cls, [ "profile", className ])}
-                >
+                <div data-testid="data" id={`user-${data.id}`} className={cls.profile}>
                     <div className={cls.table}>
                         <div className={cls.row}>
                             <span className={cls.cell__title}>{t("ник")}</span>
-                            <span className={cls.cell__value}>{userAuth?.username || userDetails?.email}</span>
+                            <span className={cls.cell__value}>{data?.username}</span>
                         </div>
                         <div className={cls.row}>
                             <span className={cls.cell__title}>{t("имя")}</span>
-                            <span className={cls.cell__value}>{userDetails?.name}</span>
+                            <span className={cls.cell__value}>{data?.name}</span>
                         </div>
                         <div className={cls.row}>
                             <span className={cls.cell__title}>{t("фамилия")}</span>
-                            <span className={cls.cell__value}>{userDetails?.surname}</span>
+                            <span className={cls.cell__value}>{data?.surname}</span>
                         </div>
                         <div className={cls.row}>
                             <span className={cls.cell__title}>{t("email")}</span>
-                            <span className={cls.cell__value}>{userDetails?.email}</span>
+                            <span className={cls.cell__value}>{data.email}</span>
                         </div>
                         <div className={cls.row}>
                             <span className={cls.cell__title}>{t("телефон")}</span>
-                            <span className={cls.cell__value}>{userDetails?.phone}</span>
+                            <span className={cls.cell__value}>{data?.phone}</span>
                         </div>
                         <div className={cls.row}>
                             <span className={cls.cell__title}>{t("страна")}</span>
-                            <span className={cls.cell__value}>{userDetails?.country}</span>
+                            <span className={cls.cell__value}>{data?.country}</span>
                         </div>
                     </div>
 
@@ -53,6 +56,7 @@ export const Viewer = ({userAuth, userDetails, className}: UserProps) => {
                         <Button
                             feature={ButtonFeature.BLANK}
                             bordered
+                            disabled={isLoading}
                             onClick={() => setShowProfile(true)}
                         >
                             {t("изменить")}
@@ -64,21 +68,20 @@ export const Viewer = ({userAuth, userDetails, className}: UserProps) => {
                             bordered
                             onClick={() => setShowLogout(true)}
                         >
-                            {t("выйти", {userAuth})}
+                            {t("выйти", {data})}
                         </Button>
                     </div>
 
                     {isShowProfile && (
                         <ProfileForm
-                            userAuth={userAuth}
-                            userDetails={userDetails}
+                            data={data}
                             show={isShowProfile}
                             closeHandler={() => setShowProfile((prev) => !prev)}
                         />
                     )}
                     {isShowLogout && (
                         <Logout
-                            username={userAuth.username}
+                            username={data.username}
                             show={isShowLogout}
                             closeHandler={() => setShowLogout((prev) => !prev)}
                         />
