@@ -38,7 +38,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode
 }
 
-export const Button: FC<ButtonProps> = memo((props) => {
+export const Button: FC<ButtonProps> = (props) => {
     const {
         variant = ButtonVariant.PRIMARY,
         feature,
@@ -77,4 +77,4 @@ export const Button: FC<ButtonProps> = memo((props) => {
                 : children}
         </button>
     )
-})
+}

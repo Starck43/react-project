@@ -11,13 +11,14 @@ import {classnames} from "shared/lib/helpers/classnames"
 import cls from "./Input.module.sass"
 
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange">
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange" | "readOnly" >
 
 interface InputProps extends HTMLInputProps {
     rounded?: boolean
     value?: string
+    readonly? : boolean
     // eslint-disable-next-line no-unused-vars
-    onChange?: (value: string) => void
+    onChange?: (value: string, name?: string) => void
 }
 
 const Input = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
@@ -25,13 +26,14 @@ const Input = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
         type = "text",
         value = "",
         rounded = false,
+        readonly = false,
         onChange,
         className,
         ...other
     } = props
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value)
+        onChange?.(e.target.value, e.target.name)
     }
 
     return (
@@ -39,9 +41,10 @@ const Input = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
             ref={ref}
             type={type}
             value={value}
+            readOnly={readonly}
             {...other}
             onChange={onChangeHandler}
-            className={classnames(cls, [ "input__text", "input" ], {rounded}, [ className ])}
+            className={classnames(cls, [ "input__text", "input" ], {rounded, readonly}, [ className ])}
         />
     )
 }

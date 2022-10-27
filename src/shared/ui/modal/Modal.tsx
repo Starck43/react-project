@@ -1,6 +1,7 @@
 import React, {
+    useCallback, useEffect, useRef, useState,
     MutableRefObject,
-    ReactNode, useCallback, useEffect, useRef, useState,
+    ReactNode,
 } from "react"
 import {classnames} from "shared/lib/helpers/classnames"
 import {CloseButton} from "shared/ui/close-button/CloseButton"
@@ -82,7 +83,7 @@ export const Modal = (props: DeepPartial<ModalProps>) => {
 
             <div data-testid="modal" className={classnames(cls, [ "modal" ], {open, show})}>
                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
-                <div className={cls.overlay} role="link" onClick={handleClose}>
+                <div className={cls.overlay} role="link">
                     {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
                     <div
                         className={classnames(cls, [ "content" ], {}, [ className, "shadow" ])}
@@ -92,10 +93,7 @@ export const Modal = (props: DeepPartial<ModalProps>) => {
                     >
                         <div className={cls.header}>
                             {header}
-                            <CloseButton
-                                className={cls.close__btn}
-                                handleClick={handleClose}
-                            />
+                            <CloseButton className={cls.close__btn} handleClick={handleClose} />
                         </div>
 
                         <div className={cls.body}>

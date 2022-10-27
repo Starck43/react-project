@@ -2,15 +2,15 @@ import {Story} from "@storybook/react"
 
 import {StateSchema, StoreProvider} from "app/providers/store-provider"
 import {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import {viewerReducer} from "entities/viewer"
-import {loginReducer} from "features/auth/by-username/model/slice/loginSlice"
+import {profileReducer} from "entities/profile"
+import {loginReducer} from "features/auth/login/by-username/model/slice/loginSlice"
 
 import "app/styles/index.sass"
 
 
 const defaultAsyncReducers: ReducerList = {
     login: loginReducer,
-    viewer: viewerReducer,
+    profile: profileReducer,
 }
 
 export const StoreDecorator = (

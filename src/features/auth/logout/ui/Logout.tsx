@@ -1,11 +1,12 @@
 import {useTranslation} from "react-i18next"
 import {useDispatch} from "react-redux"
 
+import {userActions} from "entities/user"
 import {Modal} from "shared/ui/modal/Modal"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
-import {userActions} from "entities/user"
 
 import cls from "./Logout.module.sass"
+
 
 export interface LogoutProps {
     username?: string

@@ -19,4 +19,4 @@ Login.decorators = [ StoreDecorator({}) ]
 
 export const Profile = Template.bind({})
 Profile.args = {}
-Profile.decorators = [ StoreDecorator({user: {userAuth: {username: "admin", password: "admin"}}}) ]
+Profile.decorators = [ StoreDecorator({user: {authData: {username: "admin", password: "admin"}}}) ]

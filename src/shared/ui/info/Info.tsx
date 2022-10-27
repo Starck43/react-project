@@ -12,18 +12,30 @@ export enum InfoStatus {
 }
 
 export type InfoProps = {
+    title?: string
     icon?: ReactNode
-    status?: InfoStatus,
+    status?: InfoStatus
+    align?: string
     className?: string
 }
 
 export const Info: FC<InfoProps> = (props) => {
-    const {children, icon, status = InfoStatus.DEFAULT, className} = props
+    const {
+        children,
+        icon,
+        title,
+        align = "left",
+        status = InfoStatus.DEFAULT,
+        className,
+    } = props
 
     return (
-        <div className={classnames(cls, [ "text", status ], {}, [ className ])}>
-            <i className={cls.icon}>{icon}</i>
-            <p className={cls.paragraph}>{children}</p>
+        <div className={classnames(cls, [ "text", status, align ], {}, [ className ])}>
+            {title && <h3>{title}</h3>}
+            <p className={classnames(cls, [ "paragraph", align ])}>
+                {icon && <i className={cls.icon}>{icon}</i>}
+                <span>{children}</span>
+            </p>
         </div>
     )
 }

@@ -17,7 +17,7 @@ interface NavbarProps {
 }
 
 function Navbar({className}: NavbarProps) {
-    const {userAuth} = useSelector(getUser)
+    const {authData} = useSelector(getUser)
 
     return (
         <nav className={classnames(cls, [ "navbar", className ], {}, [ "centered" ])}>
@@ -25,8 +25,8 @@ function Navbar({className}: NavbarProps) {
                 {NavbarItemsList.map((item) => <NavItem key={item.path} {...item} />)}
             </div>
             <div className={classnames(cls, [ "navbar__icons" ], {}, [ "centered" ])}>
-                {userAuth
-                    ? <NavItem data-testid="profileBtn" path={RoutesPath[AppRoutes.PROFILE]} text={userAuth.username} />
+                {authData
+                    ? <NavItem data-testid="profileBtn" path={RoutesPath[AppRoutes.PROFILE]} text={authData.username} />
                     : <NavItem data-testid="authBtn" path={RoutesPath[AppRoutes.AUTH]} Icon={AuthIcon} />}
             </div>
         </nav>

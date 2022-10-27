@@ -1,4 +1,4 @@
-import {ButtonHTMLAttributes, FC} from "react"
+import {memo, FC, ButtonHTMLAttributes} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
@@ -11,7 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     handleClick: () => void
 }
 
-export const CloseButton: FC<ButtonProps> = (props) => {
+export const CloseButton: FC<ButtonProps> = memo((props) => {
     const {handleClick, className, children, ...other} = props
 
     return (
@@ -26,4 +26,4 @@ export const CloseButton: FC<ButtonProps> = (props) => {
             {children}
         </Button>
     )
-}
+})

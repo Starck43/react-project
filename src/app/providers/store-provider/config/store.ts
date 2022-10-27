@@ -1,6 +1,5 @@
 import {CombinedState, configureStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit"
 import {To} from "@remix-run/router"
-import {AxiosInstance} from "axios"
 import {NavigateOptions} from "react-router/dist/lib/context"
 
 import {StateSchema, ThunkExtra} from "app/providers/store-provider/config/stateSchema"
