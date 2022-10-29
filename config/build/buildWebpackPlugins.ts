@@ -14,6 +14,7 @@ export function buildWebpackPlugins({
     cssFilename,
     cssChunkFilename,
     apiUrl,
+    project,
 }: BuildWebpackOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
         new HtmlWebpackPlugin({template: paths.html}),
@@ -21,6 +22,7 @@ export function buildWebpackPlugins({
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
             __API__: JSON.stringify(apiUrl),
+            __PROJECT__: JSON.stringify(project),
         }),
     ]
 

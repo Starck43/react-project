@@ -22,5 +22,6 @@ export default (env: BuildWebpackEnv) => {
         },
         port: PORT,
         apiUrl,
+        project: "frontend",
     })
 }

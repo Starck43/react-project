@@ -1,7 +1,7 @@
 import React, {CSSProperties, useMemo} from "react"
 import {classnames} from "shared/lib/helpers/classnames"
 
-import PlaceholderIcon from "shared/assets/icons/avatar-default.svg"
+import PlaceholderIcon from "./avatar-placeholder.svg"
 import cls from "./Avatar.module.sass"
 
 

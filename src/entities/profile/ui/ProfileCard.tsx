@@ -4,8 +4,7 @@ import {useTranslation} from "react-i18next"
 import {ProfileSchema} from "entities/profile"
 import {UpdateProfileForm} from "features/update-profile"
 import {Logout} from "features/auth/logout"
-import {Navigate} from "react-router-dom"
-import {AppRoutes, RoutesPath} from "shared/config/router"
+import {Avatar} from "shared/ui/avatar/Avatar"
 
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
@@ -33,9 +32,7 @@ export const ProfileCard = ({data, error, isLoading}: ProfileSchema) => {
             <div data-testid="profile-card" className={cls.profile}>
                 {isLoading && <PageLoader />}
                 <div className={cls.table}>
-                    <div className={cls.avatar__wrapper}>
-                        <img src={data?.avatar} alt="" />
-                    </div>
+                    <Avatar src={data?.avatar} rounded alt={data?.username} />
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("имя")}</span>
                         <span className={cls.cell__value}>{data?.name}</span>

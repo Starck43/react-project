@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from "react"
+import React, {FC, ReactNode, useEffect} from "react"
 import {useDispatch, useStore} from "react-redux"
 import {Reducer} from "@reduxjs/toolkit"
 
@@ -11,11 +11,12 @@ export type ReducerList = {
 }
 
 interface DynamicModuleLoaderProps {
+    children: ReactNode
     reducers: ReducerList
     destroyOnUnmount?: boolean
 }
 
-export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
+export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props: DynamicModuleLoaderProps) => {
     const {children, reducers, destroyOnUnmount = true} = props
     const store = useStore() as ReduxStoreWithManager
     const dispatch = useDispatch()
@@ -37,10 +38,8 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         // eslint-disable-next-line
     }, [])
 
-    return (
-        // eslint-disable-next-line react/jsx-no-useless-fragment
-        <>{children}</>
-    )
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return (<>{children}</>)
 }
 
 export default DynamicModuleLoader

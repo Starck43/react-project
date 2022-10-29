@@ -16,6 +16,7 @@ export interface BuildWebpackOptions {
     chunkFilename: string
     port: number
     apiUrl: string
+    project: "storybook" | "frontend" | "jest"
 }
 
 export interface BuildWebpackEnv {

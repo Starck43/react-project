@@ -1,6 +1,8 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+import {Country} from "entities/country"
 import {ProfileSchema} from "entities/profile"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
+import Avatar from "shared/assets/icons/avatar-profile.png"
 
 import {ProfileCard} from "./ProfileCard"
 
@@ -14,7 +16,16 @@ export default {
 const Template: ComponentStory<typeof ProfileCard> = (args: ProfileSchema) => <ProfileCard {...args} />
 
 export const Default = Template.bind({})
-Default.args = {isLoading: true, data: {id: "1", email: "admin@t.me"}}
+Default.args = {
+    data: {
+        id: "1",
+        name: "John",
+        email: "admin@t.me",
+        phone: "+79991234567",
+        country: Country.RUSSIA,
+        avatar: Avatar,
+    },
+}
 Default.decorators = [
     StoreDecorator({
         profile: {
@@ -25,3 +36,13 @@ Default.decorators = [
         },
     }),
 ]
+
+export const Loading = Template.bind({})
+Loading.args = {
+    isLoading: true,
+}
+
+export const Error = Template.bind({})
+Error.args = {
+    error: "true",
+}

@@ -1,4 +1,7 @@
 export type {ProfileSchema, Profile} from "./model/types/profile"
 export {profileReducer, profileActions} from "./model/slice/profileSlice"
 export {fetchProfileData} from "./model/services/fetchProfileData"
+export {ValidateProfileError} from "./model/types/profile"
+export {getProfileValidateErrors} from "./model/selectors/getProfileValidateErrors"
+export {validateProfileData} from "./model/services/validateProfileData"
 export {ProfileCard} from "./ui/ProfileCard"

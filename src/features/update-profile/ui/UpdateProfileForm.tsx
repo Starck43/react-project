@@ -92,6 +92,7 @@ export const UpdateProfileForm = memo(({data, show, closeHandler}: ViewerProps) 
                 />
                 <Select
                     value={profileData.country}
+                    compact
                     options={countryOptions}
                     onChange={onSelectChange}
                     label={t("страна")}

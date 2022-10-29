@@ -4,7 +4,9 @@ import {getLoginError} from "./getLoginError"
 
 describe("getLoginError test", () => {
 	test("Return error", () => {
-		const state: DeepPartial<StateSchema> = {login: {error: "Error"}}
+		const state: DeepPartial<StateSchema> = {
+			login: {error: "Error"},
+		}
         expect(getLoginError(state as StateSchema)).toEqual("Error")
 	})
 

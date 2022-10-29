@@ -1,7 +1,7 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import avatar from "./avatar.png"
+import avatar from "../../assets/icons/avatar-profile.png"
 import {Avatar} from "./Avatar"
 
 
@@ -14,10 +14,10 @@ export default {
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />
 
 export const Default = Template.bind({})
-Default.args = {
+Default.args = {src: avatar, rounded: true}
+
+export const Placeholder = Template.bind({})
+Placeholder.args = {
 // @ts-ignore
     size: 200, src: "",
 }
-
-export const Authenticated = Template.bind({})
-Authenticated.args = {src: avatar, rounded: true}

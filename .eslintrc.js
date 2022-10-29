@@ -99,11 +99,7 @@ module.exports = {
             },
         ],
         "object-curly-newline": [
-            "error", {
-                ObjectExpression: {
-                    multiline: true,
-                    minProperties: 3,
-                },
+            "warn", {
                 ObjectPattern: {
                     multiline: true,
                     minProperties: 5,
@@ -132,6 +128,7 @@ module.exports = {
     globals: {
         __IS_DEV__: true,
         __API__: true,
+        __PROJECT__: true,
     },
     settings: {react: {version: "detect"}},
 }

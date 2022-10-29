@@ -14,6 +14,7 @@ export default {
     globals: {
         __IS_DEV__: true,
         __API__: "",
+        __PROJECT__: "jest",
     },
 
     // Automatically clear mock calls, instances and results before every test
