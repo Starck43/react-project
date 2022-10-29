@@ -12,16 +12,24 @@ export enum TitleCase {
 }
 
 type TitleProps = {
+    children: ReactNode
+    subTitle?: ReactNode
     align?: string
     transform?: TitleCase
     shadowed?: boolean
-    children: ReactNode
 }
 
 const Title = memo((props: TitleProps) => {
-    const {children, align = "center", shadowed = false, transform = TitleCase.FIRST} = props
+    const {
+children, subTitle, align = "left", shadowed = false, transform = TitleCase.FIRST,
+} = props
     return (
-        <h1 className={classnames(cls, [ "title", align, transform ], {shadowed})}>{children}</h1>
+        <div className={classnames(cls, [ "header" ], {}, [])}>
+            <h1 className={classnames(cls, [ "title", align, transform ], {shadowed})}>
+                {children}
+            </h1>
+            {subTitle && subTitle}
+        </div>
     )
 })
 
