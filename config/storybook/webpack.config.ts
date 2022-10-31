@@ -1,8 +1,8 @@
 import path from "path"
 import webpack, {DefinePlugin, RuleSetRule} from "webpack"
 
-import {BuildCssLoader} from "../build/loaders/buildCssLoader"
-import {BuildSvgLoader} from "../build/loaders/buildSvgLoader"
+import {buildCssLoader} from "../build/loaders/buildCssLoader"
+import {buildSvgLoader} from "../build/loaders/buildSvgLoader"
 import {Paths} from "../build/types/config"
 
 
@@ -23,8 +23,8 @@ export default ({config}: { config: webpack.Configuration }) => {
             ? {...rule, exclude: /\.svg$/i}
             : rule
     ))
-    config.module!.rules.push(BuildSvgLoader())
-    config.module!.rules.push(BuildCssLoader(true))
+    config.module!.rules.push(buildSvgLoader())
+    config.module!.rules.push(buildCssLoader(true))
 
     config.plugins!.push(new DefinePlugin({
         __IS_DEV__: JSON.stringify(true),

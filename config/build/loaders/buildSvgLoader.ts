@@ -1,5 +1,5 @@
 
-export function BuildSvgLoader() {
+export function buildSvgLoader() {
     return {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
