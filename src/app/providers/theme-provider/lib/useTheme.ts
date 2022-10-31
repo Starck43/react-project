@@ -1,5 +1,6 @@
-import {MouseEventHandler, useContext, useEffect} from "react"
 import {LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext} from "app/providers/theme-provider/lib/ThemeContext"
+import {MouseEventHandler, useContext, useEffect} from "react"
+
 
 export interface UseThemeResult {
     theme?: Theme
@@ -11,8 +12,22 @@ const useTheme = (current?: Theme): UseThemeResult => {
 
     const toggleTheme: MouseEventHandler = (e) => {
         e.preventDefault()
-        const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK
-        if (setTheme) setTheme(newTheme)
+        let newTheme: Theme
+        switch (theme) {
+            case Theme.LIGHT:
+                newTheme = Theme.DARK
+                break
+            case Theme.DARK:
+                newTheme = Theme.ADDITIONAL
+                break
+            case Theme.ADDITIONAL:
+                newTheme = Theme.LIGHT
+                break
+            default:
+                newTheme = Theme.LIGHT
+        }
+
+        setTheme?.(newTheme)
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
     }
 
