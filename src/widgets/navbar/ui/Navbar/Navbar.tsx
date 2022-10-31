@@ -17,7 +17,7 @@ interface NavbarProps {
 }
 
 function Navbar({className}: NavbarProps) {
-    const {authData} = useSelector(getUser)
+    const authData = useSelector(getUser)
 
     return (
         <nav className={classnames(cls, [ "navbar", className ], {}, [ "centered" ])}>

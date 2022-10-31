@@ -17,7 +17,7 @@ function NotFoundPage({className}: NotFoundPageProps) {
 	const {t} = useTranslation()
 	return (
     <div className={classnames(cls, [ "not_found__page" ], {}, [ className, "centered", "vertical" ])}>
-        <Title>{t("Страница не найдена")}</Title>
+        <Title align="center">{t("Страница не найдена")}</Title>
         <Button href={RoutesPath[AppRoutes.HOME]}>
             {t("На главную")}
         </Button>

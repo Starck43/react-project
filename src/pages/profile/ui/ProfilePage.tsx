@@ -20,7 +20,7 @@ const reducers: ReducerList = {profile: profileReducer}
 
 function ProfilePage() {
     const {t} = useTranslation("auth")
-    const {authData} = useSelector(getUser)
+    const authData = useSelector(getUser)
     const dispatch = useAppDispatch()
 
     const data = useSelector(getProfileData)

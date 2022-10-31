@@ -6,7 +6,7 @@ import {AuthPage} from "pages/auth"
 import {ProfilePage} from "pages/profile"
 import {NotFoundPage} from "pages/not-found-page"
 
-type AppRoutesProps = RouteProps & {
+export type AppRoutesProps = RouteProps & {
     authOnly?: boolean
 }
 

@@ -1,9 +1,9 @@
 import {Suspense, useEffect} from "react"
 import {AppRouter} from "app/providers/router-provider"
 import useTheme from "app/providers/theme-provider/lib/useTheme"
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 
-import {userActions} from "entities/user"
+import {getUserOnMount, userActions} from "entities/user"
 import {Navbar} from "widgets/navbar"
 import {Sidebar} from "widgets/sidebar"
 
@@ -11,6 +11,7 @@ import {Sidebar} from "widgets/sidebar"
 const App = () => {
     const {theme, toggleTheme} = useTheme()
     const dispatch = useDispatch()
+    const mounted = useSelector(getUserOnMount)
 
     useEffect(() => {
         dispatch(userActions.initAuthData())
@@ -26,7 +27,7 @@ const App = () => {
                     position="left"
                     className="sidebar"
                 />
-                <AppRouter />
+                {mounted && <AppRouter />}
             </main>
             <footer />
         </Suspense>

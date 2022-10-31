@@ -14,7 +14,7 @@ import {PageLoader} from "widgets/page-loader/PageLoader"
 
 
 function AuthPage() {
-    const {authData} = useSelector(getUser)
+    const authData = useSelector(getUser)
     const {t} = useTranslation("auth")
     const username = authData?.username
 
