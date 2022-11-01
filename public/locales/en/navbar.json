@@ -1,4 +1,7 @@
 {
-  "home": "home",
-  "about": "about us"
+  "menu": "menu",
+  "menu_about": "about us",
+  "menu_female": "",
+  "menu_home": "home",
+  "menu_male": ""
 }

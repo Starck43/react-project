@@ -1,6 +1,9 @@
 {
   "dark": "dark theme",
   "light": "light theme",
+  "theme": "Theme",
+  "theme_female": "",
+  "theme_male": "",
   "throw error": "Throw error",
   "На главную": "To Home",
   "Русский": "English",

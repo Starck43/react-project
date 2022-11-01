@@ -15,9 +15,7 @@ const NavItem = memo((props: NavbarItemType) => {
     return (
         <NavLink key={path} to={path} className={classnames(cls, [ "navbar__item" ], {text})} {...other}>
             {Icon && <Icon />}
-            { /* i18next-extract-disable-line */}
-            {/* i18next-extract-disable-next-line */}
-            {text && t(text)}
+            {text && t("menu", {context: text})}
         </NavLink>
     )
 })
