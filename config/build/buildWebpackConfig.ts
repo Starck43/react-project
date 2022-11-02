@@ -20,6 +20,7 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
             filename: chunkFilename,
             path: paths.build,
             clean: true,
+            publicPath: "auto",
         },
         plugins:
             buildWebpackPlugins(options), // Plugins

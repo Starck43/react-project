@@ -16,7 +16,7 @@ interface LanguageSwitcherProps {
 
 export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({minified = false, className}) => {
     const {i18n, t} = useTranslation()
-
+    console.log(i18n)
     const toggleLanguage = () => i18n.changeLanguage(i18n.language === "en" ? "ru" : "en")
 
     return (
