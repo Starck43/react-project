@@ -1,5 +1,6 @@
 import React, {memo} from "react"
 import {useSelector} from "react-redux"
+import {useTranslation} from "react-i18next"
 
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {classnames} from "shared/lib/helpers/classnames"
@@ -18,11 +19,18 @@ interface NavbarProps {
 
 function Navbar({className}: NavbarProps) {
     const authData = useSelector(getUser)
+    const {t} = useTranslation("navbar")
 
     return (
         <nav className={classnames(cls, [ "navbar", className ], {}, [ "centered" ])}>
             <div className={cls.navbar__items}>
-                {NavbarItemsList.map((item) => <NavItem key={item.path} {...item} />)}
+                {NavbarItemsList.map((item) => (
+                    <NavItem
+                        key={item.path}
+                        path={item.path}
+                        text={t("menu", {context: item.text})}
+                    />
+                ))}
             </div>
             <div className={classnames(cls, [ "navbar__icons" ], {}, [ "centered" ])}>
                 {authData

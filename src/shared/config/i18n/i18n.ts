@@ -13,14 +13,15 @@ i18n
 .use(initReactI18next)
 // init i18next
 .init({
-    fallbackLng: "en",
+    fallbackLng: "ru",
     debug: __IS_DEV__,
     ns: [ "home", "about", "articles" ],
     defaultNS: "translation",
     interpolation: {escapeValue: false}, // not needed for react as it escapes by default
     lowerCaseLng: true,
     backend: {
-        loadPath: "/public/locales/{{lng}}/{{ns}}.json",
+        loadPath: "locales/{{lng}}/{{ns}}.json",
+        addPath: "/public/locales/{{lng}}/{{ns}}.json",
     },
 })
 

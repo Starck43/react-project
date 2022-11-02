@@ -1,5 +1,4 @@
 import React, {memo} from "react"
-import {useTranslation} from "react-i18next"
 import {classnames} from "shared/lib/helpers/classnames"
 
 import {NavLink} from "shared/ui/link/NavLink"
@@ -9,13 +8,12 @@ import cls from "./NavItem.module.sass"
 
 
 const NavItem = memo((props: NavbarItemType) => {
-    const {path, text = "", Icon = null, ...other} = props
-    const {t} = useTranslation("navbar")
+    const {path, text, Icon, ...other} = props
 
     return (
         <NavLink key={path} to={path} className={classnames(cls, [ "navbar__item" ], {text})} {...other}>
             {Icon && <Icon />}
-            {text && t("menu", {context: text})}
+            {text && text}
         </NavLink>
     )
 })
