@@ -7,6 +7,7 @@ import {getUser} from "entities/user"
 
 const RequireAuth = ({to, children}: { to: string, children: ReactElement }) => {
     const auth = useSelector(getUser)
+    console.log("requireAuth", auth)
     const location = useLocation()
     return (!auth)
         ? <Navigate to={to} state={{from: location}} replace />

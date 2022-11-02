@@ -20,7 +20,7 @@ i18n
     interpolation: {escapeValue: false}, // not needed for react as it escapes by default
     lowerCaseLng: true,
     backend: {
-        loadPath: "locales/{{lng}}/{{ns}}.json",
+        loadPath: "/locales/{{lng}}/{{ns}}.json",
         addPath: "/public/locales/{{lng}}/{{ns}}.json",
     },
 })

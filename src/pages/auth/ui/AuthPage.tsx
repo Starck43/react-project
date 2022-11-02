@@ -36,7 +36,7 @@ function AuthPage() {
         <div className="content">
             <Suspense fallback={<PageLoader />}>
                 <div className="container login-container">
-                    <Title shadowed>{t("войти")}</Title>
+                    <Title shadowed align="center">{t("войти")}</Title>
                     <LoginForm onSuccess={successLoginHandler} />
                 </div>
             </Suspense>

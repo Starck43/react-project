@@ -1,6 +1,8 @@
 import React from "react"
 import {AppRoutes, RoutesPath} from "shared/config/router"
 
+import ArticleIcon from "shared/assets/icons/article-20-20.svg"
+
 
 export interface NavbarItemType {
     path: string
@@ -17,5 +19,11 @@ export const NavbarItemsList: NavbarItemType[] = [
     {
         path: RoutesPath[AppRoutes.ABOUT],
         text: AppRoutes.ABOUT,
+    },
+    {
+        path: RoutesPath[AppRoutes.ARTICLES],
+        text: AppRoutes.ARTICLES,
+        Icon: ArticleIcon,
+        authOnly: true,
     },
 ]

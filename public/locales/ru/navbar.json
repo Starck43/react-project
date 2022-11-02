@@ -1,5 +1,8 @@
 {
   "menu": "Меню",
   "menu_about": "О себе",
-  "menu_home": "Главная"
+  "menu_articles": "Статьи",
+  "menu_female": "",
+  "menu_home": "Главная",
+  "menu_male": ""
 }

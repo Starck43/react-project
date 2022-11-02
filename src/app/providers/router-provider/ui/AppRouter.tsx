@@ -1,5 +1,5 @@
 import RequireAuth from "app/providers/router-provider/ui/RequireAuth"
-import React, {memo, Props, Suspense, useCallback} from "react"
+import React, {memo, Suspense, useCallback} from "react"
 import {Route, Routes} from "react-router-dom"
 
 import {AppRoutes, AppRoutesProps, routeConfig, RoutesPath} from "shared/config/router"
@@ -7,7 +7,7 @@ import {PageLoader} from "widgets/page-loader/PageLoader"
 
 
 const AppRouter = () => {
-    const renderCallback = useCallback((route: AppRoutesProps) => {
+    const renderRoutesCallback = useCallback((route: AppRoutesProps) => {
         const element = (
             <Suspense fallback={<PageLoader />}>
                 {route.element}
@@ -27,7 +27,7 @@ const AppRouter = () => {
 
     return (
         <Routes>
-            {Object.values(routeConfig).map(renderCallback)}
+            {Object.values(routeConfig).map(renderRoutesCallback)}
         </Routes>
     )
 }

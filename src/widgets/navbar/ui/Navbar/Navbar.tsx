@@ -27,7 +27,7 @@ function Navbar({className}: NavbarProps) {
                 {NavbarItemsList.map((item) => (
                     <NavItem
                         key={item.path}
-                        path={item.path}
+                        {...item}
                         text={t("menu", {context: item.text})}
                     />
                 ))}
