@@ -1,20 +1,41 @@
-import React, {useState} from "react"
+import {Country} from "entities/country"
+import {fetchProfileData} from "entities/profile"
+import React, {useEffect, useState} from "react"
+import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import {ProfileSchema} from "entities/profile"
 import {UpdateProfileForm} from "features/update-profile"
 import {Logout} from "features/auth/logout"
-import {Avatar} from "shared/ui/avatar/Avatar"
+import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 
+import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
+import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
+
 import {PageLoader} from "widgets/page-loader/PageLoader"
+
+import {getProfileData} from "../model/selectors/getProfileData"
+import {getProfileError} from "../model/selectors/getProfileError"
+import {getProfileLoading} from "../model/selectors/getProfileLoading"
+
 
 import cls from "./ProfileCard.module.sass"
 
 
-export const ProfileCard = ({data, error, isLoading}: ProfileSchema) => {
-    const {t} = useTranslation("auth")
+export const ProfileCard = () => {
+    const {i18n, t} = useTranslation("auth")
+    const dispatch = useAppDispatch()
+    const data = useSelector(getProfileData)
+    const error = useSelector(getProfileError)
+    const isLoading = useSelector(getProfileLoading)
+
+    useEffect(() => {
+        if (__PROJECT__ !== "storybook") {
+            dispatch(fetchProfileData())
+        }
+    }, [ dispatch ])
+
     const [ isShowLogout, setShowLogout ] = useState(false)
     const [ isShowProfile, setShowProfile ] = useState(false)
 
@@ -35,15 +56,15 @@ export const ProfileCard = ({data, error, isLoading}: ProfileSchema) => {
                     <Avatar src={data?.avatar} rounded alt={data?.username} />
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("имя")}</span>
-                        <span className={cls.cell__value}>{data?.name}</span>
+                        <span className={cls.cell__value}>{capitalizeFirstLetter(data?.name)}</span>
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("фамилия")}</span>
-                        <span className={cls.cell__value}>{data?.surname}</span>
+                        <span className={cls.cell__value}>{capitalizeFirstLetter(data?.surname)}</span>
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("email")}</span>
-                        <span className={cls.cell__value}>{data?.email}</span>
+                        <span className={cls.cell__value}>{data?.email?.toLowerCase()}</span>
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("телефон")}</span>
@@ -51,7 +72,11 @@ export const ProfileCard = ({data, error, isLoading}: ProfileSchema) => {
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("страна")}</span>
-                        <span className={cls.cell__value}>{data?.country}</span>
+                        <span className={cls.cell__value}>
+                            { i18n.language === "en"
+                                ? capitalizeFirstLetter(data?.country, i18n.language)
+                                : Country[data?.country as unknown as keyof typeof Country]}
+                        </span>
                     </div>
                 </div>
 

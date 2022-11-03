@@ -1,4 +1,4 @@
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import {ComponentMeta, ComponentStory, Story} from "@storybook/react"
 import {Country} from "entities/country"
 import {ProfileSchema} from "entities/profile"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
@@ -13,7 +13,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ProfileCard>
 
-const Template: ComponentStory<typeof ProfileCard> = (args: ProfileSchema) => <ProfileCard {...args} />
+const Template: Story = (args) => <ProfileCard {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

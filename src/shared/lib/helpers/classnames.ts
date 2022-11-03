@@ -5,12 +5,7 @@ interface IClassNames {
     [className: string]: string
 }
 
-export function classnames(
-    cls: IClassNames | null,
-    classes: Arr = [],
-    dict: Dict = {},
-    additional: Arr = [],
-): string {
+export function classnames(cls: IClassNames | null, classes: Arr = [], dict: Dict = {}, additional: Arr = []): string {
     if (!cls) return [ ...additional.filter(Boolean) ].join(" ")
     return [
         ...classes.filter(Boolean).map((classname) => (classname ? cls[classname] : null)),

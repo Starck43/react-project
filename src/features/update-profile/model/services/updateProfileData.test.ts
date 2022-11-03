@@ -15,16 +15,16 @@ describe("updateProfileData test", () => {
     test("Success profile update fetching", async () => {
         const thunk = new TestAsyncFunc(updateProfileData, {profile: {data: profileValue}})
         thunk.api?.put.mockReturnValue(Promise.resolve({data: {...profileValue, phone: "+79991234567"}}))
-        const res = await thunk.CallFunc(profileValue)
+        const res = await thunk.CallFunc()
 
-        expect(thunk.api?.put).toHaveBeenCalled()
+        expect(thunk.api.put).toHaveBeenCalled()
         expect(res.meta.requestStatus).toBe("fulfilled")
         expect(res.payload).toEqual({...profileValue, phone: "+79991234567"})
     })
 
     test("Failed validation on update", async () => {
         const thunk = new TestAsyncFunc(updateProfileData, {profile: {data: {...profileValue, name: ""}}})
-        const res = await thunk.CallFunc({...profileValue, name: ""})
+        const res = await thunk.CallFunc()
         console.log(res)
 
         expect(res.meta.requestStatus).toBe("rejected")
@@ -34,7 +34,7 @@ describe("updateProfileData test", () => {
     test("Server error on update", async () => {
         const thunk = new TestAsyncFunc(updateProfileData, {profile: {data: profileValue}})
         thunk.api.put.mockReturnValue(Promise.resolve({status: 403}))
-        const res = await thunk.CallFunc(profileValue)
+        const res = await thunk.CallFunc()
 
         expect(res.meta.requestStatus).toBe("rejected")
         expect(res.payload).toEqual([ ValidateProfileError.SERVER_ERROR ])

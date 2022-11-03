@@ -22,6 +22,7 @@ export interface Profile {
 
 export interface ProfileSchema {
     data?: Profile
+    copy?: Profile
     isLoading: boolean
     error?: string
     readonly?: boolean

@@ -1,7 +1,8 @@
 import {Country} from "entities/country"
+import {ProfileSchema, ValidateProfileError} from "entities/profile"
 import {updateProfileData} from "features/update-profile"
-import {ProfileSchema, ValidateProfileError} from "../types/profile"
-import {profileActions, profileReducer} from "./profileSlice"
+
+import {profileActions, profileReducer} from "../slice/profileSlice"
 
 
 const profileValue = {
@@ -14,20 +15,12 @@ const profileValue = {
 }
 
 describe("profileSlice test", () => {
-    test("set readonly", () => {
-        const state: DeepPartial<ProfileSchema> = {readonly: false}
-        expect(profileReducer(
-            state as ProfileSchema,
-            profileActions.setReadOnly(true),
-        )).toEqual({readonly: true})
-    })
-
     test("profile updating", () => {
         const state: DeepPartial<ProfileSchema> = {data: profileValue}
         expect(profileReducer(
             state as ProfileSchema,
-            profileActions.updateProfileData({...profileValue, phone: "+79991234567"}),
-        )).toEqual({data: {...profileValue, phone: "+79991234567"}})
+            profileActions.update({phone: "+79991234567"}),
+        )).toEqual({data: {phone: "+79991234567"}})
     })
 
     test("update in extra reducers (pending)", () => {
@@ -50,7 +43,7 @@ describe("profileSlice test", () => {
         }
         expect(profileReducer(
             state as ProfileSchema,
-            updateProfileData.fulfilled(profileValue, "", profileValue),
+            updateProfileData.fulfilled(profileValue, ""),
         )).toEqual({
             isLoading: false,
             validateError: undefined,

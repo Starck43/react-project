@@ -1,15 +1,24 @@
+import {getProfileCopy} from "entities/profile/model/selectors/getProfileCopy"
+import {getProfileData} from "entities/profile/model/selectors/getProfileData"
 import {
-    memo, useCallback, useState, FormEvent, useMemo,
+    memo, useCallback, FormEvent, useMemo, useEffect,
 } from "react"
+import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import {Profile} from "entities/profile"
-
 import {Country} from "entities/country/model/types/country"
+import {
+    profileActions,
+    getProfileValidateErrors,
+    Profile,
+    ValidateProfileError, validateProfileData,
+} from "entities/profile"
+
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import Input from "shared/ui/input/Input"
 import {Modal} from "shared/ui/modal/Modal"
+import Input from "shared/ui/input/Input"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
+import {Info, InfoStatus} from "shared/ui/info/Info"
 import {Select} from "shared/ui/select/Select"
 
 import {updateProfileData} from "../model/services/updateProfileData"
@@ -23,29 +32,48 @@ export interface ViewerProps {
     closeHandler?: () => void
 }
 
+// let validateErrors: ValidateProfileError[]
 
-export const UpdateProfileForm = memo(({data, show, closeHandler}: ViewerProps) => {
+export const UpdateProfileForm = memo((props: ViewerProps) => {
+    const {data, show, closeHandler} = props
     const {t} = useTranslation("auth")
-    const [ profileData, setProfileData ] = useState({...data})
-
     const dispatch = useAppDispatch()
+    const copy = useSelector(getProfileCopy)
+
+    const validateErrors = useSelector(getProfileValidateErrors)
+
+    const validateErrorsTranslates = {
+        [ValidateProfileError.INCORRECT_USER_DATA]: t("имя и фамилия обязательны"),
+        [ValidateProfileError.INCORRECT_EMAIL]: t("некорректно указан email"),
+        [ValidateProfileError.INCORRECT_PHONE]: t("некорректно указан номера телефона"),
+        [ValidateProfileError.NO_DATA]: t("отсутствуют данные"),
+        [ValidateProfileError.SERVER_ERROR]: t("ошибка сервера"),
+    }
 
     const countryOptions = useMemo(() => Object.entries(Country).map((obj) => ({value: obj[0], content: obj[1]})), [])
 
-    const updateProfileClick = (e: FormEvent<Profile>) => {
+    const profileClick = useCallback(async (e: FormEvent<Profile>) => {
         e.preventDefault()
-        dispatch(updateProfileData(profileData))
+        const res = await dispatch(updateProfileData())
+        if (res.meta.requestStatus === "fulfilled") {
+            closeHandler?.()
+        }
+    }, [ closeHandler, dispatch ])
+
+    const cancelClick = useCallback(() => {
+        dispatch(profileActions.revert())
         closeHandler?.()
-    }
+    }, [ closeHandler, dispatch ])
 
     const onInputChange = useCallback((val, name) => {
-        setProfileData({...profileData, [name]: val})
-    }, [ profileData ])
+        dispatch(profileActions.update({[name]: val || ""}))
+    }, [ dispatch ])
 
     const onSelectChange = useCallback((val) => {
         const value = Country[val as keyof typeof Country]
-        setProfileData({...profileData, country: value})
-    }, [ profileData ])
+        console.log(value)
+        dispatch(profileActions.update({country: val || ""}))
+    }, [ dispatch ])
 
     return (
         <Modal
@@ -54,44 +82,44 @@ export const UpdateProfileForm = memo(({data, show, closeHandler}: ViewerProps) 
             onClose={closeHandler}
             className="sm-modal"
         >
-            <form onSubmit={updateProfileClick}>
+            <form onSubmit={profileClick}>
                 <Input
                     name="username"
-                    value={profileData.username}
+                    value={copy?.username}
                     onChange={onInputChange}
                     placeholder={t("ник")}
                     className="mb-1"
                 />
                 <Input
                     name="name"
-                    value={profileData.name}
+                    value={copy?.name}
                     onChange={onInputChange}
                     placeholder={t("имя")}
                     className="mb-1"
                 />
                 <Input
                     name="surname"
-                    value={profileData.surname}
+                    value={copy?.surname}
                     onChange={onInputChange}
                     placeholder={t("фамилия")}
                     className="mb-1"
                 />
                 <Input
                     name="email"
-                    value={profileData.email}
+                    value={copy?.email}
                     onChange={onInputChange}
                     placeholder={t("email")}
                     className="mb-1"
                 />
                 <Input
                     name="phone"
-                    value={profileData.phone}
+                    value={copy?.phone}
                     onChange={onInputChange}
                     placeholder={t("телефон")}
                     className="mb-1"
                 />
                 <Select
-                    value={profileData.country}
+                    value={copy?.country}
                     compact
                     options={countryOptions}
                     onChange={onSelectChange}
@@ -100,6 +128,9 @@ export const UpdateProfileForm = memo(({data, show, closeHandler}: ViewerProps) 
                 />
 
                 <div className="centered g-1 mt-2">
+                    {validateErrors?.length && validateErrors.map((error) => (
+                        <Info key={error} status={InfoStatus.ERROR} title={validateErrorsTranslates[error]} />
+                    ))}
                     <Button
                         type="submit"
                         bordered
@@ -107,7 +138,7 @@ export const UpdateProfileForm = memo(({data, show, closeHandler}: ViewerProps) 
                     >
                         {t("сохранить")}
                     </Button>
-                    <Button bordered feature={ButtonFeature.BLANK} onClick={closeHandler}>{t("отмена")}</Button>
+                    <Button bordered feature={ButtonFeature.BLANK} onClick={cancelClick}>{t("отмена")}</Button>
                 </div>
             </form>
         </Modal>

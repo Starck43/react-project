@@ -1,16 +1,15 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
+import {updateProfileData} from "features/update-profile"
 
-import {updateProfileData} from "features/update-profile/model/services/updateProfileData"
 import {fetchProfileData} from "../services/fetchProfileData"
 
 import {Profile, ProfileSchema} from "../types/profile"
 
 
 const initialState: ProfileSchema = {
-    readonly: true,
     isLoading: false,
     error: undefined,
-    data: undefined,
+    copy: undefined,
 }
 
 export const profileSlice = createSlice({
@@ -20,8 +19,11 @@ export const profileSlice = createSlice({
         setReadOnly: (state, action: PayloadAction<boolean>) => {
             state.readonly = action.payload
         },
-        updateProfileData: (state, action: PayloadAction<Profile>) => {
-            state.data = action.payload
+        update: (state, action: PayloadAction<Profile>) => {
+            state.copy = {...state.copy, ...action.payload}
+        },
+        revert: (state) => {
+            state.validateErrors = undefined
         },
     },
     extraReducers: (builder) => {
@@ -32,6 +34,7 @@ export const profileSlice = createSlice({
         })
         .addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
             state.isLoading = false
+            state.copy = action.payload
             state.data = action.payload
         })
         .addCase(fetchProfileData.rejected, (state, action) => {
@@ -45,7 +48,7 @@ export const profileSlice = createSlice({
         .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
             state.isLoading = false
             state.data = action.payload
-            state.readonly = true
+            state.copy = undefined
             state.validateErrors = undefined
         })
         .addCase(updateProfileData.rejected, (state, action) => {
