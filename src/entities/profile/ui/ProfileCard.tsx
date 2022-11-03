@@ -21,6 +21,7 @@ import {getProfileLoading} from "../model/selectors/getProfileLoading"
 
 
 import cls from "./ProfileCard.module.sass"
+import {translatedCountry} from "../lib"
 
 
 export const ProfileCard = () => {
@@ -73,9 +74,7 @@ export const ProfileCard = () => {
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("страна")}</span>
                         <span className={cls.cell__value}>
-                            { i18n.language === "en"
-                                ? capitalizeFirstLetter(data?.country, i18n.language)
-                                : Country[data?.country as unknown as keyof typeof Country]}
+                            {translatedCountry(data?.country, i18n.language)}
                         </span>
                     </div>
                 </div>
@@ -104,14 +103,12 @@ export const ProfileCard = () => {
 
             {data && isShowProfile && (
                 <UpdateProfileForm
-                    data={data}
                     show={isShowProfile}
                     closeHandler={() => setShowProfile((prev) => !prev)}
                 />
             )}
             {data && isShowLogout && (
                 <Logout
-                    username={data.username}
                     show={isShowLogout}
                     closeHandler={() => setShowLogout((prev) => !prev)}
                 />

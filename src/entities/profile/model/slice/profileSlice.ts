@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
+
 import {updateProfileData} from "features/update-profile"
 
 import {fetchProfileData} from "../services/fetchProfileData"
@@ -47,8 +48,8 @@ export const profileSlice = createSlice({
         })
         .addCase(updateProfileData.fulfilled, (state, action: PayloadAction<Profile>) => {
             state.isLoading = false
-            state.data = action.payload
-            state.copy = undefined
+            state.data = state.copy
+            // state.copy = undefined
             state.validateErrors = undefined
         })
         .addCase(updateProfileData.rejected, (state, action) => {

@@ -13,6 +13,7 @@ import {
     Profile,
     ValidateProfileError, validateProfileData,
 } from "entities/profile"
+import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {Modal} from "shared/ui/modal/Modal"
@@ -27,19 +28,16 @@ import {updateProfileData} from "../model/services/updateProfileData"
 // import cls from "./UpdateProfile.module.sass"
 
 export interface ViewerProps {
-    data: Profile
     show: boolean
     closeHandler?: () => void
 }
 
 // let validateErrors: ValidateProfileError[]
 
-export const UpdateProfileForm = memo((props: ViewerProps) => {
-    const {data, show, closeHandler} = props
+export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
     const {t} = useTranslation("auth")
     const dispatch = useAppDispatch()
     const copy = useSelector(getProfileCopy)
-
     const validateErrors = useSelector(getProfileValidateErrors)
 
     const validateErrorsTranslates = {
@@ -70,9 +68,9 @@ export const UpdateProfileForm = memo((props: ViewerProps) => {
     }, [ dispatch ])
 
     const onSelectChange = useCallback((val) => {
-        const value = Country[val as keyof typeof Country]
-        console.log(value)
-        dispatch(profileActions.update({country: val || ""}))
+        // const value = Country[val as keyof typeof Country]
+        console.log("on Select", capitalizeFirstLetter(val))
+        dispatch(profileActions.update({country: capitalizeFirstLetter(val) as Country || ""}))
     }, [ dispatch ])
 
     return (
@@ -119,7 +117,7 @@ export const UpdateProfileForm = memo((props: ViewerProps) => {
                     className="mb-1"
                 />
                 <Select
-                    value={copy?.country}
+                    value={copy?.country?.toUpperCase()}
                     compact
                     options={countryOptions}
                     onChange={onSelectChange}

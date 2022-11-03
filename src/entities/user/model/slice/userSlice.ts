@@ -3,7 +3,7 @@ import {AUTH_USER_KEY} from "shared/const/localStorage"
 import {User, UserSchema} from "../types/user"
 
 
-const initialState: UserSchema = {_mounted: false}
+const initialState: DeepPartial<UserSchema> = {_mounted: false}
 
 export const userSlice = createSlice({
     name: "user",
