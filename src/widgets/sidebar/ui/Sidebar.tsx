@@ -48,7 +48,7 @@ function Sidebar(props: SidebarProps) {
             <div className={classnames(cls, [], {collapsed}, [ "sidebar__container" ])}>
                 <ThemeSwitcher minified={collapsed} theme={theme} toggleTheme={toggleTheme} />
                 <LanguageSwitcher minified={collapsed} />
-                <ErrorTestButton minified={collapsed} />
+                <ErrorTestButton />
             </div>
         </nav>
     )

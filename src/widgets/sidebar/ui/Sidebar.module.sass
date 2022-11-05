@@ -8,7 +8,7 @@
 	background-color: var(--theme-sidebar-bg-color)
 	border-top-right-radius: var(--border-radius)
 	border-bottom-right-radius: var(--border-radius)
-	border: 2px solid transparentize(lighten($brand-color, 50%), 0.5)
+	border: 2px solid var(--theme-primary-border-color)
 
 	@extend .shadow
 
@@ -32,7 +32,7 @@
 		width: var(--sidebar-width)
 		height: auto
 		min-width: var(--sidebar-width)
-		min-height: calc(100vh - #{$navbar-height} - #{$main-padding*2})
+		max-height: calc(100vh - #{$navbar-height} - #{$main-padding*2})
 		border-top-left-radius: var(--border-radius)
 		border-bottom-left-radius: var(--border-radius)
 		transform: none !important

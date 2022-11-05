@@ -1,0 +1,32 @@
+@import "src/app/styles/_vars"
+
+.header
+	width: 100%
+	margin-bottom: 4vh
+
+	.title, .subtitle
+		width: 100%
+
+	&.left
+		.title, .subtitle
+			text-align: left
+
+	&.center
+		.title, .subtitle
+			text-align: center
+
+	&.right
+		.title, .subtitle
+			text-align: right
+
+.firstcase
+	text-transform: lowercase
+
+	&::first-letter
+		text-transform: uppercase
+
+.lowercase
+	text-transform: lowercase
+
+.uppercase
+	text-transform: uppercase
