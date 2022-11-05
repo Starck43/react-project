@@ -6,11 +6,10 @@ import {Button, ButtonFeature, ButtonVariant} from "shared/ui/button/Button"
 // Button for calling Error
 
 interface ErrorTestProps {
-    minified?: boolean
     className?: string
 }
 
-export const ErrorTestButton = memo(({minified, className}: ErrorTestProps) => {
+export const ErrorTestButton = memo(({className}: ErrorTestProps) => {
     const [ error, setError ] = useState(false)
     const {t} = useTranslation()
 

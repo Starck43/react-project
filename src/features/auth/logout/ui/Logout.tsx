@@ -24,7 +24,7 @@ export const Logout = ({show, closeHandler}: LogoutProps) => {
     }
 
     return (
-        <Modal open={show} onClose={closeHandler} className="sm-modal">
+        <Modal open={show} onClose={closeHandler} className="modal-sm">
             <p className={cls.text}>{t("выйти из аккаунта?", {username})}</p>
 
             <div className="g-1 centered mt-2">

@@ -54,7 +54,7 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
     }, [ onSuccess, dispatch, password, username ])
 
     return (
-        <DynamicModuleLoader reducers={initialReducers}>
+        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount>
             <div
                 data-testid="loginForm"
                 className={classnames(cls, [ "login" ], {}, [ className, "centered", "vertical" ])}

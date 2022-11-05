@@ -1,6 +1,4 @@
-import {
-FC, memo, ReactElement, ReactNode, ButtonHTMLAttributes,
-} from "react"
+import {FC, ReactElement, ReactNode, ButtonHTMLAttributes} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
@@ -74,7 +72,7 @@ export const Button: FC<ButtonProps> = (props) => {
                         {children}
                     </a>
                 )
-                : children}
+                : (children)}
         </button>
     )
 }

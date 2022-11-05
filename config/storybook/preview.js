@@ -37,6 +37,11 @@ export const parameters = {
             class: "dark",
             color: "#104046",
         },
+        {
+            name: "Additional",
+            class: "additional",
+            color: "#144893",
+        },
     ],
 }
 
