@@ -1,5 +1,9 @@
+@import "/src/app/styles/vars"
+@import "/src/app/styles/common"
+
 .text
 	width: 100%
+	font-size: $info-header-multiplier
 
 	&.success
 		color: var(--theme-info-success)
@@ -10,13 +14,27 @@
 	&.error
 		color: var(--theme-info-error)
 
+	&.extra_large
+		font-size: 1.6rem
 
-.paragraph
+	&.large
+		font-size: 1.2rem
+
+	&.medium
+		font-size: 1rem
+
+	&.small
+		font-size: 0.8rem
+
+.subtitle
 	padding: 0
 	display: inline-flex
 
-	.icon
-		margin-right: 0.5em
+.inlined
+	@extend .inline
+
+	.title ~ .subtitle
+		margin-left: 2em
 
 .center
 	text-align: center
