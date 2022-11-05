@@ -19,9 +19,19 @@
 .shadow
 	box-shadow: 0 0.5rem 1.5rem -0.35rem rgb(0 0 0 / 20%)
 
-//box-shadow: 0 0.6rem 1rem -3px rgba(0, 0, 0, .1), 0 0.25rem 0.35rem -1px rgba(0, 0, 0, .05)
+.inline
+	display: flex
+	align-items: center
 
-.sm-modal
+.size-sm
+	font-size: 0.8rem
+
+svg, .icon
+	& ~ *
+		margin-left: 0.5em
+
+//box-shadow: 0 0.6rem 1rem -3px rgba(0, 0, 0, .1), 0 0.25rem 0.35rem -1px rgba(0, 0, 0, .05)
+.modal-sm
 	max-width: 576px
 
 .md-modal
