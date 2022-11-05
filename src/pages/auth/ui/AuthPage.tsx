@@ -1,14 +1,15 @@
 import React, {Suspense} from "react"
-import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
+import {useSelector} from "react-redux"
 
 import {getUser} from "entities/user"
-import {LoginForm} from "features/auth/login/by-username"
-import {Info, InfoStatus} from "shared/ui/info/Info"
-import {NavLink} from "shared/ui/link/NavLink"
 
-import Title from "shared/ui/title/Title"
+import {LoginForm} from "features/auth/login/by-username"
+
 import {AppRoutes, RoutesPath} from "shared/config/router"
+import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
+import {NavLink} from "shared/ui/link/NavLink"
+import Header, {HeaderAlign} from "shared/ui/title/Header"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
@@ -24,7 +25,7 @@ function AuthPage() {
 
     if (authData) {
         return (
-            <Info title={t("вы уже вошли под именем", {username})} status={InfoStatus.SUCCESS} align="center">
+            <Info title={t("вы уже вошли под именем", {username})} status={InfoStatus.SUCCESS} align={InfoAlign.CENTER}>
                 <NavLink to={RoutesPath[AppRoutes.PROFILE]}>
                     {t("перейти в профиль")}
                 </NavLink>
@@ -36,7 +37,11 @@ function AuthPage() {
         <div className="content">
             <Suspense fallback={<PageLoader />}>
                 <div className="container login-container">
-                    <Title shadowed align="center">{t("войти")}</Title>
+                    <Header
+                        title={t("войти")}
+                        shadowed
+                        align={HeaderAlign.CENTER}
+                    />
                     <LoginForm onSuccess={successLoginHandler} />
                 </div>
             </Suspense>

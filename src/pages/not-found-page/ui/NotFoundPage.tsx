@@ -1,10 +1,10 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 
+import {classnames} from "shared/lib/helpers/classnames"
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Button} from "shared/ui/button/Button"
-import Title from "shared/ui/title/Title"
-import {classnames} from "shared/lib/helpers/classnames"
+import Header, {HeaderAlign} from "shared/ui/title/Header"
 
 import cls from "./NotFoundPage.module.sass"
 
@@ -15,9 +15,15 @@ interface NotFoundPageProps {
 
 function NotFoundPage({className}: NotFoundPageProps) {
 	const {t} = useTranslation()
+
 	return (
     <div className={classnames(cls, [ "not_found__page" ], {}, [ className, "centered", "vertical" ])}>
-        <Title align="center">{t("Страница не найдена")}</Title>
+        <Header
+            title={t("Страница не найдена")}
+            shadowed
+            align={HeaderAlign.CENTER}
+        />
+
         <Button href={RoutesPath[AppRoutes.HOME]}>
             {t("На главную")}
         </Button>

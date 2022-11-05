@@ -1,8 +1,5 @@
 import {getProfileCopy} from "entities/profile/model/selectors/getProfileCopy"
-import {getProfileData} from "entities/profile/model/selectors/getProfileData"
-import {
-    memo, useCallback, FormEvent, useMemo, useEffect,
-} from "react"
+import {memo, useCallback, FormEvent, useMemo} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
@@ -11,7 +8,7 @@ import {
     profileActions,
     getProfileValidateErrors,
     Profile,
-    ValidateProfileError, validateProfileData,
+    ValidateProfileError,
 } from "entities/profile"
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
@@ -78,7 +75,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
             header={<h4>{t("изменение профиля")}</h4>}
             open={show}
             onClose={closeHandler}
-            className="sm-modal"
+            className="modal-sm"
         >
             <form onSubmit={profileClick}>
                 <Input

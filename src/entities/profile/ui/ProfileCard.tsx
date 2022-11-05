@@ -1,5 +1,3 @@
-import {Country} from "entities/country"
-import {fetchProfileData} from "entities/profile"
 import React, {useEffect, useState} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
@@ -10,11 +8,12 @@ import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
-import {Info, InfoStatus} from "shared/ui/info/Info"
+import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
+import {fetchProfileData} from "../model/services/fetchProfileData"
 import {getProfileData} from "../model/selectors/getProfileData"
 import {getProfileError} from "../model/selectors/getProfileError"
 import {getProfileLoading} from "../model/selectors/getProfileLoading"
@@ -42,7 +41,7 @@ export const ProfileCard = () => {
 
     if (error) {
         return (
-            <Info title={t("произошла ошибка")} status={InfoStatus.ERROR} align="center">
+            <Info title={t("произошла ошибка")} status={InfoStatus.ERROR} align={InfoAlign.CENTER}>
                 {t("попробуйте перезагрузить страницу")}
             </Info>
         )

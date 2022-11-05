@@ -1,7 +1,6 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
-
-import Title from "shared/ui/title/Title"
+import Header, {HeaderAlign} from "shared/ui/title/Header"
 
 
 function HomePage() {
@@ -10,7 +9,11 @@ function HomePage() {
     return (
         <div className="content">
             <div className="container">
-                <Title shadowed>{t("Продвинутый курс на Реакт")}</Title>
+                <Header
+                    title={t("Продвинутый курс на Реакт")}
+                    shadowed
+                    align={HeaderAlign.CENTER}
+                />
             </div>
         </div>
     )
