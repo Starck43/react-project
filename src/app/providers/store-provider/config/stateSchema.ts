@@ -3,6 +3,7 @@ import {
 } from "@reduxjs/toolkit"
 import {AxiosInstance} from "axios"
 import {To} from "@remix-run/router"
+import {ArticleSchema} from "entities/article"
 
 import {CounterSchema} from "entities/counter"
 import {UserSchema} from "entities/user"
@@ -18,6 +19,7 @@ export interface StateSchema {
     // async reducers
     login?: LoginSchema
     profile?: ProfileSchema
+    article?: ArticleSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

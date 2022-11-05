@@ -1,0 +1,57 @@
+@import "/src/app/styles/mixins"
+
+.skeleton
+	--shimmer-color: #EFEFEF
+
+	display: block
+
+	@include skeleton-bone
+
+	.shimmer__element
+		margin-top: 1rem
+
+		&.avatar
+			flex: 0 1 auto
+			width: 100px
+			height: 100px
+			margin-right: 2rem
+			margin-bottom: 2rem
+			border-radius: 50rem !important
+
+		&.title
+			display: flex
+			flex: 1 0 80%
+			max-width: 80%
+			height: 1.6em
+
+		&.block
+			display: flex
+			flex: 1 0 100%
+			max-width: 100%
+			height: 150px
+
+	&.inlined
+		display: inline-block
+
+		.avatar
+			float: left
+
+	&.primary
+		--shimmer-color: var(--theme-primary-bg-color)
+
+		.shimmer__element
+			background-color: var(--theme-primary-skeleton-color)
+
+	&.secondary
+		--shimmer-color: var(--theme-secondary-bg-color)
+
+		.shimmer__element
+			background-color: var(--theme-secondary-skeleton-color)
+
+	&.rounded
+		.shimmer__element
+			border-radius: var(--border-radius)
+
+	&.primary, &.secondary
+		&::before
+			background: linear-gradient(to right, transparent 25%, var(--shimmer-color) 50%, transparent 75%)

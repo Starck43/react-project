@@ -1,5 +1,6 @@
 import {CombinedState, configureStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit"
 import {To} from "@remix-run/router"
+import {articleReducer} from "entities/article/model/slice/articleSlice"
 import {NavigateOptions} from "react-router/dist/lib/context"
 
 import {StateSchema, ThunkExtra} from "app/providers/store-provider/config/stateSchema"
@@ -20,6 +21,7 @@ export function createStore(
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        article: articleReducer,
     }
 
     const reducerManager = createReducerManager(rootReducers as ReducersMapObject<StateSchema>)

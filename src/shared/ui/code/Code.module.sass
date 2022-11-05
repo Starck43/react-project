@@ -1,0 +1,25 @@
+.code__wrapper
+	position: relative
+	width: 100%
+	color: var(--theme-primary-text-color)
+	background-color: var(--theme-code-bg-color)
+	overflow: hidden
+
+	.pre
+		width: 100%
+		padding: 3vh
+		overflow-x: auto
+
+
+	&.bordered
+		border: 2px solid var(--theme-primary-border-color)
+
+	&.rounded
+		border-radius: var(--border-radius)
+
+	.copy__btn
+		position: absolute
+		top: 3vh
+		right: 3vh
+		padding: 0
+		min-width: unset
