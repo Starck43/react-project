@@ -1,16 +1,16 @@
-import {getProfileCopy} from "entities/profile/model/selectors/getProfileCopy"
 import {memo, useCallback, FormEvent, useMemo} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import {Country} from "entities/country/model/types/country"
 import {
     profileActions,
     getProfileValidateErrors,
     Profile,
     ValidateProfileError,
 } from "entities/profile"
-import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
+import {getProfileCopy} from "entities/profile/model/selectors/getProfileCopy"
+import {Country} from "entities/country/model/types/country"
+
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {Modal} from "shared/ui/modal/Modal"
@@ -18,6 +18,7 @@ import Input from "shared/ui/input/Input"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import {Select} from "shared/ui/select/Select"
+import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
 import {updateProfileData} from "../model/services/updateProfileData"
 

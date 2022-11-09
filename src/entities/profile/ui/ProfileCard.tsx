@@ -41,9 +41,12 @@ export const ProfileCard = () => {
 
     if (error) {
         return (
-            <Info title={t("произошла ошибка")} status={InfoStatus.ERROR} align={InfoAlign.CENTER}>
-                {t("попробуйте перезагрузить страницу")}
-            </Info>
+            <Info
+                title={t("произошла ошибка")}
+                subtitle={t("попробуйте перезагрузить страницу")}
+                status={InfoStatus.ERROR}
+                align={InfoAlign.CENTER}
+            />
         )
     }
 

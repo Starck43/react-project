@@ -1,7 +1,7 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import Header, {HeaderAlign} from "shared/ui/title/Header"
+import Header, {HeaderAlign} from "shared/ui/header/Header"
 
 
 function AboutPage() {
@@ -9,11 +9,7 @@ function AboutPage() {
 
     return (
         <div className="container">
-            <Header
-                title={t("о нас")}
-                shadowed
-                align={HeaderAlign.CENTER}
-            />
+            <Header title={t("о нас")} shadowed align={HeaderAlign.CENTER} />
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. \
                 Culpa, dolorum, est, et harum hic illo inventore ipsam ipsum magnam  \

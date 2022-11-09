@@ -9,7 +9,7 @@ import {LoginForm} from "features/auth/login/by-username"
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 import {NavLink} from "shared/ui/link/NavLink"
-import Header, {HeaderAlign} from "shared/ui/title/Header"
+import Header, {HeaderAlign} from "shared/ui/header/Header"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
@@ -20,16 +20,21 @@ function AuthPage() {
     const username = authData?.username
 
     const successLoginHandler = () => {
-        console.log("success")
+        console.log("Login success")
     }
 
     if (authData) {
         return (
-            <Info title={t("вы уже вошли под именем", {username})} status={InfoStatus.SUCCESS} align={InfoAlign.CENTER}>
+            <>
+                <Info
+                    title={t("вы уже вошли под именем", {username})}
+                    status={InfoStatus.WARNING}
+                    align={InfoAlign.CENTER}
+                />
                 <NavLink to={RoutesPath[AppRoutes.PROFILE]}>
                     {t("перейти в профиль")}
                 </NavLink>
-            </Info>
+            </>
         )
     }
 
@@ -37,11 +42,7 @@ function AuthPage() {
         <div className="content">
             <Suspense fallback={<PageLoader />}>
                 <div className="container login-container">
-                    <Header
-                        title={t("войти")}
-                        shadowed
-                        align={HeaderAlign.CENTER}
-                    />
+                    <Header title={t("войти")} shadowed align={HeaderAlign.CENTER} />
                     <LoginForm onSuccess={successLoginHandler} />
                 </div>
             </Suspense>
