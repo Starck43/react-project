@@ -26,6 +26,7 @@ export enum InfoSize {
 
 export type InfoProps = {
     title?: string
+    subtitle?: string
     icon?: ReactNode
     status?: InfoStatus
     align?: InfoAlign
@@ -34,9 +35,9 @@ export type InfoProps = {
     className?: string
 }
 
-export const Info: FC<InfoProps> = (props) => {
+export const Info = (props: InfoProps) => {
     const {
-        children,
+        subtitle,
         icon,
         title,
         align = InfoAlign.LEFT,
@@ -47,12 +48,14 @@ export const Info: FC<InfoProps> = (props) => {
     } = props
 
     return (
-        <div className={classnames(cls, [ "text", status, size, align ], {inlined}, [ className ])}>
-            {title && <h2 className={cls.title}>{title}</h2>}
-            <p className={classnames(cls, [ "subtitle", align ])}>
-                {icon && <i className="icon">{icon}</i>}
-                <span>{children}</span>
-            </p>
+        <div className={classnames(cls, [ "info__block", status, size, align ], {inlined}, [ className ])}>
+            {title && <h3 className={cls.title}>{title}</h3>}
+            {subtitle && (
+                <p className={classnames(cls, [ "subtitle", align ], {}, [ "inline" ])}>
+                    {icon && <i className="icon">{icon}</i>}
+                    <span>{subtitle}</span>
+                </p>
+            )}
         </div>
     )
 }

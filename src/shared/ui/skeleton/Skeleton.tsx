@@ -54,7 +54,7 @@ export const Skeleton = memo((props: SkeletonProps) => {
 
     return (
         <div
-            className={classnames(cls, [ "skeleton", variant ], {rounded, inlined}, [ "flex-wrap", className ])}
+            className={classnames(cls, [ "skeleton", variant ], {rounded, inlined}, [ className ])}
             style={styles}
         >
             {elements && shimmerElements}

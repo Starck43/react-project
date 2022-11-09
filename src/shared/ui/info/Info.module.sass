@@ -1,18 +1,9 @@
 @import "/src/app/styles/vars"
 @import "/src/app/styles/common"
 
-.text
+.info__block
 	width: 100%
 	font-size: $info-header-multiplier
-
-	&.success
-		color: var(--theme-info-success)
-
-	&.warning
-		color: var(--theme-info-warning)
-
-	&.error
-		color: var(--theme-info-error)
 
 	&.extra_large
 		font-size: 1.6rem
@@ -26,9 +17,8 @@
 	&.small
 		font-size: 0.8rem
 
-.subtitle
-	padding: 0
-	display: inline-flex
+	.subtitle
+		padding: 0
 
 .inlined
 	@extend .inline
@@ -41,3 +31,13 @@
 
 .right
 	text-align: right
+
+
+.success
+	color: var(--theme-info-success)
+
+.warning
+	color: var(--theme-info-warning)
+
+.error
+	color: var(--theme-info-error)

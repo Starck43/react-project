@@ -12,27 +12,24 @@ export default {
 
 const Template: Story = (args: InfoProps) => <Info {...args} />
 
-
-export const Default = Template.bind({})
-Default.args = {
-    children: "Default",
-    status: InfoStatus.DEFAULT,
-}
-
+// TODO: add icon arg
 export const Success = Template.bind({})
 Success.args = {
-    children: "Success",
+    title: "Success",
+    subtitle: "Some description",
     status: InfoStatus.SUCCESS,
 }
 
 export const Warning = Template.bind({})
 Warning.args = {
-    children: "Warning",
+    title: "Warning",
+    subtitle: "Some description",
     status: InfoStatus.WARNING,
 }
 
 export const Error = Template.bind({})
 Error.args = {
-    children: "Error",
+    title: "Error",
+    subtitle: "Some description",
     status: InfoStatus.ERROR,
 }

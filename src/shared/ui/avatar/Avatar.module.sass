@@ -1,12 +1,41 @@
 .avatar__wrapper
-	position: relative
-	width: 100px
-	height: 100px
-	// background-color: var(--theme-primary-color)
-	overflow: hidden
+	display: flex
 
-	&.rounded
-		border-radius: 50rem
+	.image
+		--avatar-color: var(--theme-primary-color)
+
+		position: relative
+		width: 100px
+		height: 100px
+		// background-color: var(--theme-primary-color)
+		overflow: hidden
+
+		&.bordered
+			border: 2px solid var(--avatar-color)
+
+		&.rounded
+			border-radius: 50rem
+
+	.title
+		font-weight: bold
+
+	&.inlined
+		flex-direction: row
+
+		.title
+			margin-left: 0.5em
+
+	&.extra_large
+		font-size: 1.6rem
+
+	&.large
+		font-size: 1.2rem
+
+	&.medium
+		font-size: 1rem
+
+	&.small
+		font-size: 0.8rem
 
 .img
 	position: absolute
@@ -18,5 +47,5 @@
 	object-position: center
 
 .placeholder
-	margin: 10px
-	color: var(--theme-primary-bg-color)
+	margin: 10%
+	color: var(--avatar-color)
