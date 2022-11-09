@@ -32,7 +32,7 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
             mainFiles: [ "index" ],
             alias: {},
         },
-        devtool: isDev ? "inline-source-map" : undefined,
+        devtool: isDev ? "eval-source-map" : undefined,
         devServer: isDev ? buildWebpackDevServer(options) : undefined,
     }
 }
