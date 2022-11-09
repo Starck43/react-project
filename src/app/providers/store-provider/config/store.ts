@@ -1,13 +1,16 @@
 import {CombinedState, configureStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit"
 import {To} from "@remix-run/router"
-import {articleReducer} from "entities/article/model/slice/articleSlice"
 import {NavigateOptions} from "react-router/dist/lib/context"
 
 import {StateSchema, ThunkExtra} from "app/providers/store-provider/config/stateSchema"
+
+import {articleReducer} from "entities/article"
+import {commentsReducer} from "entities/comment"
 import {counterReducer} from "entities/counter"
 import {userReducer} from "entities/user"
-import {$api} from "shared/api/api"
+
 import {ReducerList} from "shared/lib/components/DynamicModuleLoader"
+import {$api} from "shared/api/api"
 
 import {createReducerManager} from "./reducerManager"
 
@@ -22,6 +25,7 @@ export function createStore(
         counter: counterReducer,
         user: userReducer,
         article: articleReducer,
+        comments: commentsReducer,
     }
 
     const reducerManager = createReducerManager(rootReducers as ReducersMapObject<StateSchema>)

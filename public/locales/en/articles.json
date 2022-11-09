@@ -1,7 +1,8 @@
 {
   "article": "Article",
   "articles": "Articles Page",
-  "Копировать код": "Копировать код",
+  "Копировать код": "Copy fragment",
+  "комментарии": "",
   "ошибка загрузки статьи!": "Article loading error!",
   "статья не найдена!": "Article not found!"
 }

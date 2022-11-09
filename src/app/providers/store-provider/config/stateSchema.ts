@@ -3,11 +3,12 @@ import {
 } from "@reduxjs/toolkit"
 import {AxiosInstance} from "axios"
 import {To} from "@remix-run/router"
-import {ArticleSchema} from "entities/article"
 
+import {ArticleSchema} from "entities/article"
 import {CounterSchema} from "entities/counter"
 import {UserSchema} from "entities/user"
 import {ProfileSchema} from "entities/profile"
+import {ArticleCommentsSchema} from "entities/comment"
 import {LoginSchema} from "features/auth/login/by-username"
 import {NavigateOptions} from "react-router/dist/lib/context"
 
@@ -20,6 +21,7 @@ export interface StateSchema {
     login?: LoginSchema
     profile?: ProfileSchema
     article?: ArticleSchema
+    comments?: ArticleCommentsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

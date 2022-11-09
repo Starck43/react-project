@@ -1,5 +1,6 @@
 import {Country} from "entities/country"
-import {ValidateProfileError} from "entities/profile"
+
+import {ValidateProfileError} from "../types/profile"
 import {validateProfileData} from "./validateProfileData"
 
 

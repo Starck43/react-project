@@ -1,5 +1,5 @@
 export {ArticleDetailsCard} from "./ui/ArticleDetailsCard"
 export type {Article} from "./model/types/article"
 export type {ArticleSchema} from "./model/types/articleSchema"
-export {articleSlice, articleActions} from "./model/slice/articleSlice"
+export {articleSlice, articleReducer, articleActions} from "./model/slice/articleSlice"
 export {getArticleData, getArticleLoading, getArticleError} from "./model/selectors/getArticleDetails"

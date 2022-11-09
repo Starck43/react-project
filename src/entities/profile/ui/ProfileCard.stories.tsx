@@ -1,6 +1,7 @@
-import {ComponentMeta, ComponentStory, Story} from "@storybook/react"
+import {ComponentMeta, Story} from "@storybook/react"
+
 import {Country} from "entities/country"
-import {ProfileSchema} from "entities/profile"
+
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 import Avatar from "shared/assets/icons/avatar-profile.png"
 
@@ -44,5 +45,5 @@ Loading.args = {
 
 export const Error = Template.bind({})
 Error.args = {
-    error: "true",
+    error: "some error",
 }

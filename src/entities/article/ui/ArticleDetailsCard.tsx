@@ -9,7 +9,7 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Info, InfoAlign} from "shared/ui/info/Info"
-import Header, {HeaderAlign, TitleType} from "shared/ui/title/Header"
+import Header, {HeaderAlign, TitleType} from "shared/ui/header/Header"
 
 import {getArticleData, getArticleError, getArticleLoading} from "../model/selectors/getArticleDetails"
 import {fetchArticleById} from "../model/services/fetchArticleById"
@@ -61,7 +61,7 @@ export const ArticleDetailsCard = memo(({id, className}: ArticleDetailsCardProps
     let content
 
     if (isLoading) {
-        content = (<ArticleSkeleton className="mb-2" />)
+        content = (<ArticleSkeleton rounded className="mb-2" />)
     }
 
     if (error) {
