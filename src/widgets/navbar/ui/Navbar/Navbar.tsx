@@ -27,13 +27,7 @@ function Navbar({className}: NavbarProps) {
                 {NavbarItemsList.map((item) => (
                     item.authOnly && !authData
                     ? null
-                    : (
-                        <NavItem
-                            key={item.path}
-                            {...item}
-                            text={t("menu", {context: item.text})}
-                        />
-                    )
+                    : <NavItem key={item.path} {...item} text={t("menu", {context: item.text})} />
                 ))}
             </div>
             <div className={classnames(cls, [ "navbar__icons" ], {}, [ "centered" ])}>
