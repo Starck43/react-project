@@ -27,7 +27,7 @@ export enum HeaderCase {
 
 type HeaderProps = {
     children?: ReactNode
-    title: string
+    title: ReactNode | string
     subTitle?: string
     titleType?: TitleType
     align?: HeaderAlign
@@ -48,15 +48,15 @@ const Header = (props: HeaderProps) => {
         className,
     } = props
 
-    const titleElement = useMemo(() => createElement(
-        titleType,
-        {className: classnames(cls, [ "title", transform ])},
-        title,
-    ), [ title, transform, titleType ])
+    const titleElement = useMemo(() => (
+        typeof title === "string"
+            ? createElement(titleType, {className: classnames(cls, [ "title", transform ])}, title)
+            : title
+    ), [ title, titleType, transform ])
 
     return (
         <div className={classnames(cls, [ "header", align ], {shadowed}, [ className ])}>
-            {titleElement && titleElement}
+            {titleElement}
             {subTitle && <p className={cls.subtitle}>{subTitle}</p>}
             {children}
         </div>
