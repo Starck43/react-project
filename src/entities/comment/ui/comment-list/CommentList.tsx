@@ -1,23 +1,29 @@
-import {memo} from "react"
+import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 
+import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 
-import {CommentCard} from "../comment-card/CommentCard"
-import {ArticleComment} from "../../model/types/comments"
+import {Comment} from "../../model/types/comments"
+import {commentsReducer} from "../../model/slice/commentsSlice"
+import {CommentDetails} from "../comment-details/CommentDetails"
+import {CommentSkeleton} from "../comment-skeleton/CommentSkeleton"
 
 import cls from "./CommentList.module.sass"
 
 
-interface CommentsListProps {
-    comments?: ArticleComment[]
-    isLoading: boolean
+interface CommentListProps {
+    comments?: Comment[]
+    isLoading?: boolean
     error?: string
     className?: string
 }
 
-export const CommentList = memo(({comments, isLoading, error, className}: CommentsListProps) => {
+const initialReducer: ReducerList = {comments: commentsReducer}
+
+export const CommentList = memo((props: CommentListProps) => {
+    const {comments, isLoading, error, className} = props
     const {t} = useTranslation("comments")
 
     if (error) {
@@ -31,12 +37,18 @@ export const CommentList = memo(({comments, isLoading, error, className}: Commen
         )
     }
 
-    console.log(comments)
+    if (isLoading) return <CommentSkeleton rounded inlined />
+
+
     return (
-        <div className={classnames(cls, [ "comment__list" ], {}, [ className ])}>
-            {comments?.length
-                ? comments.map((comment) => <CommentCard data={comment} isLoading={isLoading} key={comment.id} />)
-                : <Info subtitle={t("комментарий отсутствует!")} align={InfoAlign.CENTER} />}
-        </div>
+        <DynamicModuleLoader reducers={initialReducer}>
+            <section className={classnames(cls, [ "comments__list" ], {}, [ className ])}>
+                <div className={cls.comment__list}>
+                    {comments?.length
+                        ? comments.map((comment) => <CommentDetails data={comment} key={comment.id} />)
+                        : <Info subtitle={t("комментарии отсутствуют!")} align={InfoAlign.CENTER} />}
+                </div>
+            </section>
+        </DynamicModuleLoader>
     )
 })

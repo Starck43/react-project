@@ -9,11 +9,27 @@ interface CommentSkeletonProps {
 }
 
 export const CommentSkeleton = memo(({rounded = false, inlined = false, className}: CommentSkeletonProps) => (
-    <Skeleton
-        variant={SkeletonVariant.PRIMARY}
-        elements={[ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ]}
-        rounded={rounded}
-        inlined={inlined}
-        className={className}
-    />
+    <>
+        <Skeleton
+            variant={SkeletonVariant.PRIMARY}
+            elements={[ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ]}
+            rounded={rounded}
+            inlined={inlined}
+            className={className}
+        />
+        <Skeleton
+            variant={SkeletonVariant.PRIMARY}
+            elements={[ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ]}
+            rounded={rounded}
+            inlined={inlined}
+            className={className}
+        />
+        <Skeleton
+            variant={SkeletonVariant.PRIMARY}
+            elements={[ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ]}
+            rounded={rounded}
+            inlined={inlined}
+            className={className}
+        />
+    </>
 ))

@@ -108,6 +108,12 @@
       "text": "some comment 4",
       "articleId": "2",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "some comment 4",
+      "id": "qyXLtKf"
     }
   ],
   "users": [
@@ -125,13 +131,26 @@
       "role": "GUEST"
     }
   ],
-  "profile": {
-    "name": "Станислав",
-    "surname": "Шабалин",
-    "email": "John.mcqueen@gmail.com",
-    "phone": "007123456789",
-    "avatar": "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png",
-    "username": "admin",
-    "country": "Cyprus"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "name": "Станислав",
+      "surname": "Шабалин",
+      "email": "John.mcqueen@gmail.com",
+      "phone": "007123456789",
+      "avatar": "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png",
+      "username": "admin",
+      "country": "Cyprus"
+    },
+    {
+      "id": "2",
+      "name": "Евгений",
+      "surname": "Шабалин",
+      "email": "eugene@yandex.ru",
+      "phone": "007123456780",
+      "avatar": "https://rognowsky.ru/wp-content/uploads/2019/09/u55628068.jpg",
+      "username": "guest",
+      "country": "Russia"
+    }
+  ]
 }

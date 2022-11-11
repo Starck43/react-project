@@ -1,4 +1,4 @@
-import {ValidateCommentError} from "../types/comments"
+import {ValidateCommentError} from "../../../../entities/comment/model/types/comments"
 import {validateCommentsData} from "./validateCommentsData"
 
 

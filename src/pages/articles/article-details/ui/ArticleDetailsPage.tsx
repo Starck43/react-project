@@ -1,31 +1,21 @@
 import {memo} from "react"
-import {useSelector} from "react-redux"
 import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
-import {ArticleDetailsCard} from "entities/article"
-import {
-    CommentList, commentsReducer, fetchCommentsData, getCommentsData, getCommentsError, getCommentsLoading,
-} from "entities/comment"
+import {ArticleDetailsCard, articleReducer} from "entities/article"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
+import Header, {HeaderAlign, TitleType} from "shared/ui/header/Header"
 import {Info, InfoAlign} from "shared/ui/info/Info"
-import Header, {HeaderAlign} from "shared/ui/header/Header"
 
+import {ArticleCommentsCard} from "./comments-card/ArticleCommentsCard"
+
+
+const initialReducers: ReducerList = {article: articleReducer}
 
 function ArticleDetailsPage() {
     const {t} = useTranslation("articles")
-    const {id} = useParams<{ id: string }>()
-    const comments = useSelector(getCommentsData.selectAll)
-    const isLoading = useSelector(getCommentsLoading)
-    const error = useSelector(getCommentsError)
-    const dispatch = useAppDispatch()
-
-    useInitialEffect(() => dispatch(fetchCommentsData(id)))
-
-    const initialReducers: ReducerList = {profile: commentsReducer}
+    const {id = "1"} = useParams<{ id: string }>()
 
     if (!id) {
         return <Info title={t("статья не найдена!")} align={InfoAlign.CENTER} />
@@ -35,14 +25,9 @@ function ArticleDetailsPage() {
         <DynamicModuleLoader reducers={initialReducers}>
             <div className="content">
                 <div className="container">
-                    <Header title={t("article")} shadowed align={HeaderAlign.CENTER} />
-                    <ArticleDetailsCard id={id} />
-                    <Header title={t("комментарии")} shadowed className="mt-2" />
-                    <CommentList
-                        isLoading={isLoading}
-                        error={error}
-                        comments={comments}
-                    />
+                    <Header title={t("статья")} shadowed titleType={TitleType.H1} align={HeaderAlign.CENTER} />
+                    <ArticleDetailsCard articleId={id} />
+                    <ArticleCommentsCard articleId={id} />
                 </div>
             </div>
         </DynamicModuleLoader>

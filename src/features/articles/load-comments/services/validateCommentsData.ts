@@ -1,7 +1,7 @@
-import {ArticleComment, ValidateCommentError} from "../types/comments"
+import {Comment, ValidateCommentError} from "../../../../entities/comment/model/types/comments"
 
 
-export const validateCommentsData = (comment?: DeepPartial<ArticleComment>) => {
+export const validateCommentsData = (comment?: DeepPartial<Comment>) => {
     if (!comment) return [ ValidateCommentError.NO_DATA ]
 
     const {text} = comment

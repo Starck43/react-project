@@ -8,8 +8,9 @@ import {ArticleSchema} from "entities/article"
 import {CounterSchema} from "entities/counter"
 import {UserSchema} from "entities/user"
 import {ProfileSchema} from "entities/profile"
-import {ArticleCommentsSchema} from "entities/comment"
+import {CommentSchema} from "entities/comment"
 import {LoginSchema} from "features/auth/login/by-username"
+import {NewCommentSchema} from "features/comments/new-comment"
 import {NavigateOptions} from "react-router/dist/lib/context"
 
 
@@ -21,7 +22,8 @@ export interface StateSchema {
     login?: LoginSchema
     profile?: ProfileSchema
     article?: ArticleSchema
-    comments?: ArticleCommentsSchema
+    comments?: CommentSchema
+    newComment?: NewCommentSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

@@ -1,15 +1,17 @@
-import {memo, useCallback, useEffect} from "react"
+import {memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
-import EventIcon from "shared/assets/icons/calendar-20-20.svg"
-import EyeIcon from "shared/assets/icons/eye-20-20.svg"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {Avatar} from "shared/ui/avatar/Avatar"
+import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import {Info, InfoAlign} from "shared/ui/info/Info"
 import Header, {HeaderAlign, TitleType} from "shared/ui/header/Header"
+import {Avatar} from "shared/ui/avatar/Avatar"
+import EventIcon from "shared/assets/icons/calendar-20-20.svg"
+import EyeIcon from "shared/assets/icons/eye-20-20.svg"
+
 
 import {getArticleData, getArticleError, getArticleLoading} from "../model/selectors/getArticleDetails"
 import {fetchArticleById} from "../model/services/fetchArticleById"
@@ -25,24 +27,22 @@ import cls from "./ArticleDetailsCard.module.sass"
 
 
 interface ArticleDetailsCardProps {
-    id: string
+    articleId: string
     className?: string
 }
 
 const initialReducers: ReducerList = {article: articleReducer}
 
-export const ArticleDetailsCard = memo(({id, className}: ArticleDetailsCardProps) => {
+export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCardProps) => {
     const {t} = useTranslation("articles")
     const dispatch = useAppDispatch()
     const article = useSelector(getArticleData)
     const isLoading = useSelector(getArticleLoading)
     const error = useSelector(getArticleError)
 
-    useEffect(() => {
-        if (__PROJECT__ !== "storybook") {
-        dispatch(fetchArticleById(id))
-        }
-    }, [ dispatch, id ])
+    useInitialEffect(() => {
+        dispatch(fetchArticleById(articleId))
+    })
 
     const renderBlock = useCallback((block: ArticleBlock) => {
         // eslint-disable-next-line default-case
@@ -70,7 +70,8 @@ export const ArticleDetailsCard = memo(({id, className}: ArticleDetailsCardProps
 
     if (article) {
         content = (
-            <>
+            <div className={classnames(cls, [ "article__details" ], {}, [ className ])}>
+
                 <Avatar src={article?.img} rounded className="mb-2" />
                 <Header
                     title={article?.title}
@@ -81,16 +82,18 @@ export const ArticleDetailsCard = memo(({id, className}: ArticleDetailsCardProps
                     <div className="inline size-sm"><EventIcon /><span>{article?.createdAt}</span></div>
                     <div className="inline size-sm"><EyeIcon /><span>{article?.views}</span></div>
                 </Header>
-                <div className={cls.blocks}>{article?.blocks.map(renderBlock)}</div>
-            </>
+
+                <div className={cls.blocks}>
+                    {article?.blocks.map(renderBlock)}
+                </div>
+
+            </div>
         )
     }
 
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount>
-            <div className={classnames(cls, [ "article__details" ], {}, [ className ])}>
-                {content}
-            </div>
+            {content}
         </DynamicModuleLoader>
     )
 })

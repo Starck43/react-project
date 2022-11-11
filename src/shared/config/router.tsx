@@ -28,9 +28,9 @@ export const RoutesPath: Record<AppRoutes, string> = {
     [AppRoutes.HOME]: "/",
     [AppRoutes.ABOUT]: "/about",
     [AppRoutes.ARTICLES]: "/articles",
-    [AppRoutes.ARTICLE_DETAILS]: "/articles/", // TODO: add "id" to route
+    [AppRoutes.ARTICLE_DETAILS]: "/articles/", // + ":id" TODO: add "id" to route
     [AppRoutes.AUTH]: "/auth",
-    [AppRoutes.PROFILE]: "/profile",
+    [AppRoutes.PROFILE]: "/profile/", // + ":id"
     [AppRoutes.NOT_FOUND_PAGE]: "/*",
 }
 
@@ -58,7 +58,7 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         element: <AuthPage />,
     },
     [AppRoutes.PROFILE]: {
-        path: RoutesPath[AppRoutes.PROFILE],
+        path: `${RoutesPath[AppRoutes.PROFILE]}:id`,
         element: <ProfilePage />,
         authOnly: true,
     },

@@ -1,4 +1,4 @@
-import {ArticleSchema} from "entities/article"
+import {Article} from "entities/article"
 import {ArticleBlockType, ArticleType} from "entities/article/model/types/article"
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
@@ -15,9 +15,7 @@ export default {
 
 const Template: ComponentStory<typeof ArticleDetailsCard> = (args) => <ArticleDetailsCard {...args} />
 
-const article: ArticleSchema = {
-    isLoading: false,
-    data: {
+const article: Article = {
         id: "1",
         title: "Javascript news",
         subtitle: "Что нового в JS за 2022 год?",
@@ -64,21 +62,17 @@ const article: ArticleSchema = {
                 ],
             },
         ],
-
-    },
 }
 
 export const Default = Template.bind({})
 Default.args = {}
-
 Default.decorators = [
-    StoreDecorator({article}),
+    StoreDecorator({article: {data: article}}),
 ]
 
 
 export const Loading = Template.bind({})
 Loading.args = {}
-
 Loading.decorators = [
     StoreDecorator({
         article: {isLoading: true},

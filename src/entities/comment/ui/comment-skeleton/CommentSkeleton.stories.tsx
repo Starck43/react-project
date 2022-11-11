@@ -5,7 +5,7 @@ import {CommentSkeleton} from "./CommentSkeleton"
 
 
 export default {
-    title: "entities/Article/Skeleton",
+    title: "entities/Comments/Skeleton",
     component: CommentSkeleton,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof CommentSkeleton>

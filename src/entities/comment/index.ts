@@ -1,11 +1,6 @@
-export type {ArticleComment, ArticleCommentsSchema} from "./model/types/comments"
-
-export {getCommentsLoading, getCommentsError} from "./model/selectors/getComments"
-export {getCommentsData, commentsReducer} from "./model/slice/commentsSlice"
-export {fetchCommentsData} from "./model/services/fetchCommentsData"
-// export {validateCommentsData} from "./model/services/validateCommentsData"
-
+export type {Comment, CommentSchema} from "./model/types/comments"
 export {ValidateCommentError} from "./model/types/comments"
-
-export {CommentCard} from "./ui/comment-card/CommentCard"
+export {commentsReducer, getCommentsData} from "./model/slice/commentsSlice"
+export {getCommentsLoading, getCommentsError} from "./model/selectors/getComments"
+export {CommentSkeleton} from "./ui/comment-skeleton/CommentSkeleton"
 export {CommentList} from "./ui/comment-list/CommentList"

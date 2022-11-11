@@ -1,18 +1,19 @@
 import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 import {StateSchema} from "app/providers/store-provider"
-import {ArticleComment, ArticleCommentsSchema, fetchCommentsData} from "entities/comment"
+import {fetchCommentsData} from "../../../../features/articles/load-comments/services/fetchCommentsData"
+import {Comment, CommentSchema} from "../types/comments"
 
 
 
-const commentsAdapter = createEntityAdapter<ArticleComment>({
+const commentsAdapter = createEntityAdapter<Comment>({
     selectId: (comment) => comment.id,
     // sortComparer: (a, b) => b.id.localeCompare(a.id),
 })
 
 const commentsSlice = createSlice({
     name: "comments",
-    initialState: commentsAdapter.getInitialState<ArticleCommentsSchema>({
+    initialState: commentsAdapter.getInitialState<CommentSchema>({
         isLoading: false,
         error: undefined,
         data: undefined,
@@ -20,7 +21,7 @@ const commentsSlice = createSlice({
         entities: {},
     }),
     reducers: {
-        update: (state, action: PayloadAction<ArticleComment>) => {
+        update: (state, action: PayloadAction<Comment>) => {
             // state.data = {...state.data, ...action.payload}
             // state.copy = {...state.copy, ...action.payload}
         },
@@ -34,7 +35,7 @@ const commentsSlice = createSlice({
             state.isLoading = true
             state.error = undefined
         })
-        .addCase(fetchCommentsData.fulfilled, (state, action: PayloadAction<ArticleComment[]>) => {
+        .addCase(fetchCommentsData.fulfilled, (state, action: PayloadAction<Comment[]>) => {
             state.isLoading = false
             commentsAdapter.setAll(state, action.payload)
         })

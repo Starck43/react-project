@@ -1,5 +1,6 @@
 import {CombinedState, configureStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit"
 import {To} from "@remix-run/router"
+import {newCommentReducer} from "features/comments/new-comment"
 import {NavigateOptions} from "react-router/dist/lib/context"
 
 import {StateSchema, ThunkExtra} from "app/providers/store-provider/config/stateSchema"
@@ -26,6 +27,7 @@ export function createStore(
         user: userReducer,
         article: articleReducer,
         comments: commentsReducer,
+        newComment: newCommentReducer,
     }
 
     const reducerManager = createReducerManager(rootReducers as ReducersMapObject<StateSchema>)

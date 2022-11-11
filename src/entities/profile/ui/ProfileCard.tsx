@@ -1,40 +1,44 @@
-import React, {useEffect, useState} from "react"
+import React, {useState} from "react"
 import {useSelector} from "react-redux"
+import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
-import {UpdateProfileForm} from "features/update-profile"
+import {getUser} from "entities/user"
 import {Logout} from "features/auth/logout"
+import {UpdateProfileForm} from "features/update-profile"
+
+import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
+import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
-import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
+import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
 
-import {PageLoader} from "widgets/page-loader/PageLoader"
-
-import {fetchProfileData} from "../model/services/fetchProfileData"
 import {getProfileData} from "../model/selectors/getProfileData"
 import {getProfileError} from "../model/selectors/getProfileError"
 import {getProfileLoading} from "../model/selectors/getProfileLoading"
+import {fetchProfileData} from "../model/services/fetchProfileData"
 
 
-import cls from "./ProfileCard.module.sass"
 import {translatedCountry} from "../lib"
+import cls from "./ProfileCard.module.sass"
 
 
 export const ProfileCard = () => {
     const {i18n, t} = useTranslation("auth")
     const dispatch = useAppDispatch()
-    const data = useSelector(getProfileData)
+    const auth = useSelector(getUser)
+    const profile = useSelector(getProfileData)
     const error = useSelector(getProfileError)
     const isLoading = useSelector(getProfileLoading)
+    const {id} = useParams<{ id: string }>()
+    const hasAccess = profile && auth?.id === profile?.id
 
-    useEffect(() => {
-        if (__PROJECT__ !== "storybook") {
-            dispatch(fetchProfileData())
-        }
-    }, [ dispatch ])
+    useInitialEffect(() => {
+        dispatch(fetchProfileData(id))
+    })
 
     const [ isShowLogout, setShowLogout ] = useState(false)
     const [ isShowProfile, setShowProfile ] = useState(false)
@@ -54,33 +58,36 @@ export const ProfileCard = () => {
     return (
         <>
             <div data-testid="profile-card" className={cls.profile}>
-                {isLoading && <PageLoader />}
+                {isLoading && <Skeleton rounded elements={[ SkeletonElementType.AVATAR, SkeletonElementType.BLOCK ]} />}
                 <div className={cls.table}>
-                    <Avatar src={data?.avatar} rounded alt={data?.username} />
+                    <Avatar src={profile?.avatar} rounded alt={profile?.username} />
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("имя")}</span>
-                        <span className={cls.cell__value}>{capitalizeFirstLetter(data?.name)}</span>
+                        <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.name)}</span>
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("фамилия")}</span>
-                        <span className={cls.cell__value}>{capitalizeFirstLetter(data?.surname)}</span>
+                        <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.surname)}</span>
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("email")}</span>
-                        <span className={cls.cell__value}>{data?.email?.toLowerCase()}</span>
+                        <span className={cls.cell__value}>{profile?.email?.toLowerCase()}</span>
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("телефон")}</span>
-                        <span className={cls.cell__value}>{data?.phone}</span>
+                        <span className={cls.cell__value}>{profile?.phone}</span>
                     </div>
                     <div className={cls.row}>
                         <span className={cls.cell__title}>{t("страна")}</span>
                         <span className={cls.cell__value}>
-                            {translatedCountry(data?.country, i18n.language)}
+                            {translatedCountry(profile?.country, i18n.language)}
                         </span>
                     </div>
                 </div>
 
+                {/* TODO: check if user is authorized */}
+                {hasAccess
+                && (
                 <div className="flex-end g-1 w-100 mt-2">
                     <Button
                         feature={ButtonFeature.BLANK}
@@ -92,24 +99,25 @@ export const ProfileCard = () => {
                     </Button>
 
                     <Button
-                        data-testid="logoutBtn"
+                        profile-testid="logoutBtn"
                         feature={ButtonFeature.BLANK}
                         bordered
                         disabled={isLoading}
                         onClick={() => setShowLogout(true)}
                     >
-                        {t("выйти", {data})}
+                        {t("выйти", {profile})}
                     </Button>
                 </div>
+)}
             </div>
 
-            {data && isShowProfile && (
+            {hasAccess && isShowProfile && (
                 <UpdateProfileForm
                     show={isShowProfile}
                     closeHandler={() => setShowProfile((prev) => !prev)}
                 />
             )}
-            {data && isShowLogout && (
+            {hasAccess && isShowLogout && (
                 <Logout
                     show={isShowLogout}
                     closeHandler={() => setShowLogout((prev) => !prev)}
