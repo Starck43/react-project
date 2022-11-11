@@ -1,8 +1,10 @@
+import {PayloadAction} from "@reduxjs/toolkit"
 import React, {Suspense} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
+import {useNavigate} from "react-router-dom"
 
-import {getUser} from "entities/user"
+import {getUser, User} from "entities/user"
 
 import {LoginForm} from "features/auth/login/by-username"
 
@@ -18,23 +20,25 @@ function AuthPage() {
     const authData = useSelector(getUser)
     const {t} = useTranslation("auth")
     const username = authData?.username
+    const navigate = useNavigate()
 
-    const successLoginHandler = () => {
-        console.log("Login success")
+    const successLoginHandler = (res: User) => {
+        console.log("Login success:", res)
+        navigate(RoutesPath[AppRoutes.PROFILE] + res.id)
     }
 
-    if (authData) {
+    if (authData?.id) {
         return (
-            <>
+            <div className="centered vertical w-100">
                 <Info
                     title={t("вы уже вошли под именем", {username})}
                     status={InfoStatus.WARNING}
                     align={InfoAlign.CENTER}
                 />
-                <NavLink to={RoutesPath[AppRoutes.PROFILE]}>
+                <NavLink to={RoutesPath[AppRoutes.PROFILE] + authData.id}>
                     {t("перейти в профиль")}
                 </NavLink>
-            </>
+            </div>
         )
     }
 

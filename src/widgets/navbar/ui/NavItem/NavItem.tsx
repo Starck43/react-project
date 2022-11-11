@@ -2,8 +2,7 @@ import React, {memo} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {NavLink} from "shared/ui/link/NavLink"
-
-import {NavbarItemType} from "../../model/items"
+import {NavbarItemType} from "widgets/navbar/model/types/navbar"
 
 import cls from "./NavItem.module.sass"
 

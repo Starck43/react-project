@@ -4,13 +4,13 @@ import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
 import {getUser} from "entities/user"
+
 import {Logout} from "features/auth/logout"
 import {UpdateProfileForm} from "features/update-profile"
 
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
-
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
@@ -21,8 +21,8 @@ import {getProfileError} from "../model/selectors/getProfileError"
 import {getProfileLoading} from "../model/selectors/getProfileLoading"
 import {fetchProfileData} from "../model/services/fetchProfileData"
 
-
 import {translatedCountry} from "../lib"
+
 import cls from "./ProfileCard.module.sass"
 
 

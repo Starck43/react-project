@@ -1,3 +1,6 @@
+import {PayloadAction} from "@reduxjs/toolkit"
+import {resolve} from "dns"
+import {User} from "entities/user"
 import {memo, useCallback} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
@@ -22,7 +25,7 @@ import cls from "./LoginForm.module.sass"
 
 export interface LoginFormProps {
     className?: string
-    onSuccess?: ()=> void
+    onSuccess?: (res: any) => void
 }
 
 const initialReducers: ReducerList = {login: loginReducer}
@@ -49,7 +52,7 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
         // async post request to server for verifying login data and then dispatching success result
         const res = await dispatch(loginByUsername({username, password}))
         if (res.meta.requestStatus === "fulfilled") {
-            onSuccess?.()
+            onSuccess?.(res.payload)
         }
     }, [ onSuccess, dispatch, password, username ])
 

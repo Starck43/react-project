@@ -3,6 +3,7 @@
 .navbar
 	position: sticky
 	display: flex
+	align-items: center
 	justify-content: space-between
 	width: 100%
 	height: var(--navbar-height)
@@ -13,13 +14,13 @@
 	//box-shadow: 0 -2px 14px var(--theme-navbar-bg-color)
 	z-index: 30
 
-.navbar__items
+.navbar__left
 	display: flex
 	width: auto
 	height: 100%
-	flex: 1
+	flex: auto
 
-.navbar__icons
+.navbar__right
 	flex-grow: 0
 	margin-right: $nav-link-margin * 1.8
 	color: var(--theme-navbar-link-color)

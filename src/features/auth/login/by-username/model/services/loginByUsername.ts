@@ -2,7 +2,6 @@ import {createAsyncThunk} from "@reduxjs/toolkit"
 import {ThunkConfig} from "app/providers/store-provider/config/stateSchema"
 
 import {User, userActions} from "entities/user"
-import {AppRoutes, RoutesPath} from "shared/config/router"
 
 
 interface LoginUser {
@@ -22,7 +21,7 @@ export const loginByUsername = createAsyncThunk<User, LoginUser, ThunkConfig<str
             }
             const res = response.data
             dispatch(userActions.setAuthData(res))
-            extra.navigate?.(RoutesPath[AppRoutes.PROFILE])
+            // extra.navigate?.(RoutesPath[AppRoutes.PROFILE] + res.id)
             return res
         } catch (e) {
             console.log(e)

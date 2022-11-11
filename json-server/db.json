@@ -114,6 +114,12 @@
       "userId": "1",
       "text": "some comment 4",
       "id": "qyXLtKf"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "New comment",
+      "id": "GqITgSH"
     }
   ],
   "users": [
