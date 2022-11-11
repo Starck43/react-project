@@ -4,24 +4,24 @@ import {
     ForwardedRef,
     InputHTMLAttributes,
     TextareaHTMLAttributes,
-    ChangeEvent,
+    ChangeEvent, HTMLProps,
 } from "react"
 import {classnames} from "shared/lib/helpers/classnames"
 
 import cls from "./Input.module.sass"
 
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange" | "readOnly" >
+type HTMLInputType<T> = Omit<InputHTMLAttributes<T>, "value" | "onChange" | "readOnly">
 
-interface InputProps extends HTMLInputProps {
+interface InputProps<T> extends HTMLInputType<T> {
     rounded?: boolean
     value?: string
-    readonly? : boolean
+    readonly?: boolean
     // eslint-disable-next-line no-unused-vars
     onChange?: (value: string, name?: string) => void
 }
 
-const Input = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
+const Input = (props: InputProps<HTMLInputElement>, ref: ForwardedRef<HTMLInputElement>) => {
     const {
         type = "text",
         value = "",
@@ -51,13 +51,26 @@ const Input = (props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
 
 export default memo(forwardRef(Input))
 
-export const TextArea = memo((props: TextareaHTMLAttributes<HTMLTextAreaElement>) => {
-    const {className, ...other} = props
 
+export const TextArea = memo((props: InputProps<HTMLTextAreaElement>) => {
+    const {
+        value = "",
+        rounded = false,
+        readonly = false,
+        onChange,
+        className,
+        ...other
+    } = props
+
+    const onChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        onChange?.(e.target.value)
+    }
     return (
         <textarea
+            value={value}
+            onChange={onChangeHandler}
             {...other}
-            className={classnames(cls, [ "input__textarea", "input" ], {}, [ className ])}
+            className={classnames(cls, [ "input__textarea", "input" ], {rounded, readonly}, [ className ])}
         />
     )
 })
