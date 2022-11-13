@@ -47,8 +47,8 @@ export const Skeleton = memo((props: SkeletonProps) => {
 
     // TODO: styles for every shimmer element inside skeleton
     const shimmerElements = useMemo(() => (
-        elements?.map((item) => (
-            <div key={item} className={classnames(cls, [ "shimmer__element", item ])} />
+        elements?.map((item, i) => (
+            <div key={i} className={classnames(cls, [ "shimmer__element", item ])} />
         ))
     ), [ elements ])
 
