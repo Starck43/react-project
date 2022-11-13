@@ -1,4 +1,5 @@
 import React, {memo} from "react"
+import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {NavLink, NavLinkFeature} from "shared/ui/link/NavLink"
@@ -8,18 +9,22 @@ import cls from "./NavItem.module.sass"
 
 
 const NavItem = memo((item: NavbarItemType) => {
-    const {path, text, Icon, ...other} = item
+    const {
+        path, text, Icon, authOnly, ...other
+    } = item
+    const {t} = useTranslation("navbar")
 
     return (
         <NavLink
             key={path}
             to={path}
             feature={NavLinkFeature.CLEAR}
-            className={classnames(cls, [ "navbar__item" ], {text}, [ "inline" ])}
+            className={classnames(cls, [ "navbar__item" ], {}, [ "inline" ])}
             {...other}
         >
             {Icon && <Icon />}
-            {text && <span>{text}</span>}
+            {/* TODO: fix error with Username in translation */}
+            {text && <span>{t("menu", {context: text, defaultValue: text})}</span>}
         </NavLink>
     )
 })

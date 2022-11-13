@@ -25,13 +25,13 @@ const Navbar = ({className}: NavbarProps) => {
             {itemsList[key].map((item: NavbarItemType) => (
                 <NavItem
                     data-testid={item.id}
-                    text={item.text && t("menu", {context: item.text})}
+                    text={item.text}
                     {...item}
                     key={item.path}
                 />
-            ))}
+                ))}
         </div>
-    ))), [ itemsList, t ])
+    ))), [ itemsList ])
 
     return (
         <nav className={classnames(cls, [ "navbar", className ])}>

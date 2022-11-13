@@ -1,6 +1,7 @@
 import {SVGProps, VFC} from "react"
 
 export type NavGroupType = "left" | "center" | "right"
+
 export interface NavbarItemType {
     id: string
     text?: string
