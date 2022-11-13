@@ -1,10 +1,12 @@
-import {ArticleListSkeleton} from "entities/article/ui/article-list-skeleton/ArticleListSkeleton"
 import {memo} from "react"
+import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
+import {Info, InfoAlign} from "shared/ui/info/Info"
 
 import {Article, ArticleView} from "../../model/types/article"
 import {ArticleListItem} from "../article-list-item/ArticleListItem"
+import {renderArticlesSkeleton} from "../article-list-skeleton/ArticleListSkeleton"
 
 import cls from "./ArticleList.module.sass"
 
@@ -12,27 +14,30 @@ import cls from "./ArticleList.module.sass"
 interface ArticleListProps {
     articles: Article[]
     isLoading: boolean
-    view?: ArticleView
+    error?: string
+    view: ArticleView
     className?: string
 }
 
-const createArticleSkeleton = (view: ArticleView) => (
-    new Array(view === ArticleView.TILE ? 12 : 4)
-    .fill(0)
-    .map((_, i) => <ArticleListSkeleton view={view} key={i} className={cls.shimmer} />)
-)
-
 export const ArticleList = memo((props: ArticleListProps) => {
-    const {articles, isLoading, view = ArticleView.TILE, className} = props
+    const {
+        articles, isLoading, error, view, className,
+    } = props
+
+    const {t} = useTranslation("articles")
 
     const renderArticleList = (article: Article) => (
         <ArticleListItem article={article} view={view} key={article.id} />
     )
 
+    if (error) {
+        return <Info title={t("ошибка загрузки статей!")} align={InfoAlign.CENTER} />
+    }
+
     return (
         <div className={classnames(cls, [ "articles", view ], {}, [ className ])}>
             {isLoading
-                ? createArticleSkeleton(view)
+                ? renderArticlesSkeleton(view)
                 : articles.length && articles.map(renderArticleList)}
         </div>
     )

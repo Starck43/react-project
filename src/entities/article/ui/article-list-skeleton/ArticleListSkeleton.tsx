@@ -101,3 +101,10 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
         </Card>
     )
 })
+
+
+export const renderArticlesSkeleton = (view: ArticleView) => (
+    new Array(view === ArticleView.TILE ? 12 : 4)
+    .fill(0)
+    .map((_, i) => <ArticleListSkeleton view={view} key={i} />)
+)

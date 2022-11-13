@@ -1,2 +1,5 @@
 export {saveCommentForArticle} from "./save-comment/services/saveCommentForArticle"
-export {fetchCommentsData} from "features/articles/load-comments/services/fetchCommentsData"
+export {fetchCommentsData} from "./load-comments/services/fetchCommentsData"
+
+export {ArticleViewSwitcher} from "./view-switcher/ui/ArticleViewSwitcher"
+export {ArticleViewAlign} from "./view-switcher/ui/ArticleViewSwitcher"

@@ -1,11 +1,10 @@
 {
-  "article": "Article",
-  "articles": "Articles Page",
-  "Копировать код": "Copy fragment",
-  "комментарии": "",
-  "назад к списку": "назад к списку",
+  "Копировать код": "Code copy",
+  "назад к списку": "Back to articles",
+  "ошибка загрузки статей!": "Articles loading error!",
   "ошибка загрузки статьи!": "Article loading error!",
-  "статья": "статья",
+  "статьи": "Articles",
+  "статья": "Article",
   "статья не найдена!": "Article not found!",
-  "читать еще": "читать еще"
+  "читать еще": "Read more..."
 }

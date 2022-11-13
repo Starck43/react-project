@@ -4,7 +4,7 @@ import {
 import {AxiosInstance} from "axios"
 import {To} from "@remix-run/router"
 
-import {ArticleSchema} from "entities/article"
+import {ArticleListSchema, ArticleSchema} from "entities/article"
 import {CounterSchema} from "entities/counter"
 import {UserSchema} from "entities/user"
 import {ProfileSchema} from "entities/profile"
@@ -22,6 +22,7 @@ export interface StateSchema {
     login?: LoginSchema
     profile?: ProfileSchema
     article?: ArticleSchema
+    articles?: ArticleListSchema
     comments?: CommentSchema
     newComment?: NewCommentSchema
 }
