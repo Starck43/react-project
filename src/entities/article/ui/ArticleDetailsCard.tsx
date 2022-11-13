@@ -83,7 +83,7 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                     <div className="inline size-sm"><EyeIcon /><span>{article?.views}</span></div>
                 </Header>
 
-                <div className={cls.blocks}>
+                <div className="flex-wrap vertical g-3">
                     {article?.blocks.map(renderBlock)}
                 </div>
 

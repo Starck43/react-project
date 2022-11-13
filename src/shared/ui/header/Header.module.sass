@@ -3,9 +3,16 @@
 .header
 	width: 100%
 	margin-bottom: 1rem
+	overflow: hidden
 
 	.title, .subtitle
 		width: 100%
+		flex: 100%
+		overflow: hidden
+		text-overflow: ellipsis
+
+	.subtitle
+		opacity: 0.7
 
 	&.left
 		.title, .subtitle
@@ -18,6 +25,20 @@
 	&.right
 		.title, .subtitle
 			text-align: right
+
+	&.primary
+		color: var(--theme-primary-text-color)
+
+		&.shadowed
+			.title
+				text-shadow: 1px 1px 2px var(--theme-primary-shadow)
+
+	&.secondary
+		color: var(--theme-secondary-text-color)
+
+		&.shadowed
+			.title
+				text-shadow: 1px 1px 2px var(--theme-secondary-shadow)
 
 .firstcase
 	text-transform: lowercase

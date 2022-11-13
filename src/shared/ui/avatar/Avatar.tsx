@@ -1,6 +1,5 @@
 import React, {CSSProperties, useMemo} from "react"
 import {classnames} from "shared/lib/helpers/classnames"
-import {isNumber} from "util"
 
 import PlaceholderIcon from "./avatar-placeholder.svg"
 import cls from "./Avatar.module.sass"

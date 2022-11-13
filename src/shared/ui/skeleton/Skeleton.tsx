@@ -21,18 +21,18 @@ interface SkeletonProps {
     variant?: SkeletonVariant
     width?: string | number
     height?: string | number
-    rounded?: boolean
     borderRadius?: string
+    rounded?: boolean
     inlined?: boolean
     className?: string
 }
 
 export const Skeleton = memo((props: SkeletonProps) => {
     const {
-        elements,
+        elements = [ SkeletonElementType.TITLE ],
         variant = SkeletonVariant.PRIMARY,
         width = "100%",
-        height = "100%",
+        height,
         rounded = false,
         borderRadius,
         inlined = false,
@@ -41,7 +41,7 @@ export const Skeleton = memo((props: SkeletonProps) => {
 
     const styles: CSSProperties = {
         width,
-        height,
+        height: height || (inlined ? "1.6em" : "auto"),
         borderRadius: rounded ? borderRadius : "none",
     }
 

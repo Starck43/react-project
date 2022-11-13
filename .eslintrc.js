@@ -85,6 +85,7 @@ module.exports = {
         ],
         "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
         "no-underscore-dangle": "off",
+        "react/no-array-index-key": "warn",
         "no-multiple-empty-lines": "off",
         "i18next/no-literal-string": [
             1, {

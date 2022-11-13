@@ -1,11 +1,30 @@
 @import "src/app/styles/vars"
 
 .link
-	padding: 0.5rem 0
+	display: table
+	padding: 0.25em 0
 	line-height: 1
+	border-bottom: 1px solid transparent
+	user-select: none
+	cursor: pointer
 
-	&.text
-		border-bottom: 1px solid transparent
+	&.primary
+		color: var(--theme-primary-link-color)
 
-		&:hover
-			border-bottom-color: inherit
+		&.underlined
+			border-bottom-color: var(--theme-primary-link-color)
+
+	&.secondary
+		color: var(--theme-secondary-link-color)
+
+		&.underlined
+			border-bottom-color: var(--theme-secodary-link-color)
+
+	&.underlined:hover
+		border-bottom-color: inherit
+
+.left
+	margin-right: auto
+
+.right
+	margin-left: auto

@@ -16,19 +16,26 @@ export enum NavLinkFeature {
     UNDERLINED = "underlined",
 }
 
+export enum NavLinkAlign {
+    LEFT = "left",
+    RIGHT = "right",
+}
+
 export interface NavLinkProps extends LinkProps {
     variant?: NavLinkVariant
     feature?: NavLinkFeature
+    align?: NavLinkAlign
     className?: string
 }
 
 export const NavLink: FC<NavLinkProps> = (props) => {
     const {
+        children,
+        to,
         variant = NavLinkVariant.PRIMARY,
         feature = NavLinkFeature.UNDERLINED,
-        to,
+        align = NavLinkAlign.LEFT,
         className,
-        children,
         ...other
     } = props
 
@@ -36,7 +43,7 @@ export const NavLink: FC<NavLinkProps> = (props) => {
         <Link
             to={to}
             {...other}
-            className={classnames(cls, [ "link", variant, feature ], {}, [ className ])}
+            className={classnames(cls, [ "link", variant, feature, align ], {}, [ className ])}
         >
             {children}
         </Link>

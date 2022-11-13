@@ -1,9 +1,14 @@
 import {createElement, memo, ReactNode, useMemo} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
+import {ButtonVariant} from "shared/ui/button/Button"
 
 import cls from "./Header.module.sass"
 
+export enum HeaderVariant {
+    PRIMARY = "primary",
+    SECONDARY = "secondary",
+}
 
 export enum TitleType {
     H1 = "h1",
@@ -27,6 +32,7 @@ export enum HeaderCase {
 
 type HeaderProps = {
     children?: ReactNode
+    variant?: HeaderVariant
     title: ReactNode | string
     subTitle?: string
     titleType?: TitleType
@@ -39,6 +45,7 @@ type HeaderProps = {
 const Header = (props: HeaderProps) => {
     const {
         children,
+        variant = HeaderVariant.PRIMARY,
         title,
         subTitle,
         titleType = TitleType.H1,
@@ -55,7 +62,7 @@ const Header = (props: HeaderProps) => {
     ), [ title, titleType, transform ])
 
     return (
-        <div className={classnames(cls, [ "header", align ], {shadowed}, [ className ])}>
+        <div className={classnames(cls, [ "header", variant, align ], {shadowed}, [ className ])}>
             {titleElement}
             {subTitle && <p className={cls.subtitle}>{subTitle}</p>}
             {children}

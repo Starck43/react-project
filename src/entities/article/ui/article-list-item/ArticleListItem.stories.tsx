@@ -1,23 +1,35 @@
-import {Article, ArticleList} from "entities/article"
-import {ArticleBlockType, ArticleType} from "entities/article/model/types/article"
-import {memo} from "react"
-import {useTranslation} from "react-i18next"
+import React from "react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import Header, {HeaderAlign} from "shared/ui/header/Header"
+import Image from "shared/assets/icons/avatar-profile.jpeg"
 
+import {Article, ArticleBlockType, ArticleType, ArticleView} from "../../model/types/article"
+
+import {ArticleListItem} from "./ArticleListItem"
+
+
+export default {
+    title: "entities/Articles/ArticleListItem",
+    component: ArticleListItem,
+    argTypes: {backgroundColor: {control: "color"}},
+} as ComponentMeta<typeof ArticleListItem>
+
+const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />
 
 const article: Article = {
     id: "1",
-    title: "Javascript news (the language for frontend)",
+    title: "Javascript news",
     subtitle: "Что нового в JS за 2022 год?",
-    img: "https://yt3.ggpht.com/a/AATXAJzUcdlRmAqAK9eBY103rNs4cMYtzcD27XRHuA=s900-c-k-c0xffffffff-no-rj-mo",
+    img: Image,
     views: 1022,
     createdAt: "26.02.2022",
     type: [
         ArticleType.IT,
-        ArticleType.FINANCE,
-        ArticleType.PRESS,
     ],
+    user: {
+        id: "1",
+        username: "admin",
+    },
     blocks: [
         {
             id: "1",
@@ -29,38 +41,16 @@ const article: Article = {
                 "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:",
             ],
         },
-        {
-            id: "4",
-            type: ArticleBlockType.CODE,
-            code: "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>;",
-        },
-        {
-            id: "2",
-            type: ArticleBlockType.IMAGE,
-            src: "https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png",
-            title: "Рисунок 1 - скриншот сайта",
-        },
     ],
-    user: {
-        id: "1",
-        username: "admin",
-        avatar: "https://rognowsky.ru/wp-content/uploads/2019/09/u55628068.jpg",
-    },
+}
+export const List = Template.bind({})
+List.args = {
+    view: ArticleView.LIST,
+    article,
 }
 
-
-function ArticlesPage() {
-    const {t} = useTranslation("articles")
-
-    return (
-        <div className="container">
-            <Header title={t("articles")} shadowed align={HeaderAlign.CENTER} />
-            <ArticleList
-                articles={new Array(16).fill(0).map((item, i) => ({...article, id: String(i)}))}
-                isLoading={false}
-            />
-        </div>
-    )
+export const Tile = Template.bind({})
+Tile.args = {
+    view: ArticleView.TILE,
+    article,
 }
-
-export default memo(ArticlesPage)
