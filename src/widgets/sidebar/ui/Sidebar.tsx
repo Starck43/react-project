@@ -32,7 +32,7 @@ function Sidebar(props: SidebarProps) {
     }, [ width ])
 
     return (
-        <nav
+        <aside
             data-testid="sidebar"
             className={classnames(cls, [ "sidebar", position ], {collapsed}, [ "sidebar", collapsed ? "collapsed" : "", className ])}
         >
@@ -50,7 +50,7 @@ function Sidebar(props: SidebarProps) {
                 <LanguageSwitcher minified={collapsed} />
                 <ErrorTestButton />
             </div>
-        </nav>
+        </aside>
     )
 }
 

@@ -12,6 +12,7 @@ import {
     getArticlesError,
     getArticlesLoading,
     getArticlesView,
+    fetchArticleNextList,
 } from "entities/article"
 
 import {ArticleViewSwitcher, ArticleViewAlign} from "features/articles"
@@ -20,6 +21,7 @@ import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicMod
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
+import {Page} from "shared/ui/Page/Page"
 
 
 const initialReducers: ReducerList = {articles: articlesReducer}
@@ -34,25 +36,30 @@ function ArticlesPage() {
     const view = useSelector(getArticlesView)
 
     useInitialEffect(() => {
-        dispatch(fetchArticleList())
+        // it goes first always
         dispatch(articlesActions.initState())
+        dispatch(fetchArticleList({page: 1}))
     })
 
-    const onChangeViewClick = useCallback((view: ArticleView) => {
+    const onChangeViewHandler = useCallback((view: ArticleView) => {
         dispatch(articlesActions.setView(view))
+    }, [ dispatch ])
+
+    const onLoadNext = useCallback(() => {
+        dispatch(fetchArticleNextList())
     }, [ dispatch ])
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <div className="container">
+            <Page onScrollToEnd={onLoadNext}>
                 <Header title={t("статьи")} shadowed align={HeaderAlign.CENTER} />
                 <ArticleViewSwitcher
                     view={view}
                     align={ArticleViewAlign.RIGHT}
-                    onChangeViewHandler={onChangeViewClick}
+                    onChangeViewClick={onChangeViewHandler}
                 />
                 <ArticleList articles={articles} isLoading={isLoading} error={error} view={view} />
-            </div>
+            </Page>
         </DynamicModuleLoader>
     )
 }

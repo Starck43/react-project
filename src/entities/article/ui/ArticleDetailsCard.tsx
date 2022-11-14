@@ -14,7 +14,7 @@ import EyeIcon from "shared/assets/icons/eye-20-20.svg"
 
 
 import {getArticleData, getArticleError, getArticleLoading} from "../model/selectors/article-details/getArticleDetails"
-import {fetchArticleById} from "../model/services/fetchArticleById"
+import {fetchArticleById} from "../model/services/fetchArticleById/fetchArticleById"
 import {articleReducer} from "../model/slice/article-details/articleSlice"
 import {ArticleBlock, ArticleBlockType} from "../model/types/article"
 import {ArticleCode} from "../ui/article-code/ArticleCode"

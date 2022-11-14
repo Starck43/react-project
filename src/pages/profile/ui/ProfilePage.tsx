@@ -6,6 +6,7 @@ import {ProfileCard} from "entities/profile/ui/ProfileCard"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
+import {Page} from "shared/ui/Page/Page"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
@@ -16,15 +17,15 @@ function ProfilePage() {
     const {t} = useTranslation("auth")
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount>
-            <div className="content">
+        <DynamicModuleLoader reducers={initialReducers}>
+            <Page>
                 <Suspense fallback={<PageLoader />}>
                     <div className="container profile-container">
                         <Header title={t("профиль")} shadowed align={HeaderAlign.CENTER} />
                         <ProfileCard />
                     </div>
                 </Suspense>
-            </div>
+            </Page>
         </DynamicModuleLoader>
     )
 }

@@ -4,7 +4,7 @@
 
 .sidebar
 	position: absolute
-	padding: 1rem
+	height: calc(100vh - var(--navbar-height) - #{$main-padding * 2})
 	background-color: var(--theme-sidebar-bg-color)
 	border-top-right-radius: var(--border-radius)
 	border-bottom-right-radius: var(--border-radius)
@@ -17,6 +17,7 @@
 	z-index: 2
 
 	&.left
+		// TODO: remove unused left, right, top, bottom sizes
 		@include push--absolute(0, $sidebar-collapsed-w, 0, 0)
 
 		margin-right: 0
@@ -30,24 +31,20 @@
 		top: 0 !important
 		left: inherit !important
 		width: var(--sidebar-width)
-		height: auto
 		min-width: var(--sidebar-width)
-		max-height: calc(100vh - #{$navbar-height} - #{$main-padding*2})
 		border-top-left-radius: var(--border-radius)
 		border-bottom-left-radius: var(--border-radius)
 		transform: none !important
 
 		&.left
 			right: 0
-			bottom: 0
-			margin-left: 0
-			margin-right: $main-margin
+			margin-left: $main-padding
 
 			//border-left-width: 2px
 
 			&.collapsed
 				padding-right: 0.3em
-				margin-left: calc(var(--sidebar-width)  * -1 - #{$main-padding} + #{$sidebar-collapsed-w})
+				margin-left: calc(var(--sidebar-width)  * -1 + #{$sidebar-collapsed-w})
 
 
 .toggle__btn

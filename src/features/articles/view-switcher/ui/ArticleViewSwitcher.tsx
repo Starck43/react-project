@@ -19,7 +19,7 @@ export enum ArticleViewAlign {
 interface ArticleViewSwitcherProps {
     view: ArticleView
     align?: ArticleViewAlign
-    onChangeViewHandler?: (view: ArticleView) => void
+    onChangeViewClick?: (view: ArticleView) => void
     className?: string
 }
 
@@ -35,11 +35,11 @@ const viewMode = [
 ]
 
 export const ArticleViewSwitcher = memo((props: ArticleViewSwitcherProps) => {
-    const {view, align, onChangeViewHandler, className} = props
+    const {view, align, onChangeViewClick, className} = props
     const {t} = useTranslation("articles")
 
     const onViewClick = (newView: ArticleView) => () => {
-        onChangeViewHandler?.(newView)
+        onChangeViewClick?.(newView)
     }
 
     return (

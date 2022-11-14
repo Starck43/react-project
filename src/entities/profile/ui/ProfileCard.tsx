@@ -25,7 +25,7 @@ import {translatedCountry} from "../lib"
 
 import cls from "./ProfileCard.module.sass"
 
-
+// TODO: Remove selectors and dispatching to level up
 export const ProfileCard = () => {
     const {i18n, t} = useTranslation("auth")
     const dispatch = useAppDispatch()

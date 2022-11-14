@@ -116,6 +116,7 @@ module.exports = {
             },
         ],
         "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true} ],
+        "no-plusplus": [ "error", {allowForLoopAfterthoughts: true} ],
     },
     overrides: [
         {

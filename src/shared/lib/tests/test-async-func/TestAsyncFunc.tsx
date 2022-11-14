@@ -34,7 +34,7 @@ export class TestAsyncFunc<Return, Arg, RejectedValue> {
             this.getState,
             {
                 api: this.api,
-                navigate: this.navigate,
+                // navigate: this.navigate,
             },
         )
         return res

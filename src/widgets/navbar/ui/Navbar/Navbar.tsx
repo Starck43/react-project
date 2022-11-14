@@ -34,9 +34,9 @@ const Navbar = ({className}: NavbarProps) => {
     ))), [ itemsList ])
 
     return (
-        <nav className={classnames(cls, [ "navbar", className ])}>
+        <menu className={classnames(cls, [ "navbar", className ])}>
             {navbarItemsList}
-        </nav>
+        </menu>
     )
 }
 

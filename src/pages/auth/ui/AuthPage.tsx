@@ -1,4 +1,3 @@
-import {PayloadAction} from "@reduxjs/toolkit"
 import React, {Suspense} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
@@ -12,6 +11,7 @@ import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 import {NavLink} from "shared/ui/link/NavLink"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
+import {Page} from "shared/ui/Page/Page"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
@@ -43,14 +43,12 @@ function AuthPage() {
     }
 
     return (
-        <div className="content">
-            <Suspense fallback={<PageLoader />}>
-                <div className="container login-container">
-                    <Header title={t("войти")} shadowed align={HeaderAlign.CENTER} />
-                    <LoginForm onSuccess={successLoginHandler} />
-                </div>
-            </Suspense>
-        </div>
+        <Suspense fallback={<PageLoader />}>
+            <Page>
+                <Header title={t("войти")} shadowed align={HeaderAlign.CENTER} />
+                <LoginForm onSuccess={successLoginHandler} />
+            </Page>
+        </Suspense>
     )
 }
 
