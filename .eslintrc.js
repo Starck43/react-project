@@ -21,31 +21,43 @@ module.exports = {
         "react", "@typescript-eslint", "i18next", "react-hooks", // "promise",
     ],
     rules: {
+        "no-tabs": 0,
         indent: [
             0, 4, {
                 SwitchCase: 1,
                 FunctionDeclaration: {parameters: "first"},
             },
         ],
-        "array-bracket-spacing": [ 1, "always" ],
-        "no-tabs": 0,
-        "react/jsx-indent": [ 2, 4 ],
-        "react/jsx-indent-props": [ 2, 4 ],
-        "react/jsx-filename-extension": [ 2, {extensions: [ ".js", ".jsx", ".tsx" ] } ],
-        "object-curly-spacing": [ "error", "never", {arraysInObjects: true} ],
         semi: [ 1, "never" ],
         quotes: [ 1, "double" ],
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
-        "import/no-unresolved": "off",
-        "import/prefer-default-export": "off",
-        "no-unused-vars": [
+        "no-undef": "off",
+        "no-mixed-spaces-and-tabs": [ 2, "smart-tabs" ],
+        "max-len": [
+            1, {
+                code: 120,
+                ignoreComments: true,
+                ignoreUrls: true,
+                ignoreStrings: true,
+            },
+        ],
+        "@typescript-eslint/no-unused-vars": [
             "warn", {
                 vars: "local",
                 args: "after-used",
                 ignoreRestSiblings: false,
+                argsIgnorePattern: "^_",
             },
         ],
+        "no-unused-vars": "off",
+        "array-bracket-spacing": [ 1, "always" ],
+        "react/jsx-indent": [ 2, 4 ],
+        "react/jsx-indent-props": [ 2, 4 ],
+        "react/jsx-filename-extension": [ 2, {extensions: [ ".js", ".jsx", ".tsx" ] } ],
+        "object-curly-spacing": [ "error", "never", {arraysInObjects: true} ],
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
         "react/prop-types": "off",
         "react/require-default-props": "off",
         "react/jsx-closing-tag-location": "off",
@@ -59,16 +71,6 @@ module.exports = {
         "no-param-reassign": "off",
         "import/extensions": "off",
         "import/no-extraneous-dependencies": "off",
-        "no-undef": "off",
-        "no-mixed-spaces-and-tabs": [ 2, "smart-tabs" ],
-        "max-len": [
-            1, {
-                code: 120,
-                ignoreComments: true,
-                ignoreUrls: true,
-                ignoreStrings: true,
-            },
-        ],
         "jsx-a11y/no-static-element-interactions": [
             "error",
             {

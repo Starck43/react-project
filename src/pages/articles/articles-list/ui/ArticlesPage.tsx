@@ -3,11 +3,11 @@ import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
 import {
+    ArticleView,
+    initArticleList,
     ArticleList,
     articlesActions,
     articlesReducer,
-    ArticleView,
-    fetchArticleList,
     getArticlesData,
     getArticlesError,
     getArticlesLoading,
@@ -31,14 +31,13 @@ function ArticlesPage() {
 
     const dispatch = useAppDispatch()
     const articles = useSelector(getArticlesData.selectAll)
+    const view = useSelector(getArticlesView)
     const isLoading = useSelector(getArticlesLoading)
     const error = useSelector(getArticlesError)
-    const view = useSelector(getArticlesView)
 
     useInitialEffect(() => {
-        // it goes first always
-        dispatch(articlesActions.initState())
-        dispatch(fetchArticleList({page: 1}))
+        // it will be done only once on mounting
+        dispatch(initArticleList())
     })
 
     const onChangeViewHandler = useCallback((view: ArticleView) => {
@@ -50,7 +49,7 @@ function ArticlesPage() {
     }, [ dispatch ])
 
     return (
-        <DynamicModuleLoader reducers={initialReducers}>
+        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
             <Page onScrollToEnd={onLoadNext}>
                 <Header title={t("статьи")} shadowed align={HeaderAlign.CENTER} />
                 <ArticleViewSwitcher

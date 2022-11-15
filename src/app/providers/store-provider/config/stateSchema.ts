@@ -2,16 +2,15 @@ import {
     AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from "@reduxjs/toolkit"
 import {AxiosInstance} from "axios"
-import {To} from "@remix-run/router"
 
 import {ArticleListSchema, ArticleSchema} from "entities/article"
-import {CounterSchema} from "entities/counter"
-import {UserSchema} from "entities/user"
-import {ProfileSchema} from "entities/profile"
 import {CommentSchema} from "entities/comment"
+import {CounterSchema} from "entities/counter"
+import {ProfileSchema} from "entities/profile"
+import {UserSchema} from "entities/user"
+
 import {LoginSchema} from "features/auth/login/by-username"
 import {NewCommentSchema} from "features/comments/new-comment"
-import {NavigateOptions} from "react-router/dist/lib/context"
 
 
 export interface StateSchema {
@@ -42,7 +41,6 @@ export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
 
 export interface ThunkExtra {
     api: AxiosInstance
-    navigate?: (to: To, options?: NavigateOptions) => void,
 }
 
 export interface ThunkConfig<T> {

@@ -1,8 +1,11 @@
 import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 import {StateSchema} from "app/providers/store-provider"
-import {fetchArticleList} from "entities/article/model/services/fetchArticleList/fetchArticleList"
+
+
 import {ARTICLES_VIEW_MODE_KEY} from "shared/const/localStorage"
+
+import {fetchArticleList} from "../../services/fetchArticleList/fetchArticleList"
 import {Article, ArticleView} from "../../types/article"
 import {ArticleListSchema} from "../../types/articleListSchema"
 
@@ -23,6 +26,7 @@ const articlesSlice = createSlice({
         hasMore: true,
         ids: [],
         entities: {},
+        _mounted: false,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ArticleView>) => {
@@ -42,6 +46,7 @@ const articlesSlice = createSlice({
             const mode = localStorage.getItem(ARTICLES_VIEW_MODE_KEY) as ArticleView
             state.limit = mode === ArticleView.LIST ? 3 : 9
             state.view = mode
+            state._mounted = true
         },
     },
     extraReducers: (builder) => {

@@ -8,3 +8,4 @@ export const getArticlesView = (state: StateSchema) => state.articles?.view || A
 export const getArticlesPageNum = (state: StateSchema) => state.articles?.page || 1
 export const getArticlesPageLimit = (state: StateSchema) => state.articles?.limit || 3
 export const getArticlesHasMore = (state: StateSchema) => state.articles?.hasMore
+export const getArticlesMounted = (state: StateSchema) => state.articles?._mounted

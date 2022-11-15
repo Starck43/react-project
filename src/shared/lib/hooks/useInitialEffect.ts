@@ -1,9 +1,9 @@
 import {useEffect} from "react"
 
 
-export const useInitialEffect = (callback: () => void) => {
+export const useInitialEffect = (callback: () => void, isMounted: boolean = false) => {
     useEffect(() => {
-        if (__PROJECT__ !== "storybook") {
+        if (!isMounted && __PROJECT__ !== "storybook") {
             callback()
         }
         // eslint-disable-next-line
