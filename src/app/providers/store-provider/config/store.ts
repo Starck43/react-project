@@ -5,8 +5,9 @@ import {counterReducer} from "entities/counter"
 import {userReducer} from "entities/user"
 import {$api} from "shared/api/api"
 
-import {ReducerList} from "shared/lib/components/DynamicModuleLoader"
+import {pageReducer} from "widgets/page"
 
+import {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {createReducerManager} from "./reducerManager"
 
 
@@ -18,6 +19,7 @@ export function createStore(
         ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        page: pageReducer,
     }
 
     const reducerManager = createReducerManager(rootReducers as ReducersMapObject<StateSchema>)

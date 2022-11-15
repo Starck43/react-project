@@ -21,7 +21,8 @@ import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicMod
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
-import {Page} from "shared/ui/Page/Page"
+
+import {Page} from "widgets/page"
 
 
 const initialReducers: ReducerList = {articles: articlesReducer}
@@ -50,7 +51,7 @@ function ArticlesPage() {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
-            <Page onScrollToEnd={onLoadNext}>
+            <Page onScrollToEnd={onLoadNext} saveScrollPos>
                 <Header title={t("статьи")} shadowed align={HeaderAlign.CENTER} />
                 <ArticleViewSwitcher
                     view={view}

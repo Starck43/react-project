@@ -12,10 +12,13 @@ import {UserSchema} from "entities/user"
 import {LoginSchema} from "features/auth/login/by-username"
 import {NewCommentSchema} from "features/comments/new-comment"
 
+import {PageSchema} from "widgets/page"
+
 
 export interface StateSchema {
     counter: CounterSchema
     user: UserSchema
+    page: PageSchema
 
     // async reducers
     login?: LoginSchema

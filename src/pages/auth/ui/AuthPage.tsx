@@ -11,7 +11,8 @@ import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 import {NavLink} from "shared/ui/link/NavLink"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
-import {Page} from "shared/ui/Page/Page"
+
+import {Page} from "widgets/page"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 

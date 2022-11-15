@@ -10,7 +10,8 @@ import {NavLink, NavLinkFeature} from "shared/ui/link/NavLink"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {RoutesPath} from "shared/config/router"
-import {Page} from "shared/ui/Page/Page"
+
+import {Page} from "widgets/page"
 
 import {ArticleCommentsCard} from "./comments-card/ArticleCommentsCard"
 

@@ -6,7 +6,8 @@ import {ProfileCard} from "entities/profile/ui/ProfileCard"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
-import {Page} from "shared/ui/Page/Page"
+
+import {Page} from "widgets/page"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 

@@ -5,7 +5,8 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Button} from "shared/ui/button/Button"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
-import {Page} from "shared/ui/Page/Page"
+
+import {Page} from "widgets/page"
 
 import cls from "./NotFoundPage.module.sass"
 
