@@ -24,14 +24,14 @@ interface PageProps {
 
 export const Page = ({children, saveScrollPos = false, onScrollToEnd, className}: PageProps) => {
     const containerRef = useRef() as MutableRefObject<HTMLDivElement>
-    const triggerRef = useRef() as MutableRefObject<HTMLDivElement>
+    const loadMoreRef = useRef() as MutableRefObject<HTMLDivElement>
     const dispatch = useAppDispatch()
     const {pathname} = useLocation()
     const scrollPos = useSelector((state: StateSchema) => getPageByPath(state, pathname))
 
     useElementInView({
         containerRef,
-        triggerRef,
+        triggerRef: loadMoreRef,
         callback: onScrollToEnd,
     })
 
@@ -55,7 +55,7 @@ export const Page = ({children, saveScrollPos = false, onScrollToEnd, className}
             className={classnames(cls, [ "container" ], {}, [ className ])}
         >
             {children}
-            <div ref={triggerRef} />
+            {onScrollToEnd ? <div ref={loadMoreRef} className={cls.load__more} /> : null}
         </section>
     )
 }
