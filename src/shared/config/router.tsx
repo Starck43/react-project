@@ -4,8 +4,8 @@ import {HomePage} from "pages/home"
 import {AboutPage} from "pages/about"
 import {AuthPage} from "pages/auth"
 import {ProfilePage} from "pages/profile"
-import {ArticleDetailsPage} from "pages/articles/article-details"
-import {ArticlesPage} from "pages/articles/articles-list"
+import {ArticleDetailsPage} from "pages/articles/details"
+import {ArticlesPage} from "pages/articles/list"
 import {NotFoundPage} from "pages/not-found-page"
 
 

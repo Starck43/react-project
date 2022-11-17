@@ -3,9 +3,9 @@ import {
     forwardRef,
     ForwardedRef,
     InputHTMLAttributes,
-    TextareaHTMLAttributes,
-    ChangeEvent, HTMLProps,
+    ChangeEvent,
 } from "react"
+
 import {classnames} from "shared/lib/helpers/classnames"
 
 import cls from "./Input.module.sass"

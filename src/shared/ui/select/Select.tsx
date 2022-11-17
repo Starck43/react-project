@@ -35,18 +35,18 @@ export const Select = memo((props: SelectProps) => {
     }
 
     return (
-        <div className={classnames(cls, [ "select__wrapper" ], {rounded, compact}, [ className ])}>
+        <div className={classnames(cls, [ "select__wrapper" ], {compact}, [ className ])}>
             {!compact && label && <span className={cls.label}>{label}</span>}
             <select
                 value={value}
                 // defaultValue={value}
                 onChange={selectHandler}
-                className={cls.select}
+                className={classnames(cls, [ "select" ], {rounded})}
                 {...other}
             >
                 {label && compact && (
                     <option value="label" className={cls.option}>
-                        {`<${label}>`}
+                        {`${label}`}
                     </option>
                 )}
                 {optionsList}

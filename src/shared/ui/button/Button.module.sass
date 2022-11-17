@@ -7,7 +7,7 @@
 	color: $brand-color
 	background-color: $default-btn-color
 	border: 1px solid transparent
-	border-radius: 0.2em
+	border-radius: var(--border-radius-default)
 	transition: all 150ms ease-out
 	opacity: 0.7
 	cursor: pointer
@@ -49,7 +49,7 @@
 		background-color: transparent
 
 	&.small
-		font-size: 0.8rem
+		font-size: 0.7rem
 
 	&.normal
 		font-size: inherit
@@ -60,8 +60,9 @@
 	&.rounded
 		border-radius: var(--border-radius)
 
+	// TODO: finalize square variant
 	&.squared
-		padding: 0.6em
+		padding: 0.7em
 
 	&.underlined
 		border-top-color: transparent
@@ -77,4 +78,4 @@
 .button:not(.is__link, .square),
 .link
 	min-width: 4em
-	padding: $btn-padding $btn-padding * 2
+	padding: calc(#{$btn-padding} + 1px) $btn-padding * 2 $btn-padding

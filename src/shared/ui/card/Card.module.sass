@@ -1,13 +1,40 @@
 .card
-	background-color: var(--theme-modal-bg-color)
+	border: 1px solid transparent
+	border-radius: var(--border-radius-default)
 	overflow: hidden
 	user-select: none
 
 	&.rounded
 		border-radius: var(--border-radius)
 
-	&.bordered
-		border: 1px solid var(--theme-primary-border-color)
 
-	&.shadowed
-		box-shadow: 0 0.3em 1.1em -0.4em var(--theme-secondary-box-shadow)
+	&.primary
+		background-color: var(--theme-primary-bg-color)
+		color: var(--theme-primary-color)
+
+		&.bordered
+			border-color: var(--theme-primary-border-color)
+
+		&.inverted
+			color: var(--theme-primary-bg-color)
+			background-color: var(--theme-primary-text-color)
+
+		&.shadowed
+			box-shadow: 0 0.3em 1.1em -0.4em var(--theme-primary-box-shadow)
+
+	&.secondary
+		background-color: var(--theme-secondary-bg-color)
+		color: var(--theme-secondary-link-color)
+
+		&.blank
+			color: var(--theme-secondary-text-color)
+
+		&.bordered
+			border-color: var(--theme-secondary-border-color)
+
+		&.inverted
+			color: var(--theme-secondary-bg-color)
+			background-color: var(--theme-secondary-text-color)
+
+		&.shadowed
+			box-shadow: 0 0.3em 1.1em -0.4em var(--theme-secondary-box-shadow)
