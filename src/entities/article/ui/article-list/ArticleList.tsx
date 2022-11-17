@@ -30,6 +30,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
         <ArticleListItem article={article} view={view} key={article.id} />
     )
 
+    if (!isLoading && !articles.length) {
+        return <Info title={t("статьи не найдены!")} align={InfoAlign.CENTER} />
+    }
+
     if (error) {
         return <Info title={t("ошибка загрузки статей!")} align={InfoAlign.CENTER} />
     }

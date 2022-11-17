@@ -1,4 +1,9 @@
 {
+  "order": "order",
+  "order_asc": "ASC",
+  "order_desc": "DESC",
+  "order_female": "",
+  "order_male": "",
   "theme": "Theme",
   "theme_additional": "Blue theme",
   "theme_dark": "Dark theme",
@@ -11,9 +16,15 @@
   "Страница не найдена": "Page not found",
   "выбрать валюту": "Choose a currency...",
   "выбрать страну": "Choose a country...",
+  "дата создания": "date",
+  "заголовок": "title",
+  "количество просмотров": "views",
   "непредвиденная ошибка": "Unexpected error",
   "обновить страницу": "Reload page",
   "отмена": "Cancel",
+  "по направлению": "order by",
+  "поиск": "search...",
+  "сортировать по": "sort by",
   "сохранить": "Save",
-  "что-то пошло не так": "Something went wrong"
+  "что-то пошло не так": "Something went wrong!"
 }

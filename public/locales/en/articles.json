@@ -1,9 +1,10 @@
 {
-  "Копировать код": "Code copy",
+  "Копировать код": "Copy",
   "назад к списку": "Back to articles",
   "ошибка загрузки статей!": "Articles loading error!",
   "ошибка загрузки статьи!": "Article loading error!",
   "статьи": "Articles",
+  "статьи не найдены!": "Articles not found!",
   "статья": "Article",
   "статья не найдена!": "Article not found!",
   "читать еще": "Read more..."

@@ -6,7 +6,7 @@ import {
     getArticlesLoading,
     getArticlesHasMore,
     getArticlesPageNum,
-} from "../../selectors/article-list/getArticleList"
+} from "../../selectors/article-list/getArticleListData"
 
 import {articlesActions} from "../../slice/article-list/articleListSlice"
 import {fetchArticleList} from "../fetchArticleList/fetchArticleList"
@@ -21,7 +21,7 @@ export const fetchArticleNextList = createAsyncThunk<void, void, ThunkConfig<str
         const isLoading = getArticlesLoading(getState())
 
         if (hasMore && !isLoading) {
-            dispatch(fetchArticleList({page: page + 1}))
+            dispatch(fetchArticleList({}))
             dispatch(articlesActions.setPage(page + 1))
         }
     },

@@ -26,7 +26,7 @@ const article: Article = {
     type: [
         ArticleType.IT,
         ArticleType.FINANCE,
-        ArticleType.PRESS,
+        ArticleType.MEDIA,
     ],
     blocks: [
         {

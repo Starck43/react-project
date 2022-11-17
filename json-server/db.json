@@ -14,11 +14,11 @@
   "articles": [
     {
       "id": "1",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
+      "title": "Javascript 2021",
+      "subtitle": "Новые фичи",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 182,
+      "createdAt": "26.08.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -89,8 +89,8 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 540,
+      "createdAt": "20.07.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -134,14 +134,14 @@
     },
     {
       "id": "4",
-      "title": "Python news",
-      "subtitle": "Что нового в JS за 2022 год?",
+      "title": "Python language for science",
+      "subtitle": "Next version is coming up",
       "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 893,
+      "createdAt": "15.03.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "SCIENCE"
       ],
       "blocks": [
         {
@@ -182,14 +182,14 @@
     },
     {
       "id": "6",
-      "title": "Python news",
-      "subtitle": "Что нового в JS за 2022 год?",
+      "title": "Computers for schools",
+      "subtitle": "What inefficient for education?",
       "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 677,
+      "createdAt": "20.06.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "BUSINESS"
       ],
       "blocks": [
         {
@@ -233,11 +233,11 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 425,
+      "createdAt": "06.09.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "MEDIA"
       ],
       "blocks": [
         {
@@ -257,11 +257,11 @@
       "title": "Kotlin news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
-      "views": 1022,
-      "createdAt": "26.02.2022",
+      "views": 102,
+      "createdAt": "02.11.2022",
       "userId": "1",
       "type": [
-        "IT"
+        "MEDIA"
       ],
       "blocks": [
         {

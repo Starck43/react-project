@@ -1,12 +1,11 @@
 import {memo, useCallback} from "react"
-import {useTranslation} from "react-i18next"
+import {useSearchParams} from "react-router-dom"
 import {useSelector} from "react-redux"
+import {useTranslation} from "react-i18next"
 
 import {
-    ArticleView,
     initArticleList,
     ArticleList,
-    articlesActions,
     articlesReducer,
     getArticlesData,
     getArticlesError,
@@ -15,14 +14,14 @@ import {
     fetchArticleNextList,
 } from "entities/article"
 
-import {ArticleViewSwitcher, ArticleViewAlign} from "features/articles"
-
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import Header, {HeaderAlign} from "shared/ui/header/Header"
 
 import {Page} from "widgets/page"
+
+import ArticlesPageControls from "./controls-bar/ArticlesPageControls"
 
 
 const initialReducers: ReducerList = {articles: articlesReducer}
@@ -35,15 +34,12 @@ function ArticlesPage() {
     const view = useSelector(getArticlesView)
     const isLoading = useSelector(getArticlesLoading)
     const error = useSelector(getArticlesError)
+    const [ searchParams ] = useSearchParams()
 
     useInitialEffect(() => {
         // it will be done only once on mounting
-        dispatch(initArticleList())
+        dispatch(initArticleList(searchParams))
     })
-
-    const onChangeViewHandler = useCallback((view: ArticleView) => {
-        dispatch(articlesActions.setView(view))
-    }, [ dispatch ])
 
     const onLoadNext = useCallback(() => {
         dispatch(fetchArticleNextList())
@@ -53,11 +49,7 @@ function ArticlesPage() {
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
             <Page onScrollToEnd={onLoadNext} saveScrollPos>
                 <Header title={t("статьи")} shadowed align={HeaderAlign.CENTER} />
-                <ArticleViewSwitcher
-                    view={view}
-                    align={ArticleViewAlign.RIGHT}
-                    onChangeViewClick={onChangeViewHandler}
-                />
+                <ArticlesPageControls />
                 <ArticleList articles={articles} isLoading={isLoading} error={error} view={view} />
             </Page>
         </DynamicModuleLoader>
