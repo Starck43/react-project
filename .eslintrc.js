@@ -90,8 +90,9 @@ module.exports = {
         "react/no-array-index-key": "warn",
         "no-multiple-empty-lines": "off",
         "i18next/no-literal-string": [
-            1, {
+            "warn", {
                 markupOnly: true,
+                ignoreAttribute: [ "data-testid", "to", "target" ],
                 onlyAttribute: [ "" ],
             },
         ],

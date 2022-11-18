@@ -1,11 +1,11 @@
 import {useCallback} from "react"
-import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
+import {useSelector} from "react-redux"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {Button} from "shared/ui/button/Button"
+import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 import {TextArea} from "shared/ui/input/Input"
 
@@ -59,7 +59,14 @@ const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
                     onChange={onTextChange}
                     placeholder={t("введите текст комментария")}
                 />
-                <Button disabled={!text} onClick={onSaveHandler}>{t("отправить")}</Button>
+                <Button
+                    feature={ButtonFeature.BLANK}
+                    bordered
+                    disabled={!text}
+                    onClick={onSaveHandler}
+                >
+                    {t("отправить")}
+                </Button>
             </div>
         </DynamicModuleLoader>
     )

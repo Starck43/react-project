@@ -1,4 +1,4 @@
-import {LoginSchema} from "features/auth/login/by-username"
+import {LoginSchema} from "features/auth"
 import {loginActions, loginReducer} from "features/auth/login/by-username/model/slice/loginSlice"
 
 

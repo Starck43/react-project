@@ -22,7 +22,6 @@ import {ArticleImage} from "../ui/article-image/ArticleImage"
 import {ArticleSkeleton} from "../ui/article-skeleton/ArticleSkeleton"
 import {ArticleText} from "../ui/article-text/ArticleText"
 
-
 import cls from "./ArticleDetailsCard.module.sass"
 
 
@@ -60,18 +59,18 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
 
     let content
 
+    if (error) {
+        return <Info title={t("ошибка загрузки статьи!")} align={InfoAlign.CENTER} />
+    }
+
     if (isLoading) {
+        // TODO: update skeleton like in Article List
         content = (<ArticleSkeleton rounded className="mb-2" />)
     }
 
-    if (error) {
-        content = <Info title={t("ошибка загрузки статьи!")} align={InfoAlign.CENTER} />
-    }
-
-    if (article) {
+    if (!isLoading && article) {
         content = (
-            <div className={classnames(cls, [ "article__details" ], {}, [ className ])}>
-
+            <>
                 <Avatar src={article?.img} rounded className="mb-2" />
                 <Header
                     title={article?.title}
@@ -86,14 +85,15 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                 <div className="flex-wrap vertical g-3">
                     {article?.blocks.map(renderBlock)}
                 </div>
-
-            </div>
+            </>
         )
     }
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount>
-            {content}
+        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
+            <section className={classnames(cls, [ "article__details" ], {}, [ className ])}>
+                {content}
+            </section>
         </DynamicModuleLoader>
     )
 })

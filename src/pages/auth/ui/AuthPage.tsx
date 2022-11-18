@@ -5,7 +5,7 @@ import {useNavigate} from "react-router-dom"
 
 import {getUser, User} from "entities/user"
 
-import {LoginForm} from "features/auth/login/by-username"
+import {LoginForm} from "features/auth"
 
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"

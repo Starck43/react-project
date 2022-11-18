@@ -1,16 +1,16 @@
-import {memo, useCallback, useMemo} from "react"
+import {HTMLAttributeAnchorTarget, memo, useMemo} from "react"
 import {useTranslation} from "react-i18next"
-import {useNavigate} from "react-router-dom"
-import EyeIcon from "shared/assets/icons/eye-20-20.svg"
-import {RoutesPath} from "shared/config/router"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {Avatar, AvatarSize} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
 import {Card} from "shared/ui/card/Card"
 import Header, {TitleType} from "shared/ui/header/Header"
-import {Article, ArticleBlockType, ArticleTextBlock, ArticleView} from "../../model/types/article"
 
+import EyeIcon from "shared/assets/icons/eye-20-20.svg"
+import {RoutesPath} from "shared/config/router"
+
+import {Article, ArticleBlockType, ArticleTextBlock, ArticleView} from "../../model/types/article"
 import {ArticleText} from "../article-text/ArticleText"
 
 import cls from "./ArticleListItem.module.sass"
@@ -19,13 +19,13 @@ import cls from "./ArticleListItem.module.sass"
 interface ArticleListItemProps {
     article: Article
     view: ArticleView
+    target?: HTMLAttributeAnchorTarget
     className?: string
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-    const {article, view, className} = props
+    const {article, view, target, className} = props
     const {t} = useTranslation("articles")
-    const navigate = useNavigate()
     // const [ isHover, bindHover ] = useHover()
 
     const dateBlock = useMemo(() => (
@@ -51,10 +51,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         const text = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
         return (text) ? <ArticleText block={text} className={cls.text} /> : null
     }, [ article.blocks ])
-
-    const onOpenArticleClick = useCallback(() => {
-        navigate(RoutesPath.article_details + article.id)
-    }, [ article.id, navigate ])
 
     const renderArticleItem = useMemo(
         () => (view === ArticleView.TILE
@@ -83,14 +79,16 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             titleType={TitleType.H4}
                             className={classnames(cls, [ "header" ], {}, [ "centered" ])}
                         >
-                            <Avatar
-                                src={article.user.avatar}
-                                title={article.user.username}
-                                rounded
-                                size={AvatarSize.SM}
-                                inlined
-                                className={cls.avatar}
-                            />
+                            {article?.user?.avatar && (
+                                <Avatar
+                                    src={article.user.avatar}
+                                    title={article.user.username}
+                                    rounded
+                                    size={AvatarSize.SM}
+                                    inlined
+                                    className={cls.avatar}
+                                />
+                            )}
                             {dateBlock}
                             {typesBlock}
                         </Header>
@@ -106,7 +104,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                                 size={ButtonSize.SMALL}
                                 bordered
                                 rounded
-                                onClick={onOpenArticleClick}
+                                href={RoutesPath.article_details + article.id}
                                 className={cls.read_more__button}
                             >
                                 {t("читать еще")}
@@ -120,12 +118,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 )
         ),
         [
+            article.id,
             article.title,
             article.user.avatar,
             article.user.username,
             dateBlock,
             imageBlock,
-            onOpenArticleClick,
             t,
             textBlock,
             typesBlock,
@@ -140,7 +138,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             bordered
             rounded
             shadowed={false}
-            onClick={view === ArticleView.TILE ? onOpenArticleClick : undefined}
+            href={view === ArticleView.TILE ? RoutesPath.article_details + article.id : ""}
+            target={target}
             className={classnames(cls, [ "article", view ], {}, [ "flex-wrap", className ])}
         >
             {renderArticleItem}

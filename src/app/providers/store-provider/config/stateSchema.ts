@@ -9,8 +9,9 @@ import {CounterSchema} from "entities/counter"
 import {ProfileSchema} from "entities/profile"
 import {UserSchema} from "entities/user"
 
-import {LoginSchema} from "features/auth/login/by-username"
-import {NewCommentSchema} from "features/comments/new-comment"
+import {LoginSchema} from "features/auth"
+import {NewCommentSchema} from "features/comments"
+import {ArticleRelatedSchema} from "features/articles"
 
 import {PageSchema} from "widgets/page"
 
@@ -23,8 +24,9 @@ export interface StateSchema {
     // async reducers
     login?: LoginSchema
     profile?: ProfileSchema
-    article?: ArticleSchema
     articles?: ArticleListSchema
+    article?: ArticleSchema
+    articleRelated?: ArticleRelatedSchema
     comments?: CommentSchema
     newComment?: NewCommentSchema
 }

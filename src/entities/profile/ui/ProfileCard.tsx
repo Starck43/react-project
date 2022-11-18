@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next"
 
 import {getUser} from "entities/user"
 
-import {Logout} from "features/auth/logout"
+import {Logout} from "features/auth"
 import {UpdateProfileForm} from "features/update-profile"
 
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"

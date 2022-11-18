@@ -6,7 +6,7 @@ import {commentsReducer} from "entities/comment"
 import {articleReducer} from "entities/article"
 import {profileReducer} from "entities/profile"
 import {loginReducer} from "features/auth/login/by-username/model/slice/loginSlice"
-import {newCommentReducer} from "features/comments/new-comment"
+import {newCommentReducer} from "features/comments"
 
 import {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 

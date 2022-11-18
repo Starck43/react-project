@@ -34,11 +34,11 @@ function ArticlesPage() {
     const view = useSelector(getArticlesView)
     const isLoading = useSelector(getArticlesLoading)
     const error = useSelector(getArticlesError)
-    const [ searchParams ] = useSearchParams()
+    const [ urlQuery ] = useSearchParams()
 
     useInitialEffect(() => {
         // it will be done only once on mounting
-        dispatch(initArticleList(searchParams))
+        dispatch(initArticleList(urlQuery))
     })
 
     const onLoadNext = useCallback(() => {

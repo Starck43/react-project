@@ -16,26 +16,33 @@ interface ArticleListProps {
     isLoading: boolean
     error?: string
     view: ArticleView
+    isRelated?: boolean
     className?: string
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
-        articles, isLoading, error, view, className,
+        articles, isLoading, error, view, isRelated = false, className,
     } = props
 
     const {t} = useTranslation("articles")
 
     const renderArticleList = (article: Article) => (
-        <ArticleListItem article={article} view={view} key={article.id} />
+        <ArticleListItem
+            article={article}
+            view={view}
+            key={article.id}
+            className={isRelated ? cls.related__card : ""}
+            target={isRelated ? "_blank" : ""}
+        />
     )
-
-    if (!isLoading && !articles.length) {
-        return <Info title={t("статьи не найдены!")} align={InfoAlign.CENTER} />
-    }
 
     if (error) {
         return <Info title={t("ошибка загрузки статей!")} align={InfoAlign.CENTER} />
+    }
+
+    if (!isLoading && !articles.length) {
+        return <Info title={t("статьи не найдены!")} align={InfoAlign.CENTER} />
     }
 
     return (

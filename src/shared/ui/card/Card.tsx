@@ -1,4 +1,5 @@
-import {HTMLAttributes} from "react"
+import {FC, HTMLAttributeAnchorTarget, HTMLAttributes} from "react"
+import {Link} from "react-router-dom"
 import {classnames} from "shared/lib/helpers/classnames"
 
 import cls from "./Card.module.sass"
@@ -20,26 +21,50 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     bordered?: boolean
     rounded?: boolean
     shadowed?: boolean
+    href?: string
+    target?: HTMLAttributeAnchorTarget
     className?: string
 }
 
-export const Card = (props: CardProps) => {
+export const Card: FC<CardProps> = (props) => {
     const {
         variant = CardVariant.PRIMARY,
         feature = CardFeature.BLANK,
         bordered = false,
         rounded = false,
         shadowed = false,
-        children,
+        href,
+        target,
         className,
+        children,
         ...other
     } = props
+
+
     return (
         <div
             {...other}
-            className={classnames(cls, [ "card", variant, feature ], {bordered, rounded, shadowed}, [ className ])}
+            className={classnames(
+                cls,
+                [
+                    "card",
+                    variant,
+                    feature,
+                    href ? "linked" : "",
+                ],
+                {bordered, rounded, shadowed},
+                [ className ],
+            )}
         >
-            {children}
+            {
+                href
+                    ? (
+                        <Link to={href} target={target} className={cls.link}>
+                            {children}
+                        </Link>
+                    )
+                    : children
+            }
         </div>
     )
 }

@@ -1,4 +1,7 @@
-import {FC, ReactElement, ReactNode, ButtonHTMLAttributes} from "react"
+import {
+FC, ReactElement, ReactNode, ButtonHTMLAttributes, HTMLAttributeAnchorTarget,
+} from "react"
+import {Link} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
@@ -32,6 +35,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     shadowed?: boolean
     disabled?: boolean
     href?: string
+    target?: HTMLAttributeAnchorTarget
     className?: string
     children?: ReactNode
 }
@@ -46,7 +50,8 @@ export const Button: FC<ButtonProps> = (props) => {
         squared = false,
         shadowed = false,
         disabled = false,
-        href = null,
+        href,
+        target,
         className,
         children,
         ...other
@@ -68,11 +73,11 @@ export const Button: FC<ButtonProps> = (props) => {
         >
             {href
                 ? (
-                    <a href={href} className={`${cls.link} centered`}>
+                    <Link to={href} target={target} className={`${cls.link} centered`}>
                         {children}
-                    </a>
+                    </Link>
                 )
-                : (children)}
+                : children}
         </button>
     )
 }
