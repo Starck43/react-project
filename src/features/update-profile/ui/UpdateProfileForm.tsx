@@ -3,14 +3,14 @@ import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
 import {
-    profileActions,
-    getProfileValidateErrors,
     Profile,
+    getProfileValidateErrors,
+    getProfileCopy,
+    profileActions,
     ValidateProfileError,
 } from "entities/profile"
-import {getProfileCopy} from "entities/profile/model/selectors/getProfileCopy"
-import {Country} from "entities/country/model/types/country"
 
+import {Country} from "entities/country"
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {Modal} from "shared/ui/modal/Modal"
@@ -66,8 +66,6 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
     }, [ dispatch ])
 
     const onSelectChange = useCallback((val) => {
-        // const value = Country[val as keyof typeof Country]
-        console.log("on Select", capitalizeFirstLetter(val))
         dispatch(profileActions.update({country: capitalizeFirstLetter(val) as Country || ""}))
     }, [ dispatch ])
 

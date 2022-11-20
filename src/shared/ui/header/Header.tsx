@@ -1,7 +1,6 @@
 import {createElement, memo, ReactNode, useMemo} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {ButtonVariant} from "shared/ui/button/Button"
 
 import cls from "./Header.module.sass"
 

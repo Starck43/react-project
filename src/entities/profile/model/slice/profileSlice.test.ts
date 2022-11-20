@@ -1,7 +1,8 @@
+import {ProfileSchema} from "entities/profile"
 import {updateProfileData} from "features/update-profile"
 import {Country} from "entities/country"
 
-import {ProfileSchema, ValidateProfileError} from "../types/profile"
+import {ValidateProfileError} from "../types/profile"
 import {profileActions, profileReducer} from "../slice/profileSlice"
 
 

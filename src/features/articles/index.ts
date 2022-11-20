@@ -12,4 +12,6 @@ export {getArticleRelatedData} from "./article-related/slice/articleRelatedSlice
 export {getArticleRelatedLoading, getArticleRelatedError} from "./article-related/selectors/getArticleRelatedData"
 export {fetchArticleRelatedData} from "features/articles/article-related/services/fetchArticleRelatedData"
 
-export {BackToListLink} from "./back-to-list/BackToListLink"
+export {BackToListLink} from "./back-to-list/ui/BackToListLink"
+export {EditArticleControl} from "./edit-article-control/ui/EditArticleControl"
+export {getEditArticleData} from "./edit-article-control/model/selectors/getEditArticleData"

@@ -83,7 +83,7 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                 </Header>
 
                 <div className="flex-wrap vertical g-3">
-                    {article?.blocks.map(renderBlock)}
+                    {article?.blocks?.map(renderBlock)}
                 </div>
             </>
         )

@@ -20,15 +20,21 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({minified = fal
 
     return (
         <Button
-            variant={ButtonVariant.PRIMARY}
+            variant={ButtonVariant.SECONDARY}
             feature={ButtonFeature.BLANK}
-            className={classnames(cls, [], {}, [ className, minified ? "minified" : "" ])}
+            className={classnames(cls, [], {minified}, [ className ])}
             onClick={toggleLanguage}
         >
-            { i18n.language === "en"
-               ? <FlagEnIcon className="icon" />
-               : <FlagRuIcon className="icon" />}
-            {minified ? null : t("Русский")}
+            {minified
+                ? i18n.language
+                : (
+                    <>
+                        {i18n.language === "en"
+                            ? <FlagEnIcon className="icon" />
+                            : <FlagRuIcon className="icon" />}
+                        {t("Русский")}
+                    </>
+                )}
         </Button>
     )
 })

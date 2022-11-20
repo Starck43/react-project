@@ -12,6 +12,8 @@ export default ({config}: { config: webpack.Configuration }) => {
         html: "",
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src"),
+        publicLocales: "",
+        buildLocales: "",
     }
 
     config.resolve!.extensions!.push(".ts", ".tsx")

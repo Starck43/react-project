@@ -19,12 +19,3 @@ export interface Profile {
     country?: Country
     avatar?: string
 }
-
-export interface ProfileSchema {
-    data?: Profile
-    copy?: Profile
-    isLoading: boolean
-    error?: string
-    readonly?: boolean
-    validateErrors?: ValidateProfileError[]
-}

@@ -33,7 +33,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     ), [ article.createdAt ])
 
     const typesBlock = useMemo(() => (
-        <span className={cls.types}>{article.type.join(", ")}</span>
+        <span className={cls.types}>{article.type?.join(", ")}</span>
     ), [ article.type ])
 
     const viewsBlock = useMemo(() => (
@@ -48,7 +48,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     ), [ article.img, article.title ])
 
     const textBlock = useMemo(() => {
-        const text = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
+        const text = article.blocks?.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
         return (text) ? <ArticleText block={text} className={cls.text} /> : null
     }, [ article.blocks ])
 
@@ -120,8 +120,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         [
             article.id,
             article.title,
-            article.user.avatar,
-            article.user.username,
+            article.user?.avatar,
+            article.user?.username,
             dateBlock,
             imageBlock,
             t,

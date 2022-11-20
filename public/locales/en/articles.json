@@ -1,12 +1,23 @@
 {
   "Копировать код": "Copy",
+  "дата создания": "Created at",
+  "заголовок": "Title",
+  "изменение статьи": "Article updating",
+  "изменить": "Change",
   "назад к списку": "Back to articles",
+  "новая статья": "new article",
+  "отмена": "Cancel",
   "ошибка загрузки статей!": "Articles loading error!",
   "ошибка загрузки статьи!": "Article loading error!",
+  "ошибка при сохранении статьи!": "Error occurred on saving!",
+  "подзаголовок": "Subtitle",
+  "разделы": "Category",
   "связанные статьи": "Featured articles",
+  "сохранить": "Save",
   "статьи": "Articles",
   "статьи не найдены!": "Articles not found!",
   "статья": "Article",
   "статья не найдена!": "Article not found!",
+  "фото": "Photo url",
   "читать еще": "Read more..."
 }

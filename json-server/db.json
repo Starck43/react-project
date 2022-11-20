@@ -234,7 +234,7 @@
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
       "views": 425,
-      "createdAt": "06.09.2022",
+      "createdAt": "06.09.2021",
       "userId": "1",
       "type": [
         "MEDIA"
@@ -254,14 +254,16 @@
     },
     {
       "id": "9",
-      "title": "Kotlin news",
-      "subtitle": "Что нового в JS за 2022 год?",
+      "title": "Kotlin update",
+      "subtitle": "Что нового в Kotlin за 2022 год?",
       "img": "https://miro.medium.com/max/1200/1*FNakkrty3kjOvNU8m5iQfw.png",
       "views": 102,
       "createdAt": "02.11.2022",
       "userId": "1",
       "type": [
-        "MEDIA"
+        "MEDIA",
+        "IT",
+        "PRESS"
       ],
       "blocks": [
         {
@@ -467,6 +469,9 @@
           ]
         }
       ]
+    },
+    {
+      "id": "0"
     }
   ],
   "comments": [

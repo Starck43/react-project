@@ -22,9 +22,41 @@
 	border: 3px solid var(--theme-primary-bg-color)
 	opacity: 0.7
 
+a
+	color: var(--theme-link-color)
+	text-decoration: none
+	opacity: 0.7
+
+	&:hover
+		transition: 150ms all ease-out
+		opacity: 1
+
+h1, h2, h3, h4, h5
+	font-family: var(--font-family-secondary)
+	line-height: var(--line-height-title)
+	font-weight: bold
+	color: var(--theme-primary-color)
+
+h1
+	font-size: calc(2.2em + 0.5vw)
+
+h2
+	font-size: calc(1.8em + 0.5vw)
+
+h3
+	font-size: calc(1.4em + 0.5vw)
+
+h4
+	font-size: calc(1.2em + 0.5vw)
+
+h5
+	font-size: calc(1em + 0.5vw)
+
 img
 	width: 100%
 	height: auto
 
 p
 	margin-bottom: 0.5em
+	font-size: 1em
+	// text-shadow: 1px 1px 2px transparentize(black, 0.7)

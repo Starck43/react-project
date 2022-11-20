@@ -1,3 +1,4 @@
+import {ArticleEditPage} from "pages/articles/edit"
 import {RouteProps} from "react-router-dom"
 
 import {HomePage} from "pages/home"
@@ -18,6 +19,8 @@ export enum AppRoutes {
     ABOUT = "about",
     ARTICLES = "articles",
     ARTICLE_DETAILS = "article_details",
+    ARTICLE_CREATE = "article_create",
+    ARTICLE_EDIT = "article_edit",
     AUTH = "auth",
     PROFILE = "profile",
     // must be last to search
@@ -29,6 +32,8 @@ export const RoutesPath: Record<AppRoutes, string> = {
     [AppRoutes.ABOUT]: "/about",
     [AppRoutes.ARTICLES]: "/articles",
     [AppRoutes.ARTICLE_DETAILS]: "/articles/", // + ":id" TODO: add "id" to route
+    [AppRoutes.ARTICLE_CREATE]: "/articles/create",
+    [AppRoutes.ARTICLE_EDIT]: "/articles/:id/edit",
     [AppRoutes.AUTH]: "/auth",
     [AppRoutes.PROFILE]: "/profile/", // + ":id"
     [AppRoutes.NOT_FOUND_PAGE]: "/*",
@@ -51,6 +56,16 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.ARTICLE_DETAILS]: {
         path: `${RoutesPath[AppRoutes.ARTICLE_DETAILS]}:id`,
         element: <ArticleDetailsPage />,
+        authOnly: true,
+    },
+    [AppRoutes.ARTICLE_CREATE]: {
+        path: `${RoutesPath[AppRoutes.ARTICLE_CREATE]}`,
+        element: <ArticleEditPage />,
+        authOnly: true,
+    },
+    [AppRoutes.ARTICLE_EDIT]: {
+        path: `${RoutesPath[AppRoutes.ARTICLE_EDIT]}`,
+        element: <ArticleEditPage />,
         authOnly: true,
     },
     [AppRoutes.AUTH]: {

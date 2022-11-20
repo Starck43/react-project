@@ -5,6 +5,8 @@ export type Paths = {
     build: string
     html: string
     src: string
+    publicLocales: string
+    buildLocales: string
 }
 
 export interface BuildWebpackOptions {

@@ -1,3 +1,4 @@
+import {ArticleHeader} from "pages/articles/details/ui/header/ArticleHeader"
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {useParams} from "react-router-dom"
@@ -28,8 +29,7 @@ function ArticleDetailsPage() {
 
     return (
         <Page className={cls.article_details__section}>
-            <Header title={t("статья")} shadowed align={HeaderAlign.CENTER} />
-            <BackToListLink />
+            <ArticleHeader />
             <ArticleDetailsCard articleId={id} />
             <ArticleCommentsCard articleId={id} />
             <ArticleRelatedCard articleId={id} />

@@ -24,7 +24,7 @@ function AuthPage() {
     const navigate = useNavigate()
 
     const successLoginHandler = (res: User) => {
-        console.log("Login success:", res)
+        // console.log("Login success:", res)
         navigate(RoutesPath[AppRoutes.PROFILE] + res.id)
     }
 
