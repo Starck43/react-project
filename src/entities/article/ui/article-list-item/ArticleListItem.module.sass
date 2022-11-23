@@ -126,7 +126,12 @@
 					left: 0
 					right: 0
 					height: 3rem
-					background: linear-gradient(to top, var(--theme-modal-bg-color) 10%, transparent 100%)
+
+		&.primary .body .text::after
+			background: linear-gradient(to top, var(--theme-primary-bg-color) 10%, transparent 100%)
+
+		&.secondary .body .text::after
+			background: linear-gradient(to top, var(--theme-secondary-bg-color) 10%, transparent 100%)
 
 		.footer
 			display: flex

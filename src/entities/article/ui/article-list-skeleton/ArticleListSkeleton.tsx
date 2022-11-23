@@ -16,7 +16,8 @@ interface ArticleListSkeletonProps {
 
 export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
     const {view, className} = props
-    const renderSkeletonItem = useMemo(() => (view === ArticleView.TILE
+    const renderSkeletonItem = useMemo(() => (
+        view === ArticleView.TILE
             ? (
                 <>
                     <Skeleton
@@ -51,7 +52,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                         rounded
                         inlined
                         width="60%"
-                        height="1.8em"
+                        height="2em"
                         className="mb-1"
                     />
                     <Skeleton
@@ -67,8 +68,8 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                             variant={SkeletonVariant.PRIMARY}
                             elements={[ SkeletonElementType.AVATAR ]}
                             rounded
-                            height={150}
-                            width={150}
+                            height={100}
+                            width={100}
                             className="mr-1"
                         />
                         <Skeleton
@@ -84,6 +85,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                         elements={[ SkeletonElementType.TITLE, SkeletonElementType.TITLE ]}
                         inlined
                         rounded
+                        height="2.2em"
                         width={100}
                     />
                 </>

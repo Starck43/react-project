@@ -4,11 +4,11 @@ import {useTranslation} from "react-i18next"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Avatar, AvatarSize} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
-import {Card} from "shared/ui/card/Card"
+import {Card, CardVariant} from "shared/ui/card/Card"
 import Header, {TitleType} from "shared/ui/header/Header"
 
 import EyeIcon from "shared/assets/icons/eye-20-20.svg"
-import {RoutesPath} from "shared/config/router"
+import {AppRoutes, RoutesPath} from "shared/config/router"
 
 import {Article, ArticleBlockType, ArticleTextBlock, ArticleView} from "../../model/types/article"
 import {ArticleText} from "../article-text/ArticleText"
@@ -19,12 +19,15 @@ import cls from "./ArticleListItem.module.sass"
 interface ArticleListItemProps {
     article: Article
     view: ArticleView
+    shadowed?: boolean
     target?: HTMLAttributeAnchorTarget
     className?: string
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-    const {article, view, target, className} = props
+    const {
+article, view, shadowed = false, target, className,
+} = props
     const {t} = useTranslation("articles")
     // const [ isHover, bindHover ] = useHover()
 
@@ -101,7 +104,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         <div className={classnames(cls, [ "footer" ])}>
                             <Button
                                 feature={ButtonFeature.BLANK}
-                                size={ButtonSize.SMALL}
+                                size={ButtonSize.NORMAL}
                                 bordered
                                 rounded
                                 href={RoutesPath.article_details + article.id}
@@ -135,12 +138,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     return (
         <Card
             id={`article-${article.id}`}
+            variant={CardVariant.SECONDARY}
+            href={view === ArticleView.TILE ? RoutesPath[AppRoutes.ARTICLE_DETAILS] + article.id : ""}
+            target={target}
             bordered
             rounded
-            shadowed={false}
-            href={view === ArticleView.TILE ? RoutesPath.article_details + article.id : ""}
-            target={target}
-            className={classnames(cls, [ "article", view ], {}, [ "flex-wrap", className ])}
+            shadowed={shadowed}
+            className={classnames(cls, [ "article", CardVariant.SECONDARY, view ], {}, [ "flex-wrap", className ])}
         >
             {renderArticleItem}
         </Card>

@@ -19,7 +19,7 @@ import {articleReducer} from "../model/slice/article-details/articleSlice"
 import {ArticleBlock, ArticleBlockType} from "../model/types/article"
 import {ArticleCode} from "../ui/article-code/ArticleCode"
 import {ArticleImage} from "../ui/article-image/ArticleImage"
-import {ArticleSkeleton} from "../ui/article-skeleton/ArticleSkeleton"
+import {ArticleDetailsSkeleton} from "./article-details-skeleton/ArticleDetailsSkeleton"
 import {ArticleText} from "../ui/article-text/ArticleText"
 
 import cls from "./ArticleDetailsCard.module.sass"
@@ -65,13 +65,12 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
 
     if (isLoading) {
         // TODO: update skeleton like in Article List
-        content = (<ArticleSkeleton rounded className="mb-2" />)
+        content = (<ArticleDetailsSkeleton className="mb-2" />)
     }
 
     if (!isLoading && article) {
         content = (
             <>
-                <Avatar src={article?.img} rounded className="mb-2" />
                 <Header
                     title={article?.title}
                     subTitle={article?.subtitle}
@@ -82,6 +81,8 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                     <div className="inline size-sm"><EyeIcon /><span>{article?.views}</span></div>
                 </Header>
 
+                <img src={article?.img} alt="" className={cls.image} />
+
                 <div className="flex-wrap vertical g-3">
                     {article?.blocks?.map(renderBlock)}
                 </div>
@@ -91,7 +92,7 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
 
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
-            <section className={classnames(cls, [ "article__details" ], {}, [ className ])}>
+            <section className={classnames(cls, [ "article__details" ], {}, [ "mt-2", className ])}>
                 {content}
             </section>
         </DynamicModuleLoader>

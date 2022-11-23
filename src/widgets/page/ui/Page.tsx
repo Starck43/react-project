@@ -52,7 +52,7 @@ export const Page = ({children, saveScrollPos = false, onScrollToEnd, className}
         <div
             ref={containerRef}
             onScroll={onScrollHandler}
-            className={classnames(cls, [ "container" ], {}, [ className ])}
+            className={classnames(cls, [ "content" ], {}, [ className ])}
         >
             {children}
             {onScrollToEnd ? <div ref={loadMoreRef} className={cls.load__more} /> : null}

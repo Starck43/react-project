@@ -15,3 +15,4 @@ export {fetchArticleRelatedData} from "features/articles/article-related/service
 export {BackToListLink} from "./back-to-list/ui/BackToListLink"
 export {EditArticleControl} from "./edit-article-control/ui/EditArticleControl"
 export {getEditArticleData} from "./edit-article-control/model/selectors/getEditArticleData"
+export {UpdateArticleForm} from "./update-article/ui/UpdateArticleForm"

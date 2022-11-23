@@ -1,17 +1,14 @@
-import {ArticleHeader} from "pages/articles/details/ui/header/ArticleHeader"
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {useParams} from "react-router-dom"
 
 import {ArticleDetailsCard} from "entities/article"
 
-import {BackToListLink} from "features/articles"
-
-import Header, {HeaderAlign} from "shared/ui/header/Header"
 import {Info, InfoAlign} from "shared/ui/info/Info"
 
 import {Page} from "widgets/page"
 
+import {ArticleHeader} from "./header/ArticleHeader"
 import {ArticleCommentsCard} from "./comments-card/ArticleCommentsCard"
 import {ArticleRelatedCard} from "./related-card/ArticleRelatedCard"
 

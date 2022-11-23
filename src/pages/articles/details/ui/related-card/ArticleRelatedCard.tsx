@@ -1,4 +1,6 @@
-import {ArticleList, ArticleView} from "entities/article"
+import React, {memo} from "react"
+import {useTranslation} from "react-i18next"
+import {useSelector} from "react-redux"
 
 import {
     fetchArticleRelatedData,
@@ -6,12 +8,11 @@ import {
     getArticleRelatedError,
     getArticleRelatedLoading,
 } from "features/articles"
-import {articleRelatedReducer} from "features/articles/article-related/slice/articleRelatedSlice"
-import React, {memo} from "react"
-import {useTranslation} from "react-i18next"
-import {useSelector} from "react-redux"
-import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
+import {ArticleList, ArticleView} from "entities/article"
 
+import {articleRelatedReducer} from "features/articles/article-related/slice/articleRelatedSlice"
+
+import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"

@@ -12,7 +12,7 @@ interface ArticleHeaderProps {
 }
 
 export const ArticleHeader = memo(({className}: ArticleHeaderProps) => (
-    <div className={classnames(cls, [ "article__header" ], {}, [ "flex-wrap", className ])}>
+    <div className={classnames(cls, [ "article__header" ], {}, [ "centered", className ])}>
         {/* <Header title={t("статья")} shadowed align={HeaderAlign.CENTER} /> */}
         <BackToListLink />
         <EditArticleControl />

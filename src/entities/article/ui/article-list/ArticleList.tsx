@@ -16,13 +16,14 @@ interface ArticleListProps {
     isLoading: boolean
     error?: string
     view: ArticleView
+    shadowed?: boolean
     isRelated?: boolean
     className?: string
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
-        articles, isLoading, error, view, isRelated = false, className,
+        articles, isLoading, error, view, shadowed, isRelated = false, className,
     } = props
 
     const {t} = useTranslation("articles")
@@ -31,9 +32,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
         <ArticleListItem
             article={article}
             view={view}
-            key={article.id}
-            className={isRelated ? cls.related__card : ""}
+            shadowed={shadowed}
             target={isRelated ? "_blank" : ""}
+            className={isRelated ? cls.related__card : ""}
+            key={article.id}
         />
     )
 

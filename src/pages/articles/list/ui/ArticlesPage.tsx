@@ -50,7 +50,7 @@ function ArticlesPage() {
             <Page onScrollToEnd={onLoadNext} saveScrollPos>
                 <Header title={t("статьи")} shadowed align={HeaderAlign.CENTER} />
                 <ArticlesPageControls />
-                <ArticleList articles={articles} isLoading={isLoading} error={error} view={view} />
+                <ArticleList articles={articles} isLoading={isLoading} error={error} view={view} shadowed />
             </Page>
         </DynamicModuleLoader>
     )
