@@ -15,6 +15,8 @@ import {getPageByPath, pageActions} from "widgets/page"
 import cls from "./Page.module.sass"
 
 
+export const PAGE_ID = "pageContent"
+
 interface PageProps {
     children: ReactNode
     saveScrollPos?: boolean
@@ -51,8 +53,9 @@ export const Page = ({children, saveScrollPos = false, onScrollToEnd, className}
     return (
         <div
             ref={containerRef}
-            onScroll={onScrollHandler}
+            id={PAGE_ID}
             className={classnames(cls, [ "content" ], {}, [ className ])}
+            onScroll={onScrollHandler}
         >
             {children}
             {onScrollToEnd ? <div ref={loadMoreRef} className={cls.load__more} /> : null}

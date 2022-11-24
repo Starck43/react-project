@@ -17,13 +17,11 @@ export class TestAsyncFunc<Return, Arg, RejectedValue> {
     getState: () => StateSchema
     actionCreator: ActionCreatorType<Return, Arg, RejectedValue>
     api: jest.MockedFunctionDeep<AxiosStatic>
-    navigate: jest.MockedFn<any>
 
     constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>, state?: DeepPartial<StateSchema>) {
         this.actionCreator = actionCreator
         this.dispatch = jest.fn()
         this.getState = jest.fn(() => state as StateSchema)
-        this.navigate = jest.fn()
         this.api = mockedAxios
     }
 
@@ -34,7 +32,6 @@ export class TestAsyncFunc<Return, Arg, RejectedValue> {
             this.getState,
             {
                 api: this.api,
-                // navigate: this.navigate,
             },
         )
         return res

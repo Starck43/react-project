@@ -3,12 +3,14 @@ import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit"
 import {StateSchema} from "app/providers/store-provider"
 
 import {ARTICLES_VIEW_MODE_KEY} from "shared/const/localStorage"
-
 import {
     Article, ArticleOrderType, ArticleSortType, ArticleType, ArticleView,
 } from "../../types/article"
+
 import {ArticleListSchema} from "../../types/articleListSchema"
 import {fetchArticleList} from "../../services/fetchArticleList/fetchArticleList"
+
+import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../../libs/constants"
 
 
 const articlesAdapter = createEntityAdapter<Article>({
@@ -27,7 +29,7 @@ const articlesSlice = createSlice({
         search: "",
         type: ArticleType.ALL,
         page: 1,
-        limit: 10,
+        limit: LIST_VIEW_PER_PAGE,
         hasMore: true,
         ids: [],
         entities: {},
@@ -36,7 +38,7 @@ const articlesSlice = createSlice({
     reducers: {
         initState: (state) => {
             const mode = localStorage.getItem(ARTICLES_VIEW_MODE_KEY) as ArticleView
-            state.limit = mode === ArticleView.LIST ? 3 : 9
+            state.limit = mode === ArticleView.LIST ? LIST_VIEW_PER_PAGE : TILE_VIEW_PER_PAGE
             state.view = mode
             state._mounted = true
         },

@@ -6,7 +6,7 @@ import {AppRoutes, RoutesPath} from "shared/config/router"
 import AuthIcon from "shared/assets/icons/auth.svg"
 import ArticleIcon from "shared/assets/icons/article-20-20.svg"
 
-import {groupNavbarItems} from "widgets/navbar/lib"
+import {groupNavbarItems} from "widgets/navbar/libs"
 
 import {NavbarItemType} from "widgets/navbar/model/types/navbar"
 

@@ -1,4 +1,4 @@
-import {HTMLAttributeAnchorTarget, memo, useMemo} from "react"
+import {HTMLAttributeAnchorTarget, memo, StyleHTMLAttributes, useMemo} from "react"
 import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
@@ -22,12 +22,13 @@ interface ArticleListItemProps {
     shadowed?: boolean
     target?: HTMLAttributeAnchorTarget
     className?: string
+    style?: object
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const {
-article, view, shadowed = false, target, className,
-} = props
+        article, view, shadowed = false, target, className, style,
+    } = props
     const {t} = useTranslation("articles")
     // const [ isHover, bindHover ] = useHover()
 
@@ -144,6 +145,7 @@ article, view, shadowed = false, target, className,
             bordered
             rounded
             shadowed={shadowed}
+            style={style}
             className={classnames(cls, [ "article", CardVariant.SECONDARY, view ], {}, [ "flex-wrap", className ])}
         >
             {renderArticleItem}

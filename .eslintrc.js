@@ -70,6 +70,7 @@ module.exports = {
         "no-shadow": "off",
         "no-param-reassign": "off",
         "import/extensions": "off",
+        "no-nested-ternary": "off",
         "import/no-extraneous-dependencies": "off",
         "jsx-a11y/no-static-element-interactions": [
             "error",

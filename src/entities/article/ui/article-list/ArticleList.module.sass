@@ -2,9 +2,14 @@
 	width: 100%
 
 	&.tile
-		display: grid
-		gap: 2vw
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+		@supports (display: grid)
+			display: grid
+			gap: 5%
+			//align-items: center
+			justify-items: center
+
+.tile
+	display: flex
 
 .related__card
 	flex-shrink: 0

@@ -1,4 +1,7 @@
-export const getWindowDimensions = () => {
+import {MutableRefObject} from "react"
+
+
+export const getWindowDimensions = (container: MutableRefObject<HTMLDivElement> | undefined) => {
     if (typeof window === "undefined") {
         return {
             width: 0,
@@ -7,7 +10,7 @@ export const getWindowDimensions = () => {
             media: null,
         }
     }
-    const w = window.innerWidth
+    const w = container ? container?.current.clientWidth || 0 : window.innerWidth
 
     const getMediaScreen = () => {
         switch (true) {
@@ -23,6 +26,14 @@ export const getWindowDimensions = () => {
                 return "xl"
             default:
                 return "xxl"
+        }
+    }
+    if (container?.current) {
+        return {
+            width: container.current.clientWidth,
+            height: container.current.clientHeight,
+            ratio: container.current.clientWidth / container.current.clientHeight,
+            media: getMediaScreen(),
         }
     }
     return {

@@ -1,20 +1,19 @@
-import {useEffect, useState} from "react"
+import {MutableRefObject, useEffect, useState} from "react"
 import {getWindowDimensions} from "../helpers/dom"
 
 
-export const useWindowDimensions = () => {
+export const useWindowDimensions = (container: MutableRefObject<HTMLDivElement> | undefined = undefined) => {
     const [ windowDimensions, setWindowDimensions ] = useState(
-        getWindowDimensions(),
+        getWindowDimensions(container),
     )
 
     useEffect(() => {
         const handleResize = () => {
-            setWindowDimensions(getWindowDimensions())
+            setWindowDimensions(getWindowDimensions(container))
         }
-        // console.log(`Window dimension: ${windowDimensions.width}px`)
         window.addEventListener("resize", handleResize)
         return () => window.removeEventListener("resize", handleResize)
-    }, [])
+    }, [ container ])
 
     return windowDimensions
 }
