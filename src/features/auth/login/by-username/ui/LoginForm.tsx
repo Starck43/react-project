@@ -1,6 +1,3 @@
-import {PayloadAction} from "@reduxjs/toolkit"
-import {resolve} from "dns"
-import {User} from "entities/user"
 import {memo, useCallback} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
@@ -12,6 +9,7 @@ import Input from "shared/ui/input/Input"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import {classnames} from "shared/lib/helpers/classnames"
+import {Col, Row} from "shared/ui/stack"
 
 import {getLoginUsername} from "../model/selectors/getLoginUsername"
 import {getLoginPassword} from "../model/selectors/getLoginPassword"
@@ -58,9 +56,11 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount>
-            <div
+            <Col
                 data-testid="loginForm"
-                className={classnames(cls, [ "login" ], {}, [ className, "centered", "vertical" ])}
+                align="center"
+                fullWidth
+                className={classnames(cls, [ "login" ], {}, [ className ])}
             >
                 <Input
                     name="name"
@@ -85,7 +85,7 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
                     />
                 )}
 
-                <div className={cls.controls}>
+                <Row fullWidth align="center" className={cls.controls}>
                     <Button
                         feature={ButtonFeature.BLANK}
                         bordered
@@ -95,8 +95,8 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
                     >
                         {t("войти")}
                     </Button>
-                </div>
-            </div>
+                </Row>
+            </Col>
         </DynamicModuleLoader>
     )
 }

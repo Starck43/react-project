@@ -18,7 +18,10 @@ module.exports = {
         sourceType: "module",
     },
     plugins: [
-        "react", "@typescript-eslint", "i18next", "react-hooks", // "promise",
+        "react",
+        "@typescript-eslint",
+        "i18next",
+        "react-hooks",
     ],
     rules: {
         "no-tabs": 0,
@@ -93,7 +96,7 @@ module.exports = {
         "i18next/no-literal-string": [
             "warn", {
                 markupOnly: true,
-                ignoreAttribute: [ "data-testid", "to", "target" ],
+                // ignoreAttribute: [ "data-testid", "to", "target" ],
                 onlyAttribute: [ "" ],
             },
         ],

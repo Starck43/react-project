@@ -5,7 +5,7 @@ import {Spinner} from "./Spinner"
 
 
 export default {
-    title: "widgets/Spinner",
+    title: "shared/Spinner",
     component: Spinner,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Spinner>

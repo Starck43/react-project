@@ -1,6 +1,7 @@
 import {FC, HTMLAttributeAnchorTarget, HTMLAttributes} from "react"
 import {Link} from "react-router-dom"
 import {classnames} from "shared/lib/helpers/classnames"
+import {Flex} from "shared/ui/stack"
 
 import cls from "./Card.module.sass"
 
@@ -21,6 +22,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
     bordered?: boolean
     rounded?: boolean
     shadowed?: boolean
+    direction?: "row" | "column"
     href?: string
     target?: HTMLAttributeAnchorTarget
     className?: string
@@ -33,6 +35,7 @@ export const Card: FC<CardProps> = (props) => {
         bordered = false,
         rounded = false,
         shadowed = false,
+        direction = "column",
         href,
         target,
         className,
@@ -42,8 +45,11 @@ export const Card: FC<CardProps> = (props) => {
 
 
     return (
-        <div
+        <Flex
             {...other}
+            wrap
+            fullWidth
+            direction={direction}
             className={classnames(
                 cls,
                 [
@@ -65,6 +71,6 @@ export const Card: FC<CardProps> = (props) => {
                     )
                     : children
             }
-        </div>
+        </Flex>
     )
 }

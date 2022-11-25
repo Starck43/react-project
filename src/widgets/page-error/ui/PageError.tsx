@@ -1,9 +1,9 @@
 import {useTranslation} from "react-i18next"
 
-import {classnames} from "shared/lib/helpers/classnames"
 import {Button} from "shared/ui/button/Button"
+import {Col} from "shared/ui/stack"
 
-import cls from "./PageError.module.sass"
+// import cls from "./PageError.module.sass"
 
 
 interface PageErrorProps {
@@ -18,10 +18,10 @@ export const PageError = ({className}: PageErrorProps) => {
     }
 
     return (
-        <div className={classnames(cls, [ "page__error" ], {}, [ className, "centered", "vertical" ])}>
+        <Col align="center" className={className}>
             <h1>{t("что-то пошло не так")}</h1>
             {t("непредвиденная ошибка")}
             <Button onClick={reloadPage} className="mt-2">{t("обновить страницу")}</Button>
-        </div>
+        </Col>
     )
 }

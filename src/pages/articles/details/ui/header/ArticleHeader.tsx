@@ -1,10 +1,9 @@
 import {memo} from "react"
 
-import {classnames} from "shared/lib/helpers/classnames"
-
 import {BackToListLink, EditArticleControl} from "features/articles"
+import {Row} from "shared/ui/stack"
 
-import cls from "./ArticleHeader.module.sass"
+// import cls from "./ArticleHeader.module.sass"
 
 
 interface ArticleHeaderProps {
@@ -12,9 +11,9 @@ interface ArticleHeaderProps {
 }
 
 export const ArticleHeader = memo(({className}: ArticleHeaderProps) => (
-    <div className={classnames(cls, [ "article__header" ], {}, [ "centered", className ])}>
-        {/* <Header title={t("статья")} shadowed align={HeaderAlign.CENTER} /> */}
+    <Row className={className}>
+        {/* <Header title={t("статья")} shadowed align="center" /> */}
         <BackToListLink />
         <EditArticleControl />
-    </div>
+    </Row>
 ))

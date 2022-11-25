@@ -1,0 +1,43 @@
+import React from "react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
+
+import {Button, ButtonSize} from "shared/ui/button/Button"
+
+import Row from "./Row"
+
+
+export default {
+    title: "shared/stack/Row",
+    component: Row,
+    argTypes: {backgroundColor: {control: "color"}},
+} as ComponentMeta<typeof Row>
+
+const Template: ComponentStory<typeof Row> = (args) => <Row {...args} />
+
+export const Default = Template.bind({})
+Default.args = {
+    gap: "sm",
+    justify: "between",
+    children: (
+        <>
+            <Button bordered size={ButtonSize.NORMAL}>Item 1</Button>
+            <Button bordered size={ButtonSize.LARGE}>Item 2</Button>
+            <Button bordered size={ButtonSize.SMALL}>Item 3</Button>
+        </>
+    ),
+}
+
+
+export const FullWidth = Template.bind({})
+FullWidth.args = {
+    gap: "xs",
+    fullWidth: true,
+    justify: "between",
+    children: (
+        <>
+            <Button bordered size={ButtonSize.NORMAL}>Item 1</Button>
+            <Button bordered size={ButtonSize.LARGE}>Item 2</Button>
+            <Button bordered size={ButtonSize.SMALL}>Item 3</Button>
+        </>
+    ),
+}

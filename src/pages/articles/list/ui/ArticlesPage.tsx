@@ -4,20 +4,20 @@ import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
 import {
-    initArticleList,
-    ArticleList,
-    articlesReducer,
     getArticlesData,
     getArticlesError,
     getArticlesLoading,
     getArticlesView,
+    ArticleList,
     fetchArticleNextList,
+    initArticleList,
+    articlesReducer,
 } from "entities/article"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
-import Header, {HeaderAlign} from "shared/ui/header/Header"
+import Header from "shared/ui/header/Header"
 
 import {Page} from "widgets/page"
 
@@ -48,8 +48,8 @@ function ArticlesPage() {
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
             <Page onScrollToEnd={onLoadNext} saveScrollPos>
-                <Header title={t("статьи")} shadowed align={HeaderAlign.CENTER} />
-                <ArticlesPageControls />
+                <Header title={t("статьи")} align="center" shadowed />
+                <ArticlesPageControls className="mb-2" />
                 <ArticleList articles={articles} isLoading={isLoading} error={error} view={view} shadowed />
             </Page>
         </DynamicModuleLoader>

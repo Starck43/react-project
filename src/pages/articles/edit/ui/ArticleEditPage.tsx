@@ -6,7 +6,7 @@ import {UpdateArticleForm} from "features/articles"
 
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {classnames} from "shared/lib/helpers/classnames"
-import Header, {HeaderAlign} from "shared/ui/header/Header"
+import Header from "shared/ui/header/Header"
 
 import {Page} from "widgets/page"
 
@@ -27,7 +27,7 @@ function ArticleEditPage() {
 
     return (
         <Page className={classnames(cls, [ "edit__article" ], {}, [])}>
-            <Header title={isEditMode ? t("изменение статьи") : t("новая статья")} align={HeaderAlign.CENTER} />
+            <Header title={isEditMode ? t("изменение статьи") : t("новая статья")} align="center" />
             <UpdateArticleForm articleId={id} onCloseHandler={onCloseHandler} />
         </Page>
     )

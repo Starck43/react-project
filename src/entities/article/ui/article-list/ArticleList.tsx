@@ -1,12 +1,10 @@
-import {
-    LegacyRef, memo, MutableRefObject, ReactNode, useEffect, useState,
-} from "react"
+import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {List, ListRowProps, WindowScroller} from "react-virtualized"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
 import {Info, InfoAlign} from "shared/ui/info/Info"
+
 import {PageLoader} from "widgets/page-loader/PageLoader"
 import {PAGE_ID} from "widgets/page/ui/Page"
 
@@ -38,7 +36,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     const rowWidth = container?.clientWidth || 900
     const itemsPerRow = isTile && container ? Math.floor(rowWidth / 225) : 1
 
-    const rowCount = isTile ? Math.ceil(articles.length / itemsPerRow) : articles.length
+    const rowCount = isTile ? Math.ceil(articles.length / itemsPerRow) : articles?.length || 3
     const rowHeight = !isTile || !container ? 400 : Math.round(
         (((rowWidth - rowWidth * 0.05 * (itemsPerRow - 1)) / itemsPerRow)) * 1.5,
     )
@@ -76,7 +74,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         return <Info title={t("ошибка загрузки статей!")} align={InfoAlign.CENTER} />
     }
 
-    if (!isLoading && !articles.length) {
+    if (!isLoading && !articles?.length) {
         return <Info title={t("статьи не найдены!")} align={InfoAlign.CENTER} />
     }
 

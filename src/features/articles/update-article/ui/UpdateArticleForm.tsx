@@ -1,4 +1,4 @@
-import React, {FormEvent, memo, useCallback, useState} from "react"
+import {FormEvent, memo, useCallback, useState} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
@@ -20,6 +20,7 @@ import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 import Input, {TextArea} from "shared/ui/input/Input"
+import {Row} from "shared/ui/stack"
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
 import {updateArticleData} from "../model/services/updateArticleData"
@@ -136,7 +137,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
                         className="mb-1"
                     />
 
-                    <div className="centered g-1 mt-2">
+                    <Row justify="center" gap="sm" className="mt-2">
                         <Button
                             type="submit"
                             bordered
@@ -145,7 +146,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
                             {t("сохранить")}
                         </Button>
                         <Button bordered feature={ButtonFeature.BLANK} onClick={onCancelClick}>{t("отмена")}</Button>
-                    </div>
+                    </Row>
                 </form>
             </div>
         </DynamicModuleLoader>

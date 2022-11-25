@@ -1,12 +1,11 @@
 import React, {memo, useMemo} from "react"
 import {useSelector} from "react-redux"
-import {useTranslation} from "react-i18next"
 
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
 import {LanguageSwitcher} from "shared/ui/language-switcher/LanguageSwitcher"
+import {Row} from "shared/ui/stack"
 import {ThemeSwitcher} from "shared/ui/theme-switcher/ThemeSwitcher"
 
 import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"
@@ -41,7 +40,13 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
     ))), [ itemsList ])
 
     return (
-        <menu className={classnames(cls, [ "navbar", className ])}>
+        <Row
+            tag="header"
+            fullWidth
+            align="center"
+            role="navigation"
+            className={classnames(cls, [ "navbar", className ])}
+        >
             {navbarItemsList}
             <ThemeSwitcher
                 minified
@@ -50,7 +55,7 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
                 className={classnames(cls, [ "icon", "theme" ])}
             />
             <LanguageSwitcher minified className={classnames(cls, [ "lang" ])} />
-        </menu>
+        </Row>
     )
 }
 

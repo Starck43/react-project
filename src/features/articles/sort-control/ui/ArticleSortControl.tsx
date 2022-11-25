@@ -1,20 +1,21 @@
-import {
-    getArticlesOrder,
-    getArticlesSearch,
-    getArticlesSort,
-} from "entities/article/model/selectors/article-list/getArticleListData"
-import {fetchArticleList} from "entities/article/model/services/fetchArticleList/fetchArticleList"
-import {ArticleSortType, ArticleView} from "entities/article/model/types/article"
 import {memo, useCallback, useMemo} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
-import {classnames} from "shared/lib/helpers/classnames"
+
+import {
+    ArticleOrderType,
+    ArticleSortType,
+    articlesActions,
+    fetchArticleList,
+    getArticlesOrder,
+    getArticlesSort,
+} from "entities/article"
+
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {Select} from "shared/ui/select/Select"
+import {Row} from "shared/ui/stack"
 
-import {ArticleOrderType, articlesActions} from "entities/article"
-
-import cls from "./ArticleSortControl.module.sass"
+// import cls from "./ArticleSortControl.module.sass"
 
 
 interface ArticleSortControlProps {
@@ -67,7 +68,7 @@ export const ArticleSortControl = memo(({className}: ArticleSortControlProps) =>
     ], [ t ])
 
     return (
-        <div className={classnames(cls, [ "sort__control" ], {}, [ "flex-wrap", "g-1", className ])}>
+        <Row align="center" gap="sm" wrap className={className}>
             <Select
                 label={t("сортировать по")}
                 value={sort}
@@ -84,6 +85,6 @@ export const ArticleSortControl = memo(({className}: ArticleSortControlProps) =>
                 rounded
                 onChange={(val) => onOrderClick(val as ArticleOrderType)}
             />
-        </div>
+        </Row>
     )
 })

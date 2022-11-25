@@ -3,6 +3,7 @@ import {memo, useMemo} from "react"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Card} from "shared/ui/card/Card"
 import {Skeleton, SkeletonElementType, SkeletonVariant} from "shared/ui/skeleton/Skeleton"
+import {Flex, Row} from "shared/ui/stack"
 
 import {ArticleView} from "../../model/types/article"
 
@@ -25,14 +26,14 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                         elements={[ SkeletonElementType.AVATAR ]}
                         className={classnames(cls, [ "avatar" ], {}, [ "mb-1" ])}
                     />
-                    <div className={classnames(cls, [ "meta" ], {}, [ "centered" ])}>
+                    <Flex className={cls.meta}>
                         <Skeleton
                             variant={SkeletonVariant.PRIMARY}
                             elements={[ SkeletonElementType.TITLE, SkeletonElementType.TITLE ]}
                             rounded
                             width="90%"
                         />
-                    </div>
+                    </Flex>
                 </>
             )
             : (
@@ -63,7 +64,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                         width="35%"
                         height="1em"
                     />
-                    <div className={classnames(cls, [ "body" ], {}, [ "my-2" ])}>
+                    <Row justify="between" fullWidth className={classnames(cls, [ "body" ], {}, [ "my-2" ])}>
                         <Skeleton
                             variant={SkeletonVariant.PRIMARY}
                             elements={[ SkeletonElementType.AVATAR ]}
@@ -79,7 +80,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                             className="g-1"
                         />
 
-                    </div>
+                    </Row>
                     <Skeleton
                         variant={SkeletonVariant.PRIMARY}
                         elements={[ SkeletonElementType.TITLE, SkeletonElementType.TITLE ]}
@@ -97,7 +98,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
             bordered
             rounded
             shadowed={false}
-            className={classnames(cls, [ "article", view ], {}, [ "flex-wrap", className ])}
+            className={classnames(cls, [ "article", view ], {}, [ className ])}
         >
             {renderSkeletonItem}
         </Card>

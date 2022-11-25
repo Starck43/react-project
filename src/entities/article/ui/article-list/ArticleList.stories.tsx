@@ -1,6 +1,6 @@
-import {ArticleBlockType, ArticleType} from "entities/article/model/types/article"
-import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+import {ArticleBlockType, ArticleType, ArticleView} from "entities/article/model/types/article"
+import React from "react"
 
 import Image from "shared/assets/icons/avatar-profile.jpeg"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
@@ -49,9 +49,11 @@ const article: Article = {
 
 const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />
 
+// TODO: fix empty screen
 export const Default = Template.bind({})
 Default.args = {
     isLoading: false,
+    view: ArticleView.TILE,
     articles: new Array(3).fill(0).map((item, i) => ({...article, id: String(i)})),
 }
 Default.decorators = [
@@ -61,6 +63,7 @@ Default.decorators = [
 export const Loading = Template.bind({})
 Loading.args = {
     isLoading: true,
+    articles: [],
 }
 Loading.decorators = [
     StoreDecorator({}),

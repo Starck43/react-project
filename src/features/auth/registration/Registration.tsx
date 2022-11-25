@@ -1,9 +1,11 @@
 import {useState} from "react"
 import {useTranslation} from "react-i18next"
-import {Button, ButtonFeature} from "shared/ui/button/Button"
-import Input from "shared/ui/input/Input"
-import {classnames} from "shared/lib/helpers/classnames"
+
 import {User} from "entities/user"
+
+import {Button, ButtonFeature} from "shared/ui/button/Button"
+import {Card} from "shared/ui/card/Card"
+import Input from "shared/ui/input/Input"
 
 import cls from "./Registration.module.sass"
 
@@ -15,7 +17,7 @@ export const Registration = () => {
     const {t} = useTranslation("auth")
 
     return (
-        <div className={classnames(cls, [ "registration" ], {}, [ "centered" ])}>
+        <Card className={cls.registration}>
             <Input
                 name="name"
                 value={userData.username}
@@ -29,6 +31,6 @@ export const Registration = () => {
                 className="mb-2"
             />
             <Button feature={ButtonFeature.BLANK}>{t("регистрация")}</Button>
-        </div>
+        </Card>
     )
 }

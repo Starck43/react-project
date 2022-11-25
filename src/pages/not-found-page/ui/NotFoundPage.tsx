@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next"
 import {classnames} from "shared/lib/helpers/classnames"
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Button} from "shared/ui/button/Button"
-import Header, {HeaderAlign} from "shared/ui/header/Header"
+import Header from "shared/ui/header/Header"
 
 import {Page} from "widgets/page"
 
@@ -16,7 +16,7 @@ function NotFoundPage() {
 
     return (
         <Page className={classnames(cls, [ "not_found__page" ], {}, [ "centered" ])}>
-            <Header title={t("Страница не найдена")} shadowed align={HeaderAlign.CENTER} />
+            <Header title={t("Страница не найдена")} shadowed align="center" />
 
             <Button href={RoutesPath[AppRoutes.HOME]}>
                 {t("На главную")}

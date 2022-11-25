@@ -5,7 +5,7 @@ import {profileReducer} from "entities/profile"
 import {ProfileCard} from "entities/profile/ui/ProfileCard"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import Header, {HeaderAlign} from "shared/ui/header/Header"
+import Header from "shared/ui/header/Header"
 
 import {Page} from "widgets/page"
 
@@ -22,7 +22,7 @@ function ProfilePage() {
             <Page>
                 <Suspense fallback={<PageLoader />}>
                     <div className="container profile-container">
-                        <Header title={t("профиль")} shadowed align={HeaderAlign.CENTER} />
+                        <Header title={t("профиль")} shadowed align="center" />
                         <ProfileCard />
                     </div>
                 </Suspense>

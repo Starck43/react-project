@@ -5,6 +5,7 @@ import {getUser, userActions} from "entities/user"
 
 import {Modal} from "shared/ui/modal/Modal"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
+import {Row} from "shared/ui/stack"
 
 import cls from "./Logout.module.sass"
 
@@ -27,10 +28,10 @@ export const Logout = ({show, closeHandler}: LogoutProps) => {
         <Modal open={show} onClose={closeHandler} className="modal-sm">
             <p className={cls.text}>{t("выйти из аккаунта?", {username})}</p>
 
-            <div className="g-1 centered mt-2">
+            <Row align="center" gap="sm" className="mt-2">
                 <Button feature={ButtonFeature.BLANK} bordered onClick={logoutClick}>{t("да")}</Button>
                 <Button feature={ButtonFeature.BLANK} bordered onClick={closeHandler}>{t("нет")}</Button>
-            </div>
+            </Row>
         </Modal>
     )
 }

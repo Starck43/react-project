@@ -1,24 +1,19 @@
 import React, {CSSProperties, useMemo} from "react"
+
 import {classnames} from "shared/lib/helpers/classnames"
+import {Flex} from "shared/ui/stack"
 
 import PlaceholderIcon from "./avatar-placeholder.svg"
 import cls from "./Avatar.module.sass"
 
 
-export enum AvatarSize {
-    XL = "extra_large",
-    LG = "large",
-    MD = "medium",
-    SM = "small"
-}
-
-type SizeType = number | AvatarSize
+type AvatarSize = number | "xs" | "sm" | "md" | "lg" | "xl"
 
 interface AvatarProps {
     src?: string
     alt?: string
     title?: string
-    size?: SizeType
+    size?: AvatarSize
     inlined?: boolean
     bordered?: boolean
     rounded?: boolean
@@ -43,16 +38,16 @@ export const Avatar = (props: AvatarProps) => {
     }), [ size ])
 
     return (
-        <div
-            className={classnames(cls, [ "avatar__wrapper", typeof size === "string" ? size : undefined ], {inlined}, [ className ])}
+        <Flex
+            direction={inlined ? "row" : "column"}
+            gap="xs"
+            className={classnames(cls, [ "avatar__wrapper", typeof size === "string" ? size : "sm" ], {}, [ className ])}
         >
             <div className={classnames(cls, [ "image" ], {rounded, bordered})} style={style}>
-                {src
-                ? <img src={src as string} alt={alt} className={cls.img} />
-                : <PlaceholderIcon className={cls.placeholder} />}
-
+                <PlaceholderIcon className={cls.placeholder} />
+                {src && <img src={src as string} alt={alt} className={cls.img} />}
             </div>
             {title && <span className={cls.title}>{title}</span>}
-        </div>
+        </Flex>
     )
 }

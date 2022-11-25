@@ -1,13 +1,17 @@
 import {createElement, memo, ReactNode, useMemo} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
+import {Flex} from "shared/ui/stack"
 
 import cls from "./Header.module.sass"
+
 
 export enum HeaderVariant {
     PRIMARY = "primary",
     SECONDARY = "secondary",
 }
+
+type TitleTagType = "h1" | "h2" | "h3" | "h4" | "h5"
 
 export enum TitleType {
     H1 = "h1",
@@ -17,10 +21,12 @@ export enum TitleType {
     H5 = "h5",
 }
 
-export enum HeaderAlign {
-    LEFT = "left",
-    CENTER = "center",
-    RIGHT = "right"
+const mapTitleTypeToTag : Record<TitleType, TitleTagType> = {
+    [TitleType.H1]: "h1",
+    [TitleType.H2]: "h2",
+    [TitleType.H3]: "h3",
+    [TitleType.H4]: "h4",
+    [TitleType.H5]: "h5",
 }
 
 export enum HeaderCase {
@@ -35,7 +41,8 @@ type HeaderProps = {
     title: ReactNode | string
     subTitle?: string
     titleType?: TitleType
-    align?: HeaderAlign
+    align?: "start" | "center" | "end"
+    inlined?: boolean
     transform?: HeaderCase
     shadowed?: boolean
     className?: string
@@ -43,29 +50,40 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
     const {
-        children,
         variant = HeaderVariant.PRIMARY,
         title,
         subTitle,
         titleType = TitleType.H1,
-        align = HeaderAlign.LEFT,
+        align = "start",
+        inlined = false,
         transform = HeaderCase.FIRST,
         shadowed = false,
         className,
+        children,
     } = props
 
-    const titleElement = useMemo(() => (
-        typeof title === "string"
-            ? createElement(titleType, {className: classnames(cls, [ "title", transform ])}, title)
-            : title
-    ), [ title, titleType, transform ])
+    const titleElement = useMemo(() => {
+        const TitleTag = mapTitleTypeToTag[titleType]
+        return (
+            typeof title === "string"
+                ? <TitleTag className={classnames(cls, [ "title", transform ])}>{title}</TitleTag>
+                : title
+        )
+    }, [ title, titleType, transform ])
 
     return (
-        <div className={classnames(cls, [ "header", variant, align ], {shadowed}, [ className ])}>
+        <Flex
+            fullWidth
+            align={align}
+            justify="start"
+            direction={inlined ? "row" : "column"}
+            wrap={inlined}
+            className={classnames(cls, [ "header", variant ], {shadowed}, [ className ])}
+        >
             {titleElement}
             {subTitle && <p className={cls.subtitle}>{subTitle}</p>}
             {children}
-        </div>
+        </Flex>
     )
 }
 

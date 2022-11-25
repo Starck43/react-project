@@ -1,8 +1,9 @@
 import {memo, ReactNode, useCallback} from "react"
-import {classnames} from "shared/lib/helpers/classnames"
-import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
 
-import cls from "./Tabs.module.sass"
+import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
+import {Flex} from "shared/ui/stack"
+
+// import cls from "./Tabs.module.sass"
 
 
 export interface Tab {
@@ -13,12 +14,15 @@ export interface Tab {
 interface TabsProps {
     tabs: Tab[]
     value: string
+    direction?: "row" | "column"
     onTabClickHandler: (tab: Tab) => void
     className?: string
 }
 
 export const Tabs = memo((props: TabsProps) => {
-    const {tabs, value, onTabClickHandler, className} = props
+    const {
+        tabs, value, direction = "row", onTabClickHandler, className,
+    } = props
 
     const onTabClick = useCallback((tab: Tab) => (
         // using closure to pass param "tab" through
@@ -26,8 +30,12 @@ export const Tabs = memo((props: TabsProps) => {
     ), [ onTabClickHandler ])
 
     return (
-        <div
-            className={classnames(cls, [ "tabs" ], {}, [ "flex-wrap", "g-1", className ])}
+        <Flex
+            direction={direction}
+            justify="start"
+            gap="sm"
+            wrap
+            className={className}
         >
             {tabs.map((tab) => (
                 <Button
@@ -37,11 +45,10 @@ export const Tabs = memo((props: TabsProps) => {
                     rounded
                     feature={tab.value === value ? ButtonFeature.INVERTED : ButtonFeature.BLANK}
                     onClick={onTabClick(tab)}
-                    className={classnames(cls, [ "tab" ])}
                 >
                     {tab.content}
                 </Button>
             ))}
-        </div>
+        </Flex>
     )
 })

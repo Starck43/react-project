@@ -3,7 +3,7 @@ import {ComponentMeta, Story} from "@storybook/react"
 import Input from "./Input"
 
 export default {
-    title: "widgets/Input",
+    title: "shared/Input",
     component: Input,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Input>

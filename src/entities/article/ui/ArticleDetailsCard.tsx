@@ -7,8 +7,8 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import {Info, InfoAlign} from "shared/ui/info/Info"
-import Header, {HeaderAlign, TitleType} from "shared/ui/header/Header"
-import {Avatar} from "shared/ui/avatar/Avatar"
+import Header, {TitleType} from "shared/ui/header/Header"
+import {Col, Flex} from "shared/ui/stack"
 import EventIcon from "shared/assets/icons/calendar-20-20.svg"
 import EyeIcon from "shared/assets/icons/eye-20-20.svg"
 
@@ -47,11 +47,12 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
         // eslint-disable-next-line default-case
         switch (block.type) {
             case ArticleBlockType.CODE:
-                return <ArticleCode key={block.id} block={block} />
+                return <ArticleCode key={block.id} block={block} className="mt-1" />
             case ArticleBlockType.IMAGE:
-                return <ArticleImage key={block.id} block={block} />
+                // TODO: create Image component with sizes and lazyloading
+                return <ArticleImage key={block.id} block={block} className="mt-1 size-sm" />
             case ArticleBlockType.TEXT:
-                return <ArticleText key={block.id} block={block} />
+                return <ArticleText key={block.id} block={block} className="mt-1" />
             default:
                 return null
         }
@@ -64,7 +65,6 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
     }
 
     if (isLoading) {
-        // TODO: update skeleton like in Article List
         content = (<ArticleDetailsSkeleton className="mb-2" />)
     }
 
@@ -75,17 +75,16 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                     title={article?.title}
                     subTitle={article?.subtitle}
                     titleType={TitleType.H2}
-                    align={HeaderAlign.LEFT}
                 >
-                    <div className="inline size-sm"><EventIcon /><span>{article?.createdAt}</span></div>
-                    <div className="inline size-sm"><EyeIcon /><span>{article?.views}</span></div>
+                    <Flex gap="xs" className="size-sm"><EventIcon /><span>{article?.createdAt}</span></Flex>
+                    <Flex gap="xs" className="size-sm"><EyeIcon /><span>{article?.views}</span></Flex>
                 </Header>
 
                 <img src={article?.img} alt="" className={cls.image} />
 
-                <div className="flex-wrap vertical g-3">
+                <Col gap="md" fullWidth className="mt-2">
                     {article?.blocks?.map(renderBlock)}
-                </div>
+                </Col>
             </>
         )
     }

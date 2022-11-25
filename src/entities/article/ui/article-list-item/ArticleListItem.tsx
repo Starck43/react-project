@@ -1,14 +1,15 @@
-import {HTMLAttributeAnchorTarget, memo, StyleHTMLAttributes, useMemo} from "react"
+import {HTMLAttributeAnchorTarget, memo, useMemo} from "react"
 import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {Avatar, AvatarSize} from "shared/ui/avatar/Avatar"
+import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
 import {Card, CardVariant} from "shared/ui/card/Card"
 import Header, {TitleType} from "shared/ui/header/Header"
 
 import EyeIcon from "shared/assets/icons/eye-20-20.svg"
 import {AppRoutes, RoutesPath} from "shared/config/router"
+import {Col, Flex, Row} from "shared/ui/stack"
 
 import {Article, ArticleBlockType, ArticleTextBlock, ArticleView} from "../../model/types/article"
 import {ArticleText} from "../article-text/ArticleText"
@@ -67,12 +68,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         <Header
                             title={article.title}
                             titleType={TitleType.H5}
-                            className={classnames(cls, [ "header" ], {}, [ "centered" ])}
+                            className={cls.header}
                         >
-                            <div className={cls.meta}>
+                            <Row align="center" fullWidth className={cls.meta}>
                                 {typesBlock}
                                 {viewsBlock}
-                            </div>
+                            </Row>
                         </Header>
                     </>
                 )
@@ -81,14 +82,15 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         <Header
                             title={article.title}
                             titleType={TitleType.H4}
-                            className={classnames(cls, [ "header" ], {}, [ "centered" ])}
+                            inlined
+                            className={cls.header}
                         >
                             {article?.user?.avatar && (
                                 <Avatar
                                     src={article.user.avatar}
                                     title={article.user.username}
                                     rounded
-                                    size={AvatarSize.SM}
+                                    size="xs"
                                     inlined
                                     className={cls.avatar}
                                 />
@@ -97,12 +99,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             {typesBlock}
                         </Header>
 
-                        <div className={classnames(cls, [ "body" ], {}, [ "my-2" ])}>
+                        <Row justify="between" fullWidth className={classnames(cls, [ "body" ], {}, [ "my-2" ])}>
                             {imageBlock}
                             {textBlock}
-                        </div>
+                        </Row>
 
-                        <div className={classnames(cls, [ "footer" ])}>
+                        <Row justify="between" align="center" fullWidth className={cls.footer}>
                             <Button
                                 feature={ButtonFeature.BLANK}
                                 size={ButtonSize.NORMAL}
@@ -114,10 +116,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                                 {t("читать еще")}
                             </Button>
 
-                            <div className={cls.meta}>
+                            <Flex className={cls.meta}>
                                 {viewsBlock}
-                            </div>
-                        </div>
+                            </Flex>
+                        </Row>
                     </>
                 )
         ),
@@ -146,7 +148,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             rounded
             shadowed={shadowed}
             style={style}
-            className={classnames(cls, [ "article", CardVariant.SECONDARY, view ], {}, [ "flex-wrap", className ])}
+            className={classnames(cls, [ "article", CardVariant.SECONDARY, view ], {}, [ className ])}
         >
             {renderArticleItem}
         </Card>

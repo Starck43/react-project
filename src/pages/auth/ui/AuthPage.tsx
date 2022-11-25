@@ -10,10 +10,10 @@ import {LoginForm} from "features/auth"
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
 import {NavLink} from "shared/ui/link/NavLink"
-import Header, {HeaderAlign} from "shared/ui/header/Header"
+import Header from "shared/ui/header/Header"
+import {Col} from "shared/ui/stack"
 
 import {Page} from "widgets/page"
-
 import {PageLoader} from "widgets/page-loader/PageLoader"
 
 
@@ -30,7 +30,7 @@ function AuthPage() {
 
     if (authData?.id) {
         return (
-            <div className="centered vertical w-100">
+            <Col align="center" fullWidth>
                 <Info
                     title={t("вы уже вошли под именем", {username})}
                     status={InfoStatus.WARNING}
@@ -39,14 +39,14 @@ function AuthPage() {
                 <NavLink to={RoutesPath[AppRoutes.PROFILE] + authData.id}>
                     {t("перейти в профиль")}
                 </NavLink>
-            </div>
+            </Col>
         )
     }
 
     return (
         <Suspense fallback={<PageLoader />}>
             <Page>
-                <Header title={t("войти")} shadowed align={HeaderAlign.CENTER} />
+                <Header title={t("войти")} shadowed align="center" />
                 <LoginForm onSuccess={successLoginHandler} />
             </Page>
         </Suspense>

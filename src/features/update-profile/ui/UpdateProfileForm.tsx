@@ -1,4 +1,4 @@
-import {memo, useCallback, FormEvent, useMemo} from "react"
+import {memo, useCallback, useMemo, FormEvent} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
@@ -19,6 +19,7 @@ import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import {Select} from "shared/ui/select/Select"
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
+import {Col, Row} from "shared/ui/stack"
 
 import {updateProfileData} from "../model/services/updateProfileData"
 
@@ -121,7 +122,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     className="mb-1"
                 />
 
-                <div className="centered g-1 mt-2">
+                <Row align="end" gap="sm" wrap fullWidth className="mt-2">
                     {validateErrors?.length && validateErrors.map((error) => (
                         <Info key={error} status={InfoStatus.ERROR} title={validateErrorsTranslates[error]} />
                     ))}
@@ -133,7 +134,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                         {t("сохранить")}
                     </Button>
                     <Button bordered feature={ButtonFeature.BLANK} onClick={cancelClick}>{t("отмена")}</Button>
-                </div>
+                </Row>
             </form>
         </Modal>
     )
