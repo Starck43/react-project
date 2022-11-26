@@ -1,25 +1,22 @@
-import {memo, useCallback, useMemo, FormEvent} from "react"
-import {useSelector} from "react-redux"
+import {FormEvent, memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
-
-import {
-    Profile,
-    getProfileValidateErrors,
-    getProfileCopy,
-    profileActions,
-    ValidateProfileError,
-} from "entities/profile"
+import {useSelector} from "react-redux"
 
 import {Country} from "entities/country"
+import {
+    getProfileCopy, getProfileValidateErrors, Profile, profileActions, ValidateProfileError,
+} from "entities/profile"
+
+import {enumToArray, getValueForStringEnum} from "shared/lib/helpers/enum"
+import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {Modal} from "shared/ui/modal/Modal"
-import Input from "shared/ui/input/Input"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
-import {Select} from "shared/ui/select/Select"
-import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
-import {Col, Row} from "shared/ui/stack"
+import Input from "shared/ui/input/Input"
+import ListBox, {ListBoxVariant} from "shared/ui/listbox/ListBox"
+import {Modal} from "shared/ui/modal/Modal"
+import {Row} from "shared/ui/stack"
 
 import {updateProfileData} from "../model/services/updateProfileData"
 
@@ -31,10 +28,9 @@ export interface ViewerProps {
     closeHandler?: () => void
 }
 
-// let validateErrors: ValidateProfileError[]
 
 export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
-    const {t} = useTranslation("auth")
+    const {i18n, t} = useTranslation("auth")
     const dispatch = useAppDispatch()
     const copy = useSelector(getProfileCopy)
     const validateErrors = useSelector(getProfileValidateErrors)
@@ -47,9 +43,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
         [ValidateProfileError.SERVER_ERROR]: t("ошибка сервера"),
     }
 
-    const countryOptions = useMemo(() => Object.entries(Country).map((obj) => ({value: obj[0], content: obj[1]})), [])
-
-    const profileClick = useCallback(async (e: FormEvent<Profile>) => {
+    const submitUpdateClick = useCallback(async (e: FormEvent<Profile>) => {
         e.preventDefault()
         const res = await dispatch(updateProfileData())
         if (res.meta.requestStatus === "fulfilled") {
@@ -67,7 +61,9 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
     }, [ dispatch ])
 
     const onSelectChange = useCallback((val) => {
-        dispatch(profileActions.update({country: capitalizeFirstLetter(val) as Country || ""}))
+        if (val) {
+            dispatch(profileActions.update({country: capitalizeFirstLetter(val) as Country}))
+        }
     }, [ dispatch ])
 
     return (
@@ -77,7 +73,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
             onClose={closeHandler}
             className="modal-sm"
         >
-            <form onSubmit={profileClick}>
+            <form onSubmit={submitUpdateClick}>
                 <Input
                     name="username"
                     value={copy?.username}
@@ -113,18 +109,26 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     placeholder={t("телефон")}
                     className="mb-1"
                 />
-                <Select
-                    value={copy?.country?.toUpperCase()}
-                    compact
-                    options={countryOptions}
-                    onChange={onSelectChange}
+                <ListBox
+                    variant={ListBoxVariant.SECONDARY}
+                    name="country"
                     label={t("страна")}
+                    items={enumToArray(Country, i18n.language === "en")}
+                    selectedOption={copy?.country && {
+                        value: copy.country.toUpperCase(),
+                        content: i18n.language === "en"
+                            ? capitalizeFirstLetter(copy.country)
+                            : getValueForStringEnum(Country, copy.country.toUpperCase()),
+                    }}
+                    direction="top"
+                    compact
+                    onChange={onSelectChange}
                     className="mb-1"
                 />
 
-                <Row align="end" gap="sm" wrap fullWidth className="mt-2">
+                <Row align="end" gap="sm" wrap fullWidth>
                     {validateErrors?.length && validateErrors.map((error) => (
-                        <Info key={error} status={InfoStatus.ERROR} title={validateErrorsTranslates[error]} />
+                        <Info key={error} status={InfoStatus.ERROR} subtitle={validateErrorsTranslates[error]} />
                     ))}
                     <Button
                         type="submit"

@@ -12,6 +12,7 @@
     "linebreaks": "unix",
     "selector-class-pattern": null,
     "max-empty-lines": [2, {"ignore": ["comments"]}],
+    "selector-max-empty-lines": [2, {"ignore": ["#"]}],
     "selector-type-no-unknown": [true, {"ignoreTypes": ["/^\\:/"], "ignore": ["custom-elements"]}],
     "value-keyword-case": ["lower", {"ignoreProperties": ["font-family"], "camelCaseSvgKeywords": true}],
     "function-url-quotes": "never",

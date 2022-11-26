@@ -1,5 +1,5 @@
 import {
-FC, ReactElement, ReactNode, ButtonHTMLAttributes, HTMLAttributeAnchorTarget,
+    FC, ReactElement, ReactNode, ButtonHTMLAttributes, HTMLAttributeAnchorTarget,
 } from "react"
 import {Link} from "react-router-dom"
 
@@ -29,6 +29,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     feature?: ButtonFeature
     icon?: ReactElement
     size?: ButtonSize
+    align?: "left" | "center" | "right"
     bordered?: boolean
     rounded?: boolean
     squared?: boolean
@@ -45,6 +46,7 @@ export const Button: FC<ButtonProps> = (props) => {
         variant = ButtonVariant.PRIMARY,
         feature,
         size = ButtonSize.NORMAL,
+        align = "center",
         rounded = false,
         bordered = false,
         squared = false,
@@ -63,13 +65,13 @@ export const Button: FC<ButtonProps> = (props) => {
             type="button"
             disabled={disabled}
             {...other}
-            className={classnames(cls, [ "button", variant, feature, size, href ? "is__link" : "" ], {
+            className={classnames(cls, [ "button", variant, feature, size, align, href ? "is__link" : "" ], {
                 bordered,
                 rounded,
                 squared,
                 shadowed,
                 disabled,
-            }, [ "centered", className, variant ])}
+            }, [ className, variant ])}
         >
             {href
                 ? (

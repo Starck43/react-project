@@ -19,13 +19,11 @@ export const profileSlice = createSlice({
     name: "profile",
     initialState,
     reducers: {
-        setReadOnly: (state, action: PayloadAction<boolean>) => {
-            state.readonly = action.payload
-        },
         update: (state, action: PayloadAction<Profile>) => {
             state.copy = {...state.copy, ...action.payload}
         },
         revert: (state) => {
+            state.copy = state.data
             state.validateErrors = undefined
         },
     },

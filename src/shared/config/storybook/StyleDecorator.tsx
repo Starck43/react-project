@@ -7,7 +7,7 @@ export const StyleDecorator = (StoryComponent: Story) => {
     document.body.style.padding = "0"
     return (
         <div
-            className="centered"
+            className="centered vertical"
             style={{
                 width: "100%",
                 height: "100%",

@@ -3,6 +3,7 @@ import React, {
     MutableRefObject,
     ReactNode,
 } from "react"
+
 import {classnames} from "shared/lib/helpers/classnames"
 import {CloseButton} from "shared/ui/close-button/CloseButton"
 import {Portal} from "shared/ui/portal/Portal"

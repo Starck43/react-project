@@ -1,0 +1,92 @@
+@import "src/app/styles/vars"
+
+.listBox
+	position: relative
+	display: inline-flex
+	align-items: center
+	font-family: var(--font-family-secondary)
+
+	&.compact
+		justify-content: flex-start
+
+	&:not(.compact)
+		justify-content: flex-end
+
+.listBox__options
+	position: absolute
+	max-width: 250px
+	margin: 2px 0
+	// text-align: right
+	border: 1px solid transparent
+	border-radius: var(--border-radius-default)
+	box-shadow: 0 0.5rem 2.5rem -1rem var(--theme-modal-shadow-2)
+	white-space: nowrap
+	list-style: none
+	user-select: none
+	z-index: 10000
+
+	&.compact
+		width: 100%
+		text-align: left
+
+	&.rounded
+		border-radius: var(--border-radius)
+
+	&.top
+		bottom: 100%
+
+	&.bottom
+		top: 100%
+
+	.item
+		font-size: 1rem
+		padding: 0.35em $controls-padding * 2
+		text-overflow: ellipsis
+		overflow-x: hidden
+
+		&.selected
+			font-weight: bold
+
+		&.disabled
+			opacity: 0.5
+
+
+	&.primary
+		background-color: var(--theme-secondary-bg-color)
+		color: var(--theme-secondary-color)
+		border-color: var(--theme-primary-border-color)
+
+		.item
+			&.active
+				color: var(--theme-secondary-color)
+				background-color: var(--theme-primary-bg-color)
+
+			&.selected
+				color: var(--theme-secondary-link-color)
+
+
+	&.secondary
+		background-color: var(--theme-primary-bg-color)
+		color: var(--theme-primary-color)
+		border-color: var(--theme-secondary-border-color)
+
+		.item
+			&.active
+				color: var(--theme-primary-color)
+				background-color: var(--theme-secondary-bg-color)
+
+			&.selected
+				color: var(--theme-primary-link-color)
+
+.label
+	margin-right: var(--gap)
+
+.trigger
+	width: auto
+	color: var(--theme-modal-text-color) !important
+	border-color: var(--theme-modal-border-color) !important
+	opacity: 1
+
+.dropdown__icon
+	width: 1.5rem
+	margin: -0.35em -0.2em -0.35em var(--gap)

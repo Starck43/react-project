@@ -29,6 +29,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@reduxjs/toolkit": "^1.8.0",
     "file-loader": "^6.2.0",
     "i18next-browser-languagedetector": "^6.1.3",

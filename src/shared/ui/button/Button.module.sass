@@ -3,6 +3,8 @@
 @import "src/app/styles/mixins"
 
 .button
+	display: flex
+	align-items: center
 	font-family: var(--font-family-secondary)
 	color: $brand-color
 	background-color: $default-btn-color
@@ -13,11 +15,20 @@
 	cursor: pointer
 	user-select: none
 
+	&.left
+		justify-content: space-between
+
+	&.center
+		justify-content: center
+
+	&.right
+		justify-content: flex-end
+
 	&.primary
 		color: var(--theme-primary-color)
 
 		&.bordered
-			border-color: var(--theme-primary-link-color)
+			border-color: var(--theme-primary-border-color)
 
 		&.inverted
 			color: var(--theme-primary-bg-color)
@@ -33,7 +44,7 @@
 			color: var(--theme-secondary-text-color)
 
 		&.bordered
-			border-color: var(--theme-secondary-text-color)
+			border-color: var(--theme-secondary-border-color)
 
 		&.inverted
 			color: var(--theme-secondary-bg-color)
@@ -42,7 +53,7 @@
 		&.shadowed
 			box-shadow: 0 0.3em 1.1em -0.4em var(--theme-secondary-box-shadow)
 
-	&:hover
+	&:hover, &:focus
 		opacity: 1
 
 	&.blank
@@ -78,4 +89,4 @@
 .button:not(.is__link, .square),
 .link
 	min-width: 4em
-	padding: calc(#{$btn-padding} + 1px) $btn-padding * 2 $btn-padding
+	padding: calc(#{$controls-padding} + 1px) $controls-padding * 2 $controls-padding
