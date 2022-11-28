@@ -18,7 +18,7 @@ import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicMod
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
-import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
+import {Info, InfoStatus} from "shared/ui/info/Info"
 import Input, {TextArea} from "shared/ui/input/Input"
 import {Row} from "shared/ui/stack"
 import {PageLoader} from "widgets/page-loader/PageLoader"
@@ -84,7 +84,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
     }, [ articleId, dispatch ])
 
     if (error) {
-        return <Info title={t("ошибка загрузки статьи!")} align={InfoAlign.CENTER} />
+        return <Info title={t("ошибка загрузки статьи!")} align="center" />
     }
 
     if (isLoading) return <PageLoader />
@@ -97,7 +97,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
                     <Info
                         status={InfoStatus.ERROR}
                         subtitle={t("ошибка при сохранении статьи!")}
-                        align={InfoAlign.CENTER}
+                        align="center"
                     />
                 )}
 

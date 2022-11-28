@@ -1,15 +1,12 @@
 import {FC, HTMLAttributeAnchorTarget, HTMLAttributes} from "react"
 import {Link} from "react-router-dom"
+
 import {classnames} from "shared/lib/helpers/classnames"
+import {ThemeVariant} from "shared/types/theme"
 import {Flex} from "shared/ui/stack"
 
 import cls from "./Card.module.sass"
 
-
-export enum CardVariant {
-    PRIMARY = "primary",
-    SECONDARY = "secondary",
-}
 
 export enum CardFeature {
     BLANK = "blank",
@@ -17,7 +14,7 @@ export enum CardFeature {
 }
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
-    variant?: CardVariant
+    variant?: ThemeVariant
     feature?: CardFeature
     bordered?: boolean
     rounded?: boolean
@@ -30,7 +27,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Card: FC<CardProps> = (props) => {
     const {
-        variant = CardVariant.PRIMARY,
+        variant = "primary",
         feature = CardFeature.BLANK,
         bordered = false,
         rounded = false,

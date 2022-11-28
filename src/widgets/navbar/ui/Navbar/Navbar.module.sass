@@ -6,6 +6,7 @@
 	top: 0
 	padding: 0.5rem 1rem
 	font-family: var(--font-family-secondary)
+	color: var(--theme-navbar-link-color)
 	background-color: var(--theme-navbar-bg-color)
 	//box-shadow: 0 -2px 14px var(--theme-navbar-bg-color)
 	z-index: 30
@@ -20,14 +21,13 @@
 .navbar__right
 	flex-grow: 0
 	margin-right: $nav-link-margin * 1.8
-	color: var(--theme-navbar-link-color)
 	order: 2
 
 .navbar__item
-	color: var(--theme-navbar-link-color) !important
 	margin: $nav-link-margin $nav-link-margin * 1.8
 
 .icon
+	width: var(--navlink-icon-size)
 	font-size: 0.6em !important
 
 .lang, .theme

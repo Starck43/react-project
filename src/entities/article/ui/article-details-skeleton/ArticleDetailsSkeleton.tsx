@@ -1,5 +1,5 @@
 import {memo} from "react"
-import {Skeleton, SkeletonElementType, SkeletonVariant} from "shared/ui/skeleton/Skeleton"
+import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
 
 
 interface ArticleSkeletonProps {
@@ -9,7 +9,7 @@ interface ArticleSkeletonProps {
 export const ArticleDetailsSkeleton = memo(({className}: ArticleSkeletonProps) => (
     <>
         <Skeleton
-            variant={SkeletonVariant.PRIMARY}
+            variant="primary"
             elements={[ SkeletonElementType.TITLE ]}
             rounded
             inlined
@@ -18,14 +18,14 @@ export const ArticleDetailsSkeleton = memo(({className}: ArticleSkeletonProps) =
             className="mb-1"
         />
         <Skeleton
-            variant={SkeletonVariant.PRIMARY}
+            variant="primary"
             elements={[ SkeletonElementType.TITLE ]}
             rounded
             width="50%"
             className="mb-2"
         />
         <Skeleton
-            variant={SkeletonVariant.PRIMARY}
+            variant="primary"
             elements={[ SkeletonElementType.AVATAR ]}
             rounded
             height={150}
@@ -33,7 +33,7 @@ export const ArticleDetailsSkeleton = memo(({className}: ArticleSkeletonProps) =
             className="mb-2"
         />
         <Skeleton
-            variant={SkeletonVariant.PRIMARY}
+            variant="primary"
             elements={[ SkeletonElementType.BLOCK ]}
             rounded
             height="200px"

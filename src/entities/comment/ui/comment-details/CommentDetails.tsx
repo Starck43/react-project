@@ -24,11 +24,10 @@ export const CommentDetails = memo(({data}: CommentCardProps) => {
             <Header
                 title={(
                     <NavLink
-                        title={`${t("автор комментария")} ${data.user.username}`}
                         to={RoutesPath[AppRoutes.PROFILE] + data.user.id}
-                    >
-                        <h5>{data.user.username}</h5>
-                    </NavLink>
+                        title={<h5>{data.user.username}</h5>}
+                        alt={`${t("автор комментария")} ${data.user.username}`}
+                    />
                 )}
                 subTitle={data.text}
                 titleType={TitleType.H5}

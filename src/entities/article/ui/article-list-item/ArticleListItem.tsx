@@ -1,15 +1,14 @@
-import {HTMLAttributeAnchorTarget, memo, useMemo} from "react"
+import {memo, useMemo, CSSProperties, HTMLAttributeAnchorTarget} from "react"
 import {useTranslation} from "react-i18next"
 
+import {AppRoutes, RoutesPath} from "shared/config/router"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
-import {Card, CardVariant} from "shared/ui/card/Card"
+import {Card} from "shared/ui/card/Card"
 import Header, {TitleType} from "shared/ui/header/Header"
-
+import {Flex, Row} from "shared/ui/stack"
 import EyeIcon from "shared/assets/icons/eye-20-20.svg"
-import {AppRoutes, RoutesPath} from "shared/config/router"
-import {Col, Flex, Row} from "shared/ui/stack"
 
 import {Article, ArticleBlockType, ArticleTextBlock, ArticleView} from "../../model/types/article"
 import {ArticleText} from "../article-text/ArticleText"
@@ -23,7 +22,7 @@ interface ArticleListItemProps {
     shadowed?: boolean
     target?: HTMLAttributeAnchorTarget
     className?: string
-    style?: object
+    style?: CSSProperties
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -141,14 +140,14 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     return (
         <Card
             id={`article-${article.id}`}
-            variant={CardVariant.SECONDARY}
+            variant="secondary"
             href={view === ArticleView.TILE ? RoutesPath[AppRoutes.ARTICLE_DETAILS] + article.id : ""}
             target={target}
             bordered
             rounded
             shadowed={shadowed}
             style={style}
-            className={classnames(cls, [ "article", CardVariant.SECONDARY, view ], {}, [ className ])}
+            className={classnames(cls, [ "article", "secondary", view ], {}, [ className ])}
         >
             {renderArticleItem}
         </Card>

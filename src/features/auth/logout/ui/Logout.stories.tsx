@@ -16,4 +16,8 @@ export const Default = Template.bind({})
 Default.args = {
     show: true,
 }
-Default.decorators = [ StoreDecorator({login: {username: "admin", password: "admin"}}) ]
+Default.decorators = [
+    StoreDecorator({
+        user: {authData: {username: "admin", password: "admin"}},
+    }),
+]

@@ -1,30 +1,79 @@
 @import "src/app/styles/vars"
 
 .link
-	display: table
-	padding: 0.25em 0
-	line-height: 1
-	border-bottom: 1px solid transparent
+	display: flex
+	align-items: center
+	gap: 6px
+	min-height: var(--controls-height)
+	padding: $nav-link-margin $nav-link-margin * 1.8
+	font-family: var(--font-family-secondary)
+	line-height: 0
+	border-radius: var(--border-radius-default)
+	transition: all 0.2s ease-out
 	user-select: none
 	cursor: pointer
 
-	&.primary
-		color: var(--theme-primary-link-color)
+	&.fullWidth
+		width: 100%
 
-		&.underlined
-			border-bottom-color: var(--theme-primary-link-color)
+	&.disabled
+		pointer-events: none
+		opacity: 0.5
 
-	&.secondary
-		color: var(--theme-secondary-link-color)
+	&.bordered
+		border: var(--border-thickness) solid transparent
 
-		&.underlined
-			border-bottom-color: var(--theme-secodary-link-color)
+	&.underlined
+		.title
+			border-top: var(--border-thickness) solid transparent
+			border-bottom: var(--border-thickness) solid transparent
+
+	&.animation:hover
+		.icon
+			transform: translateX(-0.25em)
+
+.primary
+	color: var(--theme-primary-link-color)
+
+	&.inverted:hover
+		color: var(--theme-secondary-text-color)
+		background-color: var(--theme-secondary-link-color)
 
 	&.underlined:hover
-		border-bottom-color: inherit
+		.title
+			border-bottom-color: var(--theme-primary-link-color)
 
-.left
-	margin-right: auto
+	&.bordered:hover
+		border-color: var(--theme-primary-link-color)
 
-.right
-	margin-left: auto
+.secondary
+	color: var(--theme-secondary-link-color)
+
+	&.inverted:hover
+		color: var(--theme-primary-text-color)
+		background-color: var(--theme-primary-link-color)
+
+	&.underlined:hover
+		.title
+			border-bottom-color: var(--theme-secodary-link-color)
+
+	&.bordered:hover
+		border-color: var(--theme-secodary-link-color)
+
+
+.rounded
+	border-radius: var(--border-radius)
+	overflow: hidden
+
+.reverse
+	flex-direction: row-reverse
+
+	.icon
+		transform: rotate(180deg)
+
+	&.animation:hover
+		.icon
+			transform: rotate(180deg) translateX(-0.25em)
+
+.icon
+	width: var(--navlink-icon-size)

@@ -1,16 +1,12 @@
-import {createElement, memo, ReactNode, useMemo} from "react"
+import {memo, useMemo, ReactNode} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {Flex} from "shared/ui/stack"
+import {ThemeVariant} from "shared/types/theme"
+import {Flex} from "../../ui/stack"
 
 import cls from "./Header.module.sass"
 
-
-export enum HeaderVariant {
-    PRIMARY = "primary",
-    SECONDARY = "secondary",
-}
-
+// TODO: Semantic review TitleType to any variants without mapping
 type TitleTagType = "h1" | "h2" | "h3" | "h4" | "h5"
 
 export enum TitleType {
@@ -37,20 +33,20 @@ export enum HeaderCase {
 
 type HeaderProps = {
     children?: ReactNode
-    variant?: HeaderVariant
+    variant?: ThemeVariant
     title: ReactNode | string
     subTitle?: string
     titleType?: TitleType
-    align?: "start" | "center" | "end"
-    inlined?: boolean
+    align?: "start" | "end" | "center" | "baseline"
     transform?: HeaderCase
+    inlined?: boolean
     shadowed?: boolean
     className?: string
 }
 
 const Header = (props: HeaderProps) => {
     const {
-        variant = HeaderVariant.PRIMARY,
+        variant = "primary",
         title,
         subTitle,
         titleType = TitleType.H1,

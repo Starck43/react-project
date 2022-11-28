@@ -1,5 +1,5 @@
 import {memo} from "react"
-import {Skeleton, SkeletonElementType, SkeletonVariant} from "shared/ui/skeleton/Skeleton"
+import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
 
 
 interface CommentSkeletonProps {
@@ -11,21 +11,21 @@ interface CommentSkeletonProps {
 export const CommentSkeleton = memo(({rounded = false, inlined = false, className}: CommentSkeletonProps) => (
     <>
         <Skeleton
-            variant={SkeletonVariant.PRIMARY}
+            variant="primary"
             elements={[ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ]}
             rounded={rounded}
             inlined={inlined}
             className={className}
         />
         <Skeleton
-            variant={SkeletonVariant.PRIMARY}
+            variant="primary"
             elements={[ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ]}
             rounded={rounded}
             inlined={inlined}
             className={className}
         />
         <Skeleton
-            variant={SkeletonVariant.PRIMARY}
+            variant="primary"
             elements={[ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ]}
             rounded={rounded}
             inlined={inlined}

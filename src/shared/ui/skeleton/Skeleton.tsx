@@ -1,6 +1,7 @@
 import {memo, useMemo, CSSProperties} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
+import {ThemeVariant} from "shared/types/theme"
 
 import cls from "./Skeleton.module.sass"
 
@@ -11,14 +12,9 @@ export enum SkeletonElementType {
     BLOCK = "block",
 }
 
-export enum SkeletonVariant {
-    PRIMARY = "primary",
-    SECONDARY = "secondary",
-}
-
 interface SkeletonProps {
     elements?: SkeletonElementType[]
-    variant?: SkeletonVariant
+    variant?: ThemeVariant
     width?: string | number
     height?: string | number
     borderRadius?: string
@@ -30,7 +26,7 @@ interface SkeletonProps {
 export const Skeleton = memo((props: SkeletonProps) => {
     const {
         elements = [ SkeletonElementType.TITLE ],
-        variant = SkeletonVariant.PRIMARY,
+        variant = "primary",
         width = "100%",
         height,
         rounded = false,
@@ -47,8 +43,9 @@ export const Skeleton = memo((props: SkeletonProps) => {
 
     // TODO: styles for every shimmer element inside skeleton
     const shimmerElements = useMemo(() => (
-        elements?.map((item, i) => (
-            <div key={i} className={classnames(cls, [ "shimmer__element", item ])} />
+        elements?.map((item, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <div key={index} className={classnames(cls, [ "shimmer__element", item ])} />
         ))
     ), [ elements ])
 

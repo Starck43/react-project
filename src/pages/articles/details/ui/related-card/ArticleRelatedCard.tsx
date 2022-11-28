@@ -13,9 +13,9 @@ import {ArticleList, ArticleView} from "entities/article"
 import {articleRelatedReducer} from "features/articles/article-related/slice/articleRelatedSlice"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
+import {classnames} from "shared/lib/helpers/classnames"
 import Header, {TitleType} from "shared/ui/header/Header"
 
 import cls from "./ArticleRelatedCard.module.sass"

@@ -1,4 +1,5 @@
-import React, {memo} from "react"
+import {memo, SVGProps, VFC} from "react"
+
 import {classnames} from "shared/lib/helpers/classnames"
 
 import cls from "./Icon.module.sass"
@@ -6,7 +7,7 @@ import cls from "./Icon.module.sass"
 
 interface IconProps {
     className?: string;
-    Svg: React.VFC<React.SVGProps<SVGSVGElement>> | string;
+    Svg: VFC<SVGProps<SVGSVGElement>> | string;
 }
 
 export const Icon = memo((props: IconProps) => {

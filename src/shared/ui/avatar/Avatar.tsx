@@ -1,4 +1,4 @@
-import React, {CSSProperties, useMemo} from "react"
+import {useMemo, CSSProperties} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {Flex} from "shared/ui/stack"

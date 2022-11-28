@@ -1,14 +1,13 @@
 import {Suspense, useEffect} from "react"
-import {AppRouter} from "app/providers/router-provider"
 import {useDispatch, useSelector} from "react-redux"
 
+import {AppRouter} from "app/providers/router-provider"
 import useTheme from "app/providers/theme-provider/lib/useTheme"
 
 import {getUserOnMount, userActions} from "entities/user"
 
 import {Navbar} from "widgets/navbar"
 import {Sidebar} from "widgets/sidebar"
-import {SidebarPositionType} from "widgets/sidebar/ui/Sidebar"
 
 
 const App = () => {
@@ -24,7 +23,7 @@ const App = () => {
         <Suspense fallback="">
             <Navbar theme={theme} toggleTheme={toggleTheme} />
             <main>
-                <Sidebar position={SidebarPositionType.LEFT} className="sidebar" />
+                <Sidebar position="left" className="sidebar" />
                 {mounted && <AppRouter />}
             </main>
             <footer />

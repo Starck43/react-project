@@ -10,18 +10,13 @@
 	align-items: center
 	justify-content: center
 
-.flex-end
-	@extend .flex-wrap
-
-	justify-content: flex-end
-
-.vertical
-	flex-direction: column
-
 .shadow
 	box-shadow: 0 0.5rem 1.5rem -0.35rem rgb(0 0 0 / 20%)
 
-// TODO: check if it used
+.shadow-2
+	box-shadow: 0 0.6rem 1rem -3px rgb(0 0 0 / 10%), 0 0.25rem 0.35rem -1px rgb(0 0 0 / 5%)
+
+// TODO: check if it used : only in NavbarItem and Info
 .inline
 	display: flex
 	align-items: center
@@ -32,10 +27,13 @@
 svg, .icon
 	width: $icon-size
 
-	& ~ *
+.navbar-icon
+	width: $link-icon-size
+
+	& ~ span
 		margin-left: 0.5em
 
-//box-shadow: 0 0.6rem 1rem -3px rgba(0, 0, 0, .1), 0 0.25rem 0.35rem -1px rgba(0, 0, 0, .05)
+// TODO: remove to the Modal component styles
 .modal-sm
 	max-width: 576px
 

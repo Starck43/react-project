@@ -1,22 +1,17 @@
 import {
-    CSSProperties, FC, Fragment, ReactNode, useMemo,
+    memo, useMemo, FC, Fragment, ReactNode, CSSProperties,
 } from "react"
 import {Listbox as HeadlessListBox} from "@headlessui/react"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {Button, ButtonFeature} from "shared/ui/button/Button"
+import {ThemeVariant} from "shared/types/theme"
 
+import {Button} from "../../ui/button/Button"
+import {PositionType} from "../../types/ui"
 import DropdownIcon from "./assets/arrow-down.svg"
 
 import cls from "./ListBox.module.sass"
 
-
-export enum ListBoxVariant {
-    PRIMARY = "primary",
-    SECONDARY = "secondary",
-}
-
-type DropdownDirectionType = "top" | "bottom"
 
 interface ListBoxOption {
     value: string
@@ -25,12 +20,12 @@ interface ListBoxOption {
 }
 
 interface ListBoxProps {
-    variant?: ListBoxVariant
+    variant?: ThemeVariant
     name?: string
     items: ListBoxOption[]
     selectedOption?: ListBoxOption
     defaultOption?: ListBoxOption
-    direction?: DropdownDirectionType
+    position?: PositionType
     label?: string
     compact?: boolean
     rounded?: boolean
@@ -41,12 +36,12 @@ interface ListBoxProps {
 
 const ListBox: FC<ListBoxProps> = (props) => {
     const {
-        variant = ListBoxVariant.PRIMARY,
+        variant = "primary",
         name,
         items,
         selectedOption,
         defaultOption,
-        direction = "bottom",
+        position = "bottom_right",
         label = "---",
         compact = false,
         rounded = false,
@@ -79,7 +74,6 @@ const ListBox: FC<ListBoxProps> = (props) => {
 
             <HeadlessListBox.Button as="div" className="button__wrapper">
                 <Button
-                    feature={ButtonFeature.BLANK}
                     align="left"
                     bordered
                     rounded={rounded}
@@ -93,7 +87,7 @@ const ListBox: FC<ListBoxProps> = (props) => {
 
             <HeadlessListBox.Options
                 style={style}
-                className={classnames(cls, [ "listBox__options", variant, direction ], {compact, rounded})}
+                className={classnames(cls, [ "listBox__options", variant, position ], {compact, rounded})}
             >
                 {listBoxOptions?.map((item) => (
                     <HeadlessListBox.Option
@@ -114,4 +108,4 @@ const ListBox: FC<ListBoxProps> = (props) => {
     )
 }
 
-export default ListBox
+export default memo(ListBox)

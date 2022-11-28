@@ -1,14 +1,16 @@
-import {useRef, MutableRefObject, ReactNode, UIEvent} from "react"
+import {
+useRef, ReactNode, MutableRefObject, UIEvent, FC,
+} from "react"
 import {useSelector} from "react-redux"
 import {useLocation} from "react-router-dom"
 
 import {StateSchema} from "app/providers/store-provider"
 
-import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useElementInView} from "shared/lib/hooks/useElementInView"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import {useThrottle} from "shared/lib/hooks/useThrottle"
+import {classnames} from "shared/lib/helpers/classnames"
 
 import {getPageByPath, pageActions} from "widgets/page"
 
@@ -24,7 +26,8 @@ interface PageProps {
     className?: string
 }
 
-export const Page = ({children, saveScrollPos = false, onScrollToEnd, className}: PageProps) => {
+export const Page: FC<PageProps> = (props) => {
+    const {children, saveScrollPos = false, onScrollToEnd, className} = props
     const containerRef = useRef() as MutableRefObject<HTMLDivElement>
     const loadMoreRef = useRef() as MutableRefObject<HTMLDivElement>
     const dispatch = useAppDispatch()

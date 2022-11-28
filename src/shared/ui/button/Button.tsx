@@ -1,19 +1,18 @@
 import {
-    FC, ReactElement, ReactNode, ButtonHTMLAttributes, HTMLAttributeAnchorTarget,
+    ButtonHTMLAttributes, FC, HTMLAttributeAnchorTarget, ReactNode, SVGProps, VFC,
 } from "react"
 import {Link} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
+import {ThemeVariant} from "shared/types/theme"
+
+import {AlignType} from "../../types/ui"
 
 import cls from "./Button.module.sass"
 
 
-export enum ButtonVariant {
-    PRIMARY = "primary",
-    SECONDARY = "secondary",
-}
-
 export enum ButtonFeature {
+    CLEAR = "clear",
     BLANK = "blank",
     INVERTED = "inverted",
 }
@@ -25,11 +24,12 @@ export enum ButtonSize {
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: ButtonVariant
+    variant?: ThemeVariant
     feature?: ButtonFeature
-    icon?: ReactElement
+    Icon?: VFC<SVGProps<SVGSVGElement>>
     size?: ButtonSize
-    align?: "left" | "center" | "right"
+    align?: AlignType
+    fullWidth?: boolean
     bordered?: boolean
     rounded?: boolean
     squared?: boolean
@@ -43,17 +43,19 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button: FC<ButtonProps> = (props) => {
     const {
-        variant = ButtonVariant.PRIMARY,
-        feature,
+        variant,
+        Icon,
+        href,
+        target,
+        feature = ButtonFeature.CLEAR,
         size = ButtonSize.NORMAL,
         align = "center",
+        fullWidth = false,
         rounded = false,
         bordered = false,
         squared = false,
         shadowed = false,
         disabled = false,
-        href,
-        target,
         className,
         children,
         ...other
@@ -65,7 +67,10 @@ export const Button: FC<ButtonProps> = (props) => {
             type="button"
             disabled={disabled}
             {...other}
-            className={classnames(cls, [ "button", variant, feature, size, align, href ? "is__link" : "" ], {
+            className={classnames(cls, [
+                "button", variant, feature, size, align, href ? "is__link" : "",
+            ], {
+                fullWidth,
                 bordered,
                 rounded,
                 squared,
@@ -73,9 +78,10 @@ export const Button: FC<ButtonProps> = (props) => {
                 disabled,
             }, [ className, variant ])}
         >
+            {Icon && <Icon className={cls.icon} />}
             {href
                 ? (
-                    <Link to={href} target={target} className={`${cls.link} centered`}>
+                    <Link to={href} target={target} className={cls.link}>
                         {children}
                     </Link>
                 )

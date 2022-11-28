@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {classnames} from "shared/lib/helpers/classnames"
-import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
+import {Info, InfoStatus} from "shared/ui/info/Info"
 
 import {Comment} from "../../model/types/comments"
 import {commentsReducer} from "../../model/slice/commentsSlice"
@@ -32,7 +32,7 @@ export const CommentList = memo((props: CommentListProps) => {
                 title={t("произошла ошибка")}
                 subtitle={t("комментарии не найдены!")}
                 status={InfoStatus.ERROR}
-                align={InfoAlign.CENTER}
+                align="center"
             />
         )
     }
@@ -46,7 +46,7 @@ export const CommentList = memo((props: CommentListProps) => {
                 <div className={cls.comment__list}>
                     {comments?.length
                         ? comments.map((comment) => <CommentDetails data={comment} key={comment.id} />)
-                        : <Info subtitle={t("комментарии отсутствуют!")} align={InfoAlign.CENTER} />}
+                        : <Info subtitle={t("комментарии отсутствуют!")} align="center" />}
                 </div>
             </section>
         </DynamicModuleLoader>

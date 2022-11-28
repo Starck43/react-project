@@ -4,7 +4,7 @@ import {classnames} from "shared/lib/helpers/classnames"
 import cls from "./ToggleButton.module.sass"
 
 
-export enum ToggleButtonVariant {
+export enum ToggleThemeVariant {
     UP = "up",
     DOWN = "down",
     LEFT = "left",
@@ -16,9 +16,10 @@ export interface ToggleButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
     className?: string
 }
 
+// TODO: add Icon
 export const ToggleButton: FC<ToggleButtonProps> = (props) => {
     const {
-        variant = ToggleButtonVariant.DOWN,
+        variant = ToggleThemeVariant.DOWN,
         className,
         children,
         ...other

@@ -6,7 +6,7 @@ import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicMod
 import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
-import {Info, InfoAlign} from "shared/ui/info/Info"
+import {Info} from "shared/ui/info/Info"
 import Header, {TitleType} from "shared/ui/header/Header"
 import {Col, Flex} from "shared/ui/stack"
 import EventIcon from "shared/assets/icons/calendar-20-20.svg"
@@ -61,7 +61,7 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
     let content
 
     if (error) {
-        return <Info title={t("ошибка загрузки статьи!")} align={InfoAlign.CENTER} />
+        return <Info title={t("ошибка загрузки статьи!")} align="center" />
     }
 
     if (isLoading) {

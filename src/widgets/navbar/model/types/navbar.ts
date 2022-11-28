@@ -1,6 +1,6 @@
 import {SVGProps, VFC} from "react"
+import {AlignType} from "shared/types/ui"
 
-export type NavGroupType = "left" | "center" | "right"
 
 export interface NavbarItemType {
     id: string
@@ -8,5 +8,5 @@ export interface NavbarItemType {
     Icon?: VFC<SVGProps<SVGSVGElement>>
     authOnly?: boolean
     path: string
-    group: NavGroupType
+    group: AlignType
 }

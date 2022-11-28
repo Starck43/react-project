@@ -8,7 +8,7 @@ import {getUser, User} from "entities/user"
 import {LoginForm} from "features/auth"
 
 import {AppRoutes, RoutesPath} from "shared/config/router"
-import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
+import {Info, InfoStatus} from "shared/ui/info/Info"
 import {NavLink} from "shared/ui/link/NavLink"
 import Header from "shared/ui/header/Header"
 import {Col} from "shared/ui/stack"
@@ -34,11 +34,12 @@ function AuthPage() {
                 <Info
                     title={t("вы уже вошли под именем", {username})}
                     status={InfoStatus.WARNING}
-                    align={InfoAlign.CENTER}
+                    align="center"
                 />
-                <NavLink to={RoutesPath[AppRoutes.PROFILE] + authData.id}>
-                    {t("перейти в профиль")}
-                </NavLink>
+                <NavLink
+                    to={RoutesPath[AppRoutes.PROFILE] + authData.id}
+                    title={t("перейти в профиль")}
+                />
             </Col>
         )
     }

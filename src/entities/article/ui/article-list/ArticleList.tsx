@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next"
 import {List, ListRowProps, WindowScroller} from "react-virtualized"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {Info, InfoAlign} from "shared/ui/info/Info"
+import {Info} from "shared/ui/info/Info"
 
 import {PageLoader} from "widgets/page-loader/PageLoader"
 import {PAGE_ID} from "widgets/page/ui/Page"
@@ -71,11 +71,11 @@ export const ArticleList = memo((props: ArticleListProps) => {
     }
 
     if (error) {
-        return <Info title={t("ошибка загрузки статей!")} align={InfoAlign.CENTER} />
+        return <Info title={t("ошибка загрузки статей!")} align="center" />
     }
 
     if (!isLoading && !articles?.length) {
-        return <Info title={t("статьи не найдены!")} align={InfoAlign.CENTER} />
+        return <Info title={t("статьи не найдены!")} align="center" />
     }
 
     return (

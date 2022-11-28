@@ -2,19 +2,20 @@ import {FormEvent, memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
-import {Country} from "entities/country"
 import {
-    getProfileCopy, getProfileValidateErrors, Profile, profileActions, ValidateProfileError,
+    getProfileCopy, getProfileValidateErrors,
+    Profile, profileActions, ValidateProfileError,
 } from "entities/profile"
+import {Country} from "entities/country"
 
+import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {enumToArray, getValueForStringEnum} from "shared/lib/helpers/enum"
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import Input from "shared/ui/input/Input"
-import ListBox, {ListBoxVariant} from "shared/ui/listbox/ListBox"
+import ListBox from "shared/ui/listbox/ListBox"
 import {Modal} from "shared/ui/modal/Modal"
 import {Row} from "shared/ui/stack"
 
@@ -110,7 +111,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     className="mb-1"
                 />
                 <ListBox
-                    variant={ListBoxVariant.SECONDARY}
+                    variant="secondary"
                     name="country"
                     label={t("страна")}
                     items={enumToArray(Country, i18n.language === "en")}
@@ -120,7 +121,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                             ? capitalizeFirstLetter(copy.country)
                             : getValueForStringEnum(Country, copy.country.toUpperCase()),
                     }}
-                    direction="top"
+                    position="top_left"
                     compact
                     onChange={onSelectChange}
                     className="mb-1"

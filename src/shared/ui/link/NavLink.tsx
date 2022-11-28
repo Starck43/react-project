@@ -1,51 +1,58 @@
-import {FC} from "react"
+import {
+    FC, memo, ReactNode, SVGProps, VFC,
+} from "react"
 import {Link, LinkProps} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
+import {ThemeVariant} from "shared/types/theme"
 
 import cls from "./NavLink.module.sass"
 
 
-export enum NavLinkVariant {
-    PRIMARY = "primary",
-    SECONDARY = "secondary",
-}
+export type NavLinkFeatureType = "clear" | "inverted" | "underlined" | "bordered"
 
-export enum NavLinkFeature {
-    CLEAR = "clear",
-    UNDERLINED = "underlined",
-}
-
-export enum NavLinkAlign {
-    LEFT = "left",
-    RIGHT = "right",
-}
-
-export interface NavLinkProps extends LinkProps {
-    variant?: NavLinkVariant
-    feature?: NavLinkFeature
-    align?: NavLinkAlign
+export interface NavLinkProps extends Omit<LinkProps, "title"> {
+    variant?: ThemeVariant
+    title?: ReactNode
+    alt?: string
+    Icon?: VFC<SVGProps<SVGSVGElement>>
+    feature?: NavLinkFeatureType
+    fullWidth?: boolean
+    disabled?: boolean
+    rounded?: boolean
+    animation?: boolean
+    reverse?: boolean
     className?: string
 }
 
-export const NavLink: FC<NavLinkProps> = (props) => {
+export const NavLink: FC<NavLinkProps> = memo((props) => {
     const {
-        children,
-        to,
-        variant = NavLinkVariant.PRIMARY,
-        feature = NavLinkFeature.UNDERLINED,
-        align = NavLinkAlign.LEFT,
+        variant,
+        title,
+        alt,
+        Icon,
+        feature = "clear",
+        fullWidth = false,
+        disabled = false,
+        reverse = false,
+        rounded = false,
+        animation = false,
         className,
         ...other
     } = props
 
     return (
         <Link
-            to={to}
+            title={alt}
             {...other}
-            className={classnames(cls, [ "link", variant, feature, align ], {}, [ className ])}
+            className={classnames(cls, [
+                "link", variant, feature,
+            ], {
+                fullWidth, disabled, reverse, rounded, animation,
+            }, [ className ])}
         >
-            {children}
+            {Icon && <Icon className={cls.icon} />}
+            {title}
         </Link>
     )
-}
+})

@@ -1,6 +1,7 @@
 import {memo, useEffect, useState} from "react"
 import {useTranslation} from "react-i18next"
-import {Button, ButtonFeature, ButtonVariant} from "shared/ui/button/Button"
+
+import {Button} from "shared/ui/button/Button"
 
 
 // Button for calling Error
@@ -19,10 +20,9 @@ export const ErrorTestButton = memo(({className}: ErrorTestProps) => {
 
     return (
         <Button
-            variant={ButtonVariant.PRIMARY}
-            feature={ButtonFeature.BLANK}
-            className={className}
+            variant="primary"
             onClick={() => setError(true)}
+            className={className}
         >
             {t("throw error")}
         </Button>

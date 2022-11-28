@@ -1,8 +1,10 @@
-import {FC, memo} from "react"
+import {memo, FC} from "react"
 import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {Button, ButtonFeature, ButtonVariant} from "shared/ui/button/Button"
+import {Flex} from "shared/ui/stack"
+import {Button} from "shared/ui/button/Button"
+
 import FlagEnIcon from "shared/assets/icons/flag_en.svg"
 import FlagRuIcon from "shared/assets/icons/flag_ru.svg"
 
@@ -20,21 +22,13 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({minified = fal
 
     return (
         <Button
-            variant={ButtonVariant.SECONDARY}
-            feature={ButtonFeature.BLANK}
-            className={classnames(cls, [], {minified}, [ className ])}
             onClick={toggleLanguage}
+            className={classnames(cls, [], {minified}, [ className ])}
         >
-            {minified
-                ? i18n.language
-                : (
-                    <>
-                        {i18n.language === "en"
-                            ? <FlagEnIcon className="icon" />
-                            : <FlagRuIcon className="icon" />}
-                        {t("Русский")}
-                    </>
-                )}
+            <Flex gap="xs">
+                {i18n.language === "en" ? <FlagEnIcon className="icon" /> : <FlagRuIcon className="icon" />}
+                {!minified && t("Русский")}
+            </Flex>
         </Button>
     )
 })

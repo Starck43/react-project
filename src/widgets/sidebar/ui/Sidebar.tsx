@@ -1,33 +1,26 @@
-import {ErrorTestButton} from "app/providers/error-boundary-provider"
 import React, {memo, useState} from "react"
 import {useTranslation} from "react-i18next"
-import {RoutesPath} from "shared/config/router"
 
-import {classnames} from "shared/lib/helpers/classnames"
+import {ErrorTestButton} from "app/providers/error-boundary-provider"
+
+import {RoutesPath} from "shared/config/router"
 import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
-import {Button, ButtonFeature} from "shared/ui/button/Button"
-import {ToggleButton, ToggleButtonVariant} from "shared/ui/toggle-button/ToggleButton"
+import {classnames} from "shared/lib/helpers/classnames"
+import {AlignType} from "shared/types/ui"
+import {NavLink} from "shared/ui/link/NavLink"
+import {ToggleButton, ToggleThemeVariant} from "shared/ui/toggle-button/ToggleButton"
 
 import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
 
 
-export enum SidebarPositionType {
-    LEFT = "left",
-    RIGHT = "right"
-}
 
 export interface SidebarProps {
-    position?: SidebarPositionType
+    position?: AlignType
     className?: string
 }
 
-function Sidebar(props: SidebarProps) {
-    const {
-        position = SidebarPositionType.RIGHT,
-        className,
-    } = props
-
+function Sidebar({position = "right", className}: SidebarProps) {
     const {t} = useTranslation("sidebar")
     const {width} = useWindowDimensions()
     const [ collapsed, setCollapsed ] = useState(width < 992)
@@ -48,16 +41,18 @@ function Sidebar(props: SidebarProps) {
             {width < 992 && (
                 <ToggleButton
                     data-testid="sidebar-toggle"
-                    variant={collapsed ? ToggleButtonVariant.RIGHT : ToggleButtonVariant.LEFT}
+                    variant={collapsed ? ToggleThemeVariant.RIGHT : ToggleThemeVariant.LEFT}
                     className={classnames(cls, [ "toggle__btn", position ], {collapsed})}
                     onClick={toggleSidebar}
                 />
             )}
 
             <div className={classnames(cls, [], {collapsed}, [ "sidebar__container" ])}>
-                <Button feature={ButtonFeature.BLANK} href={RoutesPath.article_create}>
-                    {t("новая статья")}
-                </Button>
+                <NavLink
+                    to={RoutesPath.article_create}
+                    title={t("новая статья")}
+                    feature="underlined"
+                />
                 <ErrorTestButton />
             </div>
         </aside>

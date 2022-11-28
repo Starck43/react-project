@@ -11,25 +11,31 @@ export default {
         bordered: {control: "boolean"},
         // backgroundColor: {control: "color"},
     },
+    args: {
+        children: "Button",
+    },
 } as ComponentMeta<typeof Button>
 
 const Template: Story = (args) => <Button {...args} />
 
 
+export const Clear = Template.bind({})
+Clear.args = {
+    feature: ButtonFeature.CLEAR,
+}
+
 export const Blank = Template.bind({})
 Blank.args = {
-    children: "Button",
     feature: ButtonFeature.BLANK,
 }
 
 export const Inverted = Template.bind({})
 Inverted.args = {
-    children: "Button",
     feature: ButtonFeature.INVERTED,
 }
 
-export const Disabled = Template.bind({})
-Disabled.args = {
-    children: "Button",
+export const BlankDisabled = Template.bind({})
+BlankDisabled.args = {
+    feature: ButtonFeature.BLANK,
     disabled: true,
 }

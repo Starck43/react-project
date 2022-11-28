@@ -5,15 +5,20 @@
 .button
 	display: flex
 	align-items: center
+	gap: 4px
+	min-height: var(--controls-height)
 	font-family: var(--font-family-secondary)
-	color: $brand-color
-	background-color: $default-btn-color
+	color: inherit
+	background-color: transparent
 	border: 1px solid transparent
 	border-radius: var(--border-radius-default)
-	transition: all 150ms ease-out
+	transition: all 0.2s ease-out
 	opacity: 0.7
 	cursor: pointer
 	user-select: none
+
+	&.fullWidth
+		width: 100%
 
 	&.left
 		justify-content: space-between
@@ -24,24 +29,29 @@
 	&.right
 		justify-content: flex-end
 
+	&.blank
+		color: var(--theme-primary-link-color)
+		background-color: transparent
+
+	&.bordered
+		border-color: var(--theme-primary-border-color)
+
+	&.inverted
+		color: var(--theme-primary-bg-color)
+		background-color: var(--theme-primary-text-color)
+
+	&.shadowed
+		box-shadow: 0 0.3em 1.1em -0.4em var(--theme-primary-box-shadow)
+
 	&.primary
 		color: var(--theme-primary-color)
-
-		&.bordered
-			border-color: var(--theme-primary-border-color)
-
-		&.inverted
-			color: var(--theme-primary-bg-color)
-			background-color: var(--theme-primary-text-color)
-
-		&.shadowed
-			box-shadow: 0 0.3em 1.1em -0.4em var(--theme-primary-box-shadow)
 
 	&.secondary
 		color: var(--theme-secondary-link-color)
 
 		&.blank
-			color: var(--theme-secondary-text-color)
+			color: var(--theme-secondary-link-color)
+			background-color: transparent
 
 		&.bordered
 			border-color: var(--theme-secondary-border-color)
@@ -55,9 +65,6 @@
 
 	&:hover, &:focus
 		opacity: 1
-
-	&.blank
-		background-color: transparent
 
 	&.small
 		font-size: 0.7rem
@@ -81,6 +88,7 @@
 		border-right-color: transparent
 
 	&.disabled
+		pointer-events: none
 		opacity: 0.5
 
 	&.hover
@@ -89,4 +97,7 @@
 .button:not(.is__link, .square),
 .link
 	min-width: 4em
-	padding: calc(#{$controls-padding} + 1px) $controls-padding * 2 $controls-padding
+	padding: calc(#{$controls-padding} + 1px) $controls-padding * 1.8 $controls-padding
+
+.icon
+	width: var(--navlink-icon-size)

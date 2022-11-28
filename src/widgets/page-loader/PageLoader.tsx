@@ -1,3 +1,4 @@
+import {memo, FC} from "react"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Spinner} from "shared/ui/spinner/Spinner"
 
@@ -8,6 +9,6 @@ interface PageLoaderProps {
 	className?: string
 }
 
-export const PageLoader = ({className = "lds-roller"}: PageLoaderProps) => (
+export const PageLoader: FC<PageLoaderProps> = memo(({className = "lds-roller"}) => (
     <Spinner className={classnames(cls, [ "page__loader" ], {}, [ className ])} />
-)
+))

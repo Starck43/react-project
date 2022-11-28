@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next"
 
-import {Button} from "shared/ui/button/Button"
+import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Col} from "shared/ui/stack"
 
 // import cls from "./PageError.module.sass"
@@ -21,7 +21,7 @@ export const PageError = ({className}: PageErrorProps) => {
         <Col align="center" className={className}>
             <h1>{t("что-то пошло не так")}</h1>
             {t("непредвиденная ошибка")}
-            <Button onClick={reloadPage} className="mt-2">{t("обновить страницу")}</Button>
+            <Button feature={ButtonFeature.BLANK} onClick={reloadPage} className="mt-2">{t("обновить страницу")}</Button>
         </Col>
     )
 }

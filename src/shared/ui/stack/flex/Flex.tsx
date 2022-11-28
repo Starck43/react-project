@@ -1,4 +1,5 @@
-import {ReactNode, CSSProperties, DetailedHTMLProps, HTMLAttributes} from "react"
+import {ReactNode, DetailedHTMLProps, HTMLAttributes} from "react"
+
 import {classnames} from "shared/lib/helpers/classnames"
 
 import cls from "./Flex.module.sass"
@@ -18,8 +19,6 @@ export interface FlexProps extends DivProps {
     wrap?: boolean
     gap?: FlexGap
     fullWidth?: boolean
-    // style?: CSSProperties
-    // className?: string
     children?: ReactNode
 }
 

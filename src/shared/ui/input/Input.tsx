@@ -17,7 +17,6 @@ interface InputProps<T> extends HTMLInputType<T> {
     rounded?: boolean
     value?: string
     readonly?: boolean
-    // eslint-disable-next-line no-unused-vars
     onChange?: (value: string, name?: string) => void
 }
 

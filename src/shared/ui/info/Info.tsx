@@ -1,5 +1,7 @@
 import {ReactNode} from "react"
+
 import {classnames} from "shared/lib/helpers/classnames"
+import {AlignType} from "shared/types/ui"
 
 import cls from "./Info.module.sass"
 
@@ -11,11 +13,6 @@ export enum InfoStatus {
     ERROR = "error"
 }
 
-export enum InfoAlign {
-    LEFT = "left",
-    CENTER = "center",
-    RIGHT = "right"
-}
 
 export enum InfoSize {
     XL = "extra_large",
@@ -29,7 +26,7 @@ export type InfoProps = {
     subtitle?: string
     icon?: ReactNode
     status?: InfoStatus
-    align?: InfoAlign
+    align?: AlignType
     inlined?: boolean
     size?: InfoSize
     className?: string
@@ -40,7 +37,7 @@ export const Info = (props: InfoProps) => {
         subtitle,
         icon,
         title,
-        align = InfoAlign.LEFT,
+        align = "left",
         status = InfoStatus.DEFAULT,
         size = InfoSize.MD,
         inlined = false,

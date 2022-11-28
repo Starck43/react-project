@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom"
 
 import {ArticleDetailsCard} from "entities/article"
 
-import {Info, InfoAlign} from "shared/ui/info/Info"
+import {Info} from "shared/ui/info/Info"
 
 import {Page} from "widgets/page"
 
@@ -21,7 +21,7 @@ function ArticleDetailsPage() {
 
 
     if (!id) {
-        return <Info title={t("статья не найдена!")} align={InfoAlign.CENTER} />
+        return <Info title={t("статья не найдена!")} align="center" />
     }
 
     return (

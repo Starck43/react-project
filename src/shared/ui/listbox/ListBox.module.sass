@@ -23,19 +23,30 @@
 	white-space: nowrap
 	list-style: none
 	user-select: none
+	overflow: hidden
 	z-index: 10000
 
 	&.compact
 		width: 100%
-		text-align: left
+		//text-align: left
 
 	&.rounded
 		border-radius: var(--border-radius)
 
-	&.top
+	&.top_left
+		left: 0
 		bottom: 100%
 
-	&.bottom
+	&.bottom_left
+		left: 0
+		top: 100%
+
+	&.top_right
+		right: 0
+		bottom: 100%
+
+	&.bottom_right
+		right: 0
 		top: 100%
 
 	.item

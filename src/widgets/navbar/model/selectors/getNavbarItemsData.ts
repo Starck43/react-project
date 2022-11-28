@@ -37,6 +37,7 @@ export const getNavbarItemsData = createSelector(
             },
         ]
 
+/*
         const authItems = (user)
             ? {
                 id: "profileLink",
@@ -53,6 +54,8 @@ export const getNavbarItemsData = createSelector(
             }
 
         navbarItemsList.push(authItems as NavbarItemType)
+*/
+
         return groupNavbarItems(navbarItemsList, "group", Boolean(user))
     },
 )

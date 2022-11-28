@@ -13,7 +13,7 @@ import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
-import {Info, InfoAlign, InfoStatus} from "shared/ui/info/Info"
+import {Info, InfoStatus} from "shared/ui/info/Info"
 import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
 import {Row} from "shared/ui/stack"
 
@@ -50,7 +50,7 @@ export const ProfileCard = () => {
                 title={t("произошла ошибка")}
                 subtitle={t("попробуйте перезагрузить страницу")}
                 status={InfoStatus.ERROR}
-                align={InfoAlign.CENTER}
+                align="center"
             />
         )
     }

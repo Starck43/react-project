@@ -1,26 +1,45 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 import React from "react"
 
-import {NavLink, NavLinkFeature, NavLinkProps} from "./NavLink"
+import {NavLink, NavLinkProps} from "./NavLink"
 
+import ArrowIcon from "./arrow-shevron-left.svg"
 
 export default {
-    title: "shared/Navigation link",
+    title: "shared/Navigation Link",
     component: NavLink,
     argTypes: {backgroundColor: {control: "color"}},
-    args: {to: "/"},
-} as ComponentMeta<typeof NavLink>
+    args: {
+        to: "#",
+        title: <h5>Link</h5>,
+        Icon: ArrowIcon,
+    },
+} as unknown as ComponentMeta<typeof NavLink>
 
 const Template: ComponentStory<typeof NavLink> = (args: NavLinkProps) => <NavLink {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
-    children: "Link",
-    feature: NavLinkFeature.CLEAR,
+export const Clear = Template.bind({})
+Clear.args = {
+    feature: "clear",
 }
 
-export const Secondary = Template.bind({})
-Secondary.args = {
-    children: "Link",
-    feature: NavLinkFeature.UNDERLINED,
+export const Negatived = Template.bind({})
+Negatived.args = {
+    feature: "inverted",
+}
+
+export const Underlined = Template.bind({})
+Underlined.args = {
+    feature: "underlined",
+}
+
+export const BorderedAndRounded = Template.bind({})
+BorderedAndRounded.args = {
+    feature: "bordered",
+    rounded: true,
+}
+
+export const Reversed = Template.bind({})
+Reversed.args = {
+    reverse: true,
 }

@@ -10,9 +10,9 @@ import {fetchCommentsData, saveCommentForArticle} from "features/articles"
 import {NewCommentForm} from "features/comments"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
+import {classnames} from "shared/lib/helpers/classnames"
 import Header, {TitleType} from "shared/ui/header/Header"
 
 import cls from "./ArticleCommentsCard.module.sass"
