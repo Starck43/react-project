@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit"
+import {createSlice} from "@reduxjs/toolkit"
 
-import {Article, ArticleSchema} from "entities/article"
+import {ArticleSchema} from "entities/article"
 
 import {updateArticleData} from "../services/updateArticleData"
 
@@ -21,7 +21,7 @@ export const updateArticleSlice = createSlice({
             state.isLoading = true
             state.validateErrors = undefined
         })
-        .addCase(updateArticleData.fulfilled, (state, action: PayloadAction<Article>) => {
+        .addCase(updateArticleData.fulfilled, (state) => {
             state.isLoading = false
             state.validateErrors = undefined
         })

@@ -6,7 +6,7 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
 import {Card} from "shared/ui/card/Card"
-import Header, {TitleType} from "shared/ui/header/Header"
+import Header from "shared/ui/header/Header"
 import {Flex, Row} from "shared/ui/stack"
 import EyeIcon from "shared/assets/icons/eye-20-20.svg"
 
@@ -65,8 +65,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             {dateBlock}
                         </div>
                         <Header
+                            tag="h5"
                             title={article.title}
-                            titleType={TitleType.H5}
                             className={cls.header}
                         >
                             <Row align="center" fullWidth className={cls.meta}>
@@ -79,9 +79,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 : (
                     <>
                         <Header
+                            tag="h3"
                             title={article.title}
-                            titleType={TitleType.H4}
                             inlined
+                            gap="none"
                             className={cls.header}
                         >
                             {article?.user?.avatar && (

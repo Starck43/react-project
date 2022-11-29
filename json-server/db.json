@@ -255,7 +255,7 @@
     {
       "id": "9",
       "title": "Kotlin last updated",
-      "subtitle": "Что нового в Kotlin за 2022 год?",
+      "subtitle": "Что нового в Kotlin за 2021 год?",
       "img": "https://avatars.mds.yandex.net/i?id=4b5ddde86668aa74db1b0a534f9e2511_sr-4825382-images-thumbs&n=13",
       "views": 102,
       "createdAt": "02.11.2022",
@@ -508,6 +508,18 @@
       "userId": "2",
       "text": "New comment",
       "id": "GqITgSH"
+    },
+    {
+      "articleId": "9",
+      "userId": "1",
+      "text": "new",
+      "id": "6SCyEjd"
+    },
+    {
+      "articleId": "9",
+      "userId": "1",
+      "text": "second",
+      "id": "oCRKhgF"
     }
   ],
   "users": [

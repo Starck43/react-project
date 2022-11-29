@@ -11,7 +11,7 @@ function AboutPage() {
 
     return (
         <Page>
-            <Header title={t("о нас")} shadowed align="center" />
+            <Header tag="h2" title={t("о нас")} shadowed align="center" />
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. \
                 Culpa, dolorum, est, et harum hic illo inventore ipsam ipsum magnam  \

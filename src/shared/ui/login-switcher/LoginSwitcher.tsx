@@ -1,8 +1,8 @@
 import {
-FC, memo, useCallback, useMemo, useState,
+    FC, memo, useCallback, useMemo, useState,
 } from "react"
 import {useSelector} from "react-redux"
-import {useTranslation, withTranslation} from "react-i18next"
+import {useTranslation} from "react-i18next"
 
 import {getUser} from "entities/user"
 

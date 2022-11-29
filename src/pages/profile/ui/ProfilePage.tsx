@@ -22,7 +22,7 @@ function ProfilePage() {
             <Page>
                 <Suspense fallback={<PageLoader />}>
                     <div className="container profile-container">
-                        <Header title={t("профиль")} shadowed align="center" />
+                        <Header tag="h2" title={t("профиль")} shadowed align="center" />
                         <ProfileCard />
                     </div>
                 </Suspense>

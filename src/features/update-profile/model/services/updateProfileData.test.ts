@@ -25,6 +25,7 @@ describe("updateProfileData test", () => {
     test("Failed validation on update", async () => {
         const thunk = new TestAsyncFunc(updateProfileData, {profile: {data: {...profileValue, name: ""}}})
         const res = await thunk.CallFunc()
+        // eslint-disable-next-line no-console
         console.log(res)
 
         expect(res.meta.requestStatus).toBe("rejected")

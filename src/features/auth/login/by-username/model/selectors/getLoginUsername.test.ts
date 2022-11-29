@@ -1,5 +1,6 @@
 import {StateSchema} from "app/providers/store-provider"
-import {getLoginUsername} from "features/auth/login/by-username/model/selectors/getLoginUsername"
+
+import {getLoginUsername} from "../selectors/getLoginUsername"
 
 
 describe("getLoginUsername test", () => {

@@ -2,8 +2,9 @@ import {useCallback} from "react"
 import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {Button, ButtonFeature, ButtonSize} from "shared/ui/button/Button"
 import CopyIcon from "shared/assets/icons/copy-20-20.svg"
+
+import {Button, ButtonFeature, ButtonSize} from "../button/Button"
 
 import cls from "./Code.module.sass"
 

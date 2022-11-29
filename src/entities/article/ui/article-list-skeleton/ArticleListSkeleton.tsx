@@ -110,5 +110,6 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
 export const renderArticlesSkeleton = (view: ArticleView) => (
     new Array(view === ArticleView.TILE ? 12 : 4)
     .fill(0)
+    // eslint-disable-next-line react/no-array-index-key
     .map((_, i) => <ArticleListSkeleton view={view} key={i} />)
 )

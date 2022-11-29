@@ -1,5 +1,6 @@
 import {StateSchema} from "app/providers/store-provider"
-import {getCounter} from "entities/counter/model/selectors/getCounter/getCounter"
+
+import {getCounter} from "../getCounter/getCounter"
 
 
 describe("RTK Counter tests", () => {

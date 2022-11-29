@@ -16,7 +16,7 @@ function NotFoundPage() {
 
     return (
         <Page className={classnames(cls, [ "not_found__page" ], {}, [ "centered" ])}>
-            <Header title={t("Страница не найдена")} shadowed align="center" />
+            <Header tag="h2" title={t("Страница не найдена")} shadowed align="center" />
 
             <Button href={RoutesPath[AppRoutes.HOME]}>
                 {t("На главную")}

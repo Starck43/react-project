@@ -1,5 +1,5 @@
 import {
-useRef, ReactNode, MutableRefObject, UIEvent, FC,
+    useRef, ReactNode, MutableRefObject, UIEvent, FC,
 } from "react"
 import {useSelector} from "react-redux"
 import {useLocation} from "react-router-dom"
@@ -7,12 +7,13 @@ import {useLocation} from "react-router-dom"
 import {StateSchema} from "app/providers/store-provider"
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {useElementInView} from "shared/lib/hooks/useElementInView"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
+import {useElementInView} from "shared/lib/hooks/useElementInView"
 import {useThrottle} from "shared/lib/hooks/useThrottle"
 import {classnames} from "shared/lib/helpers/classnames"
 
-import {getPageByPath, pageActions} from "widgets/page"
+import {getPageByPath} from "../model/selectors/getPage"
+import {pageActions} from "../model/slice/pageSlice"
 
 import cls from "./Page.module.sass"
 

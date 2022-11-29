@@ -5,7 +5,7 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
 import {PositionType} from "shared/types/ui"
 
-import {Button} from "shared/ui/button/Button"
+import {Button} from "../button/Button"
 
 import cls from "./Dropdown.module.sass"
 

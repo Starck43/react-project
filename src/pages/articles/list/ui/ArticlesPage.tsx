@@ -48,7 +48,7 @@ function ArticlesPage() {
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
             <Page onScrollToEnd={onLoadNext} saveScrollPos>
-                <Header title={t("статьи")} align="center" shadowed />
+                <Header tag="h2" title={t("статьи")} align="center" shadowed />
                 <ArticlesPageControls className="mb-2" />
                 <ArticleList articles={articles} isLoading={isLoading} error={error} view={view} shadowed />
             </Page>

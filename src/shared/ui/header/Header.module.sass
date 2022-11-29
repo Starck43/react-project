@@ -1,29 +1,43 @@
-@import "src/app/styles/_vars"
+@import "src/app/styles/vars"
 
 .header
-	margin-bottom: 1.2rem
+	margin-bottom: 2rem
 
-	.title, .subtitle
-		flex: 100%
-		overflow: hidden
-		text-overflow: ellipsis
+.primary
+	color: var(--theme-primary-text-color)
 
+	&.shadowed, .shadowed
+		text-shadow: 1px 1px 2px var(--theme-primary-shadow)
+
+.secondary
+	color: var(--theme-secondary-text-color)
+
+	&.shadowed, .shadowed
+		text-shadow: 1px 1px 2px var(--theme-secondary-shadow)
+
+.title, .subtitle
+	flex: 100%
+	overflow: hidden
+	text-overflow: ellipsis
+
+.title
+	line-height: var(--line-height-title)
+
+	&.start
+		text-align: left
+
+	&.center
+		text-align: center
+
+	&.end
+		text-align: right
+
+.inlined
 	.subtitle
-		opacity: 0.7
+		flex: 0 1 auto
 
-	&.primary
-		color: var(--theme-primary-text-color)
-
-		&.shadowed
-			.title
-				text-shadow: 1px 1px 2px var(--theme-primary-shadow)
-
-	&.secondary
-		color: var(--theme-secondary-text-color)
-
-		&.shadowed
-			.title
-				text-shadow: 1px 1px 2px var(--theme-secondary-shadow)
+.subtitle
+	opacity: 0.7
 
 .firstcase
 	text-transform: lowercase

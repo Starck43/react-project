@@ -11,8 +11,8 @@ interface ArticleHeaderProps {
 }
 
 export const ArticleHeader = memo(({className}: ArticleHeaderProps) => (
-    <Row className={className}>
-        {/* <Header title={t("статья")} shadowed align="center" /> */}
+    <Row justify="between" align="center" className={className}>
+        {/* <Header tag="h2" title={t("статья")} shadowed align="center" /> */}
         <BackToListLink />
         <EditArticleControl />
     </Row>

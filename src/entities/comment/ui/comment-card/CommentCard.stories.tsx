@@ -2,16 +2,16 @@ import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
-import {CommentDetails} from "./CommentDetails"
+import {CommentCard} from "./CommentCard"
 
 
 export default {
     title: "entities/Comments/CommentDetails",
-    component: CommentDetails,
+    component: CommentCard,
     argTypes: {backgroundColor: {control: "color"}},
-} as ComponentMeta<typeof CommentDetails>
+} as ComponentMeta<typeof CommentCard>
 
-const Template: ComponentStory<typeof CommentDetails> = (args) => <CommentDetails {...args} />
+const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

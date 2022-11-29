@@ -2,12 +2,11 @@ import {memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
-import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
 import {Info} from "shared/ui/info/Info"
-import Header, {TitleType} from "shared/ui/header/Header"
+import Header from "shared/ui/header/Header"
 import {Col, Flex} from "shared/ui/stack"
 import EventIcon from "shared/assets/icons/calendar-20-20.svg"
 import EyeIcon from "shared/assets/icons/eye-20-20.svg"
@@ -15,7 +14,6 @@ import EyeIcon from "shared/assets/icons/eye-20-20.svg"
 
 import {getArticleData, getArticleError, getArticleLoading} from "../model/selectors/article-details/getArticleDetails"
 import {fetchArticleById} from "../model/services/fetchArticleById/fetchArticleById"
-import {articleReducer} from "../model/slice/article-details/articleSlice"
 import {ArticleBlock, ArticleBlockType} from "../model/types/article"
 import {ArticleCode} from "../ui/article-code/ArticleCode"
 import {ArticleImage} from "../ui/article-image/ArticleImage"
@@ -30,7 +28,6 @@ interface ArticleDetailsCardProps {
     className?: string
 }
 
-const initialReducers: ReducerList = {article: articleReducer}
 
 export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCardProps) => {
     const {t} = useTranslation("articles")
@@ -72,9 +69,9 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
         content = (
             <>
                 <Header
+                    tag="h2"
                     title={article?.title}
                     subTitle={article?.subtitle}
-                    titleType={TitleType.H2}
                 >
                     <Flex gap="xs" className="size-sm"><EventIcon /><span>{article?.createdAt}</span></Flex>
                     <Flex gap="xs" className="size-sm"><EyeIcon /><span>{article?.views}</span></Flex>
@@ -90,10 +87,8 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
     }
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
-            <section className={classnames(cls, [ "article__details" ], {}, [ "mt-2", className ])}>
-                {content}
-            </section>
-        </DynamicModuleLoader>
+        <section className={classnames(cls, [ "article__details" ], {}, [ "mt-2", className ])}>
+            {content}
+        </section>
     )
 })

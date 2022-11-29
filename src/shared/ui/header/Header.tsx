@@ -1,4 +1,6 @@
-import {memo, useMemo, ReactNode} from "react"
+import {
+    memo, useMemo, ReactNode, ElementType, Fragment,
+} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
@@ -6,80 +8,75 @@ import {Flex} from "../../ui/stack"
 
 import cls from "./Header.module.sass"
 
-// TODO: Semantic review TitleType to any variants without mapping
-type TitleTagType = "h1" | "h2" | "h3" | "h4" | "h5"
 
-export enum TitleType {
-    H1 = "h1",
-    H2 = "h2",
-    H3 = "h3",
-    H4 = "h4",
-    H5 = "h5",
-}
-
-const mapTitleTypeToTag : Record<TitleType, TitleTagType> = {
-    [TitleType.H1]: "h1",
-    [TitleType.H2]: "h2",
-    [TitleType.H3]: "h3",
-    [TitleType.H4]: "h4",
-    [TitleType.H5]: "h5",
-}
-
-export enum HeaderCase {
+export enum TagCase {
     FIRST = "firstcase",
     UPPER = "uppercase",
     LOWER = "lowercase",
 }
 
 type HeaderProps = {
-    children?: ReactNode
+    tag?: ElementType
     variant?: ThemeVariant
-    title: ReactNode | string
-    subTitle?: string
-    titleType?: TitleType
-    align?: "start" | "end" | "center" | "baseline"
-    transform?: HeaderCase
+    title: ReactNode
+    subTitle?: ReactNode
     inlined?: boolean
+    align?: "start" | "center" | "end"
+    gap?: "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+    transform?: TagCase
     shadowed?: boolean
     className?: string
+    children?: ReactNode
 }
 
 const Header = (props: HeaderProps) => {
     const {
+        tag = "div",
         variant = "primary",
         title,
         subTitle,
-        titleType = TitleType.H1,
         align = "start",
         inlined = false,
-        transform = HeaderCase.FIRST,
+        gap = "xs",
+    transform = TagCase.FIRST,
         shadowed = false,
         className,
         children,
     } = props
 
-    const titleElement = useMemo(() => {
-        const TitleTag = mapTitleTypeToTag[titleType]
+    const subtitle = typeof subTitle === "string"
+        ? <p className={cls.subtitle}>{subTitle}</p>
+        : subTitle
+
+    const Title = tag
+
+    if (children || subtitle) {
         return (
-            typeof title === "string"
-                ? <TitleTag className={classnames(cls, [ "title", transform ])}>{title}</TitleTag>
-                : title
+            <Flex
+                align={align}
+                justify={inlined ? "start" : align}
+                gap={inlined ? gap : "none"}
+                wrap
+                fullWidth={inlined}
+                direction={inlined ? "row" : "column"}
+                className={classnames(cls, [ "header", variant ], {inlined}, [ className ])}
+            >
+                {title
+                && (
+                <Title className={classnames(cls, [ "title", align, variant, transform ], {shadowed})}>
+                    {title}
+                </Title>
+                )}
+                {subtitle}
+                {children}
+            </Flex>
         )
-    }, [ title, titleType, transform ])
+    }
 
     return (
-        <Flex
-            fullWidth
-            align={align}
-            justify="start"
-            direction={inlined ? "row" : "column"}
-            wrap={inlined}
-            className={classnames(cls, [ "header", variant ], {shadowed}, [ className ])}
-        >
-            {titleElement}
-            {subTitle && <p className={cls.subtitle}>{subTitle}</p>}
-            {children}
-        </Flex>
+        <Title className={classnames(cls, [ "title", align, transform, variant ], {shadowed}, [ className ])}>
+            {title}
+        </Title>
     )
 }
 

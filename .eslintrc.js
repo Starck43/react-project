@@ -22,6 +22,7 @@ module.exports = {
         "@typescript-eslint",
         "i18next",
         "react-hooks",
+        "paths-observer",
     ],
     rules: {
         "no-tabs": 0,
@@ -65,7 +66,7 @@ module.exports = {
         "react/require-default-props": "off",
         "react/jsx-closing-tag-location": "off",
         "react/function-component-definition": "off",
-        "react/jsx-props-no-spreading": "warn",
+        "react/jsx-props-no-spreading": "off",
         "react-hooks/exhaustive-deps": "error",
         "react-hooks/rules-of-hooks": "error",
         "react/display-name": "off",
@@ -124,6 +125,7 @@ module.exports = {
         ],
         "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true} ],
         "no-plusplus": [ "error", {allowForLoopAfterthoughts: true} ],
+        "paths-observer/only-relative-paths-in-slice": "error",
     },
     overrides: [
         {

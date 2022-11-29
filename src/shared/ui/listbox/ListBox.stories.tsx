@@ -37,7 +37,7 @@ TopOpen.args = {
     compact: false,
     selectedOption: {value: "4", content: "Benedict Kessler"},
     defaultOption: undefined,
-    direction: "top_right",
+    position: "top_right",
 }
 
 export const Compact = Template.bind({})

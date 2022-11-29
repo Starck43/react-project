@@ -47,7 +47,7 @@ function AuthPage() {
     return (
         <Suspense fallback={<PageLoader />}>
             <Page>
-                <Header title={t("войти")} shadowed align="center" />
+                <Header tag="h2" title={t("войти")} shadowed align="center" />
                 <LoginForm onSuccess={successLoginHandler} />
             </Page>
         </Suspense>

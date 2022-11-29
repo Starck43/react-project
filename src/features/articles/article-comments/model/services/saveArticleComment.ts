@@ -6,10 +6,10 @@ import {getUser} from "entities/user"
 import {getArticleData} from "entities/article"
 import {Comment} from "entities/comment"
 
-import {fetchCommentsData} from "../../load-comments/services/fetchCommentsData"
+import {fetchArticleCommentsData} from "./fetchArticleCommentsData"
 
 
-export const saveCommentForArticle = createAsyncThunk<Comment, string, ThunkConfig<string>>(
+export const saveArticleComment = createAsyncThunk<Comment, string, ThunkConfig<string>>(
     "article/saveCommentForArticle",
     async (text, thunkAPI) => {
         const {extra, dispatch, rejectWithValue, getState} = thunkAPI
@@ -30,7 +30,7 @@ export const saveCommentForArticle = createAsyncThunk<Comment, string, ThunkConf
             }
 
             // refresh state to get actual comments after sending a comment to server
-            dispatch(fetchCommentsData(article.id))
+            dispatch(fetchArticleCommentsData(article.id))
 
             return response.data
         } catch (e) {

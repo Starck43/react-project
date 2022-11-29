@@ -1,6 +1,6 @@
 import {TestAsyncFunc} from "shared/lib/tests/test-async-func/TestAsyncFunc"
 
-import {fetchCommentsData} from "./fetchCommentsData"
+import {fetchArticleCommentsData} from "./fetchArticleCommentsData"
 
 
 const data = {

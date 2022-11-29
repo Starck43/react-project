@@ -3,14 +3,13 @@ import {
 } from "@reduxjs/toolkit"
 import {AxiosInstance} from "axios"
 
-import {ArticleListSchema, ArticleSchema} from "entities/article"
-import {CommentSchema} from "entities/comment"
 import {CounterSchema} from "entities/counter"
 import {ProfileSchema} from "entities/profile"
 import {UserSchema} from "entities/user"
+import {ArticleListSchema, ArticleSchema} from "entities/article"
+import {CommentSchema, NewCommentSchema} from "entities/comment"
 
 import {LoginSchema} from "features/auth"
-import {NewCommentSchema} from "features/comments"
 import {ArticleRelatedSchema} from "features/articles"
 
 import {PageSchema} from "widgets/page"

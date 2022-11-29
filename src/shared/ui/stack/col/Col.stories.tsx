@@ -1,7 +1,7 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {Button, ButtonSize} from "shared/ui/button/Button"
-import {Card} from "shared/ui/card/Card"
+
+import {Button, ButtonSize} from "../../button/Button"
 
 import Col from "./Col"
 

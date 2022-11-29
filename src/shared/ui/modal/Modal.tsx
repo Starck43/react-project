@@ -6,8 +6,8 @@ import {
 } from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {Portal} from "shared/ui/portal/Portal"
-import {CloseButton} from "shared/ui/close-button/CloseButton"
+import {Portal} from "../portal/Portal"
+import {CloseButton} from "../close-button/CloseButton"
 
 // import vars from "app/styles/_globals.scss"
 import cls from "./Modal.module.sass"

@@ -1,7 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 
 import {ThunkConfig} from "app/providers/store-provider"
-import {Article, articleActions, fetchArticleById, getArticleCopy} from "entities/article"
+
+import {Article, fetchArticleById, getArticleCopy} from "entities/article"
 
 
 
@@ -12,7 +13,6 @@ export const updateArticleData = createAsyncThunk<Article, string, ThunkConfig<s
         const data = {...getArticleCopy(getState())}
         delete data?.user // TODO: mapping function for converting data to server interface
 
-        console.log(data, id)
         if (!data) return rejectWithValue("no data")
 
         try {
@@ -27,6 +27,7 @@ export const updateArticleData = createAsyncThunk<Article, string, ThunkConfig<s
 
             return response.data
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(e)
             return rejectWithValue("error")
         }

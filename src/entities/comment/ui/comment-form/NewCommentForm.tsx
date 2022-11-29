@@ -9,8 +9,8 @@ import {Button, ButtonFeature} from "shared/ui/button/Button"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import {TextArea} from "shared/ui/input/Input"
 
-import {getNewCommentError, getNewCommentText} from "../model/selectors/getNewComment"
-import {newCommentActions, newCommentReducer} from "../model/slice/newCommentSlice"
+import {getNewCommentError, getNewCommentText} from "../../model/selectors/getNewComment"
+import {newCommentActions, newCommentReducer} from "../../model/slice/newCommentSlice"
 
 import cls from "./NewCommentForm.module.sass"
 
@@ -53,7 +53,7 @@ const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <div data-testid="newComment" className={classnames(cls, [ "new_comment" ], {}, [ className ])}>
+            <form data-testid="newComment" className={classnames(cls, [ "new_comment" ], {}, [ className ])}>
                 <TextArea
                     value={text}
                     onChange={onTextChange}
@@ -67,7 +67,7 @@ const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
                 >
                     {t("отправить")}
                 </Button>
-            </div>
+            </form>
         </DynamicModuleLoader>
     )
 }

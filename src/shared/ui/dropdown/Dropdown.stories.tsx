@@ -1,6 +1,6 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {Button} from "shared/ui/button/Button"
+import {Button} from "../button/Button"
 
 import {Dropdown} from "./Dropdown"
 

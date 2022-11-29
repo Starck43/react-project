@@ -1,4 +1,4 @@
-import {getQueryParams} from "shared/lib/helpers/urls"
+import {getQueryParams} from "./urls"
 
 
 describe("query params test", () => {

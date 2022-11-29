@@ -1,8 +1,9 @@
-import {Article} from "entities/article"
-import {ArticleBlockType, ArticleType} from "entities/article/model/types/article"
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
+
+import {Article, ArticleBlockType, ArticleType} from "../model/types/article"
 
 import {ArticleDetailsCard} from "./ArticleDetailsCard"
 

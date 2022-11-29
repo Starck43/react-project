@@ -1,6 +1,6 @@
-import {getArticlesLoading} from "entities/article"
 import {TestAsyncFunc} from "shared/lib/tests/test-async-func/TestAsyncFunc"
 
+import {getArticlesLoading} from "../../selectors/article-list/getArticleListData"
 import {fetchArticleList} from "../fetchArticleList/fetchArticleList"
 import {fetchArticleNextList} from "./fetchArticleNextList"
 

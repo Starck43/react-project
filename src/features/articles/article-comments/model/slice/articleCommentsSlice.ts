@@ -1,9 +1,10 @@
 import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 import {StateSchema} from "app/providers/store-provider"
-import {fetchCommentsData} from "../../../../features/articles/load-comments/services/fetchCommentsData"
-import {Comment, CommentSchema} from "../types/comments"
 
+import {Comment, CommentSchema} from "entities/comment"
+
+import {fetchArticleCommentsData} from "../services/fetchArticleCommentsData"
 
 
 const commentsAdapter = createEntityAdapter<Comment>({
@@ -11,8 +12,8 @@ const commentsAdapter = createEntityAdapter<Comment>({
     // sortComparer: (a, b) => b.id.localeCompare(a.id),
 })
 
-const commentsSlice = createSlice({
-    name: "comments",
+const articleCommentsSlice = createSlice({
+    name: "articleComments",
     initialState: commentsAdapter.getInitialState<CommentSchema>({
         isLoading: false,
         error: undefined,
@@ -31,15 +32,15 @@ const commentsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(fetchCommentsData.pending, (state) => {
+        .addCase(fetchArticleCommentsData.pending, (state) => {
             state.isLoading = true
             state.error = undefined
         })
-        .addCase(fetchCommentsData.fulfilled, (state, action: PayloadAction<Comment[]>) => {
+        .addCase(fetchArticleCommentsData.fulfilled, (state, action: PayloadAction<Comment[]>) => {
             state.isLoading = false
             commentsAdapter.setAll(state, action.payload)
         })
-        .addCase(fetchCommentsData.rejected, (state, action) => {
+        .addCase(fetchArticleCommentsData.rejected, (state, action) => {
             state.isLoading = false
             state.error = action.payload
         })
@@ -48,8 +49,8 @@ const commentsSlice = createSlice({
 
 // export const {postAdded, postUpdated, reactionAdded} = articleCommentsSlice.actions
 
-export const getCommentsData = commentsAdapter.getSelectors<StateSchema>(
+export const getArticleCommentsData = commentsAdapter.getSelectors<StateSchema>(
     (state) => state.comments || commentsAdapter.getInitialState(),
 )
 
-export const {reducer: commentsReducer} = commentsSlice
+export const {reducer: articleCommentsReducer} = articleCommentsSlice

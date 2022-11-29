@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ArticleSearchControl>
 
-const Template: ComponentStory<typeof ArticleSearchControl> = (args) => <ArticleSearchControl />
+const Template: ComponentStory<typeof ArticleSearchControl> = () => <ArticleSearchControl />
 
 export const Default = Template.bind({})
 Default.args = {}

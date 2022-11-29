@@ -17,6 +17,7 @@ export const fetchProfileData = createAsyncThunk<Profile, string | undefined, Th
             }
             return response.data
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(e)
             return rejectWithValue("error")
         }

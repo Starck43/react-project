@@ -1,4 +1,4 @@
-import {ReactNode, DetailedHTMLProps, HTMLAttributes} from "react"
+import {ReactNode, DetailedHTMLProps, HTMLAttributes, ElementType} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
@@ -12,7 +12,7 @@ type FlexGap = "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
 export interface FlexProps extends DivProps {
-    tag?: keyof HTMLElementTagNameMap
+    as?: ElementType // keyof HTMLElementTagNameMap
     justify?: FlexJustify
     align?: FlexAlign
     direction?: FlexDirection
@@ -24,7 +24,7 @@ export interface FlexProps extends DivProps {
 
 export const Flex = (props: FlexProps) => {
     const {
-        tag = "div",
+        as = "div",
         justify = "center",
         align = "center",
         direction = "row",
@@ -36,7 +36,6 @@ export const Flex = (props: FlexProps) => {
         children,
     } = props
 
-    const Tag = tag
     const classes = classnames(cls, [
         "flex",
         `justify__${justify}`,
@@ -45,6 +44,7 @@ export const Flex = (props: FlexProps) => {
         `gap__${gap}`,
     ], {wrap, fullWidth}, [ className ])
 
+    const Tag = as
     return (
         <Tag className={classes} style={style}>
             {children}

@@ -1,6 +1,7 @@
-import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {ArticleBlockType} from "entities/article/model/types/article"
 import React from "react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
+
+import {ArticleBlockType} from "../../model/types/article"
 
 import {ArticleText} from "./ArticleText"
 

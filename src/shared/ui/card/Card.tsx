@@ -3,23 +3,20 @@ import {Link} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
-import {Flex} from "shared/ui/stack"
+import {DirectionType, UIFeatureType} from "shared/types/ui"
+
+import {Flex} from "../stack"
 
 import cls from "./Card.module.sass"
 
 
-export enum CardFeature {
-    BLANK = "blank",
-    INVERTED = "inverted",
-}
-
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     variant?: ThemeVariant
-    feature?: CardFeature
+    feature?: UIFeatureType
     bordered?: boolean
     rounded?: boolean
     shadowed?: boolean
-    direction?: "row" | "column"
+    direction?: DirectionType
     href?: string
     target?: HTMLAttributeAnchorTarget
     className?: string
@@ -28,7 +25,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export const Card: FC<CardProps> = (props) => {
     const {
         variant = "primary",
-        feature = CardFeature.BLANK,
+        feature = "blank",
         bordered = false,
         rounded = false,
         shadowed = false,

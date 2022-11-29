@@ -1,4 +1,4 @@
-import {Flex, FlexProps} from "shared/ui/stack/flex/Flex"
+import {Flex, FlexProps} from "../flex/Flex"
 
 
 type ColProps = Omit<FlexProps, "direction">

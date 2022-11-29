@@ -1,13 +1,11 @@
 import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 
-import {Comment} from "../../model/types/comments"
-import {commentsReducer} from "../../model/slice/commentsSlice"
-import {CommentDetails} from "../comment-details/CommentDetails"
+import {Comment} from "../../model/types/comment"
+import {CommentCard} from "../comment-card/CommentCard"
 import {CommentSkeleton} from "../comment-skeleton/CommentSkeleton"
 
 import cls from "./CommentList.module.sass"
@@ -19,8 +17,6 @@ interface CommentListProps {
     error?: string
     className?: string
 }
-
-const initialReducer: ReducerList = {comments: commentsReducer}
 
 export const CommentList = memo((props: CommentListProps) => {
     const {comments, isLoading, error, className} = props
@@ -41,14 +37,12 @@ export const CommentList = memo((props: CommentListProps) => {
 
 
     return (
-        <DynamicModuleLoader reducers={initialReducer}>
-            <section className={classnames(cls, [ "comments__list" ], {}, [ className ])}>
-                <div className={cls.comment__list}>
-                    {comments?.length
-                        ? comments.map((comment) => <CommentDetails data={comment} key={comment.id} />)
-                        : <Info subtitle={t("комментарии отсутствуют!")} align="center" />}
-                </div>
-            </section>
-        </DynamicModuleLoader>
+        <section className={classnames(cls, [ "comments__list" ], {}, [ className ])}>
+            <div className={cls.comment__list}>
+                {comments?.length
+                    ? comments.map((comment) => <CommentCard data={comment} key={comment.id} />)
+                    : <Info subtitle={t("комментарии отсутствуют!")} align="center" />}
+            </div>
+        </section>
     )
 })

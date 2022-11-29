@@ -9,8 +9,8 @@ import {ThemeSwitcher} from "shared/ui/theme-switcher/ThemeSwitcher"
 import {LoginSwitcher} from "shared/ui/login-switcher/LoginSwitcher"
 import {Row} from "shared/ui/stack"
 
-import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"
 import NavItem from "./NavItem"
+import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"
 import {NavbarItemType} from "../../model/types/navbar"
 
 import cls from "./Navbar.module.sass"
@@ -42,7 +42,7 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
 
     return (
         <Row
-            tag="header"
+            as="header"
             align="center"
             justify="between"
             fullWidth

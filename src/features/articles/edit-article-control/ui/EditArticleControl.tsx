@@ -1,13 +1,13 @@
 import {memo} from "react"
-import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
+import {useTranslation} from "react-i18next"
 
 import {getArticleData} from "entities/article"
 
-import {getEditArticleData} from "features/articles"
-
 import {AppRoutes, RoutesPath} from "shared/config/router"
 import {Button, ButtonFeature} from "shared/ui/button/Button"
+
+import {getEditArticleData} from "../model/selectors/getEditArticleData"
 
 import cls from "./EditArticleControl.module.sass"
 

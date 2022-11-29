@@ -1,11 +1,10 @@
-import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {ArticleBlockType, ArticleType, ArticleView} from "entities/article/model/types/article"
 import React from "react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import Image from "shared/assets/icons/avatar-profile.jpeg"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
+import Image from "shared/assets/icons/avatar-profile.jpeg"
 
-import {Article} from "../../model/types/article"
+import {Article, ArticleBlockType, ArticleType, ArticleView} from "../../model/types/article"
 
 import {ArticleList} from "./ArticleList"
 
@@ -14,6 +13,9 @@ export default {
     title: "entities/Articles/ArticleList",
     component: ArticleList,
     argTypes: {backgroundColor: {control: "color"}},
+    decorators: [
+        StoreDecorator({}),
+    ],
 } as ComponentMeta<typeof ArticleList>
 
 const article: Article = {
@@ -56,23 +58,14 @@ Default.args = {
     view: ArticleView.TILE,
     articles: new Array(3).fill(0).map((item, i) => ({...article, id: String(i)})),
 }
-Default.decorators = [
-    StoreDecorator({}),
-]
 
 export const Loading = Template.bind({})
 Loading.args = {
     isLoading: true,
     articles: [],
 }
-Loading.decorators = [
-    StoreDecorator({}),
-]
 
 export const Error = Template.bind({})
 Error.args = {
     error: "some error",
 }
-Error.decorators = [
-    StoreDecorator({}),
-]

@@ -11,7 +11,7 @@ function HomePage() {
 
     return (
         <Page>
-            <Header title={t("Продвинутый курс на Реакт")} shadowed align="center" />
+            <Header tag="h2" title={t("Продвинутый курс на Реакт")} shadowed align="center" />
         </Page>
     )
 }

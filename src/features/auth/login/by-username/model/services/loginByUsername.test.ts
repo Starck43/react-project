@@ -1,6 +1,8 @@
 import {userActions} from "entities/user"
-import {loginByUsername} from "features/auth/login/by-username/model/services/loginByUsername"
+
 import {TestAsyncFunc} from "shared/lib/tests/test-async-func/TestAsyncFunc"
+
+import {loginByUsername} from "./loginByUsername"
 
 
 const userValue = {
