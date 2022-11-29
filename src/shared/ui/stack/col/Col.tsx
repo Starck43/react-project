@@ -1,11 +1,12 @@
+import {memo, ComponentProps, ElementType} from "react"
 import {Flex, FlexProps} from "../flex/Flex"
 
+type ColProps<E extends ElementType> = Omit<FlexProps<E>, "direction"> &
+    Omit<ComponentProps<E>, keyof FlexProps>
 
-type ColProps = Omit<FlexProps, "direction">
-
-const Col = (props: ColProps) => {
+const Col = <E extends ElementType = keyof HTMLElementTagNameMap>(props: ColProps<E>) => {
     const {align = "start"} = props
     return <Flex {...props} align={align} direction="column" />
 }
 
-export default Col
+export default memo(Col)

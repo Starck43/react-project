@@ -1,4 +1,4 @@
-import {ReactNode, DetailedHTMLProps, HTMLAttributes, ElementType} from "react"
+import {ReactNode, ElementType, ComponentProps} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
@@ -9,9 +9,8 @@ type FlexJustify = "start" | "end" | "center" | "between" | "evenly"
 type FlexAlign = "start" | "end" | "center" | "baseline"
 type FlexDirection = "row" | "rowReverse" | "column" | "columnReverse"
 type FlexGap = "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
-type DivProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
-export interface FlexProps extends DivProps {
+export interface FlexProps<E extends ElementType = ElementType> {
     as?: ElementType // keyof HTMLElementTagNameMap
     justify?: FlexJustify
     align?: FlexAlign
@@ -21,8 +20,9 @@ export interface FlexProps extends DivProps {
     fullWidth?: boolean
     children?: ReactNode
 }
+export type FlexPropsType<E extends ElementType> = FlexProps<E> & Omit<ComponentProps<E>, keyof FlexProps>
 
-export const Flex = (props: FlexProps) => {
+export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(props: FlexPropsType<E>) => {
     const {
         as = "div",
         justify = "center",

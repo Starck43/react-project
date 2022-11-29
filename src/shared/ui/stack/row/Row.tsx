@@ -1,11 +1,12 @@
+import {memo, ComponentProps, ElementType} from "react"
 import {Flex, FlexProps} from "../flex/Flex"
 
+type RowProps<E extends ElementType> = Omit<FlexProps<E>, "direction"> &
+    Omit<ComponentProps<E>, keyof FlexProps>
 
-type RowProps = Omit<FlexProps, "direction">
-
-const Row = (props: RowProps) => {
+const Row = <E extends ElementType = keyof HTMLElementTagNameMap>(props: RowProps<E>) => {
     const {align = "start"} = props
     return <Flex {...props} align={align} direction="row" />
 }
 
-export default Row
+export default memo(Row)
