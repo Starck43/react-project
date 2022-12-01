@@ -1,6 +1,5 @@
 import {Country} from "entities/country/model/types/country"
 
-
 export enum ValidateProfileError {
     INCORRECT_USER_DATA = "INCORRECT_USER_DATA",
     INCORRECT_EMAIL = "INCORRECT_EMAIL",
@@ -18,4 +17,13 @@ export interface Profile {
     phone?: string
     country?: Country
     avatar?: string
+}
+
+
+export interface ProfileSchema {
+    data?: Profile
+    copy?: Profile
+    isLoading: boolean
+    error?: string
+    validateErrors?: ValidateProfileError[]
 }

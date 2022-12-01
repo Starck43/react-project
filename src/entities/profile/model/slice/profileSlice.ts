@@ -1,11 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
-import {updateProfileData} from "features/update-profile"
-
-import {ProfileSchema} from "../types/profileSchema"
 import {fetchProfileData} from "../services/fetchProfileData"
 
-import {Profile} from "../types/profile"
+import {Profile, ProfileSchema} from "../types/profile"
 
 
 const initialState: ProfileSchema = {
@@ -19,12 +16,14 @@ export const profileSlice = createSlice({
     name: "profile",
     initialState,
     reducers: {
-        update: (state, action: PayloadAction<Profile>) => {
+        updateCopy: (state, action: PayloadAction<Profile>) => {
             state.copy = {...state.copy, ...action.payload}
+        },
+        updateData: (state, action: PayloadAction<Profile>) => {
+            state.data = action.payload
         },
         revert: (state) => {
             state.copy = state.data
-            state.validateErrors = undefined
         },
     },
     extraReducers: (builder) => {
@@ -41,20 +40,6 @@ export const profileSlice = createSlice({
         .addCase(fetchProfileData.rejected, (state, action) => {
             state.isLoading = false
             state.error = action.payload
-        })
-        .addCase(updateProfileData.pending, (state) => {
-            state.isLoading = true
-            state.validateErrors = undefined
-        })
-        .addCase(updateProfileData.fulfilled, (state) => {
-            state.isLoading = false
-            state.data = state.copy
-            // state.copy = undefined
-            state.validateErrors = undefined
-        })
-        .addCase(updateProfileData.rejected, (state, action) => {
-            state.isLoading = false
-            state.validateErrors = action.payload
         })
     },
 })

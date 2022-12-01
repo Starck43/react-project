@@ -1,4 +1,4 @@
-import {memo, useMemo} from "react"
+import {CSSProperties, memo, useMemo} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
@@ -106,10 +106,34 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
     )
 })
 
+interface RenderProps {
+    view: ArticleView,
+    rowCount?: number,
+    itemsPerRow?: number,
+    className?: string,
+    style?: CSSProperties,
+}
 
-export const renderArticlesSkeleton = (view: ArticleView) => (
-    new Array(view === ArticleView.TILE ? 12 : 4)
-    .fill(0)
-    // eslint-disable-next-line react/no-array-index-key
-    .map((_, i) => <ArticleListSkeleton view={view} key={i} />)
-)
+export const renderArticlesSkeleton = (props: RenderProps) => {
+    const {
+        view, rowCount = 1, itemsPerRow = 1, className, style,
+    } = props
+
+    return (
+        new Array(rowCount)
+        .fill(0)
+        // eslint-disable-next-line react/no-array-index-key
+        .map((_, key) => (
+            <div
+                key={key}
+                style={style}
+                className={className}
+            >
+                {new Array(itemsPerRow)
+                .fill(0)
+                // eslint-disable-next-line react/no-array-index-key
+                .map((_, i) => <ArticleListSkeleton view={view} key={i} />)}
+            </div>
+        ))
+    )
+}

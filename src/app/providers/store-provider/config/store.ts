@@ -4,6 +4,7 @@ import {StateSchema, ThunkExtra} from "app/providers/store-provider/config/state
 import {counterReducer} from "entities/counter"
 import {userReducer} from "entities/user"
 import {$api} from "shared/api/api"
+import {rtkApi} from "shared/api/rtkApi"
 
 import {pageReducer} from "widgets/page"
 
@@ -20,6 +21,7 @@ export function createStore(
         counter: counterReducer,
         user: userReducer,
         page: pageReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
     }
 
     const reducerManager = createReducerManager(rootReducers as ReducersMapObject<StateSchema>)
@@ -32,7 +34,9 @@ export function createStore(
         reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
         preloadedState: initialState,
         devTools: __IS_DEV__,
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware({thunk: {extraArgument: args}}),
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware(
+            {thunk: {extraArgument: args}},
+        ).concat(rtkApi.middleware),
     })
 
     // @ts-ignore

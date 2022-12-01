@@ -1,13 +1,8 @@
-export {Profile, ValidateProfileError} from "./model/types/profile"
+export {Profile, ProfileSchema} from "./model/types/profile"
 
+export {getProfileData, getProfileCopy, getProfileLoading, getProfileError} from "./model/selectors/getProfile"
 export {profileReducer, profileActions} from "./model/slice/profileSlice"
-
 export {fetchProfileData} from "./model/services/fetchProfileData"
-export {validateProfileData} from "./model/services/validateProfileData"
-
-export {getProfileData} from "./model/selectors/getProfileData"
-export {getProfileCopy} from "entities/profile/model/selectors/getProfileCopy"
-export {getProfileValidateErrors} from "./model/selectors/getProfileValidateErrors"
+export {ValidateProfileError} from "entities/profile/model/types/profile"
 
 export {ProfileCard} from "./ui/ProfileCard"
-export {ProfileSchema} from "entities/profile/model/types/profileSchema"

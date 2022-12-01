@@ -84,7 +84,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
     }, [ articleId, dispatch ])
 
     if (error) {
-        return <Info title={t("ошибка загрузки статьи!")} align="center" />
+        return <Info subtitle={t("ошибка загрузки статьи!")} align="center" />
     }
 
     if (isLoading) return <PageLoader />
@@ -95,8 +95,8 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
 
                 {serverError && (
                     <Info
-                        status={InfoStatus.ERROR}
                         subtitle={t("ошибка при сохранении статьи!")}
+                        status={InfoStatus.ERROR}
                         align="center"
                     />
                 )}

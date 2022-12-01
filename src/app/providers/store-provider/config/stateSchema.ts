@@ -4,13 +4,15 @@ import {
 import {AxiosInstance} from "axios"
 
 import {CounterSchema} from "entities/counter"
-import {ProfileSchema} from "entities/profile"
 import {UserSchema} from "entities/user"
+import {ProfileSchema} from "entities/profile"
 import {ArticleListSchema, ArticleSchema} from "entities/article"
 import {CommentSchema, NewCommentSchema} from "entities/comment"
 
 import {LoginSchema} from "features/auth"
 import {ArticleRelatedSchema} from "features/articles"
+
+import {rtkApi} from "shared/api/rtkApi"
 
 import {PageSchema} from "widgets/page"
 
@@ -19,6 +21,7 @@ export interface StateSchema {
     counter: CounterSchema
     user: UserSchema
     page: PageSchema
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // async reducers
     login?: LoginSchema

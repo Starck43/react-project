@@ -23,8 +23,7 @@ describe("fetchArticleNextList test", () => {
         await thunk.CallFunc()
 
         expect(thunk.dispatch).toBeCalledTimes(4) // "pending", "fullfiled", fetchArticleList, articlesActions.setPage
-        expect(fetchArticleList).toBeCalledWith({page: 3})
-        // expect(res.payload).toEqual(profileValue)
+        expect(fetchArticleList).toBeCalled()
     })
 
     test("no more pages", async () => {

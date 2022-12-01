@@ -1,10 +1,8 @@
 import {Country} from "entities/country"
+import {profileActions, profileReducer, ProfileSchema, ValidateProfileError} from "entities/profile"
 
-import {updateProfileData} from "features/update-profile"
+import {updateProfileData} from "../services/updateProfileData"
 
-import {ValidateProfileError} from "../types/profile"
-import {ProfileSchema} from "../types/profileSchema"
-import {profileActions, profileReducer} from "../slice/profileSlice"
 
 
 const profileValue = {
@@ -21,7 +19,7 @@ describe("profileSlice test", () => {
         const state: DeepPartial<ProfileSchema> = {data: profileValue}
         expect(profileReducer(
             state as ProfileSchema,
-            profileActions.update({phone: "+79991234567"}),
+            profileActions.updateCopy({phone: "+79991234567"}),
         )).toEqual({data: {phone: "+79991234567"}})
     })
 

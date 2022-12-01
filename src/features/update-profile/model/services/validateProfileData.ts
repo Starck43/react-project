@@ -1,4 +1,4 @@
-import {Profile, ValidateProfileError} from "../types/profile"
+import {Profile, ValidateProfileError} from "../../../../entities/profile/model/types/profile"
 
 
 export const validateProfileData = (profile?: Profile) => {

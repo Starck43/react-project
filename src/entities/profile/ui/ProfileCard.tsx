@@ -1,12 +1,8 @@
-import React, {useState} from "react"
 import {useSelector} from "react-redux"
 import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
 import {getUser} from "entities/user"
-
-import {Logout} from "features/auth"
-import {UpdateProfileForm} from "features/update-profile"
 
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
@@ -17,32 +13,34 @@ import {Info, InfoStatus} from "shared/ui/info/Info"
 import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
 import {Row} from "shared/ui/stack"
 
-import {getProfileData} from "../model/selectors/getProfileData"
-import {getProfileError} from "../model/selectors/getProfileError"
-import {getProfileLoading} from "../model/selectors/getProfileLoading"
+import {getProfileData, getProfileError, getProfileLoading} from "../model/selectors/getProfile"
 import {fetchProfileData} from "../model/services/fetchProfileData"
 
 import {translatedCountry} from "../lib"
 
 import cls from "./ProfileCard.module.sass"
 
-// TODO: Remove selectors and dispatching to level up
-export const ProfileCard = () => {
+
+// TODO: Fix skeleton styles
+
+interface ProfileCardProps {
+    id: string
+    onShowProfileHandler?: (val: boolean) => void
+    onLogoutHandler?: (val: boolean) => void
+}
+
+export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: ProfileCardProps) => {
     const {i18n, t} = useTranslation("auth")
     const dispatch = useAppDispatch()
-    const auth = useSelector(getUser)
     const profile = useSelector(getProfileData)
-    const error = useSelector(getProfileError)
     const isLoading = useSelector(getProfileLoading)
-    const {id} = useParams<{ id: string }>()
+    const error = useSelector(getProfileError)
+    const auth = useSelector(getUser)
     const hasAccess = profile && auth?.id === profile?.id
 
     useInitialEffect(() => {
         dispatch(fetchProfileData(id))
     })
-
-    const [ isShowLogout, setShowLogout ] = useState(false)
-    const [ isShowProfile, setShowProfile ] = useState(false)
 
     if (error) {
         return (
@@ -57,43 +55,42 @@ export const ProfileCard = () => {
 
     // @ts-ignore
     return (
-        <>
-            <div data-testid="profile-card" className={cls.profile}>
-                {isLoading && <Skeleton rounded elements={[ SkeletonElementType.AVATAR, SkeletonElementType.BLOCK ]} />}
-                <div className={cls.table}>
-                    <Avatar src={profile?.avatar} size="sm" rounded alt={profile?.username} />
-                    <div className={cls.row}>
-                        <span className={cls.cell__title}>{t("имя")}</span>
-                        <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.name)}</span>
-                    </div>
-                    <div className={cls.row}>
-                        <span className={cls.cell__title}>{t("фамилия")}</span>
-                        <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.surname)}</span>
-                    </div>
-                    <div className={cls.row}>
-                        <span className={cls.cell__title}>{t("email")}</span>
-                        <span className={cls.cell__value}>{profile?.email?.toLowerCase()}</span>
-                    </div>
-                    <div className={cls.row}>
-                        <span className={cls.cell__title}>{t("телефон")}</span>
-                        <span className={cls.cell__value}>{profile?.phone}</span>
-                    </div>
-                    <div className={cls.row}>
-                        <span className={cls.cell__title}>{t("страна")}</span>
-                        <span className={cls.cell__value}>
-                            {translatedCountry(profile?.country, i18n.language)}
-                        </span>
-                    </div>
+        <div data-testid="profile-card" className={cls.profile}>
+            {isLoading && <Skeleton rounded elements={[ SkeletonElementType.AVATAR, SkeletonElementType.BLOCK ]} />}
+            <div className={cls.table}>
+                <Avatar src={profile?.avatar} size="sm" rounded alt={profile?.username} />
+                <div className={cls.row}>
+                    <span className={cls.cell__title}>{t("имя")}</span>
+                    <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.name)}</span>
                 </div>
+                <div className={cls.row}>
+                    <span className={cls.cell__title}>{t("фамилия")}</span>
+                    <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.surname)}</span>
+                </div>
+                <div className={cls.row}>
+                    <span className={cls.cell__title}>{t("email")}</span>
+                    <span className={cls.cell__value}>{profile?.email?.toLowerCase()}</span>
+                </div>
+                <div className={cls.row}>
+                    <span className={cls.cell__title}>{t("телефон")}</span>
+                    <span className={cls.cell__value}>{profile?.phone}</span>
+                </div>
+                <div className={cls.row}>
+                    <span className={cls.cell__title}>{t("страна")}</span>
+                    <span className={cls.cell__value}>
+                        {translatedCountry(profile?.country, i18n.language)}
+                    </span>
+                </div>
+            </div>
 
-                {/* TODO: check if user is authorized */}
-                {hasAccess && (
+            {/* TODO: check if user is authorized */}
+            {hasAccess && (
                 <Row justify="end" gap="sm" fullWidth className="mt-2">
                     <Button
                         feature={ButtonFeature.BLANK}
                         bordered
                         disabled={isLoading}
-                        onClick={() => setShowProfile(true)}
+                        onClick={() => onShowProfileHandler?.(true)}
                     >
                         {t("изменить")}
                     </Button>
@@ -103,26 +100,13 @@ export const ProfileCard = () => {
                         feature={ButtonFeature.BLANK}
                         bordered
                         disabled={isLoading}
-                        onClick={() => setShowLogout(true)}
+                        onClick={() => onLogoutHandler?.(true)}
                     >
                         {t("выйти", {profile})}
                     </Button>
                 </Row>
-)}
-            </div>
+            )}
+        </div>
 
-            {hasAccess && isShowProfile && (
-                <UpdateProfileForm
-                    show={isShowProfile}
-                    closeHandler={() => setShowProfile((prev) => !prev)}
-                />
-            )}
-            {hasAccess && isShowLogout && (
-                <Logout
-                    show={isShowLogout}
-                    closeHandler={() => setShowLogout((prev) => !prev)}
-                />
-            )}
-        </>
     )
 }

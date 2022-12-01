@@ -10,7 +10,7 @@ import {
 import {ArticleListSchema} from "../../types/articleListSchema"
 import {fetchArticleList} from "../../services/fetchArticleList/fetchArticleList"
 
-import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../../libs/constants"
+import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../../lib/constants"
 
 
 const articlesAdapter = createEntityAdapter<Article>({

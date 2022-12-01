@@ -67,5 +67,5 @@ Loading.args = {
 
 export const Error = Template.bind({})
 Error.args = {
-    error: "some error",
+    // error: "some error",
 }

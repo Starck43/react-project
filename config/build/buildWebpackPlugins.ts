@@ -38,7 +38,7 @@ export function buildWebpackPlugins({
     if (isDev) {
         plugins.push(new ReactRefreshWebpackPlugin({overlay: false}))
         // change openAnalyzer on true to see in browser by address: localhost:8888
-        plugins.push(new BundleAnalyzerPlugin({openAnalyzer: false}))
+        plugins.push(new BundleAnalyzerPlugin({openAnalyzer: true}))
         plugins.push(new webpack.HotModuleReplacementPlugin())
     } else {
         plugins.push(new MiniCssExtractPlugin({

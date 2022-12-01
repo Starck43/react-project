@@ -7,6 +7,7 @@
   "назад к списку": "Back to articles",
   "новая статья": "new article",
   "отмена": "Cancel",
+  "ошибка": "Error",
   "ошибка загрузки статей!": "Articles loading error!",
   "ошибка загрузки статьи!": "Article loading error!",
   "ошибка при сохранении статьи!": "Error occurred on saving!",
@@ -19,5 +20,5 @@
   "статья": "Article",
   "статья не найдена!": "Article not found!",
   "фото": "Photo url",
-  "читать еще": "Read more..."
+  "читать еще": "read more..."
 }

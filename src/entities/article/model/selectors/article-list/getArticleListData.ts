@@ -1,7 +1,7 @@
 import {StateSchema} from "app/providers/store-provider"
 import {ArticleSortType, ArticleType, ArticleView} from "../../types/article"
 
-import {LIST_VIEW_PER_PAGE} from "../../../libs/constants"
+import {LIST_VIEW_PER_PAGE} from "../../../lib/constants"
 
 
 export const getArticlesLoading = (state: StateSchema) => state.articles?.isLoading || false

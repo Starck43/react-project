@@ -10,6 +10,7 @@ export {BackToListLink} from "./back-to-list/ui/BackToListLink"
 export {EditArticleControl} from "./edit-article-control/ui/EditArticleControl"
 export {getEditArticleData} from "./edit-article-control/model/selectors/getEditArticleData"
 export {UpdateArticleForm} from "./update-article/ui/UpdateArticleForm"
+export {InfiniteArticleList} from "features/articles/infinite-article-list/InfiniteArticleList"
 
 export {ArticleCommentsCard} from "./article-comments/ui/ArticleCommentsCard"
-export {ArticleRelatedCard} from "./article-related/ui/ArticleRelatedCard"
+export {ArticleRelatedList} from "./article-related/ui/ArticleRelatedList"

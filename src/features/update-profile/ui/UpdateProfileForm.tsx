@@ -2,10 +2,7 @@ import {FormEvent, memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
-import {
-    getProfileCopy, getProfileValidateErrors,
-    Profile, profileActions, ValidateProfileError,
-} from "entities/profile"
+import {getProfileCopy, Profile, profileActions, ValidateProfileError} from "entities/profile"
 import {Country} from "entities/country"
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
@@ -20,6 +17,7 @@ import {Modal} from "shared/ui/modal/Modal"
 import {Row} from "shared/ui/stack"
 
 import {updateProfileData} from "../model/services/updateProfileData"
+import {getProfileValidateErrors} from "../model/selectors/getProfileValidateErrors"
 
 
 // import cls from "./UpdateProfile.module.sass"
@@ -58,12 +56,12 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
     }, [ closeHandler, dispatch ])
 
     const onInputChange = useCallback((val, name) => {
-        dispatch(profileActions.update({[name]: val || ""}))
+        dispatch(profileActions.updateCopy({[name]: val || ""}))
     }, [ dispatch ])
 
     const onSelectChange = useCallback((val) => {
         if (val) {
-            dispatch(profileActions.update({country: capitalizeFirstLetter(val) as Country}))
+            dispatch(profileActions.updateCopy({country: capitalizeFirstLetter(val) as Country}))
         }
     }, [ dispatch ])
 
@@ -128,7 +126,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                 />
 
                 <Row align="end" gap="sm" wrap fullWidth>
-                    {validateErrors?.length && validateErrors.map((error) => (
+                    {validateErrors?.map((error: ValidateProfileError) => (
                         <Info key={error} status={InfoStatus.ERROR} subtitle={validateErrorsTranslates[error]} />
                     ))}
                     <Button

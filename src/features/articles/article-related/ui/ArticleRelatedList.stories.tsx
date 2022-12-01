@@ -1,16 +1,16 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import {ArticleRelatedCard} from "./ArticleRelatedCard"
+import {ArticleRelatedList} from "./ArticleRelatedList"
 
 
 export default {
     title: "pages/Articles/RelatedCard",
-    component: ArticleRelatedCard,
+    component: ArticleRelatedList,
     argTypes: {backgroundColor: {control: "color"}},
-} as ComponentMeta<typeof ArticleRelatedCard>
+} as ComponentMeta<typeof ArticleRelatedList>
 
-const Template: ComponentStory<typeof ArticleRelatedCard> = (args) => <ArticleRelatedCard {...args} />
+const Template: ComponentStory<typeof ArticleRelatedList> = (args) => <ArticleRelatedList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}
