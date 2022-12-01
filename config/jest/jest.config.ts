@@ -1,5 +1,6 @@
 import path from "path"
 
+
 export default {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
@@ -57,6 +58,18 @@ export default {
         "\\.(s[ac]ss)$": "identity-obj-proxy",
         "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
     },
+    reporters: [
+        "default",
+        [
+            "jest-html-reporters",
+            {
+                publicPath: "<rootDir>reports/unit",
+                filename: "report.html",
+                openReport: true,
+                inlineSource: true,
+            },
+        ],
+    ],
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: undefined,
 

@@ -1,6 +1,14 @@
 import {StateSchema} from "app/providers/store-provider"
+import {
+    Article,
+    ArticleBlockType,
+    ArticleOrderType,
+    ArticleSortType,
+    ArticleType,
+    ArticleView,
+} from "../../types/article"
 import {getArticlesData} from "../../slice/article-list/articleListSlice"
-import {Article, ArticleBlockType, ArticleType, ArticleView} from "../../types/article"
+
 
 const article: Article = {
     id: "1",
@@ -56,9 +64,15 @@ const article: Article = {
 }
 
 const data = {
-    isLoading: true,
     view: ArticleView.LIST,
-    articles: [ article ],
+    sort: ArticleSortType.TITLE,
+    order: ArticleOrderType.ASC,
+    type: ArticleType.ALL,
+    search: "",
+    page: 1,
+    hasMore: true,
+    ids: [ "1" ],
+    entities: {1: article},
 }
 
 describe("AllArticlesData test", () => {
@@ -66,44 +80,13 @@ describe("AllArticlesData test", () => {
         const state: DeepPartial<StateSchema> = {
             articles: data,
         }
-        expect(getArticlesData.selectAll).toEqual(data)
+        expect(getArticlesData.selectAll(state as StateSchema)).toEqual([ article ])
     })
 
-    test("Return an empty allArticles state", () => {
-        const state: DeepPartial<StateSchema> = {}
-        expect(getArticlesData.selectAll(state as StateSchema)).toEqual(undefined)
-    })
-})
-
-
-describe("AllArticlesLoading test", () => {
-    test("Return success allArticles loading", () => {
+    test("Return an empty array", () => {
         const state: DeepPartial<StateSchema> = {
-            articles: {
-                isLoading: true,
-            },
+            articles: {...data, ids: [], entities: {}},
         }
-        expect(getArticlesData.selectAll(state as StateSchema)).toEqual(true)
-    })
-
-    test("Return an empty allArticles state", () => {
-        const state: DeepPartial<StateSchema> = {}
-        expect(getArticlesData.selectAll(state as StateSchema)).toEqual(false)
-    })
-})
-
-describe("AllArticlesError test", () => {
-    test("Return success allArticles error", () => {
-        const state: DeepPartial<StateSchema> = {
-            articles: {
-                error: "some error",
-            },
-        }
-        expect(getArticlesData.selectAll(state as StateSchema)).toEqual("some error")
-    })
-
-    test("Return an empty allArticles state", () => {
-        const state: DeepPartial<StateSchema> = {}
-        expect(getArticlesData.selectAll(state as StateSchema)).toEqual(undefined)
+        expect(getArticlesData.selectAll(state as StateSchema)).toEqual([])
     })
 })
