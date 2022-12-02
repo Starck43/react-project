@@ -2,13 +2,14 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
 import {fetchProfileData} from "../services/fetchProfileData"
 
-import {Profile, ProfileSchema} from "../types/profile"
+import {Profile, ProfileSchema, ValidateProfileError} from "../types/profile"
 
 
 const initialState: ProfileSchema = {
     isLoading: false,
     error: undefined,
     copy: undefined,
+    validateErrors: undefined,
 }
 
 // TODO: Remove it to feature Profile update
@@ -24,6 +25,10 @@ export const profileSlice = createSlice({
         },
         revert: (state) => {
             state.copy = state.data
+            state.validateErrors = undefined
+        },
+        setErrors: (state, action: PayloadAction<ValidateProfileError[]>) => {
+            state.validateErrors = action.payload
         },
     },
     extraReducers: (builder) => {

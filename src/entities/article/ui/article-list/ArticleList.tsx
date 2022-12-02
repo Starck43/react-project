@@ -1,5 +1,4 @@
 import {memo} from "react"
-import {useTranslation} from "react-i18next"
 import {List, ListRowProps, WindowScroller} from "react-virtualized"
 
 import {classnames} from "shared/lib/helpers/classnames"
@@ -19,16 +18,15 @@ interface ArticleListProps {
     isLoading: boolean
     view: ArticleView
     shadowed?: boolean
-    isRelated?: boolean
+    virtualized?: boolean
     className?: string
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
-        articles, isLoading, view, shadowed, isRelated = false, className,
+        articles, isLoading, view, shadowed, virtualized = true, className,
     } = props
-    console.log(articles.length)
-    const {t} = useTranslation("articles")
+
     const container = document.getElementById(PAGE_ID) as Element
 
     const isTile = view === ArticleView.TILE
@@ -52,8 +50,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     article={articles[i]}
                     view={view}
                     shadowed={shadowed}
-                    target={isRelated ? "_blank" : ""}
-                    className={isRelated ? cls.related__card : isTile ? cls.tile : ""}
+                    target=""
+                    className={isTile ? cls.tile : ""}
                 />,
             )
         }
@@ -79,19 +77,34 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
                     return (
                         <div ref={registerChild}>
-                            <List
-                                rowCount={rowCount}
-                                height={height || 400}
-                                width={width || 900}
-                                rowHeight={rowHeight}
-                                autoHeight
-                                autoWidth
-                                autoContainerWidth
-                                scrollTop={scrollTop}
-                                onScroll={onChildScroll}
-                                isScrolling={isScrolling}
-                                rowRenderer={articleListRender}
-                            />
+                            {!virtualized
+                                ? (
+                                    articles.map((item) => (
+                                        <ArticleListItem
+                                            key={item.id}
+                                            article={item}
+                                            view={view}
+                                            shadowed={shadowed}
+                                            target="_blank"
+                                            className={cls.related__card}
+                                        />
+                                    ))
+                                )
+                                : (
+                                    <List
+                                        rowCount={rowCount}
+                                        height={height || 400}
+                                        width={width || 900}
+                                        rowHeight={rowHeight}
+                                        autoHeight
+                                        autoWidth
+                                        autoContainerWidth
+                                        scrollTop={scrollTop}
+                                        onScroll={onChildScroll}
+                                        isScrolling={isScrolling}
+                                        rowRenderer={articleListRender}
+                                    />
+                                )}
                         </div>
                     )
                 }}

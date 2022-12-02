@@ -21,6 +21,7 @@ export const EditArticleControl = memo(() => {
         canEdit
             ? (
                 <Button
+                    data-testid="UpdateArticleForm.EditButton"
                     feature={ButtonFeature.BLANK}
                     bordered
                     rounded

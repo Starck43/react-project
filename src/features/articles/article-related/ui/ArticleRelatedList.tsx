@@ -19,9 +19,12 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
     const {t} = useTranslation("articles")
     const {isLoading, data: related, error} = useArticleRelatedList({limit: 3})
 
+    if (!related || error) return null
+
     if (isLoading) {
         return <PageLoader />
     }
+
     return (
         <section className={classnames(cls, [ "related" ], {}, [ className ])}>
             <Header
@@ -34,7 +37,7 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
                 articles={related}
                 view={ArticleView.TILE}
                 isLoading={isLoading}
-                isRelated
+                virtualized={false}
                 className={cls.related__articles}
             />
         </section>

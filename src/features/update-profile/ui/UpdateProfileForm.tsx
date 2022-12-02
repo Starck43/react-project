@@ -2,7 +2,9 @@ import {FormEvent, memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
-import {getProfileCopy, Profile, profileActions, ValidateProfileError} from "entities/profile"
+import {
+getProfileCopy, getProfileValidateErrors, Profile, profileActions, ValidateProfileError,
+} from "entities/profile"
 import {Country} from "entities/country"
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
@@ -17,7 +19,6 @@ import {Modal} from "shared/ui/modal/Modal"
 import {Row} from "shared/ui/stack"
 
 import {updateProfileData} from "../model/services/updateProfileData"
-import {getProfileValidateErrors} from "../model/selectors/getProfileValidateErrors"
 
 
 // import cls from "./UpdateProfile.module.sass"
@@ -33,7 +34,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
     const dispatch = useAppDispatch()
     const copy = useSelector(getProfileCopy)
     const validateErrors = useSelector(getProfileValidateErrors)
-
+    console.log("error", validateErrors)
     const validateErrorsTranslates = {
         [ValidateProfileError.INCORRECT_USER_DATA]: t("имя и фамилия обязательны"),
         [ValidateProfileError.INCORRECT_EMAIL]: t("некорректно указан email"),
@@ -74,6 +75,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
         >
             <form onSubmit={submitUpdateClick}>
                 <Input
+                    data-testid="UpdateProfileForm.Username"
                     name="username"
                     value={copy?.username}
                     onChange={onInputChange}
@@ -81,6 +83,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     className="mb-1"
                 />
                 <Input
+                    data-testid="UpdateProfileForm.Name"
                     name="name"
                     value={copy?.name}
                     onChange={onInputChange}
@@ -88,6 +91,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     className="mb-1"
                 />
                 <Input
+                    data-testid="UpdateProfileForm.Surname"
                     name="surname"
                     value={copy?.surname}
                     onChange={onInputChange}
@@ -95,6 +99,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     className="mb-1"
                 />
                 <Input
+                    data-testid="UpdateProfileForm.Email"
                     name="email"
                     value={copy?.email}
                     onChange={onInputChange}
@@ -102,6 +107,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     className="mb-1"
                 />
                 <Input
+                    data-testid="UpdateProfileForm.Phone"
                     name="phone"
                     value={copy?.phone}
                     onChange={onInputChange}
@@ -109,6 +115,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     className="mb-1"
                 />
                 <ListBox
+                    data-testid="UpdateProfileForm.Country"
                     variant="secondary"
                     name="country"
                     label={t("страна")}
@@ -127,16 +134,29 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
 
                 <Row align="end" gap="sm" wrap fullWidth>
                     {validateErrors?.map((error: ValidateProfileError) => (
-                        <Info key={error} status={InfoStatus.ERROR} subtitle={validateErrorsTranslates[error]} />
+                        <Info
+                            data-testid="UpdateProfileForm.ValidateErrors"
+                            key={error}
+                            status={InfoStatus.ERROR}
+                            subtitle={validateErrorsTranslates[error]}
+                        />
                     ))}
                     <Button
+                        data-testid="UpdateProfileForm.SaveButton"
+                        feature={ButtonFeature.BLANK}
                         type="submit"
                         bordered
-                        feature={ButtonFeature.BLANK}
                     >
                         {t("сохранить")}
                     </Button>
-                    <Button bordered feature={ButtonFeature.BLANK} onClick={cancelClick}>{t("отмена")}</Button>
+                    <Button
+                        data-testid="UpdateProfileForm.CancelButton"
+                        feature={ButtonFeature.BLANK}
+                        bordered
+                        onClick={cancelClick}
+                    >
+                        {t("отмена")}
+                    </Button>
                 </Row>
             </form>
         </Modal>

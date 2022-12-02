@@ -1,14 +1,14 @@
 import {userEvent} from "@storybook/testing-library"
 import {screen} from "@testing-library/react"
 
-import {ComponentRender} from "shared/lib/tests/component-render/ComponentRender"
+import {componentRender} from "shared/lib/tests/componentRender"
 
 import {Counter} from "./Counter"
 
 
 describe("Counter test", () => {
 	test("", () => {
-		ComponentRender(<Counter />, {initialState: {counter: {value: 100}}})
+		componentRender(<Counter />, {initialState: {counter: {value: 100}}})
 		const value = screen.getByTestId("counter-value")
 		const buttonInc = screen.getByTestId("counterIncrement")
 		userEvent.click(buttonInc)
@@ -16,7 +16,7 @@ describe("Counter test", () => {
 	})
 
 	test("Increment test", () => {
-		ComponentRender(<Counter />, {initialState: {counter: {value: 100}}})
+		componentRender(<Counter />, {initialState: {counter: {value: 100}}})
 		const value = screen.getByTestId("counter-value")
 		const buttonInc = screen.getByTestId("counterIncrement")
 		userEvent.click(buttonInc)
@@ -24,7 +24,7 @@ describe("Counter test", () => {
 	})
 
 	test("Decrement Test", () => {
-		ComponentRender(<Counter />, {initialState: {counter: {value: 100}}})
+		componentRender(<Counter />, {initialState: {counter: {value: 100}}})
 		const value = screen.getByTestId("counter-value")
 		const buttonDec = screen.getByTestId("counterDecrement")
 		userEvent.click(buttonDec)

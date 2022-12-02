@@ -1,5 +1,5 @@
 import {Country} from "entities/country"
-import {TestAsyncFunc} from "shared/lib/tests/test-async-func/TestAsyncFunc"
+import {TestAsyncFunc} from "shared/lib/tests/TestAsyncFunc"
 import {fetchProfileData} from "./fetchProfileData"
 
 

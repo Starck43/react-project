@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 
 import {ThunkConfig} from "app/providers/store-provider"
-import {Profile, getProfileData, fetchProfileData, getProfileCopy} from "entities/profile"
+import {Profile, fetchProfileData, getProfileCopy, profileActions} from "entities/profile"
 import {ValidateProfileError} from "entities/profile/model/types/profile"
 
 import {validateProfileData} from "./validateProfileData"
@@ -14,9 +14,10 @@ export const updateProfileData = createAsyncThunk<Profile, void, ThunkConfig<Val
         // if needed to dispatch unsaved data to store and then get them for sending to server
         // dispatch(profileActions.update(data))
         const modifiedData = getProfileCopy(getState())
-        const errors = validateProfileData(modifiedData)
+        const errors = validateProfileData(modifiedData) // validate before sending updated data on server
 
         if (errors.length) {
+            dispatch(profileActions.setErrors(errors))
             return rejectWithValue(errors)
         }
 

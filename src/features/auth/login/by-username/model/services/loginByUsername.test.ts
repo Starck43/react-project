@@ -1,6 +1,6 @@
 import {userActions} from "entities/user"
 
-import {TestAsyncFunc} from "shared/lib/tests/test-async-func/TestAsyncFunc"
+import {TestAsyncFunc} from "shared/lib/tests/TestAsyncFunc"
 
 import {loginByUsername} from "./loginByUsername"
 

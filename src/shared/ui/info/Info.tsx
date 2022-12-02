@@ -22,6 +22,7 @@ export enum InfoSize {
 }
 
 export type InfoProps = {
+    Tag?: keyof HTMLElementTagNameMap
     title?: string
     subtitle?: string
     icon?: ReactNode
@@ -30,10 +31,13 @@ export type InfoProps = {
     inlined?: boolean
     size?: InfoSize
     className?: string
+
+    "data-testid"?: string
 }
 
 export const Info = (props: InfoProps) => {
     const {
+        Tag = "h3",
         subtitle,
         icon,
         title,
@@ -42,13 +46,14 @@ export const Info = (props: InfoProps) => {
         size = InfoSize.MD,
         inlined = false,
         className,
+        "data-testid": dataTestId = "Info",
     } = props
 
     return (
         <div className={classnames(cls, [ "info__block", status, size, align ], {inlined}, [ className ])}>
-            {title && <h3 className={cls.title}>{title}</h3>}
+            {title && <Tag data-testid={`${dataTestId}.Title`} className={cls.title}>{title}</Tag>}
             {subtitle && (
-                <p className={classnames(cls, [ "subtitle", align ], {}, [ "inline" ])}>
+                <p data-testid={`${dataTestId}.SubTitle`} className={classnames(cls, [ "subtitle", align ], {}, [ "inline" ])}>
                     {icon && <i className="icon">{icon}</i>}
                     <span>{subtitle}</span>
                 </p>

@@ -1,6 +1,6 @@
 import {Country} from "entities/country"
 import {ValidateProfileError} from "entities/profile"
-import {TestAsyncFunc} from "shared/lib/tests/test-async-func/TestAsyncFunc"
+import {TestAsyncFunc} from "shared/lib/tests/TestAsyncFunc"
 import {updateProfileData} from "./updateProfileData"
 
 

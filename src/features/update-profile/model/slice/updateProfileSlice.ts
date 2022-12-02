@@ -1,8 +1,8 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit"
-import {fetchProfileData, Profile, ProfileSchema} from "entities/profile"
+import {createSlice} from "@reduxjs/toolkit"
+
+import {ProfileSchema} from "entities/profile"
 
 import {updateProfileData} from "../services/updateProfileData"
-
 
 
 const initialState: ProfileSchema = {
@@ -11,7 +11,6 @@ const initialState: ProfileSchema = {
     copy: undefined,
 }
 
-// TODO: Remove it to feature Profile update
 export const updateProfileSlice = createSlice({
     name: "update",
     initialState,

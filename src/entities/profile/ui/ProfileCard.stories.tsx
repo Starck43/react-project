@@ -1,4 +1,4 @@
-import {ComponentMeta, Story} from "@storybook/react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
 
 import {Country} from "entities/country"
 
@@ -14,36 +14,44 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ProfileCard>
 
-const Template: Story = (args) => <ProfileCard {...args} />
+const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-    data: {
-        id: "1",
-        name: "John",
-        email: "admin@t.me",
-        phone: "+79991234567",
-        country: Country.RUSSIA,
-        avatar: Avatar,
-    },
+    id: "1",
 }
+
 Default.decorators = [
     StoreDecorator({
         profile: {
             data: {
-                username: "admin",
+                id: "1",
+                name: "John",
                 email: "admin@t.me",
+                phone: "+79991234567",
+                country: Country.RUSSIA,
+                avatar: Avatar,
             },
         },
     }),
 ]
 
 export const Loading = Template.bind({})
-Loading.args = {
-    isLoading: true,
-}
+Loading.args = {}
+Loading.decorators = [
+    StoreDecorator({
+        profile: {
+            isLoading: true,
+        },
+    }),
+]
 
 export const Error = Template.bind({})
-Error.args = {
-    error: "some error",
-}
+Error.args = {}
+Error.decorators = [
+    StoreDecorator({
+        profile: {
+            error: "some error",
+        },
+    }),
+]

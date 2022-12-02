@@ -95,6 +95,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
 
                 {serverError && (
                     <Info
+                        data-testid="UpdateArticleForm.ServerError"
                         subtitle={t("ошибка при сохранении статьи!")}
                         status={InfoStatus.ERROR}
                         align="center"
@@ -139,13 +140,21 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
 
                     <Row justify="center" gap="sm" className="mt-2">
                         <Button
+                            data-testid="UpdateArticleForm.SaveButton"
                             type="submit"
-                            bordered
                             feature={ButtonFeature.BLANK}
+                            bordered
                         >
                             {t("сохранить")}
                         </Button>
-                        <Button bordered feature={ButtonFeature.BLANK} onClick={onCancelClick}>{t("отмена")}</Button>
+                        <Button
+                            data-testid="UpdateArticleForm.CancelButton"
+                            feature={ButtonFeature.BLANK}
+                            bordered
+                            onClick={onCancelClick}
+                        >
+                            {t("отмена")}
+                        </Button>
                     </Row>
                 </form>
             </div>

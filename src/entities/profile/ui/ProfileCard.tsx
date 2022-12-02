@@ -87,6 +87,7 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
             {hasAccess && (
                 <Row justify="end" gap="sm" fullWidth className="mt-2">
                     <Button
+                        data-testid="ProfileCard.EditButton"
                         feature={ButtonFeature.BLANK}
                         bordered
                         disabled={isLoading}
@@ -96,7 +97,7 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
                     </Button>
 
                     <Button
-                        profile-testid="logoutBtn"
+                        data-testid="ProfileCard.LogoutButton"
                         feature={ButtonFeature.BLANK}
                         bordered
                         disabled={isLoading}
