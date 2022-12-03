@@ -1,7 +1,8 @@
-import {ReactNode} from "react"
+import {SVGProps, VFC} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
-import {AlignType} from "shared/types/ui"
+import {Icon} from "../../ui/icon/Icon"
+import {Col, Row} from "../../ui/stack"
 
 import cls from "./Info.module.sass"
 
@@ -13,22 +14,22 @@ export enum InfoStatus {
     ERROR = "error"
 }
 
-
 export enum InfoSize {
-    XL = "extra_large",
-    LG = "large",
-    MD = "medium",
-    SM = "small"
+    XL = "xl",
+    LG = "lg",
+    MD = "md",
+    SM = "sm"
 }
+
+type FlexAlign = "start" | "end" | "center"
 
 export type InfoProps = {
     Tag?: keyof HTMLElementTagNameMap
     title?: string
-    subtitle?: string
-    icon?: ReactNode
+    subTitle?: string
+    icon?: VFC<SVGProps<SVGSVGElement>>
     status?: InfoStatus
-    align?: AlignType
-    inlined?: boolean
+    align?: FlexAlign
     size?: InfoSize
     className?: string
 
@@ -38,26 +39,42 @@ export type InfoProps = {
 export const Info = (props: InfoProps) => {
     const {
         Tag = "h3",
-        subtitle,
+        subTitle,
         icon,
         title,
-        align = "left",
+        align = "center",
         status = InfoStatus.DEFAULT,
         size = InfoSize.MD,
-        inlined = false,
         className,
         "data-testid": dataTestId = "Info",
     } = props
 
     return (
-        <div className={classnames(cls, [ "info__block", status, size, align ], {inlined}, [ className ])}>
-            {title && <Tag data-testid={`${dataTestId}.Title`} className={cls.title}>{title}</Tag>}
-            {subtitle && (
-                <p data-testid={`${dataTestId}.SubTitle`} className={classnames(cls, [ "subtitle", align ], {}, [ "inline" ])}>
-                    {icon && <i className="icon">{icon}</i>}
-                    <span>{subtitle}</span>
-                </p>
+        <Col
+            fullWidth
+            align={align}
+            className={classnames(cls, [ "info__block", status, size ], {}, [ className ])}
+        >
+            {title && (
+                <Tag
+                    data-testid={`${dataTestId}.Title`}
+                    className={cls.title}
+                >
+                    {title}
+                </Tag>
             )}
-        </div>
+
+            {subTitle && (
+                <Row
+                    data-testid={`${dataTestId}.SubTitle`}
+                    as="p"
+                    gap="sm"
+                    className={cls.subtitle}
+                >
+                    {icon && <Icon Svg={icon} />}
+                    {subTitle}
+                </Row>
+            )}
+        </Col>
     )
 }

@@ -43,6 +43,8 @@ const options = {
 }
 
 describe("UpdateProfileForm Tests", () => {
+    beforeEach(() => {}) // common logic, running before every test, may be here
+
     test("Can save and cancel test", () => {
         const showProfile = jest.fn(() => componentRender(<UpdateProfileForm show />))
         componentRender(<ProfileCard id="1" onShowProfileHandler={showProfile} />, options)

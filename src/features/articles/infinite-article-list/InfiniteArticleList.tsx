@@ -22,11 +22,11 @@ export const InfiniteArticleList = memo(() => {
     const error = useSelector(getArticlesError)
 
     if (error) {
-        return <Info title={t("ошибка загрузки статей!")} align="center" />
+        return <Info title={t("ошибка загрузки статей!")} />
     }
 
     if (!isLoading && !articles?.length) {
-        return <Info title={t("статьи не найдены!")} align="center" />
+        return <Info title={t("статьи не найдены!")} />
     }
 
     return <ArticleList articles={articles} isLoading={isLoading} view={view} shadowed />

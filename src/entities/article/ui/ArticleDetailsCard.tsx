@@ -58,7 +58,7 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
     let content
 
     if (error) {
-        return <Info subtitle={t("ошибка загрузки статьи!")} align="center" />
+        return <Info subTitle={t("ошибка загрузки статьи!")} />
     }
 
     if (isLoading) {

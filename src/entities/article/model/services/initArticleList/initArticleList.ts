@@ -3,8 +3,8 @@ import {createAsyncThunk} from "@reduxjs/toolkit"
 import {ThunkConfig} from "app/providers/store-provider"
 
 import {ArticleSortType, ArticleOrderType, ArticleType} from "../../types/article"
-import {fetchArticleList} from "../fetchArticleList/fetchArticleList"
 import {getArticlesMounted} from "../../selectors/article-list/getArticleListData"
+import {fetchArticleList} from "../fetchArticleList/fetchArticleList"
 import {articlesActions} from "../../slice/article-list/articleListSlice"
 
 

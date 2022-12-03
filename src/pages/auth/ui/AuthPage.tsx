@@ -32,7 +32,6 @@ function AuthPage() {
                 <Info
                     title={t("вы уже вошли под именем", {username})}
                     status={InfoStatus.WARNING}
-                    align="center"
                 />
                 <NavLink
                     to={RoutesPath[AppRoutes.PROFILE] + authData.id}

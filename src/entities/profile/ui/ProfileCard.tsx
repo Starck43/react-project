@@ -46,9 +46,8 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
         return (
             <Info
                 title={t("произошла ошибка")}
-                subtitle={t("попробуйте перезагрузить страницу")}
+                subTitle={t("попробуйте перезагрузить страницу")}
                 status={InfoStatus.ERROR}
-                align="center"
             />
         )
     }

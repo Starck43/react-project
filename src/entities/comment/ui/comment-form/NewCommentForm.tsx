@@ -44,9 +44,8 @@ const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
         return (
             <Info
                 title={t("произошла ошибка")}
-                subtitle={t("попробуйте перезагрузить страницу")}
+                subTitle={t("попробуйте перезагрузить страницу")}
                 status={InfoStatus.ERROR}
-                align="center"
             />
         )
     }

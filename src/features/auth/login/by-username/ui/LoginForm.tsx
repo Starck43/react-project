@@ -79,7 +79,7 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
 
                 {error && (
                     <Info
-                        subtitle={i18n.t("неверный пароль или логин", {ns: "auth"})}
+                        subTitle={i18n.t("неверный пароль или логин", {ns: "auth"})}
                         status={InfoStatus.ERROR}
                         className="mb-1"
                     />

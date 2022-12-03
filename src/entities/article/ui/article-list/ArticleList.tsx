@@ -33,7 +33,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     const rowWidth = container?.clientWidth || 900
     const itemsPerRow = isTile && container ? Math.floor(rowWidth / 225) : 1
 
-    const rowCount = isTile ? Math.ceil(articles.length / itemsPerRow) : articles?.length || LIST_VIEW_PER_PAGE
+    const rowCount = isTile ? Math.ceil(articles.length / itemsPerRow) : articles.length || LIST_VIEW_PER_PAGE
     const rowHeight = !isTile || !container ? 400 : Math.round(
         (((rowWidth - rowWidth * 0.05 * (itemsPerRow - 1)) / itemsPerRow)) * 1.5,
     )

@@ -25,10 +25,8 @@ export const CommentList = memo((props: CommentListProps) => {
     if (error) {
         return (
             <Info
-                title={t("произошла ошибка")}
-                subtitle={t("комментарии не найдены!")}
+                subTitle={t("комментарии не найдены!")}
                 status={InfoStatus.ERROR}
-                align="center"
             />
         )
     }
@@ -41,7 +39,7 @@ export const CommentList = memo((props: CommentListProps) => {
             <div className={cls.comment__list}>
                 {comments?.length
                     ? comments.map((comment) => <CommentCard data={comment} key={comment.id} />)
-                    : <Info subtitle={t("комментарии отсутствуют!")} align="center" />}
+                    : <Info subTitle={t("комментарии отсутствуют!")} />}
             </div>
         </section>
     )

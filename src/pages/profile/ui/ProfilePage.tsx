@@ -28,9 +28,8 @@ function ProfilePage() {
         return (
             <Info
                 title={t("ошибка")}
-                subtitle={t("пользователь не существует")}
+                subTitle={t("пользователь не существует")}
                 status={InfoStatus.ERROR}
-                align="center"
             />
         )
     }

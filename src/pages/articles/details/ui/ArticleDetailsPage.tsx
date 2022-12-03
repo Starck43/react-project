@@ -28,7 +28,7 @@ function ArticleDetailsPage() {
 
 
     if (!id) {
-        return <Info title={t("ошибка")} subtitle={t("статья не найдена!")} align="center" />
+        return <Info Tag="h2" title={t("ошибка")} subTitle={t("статья не найдена!")} />
     }
 
     return (

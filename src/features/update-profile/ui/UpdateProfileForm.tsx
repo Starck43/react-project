@@ -34,7 +34,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
     const dispatch = useAppDispatch()
     const copy = useSelector(getProfileCopy)
     const validateErrors = useSelector(getProfileValidateErrors)
-    console.log("error", validateErrors)
+
     const validateErrorsTranslates = {
         [ValidateProfileError.INCORRECT_USER_DATA]: t("имя и фамилия обязательны"),
         [ValidateProfileError.INCORRECT_EMAIL]: t("некорректно указан email"),
@@ -138,7 +138,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                             data-testid="UpdateProfileForm.ValidateErrors"
                             key={error}
                             status={InfoStatus.ERROR}
-                            subtitle={validateErrorsTranslates[error]}
+                            subTitle={validateErrorsTranslates[error]}
                         />
                     ))}
                     <Button

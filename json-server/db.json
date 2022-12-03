@@ -14,11 +14,11 @@
   "articles": [
     {
       "id": "1",
-      "title": "Javascript 2021",
-      "subtitle": "Новые фичи",
+      "title": "Javascript news features",
+      "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 182,
-      "createdAt": "26.08.2022",
+      "views": 822,
+      "createdAt": "16.06.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -89,8 +89,8 @@
       "title": "Python news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://zsfond.ru/wp-content/uploads/2021/03/piton-1-1024x578.jpg",
-      "views": 540,
-      "createdAt": "20.07.2022",
+      "views": 1204,
+      "createdAt": "06.02.2022",
       "userId": "1",
       "type": [
         "IT"
@@ -467,9 +467,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "0"
     }
   ],
   "comments": [
@@ -528,13 +525,19 @@
       "username": "admin",
       "password": "admin",
       "avatar": "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png",
-      "role": "ADMIN"
+      "roles": ["ADMIN"]
     },
     {
       "id": "2",
       "username": "guest",
       "password": "guest",
-      "role": "GUEST"
+      "roles": ["GUEST"]
+    },
+    {
+      "id": "3",
+      "username": "editor",
+      "password": "editor",
+      "roles": ["EDITOR"]
     }
   ],
   "profile": [

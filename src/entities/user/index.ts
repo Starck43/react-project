@@ -1,3 +1,5 @@
+export type {User, UserSchema} from "./model/types/user"
+export {UserRole} from "./model/types/user"
 export {getUser, getUserOnMount} from "./model/selectors/getUser"
 export {userReducer, userActions} from "./model/slice/userSlice"
-export type {User, UserSchema} from "./model/types/user"
+export {getUserRoles, isUserAdmin, isUserEditor} from "./model/selectors/getUserRoles"

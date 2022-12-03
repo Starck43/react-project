@@ -1,17 +1,38 @@
-import {ReactElement} from "react"
+import {ReactElement, useMemo} from "react"
 import {Navigate, useLocation} from "react-router-dom"
 import {useSelector} from "react-redux"
 
-import {getUser} from "entities/user"
+import {getUser, getUserRoles, UserRole} from "entities/user"
+import {AppRoutes, RoutesPath} from "shared/config/router"
 
 
-const RequireAuth = ({to, children}: { to: string, children: ReactElement }) => {
+interface RequireAuthProps {
+    to: string,
+    roles?: UserRole[]
+    children: ReactElement
+}
+
+const RequireAuth = (props: RequireAuthProps) => {
+    const {to, roles, children} = props
     const auth = useSelector(getUser)
+    const userRoles = useSelector(getUserRoles)
     const location = useLocation()
 
-    return (!auth)
-        ? <Navigate to={to} state={{from: location}} replace />
-        : children
+    const hasUserRequiredRoles = useMemo(() => {
+        if (!roles) return true
+
+        return roles.some((role) => userRoles.includes(role))
+    }, [ roles, userRoles ])
+
+    if (!auth) {
+        return <Navigate to={to} state={{from: location}} replace />
+    }
+
+    if (!hasUserRequiredRoles) {
+        return <Navigate to={RoutesPath[AppRoutes.FORBIDDEN]} state={{from: location}} replace />
+    }
+
+    return children
 }
 
 export default RequireAuth
