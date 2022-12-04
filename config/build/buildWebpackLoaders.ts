@@ -4,23 +4,25 @@ import {buildBabelLoader} from "./loaders/buildBabelLoader"
 import {buildCssLoader} from "./loaders/buildCssLoader"
 import {buildFileLoader} from "./loaders/buildFileLoader"
 import {buildSvgLoader} from "./loaders/buildSvgLoader"
-import {buildTypescriptLoader} from "./loaders/buildTypescriptLoader"
 
 import {BuildWebpackOptions} from "./types/config"
 
-
 export function buildWebpackLoaders(options: BuildWebpackOptions): webpack.RuleSetRule[] {
-    const babelLoader = buildBabelLoader(options.isDev)
-    const typescriptLoader = buildTypescriptLoader()
+    const {isDev} = options
+    // const typescriptLoader = buildTypescriptLoader()
+    // replaced typescriptLoader to BabelLoader for ts && tsx separately
+    const tsBabelLoader = buildBabelLoader({isDev, isTsx: false})
+    const tsxBabelLoader = buildBabelLoader({isDev, isTsx: true})
     const fileLoader = buildFileLoader()
     const svgLoader = buildSvgLoader()
-    const stylesLoader = buildCssLoader(options.isDev)
+    const stylesLoader = buildCssLoader(isDev)
 
     return [
         fileLoader,
         svgLoader,
-        babelLoader,
-        typescriptLoader,
+        tsBabelLoader,
+        tsxBabelLoader,
+        // typescriptLoader,
         stylesLoader,
     ]
 }

@@ -1,35 +1,22 @@
-import {UserRole} from "entities/user"
-import {AboutPage} from "pages/about"
+import {RouteProps} from "react-router-dom"
 
+import {UserRole} from "entities/user"
+
+import {AppRoutes} from "shared/const/appRoutes"
+import {AboutPage} from "pages/about"
+import {HomePage} from "pages/home"
+import {AuthPage} from "pages/auth"
+import {ProfilePage} from "pages/profile"
 import {ArticleDetailsPage} from "pages/articles/details"
 import {ArticleEditPage} from "pages/articles/edit"
 import {ArticlesPage} from "pages/articles/list"
-import {AuthPage} from "pages/auth"
-import {ForbiddenPage} from "pages/forbidden"
-
-import {HomePage} from "pages/home"
 import {NotFoundPage} from "pages/not-found-page"
-import {ProfilePage} from "pages/profile"
-import {RouteProps} from "react-router-dom"
+import {ForbiddenPage} from "pages/forbidden"
 
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean
     roles?: UserRole[]
-}
-
-export enum AppRoutes {
-    HOME = "home",
-    ABOUT = "about",
-    ARTICLES = "articles",
-    ARTICLE_DETAILS = "article_details",
-    ARTICLE_CREATE = "article_create",
-    ARTICLE_EDIT = "article_edit",
-    AUTH = "auth",
-    PROFILE = "profile",
-    FORBIDDEN = "forbidden",
-    // must be last to search
-    NOT_FOUND_PAGE = "notfound"
 }
 
 export const RoutesPath: Record<AppRoutes, string> = {

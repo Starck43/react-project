@@ -6,6 +6,7 @@ import CopyPlugin from "copy-webpack-plugin"
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer"
 import CircularDependencyPlugin from "circular-dependency-plugin"
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 
 import {BuildWebpackOptions} from "./types/config"
 
@@ -35,8 +36,17 @@ export function buildWebpackPlugins({
             ],
         }),
         new CircularDependencyPlugin({
-            exclude: /a\.js|node_modules/,
+            exclude: /node_modules/,
             failOnError: true,
+        }),
+        new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                diagnosticOptions: {
+                    semantic: true,
+                    syntactic: true,
+                },
+                mode: "write-references",
+            },
         }),
         new Dotenv(),
     ]

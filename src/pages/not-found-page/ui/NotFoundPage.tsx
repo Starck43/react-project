@@ -1,7 +1,8 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import {AppRoutes, RoutesPath} from "shared/config/router"
+import {RoutesPath} from "shared/config/router"
+import {AppRoutes} from "shared/const/appRoutes"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Button} from "shared/ui/button/Button"
 import Header from "shared/ui/header/Header"
@@ -17,8 +18,7 @@ function NotFoundPage() {
     return (
         <Page className={classnames(cls, [ "not_found__page" ], {}, [ "centered" ])}>
             <Header tag="h2" title={t("Страница не найдена")} shadowed align="center" />
-
-            <Button href={RoutesPath[AppRoutes.HOME]}>
+            <Button href="/">
                 {t("На главную")}
             </Button>
 

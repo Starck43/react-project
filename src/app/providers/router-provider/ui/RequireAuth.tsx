@@ -3,7 +3,8 @@ import {Navigate, useLocation} from "react-router-dom"
 import {useSelector} from "react-redux"
 
 import {getUser, getUserRoles, UserRole} from "entities/user"
-import {AppRoutes, RoutesPath} from "shared/config/router"
+import {RoutesPath} from "shared/config/router"
+import {AppRoutes} from "shared/const/appRoutes"
 
 
 interface RequireAuthProps {

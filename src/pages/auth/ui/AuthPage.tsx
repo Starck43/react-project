@@ -6,7 +6,8 @@ import {getUser, User} from "entities/user"
 
 import {LoginForm} from "features/auth"
 
-import {AppRoutes, RoutesPath} from "shared/config/router"
+import {RoutesPath} from "shared/config/router"
+import {AppRoutes} from "shared/const/appRoutes"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import {NavLink} from "shared/ui/link/NavLink"
 import Header from "shared/ui/header/Header"

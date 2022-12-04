@@ -4,7 +4,8 @@ import {useNavigate, useParams} from "react-router-dom"
 
 import {UpdateArticleForm} from "features/articles"
 
-import {AppRoutes, RoutesPath} from "shared/config/router"
+import {RoutesPath} from "shared/config/router"
+import {AppRoutes} from "shared/const/appRoutes"
 import {classnames} from "shared/lib/helpers/classnames"
 import Header from "shared/ui/header/Header"
 

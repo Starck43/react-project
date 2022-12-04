@@ -8,7 +8,8 @@ import {getUser} from "entities/user"
 
 import {Logout} from "features/auth"
 
-import {AppRoutes, RoutesPath} from "shared/config/router"
+import {RoutesPath} from "shared/config/router"
+import {AppRoutes} from "shared/const/appRoutes"
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
 import LoginIcon from "shared/assets/icons/auth.svg"

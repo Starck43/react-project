@@ -3,7 +3,7 @@ import {buildWebpackPlugins} from "./buildWebpackPlugins"
 import {buildWebpackLoaders} from "./buildWebpackLoaders"
 import {buildWebpackDevServer} from "./buildWebpackDevServer"
 
-import {BuildWebpackOptions} from "./types/config"
+import type {BuildWebpackOptions} from "./types/config"
 
 export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Configuration {
     const {

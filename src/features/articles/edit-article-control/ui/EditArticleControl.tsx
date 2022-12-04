@@ -4,7 +4,8 @@ import {useTranslation} from "react-i18next"
 
 import {getArticleData} from "entities/article"
 
-import {AppRoutes, RoutesPath} from "shared/config/router"
+import {RoutesPath} from "shared/config/router"
+import {AppRoutes} from "shared/const/appRoutes"
 import {Button} from "shared/ui/button/Button"
 import {ButtonFeature} from "shared/ui/button/consts"
 
