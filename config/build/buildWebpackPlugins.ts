@@ -5,8 +5,10 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import CopyPlugin from "copy-webpack-plugin"
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer"
+import CircularDependencyPlugin from "circular-dependency-plugin"
 
 import {BuildWebpackOptions} from "./types/config"
+
 
 const Dotenv = require("dotenv-webpack")
 
@@ -31,6 +33,10 @@ export function buildWebpackPlugins({
             patterns: [
                 {from: paths.publicLocales, to: paths.buildLocales},
             ],
+        }),
+        new CircularDependencyPlugin({
+            exclude: /a\.js|node_modules/,
+            failOnError: true,
         }),
         new Dotenv(),
     ]
