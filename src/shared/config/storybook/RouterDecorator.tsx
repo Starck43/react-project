@@ -1,10 +1,9 @@
 import {Story} from "@storybook/react"
-import {ReactNode} from "react"
 import {BrowserRouter} from "react-router-dom"
 
 
-export const RouterDecorator: ReactNode = (story: () => Story) => (
+export const RouterDecorator = (StoryComponent: Story) => (
     <BrowserRouter>
-        {story()}
+        <StoryComponent />
     </BrowserRouter>
 )

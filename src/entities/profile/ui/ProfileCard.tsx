@@ -1,5 +1,4 @@
 import {useSelector} from "react-redux"
-import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
 import {getUser} from "entities/user"
@@ -24,7 +23,7 @@ import cls from "./ProfileCard.module.sass"
 // TODO: Fix skeleton styles
 
 interface ProfileCardProps {
-    id: string
+    id?: string
     onShowProfileHandler?: (val: boolean) => void
     onLogoutHandler?: (val: boolean) => void
 }
@@ -40,7 +39,7 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
 
     useInitialEffect(() => {
         dispatch(fetchProfileData(id))
-    })
+    }, Boolean(id))
 
     if (error) {
         return (
@@ -52,7 +51,6 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
         )
     }
 
-    // @ts-ignore
     return (
         <div data-testid="profile-card" className={cls.profile}>
             {isLoading && <Skeleton rounded elements={[ SkeletonElementType.AVATAR, SkeletonElementType.BLOCK ]} />}
@@ -82,7 +80,6 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
                 </div>
             </div>
 
-            {/* TODO: check if user is authorized */}
             {hasAccess && (
                 <Row justify="end" gap="sm" fullWidth className="mt-2">
                     <Button

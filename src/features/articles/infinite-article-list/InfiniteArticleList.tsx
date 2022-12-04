@@ -29,5 +29,5 @@ export const InfiniteArticleList = memo(() => {
         return <Info title={t("статьи не найдены!")} />
     }
 
-    return <ArticleList articles={articles} isLoading={isLoading} view={view} shadowed />
+    return <ArticleList articles={articles} isLoading={isLoading} virtualized={false} view={view} shadowed />
 })

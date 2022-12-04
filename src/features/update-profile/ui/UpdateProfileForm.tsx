@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
 import {
-getProfileCopy, getProfileValidateErrors, Profile, profileActions, ValidateProfileError,
+    getProfileCopy, getProfileValidateErrors, Profile, profileActions, ValidateProfileError,
 } from "entities/profile"
 import {Country} from "entities/country"
 
@@ -56,14 +56,14 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
         closeHandler?.()
     }, [ closeHandler, dispatch ])
 
-    const onInputChange = useCallback((val, name) => {
-        dispatch(profileActions.updateCopy({[name]: val || ""}))
+    const onInputChange = useCallback((val: string, name: string | undefined) => {
+        if (name) {
+            dispatch(profileActions.updateCopy({[name]: val}))
+        }
     }, [ dispatch ])
 
-    const onSelectChange = useCallback((val) => {
-        if (val) {
-            dispatch(profileActions.updateCopy({country: capitalizeFirstLetter(val) as Country}))
-        }
+    const onSelectChange = useCallback((val: string) => {
+        dispatch(profileActions.updateCopy({country: capitalizeFirstLetter(val) as Country}))
     }, [ dispatch ])
 
     return (
@@ -79,7 +79,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     name="username"
                     value={copy?.username}
                     onChange={onInputChange}
-                    placeholder={t("ник")}
+                    placeholder={t("ник") as string}
                     className="mb-1"
                 />
                 <Input
@@ -87,7 +87,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     name="name"
                     value={copy?.name}
                     onChange={onInputChange}
-                    placeholder={t("имя")}
+                    placeholder={t("имя") as string}
                     className="mb-1"
                 />
                 <Input
@@ -95,7 +95,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     name="surname"
                     value={copy?.surname}
                     onChange={onInputChange}
-                    placeholder={t("фамилия")}
+                    placeholder={t("фамилия") as string}
                     className="mb-1"
                 />
                 <Input
@@ -103,7 +103,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     name="email"
                     value={copy?.email}
                     onChange={onInputChange}
-                    placeholder={t("email")}
+                    placeholder={t("email") as string}
                     className="mb-1"
                 />
                 <Input
@@ -111,7 +111,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                     name="phone"
                     value={copy?.phone}
                     onChange={onInputChange}
-                    placeholder={t("телефон")}
+                    placeholder={t("телефон") as string}
                     className="mb-1"
                 />
                 <ListBox

@@ -2,15 +2,13 @@ import {memo, useState} from "react"
 import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
-import {profileReducer} from "entities/profile"
-import {ProfileCard} from "entities/profile/ui/ProfileCard"
+import {ProfileCard, profileReducer} from "entities/profile"
 
 import {Logout} from "features/auth"
 import {UpdateProfileForm} from "features/update-profile"
 
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import Header from "shared/ui/header/Header"
-import {Info, InfoStatus} from "shared/ui/info/Info"
 
 import {Page} from "widgets/page"
 
@@ -23,16 +21,6 @@ function ProfilePage() {
 
     const [ isShowLogout, setShowLogout ] = useState(false)
     const [ isShowProfile, setShowProfile ] = useState(false)
-
-    if (!id) {
-        return (
-            <Info
-                title={t("ошибка")}
-                subTitle={t("пользователь не существует")}
-                status={InfoStatus.ERROR}
-            />
-        )
-    }
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>

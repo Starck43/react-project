@@ -9,14 +9,10 @@ export default {
     title: "pages/AuthPage",
     component: AuthPage,
     argTypes: {backgroundColor: {control: "color"}},
+    decorators: [ StoreDecorator({}) ],
 } as ComponentMeta<typeof AuthPage>
 
 const Template: Story = (args) => <AuthPage {...args} />
 
-export const Login = Template.bind({})
-Login.args = {}
-Login.decorators = [ StoreDecorator({}) ]
-
-export const Profile = Template.bind({})
-Profile.args = {}
-Profile.decorators = [ StoreDecorator({user: {authData: {username: "admin", password: "admin"}}}) ]
+export const Default = Template.bind({})
+Default.args = {}

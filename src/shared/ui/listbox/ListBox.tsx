@@ -26,10 +26,10 @@ interface ListBoxProps {
     selectedOption?: ListBoxOption
     defaultOption?: ListBoxOption
     position?: PositionType
-    label?: string
+    label?: string | null
     compact?: boolean
     rounded?: boolean
-    onChange: <T = string>(value: T) => void
+    onChange: <T = string>(value: T | any) => void
     style?: CSSProperties
     className?: string
 }

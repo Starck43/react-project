@@ -11,7 +11,7 @@ export interface SelectOption {
 }
 
 interface SelectProps {
-    label?: string
+    label?: string | null
     compact?: boolean
     rounded?: boolean
     options: SelectOption[]
@@ -22,7 +22,7 @@ interface SelectProps {
 
 export const Select = memo((props: SelectProps) => {
     const {
-        label, rounded = false, compact = false, options, value, onChange, className, ...other
+        label = "", rounded = false, compact = false, options, value, onChange, className, ...other
     } = props
 
     const optionsList = useMemo(() => options?.map((opt) => (

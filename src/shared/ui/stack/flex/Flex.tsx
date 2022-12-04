@@ -18,7 +18,7 @@ export interface FlexProps<E extends ElementType = ElementType> {
     wrap?: boolean
     gap?: FlexGap
     fullWidth?: boolean
-    children?: ReactNode
+    children?: ReactNode | ReactNode[]
 }
 export type FlexPropsType<E extends ElementType> = FlexProps<E> & Omit<ComponentProps<E>, keyof FlexProps>
 

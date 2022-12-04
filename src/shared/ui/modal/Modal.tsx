@@ -8,6 +8,7 @@ import {
 import {classnames} from "shared/lib/helpers/classnames"
 import {Portal} from "../portal/Portal"
 import {CloseButton} from "../close-button/CloseButton"
+import {Col, Row} from "../../ui/stack"
 
 // import vars from "app/styles/_globals.scss"
 import cls from "./Modal.module.sass"
@@ -21,20 +22,20 @@ interface ModalProps {
     footer?: ReactNode
     lazy?: boolean
     open?: boolean
-    onClose: () => void
+    onClose: (() => void) | undefined
     style?: object
     className?: string
     children: ReactNode
 }
 
-export const Modal = (props: DeepPartial<ModalProps>) => {
+export const Modal = (props: ModalProps) => {
     const {
-        header = null,
-        children,
-        footer = null,
+        header,
+        footer,
         open = false,
         onClose,
         lazy = false,
+        children,
         className,
         style,
     } = props
@@ -87,16 +88,18 @@ export const Modal = (props: DeepPartial<ModalProps>) => {
                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
                 <div className={cls.overlay}>
                     {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
-                    <div
-                        className={classnames(cls, [ "content" ], {}, [ className, "shadow" ])}
+                    <Col
+                        gap="sm"
+                        fullWidth
                         role="link"
                         onClick={preventClick}
+                        className={classnames(cls, [ "content" ], {}, [ className, "shadow" ])}
                         style={style}
                     >
-                        <div className={cls.header}>
+                        <Row gap="sm" fullWidth justify="between" align="baseline" className={cls.header}>
                             {header}
                             <CloseButton className={cls.close__btn} handleClick={handleClose} />
-                        </div>
+                        </Row>
 
                         <div className={cls.body}>
                             {children}
@@ -107,7 +110,7 @@ export const Modal = (props: DeepPartial<ModalProps>) => {
                                 {footer}
                             </div>
                         )}
-                    </div>
+                    </Col>
                 </div>
             </div>
         </Portal>

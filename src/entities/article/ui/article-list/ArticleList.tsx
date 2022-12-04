@@ -1,4 +1,4 @@
-import {memo} from "react"
+import {Fragment, memo} from "react"
 import {List, ListRowProps, WindowScroller} from "react-virtualized"
 
 import {classnames} from "shared/lib/helpers/classnames"
@@ -19,15 +19,22 @@ interface ArticleListProps {
     view: ArticleView
     shadowed?: boolean
     virtualized?: boolean
+    inlined?: boolean
     className?: string
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
     const {
-        articles, isLoading, view, shadowed, virtualized = true, className,
+        articles,
+        isLoading,
+        view,
+        shadowed,
+        virtualized = true,
+        inlined = false,
+        className,
     } = props
 
-    const container = document.getElementById(PAGE_ID) as Element
+    const container = document.getElementById(PAGE_ID) || document.body as Element
 
     const isTile = view === ArticleView.TILE
     const rowWidth = container?.clientWidth || 900
@@ -69,6 +76,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     return (
         <>
+            {/* @ts-ignore */}
             <WindowScroller scrollElement={container}>
                 {(props) => {
                     const {
@@ -76,21 +84,27 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     } = props
 
                     return (
-                        <div ref={registerChild}>
-                            {!virtualized
-                                ? (
-                                    articles.map((item) => (
+                        !virtualized
+                            ? (
+                                <div
+                                    style={{gridTemplateColumns: inlined ? "" : `repeat(${itemsPerRow}, 1fr)`}}
+                                    className={classnames(cls, [ "articles", view ], {virtualized, inlined}, [ className ])}
+                                >
+                                    {articles.map((item) => (
                                         <ArticleListItem
                                             key={item.id}
                                             article={item}
                                             view={view}
                                             shadowed={shadowed}
-                                            target="_blank"
-                                            className={cls.related__card}
+                                            className={cls.article_item}
                                         />
-                                    ))
-                                )
-                                : (
+                                    ))}
+                                </div>
+                            )
+                            : (
+                                // @ts-ignore
+                                <div ref={registerChild}>
+                                    {/* @ts-ignore */}
                                     <List
                                         rowCount={rowCount}
                                         height={height || 400}
@@ -104,8 +118,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
                                         isScrolling={isScrolling}
                                         rowRenderer={articleListRender}
                                     />
-                                )}
-                        </div>
+                                </div>
+)
                     )
                 }}
             </WindowScroller>
@@ -114,10 +128,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 view,
                 rowCount: isTile ? TILE_VIEW_PER_PAGE : LIST_VIEW_PER_PAGE,
                 itemsPerRow,
-                className: classnames(cls, [ "articles", view ], {}, [ className ]),
+                className: classnames(cls, [ "articles", view ], {virtualized, inlined}, [ className ]),
                 style: {
                     gridTemplateColumns: `repeat(${itemsPerRow}, 1fr)`,
-                    minHeight: rowHeight || 400,
+                    minHeight: virtualized ? rowHeight || 400 : "auto",
                 },
             })}
         </>

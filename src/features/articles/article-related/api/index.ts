@@ -6,7 +6,7 @@ const relatedApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getArticleRelatedList: build.query<Article[], Record<string, number>>({
             query: ({limit}) => ({
-                url: "/articles",
+                url: "/articles/",
                 params: {
                     _limit: limit,
                 },

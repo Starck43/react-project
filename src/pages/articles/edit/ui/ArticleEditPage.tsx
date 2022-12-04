@@ -23,8 +23,6 @@ function ArticleEditPage() {
         navigate(RoutesPath[AppRoutes.ARTICLE_DETAILS] + id)
     }
 
-    if (!id) return null
-
     return (
         <Page className={classnames(cls, [ "edit__article" ], {}, [])}>
             <Header tag="h2" title={isEditMode ? t("изменение статьи") : t("новая статья")} align="center" />

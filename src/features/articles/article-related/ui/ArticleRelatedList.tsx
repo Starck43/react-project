@@ -17,8 +17,9 @@ interface ArticleRelatedProps {
 
 export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
     const {t} = useTranslation("articles")
-    const {isLoading, data: related, error} = useArticleRelatedList({limit: 3})
+    const {isLoading, data: related, error} = useArticleRelatedList({limit: 4})
 
+    console.log(related)
     if (!related || error) return null
 
     if (isLoading) {
@@ -33,13 +34,16 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
                 shadowed
                 className="mt-2"
             />
-            <ArticleList
-                articles={related}
-                view={ArticleView.TILE}
-                isLoading={isLoading}
-                virtualized={false}
-                className={cls.related__articles}
-            />
+            <div className={cls.articles__wrapper}>
+                <ArticleList
+                    articles={related}
+                    view={ArticleView.TILE}
+                    isLoading={isLoading}
+                    inlined
+                    virtualized={false}
+                    className={cls.related__list}
+                />
+            </div>
         </section>
     )
 })

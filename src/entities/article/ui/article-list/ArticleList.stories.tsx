@@ -13,6 +13,10 @@ export default {
     title: "entities/Articles/ArticleList",
     component: ArticleList,
     argTypes: {backgroundColor: {control: "color"}},
+    args: {
+        view: ArticleView.TILE,
+        virtualized: false,
+    },
     decorators: [
         StoreDecorator({}),
     ],
@@ -51,11 +55,9 @@ const article: Article = {
 
 const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />
 
-// TODO: fix empty screen
 export const Default = Template.bind({})
 Default.args = {
     isLoading: false,
-    view: ArticleView.TILE,
     articles: new Array(3).fill(0).map((item, i) => ({...article, id: String(i)})),
 }
 
@@ -63,9 +65,4 @@ export const Loading = Template.bind({})
 Loading.args = {
     isLoading: true,
     articles: [],
-}
-
-export const Error = Template.bind({})
-Error.args = {
-    // error: "some error",
 }

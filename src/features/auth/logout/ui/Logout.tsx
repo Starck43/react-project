@@ -12,7 +12,7 @@ import cls from "./Logout.module.sass"
 
 export interface LogoutProps {
     show?: boolean
-    closeHandler?: () => void
+    closeHandler: () => void
 }
 
 export const Logout = ({show, closeHandler}: LogoutProps) => {

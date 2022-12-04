@@ -1,21 +1,31 @@
 .articles
+	display: flex
+	flex-wrap: wrap
 	width: 100%
+
+	&:not(.virtualized)
+		&.list
+			margin-bottom: 2rem
+			gap: 2rem
+
+		&.tile
+			margin-bottom: 1rem
+			gap: 1rem
+
+			.article_item
+				flex: auto
+				max-width: 200px
+
+		&.inlined
+			display: inline-flex
+			flex-wrap: nowrap
+
 
 	&.tile
 		@supports (display: grid)
 			display: grid
-			gap: 5%
-			//align-items: center
 			justify-items: center
 
-.tile
-	display: flex
-
-.related__card
-	display: flex
-	flex-shrink: 0
-	width: 200px
-	font-size: 0.8rem
 
 .shimmer
 	background-color: var(--theme-primary-bg-color) !important

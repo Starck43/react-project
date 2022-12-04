@@ -29,7 +29,7 @@ import cls from "./UpdateArticleForm.module.sass"
 
 
 export interface UpdateArticleProps {
-    articleId: string
+    articleId?: string
     onCloseHandler?: () => void
 }
 
@@ -54,34 +54,50 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
 
     const onSaveSubmit = useCallback(async (e: FormEvent<Article>) => {
         e.preventDefault()
-        const res = await dispatch(updateArticleData(articleId))
+        const res = await dispatch(updateArticleData(copy?.id))
         if (copy && res.meta.requestStatus === "fulfilled") {
             onCloseHandler?.()
         }
         if (res.meta.requestStatus === "rejected") {
             setServerError(true)
         }
-    }, [ dispatch, articleId, copy, onCloseHandler ])
+    }, [ dispatch, copy, onCloseHandler ])
 
     const onCancelClick = useCallback(() => {
         dispatch(articleActions.revert())
         onCloseHandler?.()
     }, [ dispatch, onCloseHandler ])
 
-    const onInputChange = useCallback((val, name) => {
-        dispatch(articleActions.updateCopy({
-            id: articleId,
-            [name]: val,
-        }))
-    }, [ articleId, dispatch ])
+    const onInputChange = useCallback((val: string, name: string | undefined) => {
+        if (copy?.id && name) {
+            dispatch(articleActions.updateCopy({
+                id: copy?.id,
+                [name]: val,
+            }))
+        }
+    }, [ copy, dispatch ])
 
-    const onTypesChange = useCallback((val) => {
+    const onTypesChange = useCallback((val: string) => {
         const typeList = val.split("\n") as ArticleType[]
-        dispatch(articleActions.updateCopy({
-            id: articleId,
-            type: typeList || [],
-        }))
-    }, [ articleId, dispatch ])
+
+        if (copy?.id) {
+            dispatch(articleActions.updateCopy({
+                id: copy?.id,
+                type: typeList || [],
+            }))
+        }
+    }, [ copy, dispatch ])
+
+
+    if (!copy?.id) {
+        return (
+            <Info
+                title={t("ошибка")}
+                subTitle={t("не указан id для статьи!")}
+                status={InfoStatus.ERROR}
+            />
+        )
+    }
 
     if (error) {
         return <Info subTitle={t("ошибка загрузки статьи!")} />
@@ -106,34 +122,34 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
                         name="title"
                         value={copy?.title}
                         onChange={onInputChange}
-                        placeholder={t("заголовок")}
+                        placeholder={t("заголовок") as string}
                         className="mb-1"
                     />
                     <Input
                         name="subtitle"
                         value={copy?.subtitle}
                         onChange={onInputChange}
-                        placeholder={t("подзаголовок")}
+                        placeholder={t("подзаголовок") as string}
                         className="mb-1"
                     />
                     <Input
                         name="img"
                         value={copy?.img}
                         onChange={onInputChange}
-                        placeholder={t("фото")}
+                        placeholder={t("фото") as string}
                         className="mb-1"
                     />
                     <Input
                         name="createdAt"
                         value={copy?.createdAt}
                         onChange={onInputChange}
-                        placeholder={t("дата создания")}
+                        placeholder={t("дата создания") as string}
                         className="mb-1"
                     />
                     <TextArea
                         value={copy?.type?.join("\n")}
                         onChange={onTypesChange}
-                        placeholder={t("разделы")}
+                        placeholder={t("разделы") as string}
                         className="mb-1"
                     />
 

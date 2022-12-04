@@ -2,16 +2,16 @@ import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
-import ForbiddenPage from "./ForbiddenPage"
+import {UpdateArticleForm} from "./UpdateArticleForm"
 
 
 export default {
-    title: "widgets/ForbiddenPage",
-    component: ForbiddenPage,
+    title: "features/UpdateArticleForm",
+    component: UpdateArticleForm,
     argTypes: {backgroundColor: {control: "color"}},
-} as ComponentMeta<typeof ForbiddenPage>
+} as ComponentMeta<typeof UpdateArticleForm>
 
-const Template: ComponentStory<typeof ForbiddenPage> = () => <ForbiddenPage />
+const Template: ComponentStory<typeof UpdateArticleForm> = (args) => <UpdateArticleForm {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

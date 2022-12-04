@@ -1,5 +1,9 @@
 import React from "react"
 import {ComponentMeta, Story} from "@storybook/react"
+
+import {Country} from "entities/country"
+
+import Avatar from "shared/assets/icons/avatar-profile.png"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
 import ProfilePage from "./ProfilePage"
@@ -19,8 +23,11 @@ Default.decorators = [
     StoreDecorator({
         profile: {
             data: {
-                username: "admin",
+                name: "John",
                 email: "admin@t.me",
+                phone: "+79991234567",
+                country: Country.RUSSIA,
+                avatar: Avatar,
             },
         },
     }),

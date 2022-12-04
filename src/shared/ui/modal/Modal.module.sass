@@ -18,25 +18,19 @@
 	pointer-events: none
 	z-index: -1
 
-	.header, .footer
-		display: flex
-
-	.body, .footer
-		margin-top: 1rem
-
-	.header
-		align-items: baseline
-		justify-content: space-between
-		gap: 1rem
-
-	.footer
-		justify-content: flex-end
-		gap: 0.75rem
 
 	.close__btn
 		margin-left: auto
 		flex-grow: 0
 		z-index: 2
+
+	.body
+		display: flex
+		flex-direction: column
+		height: 100%
+		margin: -0.5rem
+		padding: 0.5rem
+		overflow-y: auto
 
 	.content
 		width: var(--modal-width)
@@ -48,6 +42,7 @@
 		box-shadow: -1rem -1rem 3rem -1rem inset var(--theme-modal-shadow-2), 1rem 1rem 2rem -1rem var(--theme-modal-shadow-1) inset, 0 0.5rem 25px -5px rgb(0 0 0 / 20%)
 		transition: 150ms ease-out
 		transform: scale(0.8)
+		overflow: hidden
 
 	&.open
 		opacity: 0

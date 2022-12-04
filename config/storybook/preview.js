@@ -1,6 +1,7 @@
 import {addDecorator} from "@storybook/react"
 import {RouterDecorator} from "../../src/shared/config/storybook/RouterDecorator"
 import {StyleDecorator} from "../../src/shared/config/storybook/StyleDecorator"
+import {SuspenseDecorator} from "../../src/shared/config/storybook/SuspenseDecorator"
 import {TranslationDecorator} from "../../src/shared/config/storybook/TranslationDecorator"
 
 
@@ -46,5 +47,6 @@ export const parameters = {
 }
 
 addDecorator(StyleDecorator)
+addDecorator(SuspenseDecorator)
 addDecorator(RouterDecorator)
 addDecorator(TranslationDecorator)

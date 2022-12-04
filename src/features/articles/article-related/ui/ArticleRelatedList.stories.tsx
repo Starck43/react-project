@@ -1,16 +1,45 @@
+import {Article, ArticleBlockType, ArticleType} from "entities/article"
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
 import {ArticleRelatedList} from "./ArticleRelatedList"
 
 
 export default {
-    title: "pages/Articles/RelatedCard",
+    title: "features/Articles/RelatedCard",
     component: ArticleRelatedList,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ArticleRelatedList>
+
+const article: Article = {
+    id: "1",
+    title: "Javascript news",
+    subtitle: "Что нового в JS за 2022 год?",
+    img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+    views: 109,
+    createdAt: "26.02.2022",
+    type: [],
+    blocks: [],
+    user: {id: "1", username: "admin"},
+}
 
 const Template: ComponentStory<typeof ArticleRelatedList> = (args) => <ArticleRelatedList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}
+Default.decorators = [ StoreDecorator({}) ]
+Default.parameters = {
+    mockData: [
+        {
+            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            method: "GET",
+            status: 200,
+            response: [
+                {...article, id: "1"},
+                {...article, id: "2"},
+                {...article, id: "3"},
+            ],
+        },
+    ],
+}

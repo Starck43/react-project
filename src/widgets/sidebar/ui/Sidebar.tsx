@@ -14,7 +14,6 @@ import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
 
 
-
 export interface SidebarProps {
     position?: AlignType
     className?: string

@@ -5,15 +5,14 @@ import {ThunkConfig} from "app/providers/store-provider"
 import {Article, fetchArticleById, getArticleCopy} from "entities/article"
 
 
-
-export const updateArticleData = createAsyncThunk<Article, string, ThunkConfig<string>>(
+export const updateArticleData = createAsyncThunk<Article, string | undefined, ThunkConfig<string>>(
     "article/updateArticle",
     async (id, thunkAPI) => {
         const {extra, dispatch, rejectWithValue, getState} = thunkAPI
         const data = {...getArticleCopy(getState())}
         delete data?.user // TODO: mapping function for converting data to server interface
 
-        if (!data) return rejectWithValue("no data")
+        if (!data || !id) return rejectWithValue("no data")
 
         try {
             const response = await extra.api.put<Article>(`/articles/${id}`, data)

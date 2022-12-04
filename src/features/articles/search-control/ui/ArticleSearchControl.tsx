@@ -30,7 +30,7 @@ export const ArticleSearchControl = memo(() => {
             <Input
                 value={search}
                 rounded
-                placeholder={t("поиск")}
+                placeholder={t("поиск") as string}
                 onChange={(val) => onSearchInputClick(val)}
             />
         </div>

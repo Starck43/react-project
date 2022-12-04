@@ -1,4 +1,4 @@
-import {render} from "react-dom"
+import {createRoot} from "react-dom/client"
 import {BrowserRouter} from "react-router-dom"
 
 import {StoreProvider} from "app/providers/store-provider"
@@ -11,8 +11,14 @@ import {isDarkness} from "shared/lib/helpers/datetime"
 import App from "app/App"
 import "app/styles/index.sass"
 
+const container = document.getElementById("root")
 
-render(
+if (!container) {
+    throw Error("Page is not loaded, because a root node is not found in HTML document!")
+}
+const root = createRoot(container)
+
+root.render(
     <BrowserRouter>
         <StoreProvider>
             <ErrorBoundary>
@@ -22,5 +28,4 @@ render(
             </ErrorBoundary>
         </StoreProvider>
     </BrowserRouter>,
-document.getElementById("root"),
 )

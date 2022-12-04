@@ -56,7 +56,7 @@ const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
                 <TextArea
                     value={text}
                     onChange={onTextChange}
-                    placeholder={t("введите текст комментария")}
+                    placeholder={t("введите текст комментария")!}
                 />
                 <Button
                     feature={ButtonFeature.BLANK}

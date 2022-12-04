@@ -1,4 +1,4 @@
-import {memo, useCallback} from "react"
+import {memo, useCallback, Suspense} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
@@ -17,7 +17,7 @@ import cls from "./ArticleCommentsCard.module.sass"
 
 
 interface CommentsCardProps {
-    articleId: string
+    articleId?: string
     className?: string
 }
 
@@ -41,7 +41,11 @@ export const ArticleCommentsCard = memo(({articleId, className}: CommentsCardPro
     return (
         <section className={classnames(cls, [ "article__comments" ], {}, [ className ])}>
             <Header tag="h2" title={t("комментарии")} shadowed className="mt-2" />
-            <NewCommentForm className="mb-2" onSaveComment={onSaveComment} />
+
+            <Suspense fallback="">
+                <NewCommentForm className="mb-2" onSaveComment={onSaveComment} />
+            </Suspense>
+
             {/* TODO: make lazy loading for comments after scrolling into viewport */}
             <CommentList comments={comments} isLoading={isLoading} error={error} />
         </section>
