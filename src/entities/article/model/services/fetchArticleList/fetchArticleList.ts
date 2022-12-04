@@ -4,7 +4,8 @@ import {ThunkConfig} from "app/providers/store-provider"
 
 import {addQueryParams} from "shared/lib/helpers/urls"
 
-import {Article, ArticleType} from "../../types/article"
+import {ArticleType} from "../../consts"
+import type {Article} from "../../types/article"
 import {
     getArticlesOrder,
     getArticlesPageLimit,
@@ -48,6 +49,7 @@ export const fetchArticleList = createAsyncThunk<Article[], FetchArticlesListPro
             }
             return response.data
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(e)
             return rejectWithValue("error")
         }

@@ -5,7 +5,7 @@ import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
 import {Card} from "shared/ui/card/Card"
 import {Flex, Row} from "shared/ui/stack"
 
-import {ArticleView} from "../../model/types/article"
+import {ArticleView} from "../../model/consts"
 
 import cls from "../article-list-item/ArticleListItem.module.sass"
 

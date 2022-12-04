@@ -1,6 +1,4 @@
-import {
-    FC, memo, ReactNode, SVGProps, VFC,
-} from "react"
+import {memo, ReactNode, SVGProps, FC} from "react"
 import {Link, LinkProps} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
@@ -15,7 +13,7 @@ export interface NavLinkProps extends Omit<LinkProps, "title"> {
     variant?: ThemeVariant
     title?: ReactNode
     alt?: string
-    Icon?: VFC<SVGProps<SVGSVGElement>>
+    Icon?: FC<SVGProps<SVGSVGElement>>
     feature?: NavLinkFeatureType
     fullWidth?: boolean
     disabled?: boolean

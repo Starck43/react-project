@@ -5,7 +5,8 @@ import {articlesActions, ArticleView, getArticlesView} from "entities/article"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {Button, ButtonFeature} from "shared/ui/button/Button"
+import {Button} from "shared/ui/button/Button"
+import {ButtonFeature} from "shared/ui/button/consts"
 import {Icon} from "shared/ui/icon/Icon"
 
 import ListIcon from "shared/assets/icons/list-24-24.svg"

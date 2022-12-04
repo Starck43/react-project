@@ -1,32 +1,21 @@
 import {
-    ButtonHTMLAttributes, FC, HTMLAttributeAnchorTarget, ReactNode, SVGProps, VFC,
+    ButtonHTMLAttributes, HTMLAttributeAnchorTarget, ReactNode, FC, SVGProps,
 } from "react"
 import {Link} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
 
+import {ButtonFeature, ButtonSize} from "./consts"
 import {AlignType} from "../../types/ui"
 
 import cls from "./Button.module.sass"
 
 
-export enum ButtonFeature {
-    CLEAR = "clear",
-    BLANK = "blank",
-    INVERTED = "inverted",
-}
-
-export enum ButtonSize {
-    SMALL = "small",
-    NORMAL = "normal",
-    LARGE = "large",
-}
-
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: ThemeVariant
     feature?: ButtonFeature
-    Icon?: VFC<SVGProps<SVGSVGElement>>
+    Icon?: FC<SVGProps<SVGSVGElement>>
     size?: ButtonSize
     align?: AlignType
     fullWidth?: boolean

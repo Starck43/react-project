@@ -1,8 +1,8 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
+import {ValidateProfileError} from "../consts"
+import type {Profile, ProfileSchema} from "../types/profile"
 import {fetchProfileData} from "../services/fetchProfileData"
-
-import {Profile, ProfileSchema, ValidateProfileError} from "../types/profile"
 
 
 const initialState: ProfileSchema = {

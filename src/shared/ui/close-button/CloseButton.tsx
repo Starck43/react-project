@@ -2,7 +2,8 @@ import {memo, FC, ButtonHTMLAttributes} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
-import {Button, ButtonFeature} from "../button/Button"
+import {ButtonFeature} from "../button/consts"
+import {Button} from "../button/Button"
 
 import cls from "./CloseButton.module.sass"
 

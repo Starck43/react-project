@@ -4,7 +4,8 @@ import {useTranslation} from "react-i18next"
 import {classnames} from "shared/lib/helpers/classnames"
 import CopyIcon from "shared/assets/icons/copy-20-20.svg"
 
-import {Button, ButtonFeature, ButtonSize} from "../button/Button"
+import {ButtonFeature, ButtonSize} from "../button/consts"
+import {Button} from "../button/Button"
 
 import cls from "./Code.module.sass"
 

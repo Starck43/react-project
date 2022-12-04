@@ -1,11 +1,11 @@
-import {SVGProps, VFC} from "react"
+import {FC, SVGProps} from "react"
 import {AlignType} from "shared/types/ui"
 
 
 export interface NavbarItemType {
     id: string
     text?: string
-    Icon?: VFC<SVGProps<SVGSVGElement>>
+    Icon?: FC<SVGProps<SVGSVGElement>>
     authOnly?: boolean
     path: string
     group: AlignType

@@ -1,19 +1,13 @@
-import {
-    memo, useMemo, ReactNode, ElementType, Fragment,
-} from "react"
+import {ElementType, memo, ReactNode} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
+
+import {TagCase} from "./consts"
 import {Flex} from "../../ui/stack"
 
 import cls from "./Header.module.sass"
 
-
-export enum TagCase {
-    FIRST = "firstcase",
-    UPPER = "uppercase",
-    LOWER = "lowercase",
-}
 
 type HeaderProps = {
     tag?: ElementType

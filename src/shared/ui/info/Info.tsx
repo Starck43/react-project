@@ -1,4 +1,4 @@
-import {SVGProps, VFC} from "react"
+import {SVGProps, FC} from "react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {Icon} from "../../ui/icon/Icon"
@@ -27,7 +27,7 @@ export type InfoProps = {
     Tag?: keyof HTMLElementTagNameMap
     title?: string | null
     subTitle?: string | null
-    icon?: VFC<SVGProps<SVGSVGElement>>
+    icon?: FC<SVGProps<SVGSVGElement>>
     status?: InfoStatus
     align?: FlexAlign
     size?: InfoSize

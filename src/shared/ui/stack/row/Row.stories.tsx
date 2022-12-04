@@ -1,7 +1,8 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import {Button, ButtonSize} from "../../button/Button"
+import {ButtonSize} from "../../button/consts"
+import {Button} from "../../button/Button"
 
 import Row from "./Row"
 

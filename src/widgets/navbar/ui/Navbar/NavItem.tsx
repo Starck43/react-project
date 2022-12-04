@@ -12,8 +12,8 @@ import cls from "./Navbar.module.sass"
 // TODO: bring translations to parent
 const NavItem = (props: NavbarItemType) => {
     const {
-path, text, Icon, authOnly, ...other
-} = props
+        path, text, Icon, authOnly, ...other
+    } = props
     const {t} = useTranslation("navbar")
 
     return (

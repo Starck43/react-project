@@ -3,7 +3,7 @@ import {useMemo, CSSProperties} from "react"
 import {classnames} from "shared/lib/helpers/classnames"
 import {Flex} from "../stack"
 
-import PlaceholderIcon from "./avatar-placeholder.svg"
+import PlaceholderIcon from "./assets/avatar-placeholder.svg"
 import cls from "./Avatar.module.sass"
 
 

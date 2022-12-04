@@ -17,11 +17,12 @@ import {
 import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
-import {Button, ButtonFeature} from "shared/ui/button/Button"
+import {Button} from "shared/ui/button/Button"
+import {ButtonFeature} from "shared/ui/button/consts"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import Input, {TextArea} from "shared/ui/input/Input"
 import {Row} from "shared/ui/stack"
-import {PageLoader} from "widgets/page-loader/PageLoader"
+import {PageLoader} from "widgets/page-loader/ui/PageLoader"
 
 import {updateArticleData} from "../model/services/updateArticleData"
 

@@ -3,11 +3,10 @@ import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit"
 import {StateSchema} from "app/providers/store-provider"
 
 import {ARTICLES_VIEW_MODE_KEY} from "shared/const/localStorage"
-import {
-    Article, ArticleOrderType, ArticleSortType, ArticleType, ArticleView,
-} from "../../types/article"
 
-import {ArticleListSchema} from "../../types/articleListSchema"
+import {ArticleOrderType, ArticleSortType, ArticleType, ArticleView} from "../../consts"
+import type {Article} from "../../types/article"
+import type {ArticleListSchema} from "../../types/articleListSchema"
 import {fetchArticleList} from "../../services/fetchArticleList/fetchArticleList"
 
 import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../../lib/constants"

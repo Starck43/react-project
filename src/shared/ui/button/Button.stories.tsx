@@ -1,7 +1,9 @@
 import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 
-import {Button, ButtonFeature} from "./Button"
+import {ButtonFeature} from "./consts"
+
+import {Button} from "./Button"
 
 
 export default {

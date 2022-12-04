@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import Header from "shared/ui/header/Header"
-import {PageLoader} from "widgets/page-loader/PageLoader"
+import {PageLoader} from "widgets/page-loader/ui/PageLoader"
 
 import {useArticleRelatedList} from "../api"
 

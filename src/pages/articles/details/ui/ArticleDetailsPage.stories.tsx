@@ -3,8 +3,7 @@ import {ComponentMeta, ComponentStory} from "@storybook/react"
 
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
-import {ArticleBlockType, ArticleType} from "entities/article/model/types/article"
-import {Article} from "entities/article"
+import {Article, ArticleBlockType, ArticleType} from "entities/article"
 import {Comment} from "entities/comment"
 
 import ArticleDetailsPage from "./ArticleDetailsPage"

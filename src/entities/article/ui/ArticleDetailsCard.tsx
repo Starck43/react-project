@@ -12,7 +12,8 @@ import EventIcon from "shared/assets/icons/calendar-20-20.svg"
 import EyeIcon from "shared/assets/icons/eye-20-20.svg"
 
 
-import {ArticleBlock, ArticleBlockType} from "../model/types/article"
+import {ArticleBlockType} from "../model/consts"
+import {ArticleBlock} from "../model/types/article"
 import {getArticleData, getArticleError, getArticleLoading} from "../model/selectors/article-details/getArticleDetails"
 import {fetchArticleById} from "../model/services/fetchArticleById/fetchArticleById"
 import {ArticleCode} from "../ui/article-code/ArticleCode"

@@ -2,9 +2,10 @@ import {useTranslation} from "react-i18next"
 import {useDispatch, useSelector} from "react-redux"
 
 import {getUser, userActions} from "entities/user"
+import {ButtonFeature} from "shared/ui/button/consts"
 
 import {Modal} from "shared/ui/modal/Modal"
-import {Button, ButtonFeature} from "shared/ui/button/Button"
+import {Button} from "shared/ui/button/Button"
 import {Row} from "shared/ui/stack"
 
 import cls from "./Logout.module.sass"

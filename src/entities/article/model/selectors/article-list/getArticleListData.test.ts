@@ -1,12 +1,9 @@
 import {StateSchema} from "app/providers/store-provider"
+
 import {
-    Article,
-    ArticleBlockType,
-    ArticleOrderType,
-    ArticleSortType,
-    ArticleType,
-    ArticleView,
-} from "../../types/article"
+    ArticleBlockType, ArticleOrderType, ArticleSortType, ArticleType, ArticleView,
+} from "../../consts"
+import {Article} from "../../types/article"
 import {getArticlesData} from "../../slice/article-list/articleListSlice"
 
 

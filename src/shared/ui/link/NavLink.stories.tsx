@@ -3,7 +3,7 @@ import React from "react"
 
 import {NavLink, NavLinkProps} from "./NavLink"
 
-import ArrowIcon from "./arrow-shevron-left.svg"
+import ArrowIcon from "./assets/arrow-shevron-left.svg"
 
 export default {
     title: "shared/Navigation Link",

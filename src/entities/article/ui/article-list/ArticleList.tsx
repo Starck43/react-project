@@ -1,4 +1,4 @@
-import {Fragment, memo} from "react"
+import {memo} from "react"
 import {List, ListRowProps, WindowScroller} from "react-virtualized"
 
 import {classnames} from "shared/lib/helpers/classnames"
@@ -6,7 +6,8 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {PAGE_ID} from "widgets/page/ui/Page"
 
 import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../lib/constants"
-import {Article, ArticleView} from "../../model/types/article"
+import {ArticleView} from "../../model/consts"
+import {Article} from "../../model/types/article"
 import {ArticleListItem} from "../article-list-item/ArticleListItem"
 import {renderArticlesSkeleton} from "../article-list-skeleton/ArticleListSkeleton"
 

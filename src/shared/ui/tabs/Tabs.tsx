@@ -1,6 +1,7 @@
 import {memo, ReactNode, useCallback} from "react"
 
-import {Button, ButtonFeature, ButtonSize} from "../button/Button"
+import {ButtonFeature, ButtonSize} from "../button/consts"
+import {Button} from "../button/Button"
 import {Flex} from "../stack"
 
 // import cls from "./Tabs.module.sass"

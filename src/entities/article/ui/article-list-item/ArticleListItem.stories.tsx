@@ -1,9 +1,9 @@
-import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
 import Image from "shared/assets/icons/avatar-profile.jpeg"
 
-import {Article, ArticleBlockType, ArticleType, ArticleView} from "../../model/types/article"
+import {ArticleBlockType, ArticleType, ArticleView} from "../../model/consts"
+import {Article} from "../../model/types/article"
 
 import {ArticleListItem} from "./ArticleListItem"
 
