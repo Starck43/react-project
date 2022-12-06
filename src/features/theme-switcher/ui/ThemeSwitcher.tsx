@@ -6,8 +6,8 @@ import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
+import {Button} from "shared/ui/button/Button"
 import ThemeIcon from "shared/assets/icons/theme-icon.svg"
-import {Button} from "../../ui/button/Button"
 
 import cls from "./ThemeSwitcher.module.sass"
 

@@ -7,8 +7,8 @@ import {ThemeVariant} from "shared/types/theme"
 import {PositionType} from "shared/types/ui"
 import NotificationIcon from "shared/assets/icons/notification-20-20.svg"
 
-import {Button} from "../button/Button"
-import {Popover} from "../popups"
+import {Button} from "shared/ui/button/Button"
+import {Popover} from "shared/ui/popups"
 
 // import cls from "./Notifications.module.sass"
 
@@ -20,7 +20,7 @@ interface NotificationsProps {
     className?: string
 }
 
-export const Notifications = memo((props: NotificationsProps) => {
+export const NotificationsPopup = memo((props: NotificationsProps) => {
     const {
         variant,
         minified = false,

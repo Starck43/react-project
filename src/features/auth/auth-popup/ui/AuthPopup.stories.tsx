@@ -2,19 +2,19 @@ import React from "react"
 import {ComponentMeta, Story} from "@storybook/react"
 import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
 
-import {LoginSwitcher} from "./LoginSwitcher"
+import {AuthPopup} from "./AuthPopup"
 
 
 export default {
-    title: "shared/Login Switcher",
-    component: LoginSwitcher,
+    title: "features/LoginSwitcher",
+    component: AuthPopup,
     argTypes: {backgroundColor: {control: "color"}},
     decorators: [
         StoreDecorator({}),
     ],
-} as ComponentMeta<typeof LoginSwitcher>
+} as ComponentMeta<typeof AuthPopup>
 
-const Template: Story = (args) => <LoginSwitcher {...args} />
+const Template: Story = (args) => <AuthPopup {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

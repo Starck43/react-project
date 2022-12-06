@@ -6,8 +6,6 @@ import {useTranslation} from "react-i18next"
 
 import {getUser} from "entities/user"
 
-import {Logout} from "features/auth"
-
 import {classnames} from "shared/lib/helpers/classnames"
 import {RoutesPath} from "shared/config/router"
 import {AppRoutes} from "shared/const/appRoutes"
@@ -15,12 +13,14 @@ import {ThemeVariant} from "shared/types/theme"
 import {PositionType} from "shared/types/ui"
 import LoginIcon from "shared/assets/icons/auth.svg"
 
-import {Avatar} from "../avatar/Avatar"
-import {Button} from "../button/Button"
-import Dropdown from "../popups/dropdown/Dropdown"
-import {NavLink} from "../link/NavLink"
+import {Avatar} from "shared/ui/avatar/Avatar"
+import {Button} from "shared/ui/button/Button"
+import {NavLink} from "shared/ui/link/NavLink"
+import {Dropdown} from "shared/ui/popups"
 
-import cls from "./LoginSwitcher.module.sass"
+import {Logout} from "../../logout/ui/Logout"
+
+import cls from "./AuthPopup.module.sass"
 
 
 interface LoginSwitcherProps {
@@ -30,7 +30,7 @@ interface LoginSwitcherProps {
     className?: string
 }
 
-export const LoginSwitcher: FC<LoginSwitcherProps> = memo((props) => {
+export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
     const {
         variant,
         position,
@@ -57,17 +57,21 @@ export const LoginSwitcher: FC<LoginSwitcherProps> = memo((props) => {
                     onClick: onLogoutHandler,
                 },
             ]
-            : []
+            : null
     ), [ onLogoutHandler, t, user ])
 
     return (
         <>
-            {user?.username
+            {menuItems && user?.username
                 ? (
                     <Dropdown
                         position={position}
                         toggleElement={(
-                            <Button>{minified ? <Avatar size="xs" src={user?.avatar} /> : user.username}</Button>
+                            <Button>
+                                {minified
+                                    ? <Avatar size="xs" src={user?.avatar} />
+                                    : user.username}
+                            </Button>
                         )}
                         items={menuItems}
                         variant={variant}

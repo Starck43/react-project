@@ -10,7 +10,7 @@ const initialState: ProfileSchema = {
     error: undefined,
     copy: undefined,
 }
-
+// TODO: combine with entities layer
 export const updateProfileSlice = createSlice({
     name: "update",
     initialState,

@@ -3,11 +3,12 @@ import {useSelector} from "react-redux"
 
 import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 
+import {ThemeSwitcher} from "features/theme-switcher"
+import {LanguageSwitcher} from "features/language-switcher"
+import {AuthPopup} from "features/auth/auth-popup"
+import {NotificationsPopup} from "features/notifications-popup"
+
 import {classnames} from "shared/lib/helpers/classnames"
-import {LanguageSwitcher} from "shared/ui/language-switcher/LanguageSwitcher"
-import {ThemeSwitcher} from "shared/ui/theme-switcher/ThemeSwitcher"
-import {Notifications} from "shared/ui/notifications/Notifications"
-import {LoginSwitcher} from "shared/ui/login-switcher/LoginSwitcher"
 import {Row} from "shared/ui/stack"
 
 import {NavbarItemType} from "../../model/types/navbar"
@@ -53,8 +54,8 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
             {navbarItemsList}
             <ThemeSwitcher minified theme={theme} toggleTheme={toggleTheme} />
             <LanguageSwitcher minified />
-            <Notifications minified position="bottom_right" />
-            <LoginSwitcher minified position="bottom_right" />
+            <NotificationsPopup minified position="bottom_right" />
+            <AuthPopup minified position="bottom_right" />
         </Row>
     )
 }

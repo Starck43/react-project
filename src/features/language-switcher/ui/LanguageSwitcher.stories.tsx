@@ -5,7 +5,7 @@ import {LanguageSwitcher} from "./LanguageSwitcher"
 
 
 export default {
-    title: "shared/LanguageSwitcher",
+    title: "features/LanguageSwitcher",
     component: LanguageSwitcher,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof LanguageSwitcher>
