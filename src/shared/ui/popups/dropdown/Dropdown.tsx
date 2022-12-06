@@ -5,9 +5,11 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
 import {PositionType} from "shared/types/ui"
 
-import {Button} from "../button/Button"
+import {Col} from "../../stack"
+import {Button} from "../../button/Button"
 
 import cls from "./Dropdown.module.sass"
+import styles from "../styles/Popups.module.sass"
 
 
 export interface DropdownItem {
@@ -20,28 +22,48 @@ export interface DropdownItem {
 interface DropdownProps {
     variant?: ThemeVariant
     items: DropdownItem[]
-    control: ReactNode
+    toggleElement: ReactNode
+    rounded?: boolean
+    shadowed?: boolean
     position?: PositionType
     style?: CSSProperties
     className?: string
 }
 
-export const Dropdown = memo((props: DropdownProps) => {
+const Dropdown = (props: DropdownProps) => {
     const {
         variant = "primary",
         items,
-        control,
+        toggleElement,
+        rounded = false,
+        shadowed = true,
         position = "bottom_right",
         style = {},
         className,
     } = props
 
     return (
-        <Menu as="div" style={style} className={classnames(cls, [ "dropdown" ], {}, [ className ])}>
-            <Menu.Button as="div" className={cls.trigger}>
-                {control}
+        <Menu
+            as="div"
+            style={style}
+            className={classnames(cls, [ "dropdown" ], {}, [
+                styles.popup,
+                styles[variant],
+                className,
+            ])}
+        >
+            <Menu.Button as="div" className={styles.toggle__button}>
+                {toggleElement}
             </Menu.Button>
-            <Menu.Items className={classnames(cls, [ "menu", variant, position ])}>
+            <Menu.Items
+                as={Col}
+                className={classnames(cls, [ "menu" ], {}, [
+                    styles.inner_block,
+                    styles[position],
+                    rounded ? styles.rounded : "",
+                    shadowed ? styles.shadowed : "",
+                ])}
+            >
                 {items.map((item, index) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <Menu.Item as={Fragment} disabled={item.disabled} key={index}>
@@ -52,7 +74,14 @@ export const Dropdown = memo((props: DropdownProps) => {
                                 disabled={disabled}
                                 href={item.href}
                                 onClick={item.onClick}
-                                className={classnames(cls, [ "item" ], {active, disabled})}
+                                className={classnames(cls, [ "item" ], {
+                                    active,
+                                    disabled,
+                                }, [
+                                    styles.item,
+                                    active ? styles.active : "",
+                                    disabled ? styles.disabled : "",
+                                ])}
                             >
                                 {item.value}
                             </Button>
@@ -62,4 +91,6 @@ export const Dropdown = memo((props: DropdownProps) => {
             </Menu.Items>
         </Menu>
     )
-})
+}
+
+export default memo(Dropdown)

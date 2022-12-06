@@ -8,14 +8,16 @@ import {getUser} from "entities/user"
 
 import {Logout} from "features/auth"
 
+import {classnames} from "shared/lib/helpers/classnames"
 import {RoutesPath} from "shared/config/router"
 import {AppRoutes} from "shared/const/appRoutes"
-import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
+import {PositionType} from "shared/types/ui"
 import LoginIcon from "shared/assets/icons/auth.svg"
 
+import {Avatar} from "../avatar/Avatar"
 import {Button} from "../button/Button"
-import {Dropdown} from "../dropdown/Dropdown"
+import Dropdown from "../popups/dropdown/Dropdown"
 import {NavLink} from "../link/NavLink"
 
 import cls from "./LoginSwitcher.module.sass"
@@ -23,6 +25,7 @@ import cls from "./LoginSwitcher.module.sass"
 
 interface LoginSwitcherProps {
     variant?: ThemeVariant
+    position?: PositionType
     minified?: boolean
     className?: string
 }
@@ -30,6 +33,7 @@ interface LoginSwitcherProps {
 export const LoginSwitcher: FC<LoginSwitcherProps> = memo((props) => {
     const {
         variant,
+        position,
         minified = false,
         className,
     } = props
@@ -61,19 +65,20 @@ export const LoginSwitcher: FC<LoginSwitcherProps> = memo((props) => {
             {user?.username
                 ? (
                     <Dropdown
-                        control={(
-                            <Button>{minified ? <LoginIcon /> : user.username}</Button>
+                        position={position}
+                        toggleElement={(
+                            <Button>{minified ? <Avatar size="xs" src={user?.avatar} /> : user.username}</Button>
                         )}
                         items={menuItems}
                         variant={variant}
-                        className={classnames(cls, [ "login__link" ], {}, [ className ])}
+                        className={classnames(cls, [ "action" ], {}, [ className ])}
                     />
                 )
                 : (
                     <NavLink
                         to={RoutesPath[AppRoutes.AUTH]}
                         Icon={LoginIcon}
-                        className={classnames(cls, [ "login__link" ], {}, [ className ])}
+                        className={classnames(cls, [ "action" ], {}, [ className ])}
                     />
                 )}
 

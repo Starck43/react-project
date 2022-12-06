@@ -1,7 +1,7 @@
 @import "/src/app/styles/mixins"
 
 .skeleton
-	--shimmer-color: #EFEFEF
+	--shimmer-color: inherit
 
 	display: flex
 	flex-direction: column
@@ -25,8 +25,9 @@
 
 		&.block
 			display: flex
-			flex: 1 1 auto
+			flex: 1 1 2rem
 			max-width: 100%
+			min-height: 3rem
 			height: 100%
 
 	&.inlined
@@ -44,17 +45,13 @@
 			flex: 0 1 auto
 			width: inherit
 			height: inherit
-			min-height: unset
+			min-height: 1rem //unset
 
 	&.primary
-		--shimmer-color: var(--theme-primary-bg-color)
-
 		.shimmer__element
 			background-color: var(--theme-primary-skeleton-color)
 
 	&.secondary
-		--shimmer-color: var(--theme-secondary-bg-color)
-
 		.shimmer__element
 			background-color: var(--theme-secondary-skeleton-color)
 

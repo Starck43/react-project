@@ -6,12 +6,13 @@ import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
 import {classnames} from "shared/lib/helpers/classnames"
 import {LanguageSwitcher} from "shared/ui/language-switcher/LanguageSwitcher"
 import {ThemeSwitcher} from "shared/ui/theme-switcher/ThemeSwitcher"
+import {Notifications} from "shared/ui/notifications/Notifications"
 import {LoginSwitcher} from "shared/ui/login-switcher/LoginSwitcher"
 import {Row} from "shared/ui/stack"
 
-import NavItem from "./NavItem"
-import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"
 import {NavbarItemType} from "../../model/types/navbar"
+import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"
+import NavItem from "./NavItem"
 
 import cls from "./Navbar.module.sass"
 
@@ -50,14 +51,10 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
             className={classnames(cls, [ "navbar", className ])}
         >
             {navbarItemsList}
-            <ThemeSwitcher
-                minified
-                theme={theme}
-                toggleTheme={toggleTheme}
-                className={classnames(cls, [ "theme" ])}
-            />
-            <LanguageSwitcher minified className={classnames(cls, [ "lang" ])} />
-            <LoginSwitcher />
+            <ThemeSwitcher minified theme={theme} toggleTheme={toggleTheme} />
+            <LanguageSwitcher minified />
+            <Notifications minified position="bottom_right" />
+            <LoginSwitcher minified position="bottom_right" />
         </Row>
     )
 }

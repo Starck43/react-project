@@ -57,7 +57,13 @@ export const Button: FC<ButtonProps> = (props) => {
             disabled={disabled}
             {...other}
             className={classnames(cls, [
-                "button", variant, feature, size, align, href ? "is__link" : "",
+                "button",
+                variant,
+                feature,
+                size,
+                align,
+                children ? "with_title" : "squared",
+                href ? "is__link" : "",
             ], {
                 fullWidth,
                 bordered,
@@ -68,13 +74,16 @@ export const Button: FC<ButtonProps> = (props) => {
             }, [ className, variant ])}
         >
             {Icon && <Icon className={cls.icon} />}
-            {href
-                ? (
-                    <Link to={href} target={target} className={cls.link}>
-                        {children}
-                    </Link>
+            {children
+                ? (href
+                    ? (
+                        <Link to={href} target={target} className={cls.link}>
+                            {children}
+                        </Link>
+                    )
+                    : children
                 )
-                : children}
+                : null}
         </button>
     )
 }

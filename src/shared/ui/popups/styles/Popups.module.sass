@@ -1,0 +1,79 @@
+.popup
+	position: relative
+	--shimmer-color: var(--theme-popup-bg-color)
+
+
+.inner_block
+	position: absolute
+	background-color: var(--theme-popup-bg-color)
+	border: 1px solid var(--theme-popup-border-color)
+	border-radius: var(--border-radius-default)
+	white-space: nowrap
+	list-style: none
+	user-select: none
+	overflow: hidden
+	z-index: 10000
+
+.item
+	font-size: 1rem
+	text-overflow: ellipsis
+	overflow-x: hidden
+	outline: none
+	border: 0
+	cursor: pointer
+
+.disabled
+	opacity: 0.5
+
+.primary
+	.inner_block
+		color: var(--theme-primary-color)
+
+	.active
+		color: var(--theme-secondary-color)
+		background-color: var(--theme-primary-bg-color)
+
+	.selected
+		color: var(--theme-secondary-link-color)
+
+.secondary
+	.inner_block
+		color: var(--theme-primary-color)
+
+	.active
+		color: var(--theme-primary-color)
+		background-color: var(--theme-secondary-bg-color)
+
+	.selected
+		color: var(--theme-primary-link-color)
+
+.top_left
+	left: 0
+	bottom: 100%
+
+.bottom_left
+	left: 0
+	top: 100%
+
+.top_right
+	right: 0
+	bottom: 100%
+
+.bottom_right
+	right: 0
+	top: 100%
+
+.shadowed
+	box-shadow: 0 0.5rem 2.5rem -1rem var(--theme-popup-shadow-2)
+
+.rounded
+	border-radius: var(--border-radius)
+
+.toggle__button
+	margin: 0
+	padding: 0
+	background: inherit
+	color: inherit
+	border: 0
+	outline: none
+	cursor: pointer

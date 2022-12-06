@@ -25,7 +25,7 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({minified = fal
             onClick={toggleLanguage}
             className={classnames(cls, [], {minified}, [ className ])}
         >
-            <Flex gap="xs">
+            <Flex gap="xs" className={cls.action}>
                 {i18n.language === "en" ? <FlagEnIcon className="icon" /> : <FlagRuIcon className="icon" />}
                 {!minified && t("Русский")}
             </Flex>

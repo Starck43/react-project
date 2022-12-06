@@ -6,11 +6,12 @@ import {Listbox as HeadlessListBox} from "@headlessui/react"
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
 
-import {Button} from "../../ui/button/Button"
-import {PositionType} from "../../types/ui"
+import {PositionType} from "../../../types/ui"
+import {Button} from "../../button/Button"
 import DropdownIcon from "./assets/arrow-down.svg"
 
 import cls from "./ListBox.module.sass"
+import styles from "../styles/Popups.module.sass"
 
 
 interface ListBoxOption {
@@ -29,22 +30,24 @@ interface ListBoxProps {
     label?: string | null
     compact?: boolean
     rounded?: boolean
+    shadowed?: boolean
     onChange: <T = string>(value: T | any) => void
     style?: CSSProperties
     className?: string
 }
 
-const ListBox: FC<ListBoxProps> = (props) => {
+const ListBox = (props: ListBoxProps) => {
     const {
         variant = "primary",
         name,
         items,
         selectedOption,
         defaultOption,
-        position = "bottom_right",
-        label = "---",
         compact = false,
         rounded = false,
+        shadowed = true,
+        position = "bottom_right",
+        label = "---",
         onChange,
         style = {},
         className,
@@ -63,7 +66,11 @@ const ListBox: FC<ListBoxProps> = (props) => {
             // multiple
             onChange={onChange}
             style={style}
-            className={classnames(cls, [ "listBox" ], {compact}, [ className ])}
+            className={classnames(cls, [ "listBox" ], {compact}, [
+                styles.popup,
+                styles[variant],
+                className,
+            ])}
         >
             {!compact && label
             && (
@@ -78,7 +85,7 @@ const ListBox: FC<ListBoxProps> = (props) => {
                     bordered
                     rounded={rounded}
                     style={style}
-                    className={cls.trigger}
+                    className={cls.toggle__button}
                 >
                     {selectedOption?.content || defaultOption?.content || label}
                     <DropdownIcon className={cls.dropdown__icon} />
@@ -87,7 +94,12 @@ const ListBox: FC<ListBoxProps> = (props) => {
 
             <HeadlessListBox.Options
                 style={style}
-                className={classnames(cls, [ "listBox__options", variant, position ], {compact, rounded})}
+                className={classnames(cls, [ "options" ], {compact}, [
+                    styles.inner_block,
+                    styles[position],
+                    rounded ? styles.rounded : "",
+                    shadowed ? styles.shadowed : "",
+                ])}
             >
                 {listBoxOptions?.map((item) => (
                     <HeadlessListBox.Option
@@ -97,7 +109,17 @@ const ListBox: FC<ListBoxProps> = (props) => {
                         disabled={item.disabled}
                     >
                         {({active, selected, disabled}) => (
-                            <li className={classnames(cls, [ "item" ], {active, selected, disabled})}>
+                            <li className={classnames(cls, [ "item" ], {
+                                active,
+                                selected,
+                                disabled,
+                            }, [
+                                styles.item,
+                                active ? styles.active : "",
+                                selected ? styles.selected : "",
+                                disabled ? styles.disabled : "",
+                            ])}
+                            >
                                 {item.content}
                             </li>
                         )}

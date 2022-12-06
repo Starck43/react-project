@@ -2,9 +2,9 @@
 @import "src/app/styles/common"
 
 .close__button
-	width: $icon-size
-	height: $icon-size
-	min-width: $icon-size !important
+	width: var(--icon-size)
+	height: var(--icon-size)
+	min-width: var(--icon-size) !important
 	padding: 0 !important
 	border: none !important
 	cursor: pointer
@@ -12,7 +12,7 @@
 
 	&::before
 		content: "+"
-		font-size: $icon-size
+		font-size: var(--icon-size)
 		line-height: 0
 		color: var(--theme-primary-link-color)
 		opacity: 0.7

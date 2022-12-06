@@ -1,12 +1,12 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {Button} from "../button/Button"
+import {Button} from "../../button/Button"
 
-import {Dropdown} from "./Dropdown"
+import Dropdown from "./Dropdown"
 
 
 export default {
-    title: "shared/Dropdown",
+    title: "shared/popups/Dropdown",
     component: Dropdown,
     argTypes: {backgroundColor: {control: "color"}},
     args: {

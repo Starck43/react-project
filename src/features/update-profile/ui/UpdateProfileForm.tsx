@@ -11,11 +11,11 @@ import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
 import {enumToArray, getValueForStringEnum} from "shared/lib/helpers/enum"
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
+import {ListBox} from "shared/ui/popups"
 import {Button} from "shared/ui/button/Button"
 import {ButtonFeature} from "shared/ui/button/consts"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import Input from "shared/ui/input/Input"
-import ListBox from "shared/ui/listbox/ListBox"
 import {Modal} from "shared/ui/modal/Modal"
 import {Row} from "shared/ui/stack"
 

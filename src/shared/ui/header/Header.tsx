@@ -1,4 +1,5 @@
 import {ElementType, memo, ReactNode} from "react"
+import {Link} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
@@ -11,6 +12,7 @@ import cls from "./Header.module.sass"
 
 type HeaderProps = {
     tag?: ElementType
+    href?: string
     variant?: ThemeVariant
     title: ReactNode
     subTitle?: ReactNode
@@ -26,13 +28,14 @@ type HeaderProps = {
 const Header = (props: HeaderProps) => {
     const {
         tag = "div",
+        href,
         variant = "primary",
         title,
         subTitle,
         align = "start",
         inlined = false,
         gap = "xs",
-    transform = TagCase.FIRST,
+        transform = TagCase.FIRST,
         shadowed = false,
         className,
         children,
@@ -43,6 +46,17 @@ const Header = (props: HeaderProps) => {
         : subTitle
 
     const Title = tag
+    const content = (
+        <Title
+            className={classnames(cls, [
+            "title",
+            align,
+            transform,
+            variant ], {shadowed}, [ (!children && !subtitle) ? className : "" ])}
+        >
+            {title}
+        </Title>
+    )
 
     if (children || subtitle) {
         return (
@@ -50,17 +64,13 @@ const Header = (props: HeaderProps) => {
                 align={align}
                 justify={inlined ? "start" : align}
                 gap={inlined ? gap : "none"}
+                href={href}
                 wrap
                 fullWidth={inlined}
                 direction={inlined ? "row" : "column"}
                 className={classnames(cls, [ "header", variant ], {inlined}, [ className ])}
             >
-                {title
-                && (
-                <Title className={classnames(cls, [ "title", align, variant, transform ], {shadowed})}>
-                    {title}
-                </Title>
-                )}
+                {title && content}
                 {subtitle}
                 {children}
             </Flex>
@@ -68,9 +78,13 @@ const Header = (props: HeaderProps) => {
     }
 
     return (
-        <Title className={classnames(cls, [ "title", align, transform, variant ], {shadowed}, [ className ])}>
-            {title}
-        </Title>
+        href
+            ? (
+                <Link to={href} className={cls.link}>
+                    {content}
+                </Link>
+            )
+            : content
     )
 }
 

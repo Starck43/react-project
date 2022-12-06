@@ -8,7 +8,7 @@ body.additional
 	--theme-primary-border-color: #{darken(#EEE, 10%)}
 	--theme-primary-shadow: #{lighten($additional-color, 20%)}
 	--theme-primary-box-shadow: #{transparentize(#000, 0.8)}
-	--theme-primary-skeleton-color: #{lighten(#EEE, 5%)}
+	--theme-primary-skeleton-color: #{lighten($additional-color, 58%)}
 
 	--theme-secondary-link-color: #{$additional-color}
 	--theme-secondary-color: #{lighten($additional-color, 30%)}
@@ -17,18 +17,18 @@ body.additional
 	--theme-secondary-border-color: #{lighten($additional-color, 20%)}
 	--theme-secondary-shadow: #{lighten($additional-color, 30%)}
 	--theme-secondary-box-shadow: #{transparentize($additional-color, 0.2)}
-	--theme-secondary-skeleton-color: var(--theme-secondary-bg-color)
+	--theme-secondary-skeleton-color: #{lighten($additional-color, 42%)}
 
 	--theme-navbar-bg-color: #{lighten($additional-color, 50%)}
 	--theme-navbar-link-color: #{$additional-color}
 
 	--theme-sidebar-bg-color: #FFF
-	--theme-modal-bg-color: #{lighten($additional-color, 50%)}
-	--theme-modal-input-color: #FFF
-	--theme-modal-text-color: #000
-	--theme-modal-shadow-1: #{lighten($additional-color, 60%)}
-	--theme-modal-shadow-2: #{lighten($additional-color, 40%)}
-	--theme-modal-border-color: #{transparentize(#FFF, 0.3)}
+	--theme-popup-bg-color: #{lighten($additional-color, 50%)}
+	--theme-popup-input-color: #FFF
+	--theme-popup-text-color: #000
+	--theme-popup-shadow-1: #{lighten($additional-color, 60%)}
+	--theme-popup-shadow-2: #{lighten($additional-color, 40%)}
+	--theme-popup-border-color: #{transparentize(#FFF, 0.3)}
 
 	--theme-info-error: #C21919
 	--theme-info-warning: #BE6B0B

@@ -1,4 +1,5 @@
 import {ReactNode, ElementType, ComponentProps} from "react"
+import {Link} from "react-router-dom"
 
 import {classnames} from "shared/lib/helpers/classnames"
 
@@ -12,6 +13,7 @@ type FlexGap = "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 export interface FlexProps<E extends ElementType = ElementType> {
     as?: ElementType // keyof HTMLElementTagNameMap
+    href?: string
     justify?: FlexJustify
     align?: FlexAlign
     direction?: FlexDirection
@@ -20,11 +22,13 @@ export interface FlexProps<E extends ElementType = ElementType> {
     fullWidth?: boolean
     children?: ReactNode | ReactNode[]
 }
+
 export type FlexPropsType<E extends ElementType> = FlexProps<E> & Omit<ComponentProps<E>, keyof FlexProps>
 
 export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(props: FlexPropsType<E>) => {
     const {
         as = "div",
+        href,
         justify = "center",
         align = "center",
         direction = "row",
@@ -46,8 +50,16 @@ export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(props:
 
     const Tag = as
     return (
-        <Tag className={classes} style={style}>
-            {children}
-        </Tag>
+        href
+            ? (
+                <Link to={href} className={classes} style={style}>
+                    {children}
+                </Link>
+            )
+            : (
+                <Tag className={classes} style={style}>
+                    {children}
+                </Tag>
+            )
     )
 }
