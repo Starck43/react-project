@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux"
 
 import {getUser, userActions} from "entities/user"
 
-import {Modal} from "shared/ui/modal/Modal"
+import {Modal} from "shared/ui/modals"
 
 import cls from "./Logout.module.sass"
 
@@ -28,8 +28,8 @@ export const Logout = ({show, closeHandler}: LogoutProps) => {
             open={show}
             onSubmit={logoutClick}
             onClose={closeHandler}
-            submitLabel={t("да")}
-            cancelLabel={t("нет")}
+            primaryBtnLabel={t("да")}
+            secondaryBtnLabel={t("нет")}
             size="auto"
             bordered
             rounded

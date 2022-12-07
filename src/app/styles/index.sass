@@ -11,9 +11,9 @@
 	--font-family-main: "Consoles", #{ $base-fonts }
 
 	--font-size-main-xl: 17px
-	--font-size-main-l:  16px
-	--font-size-main-m:  15px
-	--font-size-main-s:  14px
+	--font-size-main-l:  18px
+	--font-size-main-m:  20px
+	--font-size-main-s:  22px
 
 	--line-height-title: 1.3
 	--line-height-main:  1.5
@@ -38,9 +38,19 @@
 	@media (min-width: 1200px)
 		--sidebar-width: 300px
 
-	--overlay-bg-color: #{transparentize(black, 0.6)}
-	--modal-width-default: 60%
-	--modal-height-default: 80%
+	--overlay-bg-color: #{transparentize(black, 0.5)}
+
+	--modal-width-default: 90%
+	--modal-height-default: 90%
+	--drawer-width-default: 100%
+	--drawer-height-default: 90%
+
+	@media (min-width: 576px)
+		--modal-width-default: 60%
+		--modal-height-default: 80%
+		--drawer-width-default: 80%
+		--drawer-height-default: 80%
+
 	--modal-z-index: 10000
 	--modal-transition-time: 180
 
@@ -53,6 +63,7 @@ body
 	line-height: var(--line-height-main)
 	font-family: var(--font-family-main)
 	font-size: var(--font-size-main-s)
+	overflow-x: hidden
 
 	@media (min-width: 576px)
 		font-size: var(--font-size-main-m)

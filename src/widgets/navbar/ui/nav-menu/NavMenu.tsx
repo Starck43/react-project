@@ -5,7 +5,7 @@ import {NotificationList} from "entities/notification"
 import {classnames} from "shared/lib/helpers/classnames"
 import {PositionType} from "shared/types/ui"
 import {Button} from "shared/ui/button/Button"
-import {Drawer} from "shared/ui/drawer/Drawer"
+import {Drawer} from "shared/ui/modals"
 
 import BurgerIcon from "shared/assets/icons/burger-menu.svg"
 
@@ -35,8 +35,8 @@ export const NavMenu = memo(({position = "right", className}: NavMenuProps) => {
             && (
                 <Drawer
                     position={position}
-                    rounded
                     bordered
+                    fullSize
                     open={show}
                     onClose={closeMenuHandler}
                     closeOnOverlayClick

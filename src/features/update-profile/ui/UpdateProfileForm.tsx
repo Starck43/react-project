@@ -12,7 +12,7 @@ import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 import {ListBox} from "shared/ui/popups"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import Input from "shared/ui/input/Input"
-import {Modal} from "shared/ui/modal/Modal"
+import {Modal} from "shared/ui/modals"
 import {Row} from "shared/ui/stack"
 
 import {updateProfileData} from "../model/services/updateProfileData"
@@ -68,8 +68,8 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
             open={show}
             onSubmit={submitUpdateClick}
             onClose={cancelClick}
-            submitLabel={t("сохранить")}
-            cancelLabel={t("отмена")}
+            primaryBtnLabel={t("сохранить")}
+            secondaryBtnLabel={t("отмена")}
             rounded
             bordered
             size="auto"

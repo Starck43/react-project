@@ -1,0 +1,34 @@
+.modals
+	display: none
+	padding: 2rem
+	background-color: var(--theme-popup-bg-color)
+	border: var(--border-thickness) solid transparent
+	overflow: hidden auto
+	pointer-events: none
+	z-index: -1
+
+	&.open
+		display: flex
+		pointer-events: auto
+		transition: transform 200ms ease-out
+		z-index: calc(var(--modal-z-index) + 1)
+		// backdrop-filter: blur(2px)
+
+.body
+	flex: auto
+	width: auto
+	margin: 0 -0.5rem
+	padding: 0 0.5rem
+	overflow-y: auto
+
+.fullSize
+	.body
+		width: 100%
+
+.bordered
+	border-color: var(--theme-popup-border-color)
+
+.close__button
+	margin-left: auto
+	flex-grow: 0
+	z-index: 2
