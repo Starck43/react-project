@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react"
+import {memo, useState} from "react"
 import {useTranslation} from "react-i18next"
 
 import {ErrorTestButton} from "app/providers/error-boundary-provider"
@@ -8,7 +8,7 @@ import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
 import {classnames} from "shared/lib/helpers/classnames"
 import {AlignType} from "shared/types/ui"
 import {NavLink} from "shared/ui/link/NavLink"
-import {ToggleButton, ToggleThemeVariant} from "shared/ui/toggle-button/ToggleButton"
+import {ToggleButton} from "shared/ui/toggle-button/ToggleButton"
 
 import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
@@ -30,17 +30,17 @@ function Sidebar({position = "right", className}: SidebarProps) {
 
     return (
         <aside
-            data-testid="sidebar"
+            data-testid="Sidebar"
             className={classnames(cls, [ "sidebar", position ], {collapsed}, [
-                "sidebar",
                 collapsed ? "collapsed" : "",
+                "sidebar",
                 className,
             ])}
         >
             {width < 992 && (
                 <ToggleButton
-                    data-testid="sidebar-toggle"
-                    variant={collapsed ? ToggleThemeVariant.RIGHT : ToggleThemeVariant.LEFT}
+                    data-testid="Sidebar.ToggleBtn"
+                    position={collapsed ? "right" : "left"}
                     className={classnames(cls, [ "toggle__btn", position ], {collapsed})}
                     onClick={toggleSidebar}
                 />

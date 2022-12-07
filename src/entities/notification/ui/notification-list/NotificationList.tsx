@@ -62,7 +62,7 @@ export const NotificationList = ({className}: NotificationListProps) => {
 
     return (
         <Col
-            data-testid="notification-list"
+            data-testid="NotificationList"
             gap="sm"
             className={classnames(cls, [ "notification_list" ], {}, [ className ])}
         >

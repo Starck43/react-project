@@ -1,14 +1,18 @@
 import {
-    useCallback, useEffect, useRef, useState,
-    MutableRefObject,
     ReactNode,
-    MouseEvent,
+    MutableRefObject,
+    useCallback, useEffect, useRef, useState,
 } from "react"
 
+import type {SizeType} from "shared/types/ui"
 import {classnames} from "shared/lib/helpers/classnames"
+import {Button} from "../button/Button"
+import {ButtonFeature} from "../button/consts"
+
+import {Overlay} from "../overlay/Overlay"
 import {Portal} from "../portal/Portal"
 import {CloseButton} from "../close-button/CloseButton"
-import {Col, Row} from "../../ui/stack"
+import {Col, Flex, Row} from "../../ui/stack"
 
 // import vars from "app/styles/_globals.scss"
 import cls from "./Modal.module.sass"
@@ -20,9 +24,17 @@ const TIME = 180
 interface ModalProps {
     header?: ReactNode
     footer?: ReactNode
+    cancelLabel?: string | null
+    submitLabel?: string | null
+    onSubmit?: () => void
+    onClose?: () => void
     lazy?: boolean
-    open?: boolean
-    onClose: (() => void) | undefined
+    closeOnOverlayClick?: boolean
+    open: boolean
+    rounded?: boolean
+    bordered?: boolean
+    size?: SizeType
+    fullScreen?: boolean
     style?: object
     className?: string
     children: ReactNode
@@ -32,9 +44,17 @@ export const Modal = (props: ModalProps) => {
     const {
         header,
         footer,
-        open = false,
+        onSubmit,
         onClose,
+        submitLabel,
+        cancelLabel,
+        open = false,
+        closeOnOverlayClick = false,
         lazy = false,
+        rounded = false,
+        bordered = true,
+        size,
+        fullScreen = false,
         children,
         className,
         style,
@@ -43,7 +63,16 @@ export const Modal = (props: ModalProps) => {
     const [ show, setShow ] = useState(false)
     const [ isMounted, setIsMounted ] = useState(false)
     const timeRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
-    const preventClick = (e: MouseEvent) => e.stopPropagation()
+
+    const handleSubmit = useCallback(() => {
+        if (onSubmit) {
+            setShow(false)
+            timeRef.current = setTimeout(() => {
+                // @ts-ignore
+                onSubmit()
+            }, TIME)
+        }
+    }, [ onSubmit ])
 
     const handleClose = useCallback(() => {
         if (onClose) {
@@ -64,10 +93,11 @@ export const Modal = (props: ModalProps) => {
 
     useEffect(() => {
         if (open) {
-            window.addEventListener("keydown", onPressKey)
+            // to render frame with display block before showing with opacity 1
             timeRef.current = setTimeout(() => {
                 setShow(true)
             }, 0)
+            window.addEventListener("keydown", onPressKey)
         }
         return () => {
             clearTimeout(timeRef.current)
@@ -84,35 +114,64 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <div data-testid="modal" className={classnames(cls, [ "modal" ], {open, show})}>
-                {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
-                <div className={cls.overlay}>
-                    {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/interactive-supports-focus */}
-                    <Col
-                        gap="sm"
-                        fullWidth
-                        role="link"
-                        onClick={preventClick}
-                        className={classnames(cls, [ "content" ], {}, [ className, "shadow" ])}
-                        style={style}
-                    >
-                        <Row gap="sm" fullWidth justify="between" align="baseline" className={cls.header}>
-                            {header}
-                            <CloseButton className={cls.close__btn} handleClick={handleClose} />
-                        </Row>
+            <Overlay open={open} show={show} onClick={closeOnOverlayClick ? handleClose : undefined} />
+            <Col
+                data-testid="modal"
+                role="link"
+                justify="between"
+                gap="sm"
+                className={classnames(cls, [ "modal", "shadowed", size ], {
+                    open,
+                    show,
+                    rounded,
+                    bordered,
+                    fullScreen,
+                }, [ className ])}
+                style={style}
+            >
+                <Row
+                    gap="sm"
+                    fullWidth
+                    justify="between"
+                    align="baseline"
+                    className={cls.header}
+                >
+                    {header}
+                    <CloseButton className={cls.close__button} handleClick={handleClose} />
+                </Row>
 
-                        <div className={cls.body}>
-                            {children}
-                        </div>
+                <Flex wrap justify="between" gap="xs" className={cls.body}>
+                    {children}
+                </Flex>
 
-                        {footer && (
-                            <div className={cls.footer}>
-                                {footer}
-                            </div>
-                        )}
-                    </Col>
-                </div>
-            </div>
+                <Flex wrap className={cls.footer}>
+                    {footer}
+                    {handleSubmit
+                    && (
+                        <Button
+                            data-testid="SubmitButton"
+                            feature={ButtonFeature.BLANK}
+                            type="submit"
+                            bordered
+                            onClick={handleSubmit}
+                        >
+                            {submitLabel}
+                        </Button>
+                    )}
+
+                    {handleClose
+                    && (
+                        <Button
+                            data-testid="CancelButton"
+                            feature={ButtonFeature.BLANK}
+                            bordered
+                            onClick={handleClose}
+                        >
+                            {cancelLabel}
+                        </Button>
+                    )}
+                </Flex>
+            </Col>
         </Portal>
     )
 }

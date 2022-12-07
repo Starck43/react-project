@@ -25,11 +25,11 @@ import cls from "./ProfileCard.module.sass"
 
 interface ProfileCardProps {
     id?: string
-    onShowProfileHandler?: (val: boolean) => void
-    onLogoutHandler?: (val: boolean) => void
+    onShowProfile?: () => void
+    onLogout?: () => void
 }
 
-export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: ProfileCardProps) => {
+export const ProfileCard = ({id, onShowProfile, onLogout}: ProfileCardProps) => {
     const {i18n, t} = useTranslation("auth")
     const dispatch = useAppDispatch()
     const profile = useSelector(getProfileData)
@@ -88,7 +88,7 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
                         feature={ButtonFeature.BLANK}
                         bordered
                         disabled={isLoading}
-                        onClick={() => onShowProfileHandler?.(true)}
+                        onClick={onShowProfile}
                     >
                         {t("изменить")}
                     </Button>
@@ -98,7 +98,7 @@ export const ProfileCard = ({id, onShowProfileHandler, onLogoutHandler}: Profile
                         feature={ButtonFeature.BLANK}
                         bordered
                         disabled={isLoading}
-                        onClick={() => onLogoutHandler?.(true)}
+                        onClick={onLogout}
                     >
                         {t("выйти", {profile})}
                     </Button>

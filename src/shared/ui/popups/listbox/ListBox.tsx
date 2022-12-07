@@ -1,12 +1,12 @@
 import {
-    memo, useMemo, FC, Fragment, ReactNode, CSSProperties,
+    memo, useMemo, Fragment, ReactNode, CSSProperties,
 } from "react"
 import {Listbox as HeadlessListBox} from "@headlessui/react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
 
-import {PositionType} from "../../../types/ui"
+import {PopupPositionType} from "../types"
 import {Button} from "../../button/Button"
 import DropdownIcon from "./assets/arrow-down.svg"
 
@@ -26,7 +26,7 @@ interface ListBoxProps {
     items: ListBoxOption[]
     selectedOption?: ListBoxOption
     defaultOption?: ListBoxOption
-    position?: PositionType
+    position?: PopupPositionType
     label?: string | null
     compact?: boolean
     rounded?: boolean

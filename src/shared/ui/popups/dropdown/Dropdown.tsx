@@ -3,7 +3,7 @@ import {Menu} from "@headlessui/react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
-import {PositionType} from "shared/types/ui"
+import {PopupPositionType} from "../types"
 
 import {Col} from "../../stack"
 import {Button} from "../../button/Button"
@@ -25,7 +25,7 @@ interface DropdownProps {
     toggleElement: ReactNode
     rounded?: boolean
     shadowed?: boolean
-    position?: PositionType
+    position?: PopupPositionType
     style?: CSSProperties
     className?: string
 }

@@ -18,6 +18,7 @@
     "function-url-quotes": "never",
     "function-no-unknown": null,
     "at-rule-no-unknown": null,
+    "at-rule-empty-line-before": null,
     "property-no-unknown": null,
     "no-empty-source": null,
     "property-case": null,

@@ -161,7 +161,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
                             feature={ButtonFeature.BLANK}
                             bordered
                         >
-                            {t("сохранить")}
+                            {}
                         </Button>
                         <Button
                             data-testid="UpdateArticleForm.CancelButton"

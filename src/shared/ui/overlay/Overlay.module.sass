@@ -1,0 +1,21 @@
+@import "src/app/styles/vars.sass"
+@import "src/app/styles/common.sass"
+@import "src/app/styles/mixins.sass"
+
+
+.overlay
+	@include push--fixed
+
+	display: none
+	background-color: var(--overlay-bg-color)
+	cursor: pointer
+	z-index: -1
+
+.open
+	display: block
+	transition: opacity 180ms linear
+	opacity: 0
+	z-index: var(--modal-z-index)
+
+	&.show
+		opacity: 1

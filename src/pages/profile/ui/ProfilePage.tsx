@@ -1,4 +1,4 @@
-import {memo, useState} from "react"
+import {memo, useCallback, useState} from "react"
 import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
@@ -19,8 +19,16 @@ function ProfilePage() {
     const {t} = useTranslation("auth")
     const {id} = useParams<{ id: string }>()
 
-    const [ isShowLogout, setShowLogout ] = useState(false)
     const [ isShowProfile, setShowProfile ] = useState(false)
+    const [ isShowLogout, setShowLogout ] = useState(false)
+
+    const onCloseProfile = useCallback(() => {
+        setShowProfile(false)
+    }, [])
+
+    const onCloseLogout = useCallback(() => {
+        setShowLogout(false)
+    }, [])
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
@@ -28,21 +36,21 @@ function ProfilePage() {
                 <Header tag="h2" title={t("профиль")} shadowed align="center" />
                 <ProfileCard
                     id={id}
-                    onShowProfileHandler={setShowProfile}
-                    onLogoutHandler={setShowLogout}
+                    onShowProfile={() => setShowProfile(true)}
+                    onLogout={() => setShowLogout(true)}
                 />
 
                 {isShowProfile && (
                     <UpdateProfileForm
                         show={isShowProfile}
-                        closeHandler={() => setShowProfile((prev) => !prev)}
+                        closeHandler={onCloseProfile}
                     />
                 )}
 
                 {isShowLogout && (
                     <Logout
                         show={isShowLogout}
-                        closeHandler={() => setShowLogout((prev) => !prev)}
+                        closeHandler={onCloseLogout}
                     />
                 )}
             </Page>

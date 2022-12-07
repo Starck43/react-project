@@ -13,7 +13,8 @@ import {Row} from "shared/ui/stack"
 
 import {NavbarItemType} from "../../model/types/navbar"
 import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"
-import NavItem from "./NavItem"
+import {NavMenu} from "../nav-menu/NavMenu"
+import NavItem from "../nav-item/NavItem"
 
 import cls from "./Navbar.module.sass"
 
@@ -27,7 +28,6 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
     // const {width} = useWindowDimensions()
     // const collapsed = width < 992
     const itemsList = useSelector(getNavbarItemsData)
-
 
     const navbarItemsList = useMemo(() => (Object.keys(itemsList).map((key) => (
         <div key={key} className={classnames(cls, [ `navbar__${key}` ])}>
@@ -52,10 +52,12 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
             className={classnames(cls, [ "navbar", className ])}
         >
             {navbarItemsList}
+
             <ThemeSwitcher minified theme={theme} toggleTheme={toggleTheme} />
             <LanguageSwitcher minified />
             <NotificationsPopup minified position="bottom_right" />
             <AuthPopup minified position="bottom_right" />
+            <NavMenu position="right" />
         </Row>
     )
 }

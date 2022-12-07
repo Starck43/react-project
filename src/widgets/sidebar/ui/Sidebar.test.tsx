@@ -9,7 +9,7 @@ describe("Sidebar Tests", () => {
     const SidebarWithTranslation = withTranslation()(Sidebar)
     test("Sidebar in DOM", () => {
         componentRender(<SidebarWithTranslation />)
-        expect(screen.getByTestId("sidebar"))
+        expect(screen.getByTestId("Sidebar"))
         .toBeInTheDocument()
     })
 
@@ -17,9 +17,9 @@ describe("Sidebar Tests", () => {
         componentRender(<SidebarWithTranslation />)
         const w = window.innerWidth
         if (w < 992) {
-            const toggleBtn = screen.getByTestId("sidebar-toggle")
+            const toggleBtn = screen.getByTestId("Sidebar.ToggleBtn")
             fireEvent.click(toggleBtn)
-            expect(screen.getByTestId("sidebar"))
+            expect(screen.getByTestId("Sidebar"))
             .toHaveClass("collapsed")
         }
         screen.debug()

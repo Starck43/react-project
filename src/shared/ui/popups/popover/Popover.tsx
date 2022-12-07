@@ -3,7 +3,7 @@ import {Popover as HeadlessPopover} from "@headlessui/react"
 
 import {classnames} from "shared/lib/helpers/classnames"
 import {ThemeVariant} from "shared/types/theme"
-import {PositionType} from "shared/types/ui"
+import {PopupPositionType} from "../types"
 
 import cls from "./Popover.module.sass"
 import styles from "../styles/Popups.module.sass"
@@ -14,7 +14,7 @@ interface PopoverProps {
     toggleElement: ReactNode
     rounded?: boolean
     shadowed?: boolean
-    position?: PositionType
+    position?: PopupPositionType
     style?: CSSProperties
     className?: string
     children: ReactNode

@@ -45,13 +45,13 @@ const options = {
 describe("UpdateProfileForm Tests", () => {
     beforeEach(() => {}) // common logic, running before every test, may be here
 
-    test("Can save and cancel test", () => {
+    test("Can save and cancel test", async () => {
         const showProfile = jest.fn(() => componentRender(<UpdateProfileForm show />))
-        componentRender(<ProfileCard id="1" onShowProfileHandler={showProfile} />, options)
-        fireEvent.click(screen.getByTestId("ProfileCard.EditButton"))
+        componentRender(<ProfileCard id="1" />, options)
+        await userEvent.click(screen.getByTestId("ProfileCard.EditButton"))
         expect(showProfile).toHaveBeenCalledTimes(1)
-        expect(screen.getByTestId("UpdateProfileForm.SaveButton")).toBeInTheDocument()
-        expect(screen.getByTestId("UpdateProfileForm.CancelButton")).toBeInTheDocument()
+        expect(screen.getByTestId("SaveButton")).toBeInTheDocument()
+        expect(screen.getByTestId("CancelButton")).toBeInTheDocument()
     })
 
     test("Revert data on edit cancel test", async () => {
@@ -66,7 +66,7 @@ describe("UpdateProfileForm Tests", () => {
         // check input val after change
         expect(screen.getByTestId("UpdateProfileForm.Username")).toHaveValue("guest")
         // click on Cancel btn
-        fireEvent.click(screen.getByTestId("UpdateProfileForm.CancelButton"))
+        await userEvent.click(screen.getByTestId("CancelButton"))
         // check if input state is reverted to init state
         expect(screen.getByTestId("UpdateProfileForm.Username")).toHaveValue("admin")
     })
@@ -76,7 +76,7 @@ describe("UpdateProfileForm Tests", () => {
         // clear input
         await userEvent.clear(screen.getByTestId("UpdateProfileForm.Name"))
         // click on Save btn
-        fireEvent.click(screen.getByTestId("UpdateProfileForm.SaveButton"))
+        fireEvent.click(screen.getByTestId("SaveButton"))
         // check result
         expect(screen.getByTestId("UpdateProfileForm.ValidateErrors.SubTitle")).toBeInTheDocument()
     })
@@ -86,7 +86,7 @@ describe("UpdateProfileForm Tests", () => {
         componentRender(<UpdateProfileForm show />, options)
         await userEvent.clear(screen.getByTestId("UpdateProfileForm.Username"))
         await userEvent.type(screen.getByTestId("UpdateProfileForm.Username"), "guest")
-        fireEvent.click(screen.getByTestId("UpdateProfileForm.SaveButton"))
+        await userEvent.click(screen.getByTestId("SaveButton"))
         // check result
         expect(mockedPut).toHaveBeenCalled()
     })

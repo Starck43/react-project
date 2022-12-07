@@ -10,13 +10,12 @@ import {classnames} from "shared/lib/helpers/classnames"
 import {RoutesPath} from "shared/config/router"
 import {AppRoutes} from "shared/const/appRoutes"
 import {ThemeVariant} from "shared/types/theme"
-import {PositionType} from "shared/types/ui"
 import LoginIcon from "shared/assets/icons/auth.svg"
 
 import {Avatar} from "shared/ui/avatar/Avatar"
 import {Button} from "shared/ui/button/Button"
 import {NavLink} from "shared/ui/link/NavLink"
-import {Dropdown} from "shared/ui/popups"
+import {Dropdown, PopupPositionType} from "shared/ui/popups"
 
 import {Logout} from "../../logout/ui/Logout"
 
@@ -25,7 +24,7 @@ import cls from "./AuthPopup.module.sass"
 
 interface LoginSwitcherProps {
     variant?: ThemeVariant
-    position?: PositionType
+    position?: PopupPositionType
     minified?: boolean
     className?: string
 }

@@ -16,25 +16,24 @@
 	background-color: transparent
 	border: 1px solid transparent
 
-	&.down
-		&::before
-			transform: rotate(-90deg)
-
-	&.up
-		&::before
-			transform: rotate(90deg)
-
-	&.right
-		&::before
-			transform: rotate(180deg)
-
+	// remove later
 	&::before
 		content: "\2039"
 		transition: all 100ms ease-in-out
-
 		@include push--absolute()
-
 		@extend .centered
 
 	&:hover
 		border-color: var(--theme-navbar-link-color)
+
+.down
+	&::before
+		transform: rotate(-90deg)
+
+.up
+	&::before
+		transform: rotate(90deg)
+
+.right
+	&::before
+		transform: rotate(180deg)

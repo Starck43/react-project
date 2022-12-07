@@ -1,14 +1,14 @@
-import {memo} from "react"
+import {memo, useCallback, useMemo, useState} from "react"
 import {useTranslation} from "react-i18next"
 
 import {NotificationList} from "entities/notification"
 
+import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
 import {ThemeVariant} from "shared/types/theme"
-import {PositionType} from "shared/types/ui"
-import NotificationIcon from "shared/assets/icons/notification-20-20.svg"
-
 import {Button} from "shared/ui/button/Button"
-import {Popover} from "shared/ui/popups"
+import {Drawer} from "shared/ui/drawer/Drawer"
+import {Popover, PopupPositionType} from "shared/ui/popups"
+import NotificationIcon from "shared/assets/icons/notification-20-20.svg"
 
 // import cls from "./Notifications.module.sass"
 
@@ -16,7 +16,7 @@ import {Popover} from "shared/ui/popups"
 interface NotificationsProps {
     variant?: ThemeVariant
     minified?: boolean
-    position?: PositionType
+    position?: PopupPositionType
     className?: string
 }
 
@@ -28,22 +28,55 @@ export const NotificationsPopup = memo((props: NotificationsProps) => {
         className,
     } = props
 
-	const {t} = useTranslation()
+    const {t} = useTranslation()
+    const {width: screenWidth, isMobile} = useWindowDimensions()
+    const [ showDrawer, setShow ] = useState(false)
+
+    const showDrawerDrawerHandler = useCallback(() => setShow(true), [])
+    const closeDrawerHandler = useCallback(() => setShow(false), [])
+
+    const compactMode = isMobile || screenWidth < 576
+
+    const toggler = (
+        <Button
+            Icon={NotificationIcon}
+            onClick={compactMode ? showDrawerDrawerHandler : undefined}
+        >
+            {!minified && t("уведомления")}
+        </Button>
+    )
+
+    const content = useMemo(() => (<NotificationList />), [])
 
     return (
-        <Popover
-            variant={variant}
-            position={position}
-            shadowed
-            rounded
-            toggleElement={(
-                <Button Icon={NotificationIcon}>
-                    {!minified && t("уведомления")}
-                </Button>
-            )}
-            className={className}
-        >
-            <NotificationList />
-        </Popover>
+        compactMode
+            ? (
+                <>
+                    {toggler}
+                    <Drawer
+                        position="bottom"
+                        rounded
+                        bordered
+                        open={showDrawer}
+                        onClose={closeDrawerHandler}
+                        closeOnOverlayClick
+                        className={className}
+                    >
+                        {content}
+                    </Drawer>
+                </>
+            )
+            : (
+                <Popover
+                    variant={variant}
+                    position={position}
+                    shadowed
+                    rounded
+                    toggleElement={toggler}
+                    className={className}
+                >
+                    {content}
+                </Popover>
+            )
     )
 })

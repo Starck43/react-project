@@ -1,0 +1,101 @@
+@import "src/app/styles/vars.sass"
+@import "src/app/styles/common.sass"
+@import "src/app/styles/mixins.sass"
+
+
+.drawer
+	position: fixed
+	display: none
+	padding: 2rem
+	background-color: var(--theme-popup-bg-color)
+	overflow: hidden auto
+	pointer-events: none
+	z-index: -1
+
+	&.open
+		display: flex
+		pointer-events: auto
+		transition: transform 180ms ease-out
+		z-index: calc(var(--modal-z-index) + 1)
+		// backdrop-filter: blur(2px)
+
+		&.show
+			transform: unset
+
+.body
+	flex-grow: 1
+	width: auto
+	margin: 0 -0.5rem
+	padding: 0 0.5rem
+	overflow-y: auto
+
+.close__button
+	margin-left: auto
+	flex-grow: 0
+	z-index: 2
+
+.shadowed
+	box-shadow: 0 0 2rem -0.5rem rgb(0 0 0 / 20%)
+
+.rounded
+	border-radius: var(--border-radius)
+
+.bordered
+	border: solid 0 var(--theme-popup-border-color)
+
+.left
+	left: 0
+	transform: translateX(-100%)
+
+	&.bordered
+		border-right-width: var(--border-thickness)
+
+	&.rounded
+		border-top-right-radius: var(--border-radius)
+		border-bottom-right-radius: var(--border-radius)
+
+.right
+	right: 0
+	transform: translateX(100%)
+
+	&.bordered
+		border-left-width: var(--border-thickness)
+
+	&.rounded
+		border-top-left-radius: var(--border-radius)
+		border-bottom-left-radius: var(--border-radius)
+
+.top
+	top: 0
+	transform: translateY(-100%)
+
+	&.bordered
+		border-bottom-width: var(--border-thickness)
+
+	&.rounded
+		border-bottom-left-radius: var(--border-radius)
+		border-bottom-right-radius: var(--border-radius)
+
+	.body
+		flex-grow: 0
+
+.bottom
+	bottom: 0
+	transform: translateY(100%)
+
+	&.bordered
+		border-top-width: var(--border-thickness)
+
+	&.rounded
+		border-top-left-radius: var(--border-radius)
+		border-top-right-radius: var(--border-radius)
+
+.left, .right
+	top: 0
+	height: 100%
+	width: var(--modal-width-default)
+
+.bottom, .top
+	left: 0
+	width: 100%
+	height:  var(--modal-height-default)

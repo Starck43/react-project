@@ -1,4 +1,4 @@
-import {MutableRefObject, useEffect, useState} from "react"
+import {useEffect, useState, MutableRefObject} from "react"
 import {getWindowDimensions} from "../helpers/dom"
 
 

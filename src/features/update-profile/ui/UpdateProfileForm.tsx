@@ -1,10 +1,8 @@
-import {FormEvent, memo, useCallback} from "react"
+import {memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
-import {
-    getProfileCopy, getProfileValidateErrors, Profile, profileActions, ValidateProfileError,
-} from "entities/profile"
+import {getProfileCopy, getProfileValidateErrors, profileActions, ValidateProfileError} from "entities/profile"
 import {Country} from "entities/country"
 
 import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
@@ -12,8 +10,6 @@ import {enumToArray, getValueForStringEnum} from "shared/lib/helpers/enum"
 import {capitalizeFirstLetter} from "shared/lib/helpers/strings"
 
 import {ListBox} from "shared/ui/popups"
-import {Button} from "shared/ui/button/Button"
-import {ButtonFeature} from "shared/ui/button/consts"
 import {Info, InfoStatus} from "shared/ui/info/Info"
 import Input from "shared/ui/input/Input"
 import {Modal} from "shared/ui/modal/Modal"
@@ -44,8 +40,7 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
         [ValidateProfileError.SERVER_ERROR]: t("ошибка сервера"),
     }
 
-    const submitUpdateClick = useCallback(async (e: FormEvent<Profile>) => {
-        e.preventDefault()
+    const submitUpdateClick = useCallback(async () => {
         const res = await dispatch(updateProfileData())
         if (res.meta.requestStatus === "fulfilled") {
             closeHandler?.()
@@ -71,95 +66,78 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
         <Modal
             header={<h4>{t("изменение профиля")}</h4>}
             open={show}
-            onClose={closeHandler}
+            onSubmit={submitUpdateClick}
+            onClose={cancelClick}
+            submitLabel={t("сохранить")}
+            cancelLabel={t("отмена")}
+            rounded
+            bordered
+            size="auto"
             className="modal-sm"
         >
-            <form onSubmit={submitUpdateClick}>
-                <Input
-                    data-testid="UpdateProfileForm.Username"
-                    name="username"
-                    value={copy?.username}
-                    onChange={onInputChange}
-                    placeholder={t("ник") as string}
-                    className="mb-1"
-                />
-                <Input
-                    data-testid="UpdateProfileForm.Name"
-                    name="name"
-                    value={copy?.name}
-                    onChange={onInputChange}
-                    placeholder={t("имя") as string}
-                    className="mb-1"
-                />
-                <Input
-                    data-testid="UpdateProfileForm.Surname"
-                    name="surname"
-                    value={copy?.surname}
-                    onChange={onInputChange}
-                    placeholder={t("фамилия") as string}
-                    className="mb-1"
-                />
-                <Input
-                    data-testid="UpdateProfileForm.Email"
-                    name="email"
-                    value={copy?.email}
-                    onChange={onInputChange}
-                    placeholder={t("email") as string}
-                    className="mb-1"
-                />
-                <Input
-                    data-testid="UpdateProfileForm.Phone"
-                    name="phone"
-                    value={copy?.phone}
-                    onChange={onInputChange}
-                    placeholder={t("телефон") as string}
-                    className="mb-1"
-                />
-                <ListBox
-                    data-testid="UpdateProfileForm.Country"
-                    variant="secondary"
-                    name="country"
-                    label={t("страна")}
-                    items={enumToArray(Country, i18n.language === "en")}
-                    selectedOption={copy?.country && {
-                        value: copy.country.toUpperCase(),
-                        content: i18n.language === "en"
-                            ? capitalizeFirstLetter(copy.country)
-                            : getValueForStringEnum(Country, copy.country.toUpperCase()),
-                    }}
-                    position="top_left"
-                    compact
-                    onChange={onSelectChange}
-                    className="mb-1"
-                />
+            <Input
+                data-testid="UpdateProfileForm.Username"
+                name="username"
+                value={copy?.username}
+                onChange={onInputChange}
+                placeholder={t("ник") as string}
+            />
+            <Input
+                data-testid="UpdateProfileForm.Name"
+                name="name"
+                value={copy?.name}
+                onChange={onInputChange}
+                placeholder={t("имя") as string}
+            />
+            <Input
+                data-testid="UpdateProfileForm.Surname"
+                name="surname"
+                value={copy?.surname}
+                onChange={onInputChange}
+                placeholder={t("фамилия") as string}
+            />
+            <Input
+                data-testid="UpdateProfileForm.Email"
+                name="email"
+                value={copy?.email}
+                onChange={onInputChange}
+                placeholder={t("email") as string}
+            />
+            <Input
+                data-testid="UpdateProfileForm.Phone"
+                name="phone"
+                value={copy?.phone}
+                onChange={onInputChange}
+                placeholder={t("телефон") as string}
+            />
+            <ListBox
+                data-testid="UpdateProfileForm.Country"
+                variant="secondary"
+                name="country"
+                label={t("страна")}
+                items={enumToArray(Country, i18n.language === "en")}
+                selectedOption={copy?.country && {
+                    value: copy.country.toUpperCase(),
+                    content: i18n.language === "en"
+                        ? capitalizeFirstLetter(copy.country)
+                        : getValueForStringEnum(Country, copy.country.toUpperCase()),
+                }}
+                position="top_left"
+                compact
+                onChange={onSelectChange}
+            />
 
-                <Row align="end" gap="sm" wrap fullWidth>
-                    {validateErrors?.map((error: ValidateProfileError) => (
-                        <Info
-                            data-testid="UpdateProfileForm.ValidateErrors"
-                            key={error}
-                            status={InfoStatus.ERROR}
-                            subTitle={validateErrorsTranslates[error]}
-                        />
-                    ))}
-                    <Button
-                        data-testid="UpdateProfileForm.SaveButton"
-                        feature={ButtonFeature.BLANK}
-                        type="submit"
-                        bordered
-                    >
-                        {t("сохранить")}
-                    </Button>
-                    <Button
-                        data-testid="UpdateProfileForm.CancelButton"
-                        feature={ButtonFeature.BLANK}
-                        bordered
-                        onClick={cancelClick}
-                    >
-                        {t("отмена")}
-                    </Button>
-                </Row>
-            </form>
+            <Row align="end" gap="sm" wrap fullWidth>
+                {validateErrors?.map((error: ValidateProfileError) => (
+                    <Info
+                        data-testid="UpdateProfileForm.ValidateErrors"
+                        key={error}
+                        status={InfoStatus.ERROR}
+                        subTitle={validateErrorsTranslates[error]}
+                    />
+                ))}
+            </Row>
+
         </Modal>
     )
 })

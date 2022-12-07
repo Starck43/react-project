@@ -1,45 +1,50 @@
 import {MutableRefObject} from "react"
 
 
+export const detectDevice = () => {
+    const isMobile = window.matchMedia
+    if (!isMobile) return false
+
+    const device = isMobile("(pointer:coarse)")
+    return device.matches
+}
+
 export const getWindowDimensions = (container: MutableRefObject<HTMLDivElement> | undefined) => {
     if (typeof window === "undefined") {
         return {
             width: 0,
             height: 0,
             ratio: 0,
-            media: null,
+            isMobile: false,
         }
     }
-    const w = container ? container?.current.clientWidth || 0 : window.innerWidth
 
-    const getMediaScreen = () => {
-        switch (true) {
-            case w < 320:
-                return "xs"
-            case w >= 320 && w < 576:
-                return "sm"
-            case w >= 576 && w < 756:
-                return "md"
-            case w >= 756 && w < 992:
-                return "lg"
-            case w >= 992 && w < 1200:
-                return "xl"
-            default:
-                return "xxl"
-        }
-    }
     if (container?.current) {
         return {
             width: container.current.clientWidth,
             height: container.current.clientHeight,
             ratio: container.current.clientWidth / container.current.clientHeight,
-            media: getMediaScreen(),
+            isMobile: detectDevice(),
         }
     }
     return {
         width: window.innerWidth,
         height: window.innerHeight,
         ratio: window.innerWidth / window.innerHeight,
-        media: getMediaScreen(),
+        isMobile: detectDevice(),
     }
+}
+
+export function detectMobile() {
+    const devicesToMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i,
+    ]
+
+    return devicesToMatch.some((device) => navigator.userAgent.match(device))
 }

@@ -6,7 +6,7 @@ import {NavLink} from "shared/ui/link/NavLink"
 
 import {NavbarItemType} from "../../model/types/navbar"
 
-import cls from "./Navbar.module.sass"
+import cls from "../navbar/Navbar.module.sass"
 
 
 // TODO: bring translations to parent

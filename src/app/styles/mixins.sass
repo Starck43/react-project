@@ -1,11 +1,10 @@
 @use "sass:math"
 
-
-@mixin align-center-absolute()
+@mixin transform-pos($x:50%, $y:50%, $zoom:1)
 	position: absolute
-	top: 50%
-	left: 50%
-	transform: translate(-50%, -50%)
+	top: $x
+	left: $y
+	transform: translate(-$x, -$y) scale($zoom)
 
 
 @mixin make-container($margin: 0, $padding-x: 0)
