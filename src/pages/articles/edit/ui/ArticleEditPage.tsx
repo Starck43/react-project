@@ -2,14 +2,14 @@ import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {useNavigate, useParams} from "react-router-dom"
 
-import {UpdateArticleForm} from "features/articles"
+import {UpdateArticleForm} from "@/features/articles"
 
-import {RoutesPath} from "shared/config/router"
-import {AppRoutes} from "shared/const/appRoutes"
-import {classnames} from "shared/lib/helpers/classnames"
-import Header from "shared/ui/header/Header"
+import {RoutesPath} from "@/shared/config/router"
+import {AppRoutes} from "@/shared/const/appRoutes"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import Header from "@/shared/ui/header/Header"
 
-import {Page} from "widgets/page"
+import {Page} from "@/widgets/page"
 
 import cls from "./ArticleEditPage.module.sass"
 

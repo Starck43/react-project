@@ -6,7 +6,7 @@ type ColProps<E extends ElementType> = Omit<FlexProps<E>, "direction"> &
 
 const Col = <E extends ElementType = keyof HTMLElementTagNameMap>(props: ColProps<E>) => {
     const {align = "start"} = props
-    return <Flex {...props} align={align} direction="column" />
+    return <Flex {...props} direction="column" align={align} />
 }
 
 export default memo(Col)

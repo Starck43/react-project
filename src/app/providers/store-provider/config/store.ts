@@ -1,14 +1,14 @@
 import {CombinedState, configureStore, Reducer, ReducersMapObject} from "@reduxjs/toolkit"
 
-import {StateSchema, ThunkExtra} from "app/providers/store-provider/config/stateSchema"
-import {counterReducer} from "entities/counter"
-import {userReducer} from "entities/user"
-import {$api} from "shared/api/api"
-import {rtkApi} from "shared/api/rtkApi"
+import {StateSchema, ThunkExtra} from "@/app/providers/store-provider/config/stateSchema"
+import {counterReducer} from "@/entities/counter"
+import {userReducer} from "@/entities/user"
+import {$api} from "@/shared/api/api"
+import {rtkApi} from "@/shared/api/rtkApi"
 
-import {pageReducer} from "widgets/page"
+import {pageReducer} from "@/widgets/page"
 
-import {ReducerList} from "shared/lib/components/DynamicModuleLoader"
+import {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
 import {createReducerManager} from "./reducerManager"
 
 

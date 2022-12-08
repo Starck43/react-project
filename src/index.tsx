@@ -1,15 +1,15 @@
 import {createRoot} from "react-dom/client"
 import {BrowserRouter} from "react-router-dom"
 
-import {StoreProvider} from "app/providers/store-provider"
-import {ErrorBoundary} from "app/providers/error-boundary-provider"
-import {Theme, ThemeProvider} from "app/providers/theme-provider"
+import {StoreProvider} from "@/app/providers/store-provider"
+import {ErrorBoundary} from "@/app/providers/error-boundary-provider"
+import {Theme, ThemeProvider} from "@/app/providers/theme-provider"
 
-import "shared/config/i18n/i18n"
-import {isDarkness} from "shared/lib/helpers/datetime"
+import "@/shared/config/i18n/i18n"
+import {isDarkness} from "@/shared/lib/helpers/datetime"
 
-import App from "app/App"
-import "app/styles/index.sass"
+import App from "@/app/App"
+import "@/app/styles/index.sass"
 
 const container = document.getElementById("root")
 

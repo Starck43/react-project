@@ -4,18 +4,18 @@ import {
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import {getUser} from "entities/user"
+import {getUser} from "@/entities/user"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {RoutesPath} from "shared/config/router"
-import {AppRoutes} from "shared/const/appRoutes"
-import {ThemeVariant} from "shared/types/theme"
-import LoginIcon from "shared/assets/icons/auth.svg"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {RoutesPath} from "@/shared/config/router"
+import {AppRoutes} from "@/shared/const/appRoutes"
+import {ThemeVariant} from "@/shared/types/theme"
+import LoginIcon from "@/shared/assets/icons/auth.svg"
 
-import {Avatar} from "shared/ui/avatar/Avatar"
-import {Button} from "shared/ui/button/Button"
-import {NavLink} from "shared/ui/link/NavLink"
-import {Dropdown, PopupPositionType} from "shared/ui/popups"
+import {Avatar} from "@/shared/ui/avatar/Avatar"
+import {Button} from "@/shared/ui/button/Button"
+import {NavLink} from "@/shared/ui/link/NavLink"
+import {Dropdown, PopupPositionType} from "@/shared/ui/popups"
 
 import {Logout} from "../../logout/ui/Logout"
 

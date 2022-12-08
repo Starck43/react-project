@@ -1,13 +1,13 @@
 import {memo, FC} from "react"
 import {useTranslation} from "react-i18next"
 
-import {Theme} from "app/providers/theme-provider"
-import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
+import {Theme} from "@/app/providers/theme-provider"
+import {UseThemeResult} from "@/app/providers/theme-provider/lib/useTheme"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {ThemeVariant} from "shared/types/theme"
-import {Button} from "shared/ui/button/Button"
-import ThemeIcon from "shared/assets/icons/theme-icon.svg"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {ThemeVariant} from "@/shared/types/theme"
+import {Button} from "@/shared/ui/button/Button"
+import ThemeIcon from "@/shared/assets/icons/theme-icon.svg"
 
 import cls from "./ThemeSwitcher.module.sass"
 

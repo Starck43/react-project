@@ -1,8 +1,8 @@
 import {memo, ReactNode, SVGProps, FC} from "react"
 import {Link, LinkProps} from "react-router-dom"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {ThemeVariant} from "shared/types/theme"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {ThemeVariant} from "@/shared/types/theme"
 
 import cls from "./NavLink.module.sass"
 

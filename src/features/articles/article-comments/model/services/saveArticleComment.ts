@@ -1,10 +1,10 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 
-import {ThunkConfig} from "app/providers/store-provider"
+import {ThunkConfig} from "@/app/providers/store-provider"
 
-import {getUser} from "entities/user"
-import {getArticleData} from "entities/article"
-import {Comment} from "entities/comment"
+import {getUser} from "@/entities/user"
+import {getArticleData} from "@/entities/article"
+import {Comment} from "@/entities/comment"
 
 import {fetchArticleCommentsData} from "./fetchArticleCommentsData"
 

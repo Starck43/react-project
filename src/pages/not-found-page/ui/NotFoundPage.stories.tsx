@@ -1,5 +1,5 @@
 import {ComponentMeta, Story} from "@storybook/react"
-import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
+import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 import NotFoundPage from "./NotFoundPage"
 
 

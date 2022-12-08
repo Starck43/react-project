@@ -1,13 +1,14 @@
 import {memo, useCallback, useState} from "react"
 
-import {NotificationList} from "entities/notification"
+import {NotificationList} from "@/entities/notification"
+import {AnimationProvider} from "@/shared/lib/components/AnimationProvider"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {PositionType} from "shared/types/ui"
-import {Button} from "shared/ui/button/Button"
-import {Drawer} from "shared/ui/modals"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {PositionType} from "@/shared/types/ui"
+import {Button} from "@/shared/ui/button/Button"
+import {Drawer} from "@/shared/ui/modals"
 
-import BurgerIcon from "shared/assets/icons/burger-menu.svg"
+import BurgerIcon from "@/shared/assets/icons/burger-menu.svg"
 
 import cls from "./NavMenu.module.sass"
 
@@ -39,7 +40,6 @@ export const NavMenu = memo(({position = "right", className}: NavMenuProps) => {
                     fullSize
                     open={show}
                     onClose={closeMenuHandler}
-                    closeOnOverlayClick
                     className={classnames(cls, [ "navbar_menu" ], {}, [ className ])}
                 >
                     <NotificationList />

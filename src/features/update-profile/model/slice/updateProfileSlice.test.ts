@@ -1,5 +1,5 @@
-import {Country} from "entities/country"
-import {profileActions, profileReducer, ProfileSchema, ValidateProfileError} from "entities/profile"
+import {Country} from "@/entities/country"
+import {profileActions, profileReducer, ProfileSchema, ValidateProfileError} from "@/entities/profile"
 
 import {updateProfileData} from "../services/updateProfileData"
 

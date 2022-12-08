@@ -1,5 +1,5 @@
 import {createSelector} from "@reduxjs/toolkit"
-import {StateSchema} from "app/providers/store-provider"
+import {StateSchema} from "@/app/providers/store-provider"
 
 
 export const getPageScroll = (state: StateSchema) => state.page.scroll || 0

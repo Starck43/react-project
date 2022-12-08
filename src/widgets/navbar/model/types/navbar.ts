@@ -1,5 +1,5 @@
 import {FC, SVGProps} from "react"
-import {AlignType} from "shared/types/ui"
+import {AlignType} from "@/shared/types/ui"
 
 
 export interface NavbarItemType {

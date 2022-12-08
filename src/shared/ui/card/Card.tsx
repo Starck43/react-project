@@ -1,9 +1,9 @@
 import {FC, HTMLAttributeAnchorTarget, HTMLAttributes} from "react"
 import {Link} from "react-router-dom"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {ThemeVariant} from "shared/types/theme"
-import {DirectionType, UIFeatureType} from "shared/types/ui"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {ThemeVariant} from "@/shared/types/theme"
+import {DirectionType, UIFeatureType} from "@/shared/types/ui"
 
 import {Flex} from "../stack"
 

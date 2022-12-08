@@ -4,13 +4,13 @@ import {
 import {useSelector} from "react-redux"
 import {useLocation} from "react-router-dom"
 
-import {StateSchema} from "app/providers/store-provider"
+import {StateSchema} from "@/app/providers/store-provider"
 
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {useInitialEffect} from "shared/lib/hooks/useInitialEffect"
-import {useElementInView} from "shared/lib/hooks/useElementInView"
-import {useThrottle} from "shared/lib/hooks/useThrottle"
-import {classnames} from "shared/lib/helpers/classnames"
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
+import {useInitialEffect} from "@/shared/lib/hooks/useInitialEffect"
+import {useElementInView} from "@/shared/lib/hooks/useElementInView"
+import {useThrottle} from "@/shared/lib/hooks/useThrottle"
+import {classnames} from "@/shared/lib/helpers/classnames"
 
 import {getPageByPath} from "../model/selectors/getPage"
 import {pageActions} from "../model/slice/pageSlice"

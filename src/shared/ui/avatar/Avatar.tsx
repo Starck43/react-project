@@ -1,6 +1,6 @@
 import {useMemo, CSSProperties} from "react"
 
-import {classnames} from "shared/lib/helpers/classnames"
+import {classnames} from "@/shared/lib/helpers/classnames"
 import {Flex} from "../stack"
 
 import PlaceholderIcon from "./assets/avatar-placeholder.svg"

@@ -1,8 +1,8 @@
 import React from "react"
 import {ComponentMeta, Story} from "@storybook/react"
 
-import {Theme} from "app/providers/theme-provider"
-import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
+import {Theme} from "@/app/providers/theme-provider"
+import {UseThemeResult} from "@/app/providers/theme-provider/lib/useTheme"
 
 import {ThemeSwitcher} from "./ThemeSwitcher"
 

@@ -1,14 +1,15 @@
 import {memo, useCallback, useMemo, useState} from "react"
 import {useTranslation} from "react-i18next"
 
-import {NotificationList} from "entities/notification"
+import {NotificationList} from "@/entities/notification"
 
-import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
-import {ThemeVariant} from "shared/types/theme"
-import {Button} from "shared/ui/button/Button"
-import {Drawer} from "shared/ui/modals"
-import {Popover, PopupPositionType} from "shared/ui/popups"
-import NotificationIcon from "shared/assets/icons/notification.svg"
+import {AnimationProvider} from "@/shared/lib/components/AnimationProvider"
+import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
+import {ThemeVariant} from "@/shared/types/theme"
+import {Button} from "@/shared/ui/button/Button"
+import {Drawer} from "@/shared/ui/modals"
+import {Popover, PopupPositionType} from "@/shared/ui/popups"
+import NotificationIcon from "@/shared/assets/icons/notification.svg"
 
 // import cls from "./Notifications.module.sass"
 
@@ -60,7 +61,6 @@ export const NotificationsPopup = memo((props: NotificationsProps) => {
                         open={showDrawer}
                         onClose={closeDrawerHandler}
                         closeOnOverlayClick
-                        fullSize={mobile}
                         className={className}
                     >
                         {content}

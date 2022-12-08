@@ -1,11 +1,11 @@
 import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import {RoutesPath} from "shared/config/router"
-import {AppRoutes} from "shared/const/appRoutes"
-import {Avatar} from "shared/ui/avatar/Avatar"
-import Header from "shared/ui/header/Header"
-import {NavLink} from "shared/ui/link/NavLink"
+import {RoutesPath} from "@/shared/config/router"
+import {AppRoutes} from "@/shared/const/appRoutes"
+import {Avatar} from "@/shared/ui/avatar/Avatar"
+import Header from "@/shared/ui/header/Header"
+import {NavLink} from "@/shared/ui/link/NavLink"
 
 import {Comment} from "../../model/types/comment"
 

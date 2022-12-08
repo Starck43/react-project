@@ -2,15 +2,15 @@ import {memo, useCallback, useState} from "react"
 import {useParams} from "react-router-dom"
 import {useTranslation} from "react-i18next"
 
-import {ProfileCard, profileReducer} from "entities/profile"
+import {ProfileCard, profileReducer} from "@/entities/profile"
 
-import {Logout} from "features/auth"
-import {UpdateProfileForm} from "features/update-profile"
+import {Logout} from "@/features/auth"
+import {UpdateProfileForm} from "@/features/update-profile"
 
-import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import Header from "shared/ui/header/Header"
+import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
+import Header from "@/shared/ui/header/Header"
 
-import {Page} from "widgets/page"
+import {Page} from "@/widgets/page"
 
 
 const initialReducers: ReducerList = {profile: profileReducer}

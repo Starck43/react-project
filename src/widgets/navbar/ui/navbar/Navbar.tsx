@@ -1,15 +1,15 @@
 import {memo, useMemo} from "react"
 import {useSelector} from "react-redux"
 
-import {UseThemeResult} from "app/providers/theme-provider/lib/useTheme"
+import {UseThemeResult} from "@/app/providers/theme-provider/lib/useTheme"
 
-import {ThemeSwitcher} from "features/theme-switcher"
-import {LanguageSwitcher} from "features/language-switcher"
-import {AuthPopup} from "features/auth/auth-popup"
-import {NotificationsPopup} from "features/notifications-popup"
+import {ThemeSwitcher} from "@/features/theme-switcher"
+import {LanguageSwitcher} from "@/features/language-switcher"
+import {AuthPopup} from "@/features/auth/auth-popup"
+import {NotificationsPopup} from "@/features/notifications-popup"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {Row} from "shared/ui/stack"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {Row} from "@/shared/ui/stack"
 
 import {NavbarItemType} from "../../model/types/navbar"
 import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"

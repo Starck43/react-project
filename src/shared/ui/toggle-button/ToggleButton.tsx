@@ -1,7 +1,7 @@
 import {ButtonHTMLAttributes, FC, SVGProps} from "react"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {PositionType} from "shared/types/ui"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {PositionType} from "@/shared/types/ui"
 import cls from "./ToggleButton.module.sass"
 
 

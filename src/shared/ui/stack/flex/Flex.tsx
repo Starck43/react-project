@@ -1,7 +1,8 @@
 import {ReactNode, ElementType, ComponentProps} from "react"
 import {Link} from "react-router-dom"
 
-import {classnames} from "shared/lib/helpers/classnames"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import type {SizeType} from "@/shared/types/ui"
 
 import cls from "./Flex.module.sass"
 
@@ -9,16 +10,15 @@ import cls from "./Flex.module.sass"
 type FlexJustify = "start" | "end" | "center" | "between" | "evenly"
 type FlexAlign = "start" | "end" | "center" | "baseline"
 type FlexDirection = "row" | "rowReverse" | "column" | "columnReverse"
-type FlexGap = "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
 
 export interface FlexProps<E extends ElementType = ElementType> {
-    as?: ElementType // keyof HTMLElementTagNameMap
+    as?: E // keyof HTMLElementTagNameMap
     href?: string
     justify?: FlexJustify
     align?: FlexAlign
     direction?: FlexDirection
     wrap?: boolean
-    gap?: FlexGap
+    gap?: SizeType
     fullWidth?: boolean
     children?: ReactNode | ReactNode[]
 }
@@ -33,7 +33,7 @@ export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(props:
         align = "center",
         direction = "row",
         wrap = false,
-        gap = "none",
+        gap = "sm",
         fullWidth = false,
         style = {},
         className,

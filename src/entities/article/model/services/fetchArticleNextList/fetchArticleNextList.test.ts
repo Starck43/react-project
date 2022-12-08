@@ -1,4 +1,4 @@
-import {TestAsyncFunc} from "shared/lib/tests/TestAsyncFunc"
+import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
 
 import {getArticlesLoading} from "../../selectors/article-list/getArticleListData"
 import {fetchArticleList} from "../fetchArticleList/fetchArticleList"

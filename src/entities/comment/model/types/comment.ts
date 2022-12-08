@@ -1,6 +1,6 @@
 import {EntityState} from "@reduxjs/toolkit"
 
-import {User} from "entities/user"
+import {User} from "@/entities/user"
 
 import {ValidateCommentError} from "../consts"
 

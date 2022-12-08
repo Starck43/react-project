@@ -1,9 +1,9 @@
-import {CSSProperties, memo, useMemo} from "react"
+import {memo, useMemo, CSSProperties} from "react"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
-import {Card} from "shared/ui/card/Card"
-import {Flex, Row} from "shared/ui/stack"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton/Skeleton"
+import {Card} from "@/shared/ui/card/Card"
+import {Flex, Row} from "@/shared/ui/stack"
 
 import {ArticleView} from "../../model/consts"
 
@@ -122,9 +122,9 @@ export const renderArticlesSkeleton = (props: RenderProps) => {
     return (
         new Array(rowCount)
         .fill(0)
-        // eslint-disable-next-line react/no-array-index-key
         .map((_, key) => (
             <div
+                // eslint-disable-next-line react/no-array-index-key
                 key={key}
                 style={style}
                 className={className}

@@ -1,13 +1,13 @@
 import React from "react"
 import {useTranslation} from "react-i18next"
-import RefreshIcon from "shared/assets/icons/refresh.svg"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {Button} from "shared/ui/button/Button"
-import {ButtonSize} from "shared/ui/button/consts"
-import {Info, InfoStatus} from "shared/ui/info/Info"
-import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
-import {Col} from "shared/ui/stack"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {Button} from "@/shared/ui/button/Button"
+import {ButtonSize} from "@/shared/ui/button/consts"
+import {Info, InfoStatus} from "@/shared/ui/info/Info"
+import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton/Skeleton"
+import {Col} from "@/shared/ui/stack"
+import RefreshIcon from "@/shared/assets/icons/refresh.svg"
 
 import {Notification} from "../../../notification"
 import {useNotificationsQuery} from "../../api"
@@ -63,7 +63,6 @@ export const NotificationList = ({className}: NotificationListProps) => {
     return (
         <Col
             data-testid="NotificationList"
-            gap="sm"
             className={classnames(cls, [ "notification_list" ], {}, [ className ])}
         >
             <Button size={ButtonSize.SMALL} Icon={RefreshIcon} onClick={refetch} className={cls.refresh__icon} />

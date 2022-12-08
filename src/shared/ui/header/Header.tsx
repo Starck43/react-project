@@ -1,8 +1,9 @@
-import {ElementType, memo, ReactNode} from "react"
+import {memo, ReactNode, ElementType} from "react"
 import {Link} from "react-router-dom"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {ThemeVariant} from "shared/types/theme"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {ThemeVariant} from "@/shared/types/theme"
+import type {SizeType} from "@/shared/types/ui"
 
 import {TagCase} from "./consts"
 import {Flex} from "../../ui/stack"
@@ -18,7 +19,7 @@ type HeaderProps = {
     subTitle?: ReactNode
     inlined?: boolean
     align?: "start" | "center" | "end"
-    gap?: "none" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl"
+    gap?: SizeType
     transform?: TagCase
     shadowed?: boolean
     className?: string

@@ -3,18 +3,18 @@ import {
 } from "@reduxjs/toolkit"
 import {AxiosInstance} from "axios"
 
-import {CounterSchema} from "entities/counter"
-import {UserSchema} from "entities/user"
-import {ProfileSchema} from "entities/profile"
-import {ArticleListSchema, ArticleSchema} from "entities/article"
-import {CommentSchema, NewCommentSchema} from "entities/comment"
+import {CounterSchema} from "@/entities/counter"
+import {UserSchema} from "@/entities/user"
+import {ProfileSchema} from "@/entities/profile"
+import {ArticleListSchema, ArticleSchema} from "@/entities/article"
+import {CommentSchema, NewCommentSchema} from "@/entities/comment"
 
-import {LoginSchema} from "features/auth"
-import {ArticleRelatedSchema} from "features/articles"
+import {LoginSchema} from "@/features/auth"
+import {ArticleRelatedSchema} from "@/features/articles"
 
-import {rtkApi} from "shared/api/rtkApi"
+import {rtkApi} from "@/shared/api/rtkApi"
 
-import {PageSchema} from "widgets/page"
+import {PageSchema} from "@/widgets/page"
 
 
 export interface StateSchema {

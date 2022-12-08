@@ -1,6 +1,6 @@
 import {memo, FC} from "react"
-import {classnames} from "shared/lib/helpers/classnames"
-import {Spinner} from "shared/ui/spinner/Spinner"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {Spinner} from "@/shared/ui/spinner/Spinner"
 
 import cls from "./PageLoader.module.sass"
 

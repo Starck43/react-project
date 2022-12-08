@@ -1,5 +1,5 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
-import {ThunkConfig} from "app/providers/store-provider"
+import {ThunkConfig} from "@/app/providers/store-provider"
 
 import {Article} from "../../types/article"
 
@@ -23,6 +23,7 @@ export const fetchArticleById = createAsyncThunk<Article, string | undefined, Th
             }
             return response.data
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(e)
             return rejectWithValue("error")
         }

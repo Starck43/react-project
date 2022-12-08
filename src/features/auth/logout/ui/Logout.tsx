@@ -1,9 +1,9 @@
 import {useTranslation} from "react-i18next"
 import {useDispatch, useSelector} from "react-redux"
 
-import {getUser, userActions} from "entities/user"
+import {getUser, userActions} from "@/entities/user"
 
-import {Modal} from "shared/ui/modals"
+import {Modal} from "@/shared/ui/modals"
 
 import cls from "./Logout.module.sass"
 

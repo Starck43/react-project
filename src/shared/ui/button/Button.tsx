@@ -3,8 +3,8 @@ import {
 } from "react"
 import {Link} from "react-router-dom"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {ThemeVariant} from "shared/types/theme"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {ThemeVariant} from "@/shared/types/theme"
 
 import {ButtonFeature, ButtonSize} from "./consts"
 import {AlignType} from "../../types/ui"

@@ -1,8 +1,8 @@
 import {ReactNode, CSSProperties} from "react"
 import {Popover as HeadlessPopover} from "@headlessui/react"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {ThemeVariant} from "shared/types/theme"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {ThemeVariant} from "@/shared/types/theme"
 import {PopupPositionType} from "../types"
 
 import cls from "./Popover.module.sass"

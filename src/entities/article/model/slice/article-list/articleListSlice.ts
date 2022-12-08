@@ -1,8 +1,8 @@
 import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit"
 
-import {StateSchema} from "app/providers/store-provider"
+import {StateSchema} from "@/app/providers/store-provider"
 
-import {ARTICLES_VIEW_MODE_KEY} from "shared/const/localStorage"
+import {ARTICLES_VIEW_MODE_KEY} from "@/shared/const/localStorage"
 
 import {ArticleOrderType, ArticleSortType, ArticleType, ArticleView} from "../../consts"
 import type {Article} from "../../types/article"

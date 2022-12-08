@@ -1,6 +1,6 @@
-import {userActions} from "entities/user"
+import {userActions} from "@/entities/user"
 
-import {TestAsyncFunc} from "shared/lib/tests/TestAsyncFunc"
+import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
 
 import {loginByUsername} from "./loginByUsername"
 

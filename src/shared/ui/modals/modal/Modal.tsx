@@ -1,4 +1,4 @@
-import {classnames} from "shared/lib/helpers/classnames"
+import {classnames} from "@/shared/lib/helpers/classnames"
 
 import {useModal} from "../lib/hooks/useModal"
 import {ModalProps} from "../types"
@@ -43,12 +43,16 @@ export const Modal = (props: ModalProps) => {
 
     return (
         <Portal>
-            <Overlay open={open} show={show} onClick={closeOnOverlayClick ? handleClose : undefined} />
+            <Overlay
+                open={open}
+                show={show}
+                onClick={closeOnOverlayClick ? handleClose : undefined}
+                style={{transitionDuration: `${animationTime}ms`}}
+            />
             <Col
                 data-testid="modal"
                 role="link"
                 justify="between"
-                gap="sm"
                 className={classnames(cls, [ "modal", "shadowed", size ], {
                     open,
                     show,
@@ -75,12 +79,7 @@ export const Modal = (props: ModalProps) => {
                     {showClose && <CloseButton className={styles.close__button} handleClick={handleClose} />}
                 </Row>
 
-                <Flex
-                    wrap
-                    justify="between"
-                    gap="sm"
-                    className={styles.body}
-                >
+                <Flex justify="between" wrap className={styles.body}>
                     {children}
                 </Flex>
 

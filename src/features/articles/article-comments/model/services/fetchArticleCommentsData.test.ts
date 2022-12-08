@@ -1,4 +1,4 @@
-import {TestAsyncFunc} from "shared/lib/tests/TestAsyncFunc"
+import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
 
 import {fetchArticleCommentsData} from "./fetchArticleCommentsData"
 
@@ -12,6 +12,7 @@ const data = {
     text: "Some comment",
 }
 
+// TODO: complete test for CommentsData
 describe("CommentsData loading test", () => {
 /*
 

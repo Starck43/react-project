@@ -2,9 +2,9 @@ import path from "path"
 import {buildWebpackConfig} from "./config/build/buildWebpackConfig"
 import {BuildWebpackEnv, Paths} from "./config/build/types/config"
 
+
 export default (env: BuildWebpackEnv) => {
     const mode = env.mode || "development"
-    const isDev = mode === "development"
     const PORT = env.port || 3000
     const apiUrl = env.apiUrl || "http://localhost:8000"
     const paths: Paths = {
@@ -18,7 +18,7 @@ export default (env: BuildWebpackEnv) => {
 
     return buildWebpackConfig({
         mode,
-        isDev,
+        isDev: mode === "development",
         chunkFilename: "[name].[contenthash:8].js",
         cssFilename: "css/[name].[contenthash:8].css",
         cssChunkFilename: "css/[id].[contenthash:8].css",

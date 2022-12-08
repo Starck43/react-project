@@ -1,6 +1,6 @@
 import {memo, useMemo, ChangeEvent} from "react"
 
-import {classnames} from "shared/lib/helpers/classnames"
+import {classnames} from "@/shared/lib/helpers/classnames"
 
 import cls from "./Select.module.sass"
 

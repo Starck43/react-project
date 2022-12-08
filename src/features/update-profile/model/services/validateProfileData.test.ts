@@ -1,5 +1,5 @@
-import {Country} from "entities/country"
-import {ValidateProfileError} from "entities/profile"
+import {Country} from "@/entities/country"
+import {ValidateProfileError} from "@/entities/profile"
 
 import {validateProfileData} from "./validateProfileData"
 

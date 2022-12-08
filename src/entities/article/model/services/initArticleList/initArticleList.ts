@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 
-import {ThunkConfig} from "app/providers/store-provider"
+import {ThunkConfig} from "@/app/providers/store-provider"
 
 import {ArticleOrderType, ArticleSortType, ArticleType} from "../../consts"
 import {getArticlesMounted} from "../../selectors/article-list/getArticleListData"

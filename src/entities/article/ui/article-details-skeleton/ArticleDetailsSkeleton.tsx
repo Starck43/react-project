@@ -1,5 +1,5 @@
 import {memo} from "react"
-import {Skeleton, SkeletonElementType} from "shared/ui/skeleton/Skeleton"
+import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton/Skeleton"
 
 
 interface ArticleSkeletonProps {

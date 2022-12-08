@@ -1,16 +1,16 @@
 import {memo, useCallback} from "react"
 import {useSelector} from "react-redux"
 
-import {articlesActions, ArticleView, getArticlesView} from "entities/article"
+import {articlesActions, ArticleView, getArticlesView} from "@/entities/article"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {Button} from "shared/ui/button/Button"
-import {ButtonFeature} from "shared/ui/button/consts"
-import {Icon} from "shared/ui/icon/Icon"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
+import {Button} from "@/shared/ui/button/Button"
+import {ButtonFeature} from "@/shared/ui/button/consts"
+import {Icon} from "@/shared/ui/icon/Icon"
 
-import ListIcon from "shared/assets/icons/list-24-24.svg"
-import TileIcon from "shared/assets/icons/tile-24-24.svg"
+import ListIcon from "@/shared/assets/icons/list-24-24.svg"
+import TileIcon from "@/shared/assets/icons/tile-24-24.svg"
 
 import cls from "./ArticleViewControl.module.sass"
 

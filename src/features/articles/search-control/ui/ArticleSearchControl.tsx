@@ -2,12 +2,12 @@ import {memo, useCallback} from "react"
 import {useTranslation} from "react-i18next"
 import {useSelector} from "react-redux"
 
-import {articlesActions, getArticlesSearch, fetchArticleList} from "entities/article"
+import {articlesActions, getArticlesSearch, fetchArticleList} from "@/entities/article"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {useDebounce} from "shared/lib/hooks/useDebounce"
-import Input from "shared/ui/input/Input"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
+import {useDebounce} from "@/shared/lib/hooks/useDebounce"
+import Input from "@/shared/ui/input/Input"
 
 import cls from "./ArticleSearchControl.module.sass"
 

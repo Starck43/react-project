@@ -1,12 +1,12 @@
 import {fireEvent, screen} from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 
-import {Country} from "entities/country"
-import {ProfileCard, profileReducer} from "entities/profile"
-import {userReducer} from "entities/user"
-import {$api} from "shared/api/api"
+import {Country} from "@/entities/country"
+import {ProfileCard, profileReducer} from "@/entities/profile"
+import {userReducer} from "@/entities/user"
+import {$api} from "@/shared/api/api"
 
-import {componentRender} from "shared/lib/tests/componentRender"
+import {componentRender} from "@/shared/lib/tests/componentRender"
 
 import {UpdateProfileForm} from "./UpdateProfileForm"
 

@@ -8,9 +8,9 @@ import {
     getArticlesError,
     getArticlesLoading,
     getArticlesView,
-} from "entities/article"
+} from "@/entities/article"
 
-import {Info} from "shared/ui/info/Info"
+import {Info} from "@/shared/ui/info/Info"
 
 
 export const InfiniteArticleList = memo(() => {

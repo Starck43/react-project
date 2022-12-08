@@ -1,7 +1,7 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
-import {ThunkConfig} from "app/providers/store-provider/config/stateSchema"
+import {ThunkConfig} from "@/app/providers/store-provider/config/stateSchema"
 
-import {User, userActions} from "entities/user"
+import {User, userActions} from "@/entities/user"
 
 
 interface LoginUser {
@@ -24,6 +24,7 @@ export const loginByUsername = createAsyncThunk<User, LoginUser, ThunkConfig<str
             // extra.navigate?.(RoutesPath[AppRoutes.PROFILE] + res.id)
             return res
         } catch (e) {
+            // eslint-disable-next-line no-console
             console.log(e)
             return rejectWithValue("error")
         }

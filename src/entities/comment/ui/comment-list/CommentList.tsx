@@ -1,8 +1,8 @@
 import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {Info, InfoStatus} from "shared/ui/info/Info"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {Info, InfoStatus} from "@/shared/ui/info/Info"
 
 import {Comment} from "../../model/types/comment"
 import {CommentCard} from "../comment-card/CommentCard"

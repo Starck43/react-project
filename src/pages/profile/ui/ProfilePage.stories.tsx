@@ -1,10 +1,10 @@
 import React from "react"
 import {ComponentMeta, Story} from "@storybook/react"
 
-import {Country} from "entities/country"
+import {Country} from "@/entities/country"
 
-import Avatar from "shared/assets/icons/avatar-profile.png"
-import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
+import Avatar from "@/shared/assets/icons/avatar-profile.png"
+import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
 import ProfilePage from "./ProfilePage"
 

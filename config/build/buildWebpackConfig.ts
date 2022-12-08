@@ -30,7 +30,9 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
             preferAbsolute: true,
             modules: [ options.paths.src, "node_modules" ],
             mainFiles: [ "index" ],
-            alias: {},
+            alias: {
+               "@": options.paths.src, // '@' added in tsconfig as well
+            },
         },
         devtool: isDev ? "eval-source-map" : undefined,
         devServer: isDev ? buildWebpackDevServer(options) : undefined,

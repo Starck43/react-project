@@ -1,9 +1,9 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import {Country} from "entities/country"
+import {Country} from "@/entities/country"
 
-import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
-import Avatar from "shared/assets/icons/avatar-profile.png"
+import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import Avatar from "@/shared/assets/icons/avatar-profile.png"
 
 import {ProfileCard} from "./ProfileCard"
 

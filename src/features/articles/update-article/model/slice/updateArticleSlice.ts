@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit"
 
-import {ArticleSchema} from "entities/article"
+import {ArticleSchema} from "@/entities/article"
 
 import {updateArticleData} from "../services/updateArticleData"
 
@@ -25,7 +25,7 @@ export const updateArticleSlice = createSlice({
             state.isLoading = false
             state.validateErrors = undefined
         })
-        .addCase(updateArticleData.rejected, (state, action) => {
+        .addCase(updateArticleData.rejected, (state) => {
             state.isLoading = false
         })
     },

@@ -1,17 +1,17 @@
 import {RouteProps} from "react-router-dom"
 
-import {UserRole} from "entities/user"
+import {UserRole} from "@/entities/user"
 
-import {AppRoutes} from "shared/const/appRoutes"
-import {AboutPage} from "pages/about"
-import {HomePage} from "pages/home"
-import {AuthPage} from "pages/auth"
-import {ProfilePage} from "pages/profile"
-import {ArticleDetailsPage} from "pages/articles/details"
-import {ArticleEditPage} from "pages/articles/edit"
-import {ArticlesPage} from "pages/articles/list"
-import {NotFoundPage} from "pages/not-found-page"
-import {ForbiddenPage} from "pages/forbidden"
+import {AppRoutes} from "@/shared/const/appRoutes"
+import {AboutPage} from "@/pages/about"
+import {HomePage} from "@/pages/home"
+import {AuthPage} from "@/pages/auth"
+import {ProfilePage} from "@/pages/profile"
+import {ArticleDetailsPage} from "@/pages/articles/details"
+import {ArticleEditPage} from "@/pages/articles/edit"
+import {ArticlesPage} from "@/pages/articles/list"
+import {NotFoundPage} from "@/pages/not-found-page"
+import {ForbiddenPage} from "@/pages/forbidden"
 
 
 export type AppRoutesProps = RouteProps & {

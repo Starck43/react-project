@@ -1,16 +1,20 @@
-import {articleRelatedReducer} from "features/articles/article-related/model/slice/articleRelatedSlice"
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {useParams} from "react-router-dom"
 
-import {articleReducer, ArticleDetailsCard} from "entities/article"
+import {articleReducer, ArticleDetailsCard} from "@/entities/article"
 
-import {articleCommentsReducer, ArticleCommentsCard, ArticleRelatedList} from "features/articles"
+import {
+    articleRelatedReducer,
+    articleCommentsReducer,
+    ArticleCommentsCard,
+    ArticleRelatedList,
+} from "@/features/articles"
 
-import DynamicModuleLoader, {ReducerList} from "shared/lib/components/DynamicModuleLoader"
-import {Info} from "shared/ui/info/Info"
+import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
+import {Info} from "@/shared/ui/info/Info"
 
-import {Page} from "widgets/page"
+import {Page} from "@/widgets/page"
 
 import {ArticleHeader} from "./header/ArticleHeader"
 

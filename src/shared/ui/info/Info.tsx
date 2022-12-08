@@ -1,6 +1,6 @@
 import {SVGProps, FC} from "react"
 
-import {classnames} from "shared/lib/helpers/classnames"
+import {classnames} from "@/shared/lib/helpers/classnames"
 import {Icon} from "../../ui/icon/Icon"
 import {Col, Row} from "../../ui/stack"
 

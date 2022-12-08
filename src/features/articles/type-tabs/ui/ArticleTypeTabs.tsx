@@ -1,11 +1,11 @@
 import {memo, useCallback, useMemo} from "react"
 import {useSelector} from "react-redux"
 
-import {articlesActions, ArticleType, getArticlesType, fetchArticleList} from "entities/article"
+import {articlesActions, ArticleType, getArticlesType, fetchArticleList} from "@/entities/article"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {Tab, Tabs} from "shared/ui/tabs/Tabs"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
+import {Tab, Tabs} from "@/shared/ui/tabs/Tabs"
 
 import cls from "./ArticleTypeTabs.module.sass"
 

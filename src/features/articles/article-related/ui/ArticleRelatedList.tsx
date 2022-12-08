@@ -1,10 +1,12 @@
-import {ArticleList, ArticleView} from "entities/article"
 import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import Header from "shared/ui/header/Header"
-import {PageLoader} from "widgets/page-loader/ui/PageLoader"
+import {ArticleList, ArticleView} from "@/entities/article"
+
+import {classnames} from "@/shared/lib/helpers/classnames"
+import Header from "@/shared/ui/header/Header"
+
+import {PageLoader} from "@/widgets/page-loader/ui/PageLoader"
 
 import {useArticleRelatedList} from "../api"
 
@@ -19,7 +21,6 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
     const {t} = useTranslation("articles")
     const {isLoading, data: related, error} = useArticleRelatedList({limit: 4})
 
-    console.log(related)
     if (!related || error) return null
 
     if (isLoading) {

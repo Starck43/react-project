@@ -1,5 +1,5 @@
-import {Article} from "entities/article"
-import {rtkApi} from "shared/api/rtkApi"
+import {Article} from "@/entities/article"
+import {rtkApi} from "@/shared/api/rtkApi"
 
 
 const relatedApi = rtkApi.injectEndpoints({

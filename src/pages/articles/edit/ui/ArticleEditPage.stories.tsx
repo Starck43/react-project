@@ -1,9 +1,9 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import {Article} from "entities/article"
+import {Article} from "@/entities/article"
 
-import {StoreDecorator} from "shared/config/storybook/StoreDecorator"
+import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
 import ArticleEditPage from "./ArticleEditPage"
 

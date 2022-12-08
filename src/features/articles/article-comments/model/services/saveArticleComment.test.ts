@@ -1,4 +1,4 @@
-import {TestAsyncFunc} from "shared/lib/tests/TestAsyncFunc"
+import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
 
 import {saveArticleComment} from "./saveArticleComment"
 

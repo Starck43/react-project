@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import Image from "shared/assets/icons/avatar-profile.jpeg"
+import Image from "@/shared/assets/icons/avatar-profile.jpeg"
 
 import {ArticleBlockType, ArticleType, ArticleView} from "../../model/consts"
 import {Article} from "../../model/types/article"

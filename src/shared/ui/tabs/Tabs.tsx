@@ -34,7 +34,6 @@ export const Tabs = memo((props: TabsProps) => {
         <Flex
             direction={direction}
             justify="start"
-            gap="sm"
             wrap
             className={className}
         >

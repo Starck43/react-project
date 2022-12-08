@@ -1,12 +1,12 @@
 import {memo, FC} from "react"
 import {useTranslation} from "react-i18next"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import FlagEnIcon from "shared/assets/icons/flag_en.svg"
-import FlagRuIcon from "shared/assets/icons/flag_ru.svg"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import FlagEnIcon from "@/shared/assets/icons/flag_en.svg"
+import FlagRuIcon from "@/shared/assets/icons/flag_ru.svg"
 
-import {Flex} from "shared/ui/stack"
-import {Button} from "shared/ui/button/Button"
+import {Flex} from "@/shared/ui/stack"
+import {Button} from "@/shared/ui/button/Button"
 
 import cls from "./LanguageSwitcher.module.sass"
 

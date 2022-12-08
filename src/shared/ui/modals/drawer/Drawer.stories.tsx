@@ -5,7 +5,7 @@ import {Drawer} from "./Drawer"
 
 
 export default {
-    title: "widgets/Drawer",
+    title: "shared/Drawer",
     component: Drawer,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Drawer>

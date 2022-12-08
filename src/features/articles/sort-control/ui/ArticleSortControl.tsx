@@ -9,11 +9,11 @@ import {
     fetchArticleList,
     getArticlesOrder,
     getArticlesSort,
-} from "entities/article"
+} from "@/entities/article"
 
-import {useAppDispatch} from "shared/lib/hooks/useAppDispatch"
-import {Select} from "shared/ui/select/Select"
-import {Row} from "shared/ui/stack"
+import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
+import {Select} from "@/shared/ui/select/Select"
+import {Row} from "@/shared/ui/stack"
 
 // import cls from "./ArticleSortControl.module.sass"
 

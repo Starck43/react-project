@@ -1,4 +1,4 @@
-import {StateSchema} from "app/providers/store-provider"
+import {StateSchema} from "@/app/providers/store-provider"
 
 import {ArticleSortType, ArticleType, ArticleView} from "../../consts"
 import {LIST_VIEW_PER_PAGE} from "../../../lib/constants"

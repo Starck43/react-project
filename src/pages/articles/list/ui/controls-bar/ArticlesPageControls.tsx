@@ -1,6 +1,6 @@
-import {ArticleViewControl, ArticleSortControl, ArticleSearchControl, ArticleTypeTabs} from "features/articles"
+import {ArticleViewControl, ArticleSortControl, ArticleSearchControl, ArticleTypeTabs} from "@/features/articles"
 
-import {Row} from "shared/ui/stack"
+import {Row} from "@/shared/ui/stack"
 
 // import cls from "./ArticlesPageControls.module.sass"
 

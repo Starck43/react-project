@@ -1,7 +1,7 @@
 import React from "react"
-import {classnames} from "shared/lib/helpers/classnames"
+import {classnames} from "@/shared/lib/helpers/classnames"
 
-import Header from "shared/ui/header/Header"
+import Header from "@/shared/ui/header/Header"
 
 import {Notification} from "../../../notification"
 

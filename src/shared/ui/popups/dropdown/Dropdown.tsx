@@ -1,8 +1,8 @@
 import {memo, ReactNode, CSSProperties, Fragment} from "react"
 import {Menu} from "@headlessui/react"
 
-import {classnames} from "shared/lib/helpers/classnames"
-import {ThemeVariant} from "shared/types/theme"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {ThemeVariant} from "@/shared/types/theme"
 import {PopupPositionType} from "../types"
 
 import {Col} from "../../stack"

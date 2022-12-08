@@ -1,5 +1,5 @@
 import axios from "axios"
-import {AUTH_USER_KEY} from "shared/const/localStorage"
+import {AUTH_USER_KEY} from "@/shared/const/localStorage"
 
 
 export const $api = axios.create({

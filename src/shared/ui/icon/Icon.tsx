@@ -1,6 +1,6 @@
 import {memo, SVGProps, FC} from "react"
 
-import {classnames} from "shared/lib/helpers/classnames"
+import {classnames} from "@/shared/lib/helpers/classnames"
 
 import cls from "./Icon.module.sass"
 

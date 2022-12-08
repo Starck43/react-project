@@ -1,14 +1,14 @@
 import {memo, useState} from "react"
 import {useTranslation} from "react-i18next"
 
-import {ErrorTestButton} from "app/providers/error-boundary-provider"
+import {ErrorTestButton} from "@/app/providers/error-boundary-provider"
 
-import {RoutesPath} from "shared/config/router"
-import {useWindowDimensions} from "shared/lib/hooks/useWindowDimensions"
-import {classnames} from "shared/lib/helpers/classnames"
-import {AlignType} from "shared/types/ui"
-import {NavLink} from "shared/ui/link/NavLink"
-import {ToggleButton} from "shared/ui/toggle-button/ToggleButton"
+import {RoutesPath} from "@/shared/config/router"
+import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {AlignType} from "@/shared/types/ui"
+import {NavLink} from "@/shared/ui/link/NavLink"
+import {ToggleButton} from "@/shared/ui/toggle-button/ToggleButton"
 
 import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
