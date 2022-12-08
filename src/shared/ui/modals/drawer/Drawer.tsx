@@ -1,6 +1,9 @@
-import {classnames} from "shared/lib/helpers/classnames"
+import {memo, useCallback, useEffect} from "react"
 
-import {useModal} from "../lib/hooks/useModal"
+import {AnimationProvider, useAnimationModules} from "@/shared/lib/components/AnimationProvider"
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
+
 import {DrawerProps} from "../types"
 import {CloseButton} from "../../close-button/CloseButton"
 import {Col, Row} from "../../stack"
@@ -11,11 +14,10 @@ import styles from "../styles/Modals.module.sass"
 import cls from "./Drawer.module.sass"
 
 
-export const Drawer = (props: DrawerProps) => {
+const DrawerContent = (props: DrawerProps) => {
     const {
         open,
         onClose,
-        lazy,
         header,
         closeOnOverlayClick,
         animationTime = 220,
@@ -25,54 +27,161 @@ export const Drawer = (props: DrawerProps) => {
         rounded = false,
         bordered = false,
         className,
-        style,
         children,
     } = props
 
 
-    const modalProps = useModal({onClose, isOpen: open, animationTime})
-    const {isMounted, isShown: show, handleClose} = modalProps
+    const {width, height} = useWindowDimensions()
+    const {Spring, Gesture} = useAnimationModules()
+    const [ {x, y}, api ] = Spring.useSpring(() => ({x: width, y: height}))
 
-    if (lazy && !isMounted) return null
+    const openDrawer = useCallback(() => {
+        api.start({x: 0, y: 0, immediate: false})
+    }, [ api ])
+
+    useEffect(() => {
+        if (open) openDrawer()
+    }, [ api, open, openDrawer ])
+
+    const handleClose = (velocity = 0) => {
+        api.start({
+            x: width,
+            y: height,
+            immediate: false,
+            config: {...Spring.config.stiff, velocity},
+            onResolve: onClose,
+        })
+    }
+
+    const bind = Gesture.useDrag(
+        ({
+            last,
+            velocity: [ vx, vy ],
+            direction: [ dx, dy ],
+            movement: [ mx, my ],
+            cancel,
+        }) => {
+            if (position === "top" || position === "bottom") {
+                if (my < -70) cancel()
+
+                if (last) {
+                    if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
+                        handleClose()
+                    } else {
+                        openDrawer()
+                    }
+                } else {
+                    api.start({y: my, immediate: true})
+                }
+            } else {
+                if (mx < -70) cancel()
+
+                if (last) {
+                    if (mx > height * 0.5 || (vx > 0.5 && dx > 0)) {
+                        handleClose()
+                    } else {
+                        openDrawer()
+                    }
+                } else {
+                    api.start({x: mx, immediate: true})
+                }
+            }
+        },
+        {
+            from: () => [ x.get(), y.get() ],
+            duration: animationTime,
+            filterTaps: true,
+            bounds: {top: 0, left: 0},
+            rubberband: true,
+        },
+    )
+
+    if (!open) return null
+
+    let overlayStyle = {}
+    let drawerStyle = {}
+    let contentStyle = {}
+
+    if (position === "top" || position === "bottom") {
+        const display = y.to((py) => (py < height ? "block" : "none"))
+        overlayStyle = {
+            display,
+            opacity: y.to([ 0, height ], [ 1, 0 ], "clamp"),
+        }
+        drawerStyle = {display, bottom: -100, y}
+        contentStyle = {paddingBottom: "calc(var(--modal-padding) + 100px)"}
+    } else {
+        const display = x.to((px) => (px < width ? "block" : "none"))
+
+        overlayStyle = {
+            display,
+            opacity: x.to([ 0, width ], [ 1, 0 ], "clamp"),
+        }
+        drawerStyle = {display, right: -100, x}
+        contentStyle = {paddingRight: "calc(var(--modal-padding) + 100px)"}
+    }
 
     return (
         <Portal>
-            <Overlay open={open} show={show} onClick={closeOnOverlayClick ? handleClose : undefined} />
-            <Col
-                data-testid="drawer"
-                role="link"
-                align="center"
-                justify="between"
-                gap="sm"
-                className={classnames(cls, [ "drawer", "shadowed", position ], {
-                    show,
-                    rounded,
-                    bordered,
-                    fullSize,
-                }, [
-                    styles.modals,
-                    styles.open,
-                    bordered ? "bordered" : "",
-                    fullSize ? "fullSize" : "",
-                    className,
-                ])}
-                style={{...style, transitionDuration: `${animationTime}ms`}}
+            <Spring.a.div
+                className={cls.drawer}
+                style={drawerStyle}
+                {...bind()}
             >
-                <Row
-                    gap="sm"
-                    fullWidth
+                <Col
+                    data-testid="Drawer.Content"
+                    role="link"
+                    align="center"
                     justify="between"
-                    align="baseline"
-                    className={cls.header}
+                    className={classnames(cls, [ "drawer__content", "show", "shadowed", position ], {
+                        rounded,
+                        bordered,
+                        fullSize,
+                    }, [
+                        styles.modals,
+                        styles.open,
+                        bordered ? "bordered" : "",
+                        fullSize ? "fullSize" : "",
+                        className,
+                    ])}
+                    style={contentStyle}
                 >
-                    {header}
-                    {showClose && <CloseButton className={styles.close__button} handleClick={handleClose} />}
-                </Row>
+                    <Row
+                        gap="sm"
+                        fullWidth
+                        justify="between"
+                        align="baseline"
+                        className={cls.header}
+                    >
+                        {header}
+                        {showClose && (
+                            <CloseButton className={styles.close__button} handleClick={() => handleClose()} />
+                        )}
+                    </Row>
 
-                <div className={classnames(cls, [ "body" ], {}, [ styles.body ])}>
-                    {children}
-                </div>
-            </Col>
+                    <div className={classnames(cls, [ "body" ], {}, [ styles.body ])}>
+                        {children}
+                    </div>
+                </Col>
+            </Spring.a.div>
+            <Overlay
+                as={Spring.a.div}
+                open
+                show
+                onClick={closeOnOverlayClick ? () => handleClose() : undefined}
+                style={overlayStyle}
+            />
         </Portal>
     )
 }
+
+const DrawerAsync = (props: DrawerProps) => {
+    const {isLoaded} = useAnimationModules()
+    return !isLoaded ? <DrawerContent {...props} /> : null
+}
+
+export const Drawer = (props: DrawerProps) => (
+    <AnimationProvider>
+        <DrawerAsync {...props} />
+    </AnimationProvider>
+)
