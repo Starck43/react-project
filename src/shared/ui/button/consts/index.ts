@@ -1,3 +1,4 @@
+// TODO: transform to type
 export enum ButtonFeature {
     CLEAR = "clear",
     BLANK = "blank",

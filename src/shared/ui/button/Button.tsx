@@ -1,5 +1,5 @@
 import {
-    ButtonHTMLAttributes, HTMLAttributeAnchorTarget, ReactNode, FC, SVGProps,
+    ButtonHTMLAttributes, HTMLAttributeAnchorTarget, ReactNode, FC, SVGProps, forwardRef,
 } from "react"
 import {Link} from "react-router-dom"
 
@@ -30,13 +30,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode
 }
 
-export const Button: FC<ButtonProps> = (props) => {
+// TODO: fix problem with border for BLANK
+export const Button: FC<ButtonProps> = forwardRef((props, ref) => {
     const {
         variant,
         Icon,
         href,
-        target,
-        feature = ButtonFeature.CLEAR,
+        target = "_self",
+        feature = ButtonFeature.BLANK,
         size = ButtonSize.NORMAL,
         align = "center",
         fullWidth = false,
@@ -50,6 +51,20 @@ export const Button: FC<ButtonProps> = (props) => {
         ...other
     } = props
 
+    let content = (
+        <>
+            {Icon && <Icon className={cls.icon} />}
+            {children}
+        </>
+    )
+
+    if (href) {
+        content = (
+            <Link to={href} target={target} className={cls.link}>
+                {content}
+            </Link>
+        )
+    }
 
     return (
         <button
@@ -62,7 +77,7 @@ export const Button: FC<ButtonProps> = (props) => {
                 feature,
                 size,
                 align,
-                children ? "with_title" : "squared",
+                children ? "with__caption" : "squared",
                 href ? "is__link" : "",
             ], {
                 fullWidth,
@@ -73,17 +88,7 @@ export const Button: FC<ButtonProps> = (props) => {
                 disabled,
             }, [ className, variant ])}
         >
-            {Icon && <Icon className={cls.icon} />}
-            {children
-                ? (href
-                    ? (
-                        <Link to={href} target={target} className={cls.link}>
-                            {children}
-                        </Link>
-                    )
-                    : children
-                )
-                : null}
+            {content}
         </button>
     )
-}
+})

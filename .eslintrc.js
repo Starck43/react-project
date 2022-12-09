@@ -22,7 +22,7 @@ module.exports = {
         "@typescript-eslint",
         "i18next",
         "react-hooks",
-        "paths-observer",
+        "paths-observer", // custom plugin
     ],
     rules: {
         "no-tabs": 0,
@@ -37,8 +37,10 @@ module.exports = {
         "no-undef": "off",
         "no-mixed-spaces-and-tabs": [ 2, "smart-tabs" ],
         "max-len": [
-            1, {
+            0, {
                 code: 120,
+                comments: 200,
+                ignorePattern: true,
                 ignoreComments: true,
                 ignoreUrls: true,
                 ignoreStrings: true,

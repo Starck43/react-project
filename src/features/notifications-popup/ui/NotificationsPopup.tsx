@@ -1,9 +1,10 @@
 import {memo, useCallback, useMemo, useState} from "react"
 import {useTranslation} from "react-i18next"
 
+import {useSelector} from "react-redux"
+import {getUser} from "@/entities/user"
 import {NotificationList} from "@/entities/notification"
 
-import {AnimationProvider} from "@/shared/lib/components/AnimationProvider"
 import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 import {ThemeVariant} from "@/shared/types/theme"
 import {Button} from "@/shared/ui/button/Button"
@@ -30,11 +31,15 @@ export const NotificationsPopup = memo((props: NotificationsProps) => {
     } = props
 
     const {t} = useTranslation()
+    const user = useSelector(getUser)
     const {width: screenWidth, isMobile} = useWindowDimensions()
     const [ showDrawer, setShow ] = useState(false)
 
     const showDrawerDrawerHandler = useCallback(() => setShow(true), [])
     const closeDrawerHandler = useCallback(() => setShow(false), [])
+    const content = useMemo(() => (<NotificationList />), [])
+
+    if (!user) return null
 
     const mobile = isMobile || screenWidth < 576
 
@@ -47,7 +52,6 @@ export const NotificationsPopup = memo((props: NotificationsProps) => {
         </Button>
     )
 
-    const content = useMemo(() => (<NotificationList />), [])
 
     return (
         mobile

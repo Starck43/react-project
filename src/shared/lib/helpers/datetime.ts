@@ -1,4 +1,4 @@
-export const isDarkness = (start, end) => {
+export const isDarkness = (start: number, end: number) => {
 	if (Number.isNaN(start - end)) return false
 
 	const date = new Date()

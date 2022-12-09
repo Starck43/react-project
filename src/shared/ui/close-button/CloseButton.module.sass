@@ -1,25 +1,7 @@
-@import "src/app/styles/vars"
-@import "src/app/styles/common"
-
 .close__button
-	width: var(--icon-size-lg)
-	height: var(--icon-size-lg)
-	min-width: var(--icon-size) !important
 	padding: 0 !important
-	border: none !important
-	cursor: pointer
-	background-color: transparent !important
-
-	&::before
-		content: "+"
-		font-size: var(--icon-size-lg)
-		line-height: 0
-		color: var(--theme-primary-link-color)
-		opacity: 0.7
-		transform: rotate(45deg)
-		transition: all 100ms ease-in-out
+	color: var(--theme-primary-link-color)
+	transition: all 120ms ease-in-out
 
 	&:hover
-		&::before
-			opacity: 1
-			transform: rotate(135deg)
+		transform: rotate(90deg)

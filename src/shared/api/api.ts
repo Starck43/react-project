@@ -3,7 +3,7 @@ import {AUTH_USER_KEY} from "@/shared/const/localStorage"
 
 
 export const $api = axios.create({
-    baseURL: process.env.API_SERVER || __API__,
+    baseURL: __API__,
 })
 
     // just only for json-server

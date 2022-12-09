@@ -51,7 +51,6 @@ export const Modal = (props: ModalProps) => {
             />
             <Col
                 data-testid="modal"
-                role="link"
                 justify="between"
                 className={classnames(cls, [ "modal", "shadowed", size ], {
                     open,
@@ -61,9 +60,9 @@ export const Modal = (props: ModalProps) => {
                     fullSize,
                 }, [
                     styles.modals,
-                    open ? "open" : "",
-                    bordered ? "bordered" : "",
-                    fullSize ? "fullSize" : "",
+                    open ? styles.open : "",
+                    bordered ? styles.bordered : "",
+                    fullSize ? styles.fullSize : "",
                     className,
                 ])}
                 style={{...style, transitionDuration: `${animationTime}ms`}}
@@ -83,12 +82,13 @@ export const Modal = (props: ModalProps) => {
                     {children}
                 </Flex>
 
-                <Flex wrap className={cls.footer}>
+                <Flex wrap fullWidth justify="end" className={cls.footer}>
                     {footer}
                     {handleSubmit
                     && (
                         <Button
                             data-testid="SubmitButton"
+                            variant="primary"
                             feature={ButtonFeature.BLANK}
                             type="submit"
                             bordered
@@ -102,6 +102,7 @@ export const Modal = (props: ModalProps) => {
                     && (
                         <Button
                             data-testid="CancelButton"
+                            variant="primary"
                             feature={ButtonFeature.BLANK}
                             bordered
                             onClick={handleClose}

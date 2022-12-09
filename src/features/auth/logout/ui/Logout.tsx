@@ -30,7 +30,7 @@ export const Logout = ({show, closeHandler}: LogoutProps) => {
             onClose={closeHandler}
             primaryBtnLabel={t("да")}
             secondaryBtnLabel={t("нет")}
-            size="auto"
+            size="sm"
             bordered
             rounded
         >

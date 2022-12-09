@@ -14,7 +14,7 @@
 		},
 		"noImplicitAny": true,
 		"module": "ESNext",
-		"target": "es5",
+		"target": "ESNext",
 		"jsx": "react-jsx",
 		"strict": true,
 		"allowJs": true,

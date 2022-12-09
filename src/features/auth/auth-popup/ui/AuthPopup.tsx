@@ -3,6 +3,7 @@ import {
 } from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
+import {ButtonFeature} from "@/shared/ui/button/consts"
 
 import {getUser} from "@/entities/user"
 
@@ -10,12 +11,11 @@ import {classnames} from "@/shared/lib/helpers/classnames"
 import {RoutesPath} from "@/shared/config/router"
 import {AppRoutes} from "@/shared/const/appRoutes"
 import {ThemeVariant} from "@/shared/types/theme"
-import LoginIcon from "@/shared/assets/icons/auth.svg"
-
 import {Avatar} from "@/shared/ui/avatar/Avatar"
 import {Button} from "@/shared/ui/button/Button"
 import {NavLink} from "@/shared/ui/link/NavLink"
 import {Dropdown, PopupPositionType} from "@/shared/ui/popups"
+import LoginIcon from "@/shared/assets/icons/auth.svg"
 
 import {Logout} from "../../logout/ui/Logout"
 
@@ -41,32 +41,35 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
     const [ isShowLogout, setShowLogout ] = useState(false)
     const user = useSelector(getUser)
 
-    const onLogoutHandler = useCallback(() => (
-        setShowLogout((prev) => !prev)
+    const showLogoutModal = useCallback(() => (
+        setShowLogout(true)
+    ), [])
+
+    const hideLogoutModal = useCallback(() => (
+        setShowLogout(false)
     ), [])
 
     const menuItems = useMemo(() => (
-        user ? [
+        user?.id ? [
                 {
                     value: t("профиль"),
                     href: RoutesPath[AppRoutes.PROFILE] + user.id,
                 },
                 {
                     value: t("выйти"),
-                    onClick: onLogoutHandler,
+                    onClick: showLogoutModal,
                 },
             ]
             : null
-    ), [ onLogoutHandler, t, user ])
+    ), [ showLogoutModal, t, user ])
 
     return (
         <>
-            {menuItems && user?.username
+            {menuItems
                 ? (
                     <Dropdown
-                        position={position}
                         toggleElement={(
-                            <Button>
+                            <Button variant="primary" feature={ButtonFeature.CLEAR}>
                                 {minified
                                     ? <Avatar size="xs" src={user?.avatar} />
                                     : user.username}
@@ -74,6 +77,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                         )}
                         items={menuItems}
                         variant={variant}
+                        position={position}
                         className={classnames(cls, [ "action" ], {}, [ className ])}
                     />
                 )
@@ -89,7 +93,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
             && (
                 <Logout
                     show={isShowLogout}
-                    closeHandler={() => setShowLogout((prev) => !prev)}
+                    closeHandler={hideLogoutModal}
                 />
             )}
         </>

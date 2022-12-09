@@ -9,6 +9,6 @@ export {newCommentReducer, newCommentActions} from "./model/slice/newCommentSlic
 export {getNewCommentText, getNewCommentError} from "./model/selectors/getNewComment"
 // export {validateNewCommentData} from "./model/services/validateNewCommentData"
 
-export {CommentCard} from "entities/comment/ui/comment-card/CommentCard"
+export {CommentCard} from "./ui/comment-card/CommentCard"
 export {NewCommentFormAsync as NewCommentForm} from "./ui/comment-form/NewCommentForm.async"
 export {CommentList} from "./ui/comment-list/CommentList"

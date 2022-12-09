@@ -1,15 +1,15 @@
-import {memo, ReactNode, CSSProperties, Fragment} from "react"
+import {ReactNode, Fragment, memo, CSSProperties} from "react"
 import {Menu} from "@headlessui/react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
-import {PopupPositionType} from "../types"
 
-import {Col} from "../../stack"
 import {Button} from "../../button/Button"
+import styles from "../styles/Popups.module.sass"
+
+import type {PopupPositionType} from "../types"
 
 import cls from "./Dropdown.module.sass"
-import styles from "../styles/Popups.module.sass"
 
 
 export interface DropdownItem {
@@ -56,7 +56,6 @@ const Dropdown = (props: DropdownProps) => {
                 {toggleElement}
             </Menu.Button>
             <Menu.Items
-                as={Col}
                 className={classnames(cls, [ "menu" ], {}, [
                     styles.inner_block,
                     styles[position],

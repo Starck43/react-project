@@ -1,4 +1,4 @@
-import {memo, useCallback, useEffect} from "react"
+import {useCallback, useEffect} from "react"
 
 import {AnimationProvider, useAnimationModules} from "@/shared/lib/components/AnimationProvider"
 import {classnames} from "@/shared/lib/helpers/classnames"
@@ -102,7 +102,7 @@ const DrawerContent = (props: DrawerProps) => {
     let drawerStyle = {}
     let contentStyle = {}
 
-    if (position === "top" || position === "bottom") {
+    if (position === "bottom") {
         const display = y.to((py) => (py < height ? "block" : "none"))
         overlayStyle = {
             display,
@@ -140,8 +140,8 @@ const DrawerContent = (props: DrawerProps) => {
                     }, [
                         styles.modals,
                         styles.open,
-                        bordered ? "bordered" : "",
-                        fullSize ? "fullSize" : "",
+                        bordered ? styles.bordered : "",
+                        fullSize ? styles.fullSize : "",
                         className,
                     ])}
                     style={contentStyle}
@@ -177,7 +177,8 @@ const DrawerContent = (props: DrawerProps) => {
 
 const DrawerAsync = (props: DrawerProps) => {
     const {isLoaded} = useAnimationModules()
-    return !isLoaded ? <DrawerContent {...props} /> : null
+
+    return isLoaded ? <DrawerContent {...props} /> : null
 }
 
 export const Drawer = (props: DrawerProps) => (

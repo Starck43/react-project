@@ -1,5 +1,6 @@
 import {memo, useState} from "react"
 import {useTranslation} from "react-i18next"
+import {AppRoutes} from "@/shared/const/appRoutes"
 
 import {ErrorTestButton} from "@/app/providers/error-boundary-provider"
 
@@ -48,9 +49,11 @@ function Sidebar({position = "right", className}: SidebarProps) {
 
             <div className={classnames(cls, [], {collapsed}, [ "sidebar__container" ])}>
                 <NavLink
-                    to={RoutesPath.article_create}
+                    to={`${RoutesPath[AppRoutes.ARTICLE_CREATE]}`}
                     title={t("новая статья")}
                     feature="underlined"
+                    variant="primary"
+                    fullWidth
                 />
                 <ErrorTestButton />
             </div>

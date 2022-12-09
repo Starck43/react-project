@@ -56,7 +56,7 @@ export const NotificationList = ({className}: NotificationListProps) => {
 
     if (isError || !data) {
         return (
-            <Info subTitle={t("пусто")} status={InfoStatus.ERROR} />
+            <Info subTitle={t("пусто")} status={InfoStatus.WARNING} />
         )
     }
 

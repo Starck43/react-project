@@ -1,3 +1,4 @@
+import {memo} from "react"
 import {useNavigate} from "react-router-dom"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
@@ -50,4 +51,4 @@ function AuthPage() {
     )
 }
 
-export default AuthPage
+export default memo(AuthPage)
