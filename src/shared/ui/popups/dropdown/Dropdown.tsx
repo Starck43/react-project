@@ -65,7 +65,7 @@ const Dropdown = (props: DropdownProps) => {
             >
                 {items.map((item, index) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <Menu.Item as={Fragment} disabled={item.disabled} key={index}>
+                    <Menu.Item as={Fragment} disabled={item.disabled} key={`menuItem-${index}`}>
                         {({active, disabled}) => (
                             <Button
                                 variant={variant}

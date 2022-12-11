@@ -17,6 +17,7 @@ export const NotificationItem = ({item}: NotificationItemProps) => (
         title={item.title}
         subTitle={item.description}
         href={item.href}
+        align="start"
         className={classnames(cls, [ "item", item.href ? "link" : "" ])}
     />
 )

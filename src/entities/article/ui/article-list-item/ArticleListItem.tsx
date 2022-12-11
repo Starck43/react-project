@@ -70,6 +70,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         <Header
                             tag="h5"
                             title={article.title}
+                            align="start"
                             className={cls.header}
                         >
                             <Row align="center" fullWidth className={cls.meta}>
@@ -86,6 +87,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             title={article.title}
                             inlined
                             gap="none"
+                            align="start"
                             className={cls.header}
                         >
                             {article?.user?.avatar && (

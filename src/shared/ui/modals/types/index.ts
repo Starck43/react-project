@@ -25,4 +25,5 @@ export interface ModalProps extends DrawerProps {
     secondaryBtnLabel?: string | null
     primaryBtnLabel?: string | null
     size?: SizeType
+    fullWidth?: boolean
 }

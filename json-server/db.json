@@ -553,25 +553,82 @@
       "id": "oCRKhgF"
     }
   ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "value": 4,
+      "feedback": "awesome article, perfect!",
+      "userId": "1",
+      "articleId": "9"
+    },
+    {
+      "id": "2",
+      "value": 5,
+      "feedback": "awesome article 2, perfect!",
+      "userId": "1",
+      "articleId": "2"
+    },
+    {
+      "id": "1",
+      "value": 4,
+      "feedback": "Great article 3, perfect!",
+      "userId": "2",
+      "articleId": "3"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "value": 4,
+      "feedback": "",
+      "id": "F0Cx8LB"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "value": 4,
+      "feedback": "",
+      "id": "DNBgTiM"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "value": 3,
+      "feedback": "Good article",
+      "id": "dLhO5OF"
+    },
+    {
+      "userId": "1",
+      "articleId": "1",
+      "value": 5,
+      "feedback": "Yesss!",
+      "id": "_VjbATx"
+    }
+  ],
   "users": [
     {
       "id": "1",
       "username": "admin",
       "password": "admin",
       "avatar": "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png",
-      "roles": ["ADMIN"]
+      "roles": [
+        "ADMIN"
+      ]
     },
     {
       "id": "2",
       "username": "guest",
       "password": "guest",
-      "roles": ["GUEST"]
+      "roles": [
+        "GUEST"
+      ]
     },
     {
       "id": "3",
       "username": "editor",
       "password": "editor",
-      "roles": ["EDITOR"]
+      "roles": [
+        "EDITOR"
+      ]
     }
   ],
   "profile": [

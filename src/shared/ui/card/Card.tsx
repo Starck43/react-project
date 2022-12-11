@@ -41,20 +41,15 @@ export const Card: FC<CardProps> = (props) => {
     return (
         <Flex
             {...other}
-            wrap
+            wrap={direction === "column"}
             fullWidth
             direction={direction}
-            className={classnames(
-                cls,
-                [
+            className={classnames(cls, [
                     "card",
                     variant,
                     feature,
                     href ? "linked" : "",
-                ],
-                {bordered, rounded, shadowed},
-                [ className ],
-            )}
+                ], {bordered, rounded, shadowed}, [ className ])}
         >
             {
                 href

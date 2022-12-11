@@ -1,5 +1,7 @@
-import {memo} from "react"
+import {memo, useState} from "react"
 import {useTranslation} from "react-i18next"
+import {RatingCard} from "@/entities/rating"
+import {Rate} from "@/shared/ui/rate/Rate"
 
 import Header from "@/shared/ui/header/Header"
 

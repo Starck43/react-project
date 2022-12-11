@@ -6,6 +6,7 @@
 	width: var(--modal-width-default)
 	height: auto
 	max-height: var(--modal-height-default)
+	border-radius: var(--border-radius-default)
 
 	&.open
 		opacity: 0
@@ -14,6 +15,8 @@
 			opacity: 1
 			@include transform-pos(50%, 50%, 1)
 
+.header
+	white-space: nowrap
 
 .fullSize
 	width: 100%

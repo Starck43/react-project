@@ -73,6 +73,9 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                     tag="h2"
                     title={article?.title}
                     subTitle={article?.subtitle}
+                    gap="none"
+                    align="start"
+                    className="mb-1"
                 >
                     <Flex gap="xs" className="size-sm"><EventIcon /><span>{article?.createdAt}</span></Flex>
                     <Flex gap="xs" className="size-sm"><EyeIcon /><span>{article?.views}</span></Flex>

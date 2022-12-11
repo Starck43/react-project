@@ -5,7 +5,6 @@ import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 import type {SizeType} from "@/shared/types/ui"
 
-import {TagCase} from "./consts"
 import {Flex} from "../../ui/stack"
 
 import cls from "./Header.module.sass"
@@ -14,13 +13,14 @@ import cls from "./Header.module.sass"
 type HeaderProps = {
     tag?: ElementType
     href?: string
-    variant?: ThemeVariant
     title: ReactNode
     subTitle?: ReactNode
-    inlined?: boolean
+    variant?: ThemeVariant
     align?: "start" | "center" | "end"
     gap?: SizeType
-    transform?: TagCase
+    inlined?: boolean
+    fullWidth?: boolean
+    transform?: "upper_first" | "upper_case" | "lower_case"
     shadowed?: boolean
     className?: string
     children?: ReactNode
@@ -28,15 +28,16 @@ type HeaderProps = {
 
 const Header = (props: HeaderProps) => {
     const {
-        tag = "div",
+        tag = "h3",
         href,
-        variant = "primary",
         title,
         subTitle,
+        variant = "primary",
         align = "start",
-        inlined = false,
         gap = "xs",
-        transform = TagCase.FIRST,
+        inlined = false,
+        fullWidth = true,
+        transform,
         shadowed = false,
         className,
         children,
@@ -64,10 +65,10 @@ const Header = (props: HeaderProps) => {
             <Flex
                 align={align}
                 justify={inlined ? "start" : align}
-                gap={inlined ? gap : "none"}
+                gap={gap}
                 href={href}
                 wrap
-                fullWidth={inlined}
+                fullWidth={inlined || fullWidth}
                 direction={inlined ? "row" : "column"}
                 className={classnames(cls, [ "header", variant ], {inlined}, [ className ])}
             >

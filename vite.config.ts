@@ -27,10 +27,10 @@ export function reactVirtualized() {
 export default defineConfig(({mode}) => {
     const env = loadEnv(mode, process.cwd(), "")
     return {
-        // vite config
         plugins: [
             svgr({exportAsDefault: true}),
             react(),
+            // reactVirtualized(),
             legacy({
                 targets: [ "defaults", "not IE 11" ],
             }),
@@ -45,8 +45,8 @@ export default defineConfig(({mode}) => {
             __API__: JSON.stringify(env.API_SERVER || "http://localhost:8000"),
             __PROJECT__: JSON.stringify("frontend"),
         },
-        build: {
-            sourcemap: true,
+        css: {
+            devSourcemap: true,
         },
     }
 })

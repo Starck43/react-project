@@ -33,6 +33,7 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
                 tag="h2"
                 title={t("связанные статьи")}
                 shadowed
+                align="center"
                 className="mt-2"
             />
             <div className={cls.articles__wrapper}>

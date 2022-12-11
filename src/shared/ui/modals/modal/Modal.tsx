@@ -1,4 +1,5 @@
 import {classnames} from "@/shared/lib/helpers/classnames"
+import Header from "@/shared/ui/header/Header"
 
 import {useModal} from "../lib/hooks/useModal"
 import {ModalProps} from "../types"
@@ -8,7 +9,8 @@ import {Overlay} from "../overlay/Overlay"
 import {Col, Flex, Row} from "../../stack"
 import {Button} from "../../button/Button"
 import {ButtonFeature} from "../../button/consts"
-
+import SubmitIcon from "@/shared/assets/icons/check.svg"
+import CancelIcon from "@/shared/assets/icons/close.svg"
 
 import styles from "../styles/Modals.module.sass"
 import cls from "./Modal.module.sass"
@@ -31,6 +33,7 @@ export const Modal = (props: ModalProps) => {
         bordered = true,
         size,
         fullSize = false,
+        fullWidth = false,
         children,
         className,
         style,
@@ -52,12 +55,13 @@ export const Modal = (props: ModalProps) => {
             <Col
                 data-testid="modal"
                 justify="between"
+                gap="md"
                 className={classnames(cls, [ "modal", "shadowed", size ], {
                     open,
                     show,
+                    fullSize,
                     rounded,
                     bordered,
-                    fullSize,
                 }, [
                     styles.modals,
                     open ? styles.open : "",
@@ -71,18 +75,20 @@ export const Modal = (props: ModalProps) => {
                     gap="sm"
                     fullWidth
                     justify="between"
-                    align="baseline"
+                    align="center"
                     className={cls.header}
                 >
-                    {header}
+                    {typeof header === "string" ? <Header tag="h4" title={header} align="start" /> : header}
                     {showClose && <CloseButton className={styles.close__button} handleClick={handleClose} />}
                 </Row>
 
-                <Flex justify="between" wrap className={styles.body}>
-                    {children}
-                </Flex>
+                <div className={styles.body}>
+                    <Flex justify="between" wrap fullWidth={fullWidth} className={styles.content}>
+                        {children}
+                    </Flex>
+                </div>
 
-                <Flex wrap fullWidth justify="end" className={cls.footer}>
+                <Flex justify="end" wrap fullWidth className={cls.footer}>
                     {footer}
                     {handleSubmit
                     && (
@@ -92,6 +98,7 @@ export const Modal = (props: ModalProps) => {
                             feature={ButtonFeature.BLANK}
                             type="submit"
                             bordered
+                            Icon={SubmitIcon}
                             onClick={handleSubmit}
                         >
                             {primaryBtnLabel}
@@ -105,6 +112,7 @@ export const Modal = (props: ModalProps) => {
                             variant="primary"
                             feature={ButtonFeature.BLANK}
                             bordered
+                            Icon={CancelIcon}
                             onClick={handleClose}
                         >
                             {secondaryBtnLabel}

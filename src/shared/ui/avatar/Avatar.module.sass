@@ -2,39 +2,45 @@
 	.title
 		font-weight: bold
 
+	&.xxl
+		font-size: 1.6em
+
+		.image__wrapper
+			width: 600px
+			height: 600px
 
 	&.xl
 		font-size: 1.4em
 
-		.image
+		.image__wrapper
 			width: 450px
 			height: 450px
 
 	&.lg
 		font-size: 1.2em
 
-		.image
+		.image__wrapper
 			width: 300px
 			height: 300px
 
 	&.md
 		font-size: 1em
 
-		.image
+		.image__wrapper
 			width: 150px
 			height: 150px
 
 	&.sm
 		font-size: 0.8em
 
-		.image
+		.image__wrapper
 			width: 75px
 			height: 75px
 
 	&.xs
 		font-size: 0.8rem
 
-		.image
+		.image__wrapper
 			width: 30px
 			height: 30px
 
@@ -54,14 +60,12 @@
 	&.rounded
 		border-radius: 50rem
 
-.image
+.img
+	position: absolute
 	width: 100%
 	top: 0
 	left: 0
 	margin: 0
-
-.img
-	position: absolute
 	min-width: 100%
 	min-height: 100%
 	height: 0
@@ -69,6 +73,8 @@
 	object-position: center
 
 .placeholder
+	position: absolute
 	height: 100%
+	width: 100%
 	padding: 10%
 	color: var(--avatar-color)

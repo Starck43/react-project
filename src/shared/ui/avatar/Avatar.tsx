@@ -41,11 +41,11 @@ export const Avatar = (props: AvatarProps) => {
         <Flex
             direction={inlined ? "row" : "column"}
             gap="xs"
-            className={classnames(cls, [ "avatar", typeof size === "string" ? size : "sm" ], {}, [ className ])}
+            className={classnames(cls, [ "avatar", typeof size === "string" ? size : "" ], {}, [ className ])}
         >
             <div className={classnames(cls, [ "image__wrapper" ], {rounded, bordered})} style={style}>
-                <PlaceholderIcon className={classnames(cls, [ "placeholder", "image" ])} />
-                {src && <img src={src as string} alt={alt} className={classnames(cls, [ "img", "image" ])} />}
+                <PlaceholderIcon className={classnames(cls, [ "placeholder" ])} />
+                {src && <img src={src as string} alt={alt} className={classnames(cls, [ "img" ])} />}
             </div>
             {title && <span className={cls.title}>{title}</span>}
         </Flex>

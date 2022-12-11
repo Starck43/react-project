@@ -15,3 +15,5 @@ export {InfiniteArticleList} from "./infinite-article-list/ui/InfiniteArticleLis
 
 export {ArticleCommentsCard} from "./article-comments/ui/ArticleCommentsCard"
 export {ArticleRelatedList} from "./article-related/ui/ArticleRelatedList"
+
+export {ArticleRatingCardAsync as ArticleRatingCard} from "@/features/articles/article-rating/ui/ArticleRatingCard.async"
