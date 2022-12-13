@@ -5,9 +5,9 @@ import {classnames} from "@/shared/lib/helpers/classnames"
 
 import {PAGE_ID} from "@/widgets/page/ui/Page"
 
+import type {Article} from "../../model/types/article"
 import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../lib/constants"
 import {ArticleView} from "../../model/consts"
-import {Article} from "../../model/types/article"
 import {ArticleListItem} from "../article-list-item/ArticleListItem"
 import {renderArticlesSkeleton} from "../article-list-skeleton/ArticleListSkeleton"
 
@@ -77,7 +77,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     return (
         <>
-            {/* @ts-ignore */}
+            {!isLoading && (
+            // @ts-ignore
             <WindowScroller scrollElement={container}>
                 {(props) => {
                     const {
@@ -120,11 +121,11 @@ export const ArticleList = memo((props: ArticleListProps) => {
                                         rowRenderer={articleListRender}
                                     />
                                 </div>
-)
+                            )
                     )
                 }}
             </WindowScroller>
-
+          )}
             {isLoading && renderArticlesSkeleton({
                 view,
                 rowCount: isTile ? TILE_VIEW_PER_PAGE : LIST_VIEW_PER_PAGE,

@@ -3,6 +3,7 @@ import {useTranslation} from "react-i18next"
 
 import {Rating} from "@/entities/rating"
 
+import type {ThemeVariant} from "@/shared/types/theme"
 import {TextArea} from "@/shared/ui/input/Input"
 import {Modal} from "@/shared/ui/modals"
 import {Card} from "@/shared/ui/card/Card"
@@ -17,6 +18,7 @@ interface RatingCardProps {
     rate?: Rating
     title?: string
     feedbackTitle?: string
+    variant?: ThemeVariant
     onCancel?: (value: number) => void
     onSave?: (value: number, feedback?: string) => void
     className?: string
@@ -24,7 +26,7 @@ interface RatingCardProps {
 
 export const RatingCard = memo((props: RatingCardProps) => {
     const {
-        rate, title, feedbackTitle, onCancel, onSave, className,
+        rate, title, feedbackTitle, variant, onCancel, onSave, className,
     } = props
     const {t} = useTranslation()
 
@@ -56,12 +58,13 @@ export const RatingCard = memo((props: RatingCardProps) => {
 
     return (
         <Card
-            variant="secondary"
+            variant={variant}
             bordered
             rounded
             className={classnames(cls, [ "rating" ], {}, [ className ])}
         >
             <Header
+                variant={variant}
                 title={headerTitle}
                 fullWidth
                 align="center"

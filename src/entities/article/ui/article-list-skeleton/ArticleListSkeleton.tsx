@@ -25,14 +25,15 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                     <Skeleton
                         variant="primary"
                         elements={[ SkeletonElementType.AVATAR ]}
-                        className={classnames(cls, [ "avatar" ], {}, [ "mb-1" ])}
+                        className={classnames(cls, [ "avatar" ])}
                     />
-                    <Flex className={cls.meta}>
+                    <Flex gap="none" fullWidth className={cls.header}>
                         <Skeleton
                             variant="primary"
                             elements={[ SkeletonElementType.TITLE, SkeletonElementType.TITLE ]}
+                            width="100%"
+                            height="3rem"
                             rounded
-                            width="90%"
                         />
                     </Flex>
                 </>
@@ -98,6 +99,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
         <Card
             bordered
             rounded
+            gap="none"
             shadowed={false}
             className={classnames(cls, [ "article", view ], {}, [ className ])}
         >

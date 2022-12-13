@@ -1,4 +1,5 @@
 @import "src/app/styles/vars"
+@import "src/app/styles/mixins"
 
 .listBox
 	display: inline-flex
@@ -17,7 +18,7 @@
 
 	&.compact
 		width: 100%
-		//text-align: left
+		// text-align: left
 
 .item
 	padding: 0.35em $controls-padding * 2
@@ -32,5 +33,10 @@
 	opacity: 1
 
 .dropdown__icon
-	width: 1.5rem
-	margin: -0.35em -0.2em -0.35em var(--gap)
+	width: 1.3rem
+	height: 1.3rem
+	margin: -0.35em -0.2em
+	transition: 0.2s all linear
+
+	&.open
+		transform: rotate(180deg)

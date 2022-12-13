@@ -4,102 +4,119 @@
 
 .button
 	display: flex
-	justify-content: center
+	justify-content: space-between
 	align-items: center
-	gap: 0.25em
-	min-height: var(--controls-height)
-	font-family: var(--font-family-secondary)
 	color: inherit
-	background-color: transparent
+	background-color: inherit
 	border: var(--border-thickness) solid transparent
-	border-radius: var(--border-radius-default)
 	transition: all 0.2s ease-out
-	opacity: 0.7
 	cursor: pointer
 	user-select: none
 
-	&:hover, &:focus
-		opacity: 1
+	&:not(.clear)
+		gap: 0.35em
+		min-height: var(--controls-height)
+		font-family: var(--font-family-secondary)
+		background-color: transparent
+		border-radius: var(--border-radius-default)
+		opacity: 0.7
+
+		&:hover, &:focus
+			opacity: 1
+
+	&.bordered
+		border-color: $brand-color
+
+	&.rounded
+		border-radius: var(--border-radius)
+
+	&.squared
+		padding: $controls-padding
+
+	&.underlined
+		border-top-color: transparent
+		border-left-color: transparent
+		border-right-color: transparent
+
+	&.disabled
+		pointer-events: none
+		opacity: 0.5 !important
 
 .icon:hover
 	stroke-width: 3px
 
 .primary
-	&:not(.clear)
-		color: var(--theme-primary-link-color)
-
 	&.bordered
 		border-color: var(--theme-primary-border-color)
 
+		&:hover
+			box-shadow: 0 0 0.7rem -0.2em var(--theme-primary-shadow)
+
+	&:not(.clear)
+		color: var(--theme-primary-link-color)
+
+	&.blank
+		background-color: var(--theme-primary-bg-color)
+
 	&.inverted
 		color: var(--theme-primary-bg-color)
-		background-color: var(--theme-primary-text-color)
+		background-color: var(--theme-secondary-color)
 
 	&.shadowed
 		box-shadow: 0 0.3em 1.1em -0.4em var(--theme-primary-box-shadow)
 
 
 .secondary
-	&:not(.clear)
-		color: var(--theme-secondary-link-color)
-
 	&.bordered
 		border-color: var(--theme-secondary-border-color)
 
+		&:hover
+			box-shadow: 0 0 0.7rem -0.2em var(--theme-secondary-shadow)
+
+	&:not(.clear)
+		color: var(--theme-secondary-link-color)
+
+	&.blank
+		background-color: var(--theme-secondary-bg-color)
+
 	&.inverted
 		color: var(--theme-secondary-bg-color)
-		background-color: var(--theme-secondary-text-color)
+		background-color: var(--theme-primary-color)
 
 	&.shadowed
 		box-shadow: 0 0.3em 1.1em -0.4em var(--theme-secondary-box-shadow)
+
 
 .fullWidth
 	width: 100%
 
 .left
-	justify-content: flex-start
+	flex-direction: row
 
 .right
-	justify-content: flex-end
+	flex-direction: row-reverse
 
 .small
 	font-size: 0.7rem
 
 	.icon
 		width: var(--icon-size-sm)
+		height: var(--icon-size-sm)
 
 .normal
 	font-size: inherit
 
 	.icon
-		width: var(--icon-size-sm)
+		width: var(--icon-size)
+		height: var(--icon-size)
 
 .large
 	font-size: 1.5rem
 
 	.icon
 		width: var(--icon-size-lg)
-
-.rounded
-	border-radius: var(--border-radius)
-
-
-// TODO: finalize square variant
-.squared
-	padding: $controls-padding
+		height: var(--icon-size-lg)
 
 .with__caption:not(.clear, .is__link), .is__link .link
 	min-width: 4em
 	padding: calc(#{$controls-padding} + 1px) $controls-padding * 1.8 $controls-padding
-
-.underlined
-	border-top-color: transparent
-	border-left-color: transparent
-	border-right-color: transparent
-
-.disabled
-	pointer-events: none
-	opacity: 0.5
-
-.hover
-	mix-blend-mode: luminosity

@@ -36,6 +36,7 @@ export type InfoProps = {
     "data-testid"?: string
 }
 
+// TODO: check error with removing data-testid by custom plugin
 export const Info = (props: InfoProps) => {
     const {
         Tag = "h3",

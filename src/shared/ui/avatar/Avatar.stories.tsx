@@ -14,10 +14,43 @@ export default {
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />
 
 export const Default = Template.bind({})
-Default.args = {src: avatar, rounded: true}
+Default.args = {
+    src: avatar,
+    title: "John Mconory",
+}
 
-export const Placeholder = Template.bind({})
-Placeholder.args = {
+export const PlaceholderWithCustomSize = Template.bind({})
+PlaceholderWithCustomSize.args = {
 // @ts-ignore
-    size: 200, src: "",
+    src: "",
+    size: 200,
+}
+
+export const InlinedXS = Template.bind({})
+InlinedXS.args = {
+// @ts-ignore
+    src: "",
+    inlined: true,
+    rounded: true,
+    size: "xs",
+    title: "John Mconory",
+}
+
+export const WithAvatarLG = Template.bind({})
+WithAvatarLG.args = {
+// @ts-ignore
+    src: avatar,
+    size: "lg",
+    rounded: true,
+    title: "John Mconory",
+}
+
+export const WithPlaceholderXS = Template.bind({})
+WithPlaceholderXS.args = {
+// @ts-ignore
+    src: "",
+    size: "xs",
+    rounded: true,
+    bordered: true,
+    title: "John Mconory",
 }

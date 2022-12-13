@@ -14,35 +14,44 @@ const Template: ComponentStory<typeof Skeleton> = (args) => <Skeleton {...args} 
 
 export const Title = Template.bind({})
 Title.args = {
-    width: "80%",
-    height: "2.6em",
+    width: "90%",
+    height: "1.6em",
     elements: [ SkeletonElementType.BLOCK ],
 }
 
 export const Block = Template.bind({})
 Block.args = {
-    width: "80%",
-    height: 300,
+    width: "90%",
+    height: 200,
     elements: [ SkeletonElementType.BLOCK ],
 }
 
-export const Avatar = Template.bind({})
-Avatar.args = {
+export const AvatarWithCustomSize = Template.bind({})
+AvatarWithCustomSize.args = {
     width: 150,
     height: 150,
     elements: [ SkeletonElementType.AVATAR ],
 }
 
-export const WithToElements = Template.bind({})
-WithToElements.args = {
-    elements: [ SkeletonElementType.AVATAR, SkeletonElementType.BLOCK ],
-    inlined: true,
+export const AvatarWithAutoSize = Template.bind({})
+AvatarWithAutoSize.args = {
+    rounded: true,
+    avatarSize: "auto",
+    elements: [ SkeletonElementType.AVATAR ],
+}
+
+export const Vertical = Template.bind({})
+Vertical.args = {
+    elements: [ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ],
+    avatarSize: "sm",
     rounded: true,
 }
 
-export const WithThreeElements = Template.bind({})
-WithThreeElements.args = {
+export const Inlined = Template.bind({})
+Inlined.args = {
     elements: [ SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK ],
     inlined: true,
     rounded: true,
+    width: "30%",
+    height: "200px",
 }

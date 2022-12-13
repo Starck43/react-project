@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
-import {DirectionType, UIFeatureType} from "@/shared/types/ui"
+import {DirectionType, SizeType, UIFeatureType} from "@/shared/types/ui"
 
 import {Flex} from "../stack"
 
@@ -13,6 +13,7 @@ import cls from "./Card.module.sass"
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     variant?: ThemeVariant
     feature?: UIFeatureType
+    gap?: SizeType
     bordered?: boolean
     rounded?: boolean
     shadowed?: boolean
@@ -26,6 +27,7 @@ export const Card: FC<CardProps> = (props) => {
     const {
         variant = "primary",
         feature = "blank",
+        gap = "none",
         bordered = false,
         rounded = false,
         shadowed = false,
@@ -40,9 +42,9 @@ export const Card: FC<CardProps> = (props) => {
 
     return (
         <Flex
-            {...other}
             wrap={direction === "column"}
             fullWidth
+            gap={gap}
             direction={direction}
             className={classnames(cls, [
                     "card",
@@ -50,6 +52,7 @@ export const Card: FC<CardProps> = (props) => {
                     feature,
                     href ? "linked" : "",
                 ], {bordered, rounded, shadowed}, [ className ])}
+            {...other}
         >
             {
                 href

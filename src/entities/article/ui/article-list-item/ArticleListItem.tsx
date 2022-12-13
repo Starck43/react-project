@@ -12,8 +12,8 @@ import Header from "@/shared/ui/header/Header"
 import {Flex, Row} from "@/shared/ui/stack"
 import EyeIcon from "@/shared/assets/icons/eye-20-20.svg"
 
+import type {Article, ArticleTextBlock} from "../../model/types/article"
 import {ArticleBlockType, ArticleView} from "../../model/consts"
-import {Article, ArticleTextBlock} from "../../model/types/article"
 import {ArticleText} from "../article-text/ArticleText"
 
 import cls from "./ArticleListItem.module.sass"
@@ -71,9 +71,16 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             tag="h5"
                             title={article.title}
                             align="start"
+                            inlined
                             className={cls.header}
                         >
-                            <Row align="center" fullWidth className={cls.meta}>
+                            <Row
+                                justify="between"
+                                align="center"
+                                gap="xs"
+                                fullWidth
+                                className={cls.meta}
+                            >
                                 {typesBlock}
                                 {viewsBlock}
                             </Row>
@@ -86,7 +93,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             tag="h3"
                             title={article.title}
                             inlined
-                            gap="none"
+                            variant="secondary"
                             align="start"
                             className={cls.header}
                         >

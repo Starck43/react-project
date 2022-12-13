@@ -14,6 +14,7 @@
 		width: 100%
 		max-width: 250px
 		height: max-content
+		padding: 0
 		cursor: pointer
 
 		.image__wrapper
@@ -34,14 +35,13 @@
 			position: relative
 			margin-bottom: 0
 			padding: 1em
+			background-color: var(--theme-popup-bg-color)
 			z-index: 1
 
 			&::after
 				content: ""
-
 				@include push--absolute
 
-				background-color: var(--theme-popup-bg-color)
 				opacity: 0.8
 				z-index: -1
 
@@ -55,7 +55,6 @@
 			object-fit: cover
 
 		.meta
-			margin-bottom: 1em
 			font-size: 0.8em
 			order: -1
 
@@ -65,19 +64,13 @@
 
 			.views
 				flex: 0 1 auto
-				margin-left: 0.5em
-				margin-right: 0.5em
 
 			.views__icon
 				flex: none
+				width: 1.6em
 
 	&.list
 		position: relative
-		width: 100%
-		padding: 1em
-
-		.header
-			margin-bottom: 0
 
 		.avatar
 			// flex: 1 0 auto
@@ -88,8 +81,6 @@
 		.created__date
 			flex: 0 1 auto
 			margin-left: auto
-			margin-bottom: 1em
-			order: -1
 
 		.types
 			flex: 100%
@@ -138,6 +129,3 @@
 			.meta
 				flex: none
 				margin-left: 1.5em
-
-				.views
-					margin-right: 1em

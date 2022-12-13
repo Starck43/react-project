@@ -9,13 +9,12 @@ export const StyleDecorator = (StoryComponent: Story) => {
         <div
             style={{
                 display: "flex",
-                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
+                flexGrow: 1,
                 width: "100%",
                 height: "100%",
-                flexGrow: 1,
-                margin: "1rem",
+                padding: "1rem",
             }}
         >
             <StoryComponent />

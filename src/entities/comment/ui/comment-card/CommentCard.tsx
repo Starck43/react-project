@@ -2,7 +2,6 @@ import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Card} from "@/shared/ui/card/Card"
-import {Flex} from "@/shared/ui/stack"
 
 import {RoutesPath} from "@/shared/config/router"
 import {AppRoutes} from "@/shared/const/appRoutes"

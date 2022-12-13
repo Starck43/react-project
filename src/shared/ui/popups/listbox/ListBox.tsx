@@ -3,6 +3,7 @@ import {
 } from "react"
 import {Listbox as HeadlessListBox} from "@headlessui/react"
 
+import type {AlignType} from "@/shared/types/ui"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 
@@ -28,8 +29,10 @@ interface ListBoxProps {
     defaultOption?: ListBoxOption
     position?: PopupPositionType
     label?: string | null
+    align?: AlignType
     compact?: boolean
     rounded?: boolean
+    bordered?: boolean
     shadowed?: boolean
     onChange: <T = string>(value: T | any) => void
     style?: CSSProperties
@@ -45,7 +48,9 @@ const ListBox = (props: ListBoxProps) => {
         defaultOption,
         compact = false,
         rounded = false,
+        bordered = false,
         shadowed = true,
+        align = "left",
         position = "bottom_right",
         label = "---",
         onChange,
@@ -80,22 +85,28 @@ const ListBox = (props: ListBoxProps) => {
             )}
 
             <HeadlessListBox.Button as="div" className="button__wrapper">
-                <Button
-                    align="left"
-                    bordered
-                    rounded={rounded}
-                    style={style}
-                    className={cls.toggle__button}
-                >
-                    {selectedOption?.content || defaultOption?.content || label}
-                    <DropdownIcon className={cls.dropdown__icon} />
-                </Button>
+                {({open}) => (
+                    <Button
+                        variant={variant}
+                        align={align}
+                        bordered={bordered}
+                        rounded={rounded}
+                        style={style}
+                        className={cls.toggle__button}
+                    >
+                        <>
+                            {selectedOption?.content || defaultOption?.content || label}
+                            <DropdownIcon className={classnames(cls, [ "dropdown__icon" ], {open})} />
+                        </>
+                    </Button>
+                )}
             </HeadlessListBox.Button>
 
             <HeadlessListBox.Options
                 style={style}
                 className={classnames(cls, [ "options" ], {compact}, [
                     styles.inner_block,
+                    styles[align],
                     styles[position],
                     rounded ? styles.rounded : "",
                     shadowed ? styles.shadowed : "",

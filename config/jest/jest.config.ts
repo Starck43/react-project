@@ -57,6 +57,7 @@ export default {
         // "\\.(css|less|sass|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
         "\\.(s[ac]ss)$": "identity-obj-proxy",
         "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
+        "^@/(.*)$": "<rootDir>/src/$1",
     },
     reporters: [
         "default",

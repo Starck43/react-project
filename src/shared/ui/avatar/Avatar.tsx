@@ -1,5 +1,6 @@
 import {useMemo, CSSProperties} from "react"
 
+import type {SizeType} from "@/shared/types/ui"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Flex} from "../stack"
 
@@ -7,7 +8,7 @@ import PlaceholderIcon from "./assets/avatar-placeholder.svg"
 import cls from "./Avatar.module.sass"
 
 
-type AvatarSize = number | "xs" | "sm" | "md" | "lg" | "xl"
+type AvatarSize = number | SizeType
 
 interface AvatarProps {
     src?: string
@@ -35,12 +36,13 @@ export const Avatar = (props: AvatarProps) => {
     const style = useMemo<CSSProperties>(() => ({
         width: typeof size === "number" ? size : undefined,
         height: typeof size === "number" ? size : undefined,
+        padding: typeof size === "number" ? 0 : undefined,
     }), [ size ])
 
     return (
         <Flex
             direction={inlined ? "row" : "column"}
-            gap="xs"
+            gap={size === "xs" ? "xs" : "sm"}
             className={classnames(cls, [ "avatar", typeof size === "string" ? size : "" ], {}, [ className ])}
         >
             <div className={classnames(cls, [ "image__wrapper" ], {rounded, bordered})} style={style}>

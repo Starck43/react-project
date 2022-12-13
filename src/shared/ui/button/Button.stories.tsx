@@ -26,18 +26,21 @@ Clear.args = {
     feature: ButtonFeature.CLEAR,
 }
 
-export const Blank = Template.bind({})
-Blank.args = {
+export const PrimaryBlank = Template.bind({})
+PrimaryBlank.args = {
+    variant: "primary",
     feature: ButtonFeature.BLANK,
 }
 
-export const Inverted = Template.bind({})
-Inverted.args = {
+export const PrimaryInverted = Template.bind({})
+PrimaryInverted.args = {
+    variant: "primary",
     feature: ButtonFeature.INVERTED,
 }
 
-export const BlankDisabled = Template.bind({})
-BlankDisabled.args = {
+export const PrimaryBlankDisabled = Template.bind({})
+PrimaryBlankDisabled.args = {
+    variant: "primary",
     feature: ButtonFeature.BLANK,
     disabled: true,
 }

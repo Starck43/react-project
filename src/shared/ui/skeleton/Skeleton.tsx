@@ -1,4 +1,6 @@
 import {memo, useMemo, CSSProperties} from "react"
+import {Flex} from "@/shared/ui/stack"
+import {SizeType} from "@/shared/types/ui"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
@@ -15,6 +17,7 @@ export enum SkeletonElementType {
 interface SkeletonProps {
     elements?: SkeletonElementType[]
     variant?: ThemeVariant
+    avatarSize?: SizeType
     width?: string | number
     height?: string | number
     borderRadius?: string
@@ -29,8 +32,9 @@ export const Skeleton = memo((props: SkeletonProps) => {
         variant = "primary",
         width = "100%",
         height,
-        rounded = false,
         borderRadius,
+        avatarSize,
+        rounded = false,
         inlined = false,
         className,
     } = props
@@ -44,17 +48,28 @@ export const Skeleton = memo((props: SkeletonProps) => {
     // TODO: styles for every shimmer element inside skeleton
     const shimmerElements = useMemo(() => (
         elements?.map((item, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <div key={index} className={classnames(cls, [ "shimmer__element", item ])} />
+            <div
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                className={classnames(cls, [
+                    "shimmer__element",
+                    item,
+                    item === SkeletonElementType.AVATAR ? `avatar__${avatarSize}` : undefined,
+                ], {rounded, inlined})}
+            />
         ))
-    ), [ elements ])
+    ), [ avatarSize, elements, inlined, rounded ])
 
     return (
-        <div
-            className={classnames(cls, [ "skeleton", variant ], {rounded, inlined}, [ className ])}
+        <Flex
+            direction={inlined ? "row" : "column"}
+            align="start"
+            justify="between"
+            gap="sm"
+            className={classnames(cls, [ "skeleton", variant ], {inlined}, [ className ])}
             style={styles}
         >
             {elements && shimmerElements}
-        </div>
+        </Flex>
     )
 })

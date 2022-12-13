@@ -1,11 +1,16 @@
 {
   "Копировать код": "Copy",
+  "ваша оценка": "Your rating is",
   "дата создания": "Created at",
   "заголовок": "Title",
   "изменение статьи": "Article updating",
+  "изменить": "Change",
   "назад к списку": "Back to articles",
   "не указан id для статьи!": "не указан id для статьи!",
   "новая статья": "New article",
+  "оставьте свой отзыв": "Leave your feedback, please",
+  "отмена": "Cancel",
+  "оценить статью": "Article rating",
   "ошибка": "Error",
   "ошибка загрузки статей!": "Articles loading error!",
   "ошибка загрузки статьи!": "Article loading error!",
@@ -14,15 +19,10 @@
   "разделы": "Category",
   "связанные статьи": "Featured articles",
   "сохранить": "Save",
-  "изменить": "Change",
-  "отмена": "Cancel",
   "статьи": "Articles",
   "статьи не найдены!": "Articles not found!",
   "статья": "Article",
   "статья не найдена!": "Article not found!",
   "фото": "Photo url",
-  "читать еще": "read more...",
-  "оценить статью": "Article rating",
-  "оставьте свой отзыв": "Leave your feedback, please",
-  "ваша оценка": "Your rating is"
+  "читать еще": "read more..."
 }

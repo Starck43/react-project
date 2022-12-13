@@ -1,14 +1,5 @@
-.primary
-	color: var(--theme-primary-text-color)
-
-	&.shadowed, .shadowed
-		text-shadow: 1px 1px 2px var(--theme-primary-shadow)
-
-.secondary
-	color: var(--theme-secondary-text-color)
-
-	&.shadowed, .shadowed
-		text-shadow: 1px 1px 2px var(--theme-secondary-shadow)
+.header
+	color: inherit
 
 .title, .subtitle
 	flex: 100%
@@ -28,11 +19,26 @@
 		text-align: right
 
 .inlined
+	.title
+		flex: auto
+
 	.subtitle
 		flex: 0 1 auto
 
 .subtitle
 	opacity: 0.7
+
+.primary
+	color: var(--theme-primary-text-color)
+
+	&.shadowed, .shadowed
+		text-shadow: 1px 1px 2px var(--theme-primary-shadow)
+
+.secondary
+	color: var(--theme-secondary-text-color)
+
+	&.shadowed, .shadowed
+		text-shadow: 1px 1px 2px var(--theme-secondary-shadow)
 
 .upper_first
 	text-transform: lowercase

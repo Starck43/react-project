@@ -6,7 +6,7 @@ import ForbiddenPage from "./ForbiddenPage"
 
 
 export default {
-    title: "widgets/ForbiddenPage",
+    title: "pages/ForbiddenPage",
     component: ForbiddenPage,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ForbiddenPage>

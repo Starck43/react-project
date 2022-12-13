@@ -16,3 +16,34 @@ const Template: ComponentStory<typeof NotificationList> = (args) => <Notificatio
 export const Default = Template.bind({})
 Default.args = {}
 Default.decorators = [ StoreDecorator({}) ]
+Default.parameters = {
+    mockData: [
+        {
+            url: `${process.env.API_SERVER}/notifications/`,
+            method: "GET",
+            status: 200,
+            response: [
+                {
+                    id: "1",
+                    title: "Уведомление 1",
+                    description: "Произошло какое-то событие",
+                    userId: "1",
+                },
+                {
+                    id: "2",
+                    title: "Уведомление 2",
+                    description: "Произошло какое-то событие",
+                    userId: "1",
+                    href: "http://localhost:3000/home",
+                },
+                {
+                    id: "3",
+                    title: "Уведомление 3",
+                    description: "Произошло какое-то событие",
+                    userId: "1",
+                    href: "about",
+                },
+            ],
+        },
+    ],
+}

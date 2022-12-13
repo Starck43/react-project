@@ -3,7 +3,7 @@ import webpack, {DefinePlugin, RuleSetRule} from "webpack"
 
 import {buildCssLoader} from "../build/loaders/buildCssLoader"
 import {buildSvgLoader} from "../build/loaders/buildSvgLoader"
-import {Paths} from "../build/types/config"
+import type {Paths} from "../build/types/config"
 
 
 export default ({config}: { config: webpack.Configuration }) => {
@@ -18,6 +18,10 @@ export default ({config}: { config: webpack.Configuration }) => {
 
     config.resolve!.extensions!.push(".ts", ".tsx")
     config.resolve!.modules = [ paths.src, "node_modules" ]
+    config.resolve!.alias = {
+        ...config.resolve!.alias,
+        "@": paths.src,
+    }
 
     const rules = config.module!.rules as RuleSetRule[]
     config.module!.rules = rules.map((rule) => (

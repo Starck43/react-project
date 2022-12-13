@@ -4,7 +4,7 @@ import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
 import {UpdateArticleForm} from "./UpdateArticleForm"
 
-
+// TODO: UpdateArticleForm stories not finished
 export default {
     title: "features/UpdateArticleForm",
     component: UpdateArticleForm,

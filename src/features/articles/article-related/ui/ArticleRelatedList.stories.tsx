@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
-
 import type {Article} from "@/entities/article"
+import {ArticleType} from "@/entities/article"
 
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
@@ -20,7 +20,7 @@ const article: Article = {
     img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
     views: 109,
     createdAt: "26.02.2022",
-    type: [],
+    type: [ ArticleType.IT, ArticleType.BUSINESS ],
     blocks: [],
     user: {id: "1", username: "admin"},
 }
@@ -36,11 +36,13 @@ Default.parameters = {
             url: `${process.env.API_SERVER}/articles?_limit=4`,
             method: "GET",
             status: 200,
-            response: [
-                {...article, id: "1"},
-                {...article, id: "2"},
-                {...article, id: "3"},
-            ],
+            response: {
+                related: [
+                    {...article, id: "1"},
+                    {...article, id: "2"},
+                    {...article, id: "3"},
+                ],
+            },
         },
     ],
 }

@@ -55,6 +55,7 @@ const ArticleRatingCard = ({articleId, className}: ArticleRatingProps) => {
             >
                 <RatingCard
                     rate={rate}
+                    variant="secondary"
                     onSave={onSaveHandler}
                     onCancel={onCancelHandler}
                     title={(rate ? t("ваша оценка") : t("оценить статью")) || undefined}

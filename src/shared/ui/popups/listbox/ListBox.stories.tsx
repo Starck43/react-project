@@ -32,17 +32,19 @@ Default.args = {
     defaultOption: undefined,
 }
 
-export const TopOpen = Template.bind({})
-TopOpen.args = {
+export const TopRightOpen = Template.bind({})
+TopRightOpen.args = {
     compact: false,
     selectedOption: {value: "4", content: "Benedict Kessler"},
     defaultOption: undefined,
+    align: "right",
     position: "top_right",
 }
 
-export const Compact = Template.bind({})
-Compact.args = {
+export const CompactAndBordered = Template.bind({})
+CompactAndBordered.args = {
     compact: true,
+    bordered: true,
     selectedOption: undefined,
     defaultOption: undefined,
 }

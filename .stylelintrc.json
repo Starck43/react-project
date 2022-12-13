@@ -6,33 +6,39 @@
     "stylelint-config-standard",
     "stylelint-config-html"
   ],
+  "overrides": [
+    {
+      "files": ["**/*.md"],
+      "customSyntax": "postcss-markdown"
+    }
+  ],
   "customSyntax": "sugarss",
   "rules": {
     "indentation": "tab",
-    "linebreaks": "unix",
-    "selector-class-pattern": null,
     "max-empty-lines": [2, {"ignore": ["comments"]}],
+    "max-line-length": [120, {"ignorePattern": ["/box-shadow/", "/mixin/"]}],
+    "linebreaks": "unix",
+    "string-quotes": "double",
+    "import-notation": "string",
+    "time-min-milliseconds": 100,
+    "selector-class-pattern": null,
     "selector-max-empty-lines": [2, {"ignore": ["#"]}],
     "selector-type-no-unknown": [true, {"ignoreTypes": ["/^\\:/"], "ignore": ["custom-elements"]}],
     "value-keyword-case": ["lower", {"ignoreProperties": ["font-family"], "camelCaseSvgKeywords": true}],
     "function-url-quotes": "never",
+    "property-no-unknown": null,
     "function-no-unknown": null,
     "at-rule-no-unknown": null,
     "at-rule-empty-line-before": null,
-    "property-no-unknown": null,
     "no-empty-source": null,
     "property-case": null,
     "no-invalid-position-at-import-rule": [true, {"ignoreAtRules": "use"}],
-    "declaration-colon-space-after": null,
-    "string-quotes": "double",
-    "import-notation": "string",
-    "time-min-milliseconds": 100,
     "selector-list-comma-newline-after": "always-multi-line",
     "color-hex-case": "upper",
-    "max-line-length": [120, {"ignorePattern": ["/box-shadow/", "/mixin/"]}],
     "custom-property-empty-line-before": null,
     "selector-max-compound-selectors": 4,
     "no-extra-semicolons": true,
+    "no-descending-specificity": null,
     "block-no-empty": null,
     "block-closing-brace-empty-line-before": null,
     "block-closing-brace-newline-after": null,
@@ -45,6 +51,7 @@
     "declaration-block-semicolon-space-after": null,
     "declaration-block-semicolon-space-before": null,
     "declaration-block-trailing-semicolon": null,
-    "no-descending-specificity": null
+    "declaration-colon-space-after": null,
+    "scss/double-slash-comment-empty-line-before": null
   }
 }
