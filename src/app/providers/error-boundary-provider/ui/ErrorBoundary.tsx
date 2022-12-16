@@ -1,15 +1,15 @@
-import React, {ErrorInfo, Suspense} from "react"
-import {PageError} from "@/widgets/page-error/ui/PageError"
+import {ReactNode, ErrorInfo, Suspense, Component} from "react"
+import {PageError} from "@/widgets/page-error"
 
 interface ErrorBoundaryProps {
-    children: React.ReactNode
+    children: ReactNode
 }
 
 interface ErrorBoundaryState {
     hasError: boolean
 }
 
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     constructor(props: ErrorBoundaryProps) {
         super(props)
         this.state = {hasError: false}

@@ -5,7 +5,7 @@ import {UseThemeResult} from "@/app/providers/theme-provider/lib/useTheme"
 
 import {ThemeSwitcher} from "@/features/theme-switcher"
 import {LanguageSwitcher} from "@/features/language-switcher"
-import {AuthPopup} from "@/features/auth/auth-popup"
+import {AuthPopup} from "@/features/auth"
 import {NotificationsPopup} from "@/features/notifications-popup"
 
 import {classnames} from "@/shared/lib/helpers/classnames"

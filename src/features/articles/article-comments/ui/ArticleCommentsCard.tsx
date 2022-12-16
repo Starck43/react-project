@@ -36,7 +36,7 @@ export const ArticleCommentsCard = memo(({articleId, className}: CommentsCardPro
         dispatch(saveArticleComment(text))
     }, [ dispatch ])
 
-    if (!articleId) return null
+    if (!articleId || error) return null
 
     return (
         <section className={classnames(cls, [ "article__comments" ], {}, [ className ])}>
@@ -47,7 +47,7 @@ export const ArticleCommentsCard = memo(({articleId, className}: CommentsCardPro
             </Suspense>
 
             {/* TODO: make lazy loading for comments after scrolling into viewport */}
-            <CommentList comments={comments} isLoading={isLoading} error={error} />
+            <CommentList comments={comments} isLoading={isLoading} />
         </section>
     )
 })

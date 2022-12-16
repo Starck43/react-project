@@ -1,8 +1,13 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
 
 import {ThunkConfig} from "@/app/providers/store-provider"
-import {Profile, fetchProfileData, getProfileCopy, profileActions} from "@/entities/profile"
-import {ValidateProfileError} from "@/entities/profile/model/consts"
+import {
+    Profile,
+    getProfileCopy,
+    fetchProfileData,
+    profileActions,
+    ValidateProfileError,
+} from "@/entities/profile"
 
 import {validateProfileData} from "./validateProfileData"
 

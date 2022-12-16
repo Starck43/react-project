@@ -127,7 +127,8 @@ module.exports = {
         ],
         "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true} ],
         "no-plusplus": [ "error", {allowForLoopAfterthoughts: true} ],
-        "paths-observer/only-relative-paths-in-slice": ["error", {alias: "@"}],
+        "paths-observer/only-relative-imports-in-layer": [ "error", {alias: "@"} ],
+        "paths-observer/only-public-api-imports": [ "error", {alias: "@", testPatterns: [ "**/*.test.*" ] } ],
     },
     overrides: [
         {

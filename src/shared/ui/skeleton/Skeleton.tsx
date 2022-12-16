@@ -1,6 +1,7 @@
 import {memo, useMemo, CSSProperties} from "react"
-import {Flex} from "@/shared/ui/stack"
+
 import {SizeType} from "@/shared/types/ui"
+import {Flex} from "@/shared/ui/stack"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"

@@ -1,36 +1,16 @@
-import {RouteProps} from "react-router-dom"
+import {AppRoutes, RoutesPath} from "../consts"
+import type {AppRoutesProps} from "../types"
 
 import {UserRole} from "@/entities/user"
 
-import {AppRoutes} from "@/shared/const/appRoutes"
-import {AboutPage} from "@/pages/about"
 import {HomePage} from "@/pages/home"
+import {AboutPage} from "@/pages/about"
 import {AuthPage} from "@/pages/auth"
 import {ProfilePage} from "@/pages/profile"
-import {ArticleDetailsPage} from "@/pages/articles/details"
-import {ArticleEditPage} from "@/pages/articles/edit"
-import {ArticlesPage} from "@/pages/articles/list"
-import {NotFoundPage} from "@/pages/not-found-page"
+import {ArticleDetailsPage, ArticleEditPage, ArticlesPage} from "@/pages/articles"
 import {ForbiddenPage} from "@/pages/forbidden"
+import {NotFoundPage} from "@/pages/not-found-page"
 
-
-export type AppRoutesProps = RouteProps & {
-    authOnly?: boolean
-    roles?: UserRole[]
-}
-
-export const RoutesPath: Record<AppRoutes, string> = {
-    [AppRoutes.HOME]: "/",
-    [AppRoutes.ABOUT]: "/about",
-    [AppRoutes.ARTICLES]: "/articles",
-    [AppRoutes.ARTICLE_DETAILS]: "/articles/", // + ":id" TODO: add "id" to route
-    [AppRoutes.ARTICLE_CREATE]: "/articles/create",
-    [AppRoutes.ARTICLE_EDIT]: "/articles/:id/edit",
-    [AppRoutes.AUTH]: "/auth",
-    [AppRoutes.PROFILE]: "/profile/", // + ":id"
-    [AppRoutes.FORBIDDEN]: "/forbidden",
-    [AppRoutes.NOT_FOUND_PAGE]: "/*",
-}
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.HOME]: {

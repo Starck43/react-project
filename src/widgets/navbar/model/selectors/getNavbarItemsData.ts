@@ -1,10 +1,9 @@
 import {createSelector} from "@reduxjs/toolkit"
+import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
 
 import {getUser} from "@/entities/user"
 
-import {RoutesPath} from "@/shared/config/router"
 import ArticleIcon from "@/shared/assets/icons/article-20-20.svg"
-import {AppRoutes} from "@/shared/const/appRoutes"
 
 import {groupNavbarItems} from "../../lib"
 import {NavbarItemType} from "../../model/types/navbar"

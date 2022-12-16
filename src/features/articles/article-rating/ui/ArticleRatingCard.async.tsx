@@ -1,6 +1,6 @@
 import {lazy, Suspense} from "react"
 
-import {PageLoader} from "@/widgets/page-loader/ui/PageLoader"
+import {PageLoader} from "@/widgets/page-loader"
 
 import {ArticleRatingProps} from "./ArticleRatingCard"
 

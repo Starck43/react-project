@@ -1,10 +1,9 @@
 import {memo, useState} from "react"
 import {useTranslation} from "react-i18next"
-import {AppRoutes} from "@/shared/const/appRoutes"
+import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
 
 import {ErrorTestButton} from "@/app/providers/error-boundary-provider"
 
-import {RoutesPath} from "@/shared/config/router"
 import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {AlignType} from "@/shared/types/ui"

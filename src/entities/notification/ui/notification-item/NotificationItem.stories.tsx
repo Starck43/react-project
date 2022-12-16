@@ -1,8 +1,8 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import {Notification} from "@/entities/notification"
-
 import {NotificationItem} from "./NotificationItem"
+
+import type {Notification} from "../../model/types/notification"
 
 
 const notification: Notification = {

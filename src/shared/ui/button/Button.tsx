@@ -1,5 +1,5 @@
 import {
-    ButtonHTMLAttributes, HTMLAttributeAnchorTarget, ReactNode, FC, SVGProps, forwardRef,
+    ButtonHTMLAttributes, HTMLAttributeAnchorTarget, ReactNode, FC, SVGProps, forwardRef, ForwardedRef,
 } from "react"
 import {Link} from "react-router-dom"
 
@@ -30,8 +30,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode
 }
 
-// TODO: fix problem with border for BLANK
-export const Button: FC<ButtonProps> = forwardRef((props, ref) => {
+export const Button: FC<ButtonProps> = forwardRef((props, ref: ForwardedRef<any>) => {
     const {
         variant,
         Icon,
@@ -68,6 +67,7 @@ export const Button: FC<ButtonProps> = forwardRef((props, ref) => {
 
     return (
         <button
+            ref={ref}
             type="button"
             disabled={disabled}
             {...other}

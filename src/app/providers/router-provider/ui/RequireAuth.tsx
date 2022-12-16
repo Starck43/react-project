@@ -2,9 +2,9 @@ import {ReactElement, useMemo} from "react"
 import {Navigate, useLocation} from "react-router-dom"
 import {useSelector} from "react-redux"
 
+import {AppRoutes, RoutesPath} from "../consts"
+
 import {getUser, getUserRoles, UserRole} from "@/entities/user"
-import {RoutesPath} from "@/shared/config/router"
-import {AppRoutes} from "@/shared/const/appRoutes"
 
 
 interface RequireAuthProps {

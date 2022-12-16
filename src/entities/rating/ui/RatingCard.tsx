@@ -1,7 +1,5 @@
-import React, {memo, useCallback, useState} from "react"
+import {memo, useCallback, useState} from "react"
 import {useTranslation} from "react-i18next"
-
-import {Rating} from "@/entities/rating"
 
 import type {ThemeVariant} from "@/shared/types/theme"
 import {TextArea} from "@/shared/ui/input/Input"
@@ -10,6 +8,8 @@ import {Card} from "@/shared/ui/card/Card"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Rate} from "@/shared/ui/rate/Rate"
 import Header from "@/shared/ui/header/Header"
+
+import type {Rating} from "../model/types/rating"
 
 import cls from "./RatingCard.module.sass"
 

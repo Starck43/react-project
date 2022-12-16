@@ -1,7 +1,6 @@
 import {memo, useCallback, useState} from "react"
 
 import {NotificationList} from "@/entities/notification"
-import {AnimationProvider} from "@/shared/lib/components/AnimationProvider"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {PositionType} from "@/shared/types/ui"

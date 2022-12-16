@@ -2,13 +2,12 @@ import {memo} from "react"
 import {useNavigate} from "react-router-dom"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
+import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
 
 import {getUser, User} from "@/entities/user"
 
 import {LoginForm} from "@/features/auth"
 
-import {RoutesPath} from "@/shared/config/router"
-import {AppRoutes} from "@/shared/const/appRoutes"
 import {Info, InfoStatus} from "@/shared/ui/info/Info"
 import {NavLink} from "@/shared/ui/link/NavLink"
 import Header from "@/shared/ui/header/Header"

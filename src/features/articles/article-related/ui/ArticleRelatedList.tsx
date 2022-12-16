@@ -6,7 +6,7 @@ import {ArticleList, ArticleView} from "@/entities/article"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import Header from "@/shared/ui/header/Header"
 
-import {PageLoader} from "@/widgets/page-loader/ui/PageLoader"
+import {PageLoader} from "@/widgets/page-loader"
 
 import {useArticleRelatedList} from "../api"
 

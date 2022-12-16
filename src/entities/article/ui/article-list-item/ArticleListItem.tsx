@@ -1,8 +1,7 @@
 import {memo, useMemo, CSSProperties, HTMLAttributeAnchorTarget} from "react"
 import {useTranslation} from "react-i18next"
+import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
 
-import {RoutesPath} from "@/shared/config/router"
-import {AppRoutes} from "@/shared/const/appRoutes"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Avatar} from "@/shared/ui/avatar/Avatar"
 import {Button} from "@/shared/ui/button/Button"

@@ -1,4 +1,5 @@
-import {Country} from "@/entities/country/model/consts"
+import type {Country} from "@/entities/country"
+
 import {ValidateProfileError} from "../consts"
 
 
