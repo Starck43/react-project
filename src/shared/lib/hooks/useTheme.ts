@@ -1,6 +1,9 @@
 import {useContext, useEffect, MouseEventHandler} from "react"
 
-import {LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext} from "@/app/providers/theme-provider/lib/themeContext"
+import {ThemeContext} from "../context/themeContext"
+import {LOCAL_STORAGE_THEME_KEY} from "../../const/localStorage"
+import {Theme} from "../../const/theme"
+
 
 
 export interface UseThemeResult {

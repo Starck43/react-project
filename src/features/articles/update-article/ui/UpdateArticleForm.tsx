@@ -21,8 +21,7 @@ import {ButtonFeature} from "@/shared/ui/button/consts"
 import {Info, InfoStatus} from "@/shared/ui/info/Info"
 import Input, {TextArea} from "@/shared/ui/input/Input"
 import {Row} from "@/shared/ui/stack"
-
-import {PageLoader} from "@/widgets/page-loader"
+import {Loader} from "@/shared/ui/loader/Loader"
 
 import {updateArticleData} from "../model/services/updateArticleData"
 
@@ -104,7 +103,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
         return <Info subTitle={t("ошибка загрузки статьи!")} />
     }
 
-    if (isLoading) return <PageLoader />
+    if (isLoading) return <Loader />
 
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>

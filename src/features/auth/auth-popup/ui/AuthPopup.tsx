@@ -3,7 +3,7 @@ import {
 } from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
-import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 import {ButtonFeature} from "@/shared/ui/button/consts"
 
 import {getUser} from "@/entities/user"

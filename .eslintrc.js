@@ -128,7 +128,24 @@ module.exports = {
         "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true} ],
         "no-plusplus": [ "error", {allowForLoopAfterthoughts: true} ],
         "paths-observer/only-relative-imports-in-layer": [ "error", {alias: "@"} ],
-        "paths-observer/only-public-api-imports": [ "error", {alias: "@", testPatterns: [ "**/*.test.*" ] } ],
+        "paths-observer/only-public-api-imports": [
+            "error", {
+                alias: "@",
+                ignoreFilePatterns: [ "**/StoreDecorator.tsx" ],
+            },
+        ],
+        "paths-observer/layer-imports-order": [
+            "error", {
+                alias: "@",
+                ignoreImportPatterns: [
+                    "**/store-provider",
+                    "**/theme-provider",
+                    "**/router-provider",
+                    "*/app/styles/**",
+                    "**/storybook",
+                ],
+            },
+        ],
     },
     overrides: [
         {

@@ -1,6 +1,6 @@
 import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
-import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Card} from "@/shared/ui/card/Card"
 

@@ -1,6 +1,6 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
-import {RoutesPath} from "@/app/providers/router-provider/consts"
+import {RoutesPath} from "@/shared/const/router"
 
 import {NavLink} from "@/shared/ui/link/NavLink"
 import ArrowIcon from "@/shared/assets/icons/arrow-shevron-left.svg"

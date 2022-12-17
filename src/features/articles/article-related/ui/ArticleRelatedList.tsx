@@ -5,8 +5,7 @@ import {ArticleList, ArticleView} from "@/entities/article"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import Header from "@/shared/ui/header/Header"
-
-import {PageLoader} from "@/widgets/page-loader"
+import {Loader} from "@/shared/ui/loader/Loader"
 
 import {useArticleRelatedList} from "../api"
 
@@ -24,7 +23,7 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
     if (!related || error) return null
 
     if (isLoading) {
-        return <PageLoader />
+        return <Loader />
     }
 
     return (

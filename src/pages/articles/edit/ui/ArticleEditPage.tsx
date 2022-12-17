@@ -1,7 +1,7 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {useNavigate, useParams} from "react-router-dom"
-import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
 import {UpdateArticleForm} from "@/features/articles"
 

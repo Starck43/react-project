@@ -1,5 +1,5 @@
 import {createSelector} from "@reduxjs/toolkit"
-import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
 import {getUser} from "@/entities/user"
 

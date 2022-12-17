@@ -2,14 +2,13 @@ import {memo} from "react"
 import {List, ListRowProps, WindowScroller} from "react-virtualized"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
+import {PAGE_ID} from "@/shared/const/page"
 
 import type {Article} from "../../model/types/article"
 import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../lib/constants"
 import {ArticleView} from "../../model/consts"
 import {ArticleListItem} from "../article-list-item/ArticleListItem"
 import {renderArticlesSkeleton} from "../article-list-skeleton/ArticleListSkeleton"
-
-import {PAGE_ID} from "@/widgets/page"
 
 import cls from "./ArticleList.module.sass"
 

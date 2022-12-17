@@ -1,8 +1,8 @@
 import {memo, FC} from "react"
 import {useTranslation} from "react-i18next"
+import {Theme} from "@/shared/const/theme"
 
-import {Theme} from "@/app/providers/theme-provider"
-import {UseThemeResult} from "@/app/providers/theme-provider/lib/useTheme"
+import {UseThemeResult} from "@/shared/lib/hooks/useTheme"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"

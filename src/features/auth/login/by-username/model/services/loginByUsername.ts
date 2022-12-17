@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit"
-import {ThunkConfig} from "@/app/providers/store-provider/config/stateSchema"
+
+import {ThunkConfig} from "@/app/providers/store-provider"
 
 import {User, userActions} from "@/entities/user"
 

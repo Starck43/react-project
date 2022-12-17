@@ -1,9 +1,10 @@
 import {createRoot} from "react-dom/client"
 import {BrowserRouter} from "react-router-dom"
+import {Theme} from "@/shared/const/theme"
 
 import {StoreProvider} from "@/app/providers/store-provider"
 import {ErrorBoundary} from "@/app/providers/error-boundary-provider"
-import {Theme, ThemeProvider} from "@/app/providers/theme-provider"
+import {ThemeProvider} from "@/app/providers/theme-provider"
 
 import "@/shared/config/i18n/i18n"
 import {isDarkness} from "@/shared/lib/helpers/datetime"
@@ -29,3 +30,5 @@ root.render(
         </StoreProvider>
     </BrowserRouter>,
 )
+export {Theme} from "@/shared/const/theme"
+export {PAGE_ID} from "@/shared/const/page"

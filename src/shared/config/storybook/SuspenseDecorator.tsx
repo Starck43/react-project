@@ -1,10 +1,11 @@
 import {Suspense} from "react"
 import {Story} from "@storybook/react"
-import {PageLoader} from "@/widgets/page-loader"
+
+import {Loader} from "@/shared/ui/loader/Loader"
 
 
 export const SuspenseDecorator = (StoryComponent: Story) => (
-    <Suspense fallback={<PageLoader />}>
+    <Suspense fallback={<Loader />}>
         <StoryComponent />
     </Suspense>
 )

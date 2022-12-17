@@ -1,4 +1,4 @@
-import {AppRoutes, RoutesPath} from "../consts"
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 import type {AppRoutesProps} from "../types"
 
 import {UserRole} from "@/entities/user"

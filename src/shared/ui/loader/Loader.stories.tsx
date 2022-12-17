@@ -1,16 +1,16 @@
 import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
 
-import {PageLoader} from "./PageLoader"
+import {Loader} from "./Loader"
 
 
 export default {
-    title: "widgets/PageLoader",
-    component: PageLoader,
+    title: "shared/Loader",
+    component: Loader,
     argTypes: {backgroundColor: {control: "color"}},
-} as ComponentMeta<typeof PageLoader>
+} as ComponentMeta<typeof Loader>
 
-const Template: Story = (args) => <PageLoader {...args} />
+const Template: Story = (args) => <Loader {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

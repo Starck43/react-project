@@ -1,9 +1,10 @@
 import {memo, useState} from "react"
 import {useTranslation} from "react-i18next"
-import {AppRoutes, RoutesPath} from "@/app/providers/router-provider/consts"
 
+// eslint-disable-next-line paths-observer/layer-imports-order
 import {ErrorTestButton} from "@/app/providers/error-boundary-provider"
 
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {AlignType} from "@/shared/types/ui"

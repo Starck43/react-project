@@ -2,7 +2,7 @@ import {ReactElement, useMemo} from "react"
 import {Navigate, useLocation} from "react-router-dom"
 import {useSelector} from "react-redux"
 
-import {AppRoutes, RoutesPath} from "../consts"
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
 import {getUser, getUserRoles, UserRole} from "@/entities/user"
 

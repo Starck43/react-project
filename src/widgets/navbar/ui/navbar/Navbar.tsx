@@ -1,7 +1,7 @@
 import {memo, useMemo} from "react"
 import {useSelector} from "react-redux"
 
-import {UseThemeResult} from "@/app/providers/theme-provider/lib/useTheme"
+import {UseThemeResult} from "@/shared/lib/hooks/useTheme"
 
 import {ThemeSwitcher} from "@/features/theme-switcher"
 import {LanguageSwitcher} from "@/features/language-switcher"
