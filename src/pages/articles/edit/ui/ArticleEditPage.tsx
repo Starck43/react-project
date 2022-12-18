@@ -6,7 +6,7 @@ import {AppRoutes, RoutesPath} from "@/shared/const/router"
 import {UpdateArticleForm} from "@/features/articles"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import Header from "@/shared/ui/header/Header"
+import Header from "@/shared/ui/header"
 
 import {Page} from "@/widgets/page"
 

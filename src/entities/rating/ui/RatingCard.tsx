@@ -2,12 +2,12 @@ import {memo, useCallback, useState} from "react"
 import {useTranslation} from "react-i18next"
 
 import type {ThemeVariant} from "@/shared/types/theme"
-import {TextArea} from "@/shared/ui/input/Input"
+import {TextArea} from "@/shared/ui/input"
 import {Modal} from "@/shared/ui/modals"
-import {Card} from "@/shared/ui/card/Card"
+import {Card} from "@/shared/ui/card"
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {Rate} from "@/shared/ui/rate/Rate"
-import Header from "@/shared/ui/header/Header"
+import {Rate} from "@/shared/ui/rate"
+import Header from "@/shared/ui/header"
 
 import type {Rating} from "../model/types/rating"
 

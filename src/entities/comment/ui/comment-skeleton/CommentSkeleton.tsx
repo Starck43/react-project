@@ -1,8 +1,8 @@
 import {memo} from "react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {Card} from "@/shared/ui/card/Card"
-import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton/Skeleton"
+import {Card} from "@/shared/ui/card"
+import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton"
 
 import cls from "../comment-card/CommentCard.module.sass"
 

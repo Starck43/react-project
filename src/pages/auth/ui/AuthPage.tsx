@@ -8,9 +8,9 @@ import {getUser, User} from "@/entities/user"
 
 import {LoginForm} from "@/features/auth"
 
-import {Info, InfoStatus} from "@/shared/ui/info/Info"
-import {NavLink} from "@/shared/ui/link/NavLink"
-import Header from "@/shared/ui/header/Header"
+import {Info, InfoStatus} from "@/shared/ui/info"
+import {NavLink} from "@/shared/ui/link"
+import Header from "@/shared/ui/header"
 import {Col} from "@/shared/ui/stack"
 
 import {Page} from "@/widgets/page"

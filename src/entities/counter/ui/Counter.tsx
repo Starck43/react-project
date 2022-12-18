@@ -1,8 +1,7 @@
 import {useSelector} from "react-redux"
 
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
-import {Button} from "@/shared/ui/button/Button"
-import {ButtonSize} from "@/shared/ui/button/consts"
+import {Button, ButtonSize} from "@/shared/ui/button"
 
 import {getCounterValue} from "../model/selectors/getCounterValue/getCounterValue"
 import {counterActions} from "../model/slice/counterSlice"

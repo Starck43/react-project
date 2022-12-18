@@ -1,6 +1,6 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
-import {Info, InfoStatus} from "@/shared/ui/info/Info"
+import {Info, InfoStatus} from "@/shared/ui/info"
 
 import {Page} from "@/widgets/page"
 

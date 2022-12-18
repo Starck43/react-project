@@ -1,6 +1,6 @@
 import {lazy, Suspense} from "react"
 
-import {Loader} from "@/shared/ui/loader/Loader"
+import {Loader} from "@/shared/ui/loader"
 
 import {ArticleRatingProps} from "./ArticleRatingCard"
 

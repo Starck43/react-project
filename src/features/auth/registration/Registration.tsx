@@ -3,10 +3,9 @@ import {useTranslation} from "react-i18next"
 
 import {User} from "@/entities/user"
 
-import {Button} from "@/shared/ui/button/Button"
-import {ButtonFeature} from "@/shared/ui/button/consts"
-import {Card} from "@/shared/ui/card/Card"
-import Input from "@/shared/ui/input/Input"
+import {Button, ButtonFeature} from "@/shared/ui/button"
+import {Card} from "@/shared/ui/card"
+import Input from "@/shared/ui/input"
 
 import cls from "./Registration.module.sass"
 

@@ -7,7 +7,7 @@ import type {AppRoutesProps} from "../types"
 import {routeConfig} from "../config/routeConfig"
 import RequireAuth from "./RequireAuth"
 
-import {Loader} from "@/shared/ui/loader/Loader"
+import {Loader} from "@/shared/ui/loader"
 
 
 const AppRouter = () => {

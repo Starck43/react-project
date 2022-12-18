@@ -1,5 +1,5 @@
 import {memo} from "react"
-import {Code} from "@/shared/ui/code/Code"
+import {Code} from "@/shared/ui/code"
 
 import {ArticleCodeBlock} from "../../model/types/article"
 

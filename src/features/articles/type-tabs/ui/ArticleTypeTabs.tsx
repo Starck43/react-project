@@ -5,7 +5,7 @@ import {articlesActions, ArticleType, getArticlesType, fetchArticleList} from "@
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
-import {Tab, Tabs} from "@/shared/ui/tabs/Tabs"
+import {Tab, Tabs} from "@/shared/ui/tabs"
 
 import cls from "./ArticleTypeTabs.module.sass"
 

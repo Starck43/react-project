@@ -13,7 +13,7 @@ import {articleReducer, ArticleDetailsCard} from "@/entities/article"
 
 
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
-import {Info} from "@/shared/ui/info/Info"
+import {Info} from "@/shared/ui/info"
 
 import {Page} from "@/widgets/page"
 

@@ -10,7 +10,7 @@ import {
     getArticlesView,
 } from "@/entities/article"
 
-import {Info} from "@/shared/ui/info/Info"
+import {Info} from "@/shared/ui/info"
 
 
 export const InfiniteArticleList = memo(() => {

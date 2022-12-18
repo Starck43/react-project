@@ -10,8 +10,8 @@ import {enumToArray, getValueForStringEnum} from "@/shared/lib/helpers/enum"
 import {capitalizeFirstLetter} from "@/shared/lib/helpers/strings"
 
 import {ListBox} from "@/shared/ui/popups"
-import {Info, InfoStatus} from "@/shared/ui/info/Info"
-import Input from "@/shared/ui/input/Input"
+import {Info, InfoStatus} from "@/shared/ui/info"
+import Input from "@/shared/ui/input"
 import {Modal} from "@/shared/ui/modals"
 import {Row} from "@/shared/ui/stack"
 

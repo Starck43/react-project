@@ -4,15 +4,14 @@ import {
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 import {AppRoutes, RoutesPath} from "@/shared/const/router"
-import {ButtonFeature} from "@/shared/ui/button/consts"
+import {ButtonFeature, Button} from "@/shared/ui/button"
 
 import {getUser} from "@/entities/user"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
-import {Avatar} from "@/shared/ui/avatar/Avatar"
-import {Button} from "@/shared/ui/button/Button"
-import {NavLink} from "@/shared/ui/link/NavLink"
+import {Avatar} from "@/shared/ui/avatar"
+import {NavLink} from "@/shared/ui/link"
 import {Dropdown, PopupPositionType} from "@/shared/ui/popups"
 import LoginIcon from "@/shared/assets/icons/auth.svg"
 

@@ -5,8 +5,7 @@ import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
 import {getArticleData} from "@/entities/article"
 
-import {Button} from "@/shared/ui/button/Button"
-import {ButtonFeature} from "@/shared/ui/button/consts"
+import {Button, ButtonFeature} from "@/shared/ui/button"
 
 import {getEditArticleData} from "../model/selectors/getEditArticleData"
 

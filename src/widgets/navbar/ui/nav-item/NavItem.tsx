@@ -2,7 +2,7 @@ import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {NavLink} from "@/shared/ui/link/NavLink"
+import {NavLink} from "@/shared/ui/link"
 
 import {NavbarItemType} from "../../model/types/navbar"
 

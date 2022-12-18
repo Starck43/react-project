@@ -1,7 +1,6 @@
 import {useTranslation} from "react-i18next"
 
-import {Button} from "@/shared/ui/button/Button"
-import {ButtonFeature} from "@/shared/ui/button/consts"
+import {Button, ButtonFeature} from "@/shared/ui/button"
 import {Col} from "@/shared/ui/stack"
 
 // import cls from "./PageError.module.sass"

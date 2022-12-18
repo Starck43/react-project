@@ -4,7 +4,7 @@ import {NotificationList} from "@/entities/notification"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {PositionType} from "@/shared/types/ui"
-import {Button} from "@/shared/ui/button/Button"
+import {Button} from "@/shared/ui/button"
 import {Drawer} from "@/shared/ui/modals"
 
 import BurgerIcon from "@/shared/assets/icons/burger-menu.svg"

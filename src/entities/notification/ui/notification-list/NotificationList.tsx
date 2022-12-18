@@ -2,10 +2,9 @@ import React from "react"
 import {useTranslation} from "react-i18next"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {Button} from "@/shared/ui/button/Button"
-import {ButtonSize} from "@/shared/ui/button/consts"
-import {Info, InfoStatus} from "@/shared/ui/info/Info"
-import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton/Skeleton"
+import {Button, ButtonSize} from "@/shared/ui/button"
+import {Info, InfoStatus} from "@/shared/ui/info"
+import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton"
 import {Col} from "@/shared/ui/stack"
 import RefreshIcon from "@/shared/assets/icons/refresh.svg"
 

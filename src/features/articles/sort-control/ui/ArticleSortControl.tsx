@@ -12,7 +12,7 @@ import {
 } from "@/entities/article"
 
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
-import {Select} from "@/shared/ui/select/Select"
+import {Select} from "@/shared/ui/select"
 import {Row} from "@/shared/ui/stack"
 
 // import cls from "./ArticleSortControl.module.sass"

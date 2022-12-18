@@ -9,7 +9,7 @@ import {InfiniteArticleList} from "@/features/articles"
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "@/shared/lib/hooks/useInitialEffect"
-import Header from "@/shared/ui/header/Header"
+import Header from "@/shared/ui/header"
 
 import {Page} from "@/widgets/page"
 

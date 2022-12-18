@@ -4,8 +4,8 @@ import {useTranslation} from "react-i18next"
 import {ArticleList, ArticleView} from "@/entities/article"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import Header from "@/shared/ui/header/Header"
-import {Loader} from "@/shared/ui/loader/Loader"
+import Header from "@/shared/ui/header"
+import {Loader} from "@/shared/ui/loader"
 
 import {useArticleRelatedList} from "../api"
 

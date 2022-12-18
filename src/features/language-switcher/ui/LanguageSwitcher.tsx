@@ -6,7 +6,7 @@ import FlagEnIcon from "@/shared/assets/icons/flag_en.svg"
 import FlagRuIcon from "@/shared/assets/icons/flag_ru.svg"
 
 import {Flex} from "@/shared/ui/stack"
-import {Button} from "@/shared/ui/button/Button"
+import {Button} from "@/shared/ui/button"
 
 import cls from "./LanguageSwitcher.module.sass"
 

@@ -1,8 +1,8 @@
 import {memo, useMemo, CSSProperties} from "react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton/Skeleton"
-import {Card} from "@/shared/ui/card/Card"
+import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton"
+import {Card} from "@/shared/ui/card"
 import {Flex, Row} from "@/shared/ui/stack"
 
 import {ArticleView} from "../../model/consts"
