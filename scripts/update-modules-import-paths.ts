@@ -1,12 +1,12 @@
 import {Project} from "ts-morph"
-import {SRC_LAYERS} from "./consts"
+import {PROJECT_LAYERS} from "./consts"
 
 const project = new Project({})
 project.addSourceFilesAtPaths("src/**/*.ts")
 project.addSourceFilesAtPaths("src/**/*.tsx")
 
 function isAbsolute(path: string) {
-    return SRC_LAYERS.some((layer) => path.startsWith(layer))
+    return PROJECT_LAYERS.some((layer) => path.startsWith(layer))
 }
 const files = project.getSourceFiles()
 

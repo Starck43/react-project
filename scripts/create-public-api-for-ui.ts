@@ -1,19 +1,20 @@
 import path from "path"
 import {Project} from "ts-morph"
-import {SRC_LAYERS} from "./consts"
+import {PROJECT_LAYERS} from "./consts"
+
 
 const project = new Project({})
+const files = project.getSourceFiles()
 project.addSourceFilesAtPaths("src/**/*.ts")
 project.addSourceFilesAtPaths("src/**/*.tsx")
 
 function isAbsolute(path: string) {
-    return SRC_LAYERS.some((layer) => path.startsWith(layer))
+    return PROJECT_LAYERS.some((layer) => path.startsWith(layer))
 }
 
-const files = project.getSourceFiles()
-const indexFilename = "index.ts"
-const layer = "shared"
+const layer = process.argv[2] || "shared"
 const slice = "ui"
+const indexFilename = "index.ts"
 const dest = project.getDirectory(path.resolve(__dirname, "..", "src", layer, slice))
 const directories = dest?.getDirectories()
 
@@ -24,8 +25,8 @@ directories?.forEach((directory) => {
     if (!isIndexFileExist) {
         const filesInFolder = directory.getSourceFiles([
             "**/*.tsx",
-            "!**/*.stories.tsx",
-            "!**/*.test.tsx",
+            "!**/*.stories.*",
+            "!**/*.test.*",
         ])
 
         let content = ""
@@ -36,15 +37,17 @@ directories?.forEach((directory) => {
             const modulePath = `.${component.getFilePath().slice(folderLen, -4)}`
             content += `export {${moduleName}} from "${modulePath}"\n`
         })
-        // console.log(content)
-        const file = directory.createSourceFile(
-            `${folderName}/${indexFilename}`,
-            content,
-            {overwrite: true},
-        )
 
-        // eslint-disable-next-line no-console
-        file.save().then(() => console.log(`${folderName} --> index.ts created!`))
+        if (content) {
+            const file = directory.createSourceFile(
+                `${folderName}/${indexFilename}`,
+                content,
+                {overwrite: true},
+            )
+
+            // eslint-disable-next-line no-console
+            file.save().then(() => console.log(`${folderName} --> index.ts created!`))
+        }
     }
 })
 
@@ -66,4 +69,4 @@ files.forEach((source) => {
 })
 
 // eslint-disable-next-line no-console
-project.save().then(() => console.log("Done!"))
+project.save().then(() => console.log("Done!", `Updated ${files?.length || 0} file(s)`))

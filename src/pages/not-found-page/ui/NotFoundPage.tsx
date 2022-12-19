@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Button} from "@/shared/ui/button"
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 
 import {Page} from "@/widgets/page"
 

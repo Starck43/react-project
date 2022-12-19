@@ -1,7 +1,7 @@
 import {createSelector} from "@reduxjs/toolkit"
+import {getUser} from "@/entities/user"
 import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
-import {getUser} from "@/entities/user"
 
 import ArticleIcon from "@/shared/assets/icons/article-20-20.svg"
 

@@ -4,11 +4,11 @@ import {StateSchema, ThunkExtra} from "@/app/providers/store-provider"
 
 import {counterReducer} from "@/entities/counter"
 import {userReducer} from "@/entities/user"
-import {pageReducer} from "@/widgets/page"
 
 import {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
 import {$api} from "@/shared/api/api"
 import {rtkApi} from "@/shared/api/rtkApi"
+import {pageReducer} from "@/widgets/page"
 
 import {createReducerManager} from "./reducerManager"
 

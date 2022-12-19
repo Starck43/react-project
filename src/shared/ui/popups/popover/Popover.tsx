@@ -3,10 +3,11 @@ import {Popover as HeadlessPopover} from "@headlessui/react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
-import {PopupPositionType} from "../types"
 
-import cls from "./Popover.module.sass"
+import type {PopupPositionType} from "../types"
+
 import styles from "../styles/Popups.module.sass"
+import cls from "./Popover.module.sass"
 
 
 interface PopoverProps {
@@ -20,7 +21,7 @@ interface PopoverProps {
     children: ReactNode
 }
 
-const Popover = (props: PopoverProps) => {
+export const Popover = (props: PopoverProps) => {
     const {
         variant = "secondary",
         toggleElement,
@@ -58,5 +59,3 @@ const Popover = (props: PopoverProps) => {
         </HeadlessPopover>
     )
 }
-
-export default Popover

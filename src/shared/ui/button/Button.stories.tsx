@@ -1,8 +1,7 @@
-import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
+import {ComponentMeta, Story} from "@storybook/react"
 
 import {ButtonFeature} from "./consts"
-
 import {Button} from "./Button"
 
 

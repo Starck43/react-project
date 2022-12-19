@@ -7,7 +7,7 @@ import {getCommentsError, getCommentsLoading, NewCommentForm, CommentList} from 
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "@/shared/lib/hooks/useInitialEffect"
 import {classnames} from "@/shared/lib/helpers/classnames"
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 
 import {getArticleCommentsData} from "../model/slice/articleCommentsSlice"
 import {fetchArticleCommentsData} from "../model/services/fetchArticleCommentsData"

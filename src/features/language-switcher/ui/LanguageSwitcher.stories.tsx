@@ -1,5 +1,5 @@
-import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
+import {ComponentMeta, Story} from "@storybook/react"
 
 import {LanguageSwitcher} from "./LanguageSwitcher"
 

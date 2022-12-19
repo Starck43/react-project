@@ -1,9 +1,10 @@
 import webpack from "webpack"
+
+import type {BuildWebpackOptions} from "./types/config"
 import {buildWebpackPlugins} from "./buildWebpackPlugins"
 import {buildWebpackLoaders} from "./buildWebpackLoaders"
 import {buildWebpackDevServer} from "./buildWebpackDevServer"
 
-import type {BuildWebpackOptions} from "./types/config"
 
 export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Configuration {
     const {

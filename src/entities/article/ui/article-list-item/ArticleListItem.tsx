@@ -6,7 +6,7 @@ import {classnames} from "@/shared/lib/helpers/classnames"
 import {Avatar} from "@/shared/ui/avatar"
 import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
 import {Card} from "@/shared/ui/card"
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 import {Flex, Row} from "@/shared/ui/stack"
 import EyeIcon from "@/shared/assets/icons/eye-20-20.svg"
 

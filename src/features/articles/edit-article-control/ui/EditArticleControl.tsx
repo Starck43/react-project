@@ -1,9 +1,9 @@
 import {memo} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
+import {getArticleData} from "@/entities/article"
 import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
-import {getArticleData} from "@/entities/article"
 
 import {Button, ButtonFeature} from "@/shared/ui/button"
 

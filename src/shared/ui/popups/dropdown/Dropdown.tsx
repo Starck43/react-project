@@ -3,12 +3,10 @@ import {Menu} from "@headlessui/react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
+import {Button} from "@/shared/ui/button"
+import type {PopupPositionType} from "@/shared/ui/popups"
 
-import {Button} from "../../button/Button"
 import styles from "../styles/Popups.module.sass"
-
-import type {PopupPositionType} from "../types"
-
 import cls from "./Dropdown.module.sass"
 
 
@@ -30,7 +28,7 @@ interface DropdownProps {
     className?: string
 }
 
-const Dropdown = (props: DropdownProps) => {
+export const Dropdown = memo((props: DropdownProps) => {
     const {
         variant = "primary",
         items,
@@ -90,6 +88,4 @@ const Dropdown = (props: DropdownProps) => {
             </Menu.Items>
         </Menu>
     )
-}
-
-export default memo(Dropdown)
+})

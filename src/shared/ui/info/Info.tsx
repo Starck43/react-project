@@ -1,27 +1,15 @@
 import {SVGProps, FC} from "react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {Icon} from "../../ui/icon/Icon"
-import {Col, Row} from "../../ui/stack"
+import {Icon} from "@/shared/ui/icon"
+import {Col, Row} from "@/shared/ui/stack"
+
+import {InfoSize, InfoStatus} from "./consts"
 
 import cls from "./Info.module.sass"
 
-
-export enum InfoStatus {
-    DEFAULT = "default",
-    SUCCESS = "success",
-    WARNING = "warning",
-    ERROR = "error"
-}
-
-export enum InfoSize {
-    XL = "xl",
-    LG = "lg",
-    MD = "md",
-    SM = "sm"
-}
-
 type FlexAlign = "start" | "end" | "center"
+
 
 export type InfoProps = {
     Tag?: keyof HTMLElementTagNameMap

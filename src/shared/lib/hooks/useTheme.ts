@@ -1,9 +1,9 @@
 import {useContext, useEffect, MouseEventHandler} from "react"
 
-import {ThemeContext} from "../context/themeContext"
-import {LOCAL_STORAGE_THEME_KEY} from "../../const/localStorage"
-import {Theme} from "../../const/theme"
+import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localStorage"
+import {Theme} from "@/shared/const/theme"
 
+import {ThemeContext} from "../context/themeContext"
 
 
 export interface UseThemeResult {

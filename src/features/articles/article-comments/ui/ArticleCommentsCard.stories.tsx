@@ -1,9 +1,9 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
+import {Comment} from "@/entities/comment"
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
-import {Comment} from "@/entities/comment"
 
 import {ArticleCommentsCard} from "./ArticleCommentsCard"
 

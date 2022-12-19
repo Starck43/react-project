@@ -5,9 +5,9 @@ import {useTranslation} from "react-i18next"
 import {getUser} from "@/entities/user"
 import {RatingCard} from "@/entities/rating"
 
+import {classnames} from "@/shared/lib/helpers/classnames"
 import {updateArticleRating, useArticleRating} from "../api"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
 
 import cls from "./ArticleRatingCard.module.sass"
 

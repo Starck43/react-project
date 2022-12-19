@@ -4,8 +4,7 @@ import {Link} from "react-router-dom"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 import type {SizeType} from "@/shared/types/ui"
-
-import {Flex} from "../../ui/stack"
+import {Flex} from "@/shared/ui/stack"
 
 import cls from "./Header.module.sass"
 

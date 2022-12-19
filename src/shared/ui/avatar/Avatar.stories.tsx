@@ -1,7 +1,7 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import avatar from "../../assets/icons/avatar-profile.png"
+import avatar from "@/shared/assets/icons/avatar-profile.png"
 import {Avatar} from "./Avatar"
 
 

@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit"
 
-import {ValidateProfileError} from "../consts"
 import type {Profile, ProfileSchema} from "../types/profile"
+import {ValidateProfileError} from "../consts"
 import {fetchProfileData} from "../services/fetchProfileData"
 
 

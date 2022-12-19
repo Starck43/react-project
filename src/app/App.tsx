@@ -1,14 +1,14 @@
 import {Suspense, useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 
-import {AppRouter} from "./providers/router-provider"
 
 import {getUserOnMount, userActions} from "@/entities/user"
 
+import useTheme from "@/shared/lib/hooks/useTheme"
 import {Navbar} from "@/widgets/navbar"
 import {Sidebar} from "@/widgets/sidebar"
 
-import useTheme from "@/shared/lib/hooks/useTheme"
+import {AppRouter} from "./providers/router-provider"
 
 
 const App = () => {

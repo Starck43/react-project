@@ -22,6 +22,8 @@ module.exports = {
         "@typescript-eslint",
         "i18next",
         "react-hooks",
+        "import",
+        "unused-imports",
         "paths-observer", // custom plugin
     ],
     rules: {
@@ -75,8 +77,12 @@ module.exports = {
         "react/jsx-one-expression-per-line": "off",
         "no-shadow": "off",
         "no-param-reassign": "off",
-        "import/extensions": "off",
+        "no-underscore-dangle": "off",
+        "no-multiple-empty-lines": "off",
         "no-nested-ternary": "off",
+        "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true} ],
+        "no-plusplus": [ "error", {allowForLoopAfterthoughts: true} ],
+        "import/extensions": "off",
         "import/no-extraneous-dependencies": "off",
         "jsx-a11y/no-static-element-interactions": [
             "error",
@@ -93,9 +99,7 @@ module.exports = {
             },
         ],
         "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
-        "no-underscore-dangle": "off",
         "react/no-array-index-key": "warn",
-        "no-multiple-empty-lines": "off",
         "i18next/no-literal-string": [
             "warn", {
                 markupOnly: true,
@@ -125,8 +129,56 @@ module.exports = {
                 },
             },
         ],
-        "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true} ],
-        "no-plusplus": [ "error", {allowForLoopAfterthoughts: true} ],
+        "import/order": [
+            "error",
+            {
+                groups: [
+                    "builtin",
+                    "external",
+                    "internal",
+                    "object",
+                    "type",
+                    "parent",
+                    "sibling",
+                    "index",
+                ],
+                pathGroups: [
+                    {
+                        pattern: "react",
+                        group: "builtin",
+                        position: "before",
+                    },
+                    {
+                        pattern: "@/app/**",
+                        group: "internal",
+                        position: "after",
+                    },
+                    {
+                        pattern: "@/entities/**",
+                        group: "internal",
+                        position: "after",
+                    },
+                    {
+                        pattern: "@/features/**",
+                        group: "internal",
+                        position: "after",
+                    },
+                    {
+                        pattern: "@/shared/**",
+                        group: "internal",
+                        position: "after",
+                    },
+                    {
+                        pattern: "@/widgets/**",
+                        group: "internal",
+                        position: "after",
+                    },
+                ],
+                pathGroupsExcludedImportTypes: ["parent"],
+                "newlines-between": "ignore",
+            },
+        ],
+        "unused-imports/no-unused-imports": "warn",
         "paths-observer/only-relative-imports-in-layer": [ "error", {alias: "@"} ],
         "paths-observer/only-public-api-imports": [
             "error", {

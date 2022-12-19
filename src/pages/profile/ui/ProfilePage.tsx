@@ -8,7 +8,7 @@ import {Logout} from "@/features/auth"
 import {UpdateProfileForm} from "@/features/update-profile"
 
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 
 import {Page} from "@/widgets/page"
 

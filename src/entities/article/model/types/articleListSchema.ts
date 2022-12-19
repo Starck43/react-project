@@ -1,7 +1,7 @@
 import {EntityState} from "@reduxjs/toolkit"
 
-import {ArticleOrderType, ArticleSortType, ArticleType, ArticleView} from "../consts"
 import type {Article} from "./article"
+import {ArticleOrderType, ArticleSortType, ArticleType, ArticleView} from "../consts"
 
 
 export interface ArticleListSchema extends EntityState<Article>{

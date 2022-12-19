@@ -1,16 +1,18 @@
 import {createRoot} from "react-dom/client"
 import {BrowserRouter} from "react-router-dom"
-import {Theme} from "@/shared/const/theme"
 
 import {StoreProvider} from "@/app/providers/store-provider"
 import {ErrorBoundary} from "@/app/providers/error-boundary-provider"
 import {ThemeProvider} from "@/app/providers/theme-provider"
 
-import "@/shared/config/i18n/i18n"
+import {Theme} from "@/shared/const/theme"
 import {isDarkness} from "@/shared/lib/helpers/datetime"
+import "@/shared/config/i18n/i18n"
 
+// eslint-disable-next-line import/order
 import App from "@/app/App"
 import "@/app/styles/index.sass"
+
 
 const container = document.getElementById("root")
 

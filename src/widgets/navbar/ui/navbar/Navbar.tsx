@@ -1,17 +1,17 @@
 import {memo, useMemo} from "react"
 import {useSelector} from "react-redux"
 
-import {UseThemeResult} from "@/shared/lib/hooks/useTheme"
 
 import {ThemeSwitcher} from "@/features/theme-switcher"
 import {LanguageSwitcher} from "@/features/language-switcher"
 import {AuthPopup} from "@/features/auth"
 import {NotificationsPopup} from "@/features/notifications-popup"
 
+import {UseThemeResult} from "@/shared/lib/hooks/useTheme"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Row} from "@/shared/ui/stack"
 
-import {NavbarItemType} from "../../model/types/navbar"
+import type {NavbarItemType} from "../../model/types/navbar"
 import {getNavbarItemsData} from "../../model/selectors/getNavbarItemsData"
 import {NavMenu} from "../nav-menu/NavMenu"
 import NavItem from "../nav-item/NavItem"

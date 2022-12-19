@@ -1,7 +1,7 @@
+import {UserRole} from "@/entities/user"
 import {AppRoutes, RoutesPath} from "@/shared/const/router"
 import type {AppRoutesProps} from "../types"
 
-import {UserRole} from "@/entities/user"
 
 import {HomePage} from "@/pages/home"
 import {AboutPage} from "@/pages/about"

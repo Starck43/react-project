@@ -1,6 +1,8 @@
-import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
-import {Info, InfoProps, InfoStatus} from "./Info"
+import {ComponentMeta, Story} from "@storybook/react"
+
+import {Info, InfoProps} from "./Info"
+import {InfoStatus} from "./consts"
 
 
 

@@ -1,12 +1,12 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {useNavigate, useParams} from "react-router-dom"
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
 import {UpdateArticleForm} from "@/features/articles"
 
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
 import {classnames} from "@/shared/lib/helpers/classnames"
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 
 import {Page} from "@/widgets/page"
 

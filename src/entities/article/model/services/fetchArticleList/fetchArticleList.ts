@@ -4,8 +4,8 @@ import {ThunkConfig} from "@/app/providers/store-provider"
 
 import {addQueryParams} from "@/shared/lib/helpers/urls"
 
-import {ArticleType} from "../../consts"
 import type {Article} from "../../types/article"
+import {ArticleType} from "../../consts"
 import {
     getArticlesOrder,
     getArticlesPageLimit,

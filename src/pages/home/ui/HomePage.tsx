@@ -1,7 +1,7 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 
 import {Page} from "@/widgets/page"
 

@@ -1,11 +1,11 @@
-import {ComponentMeta, Story} from "@storybook/react"
 import React from "react"
+import {ComponentMeta, Story} from "@storybook/react"
 
 import {ToggleButton, ToggleButtonProps} from "./ToggleButton"
 
 
 export default {
-    title: "shared/Toggle button",
+    title: "shared/ToggleButton",
     component: ToggleButton,
     // argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ToggleButton>

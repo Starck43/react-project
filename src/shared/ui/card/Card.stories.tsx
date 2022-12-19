@@ -1,7 +1,7 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import Header from "../header/Header"
+import {Header} from "@/shared/ui/header"
 
 import {Card} from "./Card"
 

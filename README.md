@@ -14,6 +14,9 @@ In progres...
 - **Node** + Json-server for developing,
 - **Python** + Django Rest API in production
 
+## Used plugins
+- eslint-plugin-import (Prevent issues with misspelling of file paths and import names)
+- eslint-plugin-unused-imports (Find and remove unused ES6 module imports)
 ## Used libraries
 - **headless UI** [[https://headlessui.com](https://headlessui.com)]
 - **floating UI** [[https://floating-ui.com](https://floating-ui.com)]

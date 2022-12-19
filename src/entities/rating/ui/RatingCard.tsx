@@ -7,7 +7,7 @@ import {Modal} from "@/shared/ui/modals"
 import {Card} from "@/shared/ui/card"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Rate} from "@/shared/ui/rate"
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 
 import type {Rating} from "../model/types/rating"
 

@@ -3,11 +3,11 @@ import {
 } from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
-import {ButtonFeature, Button} from "@/shared/ui/button"
 
 import {getUser} from "@/entities/user"
 
+import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {ButtonFeature, Button} from "@/shared/ui/button"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 import {Avatar} from "@/shared/ui/avatar"

@@ -4,11 +4,12 @@ import {AnimationProvider, useAnimationModules} from "@/shared/lib/components/An
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 
+import {CloseButton} from "@/shared/ui/close-button"
+import {Col, Row} from "@/shared/ui/stack"
+import {Portal} from "@/shared/ui/portal"
+import {Overlay} from "@/shared/ui/modals"
+
 import {DrawerProps} from "../types"
-import {CloseButton} from "../../close-button/CloseButton"
-import {Col, Row} from "../../stack"
-import {Portal} from "../../portal/Portal"
-import {Overlay} from "../overlay/Overlay"
 
 import styles from "../styles/Modals.module.sass"
 import cls from "./Drawer.module.sass"

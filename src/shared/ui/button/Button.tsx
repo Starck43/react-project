@@ -5,9 +5,9 @@ import {Link} from "react-router-dom"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
+import {AlignType} from "@/shared/types/ui"
 
 import {ButtonFeature, ButtonSize} from "./consts"
-import {AlignType} from "../../types/ui"
 
 import cls from "./Button.module.sass"
 

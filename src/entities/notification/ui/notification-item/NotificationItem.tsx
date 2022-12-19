@@ -1,9 +1,9 @@
 import React from "react"
 import {classnames} from "@/shared/lib/helpers/classnames"
 
-import Header from "@/shared/ui/header"
+import {Header} from "@/shared/ui/header"
 
-import {Notification} from "../../../notification"
+import type {Notification} from "../../../notification"
 
 import cls from "./NotificationItem.module.sass"
 

@@ -1,18 +1,16 @@
-import {
-    memo, useMemo, Fragment, ReactNode, CSSProperties,
-} from "react"
+import {useMemo, Fragment, ReactNode, CSSProperties} from "react"
 import {Listbox as HeadlessListBox} from "@headlessui/react"
 
 import type {AlignType} from "@/shared/types/ui"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
+import {Button} from "@/shared/ui/button"
 
 import {PopupPositionType} from "../types"
-import {Button} from "../../button/Button"
-import DropdownIcon from "./assets/arrow-down.svg"
-
-import cls from "./ListBox.module.sass"
 import styles from "../styles/Popups.module.sass"
+
+import DropdownIcon from "./assets/arrow-down.svg"
+import cls from "./ListBox.module.sass"
 
 
 interface ListBoxOption {
@@ -39,7 +37,7 @@ interface ListBoxProps {
     className?: string
 }
 
-const ListBox = (props: ListBoxProps) => {
+export const ListBox = (props: ListBoxProps) => {
     const {
         variant = "primary",
         name,
@@ -140,5 +138,3 @@ const ListBox = (props: ListBoxProps) => {
         </HeadlessListBox>
     )
 }
-
-export default memo(ListBox)

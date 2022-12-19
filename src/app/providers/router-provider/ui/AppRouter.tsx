@@ -2,12 +2,12 @@ import {memo, Suspense, useCallback} from "react"
 import {Route, Routes} from "react-router-dom"
 
 import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {Loader} from "@/shared/ui/loader"
 
 import type {AppRoutesProps} from "../types"
 import {routeConfig} from "../config/routeConfig"
 import RequireAuth from "./RequireAuth"
 
-import {Loader} from "@/shared/ui/loader"
 
 
 const AppRouter = () => {

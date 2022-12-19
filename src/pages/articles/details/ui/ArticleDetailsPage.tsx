@@ -1,6 +1,9 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
 import {useParams} from "react-router-dom"
+
+import {articleReducer, ArticleDetailsCard} from "@/entities/article"
+
 import {
 ArticleRatingCard,
     articleRelatedReducer,
@@ -8,9 +11,6 @@ ArticleRatingCard,
     ArticleCommentsCard,
     ArticleRelatedList,
 } from "@/features/articles"
-
-import {articleReducer, ArticleDetailsCard} from "@/entities/article"
-
 
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
 import {Info} from "@/shared/ui/info"
