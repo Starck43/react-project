@@ -12,6 +12,8 @@ import {
 } from "@/entities/article"
 
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
+
+import {SelectOption} from "@/shared/ui/select/Select"
 import {Select} from "@/shared/ui/select"
 import {Row} from "@/shared/ui/stack"
 
@@ -40,7 +42,7 @@ export const ArticleSortControl = memo(({className}: ArticleSortControlProps) =>
         dispatch(fetchArticleList({replace: true}))
     }, [ dispatch ])
 
-    const orderOptions = useMemo(() => [
+    const orderOptions = useMemo<SelectOption<ArticleOrderType>[]>(() => [
         {
             value: ArticleOrderType.ASC,
             content: t("order", {context: ArticleOrderType.ASC}),
@@ -52,7 +54,7 @@ export const ArticleSortControl = memo(({className}: ArticleSortControlProps) =>
     ], [ t ])
 
     // TODO: Replace direct translations on context for articles
-    const sortOptions = useMemo(() => [
+    const sortOptions = useMemo<SelectOption<ArticleSortType>[]>(() => [
         {
             value: ArticleSortType.TITLE,
             content: t("заголовок"),
@@ -75,7 +77,7 @@ export const ArticleSortControl = memo(({className}: ArticleSortControlProps) =>
                 options={sortOptions}
                 compact
                 rounded
-                onChange={(val) => onSortClick(val as ArticleSortType)}
+                onChange={(val) => onSortClick(val)}
             />
             <Select
                 label={t("по направлению")}
@@ -83,7 +85,7 @@ export const ArticleSortControl = memo(({className}: ArticleSortControlProps) =>
                 options={orderOptions}
                 compact
                 rounded
-                onChange={(val) => onOrderClick(val as ArticleOrderType)}
+                onChange={(val) => onOrderClick(val)}
             />
         </Row>
     )
