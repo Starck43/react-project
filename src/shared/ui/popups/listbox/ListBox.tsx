@@ -1,11 +1,11 @@
-import {useMemo, Fragment, ReactNode, CSSProperties} from "react"
+import {CSSProperties, Fragment, ReactNode, useMemo} from "react"
 import {Listbox as HeadlessListBox} from "@headlessui/react"
 
-import type {AlignType} from "@/shared/types/ui"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
-import {Button} from "@/shared/ui/button"
 
+import type {AlignType} from "@/shared/types/ui"
+import {Button} from "@/shared/ui/button"
 import {PopupPositionType} from "../types"
 import styles from "../styles/Popups.module.sass"
 

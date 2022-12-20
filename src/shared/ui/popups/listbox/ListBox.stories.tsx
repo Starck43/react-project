@@ -1,7 +1,7 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import ListBox from "./ListBox"
+import {ListBox} from "./ListBox"
 
 
 export default {
@@ -14,6 +14,7 @@ export default {
     args: {
         compact: false,
         label: "Выберите персонаж",
+        bordered: true,
         items: [
             {value: "1", content: "Durward Reynolds"},
             {value: "2", content: "Kenton Towne"},
@@ -32,6 +33,14 @@ Default.args = {
     defaultOption: undefined,
 }
 
+export const Compact = Template.bind({})
+Compact.args = {
+    compact: true,
+    bordered: true,
+    selectedOption: undefined,
+    defaultOption: undefined,
+}
+
 export const TopRightOpen = Template.bind({})
 TopRightOpen.args = {
     compact: false,
@@ -39,14 +48,6 @@ TopRightOpen.args = {
     defaultOption: undefined,
     align: "right",
     position: "top_right",
-}
-
-export const CompactAndBordered = Template.bind({})
-CompactAndBordered.args = {
-    compact: true,
-    bordered: true,
-    selectedOption: undefined,
-    defaultOption: undefined,
 }
 
 export const CompactAndRounded = Template.bind({})
@@ -63,6 +64,6 @@ WithStyles.args = {
     selectedOption: undefined,
     defaultOption: {value: "3", content: "Therese Wunsch"},
     style: {
-        minWidth: "12rem",
+        minWidth: "9rem",
     },
 }

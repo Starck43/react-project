@@ -3,7 +3,7 @@ import {Menu} from "@headlessui/react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
-import {Button} from "@/shared/ui/button"
+import {Button, ButtonFeature} from "@/shared/ui/button"
 import type {PopupPositionType} from "@/shared/ui/popups"
 
 import styles from "../styles/Popups.module.sass"
@@ -67,6 +67,7 @@ export const Dropdown = memo((props: DropdownProps) => {
                         {({active, disabled}) => (
                             <Button
                                 variant={variant}
+                                feature={ButtonFeature.CLEAR}
                                 fullWidth
                                 disabled={disabled}
                                 href={item.href}

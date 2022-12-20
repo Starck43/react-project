@@ -16,16 +16,16 @@ type HeaderProps = {
     subTitle?: ReactNode
     variant?: ThemeVariant
     align?: "start" | "center" | "end"
-    gap?: SizeType
     inlined?: boolean
     fullWidth?: boolean
+    gap?: SizeType
     transform?: "upper_first" | "upper_case" | "lower_case"
     shadowed?: boolean
     className?: string
     children?: ReactNode
 }
 
-const Header = (props: HeaderProps) => {
+export const Header = memo((props: HeaderProps) => {
     const {
         tag = "h3",
         href,
@@ -87,6 +87,4 @@ const Header = (props: HeaderProps) => {
             )
             : content
     )
-}
-
-export default memo(Header)
+})

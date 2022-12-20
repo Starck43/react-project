@@ -1,7 +1,9 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import {Skeleton, SkeletonElementType} from "./Skeleton"
+import {SkeletonElementType} from "@/shared/ui/skeleton/const"
+
+import {Skeleton} from "./Skeleton"
 
 
 export default {

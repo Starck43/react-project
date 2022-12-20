@@ -1,3 +1,3 @@
-export {Col} from "./col/Col"
 export {Flex} from "./flex/Flex"
-export {Row} from "./row/Row"
+export {default as Col} from "./col/Col"
+export {default as Row} from "./row/Row"

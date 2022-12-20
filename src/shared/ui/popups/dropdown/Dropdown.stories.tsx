@@ -10,7 +10,7 @@ export default {
     component: Dropdown,
     argTypes: {backgroundColor: {control: "color"}},
     args: {
-        control: <Button>Menu</Button>,
+        toggleElement: <Button>Menu</Button>,
         items: [
             {
                 value: "item 1",

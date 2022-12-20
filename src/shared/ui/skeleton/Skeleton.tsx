@@ -1,19 +1,14 @@
-import {memo, useMemo, CSSProperties} from "react"
-
-import {SizeType} from "@/shared/types/ui"
-import {Flex} from "@/shared/ui/stack"
+import {CSSProperties, memo, useMemo} from "react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 
+import {SizeType} from "@/shared/types/ui"
+import {SkeletonElementType} from "@/shared/ui/skeleton/const"
+import {Flex} from "@/shared/ui/stack"
+
 import cls from "./Skeleton.module.sass"
 
-
-export enum SkeletonElementType {
-    AVATAR = "avatar",
-    TITLE = "title",
-    BLOCK = "block",
-}
 
 interface SkeletonProps {
     elements?: SkeletonElementType[]
