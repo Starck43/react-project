@@ -5,7 +5,7 @@ import {User} from "@/entities/user"
 
 import {Button, ButtonFeature} from "@/shared/ui/button"
 import {Card} from "@/shared/ui/card"
-import Input from "@/shared/ui/input"
+import {Input} from "@/shared/ui/input"
 
 import cls from "./Registration.module.sass"
 

@@ -1,12 +1,13 @@
+import {classnames} from "@/shared/lib/helpers/classnames"
 import SubmitIcon from "@/shared/assets/icons/check.svg"
 import CancelIcon from "@/shared/assets/icons/close.svg"
-import {classnames} from "@/shared/lib/helpers/classnames"
+
 import {Button, ButtonFeature} from "@/shared/ui/button"
 import {CloseButton} from "@/shared/ui/close-button"
 import {Header} from "@/shared/ui/header"
 import {Portal} from "@/shared/ui/portal"
-import {Col, Flex, Row} from "@/shared/ui/stack"
 import {Overlay} from "@/shared/ui/modals"
+import {Col, Flex, Row} from "@/shared/ui/stack"
 
 import {useModal} from "../lib/hooks/useModal"
 import {ModalProps} from "../types"

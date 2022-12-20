@@ -3,6 +3,7 @@ import {
     MutableRefObject,
 } from "react"
 
+
 interface HookModalProps {
     onSubmit?: () => void
     onClose?: () => void
@@ -10,13 +11,18 @@ interface HookModalProps {
     isOpen: boolean
 }
 
-export const useModal = (props: HookModalProps) => {
-    const {onSubmit, onClose, isOpen, animationTime} = props
+/**
+ * useModal - the custom hook for modal components (Drawer/Modal)
+ * @param onSubmit
+ * @param onClose
+ * @param isOpen
+ * @param animationTime
+ */
 
+export const useModal = ({onSubmit, onClose, isOpen, animationTime}: HookModalProps) => {
     const [ isShown, setIsShown ] = useState(false)
     const [ isMounted, setIsMounted ] = useState(false)
     const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
-
 
     const handleSubmit = useCallback(() => {
         if (onSubmit) {

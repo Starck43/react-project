@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next"
 import {ProfileCard, profileReducer} from "@/entities/profile"
 
 import {Logout} from "@/features/auth"
-import {UpdateProfileForm} from "@/features/update-profile"
+import {UpdateProfileForm} from "@/features/profile"
 
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
 import {Header} from "@/shared/ui/header"

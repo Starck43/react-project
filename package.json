@@ -17,6 +17,7 @@
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
     "test:unit": "jest --config ./config/jest/jest.config.ts",
     "test:ui": "npm run storybook:build && npm run test:ui:ci && npm run test:ui:report",
+    "test:ui:build": "npm run storybook:build",
     "test:ui:ok": "npx loki approve && npx loki update",
     "test:ui:upd": "npx loki update --requireReference --reactUri file:./storybook-static",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static",

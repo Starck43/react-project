@@ -7,7 +7,7 @@ import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ButtonFeature, Button} from "@/shared/ui/button"
-import Input from "@/shared/ui/input"
+import {Input} from "@/shared/ui/input"
 import {Info, InfoStatus} from "@/shared/ui/info"
 import {Col, Row} from "@/shared/ui/stack"
 

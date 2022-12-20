@@ -18,7 +18,7 @@ import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "@/shared/lib/hooks/useInitialEffect"
 import {Button, ButtonFeature} from "@/shared/ui/button"
 import {Info, InfoStatus} from "@/shared/ui/info"
-import Input, {TextArea} from "@/shared/ui/input"
+import {Input, TextArea} from "@/shared/ui/input"
 import {Row} from "@/shared/ui/stack"
 import {Loader} from "@/shared/ui/loader"
 

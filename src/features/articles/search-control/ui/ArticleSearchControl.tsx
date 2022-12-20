@@ -7,7 +7,7 @@ import {articlesActions, getArticlesSearch, fetchArticleList} from "@/entities/a
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
 import {useDebounce} from "@/shared/lib/hooks/useDebounce"
-import Input from "@/shared/ui/input"
+import {Input} from "@/shared/ui/input"
 
 import cls from "./ArticleSearchControl.module.sass"
 
