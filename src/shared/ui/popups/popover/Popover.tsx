@@ -18,7 +18,7 @@ interface PopoverProps {
     position?: PopupPositionType
     style?: CSSProperties
     className?: string
-    children: ReactNode
+    children?: ReactNode
 }
 
 export const Popover = (props: PopoverProps) => {
