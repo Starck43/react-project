@@ -1,29 +1,51 @@
-import {useSelector} from "react-redux"
+import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
+import {Flex} from "@/shared/ui/stack"
 
-import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
-import {Button, ButtonSize} from "@/shared/ui/button"
-
-import {getCounterValue} from "../model/selectors/getCounterValue/getCounterValue"
-import {counterActions} from "../model/slice/counterSlice"
+import {useCounterValue} from "../model/selectors/getCounterValue"
+import {useCounterActions} from "../model/slice/counterSlice"
 
 
 export const Counter = () => {
-    const dispatch = useAppDispatch()
-    const counterValue = useSelector(getCounterValue)
+    const counterValue = useCounterValue()
+    const {increment, decrement, incrementByAmount} = useCounterActions()
 
-    const inc = () => {
-        dispatch(counterActions.increment())
-    }
-
-    const dec = () => {
-        dispatch(counterActions.decrement())
-    }
+    const incClick = () => increment()
+    const decClick = () => decrement()
+    const incByAmountClick = () => incrementByAmount(10)
 
     return (
-        <div>
-            <h3 data-testid="counter-value">{counterValue}</h3>
-            <Button data-testid="counterIncrement" squared size={ButtonSize.SMALL} onClick={inc}>+</Button>
-            <Button data-testid="counterDecrement" squared size={ButtonSize.SMALL} onClick={dec}>-</Button>
-        </div>
+        <Flex justify="center" fullWidth>
+            <Button
+                data-testid="counterIncrement"
+                variant="primary"
+                feature={ButtonFeature.CLEAR}
+                size={ButtonSize.LARGE}
+                squared
+                bordered
+                onClick={decClick}
+            >
+                -
+            </Button>
+            <Button
+                data-testid="counter-value"
+                variant="primary"
+                size={ButtonSize.LARGE}
+                squared
+                onClick={incByAmountClick}
+            >
+                {counterValue}
+            </Button>
+            <Button
+                data-testid="counterIncrement"
+                variant="primary"
+                feature={ButtonFeature.CLEAR}
+                size={ButtonSize.LARGE}
+                squared
+                bordered
+                onClick={incClick}
+            >
+                +
+            </Button>
+        </Flex>
     )
 }

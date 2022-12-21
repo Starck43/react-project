@@ -1,5 +1,6 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
+import {Counter} from "@/entities/counter"
 
 import {Header} from "@/shared/ui/header"
 
@@ -12,6 +13,7 @@ function HomePage() {
     return (
         <Page>
             <Header tag="h2" title={t("Продвинутый курс на Реакт")} shadowed align="center" />
+            <Counter />
         </Page>
     )
 }

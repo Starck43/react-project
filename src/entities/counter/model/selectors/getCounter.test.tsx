@@ -1,6 +1,6 @@
 import {StateSchema} from "@/app/providers/store-provider"
 
-import {getCounter} from "../getCounter/getCounter"
+import {getCounter} from "./getCounter"
 
 
 describe("RTK Counter tests", () => {

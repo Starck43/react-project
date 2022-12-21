@@ -4,12 +4,13 @@
 
 .button
 	display: flex
-	justify-content: space-between
+	justify-content: center
 	align-items: center
 	color: inherit
 	background-color: inherit
 	border: var(--border-thickness) solid transparent
 	transition: all 0.2s ease-out
+	line-height: 1
 	cursor: pointer
 	user-select: none
 
@@ -24,6 +25,9 @@
 		&:hover, &:focus
 			opacity: 1
 
+	&.with__icon.with__caption
+		justify-content: space-between
+
 	&.bordered
 		border-color: $brand-color
 
@@ -31,7 +35,8 @@
 		border-radius: var(--border-radius)
 
 	&.squared
-		padding: $controls-padding
+		width: var(--controls-height)
+		height: var(--controls-height)
 
 	&.underlined
 		border-top-color: transparent
@@ -117,6 +122,6 @@
 		width: var(--icon-size-lg)
 		height: var(--icon-size-lg)
 
-.with__caption:not(.clear, .is__link), .is__link .link
+.with__caption:not(.clear, .is__link, .with__icon), .is__link .link
 	min-width: 4em
 	padding: calc(#{$controls-padding} + 1px) $controls-padding * 1.8 $controls-padding
