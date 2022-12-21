@@ -30,7 +30,7 @@ export const ArticleCommentsCard = memo(({articleId, className}: CommentsCardPro
 
     useInitialEffect(() => {
         dispatch(fetchArticleCommentsData(articleId))
-    })
+    }, Boolean(articleId))
 
     const onSaveComment = useCallback((text: string) => {
         dispatch(saveArticleComment(text))

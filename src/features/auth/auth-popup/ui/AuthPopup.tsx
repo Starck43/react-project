@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next"
 
 import {getUser} from "@/entities/user"
 
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {getRouteAuth, getRouteProfile} from "@/shared/const/router"
 import {ButtonFeature, Button} from "@/shared/ui/button"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
@@ -51,7 +51,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
         user?.id ? [
                 {
                     value: t("профиль"),
-                    href: RoutesPath[AppRoutes.PROFILE] + user.id,
+                    href: getRouteProfile(user.id),
                 },
                 {
                     value: t("выйти"),
@@ -70,7 +70,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                             <Button variant="primary" feature={ButtonFeature.CLEAR}>
                                 {minified
                                     ? <Avatar size="xs" src={user?.avatar} />
-                                    : user.username}
+                                    : user?.username}
                             </Button>
                         )}
                         items={menuItems}
@@ -81,7 +81,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                 )
                 : (
                     <NavLink
-                        to={RoutesPath[AppRoutes.AUTH]}
+                        to={getRouteAuth()}
                         Icon={LoginIcon}
                         className={classnames(cls, [ "action" ], {}, [ className ])}
                     />

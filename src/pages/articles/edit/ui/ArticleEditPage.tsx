@@ -4,7 +4,7 @@ import {useNavigate, useParams} from "react-router-dom"
 
 import {UpdateArticleForm} from "@/features/articles"
 
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {getRouteArticleDetails} from "@/shared/const/router"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Header} from "@/shared/ui/header"
 
@@ -20,7 +20,9 @@ function ArticleEditPage() {
     const navigate = useNavigate()
 
     const onCloseHandler = () => {
-        navigate(RoutesPath[AppRoutes.ARTICLE_DETAILS] + id)
+        if (id) {
+            navigate(getRouteArticleDetails(id))
+        }
     }
 
     return (

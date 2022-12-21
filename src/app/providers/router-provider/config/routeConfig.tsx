@@ -1,5 +1,11 @@
 import {UserRole} from "@/entities/user"
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {
+    AppRoutes,
+    getRouteAbout, getRouteArticleCreate,
+    getRouteArticleDetails, getRouteArticleEdit,
+    getRouteArticles, getRouteAuth, getRouteForbidden,
+    getRouteHome, getRouteProfile,
+} from "@/shared/const/router"
 import type {AppRoutesProps} from "../types"
 
 
@@ -14,50 +20,50 @@ import {NotFoundPage} from "@/pages/not-found-page"
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.HOME]: {
-        path: RoutesPath[AppRoutes.HOME],
+        path: getRouteHome(),
         element: <HomePage />,
     },
     [AppRoutes.ABOUT]: {
-        path: RoutesPath[AppRoutes.ABOUT],
+        path: getRouteAbout(),
         element: <AboutPage />,
     },
     [AppRoutes.ARTICLES]: {
-        path: RoutesPath[AppRoutes.ARTICLES],
+        path: getRouteArticles(),
         element: <ArticlesPage />,
         authOnly: true,
     },
     [AppRoutes.ARTICLE_DETAILS]: {
-        path: `${RoutesPath[AppRoutes.ARTICLE_DETAILS]}:id`,
+        path: getRouteArticleDetails(":id"),
         element: <ArticleDetailsPage />,
         authOnly: true,
     },
     [AppRoutes.ARTICLE_CREATE]: {
-        path: `${RoutesPath[AppRoutes.ARTICLE_CREATE]}`,
+        path: getRouteArticleCreate(),
         element: <ArticleEditPage />,
         authOnly: true,
         roles: [ UserRole.ADMIN ],
     },
     [AppRoutes.ARTICLE_EDIT]: {
-        path: `${RoutesPath[AppRoutes.ARTICLE_EDIT]}`,
+        path: getRouteArticleEdit(":id"),
         element: <ArticleEditPage />,
         authOnly: true,
         roles: [ UserRole.ADMIN, UserRole.EDITOR ],
     },
     [AppRoutes.AUTH]: {
-        path: RoutesPath[AppRoutes.AUTH],
+        path: getRouteAuth(),
         element: <AuthPage />,
     },
     [AppRoutes.PROFILE]: {
-        path: `${RoutesPath[AppRoutes.PROFILE]}:id`,
+        path: getRouteProfile(":id"),
         element: <ProfilePage />,
         authOnly: true,
     },
     [AppRoutes.FORBIDDEN]: {
-        path: RoutesPath[AppRoutes.FORBIDDEN],
+        path: getRouteForbidden(),
         element: <ForbiddenPage />,
     },
     [AppRoutes.NOT_FOUND_PAGE]: {
-        path: RoutesPath[AppRoutes.NOT_FOUND_PAGE],
+        path: "/*",
         element: <NotFoundPage />,
     },
 }

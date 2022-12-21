@@ -1,7 +1,7 @@
 import {memo, Suspense, useCallback} from "react"
 import {Route, Routes} from "react-router-dom"
 
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {getRouteAuth} from "@/shared/const/router"
 import {Loader} from "@/shared/ui/loader"
 
 import type {AppRoutesProps} from "../types"
@@ -23,7 +23,7 @@ const AppRouter = () => {
                 key={route.path}
                 path={route.path}
                 element={route.authOnly
-                    ? <RequireAuth to={RoutesPath[AppRoutes.AUTH]} roles={route.roles}>{element}</RequireAuth>
+                    ? <RequireAuth to={getRouteAuth()} roles={route.roles}>{element}</RequireAuth>
                     : element}
             />
         )

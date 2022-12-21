@@ -1,7 +1,7 @@
 import {memo, useMemo, CSSProperties, HTMLAttributeAnchorTarget} from "react"
 import {useTranslation} from "react-i18next"
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
+import {getRouteArticleDetails} from "@/shared/const/router"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Avatar} from "@/shared/ui/avatar"
 import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
@@ -120,7 +120,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                                 size={ButtonSize.NORMAL}
                                 bordered
                                 rounded
-                                href={RoutesPath.article_details + article.id}
+                                href={getRouteArticleDetails(article.id)}
                                 className={cls.read_more__button}
                             >
                                 {t("читать еще")}
@@ -152,7 +152,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         <Card
             id={`article-${article.id}`}
             variant="secondary"
-            href={view === ArticleView.TILE ? RoutesPath[AppRoutes.ARTICLE_DETAILS] + article.id : ""}
+            href={view === ArticleView.TILE ? getRouteArticleDetails(article.id) : ""}
             target={target}
             bordered
             rounded

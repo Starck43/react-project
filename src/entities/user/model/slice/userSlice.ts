@@ -3,7 +3,7 @@ import {AUTH_USER_KEY} from "@/shared/const/localStorage"
 import {User, UserSchema} from "../types/user"
 
 
-const initialState: DeepPartial<UserSchema> = {_mounted: false}
+const initialState: UserSchema = {_mounted: false, authData: {}}
 
 export const userSlice = createSlice({
     name: "user",
@@ -22,7 +22,7 @@ export const userSlice = createSlice({
                 state._mounted = true
             },
             resetAuthData: (state) => {
-                state.authData = undefined
+                state.authData = {}
                 localStorage.removeItem(AUTH_USER_KEY)
             },
         },

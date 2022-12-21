@@ -6,11 +6,11 @@ import {Button, ButtonFeature} from "@/shared/ui/button"
 import {CloseButton} from "@/shared/ui/close-button"
 import {Header} from "@/shared/ui/header"
 import {Portal} from "@/shared/ui/portal"
-import {Overlay} from "@/shared/ui/modals"
 import {Col, Flex, Row} from "@/shared/ui/stack"
 
+import type {ModalProps} from "../types"
+import {Overlay} from "../overlay/Overlay"
 import {useModal} from "../lib/hooks/useModal"
-import {ModalProps} from "../types"
 
 import styles from "../styles/Modals.module.sass"
 import cls from "./Modal.module.sass"

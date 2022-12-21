@@ -2,7 +2,7 @@ import {memo} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 import {getArticleData} from "@/entities/article"
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {getRouteArticleEdit} from "@/shared/const/router"
 
 
 import {Button, ButtonFeature} from "@/shared/ui/button"
@@ -26,7 +26,7 @@ export const EditArticleControl = memo(() => {
                     bordered
                     rounded
                     className={cls.edit__button}
-                    href={`${RoutesPath[AppRoutes.ARTICLE_DETAILS]}${article?.id}/edit`}
+                    href={getRouteArticleEdit(article?.id)}
                 >
                     {t("изменить")}
                 </Button>

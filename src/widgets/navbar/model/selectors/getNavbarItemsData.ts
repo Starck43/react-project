@@ -1,8 +1,8 @@
 import {createSelector} from "@reduxjs/toolkit"
+
 import {getUser} from "@/entities/user"
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
-
+import {AppRoutes, getRouteAbout, getRouteArticles, getRouteHome} from "@/shared/const/router"
 import ArticleIcon from "@/shared/assets/icons/article-20-20.svg"
 
 import {groupNavbarItems} from "../../lib"
@@ -15,13 +15,13 @@ export const getNavbarItemsData = createSelector(
         const navbarItemsList: NavbarItemType[] = [
             {
                 id: "homeLink",
-                path: RoutesPath[AppRoutes.HOME],
+                path: getRouteHome(),
                 text: AppRoutes.HOME,
                 group: "left",
             },
             {
                 id: "aboutLink",
-                path: RoutesPath[AppRoutes.ABOUT],
+                path: getRouteAbout(),
                 text: AppRoutes.ABOUT,
                 group: "left",
             },
@@ -30,7 +30,7 @@ export const getNavbarItemsData = createSelector(
         if (user) {
             const authItems = {
                 id: "articlesLink",
-                path: RoutesPath[AppRoutes.ARTICLES],
+                path: getRouteArticles(),
                 text: AppRoutes.ARTICLES,
                 Icon: ArticleIcon,
                 authOnly: true,

@@ -22,7 +22,6 @@ export const loginByUsername = createAsyncThunk<User, LoginUser, ThunkConfig<str
             }
             const res = response.data
             dispatch(userActions.setAuthData(res))
-            // extra.navigate?.(RoutesPath[AppRoutes.PROFILE] + res.id)
             return res
         } catch (e) {
             // eslint-disable-next-line no-console

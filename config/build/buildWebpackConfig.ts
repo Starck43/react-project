@@ -35,7 +35,7 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
                "@": options.paths.src, // '@' added in tsconfig as well
             },
         },
-        devtool: isDev ? "eval-source-map" : undefined,
+        devtool: isDev ? "eval-cheap-module-source-map" : undefined,
         devServer: isDev ? buildWebpackDevServer(options) : undefined,
     }
 }

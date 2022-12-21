@@ -13,7 +13,7 @@ type FlexAlign = "start" | "end" | "center"
 
 export type InfoProps = {
     Tag?: keyof HTMLElementTagNameMap
-    title?: string
+    title?: string | null
     subTitle?: string | null
     icon?: FC<SVGProps<SVGSVGElement>>
     status?: InfoStatus
@@ -28,7 +28,7 @@ export type InfoProps = {
 export const Info = (props: InfoProps) => {
     const {
         Tag = "h3",
-        title,
+        title = null,
         subTitle,
         icon,
         align = "center",

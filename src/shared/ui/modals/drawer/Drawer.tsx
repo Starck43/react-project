@@ -7,9 +7,9 @@ import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 import {CloseButton} from "@/shared/ui/close-button"
 import {Col, Row} from "@/shared/ui/stack"
 import {Portal} from "@/shared/ui/portal"
-import {Overlay} from "@/shared/ui/modals"
 
-import {DrawerProps} from "../types"
+import type {DrawerProps} from "../types"
+import {Overlay} from "../overlay/Overlay"
 
 import styles from "../styles/Modals.module.sass"
 import cls from "./Drawer.module.sass"
@@ -182,6 +182,7 @@ const DrawerAsync = (props: DrawerProps) => {
     return isLoaded ? <DrawerContent {...props} /> : null
 }
 
+// TODO: fix issue with required children
 export const Drawer = (props: DrawerProps) => (
     <AnimationProvider>
         <DrawerAsync {...props} />

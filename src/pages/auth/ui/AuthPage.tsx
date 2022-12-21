@@ -6,8 +6,8 @@ import {useTranslation} from "react-i18next"
 import {getUser, User} from "@/entities/user"
 
 import {LoginForm} from "@/features/auth"
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
 
+import {getRouteProfile} from "@/shared/const/router"
 import {Info, InfoStatus} from "@/shared/ui/info"
 import {NavLink} from "@/shared/ui/link"
 import {Header} from "@/shared/ui/header"
@@ -23,19 +23,20 @@ function AuthPage() {
     const username = authData?.username
 
     const successLoginHandler = (res: User) => {
-        // console.log("Login success:", res)
-        navigate(RoutesPath[AppRoutes.PROFILE] + res.id)
+        if (res.id) {
+            navigate(getRouteProfile(res.id))
+        }
     }
 
     if (authData?.id) {
         return (
             <Col align="center" gap="md" fullWidth>
                 <Info
-                    title={t("вы уже вошли под именем", {username})}
+                    title={t("вы уже вошли под именем", {username}) || ""}
                     status={InfoStatus.WARNING}
                 />
                 <NavLink
-                    to={RoutesPath[AppRoutes.PROFILE] + authData.id}
+                    to={getRouteProfile(authData.id)}
                     title={t("перейти в профиль")}
                 />
             </Col>

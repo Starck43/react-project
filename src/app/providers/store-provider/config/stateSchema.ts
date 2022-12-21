@@ -24,13 +24,13 @@ export interface StateSchema {
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // async reducers
-    login?: LoginSchema
-    profile?: ProfileSchema
-    articles?: ArticleListSchema
-    article?: ArticleSchema
-    articleRelated?: ArticleRelatedSchema
-    comments?: CommentSchema
-    newComment?: NewCommentSchema
+    login: LoginSchema
+    profile: ProfileSchema
+    articles: ArticleListSchema
+    article: ArticleSchema
+    articleRelated: ArticleRelatedSchema
+    comments: CommentSchema
+    newComment: NewCommentSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

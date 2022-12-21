@@ -1,7 +1,7 @@
 import {memo} from "react"
 import {useTranslation} from "react-i18next"
-import {RoutesPath} from "@/shared/const/router"
 
+import {getRouteArticles} from "@/shared/const/router"
 import {NavLink} from "@/shared/ui/link"
 import ArrowIcon from "@/shared/assets/icons/arrow-shevron-left.svg"
 
@@ -13,7 +13,7 @@ export const BackToListLink = memo(() => {
 
     return (
         <NavLink
-            to={RoutesPath.articles}
+            to={getRouteArticles()}
             title={t("назад к списку")}
             Icon={ArrowIcon}
             feature="underlined"

@@ -1,7 +1,7 @@
 import React, {memo} from "react"
 import {useTranslation} from "react-i18next"
 
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {getRouteProfile} from "@/shared/const/router"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Card} from "@/shared/ui/card"
 import {Avatar} from "@/shared/ui/avatar"
@@ -33,7 +33,7 @@ export const CommentCard = memo(({data}: CommentCardProps) => {
                 tag="h5"
                 title={(
                     <NavLink
-                        to={RoutesPath[AppRoutes.PROFILE] + data.user.id}
+                        to={getRouteProfile(data.user.id)}
                         title={data.user.username}
                         alt={`${t("автор комментария")} ${data.user.username}`}
                     />

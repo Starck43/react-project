@@ -10,12 +10,12 @@ export interface SelectOption<T extends string> {
     content: string
 }
 
-interface SelectProps<T extends string> {
+export interface SelectProps<T extends string> {
     label?: string | null
     compact?: boolean
     rounded?: boolean
     options: SelectOption<T>[]
-    value?: T
+    value?: T | undefined
     onChange?: (value: T) => void
     className?: string
 }

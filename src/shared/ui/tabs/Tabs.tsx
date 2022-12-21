@@ -1,5 +1,7 @@
 import {memo, ReactNode, useCallback} from "react"
 
+import {DirectionType} from "@/shared/types/ui"
+
 import {ButtonFeature, ButtonSize} from "../button/consts"
 import {Button} from "../button/Button"
 import {Flex} from "../stack"
@@ -15,14 +17,18 @@ export interface Tab {
 interface TabsProps {
     tabs: Tab[]
     value: string
-    direction?: "row" | "column"
+    direction?: DirectionType
     onTabClickHandler: (tab: Tab) => void
     className?: string
 }
 
 export const Tabs = memo((props: TabsProps) => {
     const {
-        tabs, value, direction = "row", onTabClickHandler, className,
+        tabs,
+        value,
+        direction = "row",
+        onTabClickHandler,
+        className,
     } = props
 
     const onTabClick = useCallback((tab: Tab) => (

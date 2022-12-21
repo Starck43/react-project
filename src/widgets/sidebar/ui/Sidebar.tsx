@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next"
 // eslint-disable-next-line paths-observer/layer-imports-order
 import {ErrorTestButton} from "@/app/providers/error-boundary-provider"
 
-import {AppRoutes, RoutesPath} from "@/shared/const/router"
+import {getRouteArticleCreate} from "@/shared/const/router"
 import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {AlignType} from "@/shared/types/ui"
@@ -49,7 +49,7 @@ function Sidebar({position = "right", className}: SidebarProps) {
 
             <div className={classnames(cls, [], {collapsed}, [ "sidebar__container" ])}>
                 <NavLink
-                    to={`${RoutesPath[AppRoutes.ARTICLE_CREATE]}`}
+                    to={getRouteArticleCreate()}
                     title={t("новая статья")}
                     feature="underlined"
                     variant="primary"

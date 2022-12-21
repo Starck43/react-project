@@ -14,20 +14,16 @@ interface CommentListProps {
     isLoading?: boolean
 }
 
-export const CommentList = memo((props: CommentListProps) => {
-    const {comments, isLoading} = props
-
-    return (
-        <section className={classnames(cls, [ "comments__list" ])}>
-            <div className={cls.comment__list}>
-                {!isLoading && comments?.length && comments.map((comment) => (
-                    <CommentCard data={comment} key={comment.id} />
-                ))}
-                {isLoading && new Array(3).fill(0).map((_, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <CommentSkeleton rounded inlined key={index} />
-                ))}
-            </div>
-        </section>
-    )
-})
+export const CommentList = memo(({comments, isLoading}: CommentListProps) => (
+    <section className={classnames(cls, [ "comments__list" ])}>
+        <div className={cls.comment__list}>
+            {comments?.map((comment) => (
+                <CommentCard data={comment} key={comment.id} />
+            ))}
+            {isLoading && new Array(3).fill(0).map((_, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <CommentSkeleton rounded inlined key={index} />
+            ))}
+        </div>
+    </section>
+))
