@@ -24,13 +24,14 @@ export const CommentCard = memo(({data}: CommentCardProps) => {
         <Card
             data-testid="comment-card"
             direction="row"
+            gap="sm"
             rounded
             bordered
             className={classnames(cls, [ "comment" ], {}, [ "my-1" ])}
         >
             <Avatar size={50} src={data.user?.avatar} rounded bordered />
             <Header
-                tag="h5"
+                tag="h4"
                 title={(
                     <NavLink
                         to={getRouteProfile(data.user.id)}
@@ -38,7 +39,7 @@ export const CommentCard = memo(({data}: CommentCardProps) => {
                         alt={`${t("автор комментария")} ${data.user.username}`}
                     />
                 )}
-                subTitle={data.text}
+                subTitle={<i>{data.text}</i>}
                 align="start"
                 fullWidth
                 className={cls.comment__header}

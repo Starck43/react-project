@@ -16,6 +16,7 @@ export interface NavLinkProps extends Omit<LinkProps, "title"> {
     Icon?: FC<SVGProps<SVGSVGElement>>
     feature?: NavLinkFeatureType
     fullWidth?: boolean
+    squared?: boolean
     disabled?: boolean
     rounded?: boolean
     animation?: boolean
@@ -31,6 +32,7 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
         Icon,
         feature = "clear",
         fullWidth = false,
+        squared = false,
         disabled = false,
         reverse = false,
         rounded = false,
@@ -39,15 +41,20 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
         ...other
     } = props
 
+    if (!title && !Icon) {
+        return null
+    }
+
     return (
         <Link
             title={alt}
             {...other}
             className={classnames(cls, [
-                "link", variant, feature,
-            ], {
-                fullWidth, disabled, reverse, rounded, animation,
-            }, [ className ])}
+                "link",
+                variant,
+                feature,
+                Icon && !title ? "squared" : undefined,
+            ], {fullWidth, squared, reverse, rounded, animation, disabled}, [ className ])}
         >
             {Icon && <Icon className={cls.icon} />}
             {title}

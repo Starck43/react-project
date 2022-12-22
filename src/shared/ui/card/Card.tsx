@@ -43,6 +43,7 @@ export const Card: FC<CardProps> = (props) => {
     return (
         <Flex
             wrap={direction === "column"}
+            align="start"
             fullWidth
             gap={gap}
             direction={direction}

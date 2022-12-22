@@ -15,6 +15,7 @@ interface ArticleListSkeletonProps {
     className?: string
 }
 
+// TODO: Article List Avatar and correct scroll position on loading next pages
 export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
     const {view, className} = props
 
@@ -25,6 +26,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                     <Skeleton
                         variant="primary"
                         elements={[ SkeletonElementType.AVATAR ]}
+                        avatarSize="auto"
                         className={classnames(cls, [ "avatar" ])}
                     />
                     <Flex gap="none" fullWidth className={cls.header}>
