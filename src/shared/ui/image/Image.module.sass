@@ -1,0 +1,23 @@
+@import "/src/app/styles/mixins"
+
+.wrapper
+	background-color: transparent
+
+	&.isLoading
+		background-color: var(--avatar-color)
+
+	&.isLoading, &.noImage
+		transition: unset
+
+		.img
+			@include push--absolute
+
+			object-fit: cover
+			opacity: 0
+
+.wrapper, .img
+	transition: all 0.3s ease-out
+
+.noImage
+	background: var(--theme-popup-border-color)
+	opacity: 0.5

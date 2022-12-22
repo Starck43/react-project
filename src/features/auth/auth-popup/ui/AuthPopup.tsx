@@ -1,19 +1,18 @@
 import {
-    FC, memo, useCallback, useMemo, useState,
+FC, memo, useCallback, useMemo, useState,
 } from "react"
-import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
-
+import {useSelector} from "react-redux"
 import {getUser} from "@/entities/user"
+import LoginIcon from "@/shared/assets/icons/auth.svg"
 
 import {getRouteAuth, getRouteProfile} from "@/shared/const/router"
-import {ButtonFeature, Button} from "@/shared/ui/button"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 import {Avatar} from "@/shared/ui/avatar"
+import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
 import {NavLink} from "@/shared/ui/link"
 import {Dropdown, PopupPositionType} from "@/shared/ui/popups"
-import LoginIcon from "@/shared/assets/icons/auth.svg"
 
 import {Logout} from "../../logout/ui/Logout"
 
@@ -67,9 +66,9 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                 ? (
                     <Dropdown
                         toggleElement={(
-                            <Button variant="primary" feature={ButtonFeature.CLEAR}>
+                            <Button variant="primary" size={ButtonSize.SMALL} feature={ButtonFeature.CLEAR}>
                                 {minified
-                                    ? <Avatar size="xs" src={user?.avatar} />
+                                    ? <Avatar src={user?.avatar} rounded bordered />
                                     : user?.username}
                             </Button>
                         )}

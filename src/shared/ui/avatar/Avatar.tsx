@@ -1,4 +1,5 @@
 import {useMemo, CSSProperties} from "react"
+import {Image} from "@/shared/ui/image"
 
 import type {SizeType} from "@/shared/types/ui"
 import {classnames} from "@/shared/lib/helpers/classnames"
@@ -45,10 +46,15 @@ export const Avatar = (props: AvatarProps) => {
             gap={size === "xs" ? "xs" : "sm"}
             className={classnames(cls, [ "avatar", typeof size === "string" ? size : "" ], {}, [ className ])}
         >
-            <div className={classnames(cls, [ "image__wrapper" ], {rounded, bordered})} style={style}>
-                <PlaceholderIcon className={classnames(cls, [ "placeholder" ])} />
-                {src && <img src={src as string} alt={alt} className={classnames(cls, [ "img" ])} />}
-            </div>
+            {src && (
+                <Image
+                    src={src}
+                    alt={alt}
+                    errorFallback={<PlaceholderIcon className={cls.placeholder} />}
+                    className={classnames(cls, [ "image__wrapper" ], {rounded, bordered})}
+                    style={style}
+                />
+            )}
             {title && <span className={cls.title}>{title}</span>}
         </Flex>
     )

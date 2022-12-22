@@ -77,54 +77,57 @@ export const ArticleList = memo((props: ArticleListProps) => {
     return (
         <>
             {!isLoading && (
-            // @ts-ignore
-            <WindowScroller scrollElement={container}>
-                {(props) => {
-                    const {
-                        width, height, registerChild, onChildScroll, isScrolling, scrollTop,
-                    } = props
+                // @ts-ignore
+                <WindowScroller scrollElement={container}>
+                    {(props) => {
+                        const {
+                            width, height, registerChild, onChildScroll, isScrolling, scrollTop,
+                        } = props
 
-                    return (
-                        !virtualized
-                            ? (
-                                <div
-                                    style={{gridTemplateColumns: inlined ? "" : `repeat(${itemsPerRow}, 1fr)`}}
-                                    className={classnames(cls, [ "articles", view ], {virtualized, inlined}, [ className ])}
-                                >
-                                    {articles.map((item) => (
-                                        <ArticleListItem
-                                            key={item.id}
-                                            article={item}
-                                            view={view}
-                                            shadowed={shadowed}
-                                            className={cls.article_item}
+                        return (
+                            !virtualized
+                                ? (
+                                    <div
+                                        style={{gridTemplateColumns: inlined ? "" : `repeat(${itemsPerRow}, 1fr)`}}
+                                        className={classnames(cls, [ "articles", view ], {
+                                            virtualized, inlined,
+                                        }, [ className ])}
+                                    >
+                                        {articles.map((item) => (
+                                            <ArticleListItem
+                                                key={item.id}
+                                                article={item}
+                                                view={view}
+                                                shadowed={shadowed}
+                                                className={cls.article_item}
+                                            />
+                                        ))}
+                                    </div>
+                                )
+                                : (
+                                    // @ts-ignore
+                                    <div ref={registerChild}>
+                                        {/* @ts-ignore */}
+                                        <List
+                                            rowCount={rowCount}
+                                            height={height || 400}
+                                            width={width || 900}
+                                            rowHeight={rowHeight}
+                                            autoHeight
+                                            autoWidth
+                                            autoContainerWidth
+                                            scrollTop={scrollTop}
+                                            onScroll={onChildScroll}
+                                            isScrolling={isScrolling}
+                                            rowRenderer={articleListRender}
                                         />
-                                    ))}
-                                </div>
-                            )
-                            : (
-                                // @ts-ignore
-                                <div ref={registerChild}>
-                                    {/* @ts-ignore */}
-                                    <List
-                                        rowCount={rowCount}
-                                        height={height || 400}
-                                        width={width || 900}
-                                        rowHeight={rowHeight}
-                                        autoHeight
-                                        autoWidth
-                                        autoContainerWidth
-                                        scrollTop={scrollTop}
-                                        onScroll={onChildScroll}
-                                        isScrolling={isScrolling}
-                                        rowRenderer={articleListRender}
-                                    />
-                                </div>
-                            )
-                    )
-                }}
-            </WindowScroller>
-          )}
+                                    </div>
+                                )
+                        )
+                    }}
+                </WindowScroller>
+            )}
+
             {isLoading && renderArticlesSkeleton({
                 view,
                 rowCount: isTile ? TILE_VIEW_PER_PAGE : LIST_VIEW_PER_PAGE,

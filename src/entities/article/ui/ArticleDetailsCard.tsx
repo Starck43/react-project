@@ -7,6 +7,7 @@ import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
 import {useInitialEffect} from "@/shared/lib/hooks/useInitialEffect"
 import {Info} from "@/shared/ui/info"
 import {Header} from "@/shared/ui/header"
+import {Image} from "@/shared/ui/image"
 import {Col, Flex} from "@/shared/ui/stack"
 import EventIcon from "@/shared/assets/icons/calendar-20-20.svg"
 import EyeIcon from "@/shared/assets/icons/eye-20-20.svg"
@@ -73,17 +74,16 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                     tag="h2"
                     title={article?.title}
                     subTitle={article?.subtitle}
-                    gap="none"
+                    gap="xs"
                     align="start"
-                    className="mb-1"
                 >
-                    <Flex gap="xs" className="size-sm"><EventIcon /><span>{article?.createdAt}</span></Flex>
-                    <Flex gap="xs" className="size-sm"><EyeIcon /><span>{article?.views}</span></Flex>
+                    <Flex gap="xs"><EventIcon /><span>{article?.createdAt}</span></Flex>
+                    <Flex gap="xs"><EyeIcon /><span>{article?.views}</span></Flex>
                 </Header>
 
-                <img src={article?.img} alt="" className={cls.image} />
+                <Image src={article?.img} alt={article.title} className={cls.image} />
 
-                <Col gap="md" fullWidth className="mt-2">
+                <Col gap="md" fullWidth className="mt-1">
                     {article?.blocks?.map(renderBlock)}
                 </Col>
             </>
@@ -91,8 +91,8 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
     }
 
     return (
-        <section className={classnames(cls, [ "article__details" ], {}, [ "mt-2", className ])}>
+        <Col as="section" className={classnames(cls, [ "article__details" ], {}, [ "mt-2", className ])}>
             {content}
-        </section>
+        </Col>
     )
 })

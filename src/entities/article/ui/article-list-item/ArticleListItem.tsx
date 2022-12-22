@@ -7,6 +7,7 @@ import {Avatar} from "@/shared/ui/avatar"
 import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
 import {Card} from "@/shared/ui/card"
 import {Header} from "@/shared/ui/header"
+import {Image} from "@/shared/ui/image"
 import {Flex, Row} from "@/shared/ui/stack"
 import EyeIcon from "@/shared/assets/icons/eye-20-20.svg"
 
@@ -34,11 +35,15 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     // const [ isHover, bindHover ] = useHover()
 
     const dateBlock = useMemo(() => (
-        <span className={cls.created__date}>{article.createdAt}</span>
+        <span className={cls.created__date}>
+            {article.createdAt}
+        </span>
     ), [ article.createdAt ])
 
     const typesBlock = useMemo(() => (
-        <span className={cls.types}>{article.type?.join(", ")}</span>
+        <span className={cls.types}>
+            {article.type?.join(", ")}
+        </span>
     ), [ article.type ])
 
     const viewsBlock = useMemo(() => (
@@ -49,11 +54,13 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     ), [ article.views ])
 
     const imageBlock = useMemo(() => (
-        <img src={article.img} alt={article.title} className={cls.image} />
+        <Image src={article.img} alt={article.title} className={cls.image} />
     ), [ article.img, article.title ])
 
     const textBlock = useMemo(() => {
-        const text = article.blocks?.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
+        const text = article.blocks?.find(
+            (block) => block.type === ArticleBlockType.TEXT,
+        ) as ArticleTextBlock
         return (text) ? <ArticleText block={text} className={cls.text} /> : null
     }, [ article.blocks ])
 
@@ -90,6 +97,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         <Header
                             tag="h3"
                             title={article.title}
+                            fullWidth
                             inlined
                             variant="secondary"
                             align="start"
@@ -109,7 +117,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             {typesBlock}
                         </Header>
 
-                        <Row justify="between" fullWidth className={classnames(cls, [ "body" ], {}, [ "my-2" ])}>
+                        <Row
+                            justify="between"
+                            gap="md"
+                            fullWidth
+                            className={classnames(cls, [ "body" ], {}, [ "my-2" ])}
+                        >
                             {imageBlock}
                             {textBlock}
                         </Row>
