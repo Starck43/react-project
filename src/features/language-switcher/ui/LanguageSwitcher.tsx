@@ -1,12 +1,12 @@
-import {memo, FC} from "react"
+import {FC, memo} from "react"
 import {useTranslation} from "react-i18next"
-
-import {classnames} from "@/shared/lib/helpers/classnames"
 import FlagEnIcon from "@/shared/assets/icons/flag_en.svg"
 import FlagRuIcon from "@/shared/assets/icons/flag_ru.svg"
 
+import {classnames} from "@/shared/lib/helpers/classnames"
+import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
+
 import {Flex} from "@/shared/ui/stack"
-import {Button} from "@/shared/ui/button"
 
 import cls from "./LanguageSwitcher.module.sass"
 
@@ -22,6 +22,10 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({minified = fal
 
     return (
         <Button
+            size={ButtonSize.SMALL}
+            feature={ButtonFeature.CLEAR}
+            bordered
+            squared
             onClick={toggleLanguage}
             className={classnames(cls, [], {minified}, [ className ])}
         >

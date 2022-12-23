@@ -66,7 +66,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                 ? (
                     <Dropdown
                         toggleElement={(
-                            <Button variant="primary" size={ButtonSize.SMALL} feature={ButtonFeature.CLEAR}>
+                            <Button size={ButtonSize.SMALL} feature={ButtonFeature.CLEAR} squared>
                                 {minified
                                     ? <Avatar src={user?.avatar} rounded bordered />
                                     : user?.username}
