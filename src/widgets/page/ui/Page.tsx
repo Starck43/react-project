@@ -5,6 +5,7 @@ import {useSelector} from "react-redux"
 import {useLocation} from "react-router-dom"
 
 import {StateSchema} from "@/app/providers/store-provider"
+import {TestProps} from "@/shared/types/tests"
 import {PAGE_ID} from "@/shared/const/page"
 import {classnames} from "@/shared/lib/helpers/classnames"
 
@@ -19,7 +20,7 @@ import {pageActions} from "../model/slice/pageSlice"
 import cls from "./Page.module.sass"
 
 
-interface PageProps {
+interface PageProps extends TestProps{
     children: ReactNode
     saveScrollPos?: boolean
     onScrollToEnd?: () => void
@@ -27,7 +28,13 @@ interface PageProps {
 }
 
 export const Page: FC<PageProps> = (props) => {
-    const {children, saveScrollPos = false, onScrollToEnd, className} = props
+    const {
+        "data-testid": dataTestId = "Page",
+        saveScrollPos = false,
+        onScrollToEnd,
+        className,
+        children,
+    } = props
     const containerRef = useRef() as MutableRefObject<HTMLDivElement>
     const loadMoreRef = useRef() as MutableRefObject<HTMLDivElement>
     const dispatch = useAppDispatch()
@@ -55,8 +62,9 @@ export const Page: FC<PageProps> = (props) => {
 
     return (
         <div
-            ref={containerRef}
             id={PAGE_ID}
+            data-testid={dataTestId}
+            ref={containerRef}
             className={classnames(cls, [ "content" ], {}, [ className ])}
             onScroll={onScrollHandler}
         >

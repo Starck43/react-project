@@ -10,7 +10,7 @@ import RequireAuth from "./RequireAuth"
 
 
 
-const AppRouter = () => {
+export const AppRouter = () => {
     const renderRoutesCallback = useCallback((route: AppRoutesProps) => {
         const element = (
             <Suspense fallback={<Loader />}>

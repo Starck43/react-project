@@ -14,7 +14,10 @@ function NotFoundPage() {
     const {t} = useTranslation()
 
     return (
-        <Page className={classnames(cls, [ "not_found__page" ], {}, [ "centered" ])}>
+        <Page
+            data-testid="NotFoundPage"
+            className={classnames(cls, [ "not_found__page" ])}
+        >
             <Header tag="h2" title={t("Страница не найдена")} shadowed align="center" />
             <Button href="/">{t("На главную")}</Button>
         </Page>

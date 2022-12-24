@@ -1,7 +1,6 @@
 import {memo, useMemo} from "react"
 import {useSelector} from "react-redux"
 
-
 import {ThemeSwitcher} from "@/features/theme-switcher"
 import {LanguageSwitcher} from "@/features/language-switcher"
 import {AuthPopup} from "@/features/auth"
@@ -45,10 +44,10 @@ const Navbar = ({theme, toggleTheme, className}: NavbarProps) => {
     return (
         <Row
             as="header"
+            role="navigation"
             align="center"
             justify="between"
             fullWidth
-            role="navigation"
             className={classnames(cls, [ "navbar", className ])}
         >
             {navbarItemsList}

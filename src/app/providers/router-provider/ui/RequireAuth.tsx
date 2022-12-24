@@ -25,7 +25,7 @@ const RequireAuth = (props: RequireAuthProps) => {
         return roles.some((role) => userRoles.includes(role))
     }, [ roles, userRoles ])
 
-    if (!auth) {
+    if (!auth.id) {
         return <Navigate to={to} state={{from: location}} replace />
     }
 

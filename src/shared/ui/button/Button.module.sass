@@ -1,11 +1,10 @@
+@import "src/app/styles/mixins"
 @import "src/app/styles/vars"
 @import "src/app/styles/common"
-@import "src/app/styles/mixins"
 
 .button
-	display: flex
-	justify-content: center
-	align-items: center
+	@extend .centered
+
 	color: inherit
 	background-color: inherit
 	border: var(--border-thickness) solid transparent

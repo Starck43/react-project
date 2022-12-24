@@ -27,7 +27,7 @@ export const getNavbarItemsData = createSelector(
             },
         ]
 
-        if (user) {
+        if (user.id) {
             const authItems = {
                 id: "articlesLink",
                 path: getRouteArticles(),

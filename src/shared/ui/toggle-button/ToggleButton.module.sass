@@ -1,5 +1,5 @@
-@import "src/app/styles/common"
 @import "src/app/styles/mixins"
+@import "src/app/styles/common"
 
 .toggle__button
 	@extend .centered
@@ -21,7 +21,6 @@
 		content: "\2039"
 		transition: all 100ms ease-in-out
 		@include push--absolute()
-		@extend .centered
 
 	&:hover
 		border-color: var(--theme-navbar-link-color)

@@ -52,8 +52,9 @@ export const ProfileCard = ({id, onShowProfile, onLogout}: ProfileCardProps) => 
     }
 
     return (
-        <div data-testid="profile-card" className={cls.profile}>
+        <div data-testid="ProfileCard" className={cls.profile}>
             {isLoading && <Skeleton rounded elements={[ SkeletonElementType.AVATAR, SkeletonElementType.BLOCK ]} />}
+
             <div className={cls.table}>
                 <Avatar src={profile?.avatar} size="sm" rounded alt={profile?.username} />
                 <div className={cls.row}>

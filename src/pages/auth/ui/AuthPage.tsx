@@ -44,7 +44,7 @@ function AuthPage() {
     }
 
     return (
-        <Page>
+        <Page data-testid="AuthPage">
             <Header tag="h2" title={t("войти")} shadowed align="center" />
             <LoginForm onSuccess={successLoginHandler} />
         </Page>

@@ -26,7 +26,10 @@ function ArticleEditPage() {
     }
 
     return (
-        <Page className={classnames(cls, [ "edit__article" ], {}, [])}>
+        <Page
+            data-testid="ArticleEditPage"
+            className={classnames(cls, [ "edit__article" ], {}, [])}
+        >
             <Header tag="h2" title={isEditMode ? t("изменение статьи") : t("новая статья")} align="center" />
             <UpdateArticleForm articleId={id} onCloseHandler={onCloseHandler} />
         </Page>

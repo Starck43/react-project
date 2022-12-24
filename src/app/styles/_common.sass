@@ -1,14 +1,9 @@
-@import "vars"
-
-.flex-wrap
-	display: flex
-	flex-wrap: wrap
+// @import "vars"
 
 .centered
-	@extend .flex-wrap
-
-	align-items: center
+	display: flex
 	justify-content: center
+	align-items: center
 
 .shadow
 	box-shadow: 0 0.5rem 1.5rem -0.35rem rgb(0 0 0 / 20%)
@@ -84,10 +79,4 @@ svg
 	width: 100%
 
 .g-1
-	gap: $gap
-
-.g-2
-	gap: $gap * 2
-
-.g-3
-	gap: $gap * 4
+	gap: var(--gap)

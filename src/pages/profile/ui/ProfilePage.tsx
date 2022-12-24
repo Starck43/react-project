@@ -32,7 +32,7 @@ function ProfilePage() {
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>
-            <Page>
+            <Page data-testid="ProfilePage">
                 <Header tag="h2" title={t("профиль")} shadowed align="center" />
                 <ProfileCard
                     id={id}

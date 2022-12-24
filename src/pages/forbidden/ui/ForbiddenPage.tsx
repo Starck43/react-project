@@ -9,7 +9,7 @@ function ForbiddenPage() {
     const {t} = useTranslation()
 
     return (
-        <Page>
+        <Page data-testid="ForbiddenPage">
             <Info
                 Tag="h2"
                 title={t("доступ запрещен")}
