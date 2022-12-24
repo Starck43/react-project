@@ -1,5 +1,5 @@
 import {AsyncThunkAction} from "@reduxjs/toolkit"
-import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
+// import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
 
 
 const data = {
@@ -13,7 +13,6 @@ const data = {
 
 // TODO: complete test for CommentsData
 describe("CommentsData loading test", () => {
-
     test("Success comments fetching", async () => {
 /*
         const thunk = new TestAsyncFunc(fetchCommentsData)
