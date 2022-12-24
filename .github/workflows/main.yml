@@ -18,14 +18,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install modules...
-        run: npm i
-      - name: Building Production project...
+      - name: Installing project modules...
+        run: npm ci --force
+      - name: Building project...
         run: npm run build:prod
-      - name: Linting Production project... [typescript]
+      - name: Linting project... [typescript]
         run: npm run lint:ts
         if: always()
-      - name: Linting Production project... [styles]
+      - name: Linting project... [styles]
         run: npm run lint:css
         if: always()
       - name: Testing Production project... [jest]
