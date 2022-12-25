@@ -141,7 +141,9 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.7.4"
   },
-  "overrides": {},
+  "overrides": {
+    "chrome-remote-interface": "0.31.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Starck43/react-project.git"

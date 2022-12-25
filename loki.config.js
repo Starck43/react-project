@@ -1,5 +1,5 @@
 module.exports = {
-    diffingEngine: "pixelmatch",
+    diffingEngine: "looks-same",
     chromeSelector: "body > *",
     configurations: {
         "chrome.laptop": {

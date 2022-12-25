@@ -21,7 +21,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
-        node-version: [ 17.x ]
+        node-version: [ 16.x ]
     steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
@@ -36,13 +36,13 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
         if: always()
-      - name: screenshot testing
+      - name: screenshot testing... [loki]
         run: npm run test:ui:ci
         if: always()
-      - name: unit testing...
+      - name: unit testing... [jest]
         if: always()
         run: npm run test:unit
-      - name: Generate HTML report
+      - name: generating HTML reports
         run: npm run test:ui:report
         if: always()
       - name: move .loki to reports folder
@@ -79,6 +79,3 @@ jobs:
         if: always()
       - name: linting css...
         run: npm run lint:css
-      - name: unit testing...
-        if: always()
-        run: npm run test:unit
