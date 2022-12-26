@@ -40,7 +40,7 @@ jobs:
         run: npm run storybook:build
         if: always()
       - name: screenshot testing... [loki]
-        run: npm run test:ui:upd
+        run: npm run test:ui:ci
         if: always()
       - name: generating HTML report for screenshots
         run: npm run test:ui:report
