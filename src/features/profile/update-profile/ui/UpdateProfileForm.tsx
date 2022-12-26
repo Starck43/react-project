@@ -80,35 +80,35 @@ export const UpdateProfileForm = memo(({show, closeHandler}: ViewerProps) => {
                 name="username"
                 value={copy?.username}
                 onChange={onInputChange}
-                placeholder={t("ник") as string}
+                placeholder={t("ник") || ""}
             />
             <Input
                 data-testid="UpdateProfileForm.Name"
                 name="name"
                 value={copy?.name}
                 onChange={onInputChange}
-                placeholder={t("имя") as string}
+                placeholder={t("имя") || ""}
             />
             <Input
                 data-testid="UpdateProfileForm.Surname"
                 name="surname"
                 value={copy?.surname}
                 onChange={onInputChange}
-                placeholder={t("фамилия") as string}
+                placeholder={t("фамилия") || ""}
             />
             <Input
                 data-testid="UpdateProfileForm.Email"
                 name="email"
                 value={copy?.email}
                 onChange={onInputChange}
-                placeholder={t("email") as string}
+                placeholder={t("email") || ""}
             />
             <Input
                 data-testid="UpdateProfileForm.Phone"
                 name="phone"
                 value={copy?.phone}
                 onChange={onInputChange}
-                placeholder={t("телефон") as string}
+                placeholder={t("телефон") || ""}
             />
             <ListBox
                 data-testid="UpdateProfileForm.Country"

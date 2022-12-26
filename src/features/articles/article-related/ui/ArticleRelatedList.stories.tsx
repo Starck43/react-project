@@ -8,7 +8,7 @@ import {ArticleRelatedList} from "./ArticleRelatedList"
 
 
 export default {
-    title: "features/Articles/RelatedCard",
+    title: "features/Article/RelatedCard",
     component: ArticleRelatedList,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ArticleRelatedList>
@@ -36,13 +36,11 @@ Default.parameters = {
             url: `${process.env.API_SERVER}/articles?_limit=4`,
             method: "GET",
             status: 200,
-            response: {
-                related: [
-                    {...article, id: "1"},
-                    {...article, id: "2"},
-                    {...article, id: "3"},
-                ],
-            },
+            response: [
+                {...article, id: "1"},
+                {...article, id: "2"},
+                {...article, id: "3"},
+            ],
         },
     ],
 }

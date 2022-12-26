@@ -11,7 +11,7 @@ import {ArticleList} from "./ArticleList"
 
 
 export default {
-    title: "entities/Articles/ArticleList",
+    title: "entities/Article/ArticleList",
     component: ArticleList,
     argTypes: {backgroundColor: {control: "color"}},
     args: {

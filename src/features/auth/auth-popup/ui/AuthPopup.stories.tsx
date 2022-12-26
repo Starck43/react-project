@@ -6,20 +6,29 @@ import {AuthPopup} from "./AuthPopup"
 
 
 export default {
-    title: "features/LoginSwitcher",
+    title: "features/AuthPopup",
     component: AuthPopup,
     argTypes: {backgroundColor: {control: "color"}},
-    decorators: [
-        StoreDecorator({}),
-    ],
+    decorators: [ StoreDecorator({user: {}}) ],
 } as ComponentMeta<typeof AuthPopup>
 
 const Template: Story = (args) => <AuthPopup {...args} />
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+}
 
-export const Minified = Template.bind({})
-Minified.args = {
+export const Authenticated = Template.bind({})
+Authenticated.args = {
     minified: true,
 }
+Authenticated.decorators = [
+    StoreDecorator({
+        user: {
+            authData: {
+                id: "1",
+                username: "admin",
+            },
+        },
+    }),
+]

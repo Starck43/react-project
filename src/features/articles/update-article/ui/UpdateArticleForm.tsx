@@ -121,34 +121,34 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
                         name="title"
                         value={copy?.title}
                         onChange={onInputChange}
-                        placeholder={t("заголовок") as string}
+                        placeholder={t("заголовок") || ""}
                         className="mb-1"
                     />
                     <Input
                         name="subtitle"
                         value={copy?.subtitle}
                         onChange={onInputChange}
-                        placeholder={t("подзаголовок") as string}
+                        placeholder={t("подзаголовок") || ""}
                         className="mb-1"
                     />
                     <Input
                         name="img"
                         value={copy?.img}
                         onChange={onInputChange}
-                        placeholder={t("фото") as string}
+                        placeholder={t("фото") || ""}
                         className="mb-1"
                     />
                     <Input
                         name="createdAt"
                         value={copy?.createdAt}
                         onChange={onInputChange}
-                        placeholder={t("дата создания") as string}
+                        placeholder={t("дата создания") || ""}
                         className="mb-1"
                     />
                     <TextArea
                         value={copy?.type?.join("\n")}
                         onChange={onTypesChange}
-                        placeholder={t("разделы") as string}
+                        placeholder={t("разделы") || ""}
                         className="mb-1"
                     />
 
@@ -159,7 +159,7 @@ export const UpdateArticleForm = memo(({articleId, onCloseHandler}: UpdateArticl
                             feature={ButtonFeature.BLANK}
                             bordered
                         >
-                            {}
+                            {t("сохранить")}
                         </Button>
                         <Button
                             data-testid="UpdateArticleForm.CancelButton"

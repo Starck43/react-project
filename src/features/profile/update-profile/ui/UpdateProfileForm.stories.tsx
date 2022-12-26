@@ -18,9 +18,12 @@ export default {
 const Template: ComponentStory<typeof UpdateProfileForm> = (args) => <UpdateProfileForm {...args} />
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+    show: true,
+}
 Default.decorators = [ StoreDecorator({
     profile: {
+        data: {id: "1"},
         copy: {
             id: "1",
             name: "John",

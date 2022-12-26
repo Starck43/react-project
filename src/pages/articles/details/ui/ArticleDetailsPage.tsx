@@ -33,7 +33,13 @@ function ArticleDetailsPage() {
 
 
     if (!id) {
-        return <Info Tag="h2" title={t("ошибка")} subTitle={t("статья не найдена!")} />
+        return (
+            <Info
+                Tag="h2"
+                title={t("ошибка")}
+                subTitle={t("статья не найдена!")}
+            />
+        )
     }
 
     return (

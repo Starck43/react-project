@@ -33,6 +33,7 @@ Default.args = {}
 Default.decorators = [
     StoreDecorator({
         article: {
+            data: article,
             copy: article,
         },
     }),

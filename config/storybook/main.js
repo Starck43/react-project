@@ -17,6 +17,7 @@ module.exports = {
         "@storybook/addon-interactions",
         "storybook-addon-themes",
         "storybook-addon-mock",
+        "storybook-i18next",
     ],
     framework: "@storybook/react",
     core: {builder: "@storybook/builder-webpack5"},

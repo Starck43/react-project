@@ -21,7 +21,6 @@ Default.args = {
         + "\t\t<title>React Development Project</title>\n"
         + "\t</head>\n"
         + "\t<body>\n"
-        + "\t\t<div id=\"root\"></div>\n"
         + "\t</body>\n"
         + "</html>\n",
 }

@@ -10,9 +10,10 @@ import ArticleDetailsPage from "./ArticleDetailsPage"
 
 
 export default {
-    title: "pages/Articles/ArticleDetailsPage",
+    title: "pages/Articles/DetailsPage",
     component: ArticleDetailsPage,
     argTypes: {backgroundColor: {control: "color"}},
+
 } as ComponentMeta<typeof ArticleDetailsPage>
 
 const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />
@@ -28,9 +29,7 @@ const article: Article = {
         id: "1",
         username: "admin",
     },
-    type: [
-        ArticleType.IT,
-    ],
+    type: [ ArticleType.IT ],
     blocks: [
         {
             id: "1",
@@ -104,10 +103,11 @@ const entities = {
 }
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {id: "1"}
 
 Default.decorators = [
     StoreDecorator({
+        user: {authData: {id: "1"}},
         article: {data: article},
         comments: {
             data: comments,
@@ -117,6 +117,32 @@ Default.decorators = [
     }),
 ]
 
+Default.parameters = {
+    mockData: [
+        {
+            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            method: "GET",
+            status: 200,
+            response: [
+                {
+                    value: 4,
+                    feedback: "Excellent article!",
+                },
+            ],
+        },
+        {
+            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            method: "GET",
+            status: 200,
+            response: [
+                {...article, id: "1"},
+                {...article, id: "2"},
+                {...article, id: "3"},
+            ],
+        },
+    ],
+}
+
 export const Loading = Template.bind({})
 Loading.args = {}
 Loading.decorators = [
@@ -124,6 +150,22 @@ Loading.decorators = [
         article: {isLoading: true},
     }),
 ]
+Loading.parameters = {
+    mockData: [
+        {
+            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            method: "GET",
+            status: 200,
+            response: [],
+        },
+        {
+            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            method: "GET",
+            status: 200,
+            response: [],
+        },
+    ],
+}
 
 export const Error = Template.bind({})
 Error.args = {}
@@ -132,3 +174,19 @@ Error.decorators = [
         article: {error: "some error"},
     }),
 ]
+Error.parameters = {
+    mockData: [
+        {
+            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            method: "GET",
+            status: 200,
+            response: [],
+        },
+        {
+            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            method: "GET",
+            status: 200,
+            response: [],
+        },
+    ],
+}

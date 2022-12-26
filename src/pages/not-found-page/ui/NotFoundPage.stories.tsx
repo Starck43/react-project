@@ -1,4 +1,4 @@
-import {ComponentMeta, Story} from "@storybook/react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 import NotFoundPage from "./NotFoundPage"
 
@@ -10,7 +10,7 @@ export default {
     decorators: [ StoreDecorator({}) ],
 } as ComponentMeta<typeof NotFoundPage>
 
-const Template: Story = (args) => <NotFoundPage {...args} />
+const Template: ComponentStory<typeof NotFoundPage> = () => <NotFoundPage />
 
 export const Default = Template.bind({})
 Default.args = {}

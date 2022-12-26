@@ -9,7 +9,7 @@ import {ArticleListItem} from "./ArticleListItem"
 
 
 export default {
-    title: "entities/Articles/ArticleListItem",
+    title: "entities/Article/ArticleListItem",
     component: ArticleListItem,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ArticleListItem>

@@ -7,15 +7,12 @@ import LanguageDetector from "i18next-browser-languagedetector"
 
 i18n
 .use(Backend)
-// detect user language
 .use(LanguageDetector)
-// pass the i18n instance to react-i18next.
 .use(initReactI18next)
-// init i18next
 .init({
+    debug: false,
+    supportedLngs: [ "en", "ru" ],
     fallbackLng: "ru",
-    debug: false, // __IS_DEV__,
-    ns: [ "home", "about", "articles" ],
     defaultNS: "translation",
     interpolation: {escapeValue: false}, // not needed for react as it escapes by default
     lowerCaseLng: true,
@@ -25,4 +22,4 @@ i18n
     },
 })
 
-export default i18n
+export {i18n}

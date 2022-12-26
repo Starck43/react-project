@@ -2,7 +2,6 @@ import {memo, useCallback} from "react"
 import {useSelector} from "react-redux"
 import {useTranslation} from "react-i18next"
 
-import i18n from "@/shared/config/i18n/i18n"
 import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
 import {classnames} from "@/shared/lib/helpers/classnames"
@@ -59,6 +58,7 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
             <Col
                 data-testid="loginForm"
                 align="center"
+                gap="sm"
                 fullWidth
                 className={classnames(cls, [ "login" ], {}, [ className ])}
             >
@@ -67,31 +67,28 @@ const LoginForm = ({className, onSuccess}: LoginFormProps) => {
                     type="text"
                     value={username}
                     onChange={changeUsername}
-                    className="mb-1"
                 />
                 <Input
                     name="password"
                     type="password"
                     value={password}
                     onChange={changePassword}
-                    className="mb-1"
                 />
 
                 {error && (
                     <Info
-                        subTitle={i18n.t("неверный пароль или логин", {ns: "auth"})}
+                        subTitle={t("неверный пароль или логин")}
                         status={InfoStatus.ERROR}
-                        className="mb-1"
                     />
                 )}
 
                 <Row fullWidth align="center" className={cls.controls}>
                     <Button
                         feature={ButtonFeature.BLANK}
+                        fullWidth
                         bordered
                         disabled={isLoading}
                         onClick={loginClick}
-                        className="mt-1 w-100"
                     >
                         {t("войти")}
                     </Button>

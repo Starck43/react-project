@@ -46,15 +46,14 @@ export const Avatar = (props: AvatarProps) => {
             gap={size === "xs" ? "xs" : "sm"}
             className={classnames(cls, [ "avatar", typeof size === "string" ? size : "" ], {}, [ className ])}
         >
-            {src && (
-                <Image
-                    src={src}
-                    alt={alt}
-                    errorFallback={<PlaceholderIcon className={cls.placeholder} />}
-                    className={classnames(cls, [ "image__wrapper" ], {rounded, bordered})}
-                    style={style}
-                />
-            )}
+            <Image
+                src={src}
+                alt={alt}
+                errorFallback={<PlaceholderIcon className={cls.placeholder} />}
+                className={classnames(cls, [ "image__wrapper" ], {rounded, bordered})}
+                style={style}
+            />
+
             {title && <span className={cls.title}>{title}</span>}
         </Flex>
     )

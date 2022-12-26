@@ -5,7 +5,7 @@ import {ArticleListSkeleton} from "./ArticleListSkeleton"
 
 
 export default {
-    title: "entities/Article/Skeleton",
+    title: "entities/Article/list/Skeleton",
     component: ArticleListSkeleton,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ArticleListSkeleton>

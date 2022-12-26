@@ -1,8 +1,11 @@
 import {addDecorator} from "@storybook/react"
+
+import {i18n} from "shared/config/i18n"
+
 import {RouterDecorator} from "../../src/shared/config/storybook/RouterDecorator"
 import {StyleDecorator} from "../../src/shared/config/storybook/StyleDecorator"
 import {SuspenseDecorator} from "../../src/shared/config/storybook/SuspenseDecorator"
-import {TranslationDecorator} from "../../src/shared/config/storybook/TranslationDecorator"
+
 
 
 export const parameters = {
@@ -44,9 +47,16 @@ export const parameters = {
             color: "#144893",
         },
     ],
+    i18n,
+    locale: "ru",
+    locales: {
+        en: "English",
+        ru: "Russian",
+    },
 }
 
 addDecorator(StyleDecorator)
 addDecorator(SuspenseDecorator)
 addDecorator(RouterDecorator)
-addDecorator(TranslationDecorator)
+// addDecorator(ThemeDecorator(Theme.DARK))
+// addDecorator(TranslationDecorator)

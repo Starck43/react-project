@@ -1,6 +1,6 @@
 module.exports = {
     diffingEngine: "looks-same",
-    chromeSelector: "body > *",
+    // chromeSelector: "body > #root > *",
     configurations: {
         "chrome.laptop": {
             target: "chrome.app",

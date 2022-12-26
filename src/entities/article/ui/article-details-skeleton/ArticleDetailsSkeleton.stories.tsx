@@ -5,7 +5,7 @@ import {ArticleDetailsSkeleton} from "./ArticleDetailsSkeleton"
 
 
 export default {
-    title: "entities/Article/Skeleton",
+    title: "entities/Article/details/Skeleton",
     component: ArticleDetailsSkeleton,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ArticleDetailsSkeleton>
