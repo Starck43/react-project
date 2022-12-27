@@ -12,14 +12,13 @@ import {Col, Flex} from "@/shared/ui/stack"
 import EventIcon from "@/shared/assets/icons/calendar-20-20.svg"
 import EyeIcon from "@/shared/assets/icons/eye-20-20.svg"
 
-
 import {ArticleBlockType} from "../model/consts"
 import {ArticleBlock} from "../model/types/article"
 import {getArticleData, getArticleError, getArticleLoading} from "../model/selectors/article-details/getArticleDetails"
 import {fetchArticleById} from "../model/services/fetchArticleById/fetchArticleById"
-import {ArticleCode} from "../ui/article-code/ArticleCode"
-import {ArticleImage} from "../ui/article-image/ArticleImage"
-import {ArticleText} from "../ui/article-text/ArticleText"
+import {ArticleImage} from "./article-image/ArticleImage"
+import {ArticleText} from "./article-text/ArticleText"
+import {ArticleCode} from "./article-code/ArticleCode"
 import {ArticleDetailsSkeleton} from "./article-details-skeleton/ArticleDetailsSkeleton"
 
 import cls from "./ArticleDetailsCard.module.sass"
