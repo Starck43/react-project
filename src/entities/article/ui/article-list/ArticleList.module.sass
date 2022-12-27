@@ -4,6 +4,11 @@
 	width: 100%
 	--shimmer-color: var(--theme-popup-bg-color)
 
+	&.tile
+		@supports (display: grid)
+			display: grid
+			justify-items: center
+
 	&:not(.virtualized)
 		&.list
 			margin-bottom: 2rem
@@ -15,14 +20,7 @@
 
 			.article_item
 				flex: auto
-				max-width: 250px
 
 		&.inlined
 			display: inline-flex
 			flex-wrap: nowrap
-
-
-	&.tile
-		@supports (display: grid)
-			display: grid
-			justify-items: center

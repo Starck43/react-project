@@ -1,4 +1,4 @@
-import {memo, useMemo, CSSProperties} from "react"
+import {memo, useMemo} from "react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton"
@@ -112,32 +112,24 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
 
 interface RenderProps {
     view: ArticleView,
-    rowCount?: number,
-    itemsPerRow?: number,
+    count?: number,
     className?: string,
-    style?: CSSProperties,
 }
 
 export const renderArticlesSkeleton = (props: RenderProps) => {
-    const {
-        view, rowCount = 1, itemsPerRow = 1, className, style,
-    } = props
+    const {view, count = 9, className} = props
 
     return (
-        new Array(rowCount)
+        new Array(count)
         .fill(0)
         .map((_, key) => (
-            <div
+            <ArticleListSkeleton
                 // eslint-disable-next-line react/no-array-index-key
                 key={key}
-                style={style}
+                view={view}
                 className={className}
-            >
-                {new Array(itemsPerRow)
-                .fill(0)
-                // eslint-disable-next-line react/no-array-index-key
-                .map((_, i) => <ArticleListSkeleton view={view} key={i} />)}
-            </div>
+            />
+
         ))
     )
 }
