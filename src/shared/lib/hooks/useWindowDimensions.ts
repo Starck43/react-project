@@ -1,8 +1,8 @@
-import {useEffect, useState, MutableRefObject, useCallback} from "react"
+import {useEffect, useState, useCallback} from "react"
 import {getWindowDimensions} from "../helpers/dom"
 
 
-export const useWindowDimensions = (container: MutableRefObject<HTMLDivElement> | undefined = undefined) => {
+export const useWindowDimensions = (container?: Element) => {
     const [ windowDimensions, setWindowDimensions ] = useState(getWindowDimensions(container))
 
     const handleResize = useCallback(() => {
