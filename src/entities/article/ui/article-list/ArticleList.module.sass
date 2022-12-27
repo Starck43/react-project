@@ -2,6 +2,7 @@
 	display: flex
 	flex-wrap: wrap
 	width: 100%
+	--shimmer-color: var(--theme-popup-bg-color)
 
 	&:not(.virtualized)
 		&.list
@@ -25,8 +26,3 @@
 		@supports (display: grid)
 			display: grid
 			justify-items: center
-
-
-.shimmer
-	background-color: var(--theme-primary-bg-color) !important
-	--shimmer-color: var(--theme-secondary-bg-color)

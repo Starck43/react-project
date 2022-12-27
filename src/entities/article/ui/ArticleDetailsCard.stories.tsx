@@ -13,6 +13,7 @@ export default {
     title: "entities/Article/DetailsCard",
     component: ArticleDetailsCard,
     argTypes: {backgroundColor: {control: "color"}},
+    args: {articleId: "1"},
 } as ComponentMeta<typeof ArticleDetailsCard>
 
 const Template: ComponentStory<typeof ArticleDetailsCard> = (args) => <ArticleDetailsCard {...args} />
@@ -73,9 +74,10 @@ const article: Article = {
 export const Default = Template.bind({})
 Default.args = {}
 Default.decorators = [
-    StoreDecorator({article: {data: article}}),
+    StoreDecorator({
+        article: {data: article},
+    }),
 ]
-
 
 export const Loading = Template.bind({})
 Loading.args = {}

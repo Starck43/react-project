@@ -1,4 +1,4 @@
-import {useContext, useEffect, MouseEventHandler} from "react"
+import {useContext, useLayoutEffect, MouseEventHandler} from "react"
 
 import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localStorage"
 import {Theme} from "@/shared/const/theme"
@@ -35,7 +35,7 @@ const useTheme = (current?: Theme): UseThemeResult => {
         localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const root = document.body
         root.className = theme || current || Theme.LIGHT
     }, [ theme, current ])

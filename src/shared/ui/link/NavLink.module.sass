@@ -21,6 +21,7 @@
 	&.squared
 		width: var(--controls-height)
 		height: var(--controls-height)
+		padding: 0
 
 	&.disabled
 		pointer-events: none
@@ -81,5 +82,20 @@
 		.icon
 			transform: rotate(180deg) translateX(-0.25em)
 
-.icon
-	width: var(--icon-size-sm)
+.small
+	font-size: 0.7rem
+
+	.icon
+		width: var(--icon-size-sm)
+
+.normal
+	font-size: inherit
+
+	.icon
+		width: var(--icon-size)
+
+.large
+	font-size: 1.5rem
+
+	.icon
+		width: var(--icon-size-lg)

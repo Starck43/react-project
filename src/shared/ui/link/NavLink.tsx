@@ -4,17 +4,17 @@ import {Link, LinkProps} from "react-router-dom"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 
+import {NavLinkFeatureType, NavLinkSizeType} from "./types"
 import cls from "./NavLink.module.sass"
 
 
-export type NavLinkFeatureType = "clear" | "inverted" | "underlined" | "bordered"
-
 export interface NavLinkProps extends Omit<LinkProps, "title"> {
-    variant?: ThemeVariant
     title?: ReactNode
     alt?: string
     Icon?: FC<SVGProps<SVGSVGElement>>
+    variant?: ThemeVariant
     feature?: NavLinkFeatureType
+    size?: NavLinkSizeType
     fullWidth?: boolean
     squared?: boolean
     disabled?: boolean
@@ -31,6 +31,7 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
         alt,
         Icon,
         feature = "clear",
+        size = "normal",
         fullWidth = false,
         squared = false,
         disabled = false,
@@ -41,9 +42,7 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
         ...other
     } = props
 
-    if (!title && !Icon) {
-        return null
-    }
+    if (!title && !Icon) return null
 
     return (
         <Link
@@ -53,6 +52,7 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
                 "link",
                 variant,
                 feature,
+                size,
                 Icon && !title ? "squared" : undefined,
             ], {fullWidth, squared, reverse, rounded, animation, disabled}, [ className ])}
         >

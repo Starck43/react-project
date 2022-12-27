@@ -15,9 +15,10 @@ const Template: ComponentStory<typeof Logout> = (args) => <Logout {...args} />
 export const Default = Template.bind({})
 Default.args = {
     show: true,
+    closeHandler: () => {},
 }
 Default.decorators = [
     StoreDecorator({
-        user: {authData: {username: "admin", password: "admin"}},
+        user: {authData: {id: "1", username: "admin", password: "admin"}},
     }),
 ]

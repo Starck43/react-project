@@ -5,7 +5,6 @@ import type {Paths} from "../build/types/config"
 
 import {buildCssLoader} from "../build/loaders/buildCssLoader"
 import {buildSvgLoader} from "../build/loaders/buildSvgLoader"
-import {buildFileLoader} from "../build/loaders/buildFileLoader"
 
 
 export default ({config}: { config: webpack.Configuration }) => {
@@ -32,7 +31,7 @@ export default ({config}: { config: webpack.Configuration }) => {
             : rule
     ))
     config.module!.rules.push(buildSvgLoader())
-    config.module!.rules.push(buildFileLoader())
+    // config.module!.rules.push(buildFileLoader())
     config.module!.rules.push(buildCssLoader(true))
 
     config.plugins!.push(new DefinePlugin({

@@ -34,9 +34,9 @@ export const Modal = (props: ModalProps) => {
         size,
         fullSize = false,
         fullWidth = false,
-        children,
         className,
         style,
+        children,
     } = props
 
     const modalProps = useModal({onSubmit, onClose, isOpen: open, animationTime})
@@ -44,8 +44,13 @@ export const Modal = (props: ModalProps) => {
 
     if (lazy && !isMounted) return null
 
+    let portalRoot
+    if (__PROJECT__ === "storybook") {
+        portalRoot = document.getElementById("root")
+    }
+
     return (
-        <Portal>
+        <Portal target={portalRoot || document.body}>
             <Overlay
                 open={open}
                 show={show}
@@ -94,7 +99,7 @@ export const Modal = (props: ModalProps) => {
                     && (
                         <Button
                             data-testid="SubmitButton"
-                            variant="primary"
+                            // variant="primary"
                             feature={ButtonFeature.BLANK}
                             type="submit"
                             bordered
@@ -109,7 +114,7 @@ export const Modal = (props: ModalProps) => {
                     && (
                         <Button
                             data-testid="CancelButton"
-                            variant="primary"
+                            // variant="secondary"
                             feature={ButtonFeature.BLANK}
                             bordered
                             Icon={CancelIcon}

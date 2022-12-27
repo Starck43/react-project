@@ -22,6 +22,8 @@ export const LazyImage = memo((props: LazyImageProps) => {
         errorFallback,
         className,
         style,
+        width,
+        height,
         ...others
     } = props
     const [ isLoading, setIsLoading ] = useState(true)
@@ -43,6 +45,8 @@ export const LazyImage = memo((props: LazyImageProps) => {
         <img
             src={src}
             alt={alt}
+            width={width || "100%"}
+            height={height || "auto"}
             className={cls.img}
             loading="lazy"
             {...others}

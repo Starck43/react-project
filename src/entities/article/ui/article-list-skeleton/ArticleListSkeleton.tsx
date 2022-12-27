@@ -34,7 +34,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                             variant="primary"
                             elements={[ SkeletonElementType.TITLE, SkeletonElementType.TITLE ]}
                             width="100%"
-                            height="3rem"
+                            height="3.5em"
                             rounded
                         />
                     </Flex>

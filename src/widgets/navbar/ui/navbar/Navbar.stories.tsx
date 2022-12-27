@@ -2,7 +2,6 @@ import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
-import Avatar from "../../assets/avatar-profile.png"
 import Navbar from "./Navbar"
 
 
@@ -27,7 +26,7 @@ Authenticated.decorators = [
                 id: "1",
                 username: "admin",
                 password: "admin",
-                avatar: Avatar,
+                avatar: "https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png",
             },
         },
     }),

@@ -4,9 +4,8 @@ import FlagEnIcon from "@/shared/assets/icons/flag_en.svg"
 import FlagRuIcon from "@/shared/assets/icons/flag_ru.svg"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
+import {Button, ButtonFeature} from "@/shared/ui/button"
 
-import {Flex} from "@/shared/ui/stack"
 
 import cls from "./LanguageSwitcher.module.sass"
 
@@ -22,17 +21,13 @@ export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({minified = fal
 
     return (
         <Button
-            size={ButtonSize.SMALL}
             feature={ButtonFeature.CLEAR}
-            bordered
-            squared
+            squared={minified}
+            Icon={i18n.language === "en" ? FlagEnIcon : FlagRuIcon}
             onClick={toggleLanguage}
             className={classnames(cls, [], {minified}, [ className ])}
         >
-            <Flex gap="xs" className={cls.action}>
-                {i18n.language === "en" ? <FlagEnIcon className="icon" /> : <FlagRuIcon className="icon" />}
-                {!minified && t("Русский")}
-            </Flex>
+            {!minified && t("Русский")}
         </Button>
     )
 })

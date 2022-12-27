@@ -3,22 +3,22 @@ import {Story} from "@storybook/react"
 import "@/app/styles/index.sass"
 
 
-export const StyleDecorator = (StoryComponent: Story) => {
-    document.body.style.padding = "0"
-    return (
-        <div
-            style={{
+export const StyleDecorator = (StoryComponent: Story) => (
+    <div
+        id="pageContent"
+        style={{
+                position: "relative",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                flexGrow: 1,
-                flexWrap: "wrap",
+                flexDirection: "column",
                 width: "100%",
-                height: "100%",
+                overflowY: "auto",
+                flexGrow: "1",
                 padding: "1rem",
             }}
-        >
-            <StoryComponent />
-        </div>
+    >
+        <StoryComponent />
+    </div>
+
     )
-}

@@ -1,5 +1,5 @@
 import React from "react"
-import {ComponentMeta, Story} from "@storybook/react"
+import {ComponentMeta, ComponentStory} from "@storybook/react"
 
 import {Loader} from "./Loader"
 
@@ -10,7 +10,7 @@ export default {
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof Loader>
 
-const Template: Story = (args) => <Loader {...args} />
+const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

@@ -81,8 +81,8 @@ export const Button: FC<ButtonProps> = forwardRef((props, ref: ForwardedRef<any>
                 size,
                 align,
                 Icon ? "with__icon" : undefined,
-                children ? "with__caption" : "squared",
-                href ? "is__link" : "",
+                children ? "with__caption" : undefined,
+                href ? "is__link" : undefined,
             ], {
                 fullWidth,
                 bordered,

@@ -14,6 +14,7 @@ export interface DrawerProps {
     fullSize?: boolean
     rounded?: boolean
     bordered?: boolean
+    portalRoot?: HTMLElement
     className?: string
     style?: CSSProperties
     children: ReactNode

@@ -10,7 +10,7 @@ import {getRouteAuth, getRouteProfile} from "@/shared/const/router"
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
 import {Avatar} from "@/shared/ui/avatar"
-import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
+import {Button, ButtonFeature} from "@/shared/ui/button"
 import {NavLink} from "@/shared/ui/link"
 import {Dropdown, PopupPositionType} from "@/shared/ui/popups"
 
@@ -66,7 +66,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                 ? (
                     <Dropdown
                         toggleElement={(
-                            <Button size={ButtonSize.SMALL} feature={ButtonFeature.CLEAR} squared>
+                            <Button feature={ButtonFeature.CLEAR} squared>
                                 {minified
                                     ? <Avatar src={user?.avatar} rounded bordered />
                                     : user?.username}

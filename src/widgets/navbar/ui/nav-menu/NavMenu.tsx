@@ -4,9 +4,8 @@ import {NotificationList} from "@/entities/notification"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {PositionType} from "@/shared/types/ui"
-import {Button} from "@/shared/ui/button"
 import {Drawer} from "@/shared/ui/modals"
-
+import {Button, ButtonFeature} from "@/shared/ui/button"
 import BurgerIcon from "@/shared/assets/icons/burger-menu.svg"
 
 import cls from "./NavMenu.module.sass"
@@ -26,7 +25,9 @@ export const NavMenu = memo(({position = "right", className}: NavMenuProps) => {
     return (
         <>
             <Button
+                feature={ButtonFeature.CLEAR}
                 Icon={BurgerIcon}
+                squared
                 onClick={showMenuHandler}
                 className="menu__toggler"
             />

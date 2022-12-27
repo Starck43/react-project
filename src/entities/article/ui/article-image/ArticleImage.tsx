@@ -1,3 +1,4 @@
+import {LazyImage} from "@/shared/ui/image/Image"
 import {ArticleImageBlock} from "../../model/types/article"
 
 import cls from "./ArticleImage.module.sass"
@@ -11,7 +12,7 @@ interface ArticleImageProps {
 export const ArticleImage = ({block, className}: ArticleImageProps) => (
     <figure className={className}>
 
-        <img src={block.src} alt="" />
+        <LazyImage src={block.src} alt="" />
 
         <figcaption
             className={cls.image__figcaption}

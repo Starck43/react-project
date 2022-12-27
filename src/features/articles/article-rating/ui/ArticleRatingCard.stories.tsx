@@ -9,9 +9,10 @@ export default {
     title: "features/Article/RatingCard",
     component: ArticleRatingCard,
     argTypes: {backgroundColor: {control: "color"}},
+    args: {articleId: "1"},
     decorators: [
         StoreDecorator({
-            user: {authData: {username: "admin", password: "admin"}},
+            user: {authData: {id: "1", username: "admin", password: "admin"}},
         }),
     ],
 } as ComponentMeta<typeof ArticleRatingCard>
@@ -19,9 +20,7 @@ export default {
 const Template: ComponentStory<typeof ArticleRatingCard> = (args) => <ArticleRatingCard {...args} />
 
 export const Default = Template.bind({})
-Default.args = {
-    articleId: "1",
-}
+Default.args = {}
 Default.parameters = {
     mockData: [
         {
@@ -39,9 +38,7 @@ Default.parameters = {
 }
 
 export const NoRate = Template.bind({})
-NoRate.args = {
-    articleId: "1",
-}
+NoRate.args = {}
 NoRate.parameters = {
     mockData: [
         {

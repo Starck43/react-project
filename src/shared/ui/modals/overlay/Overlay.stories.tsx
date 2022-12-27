@@ -13,4 +13,9 @@ export default {
 const Template: ComponentStory<typeof Overlay> = (args) => <Overlay {...args} />
 
 export const Default = Template.bind({})
-Default.args = {}
+Default.args = {
+    open: true,
+    show: true,
+    as: "div",
+    onClick: () => {},
+}

@@ -22,21 +22,20 @@ export const Code = ({text, bordered = false, rounded = false, className}: CodeP
     const titleBtn = t("Копировать код")
 
     const onCopyClick = useCallback(() => {
-        navigator.clipboard.writeText(text)
+        navigator.clipboard.writeText(text).then(() => console.log("copied to buffer"))
     }, [ text ])
 
     return (
         <div className={classnames(cls, [ "code__wrapper" ], {bordered, rounded}, [ className ])}>
             <Button
-                feature={ButtonFeature.BLANK}
-                title={titleBtn}
+                feature={ButtonFeature.CLEAR}
                 size={ButtonSize.SMALL}
+                title={titleBtn}
+                Icon={CopyIcon}
                 rounded={rounded}
                 className={cls.copy__btn}
                 onClick={onCopyClick}
-            >
-                <CopyIcon />
-            </Button>
+            />
             <pre className={cls.pre}>
                 <code className={cls.code}>{text}</code>
             </pre>

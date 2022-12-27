@@ -46,6 +46,7 @@ export const Tabs = memo((props: TabsProps) => {
             {tabs.map((tab) => (
                 <Button
                     key={tab.value}
+                    // variant="secondary"
                     size={ButtonSize.SMALL}
                     bordered
                     rounded

@@ -17,7 +17,14 @@ const Template: ComponentStory<typeof LazyImage> = (args) => <LazyImage {...args
 export const Default = Template.bind({})
 Default.args = {
     src: imageSrc,
-    fallback: <FallbackImage />,
+    errorFallback: <FallbackImage />,
+    width: 300,
+    height: 300,
+}
+export const ErrorFallback = Template.bind({})
+ErrorFallback.args = {
+    src: "",
+    errorFallback: <FallbackImage width={300} height={300} />,
     width: 300,
     height: 300,
 }

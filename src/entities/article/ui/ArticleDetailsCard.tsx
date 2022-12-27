@@ -48,7 +48,7 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
             case ArticleBlockType.CODE:
                 return <ArticleCode key={block.id} block={block} className="mt-1" />
             case ArticleBlockType.IMAGE:
-                // TODO: create Image component with sizes and lazyloading
+                // TODO: create Image component with sizes
                 return <ArticleImage key={block.id} block={block} className="mt-1 size-sm" />
             case ArticleBlockType.TEXT:
                 return <ArticleText key={block.id} block={block} className="mt-1" />
@@ -77,8 +77,8 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
                     gap="xs"
                     align="start"
                 >
-                    <Flex gap="xs"><EventIcon /><span>{article?.createdAt}</span></Flex>
-                    <Flex gap="xs"><EyeIcon /><span>{article?.views}</span></Flex>
+                    <Flex gap="xs" className="size-md"><EventIcon /><span>{article?.createdAt}</span></Flex>
+                    <Flex gap="xs" className="size-md"><EyeIcon /><span>{article?.views}</span></Flex>
                 </Header>
 
                 <Image src={article?.img} alt={article.title} className={cls.image} />

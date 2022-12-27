@@ -18,8 +18,13 @@ function NotFoundPage() {
             data-testid="NotFoundPage"
             className={classnames(cls, [ "not_found__page" ])}
         >
-            <Header tag="h2" title={t("Страница не найдена")} shadowed align="center" />
-            <Button href="/">{t("На главную")}</Button>
+            <Header
+                tag="h2"
+                align="center"
+                title={t("Страница не найдена")}
+            >
+                <Button bordered href="/">{t("На главную")}</Button>
+            </Header>
         </Page>
     )
 }

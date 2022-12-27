@@ -19,8 +19,7 @@ import {Page} from "@/widgets/page"
 function AuthPage() {
     const {t} = useTranslation("auth")
     const navigate = useNavigate()
-    const authData = useSelector(getUser)
-    const username = authData?.username
+    const {id, username} = useSelector(getUser)
 
     const successLoginHandler = (res: User) => {
         if (res.id) {
@@ -28,7 +27,7 @@ function AuthPage() {
         }
     }
 
-    if (authData?.id) {
+    if (id) {
         return (
             <Col align="center" gap="md" fullWidth>
                 <Info
@@ -36,7 +35,7 @@ function AuthPage() {
                     status={InfoStatus.WARNING}
                 />
                 <NavLink
-                    to={getRouteProfile(authData.id)}
+                    to={getRouteProfile(id)}
                     title={t("перейти в профиль")}
                 />
             </Col>

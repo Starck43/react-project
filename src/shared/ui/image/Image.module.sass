@@ -1,7 +1,11 @@
-@import "/src/app/styles/mixins"
+@import "src/app/styles/mixins"
 
 .wrapper
+	position: relative
 	background-color: transparent
+	line-height: 0
+	transition: background-color 0.2s ease-out
+	overflow: hidden
 
 	&.isLoading
 		background-color: var(--avatar-color)
@@ -10,13 +14,12 @@
 		transition: unset
 
 		.img
-			@include push--absolute
-
-			object-fit: cover
 			opacity: 0
 
-.wrapper, .img
-	transition: all 0.3s ease-out
+.img
+	// @include push--absolute
+	// object-fit: cover
+	transition: opacity 0.2s ease-out
 
 .noImage
 	background: var(--theme-popup-border-color)

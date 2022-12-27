@@ -7,7 +7,7 @@ import {NotificationList} from "@/entities/notification"
 
 import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 import {ThemeVariant} from "@/shared/types/theme"
-import {Button} from "@/shared/ui/button"
+import {Button, ButtonFeature} from "@/shared/ui/button"
 import {Drawer} from "@/shared/ui/modals"
 import {Popover, PopupPositionType} from "@/shared/ui/popups"
 import NotificationIcon from "@/shared/assets/icons/notification.svg"
@@ -39,12 +39,14 @@ export const NotificationsPopup = memo((props: NotificationsProps) => {
     const closeDrawerHandler = useCallback(() => setShow(false), [])
     const content = useMemo(() => (<NotificationList />), [])
 
-    if (!user) return null
+    if (!user?.id) return null
 
     const mobile = isMobile || screenWidth < 576
 
     const toggler = (
         <Button
+            feature={ButtonFeature.CLEAR}
+            squared={minified}
             Icon={NotificationIcon}
             onClick={mobile ? showDrawerDrawerHandler : undefined}
         >

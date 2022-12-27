@@ -29,7 +29,12 @@ interface ArticleListItemProps {
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const {
-        article, view, shadowed = false, target, className, style,
+        article,
+        view,
+        shadowed = false,
+        target,
+        className,
+        style,
     } = props
     const {t} = useTranslation("articles")
     // const [ isHover, bindHover ] = useHover()
@@ -139,7 +144,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                                 {t("читать еще")}
                             </Button>
 
-                            <Flex className={cls.meta}>
+                            <Flex gap="xs" className={cls.meta}>
                                 {viewsBlock}
                             </Flex>
                         </Row>
@@ -171,7 +176,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             rounded
             shadowed={shadowed}
             style={style}
-            className={classnames(cls, [ "article", "secondary", view ], {}, [ className ])}
+            className={classnames(cls, [ "article", view ], {}, [ className ])}
         >
             {renderArticleItem}
         </Card>

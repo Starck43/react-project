@@ -59,11 +59,12 @@ const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...
 export const Default = Template.bind({})
 Default.args = {
     isLoading: false,
-    articles: new Array(3).fill(0).map((item, i) => ({...article, id: String(i)})),
+    virtualized: false,
+    articles: new Array(6).fill(0).map((item, i) => ({...article, id: String(i)})),
 }
 
 export const Loading = Template.bind({})
 Loading.args = {
     isLoading: true,
-    articles: [],
+    articles: new Array(6).fill(0).map((item, i) => ({...article, id: String(i)})),
 }

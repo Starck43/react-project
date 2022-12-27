@@ -69,7 +69,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
                 fullWidth
                 align="center"
             >
-                <Rate value={selectedStars} onSelect={onSelectClick} />
+                <Rate size="large" value={selectedStars} onSelect={onSelectClick} />
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                 {rate?.feedback && <blockquote>"{rate?.feedback}"</blockquote>}
             </Header>

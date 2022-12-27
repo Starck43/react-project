@@ -1,11 +1,11 @@
 import {
-FC, MutableRefObject, ReactNode, UIEvent, useRef,
+    FC, MutableRefObject, ReactNode, UIEvent, useRef,
 } from "react"
 import {useSelector} from "react-redux"
 import {useLocation} from "react-router-dom"
 
 import {StateSchema} from "@/app/providers/store-provider"
-import {TestProps} from "@/shared/types/tests"
+import type {TestProps} from "@/shared/types/tests"
 import {PAGE_ID} from "@/shared/const/page"
 import {classnames} from "@/shared/lib/helpers/classnames"
 

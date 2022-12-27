@@ -1,15 +1,13 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-import Image from "@/shared/assets/icons/avatar-profile.jpeg"
-
+import type {Article} from "../../model/types/article"
 import {ArticleBlockType, ArticleType, ArticleView} from "../../model/consts"
-import {Article} from "../../model/types/article"
 
 import {ArticleListItem} from "./ArticleListItem"
 
 
 export default {
-    title: "entities/Article/ArticleListItem",
+    title: "entities/Article/ListItem",
     component: ArticleListItem,
     argTypes: {backgroundColor: {control: "color"}},
 } as ComponentMeta<typeof ArticleListItem>
@@ -20,7 +18,7 @@ const article: Article = {
     id: "1",
     title: "Javascript news",
     subtitle: "Что нового в JS за 2022 год?",
-    img: Image,
+    img: "https://avatars.mds.yandex.net/i?id=3b03320a4ed6ed61c7dde37c8c303119dabf3a14-4345998-images-thumbs&n=13",
     views: 1022,
     createdAt: "26.02.2022",
     type: [

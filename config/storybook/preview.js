@@ -5,7 +5,9 @@ import {i18n} from "shared/config/i18n"
 import {RouterDecorator} from "../../src/shared/config/storybook/RouterDecorator"
 import {StyleDecorator} from "../../src/shared/config/storybook/StyleDecorator"
 import {SuspenseDecorator} from "../../src/shared/config/storybook/SuspenseDecorator"
+// import {ThemeDecorator} from "../../src/shared/config/storybook/ThemeDecorator"
 
+// import {Theme} from "../../src"
 
 
 export const parameters = {
@@ -47,6 +49,7 @@ export const parameters = {
             color: "#144893",
         },
     ],
+    layout: "fullscreen",
     i18n,
     locale: "ru",
     locales: {

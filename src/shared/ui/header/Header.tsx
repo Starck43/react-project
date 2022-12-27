@@ -54,7 +54,7 @@ export const Header = memo((props: HeaderProps) => {
             align,
             transform,
             children ? "fullWidth" : undefined,
-            variant ], {shadowed}, [ (!children && !subtitle) ? className : undefined ])}
+            variant ], {shadowed, fullWidth}, [ (!children && !subtitle) ? className : undefined ])}
         >
             {title}
         </Title>

@@ -14,9 +14,7 @@ const Template: ComponentStory<typeof RatingCard> = (args) => <RatingCard {...ar
 export const Default = Template.bind({})
 Default.args = {
     title: "Your rate is",
-    rate: {
-        value: 4,
-    },
+    rate: {value: 4},
     feedbackTitle: "Leave your feedback here",
 }
 

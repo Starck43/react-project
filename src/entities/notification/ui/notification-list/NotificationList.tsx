@@ -2,7 +2,7 @@ import React from "react"
 import {useTranslation} from "react-i18next"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {Button, ButtonSize} from "@/shared/ui/button"
+import {Button} from "@/shared/ui/button"
 import {Info, InfoStatus} from "@/shared/ui/info"
 import {Skeleton, SkeletonElementType} from "@/shared/ui/skeleton"
 import {Col} from "@/shared/ui/stack"
@@ -64,7 +64,7 @@ export const NotificationList = ({className}: NotificationListProps) => {
             data-testid="NotificationList"
             className={classnames(cls, [ "notification_list" ], {}, [ className ])}
         >
-            <Button size={ButtonSize.SMALL} Icon={RefreshIcon} onClick={refetch} className={cls.refresh__icon} />
+            <Button Icon={RefreshIcon} onClick={refetch} className={cls.refresh__icon} />
             {
                 data?.map((item: Notification) => (
                     <NotificationItem item={item} key={item.id} />

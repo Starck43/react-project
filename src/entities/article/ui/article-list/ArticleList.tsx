@@ -34,7 +34,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         className,
     } = props
 
-    const container = document.getElementById(PAGE_ID) || document.body as Element
+    const container = document.getElementById(PAGE_ID) || document.getElementById("root") || document.body as Element
 
     const isTile = view === ArticleView.TILE
     const rowWidth = container?.clientWidth || 900

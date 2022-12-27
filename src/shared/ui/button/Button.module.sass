@@ -5,19 +5,21 @@
 .button
 	@extend .centered
 
+	gap: 0.35em
 	color: inherit
 	background-color: inherit
-	border: var(--border-thickness) solid transparent
+	border: 0
 	transition: all 0.2s ease-out
 	line-height: 1
 	cursor: pointer
 	user-select: none
 
 	&:not(.clear)
-		gap: 0.35em
 		min-height: var(--controls-height)
+		min-width: 4em
 		font-family: var(--font-family-secondary)
 		background-color: transparent
+		border: var(--border-thickness) solid transparent
 		border-radius: var(--border-radius-default)
 		opacity: 0.7
 
@@ -34,7 +36,8 @@
 		border-radius: var(--border-radius)
 
 	&.squared
-		min-width: var(--controls-height)
+		min-width: unset
+		width: var(--controls-height)
 		height: var(--controls-height)
 
 	&.underlined
@@ -121,6 +124,6 @@
 		width: var(--icon-size-lg)
 		height: var(--icon-size-lg)
 
-.with__caption:not(.clear, .is__link, .with__icon), .is__link .link
+.with__caption:not(.squared, .is__link), .is__link .link
 	min-width: 4em
-	padding: calc(#{$controls-padding} + 1px) $controls-padding * 1.8 $controls-padding
+	padding: $controls-padding $controls-padding * 2

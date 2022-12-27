@@ -122,8 +122,13 @@ const DrawerContent = (props: DrawerProps) => {
         contentStyle = {paddingRight: "calc(var(--modal-padding) + 100px)"}
     }
 
+    let portalRoot
+    if (__PROJECT__ === "storybook") {
+        portalRoot = document.getElementById("root")
+    }
+
     return (
-        <Portal>
+        <Portal target={portalRoot || document.body}>
             <Spring.a.div
                 className={cls.drawer}
                 style={drawerStyle}

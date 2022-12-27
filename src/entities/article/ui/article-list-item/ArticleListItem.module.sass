@@ -10,7 +10,7 @@
 		text-transform: uppercase
 
 	&.tile
-		flex: 1
+		flex: 0 1 100%
 		width: 100%
 		max-width: 250px
 		height: max-content
@@ -67,7 +67,8 @@
 
 			.views__icon
 				flex: none
-				width: 1.6em
+				width: var(--icon-size)
+				height: var(--icon-size)
 
 	&.list
 		position: relative
@@ -128,3 +129,8 @@
 			.meta
 				flex: none
 				margin-left: 1.5em
+
+			.views__icon
+				flex: none
+				width: var(--icon-size)
+				height: var(--icon-size)

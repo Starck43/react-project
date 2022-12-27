@@ -21,7 +21,6 @@ export const Overlay = memo((props: OverlayProps) => {
 
     const Tag = as
     return (
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions, jsx-a11y/click-events-have-key-events
         <Tag
             aria-modal
             className={classnames(cls, [ "overlay" ], {open, show}, [ className ])}

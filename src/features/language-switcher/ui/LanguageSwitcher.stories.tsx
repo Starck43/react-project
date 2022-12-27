@@ -13,4 +13,9 @@ export default {
 const Template: Story = (args) => <LanguageSwitcher {...args} />
 
 export const Default = Template.bind({})
-Default.args = {children: "LanguageSwitcher"}
+Default.args = {}
+
+export const Minified = Template.bind({})
+Minified.args = {
+    minified: true,
+}
