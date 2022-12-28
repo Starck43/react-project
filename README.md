@@ -225,17 +225,7 @@ For comfortable work, we recommend installing the plugin for WebStorm/VSCode IDE
 
 [i18next documentation here](https://react.i18next.com)
 
-
-### Tests
-
-The project uses 4 types of tests:
-* Regular unit tests based on Jest `npm run test:unit`
-* Component tests with RTL (React testing library) `mpm run test:unit`
-* Screenshot tests with Loki `npm run test:ui`
-* e2e testing with Cypress `npm run test:e2e`
-
-More about tests - [read documentation](/docs/tests.md)
-
+---
 
 ### Linting
 
@@ -256,15 +246,40 @@ which contains 3 rules:
 - Checking scss files with a linter `npm run lint:css`
 - Fixing sass files with a style linter `npm run lint:css:fix`
 
+---
 
-## Storybook
+
+### Tests
+
+The project uses 4 types of tests:
+* Regular unit tests based on Jest `npm run test:unit`
+* Component tests with RTL (React testing library) `mpm run test:unit`
+* Screenshot tests with Loki `npm run test:ui`
+* e2e testing with Cypress `npm run test:e2e`
+
+More about tests - [read documentation](/docs/tests.md)
+
+
+### Storybook
 
 The project describes storybook cases for each UI component.
-Requests to the server are mocked due to `storybook-addon-mock` plugin.
 
 The file with the storybook (*.stories.tsx) is in the same level with component and style file
 
-### Example
+Requests to the server are mocked due to `storybook-addon-mock` plugin.
+
+#### Uses
+```bash
+# run the storybook
+npm run storybook
+
+# update storybook with addons
+npx storybook upgrade
+```
+_Read more about [Storybook](/docs/storybook.md)_
+
+
+#### Example
 
 ```typescript jsx
 import React from 'react'
@@ -289,14 +304,9 @@ Default.args = {
 }
 ```
 
-#### Uses
-`npm run storybook` - to run the storybook 
-
-More about [Storybook](/docs/storybook.md)
-
 ---
 
-## CI pipeline и pre commit hooks
+### CI pipeline и pre commit hooks
 
 Configuration of GitHub actions is located in /.github/workflows/main.yml
 CI includes all kinds of tests, building and linting.
