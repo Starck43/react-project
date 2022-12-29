@@ -1,7 +1,7 @@
 import path from "path"
 import webpack, {DefinePlugin, RuleSetRule} from "webpack"
-
 import type {Paths} from "../build/types/config"
+
 
 import {buildCssLoader} from "../build/loaders/buildCssLoader"
 import {buildSvgLoader} from "../build/loaders/buildSvgLoader"

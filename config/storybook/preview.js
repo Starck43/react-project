@@ -49,7 +49,7 @@ export const parameters = {
             color: "#144893",
         },
     ],
-    layout: "fullscreen",
+    layout: "centered",
     i18n,
     locale: "ru",
     locales: {

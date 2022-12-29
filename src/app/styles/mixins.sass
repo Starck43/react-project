@@ -17,36 +17,14 @@
 		padding-left: $padding-x
 
 
-@mixin font($f-name, $f-style, $f-weight, $local-url, $url:none, $display:swap)
+@mixin font($f-name, $f-style, $f-weight, $local-url, $format:"truetype", $display:swap)
 	@font-face
-		font-family: $f-name
+		src: local($f-name), url($local-url) format($format)
 		font-display: $display
+		font-family: $f-name
 		font-style: $f-style
-
-		@if $f-weight != 0
-			font-weight: $f-weight
-
-		src: url("#{$local-url}") if($url, #{","} $url format("woff2"), format("woff2"))
+		font-weight: $f-weight
 		@content
-
-
-@mixin font-settings($font, $color:false, $size:false, $case:false, $weight:false, $lh:false)
-	font-family: "#{$font}"
-
-	@if $size
-		font-size: $size
-
-	@if $color
-		color: $color
-
-	@if $case
-		text-transform: $case
-
-	@if $weight
-		font-weight: $weight
-
-	@if $lh
-		line-height: $lh
 
 
 //Убираем единицы измерения у чисел

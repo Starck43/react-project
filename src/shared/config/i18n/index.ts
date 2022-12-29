@@ -16,6 +16,7 @@ i18n
     defaultNS: "translation",
     interpolation: {escapeValue: false}, // not needed for react as it escapes by default
     lowerCaseLng: true,
+    react: {useSuspense: false},
     backend: {
         loadPath: "/locales/{{lng}}/{{ns}}.json",
         addPath: "/public/locales/{{lng}}/{{ns}}.json",
