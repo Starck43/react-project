@@ -1,6 +1,7 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 import type {Article} from "@/entities/article"
 import {ArticleType} from "@/entities/article"
+import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
@@ -33,7 +34,7 @@ Default.decorators = [ StoreDecorator({}) ]
 Default.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            url: buildAbsoluteUrl(__API__, "articles", {_limit: "4"}),
             method: "GET",
             status: 200,
             response: [

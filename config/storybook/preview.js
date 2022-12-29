@@ -1,11 +1,11 @@
 import {addDecorator} from "@storybook/react"
 
-import {i18n} from "shared/config/i18n"
+// import {i18n} from "shared/config/i18n"
 
 import {RouterDecorator} from "../../src/shared/config/storybook/RouterDecorator"
 import {StyleDecorator} from "../../src/shared/config/storybook/StyleDecorator"
 import {SuspenseDecorator} from "../../src/shared/config/storybook/SuspenseDecorator"
-// import {ThemeDecorator} from "../../src/shared/config/storybook/ThemeDecorator"
+import {TranslationDecorator} from "../../src/shared/config/storybook/TranslationDecorator"
 
 // import {Theme} from "../../src"
 
@@ -50,11 +50,29 @@ export const parameters = {
         },
     ],
     layout: "centered",
+/*
     i18n,
     locale: "ru",
     locales: {
         en: "English",
         ru: "Russian",
+    },
+    */
+}
+
+export const globalTypes = {
+    locale: {
+        name: "Locale",
+        description: "Internationalization locale",
+        toolbar: {
+            icon: "globe",
+            default: "ru",
+            items: [
+                {value: "en", title: "English"},
+                {value: "ru", title: "Russian"},
+            ],
+            showName: false,
+        },
     },
 }
 
@@ -62,4 +80,4 @@ addDecorator(StyleDecorator)
 addDecorator(SuspenseDecorator)
 addDecorator(RouterDecorator)
 // addDecorator(ThemeDecorator(Theme.DARK))
-// addDecorator(TranslationDecorator)
+addDecorator(TranslationDecorator)

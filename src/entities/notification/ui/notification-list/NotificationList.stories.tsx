@@ -1,4 +1,5 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
@@ -19,7 +20,7 @@ Default.decorators = [ StoreDecorator({}) ]
 Default.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/notifications/`,
+            url: buildAbsoluteUrl(__API__, "notifications"),
             method: "GET",
             status: 200,
             response: [

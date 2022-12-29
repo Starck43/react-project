@@ -1,5 +1,7 @@
-import {Rating} from "@/entities/rating"
+import type {Rating} from "@/entities/rating"
+
 import {rtkApi} from "@/shared/api/rtkApi"
+import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
 
 interface ArticleRatingSchema {
@@ -13,7 +15,7 @@ const articleRatingApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getArticleRating: build.query<Rating[], ArticleRatingSchema>({
             query: ({userId, articleId}) => ({
-                url: "/article-ratings/",
+                url: buildAbsoluteUrl(__API__, "article-ratings"),
                 params: {
                     userId,
                     articleId,
@@ -22,7 +24,7 @@ const articleRatingApi = rtkApi.injectEndpoints({
         }),
         setArticleRating: build.mutation<void, ArticleRatingSchema>({
             query: (args) => ({
-                url: "/article-ratings/",
+                url: buildAbsoluteUrl(__API__, "article-ratings"),
                 method: "POST",
                 body: args,
             }),

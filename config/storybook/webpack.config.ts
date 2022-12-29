@@ -4,7 +4,7 @@ import type {Paths} from "../build/types/config"
 
 
 import {buildCssLoader} from "../build/loaders/buildCssLoader"
-import {buildSvgLoader} from "../build/loaders/buildSvgLoader"
+import {buildFileLoader} from "../build/loaders/buildFileLoader"
 
 
 export default ({config}: { config: webpack.Configuration }) => {
@@ -13,8 +13,8 @@ export default ({config}: { config: webpack.Configuration }) => {
         html: "",
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src"),
-        publicLocales: "",
-        buildLocales: "",
+        publicLocales: path.resolve(__dirname, "..", "..", "public", "locales"),
+        buildLocales: path.resolve(__dirname, "..", "..", "build", "locales"),
     }
 
     config.resolve!.extensions!.push(".ts", ".tsx")
@@ -30,8 +30,8 @@ export default ({config}: { config: webpack.Configuration }) => {
             ? {...rule, exclude: /\.svg$/i}
             : rule
     ))
-    config.module!.rules.push(buildSvgLoader())
-    // config.module!.rules.push(buildFileLoader())
+
+    config.module!.rules.push(...buildFileLoader())
     config.module!.rules.push(buildCssLoader(true))
 
     config.plugins!.push(new DefinePlugin({

@@ -9,6 +9,8 @@ import {Sidebar} from "@/widgets/sidebar"
 
 import {AppRouter} from "./providers/router-provider"
 
+// TODO: Finish with font preload to HEAD
+const HREF_FONT = "./fonts/design.ttf"
 
 const App = () => {
     const {theme, toggleTheme} = useTheme()
@@ -17,6 +19,18 @@ const App = () => {
 
     useEffect(() => {
         dispatch(userActions.initAuthData())
+
+        if (!__IS_DEV__) {
+            const fragment = document.createDocumentFragment()
+            const preload = document.createElement("link")
+            preload.rel = "preload"
+            preload.href = HREF_FONT
+            // preload.type = "font/truetype"
+            preload.as = "font"
+            preload.crossOrigin = "anonymous"
+            fragment.appendChild(preload)
+            document.head.appendChild(fragment)
+        }
     }, [ dispatch ])
 
     return (

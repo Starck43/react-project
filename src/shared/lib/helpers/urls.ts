@@ -22,3 +22,18 @@ export function getQueryParams(params: OptionalRecord<string, string>) {
 export function addQueryParams(params: OptionalRecord<string, string>) {
     window.history.pushState("", "", getQueryParams(params))
 }
+
+export function buildAbsoluteUrl(host?: string, path?: string, options?: Record<string, string>) {
+    const params = new URLSearchParams(options).toString()
+
+    let url = [
+        host?.replace(/\/$/, ""),
+        path?.replace(/^\/|\/$/g, ""),
+    ].join("/")
+
+    if (params) {
+        url += `?${params}`
+    }
+
+    return url
+}

@@ -1,5 +1,6 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
 import ArticleRatingCard from "./ArticleRatingCard"
@@ -24,7 +25,10 @@ Default.args = {}
 Default.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            url: buildAbsoluteUrl(__API__, "article-ratings", {
+                userId: "1",
+                articleId: "1",
+            }),
             method: "GET",
             status: 200,
             response: [
