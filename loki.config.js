@@ -1,12 +1,12 @@
 module.exports = {
-    diffingEngine: "pixelmatch",
+    // diffingEngine: "pixelmatch",
     chromeSelector: "body > #root > *",
     configurations: {
         "chrome.laptop": {
             target: "chrome.app",
             width: 1366,
             height: 768,
-            deviceScaleFactor: 2,
+            deviceScaleFactor: 1,
             mobile: false,
         },
         /*

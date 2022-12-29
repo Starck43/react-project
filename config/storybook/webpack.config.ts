@@ -14,7 +14,7 @@ export default ({config}: { config: webpack.Configuration }) => {
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src"),
         publicLocales: path.resolve(__dirname, "..", "..", "public", "locales"),
-        buildLocales: path.resolve(__dirname, "..", "..", "build", "locales"),
+        buildLocales: path.resolve(__dirname, "..", "..", "storybook-static", "locales"),
     }
 
     config.resolve!.extensions!.push(".ts", ".tsx")
@@ -36,7 +36,7 @@ export default ({config}: { config: webpack.Configuration }) => {
 
     config.plugins!.push(new DefinePlugin({
         __IS_DEV__: JSON.stringify(true),
-        __API__: JSON.stringify(""),
+        __API__,
         __PROJECT__: JSON.stringify("storybook"),
     }))
     return config
