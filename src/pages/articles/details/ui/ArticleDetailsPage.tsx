@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom"
 import {articleReducer, ArticleDetailsCard} from "@/entities/article"
 
 import {
-ArticleRatingCard,
+    ArticleRatingCard,
     articleRelatedReducer,
     articleCommentsReducer,
     ArticleCommentsCard,

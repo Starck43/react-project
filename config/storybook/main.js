@@ -9,7 +9,7 @@ module.exports = {
         "@storybook/addon-interactions",
         "storybook-addon-themes",
         "storybook-addon-mock",
-        "storybook-react-i18next",
+        // "storybook-i18next",
     ],
     reactOptions: {legacyRootApi: true},
     framework: "@storybook/react",

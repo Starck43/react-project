@@ -1,5 +1,6 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+
 import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
 
@@ -20,11 +21,10 @@ export default {
 
 const Template: ComponentStory<typeof ArticleRatingCard> = (args) => <ArticleRatingCard {...args} />
 
-export const Default = Template.bind({})
-Default.args = {}
-Default.parameters = {
-    mockData: [
-        {
+export const WithRate = Template.bind({})
+WithRate.args = {}
+WithRate.parameters = {
+    mockData: [ {
             url: buildAbsoluteUrl(__API__, "article-ratings", {
                 userId: "1",
                 articleId: "1",
@@ -37,8 +37,7 @@ Default.parameters = {
                     feedback: "Excellent article!",
                 },
             ],
-        },
-    ],
+        } ],
 }
 
 export const NoRate = Template.bind({})
@@ -46,7 +45,10 @@ NoRate.args = {}
 NoRate.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            url: buildAbsoluteUrl(__API__, "article-ratings", {
+                userId: "1",
+                articleId: "1",
+            }),
             method: "GET",
             status: 200,
             response: [],

@@ -2,10 +2,10 @@ import {memo, useCallback, useState} from "react"
 import {useTranslation} from "react-i18next"
 
 import type {ThemeVariant} from "@/shared/types/theme"
+import {classnames} from "@/shared/lib/helpers/classnames"
 import {TextArea} from "@/shared/ui/input"
 import {Modal} from "@/shared/ui/modals"
 import {Card} from "@/shared/ui/card"
-import {classnames} from "@/shared/lib/helpers/classnames"
 import {Rate} from "@/shared/ui/rate"
 import {Header} from "@/shared/ui/header"
 
@@ -26,7 +26,13 @@ interface RatingCardProps {
 
 export const RatingCard = memo((props: RatingCardProps) => {
     const {
-        rate, title, feedbackTitle, variant, onCancel, onSave, className,
+        rate,
+        title,
+        feedbackTitle,
+        variant,
+        onCancel,
+        onSave,
+        className,
     } = props
     const {t} = useTranslation()
 
@@ -74,6 +80,8 @@ export const RatingCard = memo((props: RatingCardProps) => {
                 {rate?.feedback && <blockquote>"{rate?.feedback}"</blockquote>}
             </Header>
 
+            {showModal
+            && (
             <Modal
                 header={feedbackTitle}
                 open={showModal}
@@ -91,6 +99,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
                     onChange={setFeedback}
                 />
             </Modal>
+            )}
         </Card>
     )
 })

@@ -1,6 +1,6 @@
 import {addDecorator} from "@storybook/react"
 
-// import {i18n} from "shared/config/i18n"
+import {i18n} from "shared/config/i18n"
 
 import {RouterDecorator} from "../../src/shared/config/storybook/RouterDecorator"
 import {StyleDecorator} from "../../src/shared/config/storybook/StyleDecorator"
@@ -50,14 +50,12 @@ export const parameters = {
         },
     ],
     layout: "centered",
-/*
     i18n,
     locale: "ru",
     locales: {
         en: "English",
         ru: "Russian",
     },
-    */
 }
 
 export const globalTypes = {
@@ -67,11 +65,11 @@ export const globalTypes = {
         toolbar: {
             icon: "globe",
             default: "ru",
+            showName: false,
             items: [
                 {value: "en", title: "English"},
                 {value: "ru", title: "Russian"},
             ],
-            showName: false,
         },
     },
 }
@@ -79,5 +77,5 @@ export const globalTypes = {
 addDecorator(StyleDecorator)
 addDecorator(SuspenseDecorator)
 addDecorator(RouterDecorator)
-// addDecorator(ThemeDecorator(Theme.DARK))
 addDecorator(TranslationDecorator)
+// addDecorator(ThemeDecorator(Theme.DARK))

@@ -1,10 +1,9 @@
 import path from "path"
 import webpack, {DefinePlugin, RuleSetRule} from "webpack"
+
 import type {Paths} from "../build/types/config"
-
-
-import {buildCssLoader} from "../build/loaders/buildCssLoader"
 import {buildFileLoader} from "../build/loaders/buildFileLoader"
+import {buildCssLoader} from "../build/loaders/buildCssLoader"
 
 
 export default ({config}: { config: webpack.Configuration }) => {
@@ -18,7 +17,7 @@ export default ({config}: { config: webpack.Configuration }) => {
     }
 
     config.resolve!.extensions!.push(".ts", ".tsx")
-    config.resolve!.modules = [ paths.src, "node_modules" ]
+    config.resolve!.modules?.push(paths.src)
     config.resolve!.alias = {
         ...config.resolve!.alias,
         "@": paths.src,
@@ -32,11 +31,17 @@ export default ({config}: { config: webpack.Configuration }) => {
     ))
 
     config.module!.rules.push(...buildFileLoader())
+/*
+    config!.module!.rules.push({
+        test: /\.svg$/,
+        use: [ "@svgr/webpack" ],
+    })
+    */
     config.module!.rules.push(buildCssLoader(true))
 
     config.plugins!.push(new DefinePlugin({
         __IS_DEV__: JSON.stringify(true),
-        __API__,
+        __API__: JSON.stringify(process.env.API_SERVER || "http://localhost:8000"),
         __PROJECT__: JSON.stringify("storybook"),
     }))
     return config

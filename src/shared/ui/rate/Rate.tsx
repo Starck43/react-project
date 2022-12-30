@@ -2,10 +2,10 @@ import {memo, useState} from "react"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {Flex} from "@/shared/ui/stack"
-import StarIcon from "@/shared/assets/icons/star.svg"
 import {Icon} from "@/shared/ui/icon"
+import StarIcon from "@/shared/assets/icons/star.svg"
 
-import {StarsSizeType} from "./types"
+import type {StarsSizeType} from "./types"
 import cls from "./Rate.module.sass"
 
 
