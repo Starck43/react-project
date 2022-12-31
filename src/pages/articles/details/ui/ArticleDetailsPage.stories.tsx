@@ -1,10 +1,10 @@
 import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
-
+import type {Comment} from "@/entities/comment"
 import {Article, ArticleBlockType, ArticleType} from "@/entities/article"
-import {Comment} from "@/entities/comment"
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
 import ArticleDetailsPage from "./ArticleDetailsPage"
 
@@ -120,7 +120,10 @@ Default.decorators = [
 Default.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            url: buildAbsoluteUrl(__API__, "article-ratings", {
+                userId: 1,
+                articleId: 1,
+            }),
             method: "GET",
             status: 200,
             response: [
@@ -131,13 +134,14 @@ Default.parameters = {
             ],
         },
         {
-            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            url: buildAbsoluteUrl(__API__, "articles", {_limit: 4}),
             method: "GET",
             status: 200,
             response: [
                 {...article, id: "1"},
                 {...article, id: "2"},
                 {...article, id: "3"},
+                {...article, id: "4"},
             ],
         },
     ],
@@ -153,13 +157,16 @@ Loading.decorators = [
 Loading.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            url: buildAbsoluteUrl(__API__, "article-ratings", {
+                userId: 1,
+                articleId: 1,
+            }),
             method: "GET",
             status: 200,
             response: [],
         },
         {
-            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            url: buildAbsoluteUrl(__API__, "articles", {_limit: 4}),
             method: "GET",
             status: 200,
             response: [],
@@ -177,13 +184,16 @@ Error.decorators = [
 Error.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/article-ratings?userId=1&articleId=1`,
+            url: buildAbsoluteUrl(__API__, "article-ratings", {
+                userId: 1,
+                articleId: 1,
+            }),
             method: "GET",
             status: 200,
             response: [],
         },
         {
-            url: `${process.env.API_SERVER}/articles?_limit=4`,
+            url: buildAbsoluteUrl(__API__, "articles", {_limit: 4}),
             method: "GET",
             status: 200,
             response: [],

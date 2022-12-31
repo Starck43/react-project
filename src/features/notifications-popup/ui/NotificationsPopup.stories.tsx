@@ -2,6 +2,7 @@ import React from "react"
 import {ComponentMeta, ComponentStory} from "@storybook/react"
 
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
 import {NotificationsPopup} from "./NotificationsPopup"
 
@@ -25,7 +26,7 @@ Default.decorators = [
 Default.parameters = {
     mockData: [
         {
-            url: `${process.env.API_SERVER}/notifications/`,
+            url: buildAbsoluteUrl(__API__, "notifications"),
             method: "GET",
             status: 200,
             response: [

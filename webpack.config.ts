@@ -6,7 +6,7 @@ import {BuildWebpackEnv, Paths} from "./config/build/types/config"
 export default (env: BuildWebpackEnv) => {
     const mode = env.mode || "development"
     const PORT = env.port || 3000
-    const apiUrl = env.apiUrl || "http://localhost:8000"
+    const apiUrl = process.env.API_SERVER || "http://localhost:8000"
     const paths: Paths = {
             entry: path.resolve(__dirname, "src", "index.tsx"),
             build: path.resolve(__dirname, "build"),

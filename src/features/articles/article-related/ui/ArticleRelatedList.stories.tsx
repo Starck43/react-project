@@ -1,9 +1,10 @@
 import {ComponentMeta, ComponentStory} from "@storybook/react"
+
 import type {Article} from "@/entities/article"
 import {ArticleType} from "@/entities/article"
-import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
 import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
 import {ArticleRelatedList} from "./ArticleRelatedList"
 
@@ -18,7 +19,7 @@ const article: Article = {
     id: "1",
     title: "Javascript news",
     subtitle: "Что нового в JS за 2022 год?",
-    img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+    img: "https://avatars.mds.yandex.net/i?id=3b03320a4ed6ed61c7dde37c8c303119dabf3a14-4345998-images-thumbs&n=13",
     views: 109,
     createdAt: "26.02.2022",
     type: [ ArticleType.IT, ArticleType.BUSINESS ],
@@ -34,7 +35,7 @@ Default.decorators = [ StoreDecorator({}) ]
 Default.parameters = {
     mockData: [
         {
-            url: buildAbsoluteUrl(__API__, "articles", {_limit: "4"}),
+            url: buildAbsoluteUrl(__API__, "articles", {_limit: 4}),
             method: "GET",
             status: 200,
             response: [
