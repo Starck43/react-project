@@ -14,14 +14,14 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build-and-ui-testing:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     concurrency: ci-${{ github.ref }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
-        node-version: [ 18.x ]
+        node-version: [ 17.x ]
     steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
@@ -37,7 +37,7 @@ jobs:
         run: npm run storybook:build
         if: always()
       - name: screenshot testing... [loki]
-        run: npm run test:ui:ci
+        run: npm run test:ui:upd
         if: always()
       - name: unit testing... [jest]
         run: npm run test:unit
@@ -62,10 +62,10 @@ jobs:
         uses: actions/deploy-pages@v1
 
   checks:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18.x ]
+        node-version: [ 17.x ]
     steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
