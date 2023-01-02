@@ -34,7 +34,11 @@ function ArticlesPage() {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
-            <Page onScrollToEnd={LoadNext} saveScrollPos>
+            <Page
+                data-testid="ArticlesPage"
+                onScrollToEnd={LoadNext}
+                saveScrollPos
+            >
                 <Header tag="h2" title={t("статьи")} align="center" shadowed />
                 <ArticlesPageControls className="mb-2" />
                 <InfiniteArticleList />

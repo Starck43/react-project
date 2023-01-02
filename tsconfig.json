@@ -1,9 +1,9 @@
 {
 	"include": [
-		"./*.ts",
 		"./src/**/*.ts",
 		"./src/**/*.tsx",
-		"./config/**/*.ts"
+		"./config/**/*.ts",
+		"./config/**/*.tsx"
 	],
 	"compilerOptions": {
 		"outDir": "./build/",

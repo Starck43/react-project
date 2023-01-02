@@ -11,7 +11,7 @@ function HomePage() {
     const {t} = useTranslation("home")
 
     return (
-        <Page data-testid="homePage">
+        <Page data-testid="HomePage">
             <Header tag="h2" title={t("Продвинутый курс на Реакт")} shadowed align="center" />
             <Counter />
         </Page>

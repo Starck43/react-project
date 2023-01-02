@@ -11,7 +11,7 @@ describe("Router tests", () => {
         componentRender(<AppRouter />, {
             route: getRouteHome(),
         })
-        const page = await screen.findByTestId("homePage")
+        const page = await screen.findByTestId("HomePage")
         expect(page).toBeInTheDocument()
     })
 
