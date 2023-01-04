@@ -27,7 +27,10 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
     }
 
     return (
-        <section className={classnames(cls, [ "related" ], {}, [ className ])}>
+        <section
+            data-testid="Article.Related"
+            className={classnames(cls, [ "related" ], {}, [ className ])}
+        >
             <Header
                 tag="h2"
                 title={t("связанные статьи")}

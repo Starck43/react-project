@@ -20,19 +20,21 @@ import {pageActions} from "../model/slice/pageSlice"
 import cls from "./Page.module.sass"
 
 
-interface PageProps extends TestProps{
-    children: ReactNode
+interface PageProps extends TestProps {
+    id?: string
     saveScrollPos?: boolean
     onScrollToEnd?: () => void
     className?: string
+    children: ReactNode
 }
 
 export const Page: FC<PageProps> = (props) => {
     const {
+        id = PAGE_ID,
         "data-testid": dataTestId = "Page",
         saveScrollPos = false,
         onScrollToEnd,
-        className,
+        className = "content",
         children,
     } = props
     const containerRef = useRef() as MutableRefObject<HTMLDivElement>
@@ -62,7 +64,7 @@ export const Page: FC<PageProps> = (props) => {
 
     return (
         <div
-            id={PAGE_ID}
+            id={id}
             data-testid={dataTestId}
             ref={containerRef}
             className={classnames(cls, [ "content" ], {}, [ className ])}

@@ -1,5 +1,4 @@
 import {selectByTestId} from "../../helpers/selectByTestId"
-import {login} from "../../support/commands/login"
 
 
 describe("Routing test", () => {
@@ -14,7 +13,7 @@ describe("Routing test", () => {
     })
     describe("Only for authorized users", () => {
         beforeEach(() => {
-            login(username, password)
+            cy.login(username, password)
         })
 
         it("profile page", () => {

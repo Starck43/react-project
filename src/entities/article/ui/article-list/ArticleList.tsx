@@ -2,7 +2,6 @@ import {memo} from "react"
 
 import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
 import {classnames} from "@/shared/lib/helpers/classnames"
-import {PAGE_ID} from "@/shared/const/page"
 
 import type {Article} from "../../model/types/article"
 import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../lib/constants"
@@ -34,7 +33,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         className,
     } = props
 
-    const container = document.getElementById(PAGE_ID) || document.body as Element
+    const container = document.getElementById("articleListPage") || document.body as Element
     const {width} = useWindowDimensions(container)
     const isTile = view === ArticleView.TILE
     const itemsPerRow = isTile && container ? Math.floor(width / 225) : 1
@@ -51,12 +50,13 @@ export const ArticleList = memo((props: ArticleListProps) => {
     )
 
     return (
-        <div
+        <section
+            data-testid="ArticleList"
             style={{gridTemplateColumns: inlined ? undefined : `repeat(${itemsPerRow}, 1fr)`}}
             className={classnames(cls, [ "articles", view ], {virtualized, inlined}, [ className ])}
         >
             {articles.map((article) => articleListRender(article))}
             {isLoading && renderArticlesSkeleton({view, count: isTile ? TILE_VIEW_PER_PAGE : LIST_VIEW_PER_PAGE})}
-        </div>
+        </section>
     )
 })

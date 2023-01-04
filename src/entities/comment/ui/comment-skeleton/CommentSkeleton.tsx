@@ -14,6 +14,7 @@ interface CommentSkeletonProps {
 
 export const CommentSkeleton = memo(({rounded = false, inlined = false, className}: CommentSkeletonProps) => (
     <Card
+        data-testid="Comment.Skeleton"
         direction="row"
         rounded={rounded}
         bordered

@@ -51,6 +51,7 @@ const ArticleRatingCard = ({articleId, className}: ArticleRatingProps) => {
     if (data) {
         return (
             <section
+                data-testid="Article.Rating"
                 className={classnames(cls, [ "article__rating" ], {}, [ "my-2", className ])}
             >
                 <RatingCard

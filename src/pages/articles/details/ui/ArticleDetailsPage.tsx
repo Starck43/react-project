@@ -44,7 +44,10 @@ function ArticleDetailsPage() {
 
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
-            <Page>
+            <Page
+                id={`article-${id}`}
+                data-testid="ArticlePage"
+            >
                 <ArticleHeader />
                 <ArticleDetailsCard articleId={id} />
                 <ArticleCommentsCard articleId={id} />

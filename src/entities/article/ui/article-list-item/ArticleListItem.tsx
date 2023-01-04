@@ -36,6 +36,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         className,
         style,
     } = props
+
     const {t} = useTranslation("articles")
     // const [ isHover, bindHover ] = useHover()
 
@@ -168,6 +169,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
     return (
         <Card
+            data-testid="ArticleList.Item"
             id={`article-${article.id}`}
             variant="secondary"
             href={view === ArticleView.TILE ? getRouteArticleDetails(article.id) : ""}

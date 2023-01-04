@@ -39,7 +39,10 @@ export const ArticleCommentsCard = memo(({articleId, className}: CommentsCardPro
     if (!articleId || error) return null
 
     return (
-        <section className={classnames(cls, [ "article__comments" ], {}, [ className ])}>
+        <section
+            data-testid="Article.Comments"
+            className={classnames(cls, [ "article__comments" ], {}, [ className ])}
+        >
             <Header tag="h2" title={t("комментарии")} shadowed className="mt-2" />
 
             <Suspense fallback="">

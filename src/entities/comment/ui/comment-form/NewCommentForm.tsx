@@ -52,7 +52,10 @@ const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
 
     return (
         <DynamicModuleLoader reducers={initialReducer}>
-            <form data-testid="newComment" className={classnames(cls, [ "new_comment" ], {}, [ className ])}>
+            <form
+                data-testid="NewCommentForm"
+                className={classnames(cls, [ "new_comment" ], {}, [ className ])}
+            >
                 <TextArea
                     value={text}
                     onChange={onTextChange}

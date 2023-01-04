@@ -602,6 +602,13 @@
       "value": 5,
       "feedback": "Yesss!",
       "id": "_VjbATx"
+    },
+    {
+      "userId": "3",
+      "articleId": "1000",
+      "value": 5,
+      "feedback": "perfect article!!!",
+      "id": "cUjEnJW"
     }
   ],
   "users": [
@@ -616,18 +623,18 @@
     },
     {
       "id": "2",
-      "username": "guest",
-      "password": "guest",
-      "roles": [
-        "GUEST"
-      ]
-    },
-    {
-      "id": "3",
       "username": "editor",
       "password": "editor",
       "roles": [
         "EDITOR"
+      ]
+    },
+    {
+      "id": "3",
+      "username": "guest",
+      "password": "guest",
+      "roles": [
+        "GUEST"
       ]
     }
   ],
@@ -647,6 +654,16 @@
       "name": "Евгений",
       "surname": "Шабалин",
       "email": "eugene@yandex.ru",
+      "phone": "007123456780",
+      "avatar": "https://rognowsky.ru/wp-content/uploads/2019/09/u55628068.jpg",
+      "username": "editor",
+      "country": "Russia"
+    },
+    {
+      "id": "3",
+      "name": "Michael",
+      "surname": "Jackson",
+      "email": "test@mail.ru",
       "phone": "007123456780",
       "avatar": "https://rognowsky.ru/wp-content/uploads/2019/09/u55628068.jpg",
       "username": "guest",

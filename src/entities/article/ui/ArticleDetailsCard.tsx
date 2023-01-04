@@ -90,7 +90,11 @@ export const ArticleDetailsCard = memo(({articleId, className}: ArticleDetailsCa
     }
 
     return (
-        <Col as="section" className={classnames(cls, [ "article__details" ], {}, [ "mt-2", className ])}>
+        <Col
+            data-testid={`Article.${article ? "Info" : "Loading"}`}
+            as="section"
+            className={classnames(cls, [ "article__details" ], {}, [ "mt-2", className ])}
+        >
             {content}
         </Col>
     )

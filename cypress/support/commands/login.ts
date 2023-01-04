@@ -1,8 +1,7 @@
 import {AUTH_USER_KEY} from "@/shared/const/localStorage"
 
 
-export const login = (username: string = "guest", password: string = "guest") => {
-    cy.request({
+export const login = (username: string = "guest", password: string = "guest") => cy.request({
         method: "POST",
         url: `${Cypress.env("api_server")}/login`,
         body: {
@@ -11,6 +10,5 @@ export const login = (username: string = "guest", password: string = "guest") =>
         },
     }).then(({body}) => {
         window.localStorage.setItem(AUTH_USER_KEY, JSON.stringify(body))
-        cy.visit("/")
+        return body
     })
-}

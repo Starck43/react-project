@@ -38,6 +38,7 @@ export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(props:
         style = {},
         className,
         children,
+        ...others
     } = props
 
     const classes = classnames(cls, [
@@ -52,12 +53,21 @@ export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(props:
     return (
         href
             ? (
-                <Link to={href} className={classes} style={style}>
+                <Link
+                    to={href}
+                    className={classes}
+                    style={style}
+                    {...others}
+                >
                     {children}
                 </Link>
             )
             : (
-                <Tag className={classes} style={style}>
+                <Tag
+                    className={classes}
+                    style={style}
+                    {...others}
+                >
                     {children}
                 </Tag>
             )

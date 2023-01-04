@@ -58,7 +58,7 @@ export const Modal = (props: ModalProps) => {
                 style={{transitionDuration: `${animationTime}ms`}}
             />
             <Col
-                data-testid="modal"
+                data-testid="Modal"
                 justify="between"
                 gap="md"
                 className={classnames(cls, [ "modal", "shadowed", size ], {
@@ -98,7 +98,7 @@ export const Modal = (props: ModalProps) => {
                     {handleSubmit
                     && (
                         <Button
-                            data-testid="SubmitButton"
+                            data-testid="Modal.SubmitButton"
                             // variant="primary"
                             feature={ButtonFeature.BLANK}
                             type="submit"
@@ -113,7 +113,7 @@ export const Modal = (props: ModalProps) => {
                     {handleClose
                     && (
                         <Button
-                            data-testid="CancelButton"
+                            data-testid="Modal.CancelButton"
                             // variant="secondary"
                             feature={ButtonFeature.BLANK}
                             bordered

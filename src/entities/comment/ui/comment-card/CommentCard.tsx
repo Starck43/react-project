@@ -22,7 +22,7 @@ export const CommentCard = memo(({data}: CommentCardProps) => {
 
     return (
         <Card
-            data-testid="comment-card"
+            data-testid="Comment.Card"
             direction="row"
             gap="sm"
             rounded

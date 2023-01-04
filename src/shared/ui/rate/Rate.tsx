@@ -49,6 +49,8 @@ export const Rate = memo((props: RateProps) => {
         >
             {STARS.map((index) => (
                 <Icon
+                    data-testid={`Rate.${index}`}
+                    data-selected={currentValue >= index}
                     Svg={StarIcon}
                     className={classnames(cls, [ "star", size, currentValue >= index ? "hovered" : "" ], {}, [])}
                     onClick={onClick(index)}

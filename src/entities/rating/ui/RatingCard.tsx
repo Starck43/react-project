@@ -64,6 +64,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
 
     return (
         <Card
+            data-testid="RatingCard"
             variant={variant}
             bordered
             rounded

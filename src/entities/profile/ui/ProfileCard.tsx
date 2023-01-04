@@ -57,23 +57,27 @@ export const ProfileCard = ({id, onShowProfile, onLogout}: ProfileCardProps) => 
 
             <div className={cls.table}>
                 <Avatar src={profile?.avatar} size="sm" rounded alt={profile?.username} />
-                <div className={cls.row}>
+                <div className={cls.row} id="Username">
+                    <span className={cls.cell__title}>{t("ник")}</span>
+                    <span className={cls.cell__value}>{profile?.username}</span>
+                </div>
+                <div className={cls.row} id="Name">
                     <span className={cls.cell__title}>{t("имя")}</span>
                     <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.name)}</span>
                 </div>
-                <div className={cls.row}>
+                <div className={cls.row} id="Surname">
                     <span className={cls.cell__title}>{t("фамилия")}</span>
                     <span className={cls.cell__value}>{capitalizeFirstLetter(profile?.surname)}</span>
                 </div>
-                <div className={cls.row}>
+                <div className={cls.row} id="Email">
                     <span className={cls.cell__title}>{t("email")}</span>
                     <span className={cls.cell__value}>{profile?.email?.toLowerCase()}</span>
                 </div>
-                <div className={cls.row}>
+                <div className={cls.row} id="Phone">
                     <span className={cls.cell__title}>{t("телефон")}</span>
                     <span className={cls.cell__value}>{profile?.phone}</span>
                 </div>
-                <div className={cls.row}>
+                <div className={cls.row} id="Country">
                     <span className={cls.cell__title}>{t("страна")}</span>
                     <span className={cls.cell__value}>
                         {translatedCountry(profile?.country, i18n.language)}

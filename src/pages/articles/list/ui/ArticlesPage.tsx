@@ -35,7 +35,8 @@ function ArticlesPage() {
     return (
         <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
             <Page
-                data-testid="ArticlesPage"
+                id="articleListPage"
+                data-testid="ArticleListPage"
                 onScrollToEnd={LoadNext}
                 saveScrollPos
             >

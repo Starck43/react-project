@@ -1,5 +1,6 @@
 import {FC, HTMLAttributeAnchorTarget, HTMLAttributes} from "react"
 import {Link} from "react-router-dom"
+import {TestProps} from "@/shared/types/tests"
 
 import {classnames} from "@/shared/lib/helpers/classnames"
 import {ThemeVariant} from "@/shared/types/theme"
@@ -10,7 +11,7 @@ import {Flex} from "../stack"
 import cls from "./Card.module.sass"
 
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+interface CardProps extends HTMLAttributes<HTMLDivElement>, TestProps {
     variant?: ThemeVariant
     feature?: UIFeatureType
     gap?: SizeType
@@ -25,6 +26,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Card: FC<CardProps> = (props) => {
     const {
+        "data-testid": dataTestId = "Card",
         variant = "primary",
         feature = "blank",
         gap = "none",
@@ -42,6 +44,7 @@ export const Card: FC<CardProps> = (props) => {
 
     return (
         <Flex
+            data-testid={dataTestId}
             wrap={direction === "column"}
             align="start"
             fullWidth
