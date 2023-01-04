@@ -31,5 +31,5 @@ root.render(
         </StoreProvider>
     </BrowserRouter>,
 )
+
 export {Theme} from "@/shared/const/theme"
-export {PAGE_ID} from "@/shared/const/page"
