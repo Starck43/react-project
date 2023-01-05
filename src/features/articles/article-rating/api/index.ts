@@ -3,13 +3,8 @@ import type {Rating} from "@/entities/rating"
 import {rtkApi} from "@/shared/api/rtkApi"
 import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
 
+import type {ArticleRatingSchema} from "../model/types/articleRatingSchema"
 
-interface ArticleRatingSchema {
-    userId?: string
-    articleId: string
-    value?: number
-    feedback?: string
-}
 
 const articleRatingApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
