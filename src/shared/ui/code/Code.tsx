@@ -22,6 +22,7 @@ export const Code = ({text, bordered = false, rounded = false, className}: CodeP
     const titleBtn = t("Копировать код")
 
     const onCopyClick = useCallback(() => {
+        // eslint-disable-next-line no-console
         navigator.clipboard.writeText(text).then(() => console.log("copied to buffer"))
     }, [ text ])
 
