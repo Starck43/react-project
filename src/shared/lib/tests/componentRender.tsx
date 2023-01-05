@@ -1,11 +1,17 @@
 import {ReactNode} from "react"
-import {ReducersMapObject} from "@reduxjs/toolkit"
 import {MemoryRouter} from "react-router-dom"
 import {I18nextProvider} from "react-i18next"
+import {ReducersMapObject} from "@reduxjs/toolkit"
 import {render} from "@testing-library/react"
 
 import {StateSchema, StoreProvider} from "@/app/providers/store-provider"
+import {ThemeProvider} from "@/app/providers/theme-provider"
+
 import i18nForTests from "@/shared/config/i18n/i18nForTests"
+import {Theme} from "@/shared/const/theme"
+import useTheme from "@/shared/lib/hooks/useTheme"
+
+import "@/app/styles/index.sass"
 
 
 export interface RenderWithRouterProps {
@@ -14,16 +20,38 @@ export interface RenderWithRouterProps {
     asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
 }
 
-export function componentRender(component: ReactNode, options: RenderWithRouterProps = {}) {
-    const {route = "/", initialState, asyncReducers} = options
+interface TestProviderProps {
+    options?: RenderWithRouterProps
+    children: ReactNode
+}
 
-    return render(
+export const TestProvider = ({options = {}, children}: TestProviderProps) => {
+    const {
+        route = "/",
+        initialState,
+        asyncReducers,
+    } = options
+
+    const {theme} = useTheme()
+
+    return (
         <MemoryRouter initialEntries={[ route ]}>
             <StoreProvider initialState={initialState} asyncReducers={asyncReducers}>
                 <I18nextProvider i18n={i18nForTests}>
-                    {component}
+                    <ThemeProvider defaultTheme={theme || Theme.LIGHT}>
+                        {children}
+                    </ThemeProvider>
                 </I18nextProvider>
             </StoreProvider>
-        </MemoryRouter>,
+        </MemoryRouter>
+    )
+}
+
+
+export function componentRender(component: ReactNode, options?: RenderWithRouterProps) {
+    return render(
+        <TestProvider options={options}>
+            {component}
+        </TestProvider>,
     )
 }
