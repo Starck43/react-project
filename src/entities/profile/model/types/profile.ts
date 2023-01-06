@@ -1,7 +1,6 @@
-import type {Country} from "@/entities/country"
+import type { Country } from "@/entities/country"
 
-import {ValidateProfileError} from "../consts"
-
+import { ValidateProfileError } from "../consts"
 
 export interface Profile {
     id?: string

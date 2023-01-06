@@ -1,5 +1,4 @@
-import {MutableRefObject, useCallback, useEffect} from "react"
-
+import { MutableRefObject, useCallback, useEffect } from "react"
 
 export interface ElementInViewProps {
     triggerRef: MutableRefObject<HTMLDivElement>
@@ -28,7 +27,7 @@ export const useElementInView = (props: ElementInViewProps) => {
             thresholds.push(ratio)
         }
         return thresholds
-    }, [ steps, threshold ])
+    }, [steps, threshold])
 
     useEffect(() => {
         let observer: IntersectionObserver | null = null
@@ -42,7 +41,7 @@ export const useElementInView = (props: ElementInViewProps) => {
                 threshold: getThresholds(),
             }
 
-            observer = new IntersectionObserver(([ entry ]) => {
+            observer = new IntersectionObserver(([entry]) => {
                 if (entry.isIntersecting) {
                     callback()
                 }
@@ -58,5 +57,5 @@ export const useElementInView = (props: ElementInViewProps) => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
         return () => observer?.unobserve(trigger)
-    }, [ callback, containerRef, getThresholds, triggerRef ])
+    }, [callback, containerRef, getThresholds, triggerRef])
 }

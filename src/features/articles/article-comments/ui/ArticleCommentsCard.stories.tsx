@@ -1,20 +1,20 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {Comment} from "@/entities/comment"
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import { Comment } from "@/entities/comment"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
 
-
-import {ArticleCommentsCard} from "./ArticleCommentsCard"
-
+import { ArticleCommentsCard } from "./ArticleCommentsCard"
 
 export default {
     title: "pages/Articles/ArticleCommentsCard",
     component: ArticleCommentsCard,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticleCommentsCard>
 
-const Template: ComponentStory<typeof ArticleCommentsCard> = (args) => <ArticleCommentsCard {...args} />
+const Template: ComponentStory<typeof ArticleCommentsCard> = (args) => (
+    <ArticleCommentsCard {...args} />
+)
 
 const comments: Comment[] = [
     {
@@ -58,7 +58,7 @@ Default.decorators = [
     StoreDecorator({
         comments: {
             data: comments,
-            ids: [ 0, 1, 2 ],
+            ids: [0, 1, 2],
             entities,
         },
     }),

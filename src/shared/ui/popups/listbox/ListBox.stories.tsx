@@ -1,25 +1,24 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {ListBox} from "./ListBox"
-
+import { ListBox } from "./ListBox"
 
 export default {
     title: "shared/popups/ListBox",
     component: ListBox,
     argTypes: {
-        backgroundColor: {control: "color"},
-        value: {control: {type: "text"}},
+        backgroundColor: { control: "color" },
+        value: { control: { type: "text" } },
     },
     args: {
         compact: false,
         label: "Выберите персонаж",
         bordered: true,
         items: [
-            {value: "1", content: "Durward Reynolds"},
-            {value: "2", content: "Kenton Towne"},
-            {value: "3", content: "Therese Wunsch"},
-            {value: "4", content: "Benedict Kessler"},
+            { value: "1", content: "Durward Reynolds" },
+            { value: "2", content: "Kenton Towne" },
+            { value: "3", content: "Therese Wunsch" },
+            { value: "4", content: "Benedict Kessler" },
         ],
         onChange: () => null,
     },
@@ -29,7 +28,7 @@ const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-    selectedOption: {value: "4", content: "Benedict Kessler"},
+    selectedOption: { value: "4", content: "Benedict Kessler" },
     defaultOption: undefined,
 }
 
@@ -44,7 +43,7 @@ Compact.args = {
 export const TopRightOpen = Template.bind({})
 TopRightOpen.args = {
     compact: false,
-    selectedOption: {value: "4", content: "Benedict Kessler"},
+    selectedOption: { value: "4", content: "Benedict Kessler" },
     defaultOption: undefined,
     align: "right",
     position: "top_right",
@@ -58,11 +57,10 @@ CompactAndRounded.args = {
     defaultOption: undefined,
 }
 
-
 export const WithStyles = Template.bind({})
 WithStyles.args = {
     selectedOption: undefined,
-    defaultOption: {value: "3", content: "Therese Wunsch"},
+    defaultOption: { value: "3", content: "Therese Wunsch" },
     style: {
         minWidth: "9rem",
     },

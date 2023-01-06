@@ -1,6 +1,5 @@
-import {CSSProperties, ReactNode} from "react"
-import {PositionType, SizeType} from "@/shared/types/ui"
-
+import { CSSProperties, ReactNode } from "react"
+import { PositionType, SizeType } from "@/shared/types/ui"
 
 export interface DrawerProps {
     open: boolean

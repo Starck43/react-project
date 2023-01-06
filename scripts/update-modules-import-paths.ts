@@ -1,5 +1,5 @@
-import {Project} from "ts-morph"
-import {PROJECT_LAYERS} from "./consts"
+import { Project } from "ts-morph"
+import { PROJECT_LAYERS } from "./consts"
 
 const project = new Project({})
 project.addSourceFilesAtPaths("src/**/*.ts")

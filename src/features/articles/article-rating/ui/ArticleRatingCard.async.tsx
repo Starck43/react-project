@@ -1,7 +1,6 @@
-import {lazy, Suspense} from "react"
+import { lazy, Suspense } from "react"
 
-import {ArticleRatingProps} from "./ArticleRatingCard"
-
+import { ArticleRatingProps } from "./ArticleRatingCard"
 
 const ArticleRatingCardLazy = lazy(() => import("./ArticleRatingCard"))
 

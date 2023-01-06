@@ -6,7 +6,7 @@
  */
 export function getQueryParams(params: OptionalRecord<string, string>) {
     const searchParams = new URLSearchParams(window.location.search)
-    Object.entries(params).forEach(([ name, value ]) => {
+    Object.entries(params).forEach(([name, value]) => {
         if (value !== undefined) {
             searchParams.set(name, value)
         }
@@ -23,13 +23,16 @@ export function addQueryParams(params: OptionalRecord<string, string>) {
     window.history.pushState("", "", getQueryParams(params))
 }
 
-export function buildAbsoluteUrl(host?: string, path?: string, options?: Record<string, any>) {
+export function buildAbsoluteUrl(
+    host?: string,
+    path?: string,
+    options?: Record<string, any>,
+) {
     const params = new URLSearchParams(options).toString()
 
-    let url = [
-        host?.replace(/\/$/, ""),
-        path?.replace(/^\/|\/$/g, ""),
-    ].join("/")
+    let url = [host?.replace(/\/$/, ""), path?.replace(/^\/|\/$/g, "")].join(
+        "/",
+    )
 
     if (params) {
         url += `?${params}`

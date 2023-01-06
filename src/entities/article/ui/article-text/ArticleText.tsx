@@ -1,18 +1,16 @@
-import {memo} from "react"
+import { memo } from "react"
 
-import {ArticleTextBlock} from "../../model/types/article"
+import { ArticleTextBlock } from "../../model/types/article"
 
 // import cls from "./ArticleText.module.sass"
-
 
 interface ArticleTextProps {
     block: ArticleTextBlock
     className?: string
 }
 
-export const ArticleText = memo(({block, className}: ArticleTextProps) => (
+export const ArticleText = memo(({ block, className }: ArticleTextProps) => (
     <div className={className}>
-
         {block.title && <h4>{block.title}</h4>}
 
         {block.paragraphs.length && (

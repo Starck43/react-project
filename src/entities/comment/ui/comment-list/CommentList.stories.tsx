@@ -1,17 +1,18 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
 
-import {CommentList} from "./CommentList"
-
+import { CommentList } from "./CommentList"
 
 export default {
     title: "entities/Comments/CommentList",
     component: CommentList,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof CommentList>
 
-const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />
+const Template: ComponentStory<typeof CommentList> = (args) => (
+    <CommentList {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {
@@ -44,6 +45,4 @@ Default.args = {
     ],
 }
 
-Default.decorators = [
-    StoreDecorator({}),
-]
+Default.decorators = [StoreDecorator({})]

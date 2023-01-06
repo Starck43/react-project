@@ -4,4 +4,4 @@ export function buildTypescriptLoader() {
         use: "ts-loader",
         exclude: /node_modules/,
     }
- }
+}

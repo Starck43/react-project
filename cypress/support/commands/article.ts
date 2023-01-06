@@ -1,4 +1,4 @@
-import {Article} from "@/entities/article"
+import { Article } from "@/entities/article"
 
 const defaultArticle = {
     id: "1000",
@@ -8,19 +8,23 @@ const defaultArticle = {
     views: 1022,
     createdAt: "26.02.2022",
     userId: "1",
-    type: [ "IT" ],
+    type: ["IT"],
     blocks: [],
 }
 
-export const createArticle = (article?: Article) => cy.request({
-    method: "POST",
-    url: `${Cypress.env("api_server")}/articles`,
-    headers: {Authorization: "some header"},
-    body: article ?? defaultArticle,
-}).then((res) => res.body)
+export const createArticle = (article?: Article) =>
+    cy
+        .request({
+            method: "POST",
+            url: `${Cypress.env("api_server")}/articles`,
+            headers: { Authorization: "some header" },
+            body: article ?? defaultArticle,
+        })
+        .then((res) => res.body)
 
-export const removeArticle = (id: string) => cy.request({
-    method: "DELETE",
-    url: `${Cypress.env("api_server")}/articles/${id}`,
-    headers: {Authorization: "some header"},
-})
+export const removeArticle = (id: string) =>
+    cy.request({
+        method: "DELETE",
+        url: `${Cypress.env("api_server")}/articles/${id}`,
+        headers: { Authorization: "some header" },
+    })

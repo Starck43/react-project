@@ -1,19 +1,19 @@
-import {Suspense, useEffect} from "react"
-import {useDispatch, useSelector} from "react-redux"
+import { Suspense, useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
-import {getUserOnMount, userActions} from "@/entities/user"
+import { getUserOnMount, userActions } from "@/entities/user"
 
 import useTheme from "@/shared/lib/hooks/useTheme"
-import {Navbar} from "@/widgets/navbar"
-import {Sidebar} from "@/widgets/sidebar"
+import { Navbar } from "@/widgets/navbar"
+import { Sidebar } from "@/widgets/sidebar"
 
-import {AppRouter} from "./providers/router-provider"
+import { AppRouter } from "./providers/router-provider"
 
 // TODO: Finish with font preload to HEAD
 const HREF_FONT = "./fonts/design.ttf"
 
 const App = () => {
-    const {theme, toggleTheme} = useTheme()
+    const { theme, toggleTheme } = useTheme()
     const dispatch = useDispatch()
     const mounted = useSelector(getUserOnMount)
 
@@ -31,7 +31,7 @@ const App = () => {
             fragment.appendChild(preload)
             document.head.appendChild(fragment)
         }
-    }, [ dispatch ])
+    }, [dispatch])
 
     return (
         <Suspense fallback="">

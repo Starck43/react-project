@@ -1,12 +1,14 @@
 import {
-    useLayoutEffect, useState, memo,
-    ImgHTMLAttributes, ReactElement,
+    useLayoutEffect,
+    useState,
+    memo,
+    ImgHTMLAttributes,
+    ReactElement,
 } from "react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
+import { classnames } from "@/shared/lib/helpers/classnames"
 
 import cls from "./Image.module.sass"
-
 
 interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     fallback?: ReactElement
@@ -26,8 +28,8 @@ export const LazyImage = memo((props: LazyImageProps) => {
         height,
         ...others
     } = props
-    const [ isLoading, setIsLoading ] = useState(true)
-    const [ noImage, setNoImage ] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
+    const [noImage, setNoImage] = useState(false)
 
     useLayoutEffect(() => {
         const img: HTMLImageElement = new Image()
@@ -39,7 +41,7 @@ export const LazyImage = memo((props: LazyImageProps) => {
             setIsLoading(false)
             setNoImage(true)
         }
-    }, [ src ])
+    }, [src])
 
     let content = (
         <img
@@ -63,7 +65,9 @@ export const LazyImage = memo((props: LazyImageProps) => {
 
     return (
         <div
-            className={classnames(cls, [ "wrapper" ], {isLoading, noImage}, [ className ])}
+            className={classnames(cls, ["wrapper"], { isLoading, noImage }, [
+                className,
+            ])}
             style={style}
         >
             {content}

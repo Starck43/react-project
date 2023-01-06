@@ -1,8 +1,7 @@
-import {Country} from "@/entities/country"
-import {ValidateProfileError} from "@/entities/profile"
+import { Country } from "@/entities/country"
+import { ValidateProfileError } from "@/entities/profile"
 
-import {validateProfileData} from "./validateProfileData"
-
+import { validateProfileData } from "./validateProfileData"
 
 const profileValue = {
     id: "1",
@@ -21,7 +20,7 @@ describe("validateProfileData test", () => {
 
     test("No data", async () => {
         const res = validateProfileData()
-        expect(res).toEqual([ ValidateProfileError.NO_DATA ])
+        expect(res).toEqual([ValidateProfileError.NO_DATA])
     })
 
     test("All errors", async () => {
@@ -34,17 +33,17 @@ describe("validateProfileData test", () => {
     })
 
     test("Empty name and surname", async () => {
-        const res = validateProfileData({...profileValue, name: ""})
-        expect(res).toEqual([ ValidateProfileError.INCORRECT_USER_DATA ])
+        const res = validateProfileData({ ...profileValue, name: "" })
+        expect(res).toEqual([ValidateProfileError.INCORRECT_USER_DATA])
     })
 
     test("Empty email", async () => {
-        const res = validateProfileData({...profileValue, email: ""})
-        expect(res).toEqual([ ValidateProfileError.INCORRECT_EMAIL ])
+        const res = validateProfileData({ ...profileValue, email: "" })
+        expect(res).toEqual([ValidateProfileError.INCORRECT_EMAIL])
     })
 
     test("Empty phone", async () => {
-        const res = validateProfileData({...profileValue, phone: ""})
-        expect(res).toEqual([ ValidateProfileError.INCORRECT_PHONE ])
+        const res = validateProfileData({ ...profileValue, phone: "" })
+        expect(res).toEqual([ValidateProfileError.INCORRECT_PHONE])
     })
 })

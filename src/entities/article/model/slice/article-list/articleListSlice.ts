@@ -1,16 +1,24 @@
-import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit"
+import {
+    createEntityAdapter,
+    createSlice,
+    PayloadAction,
+} from "@reduxjs/toolkit"
 
-import {StateSchema} from "@/app/providers/store-provider"
+import { StateSchema } from "@/app/providers/store-provider"
 
-import {ARTICLES_VIEW_MODE_KEY} from "@/shared/const/localStorage"
+import { ARTICLES_VIEW_MODE_KEY } from "@/shared/const/localStorage"
 
-import type {Article} from "../../types/article"
-import type {ArticleListSchema} from "../../types/articleListSchema"
-import {ArticleOrderType, ArticleSortType, ArticleType, ArticleView} from "../../consts"
-import {fetchArticleList} from "../../services/fetchArticleList/fetchArticleList"
+import type { Article } from "../../types/article"
+import type { ArticleListSchema } from "../../types/articleListSchema"
+import {
+    ArticleOrderType,
+    ArticleSortType,
+    ArticleType,
+    ArticleView,
+} from "../../consts"
+import { fetchArticleList } from "../../services/fetchArticleList/fetchArticleList"
 
-import {LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE} from "../../../lib/constants"
-
+import { LIST_VIEW_PER_PAGE, TILE_VIEW_PER_PAGE } from "../../../lib/constants"
 
 const articlesAdapter = createEntityAdapter<Article>({
     selectId: (article) => article.id,
@@ -36,8 +44,13 @@ const articlesSlice = createSlice({
     }),
     reducers: {
         initState: (state) => {
-            const mode = localStorage.getItem(ARTICLES_VIEW_MODE_KEY) as ArticleView
-            state.limit = mode === ArticleView.LIST ? LIST_VIEW_PER_PAGE : TILE_VIEW_PER_PAGE
+            const mode = localStorage.getItem(
+                ARTICLES_VIEW_MODE_KEY,
+            ) as ArticleView
+            state.limit =
+                mode === ArticleView.LIST
+                    ? LIST_VIEW_PER_PAGE
+                    : TILE_VIEW_PER_PAGE
             state.view = mode
             state._mounted = true
         },
@@ -69,27 +82,27 @@ const articlesSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-        .addCase(fetchArticleList.pending, (state, action) => {
-            state.isLoading = true
-            state.error = undefined
-            if (action.meta.arg.replace) {
-                articlesAdapter.removeAll(state)
-            }
-        })
-        .addCase(fetchArticleList.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.hasMore = action.payload.length >= state.limit
+            .addCase(fetchArticleList.pending, (state, action) => {
+                state.isLoading = true
+                state.error = undefined
+                if (action.meta.arg.replace) {
+                    articlesAdapter.removeAll(state)
+                }
+            })
+            .addCase(fetchArticleList.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.hasMore = action.payload.length >= state.limit
 
-            if (action.meta.arg.replace) {
-                articlesAdapter.setAll(state, action.payload)
-            } else {
-                articlesAdapter.addMany(state, action.payload)
-            }
-        })
-        .addCase(fetchArticleList.rejected, (state, action) => {
-            state.isLoading = false
-            state.error = action.payload
-        })
+                if (action.meta.arg.replace) {
+                    articlesAdapter.setAll(state, action.payload)
+                } else {
+                    articlesAdapter.addMany(state, action.payload)
+                }
+            })
+            .addCase(fetchArticleList.rejected, (state, action) => {
+                state.isLoading = false
+                state.error = action.payload
+            })
     },
 })
 
@@ -99,4 +112,5 @@ export const getArticlesData = articlesAdapter.getSelectors<StateSchema>(
     (state) => state.articles || articlesAdapter.getInitialState(),
 )
 
-export const {reducer: articlesReducer, actions: articlesActions} = articlesSlice
+export const { reducer: articlesReducer, actions: articlesActions } =
+    articlesSlice

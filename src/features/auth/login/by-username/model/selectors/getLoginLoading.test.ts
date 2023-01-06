@@ -1,16 +1,15 @@
-import {StateSchema} from "@/app/providers/store-provider"
+import { StateSchema } from "@/app/providers/store-provider"
 
-import {getLoginLoading} from "../selectors/getLoginLoading"
-
+import { getLoginLoading } from "../selectors/getLoginLoading"
 
 describe("getLoginLoading test", () => {
-	test("Return is loading", () => {
-		const state: DeepPartial<StateSchema> = {login: {isLoading: true}}
+    test("Return is loading", () => {
+        const state: DeepPartial<StateSchema> = { login: { isLoading: true } }
         expect(getLoginLoading(state as StateSchema)).toEqual(true)
-	})
+    })
 
-	test("Return not is loading", () => {
-		const state: DeepPartial<StateSchema> = {}
+    test("Return not is loading", () => {
+        const state: DeepPartial<StateSchema> = {}
         expect(getLoginLoading(state as StateSchema)).toEqual(false)
-	})
+    })
 })

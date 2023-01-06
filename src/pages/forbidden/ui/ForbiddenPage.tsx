@@ -1,12 +1,11 @@
-import {memo} from "react"
-import {useTranslation} from "react-i18next"
-import {Info, InfoStatus} from "@/shared/ui/info"
+import { memo } from "react"
+import { useTranslation } from "react-i18next"
+import { Info, InfoStatus } from "@/shared/ui/info"
 
-import {Page} from "@/widgets/page"
-
+import { Page } from "@/widgets/page"
 
 function ForbiddenPage() {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
 
     return (
         <Page data-testid="ForbiddenPage">

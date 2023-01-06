@@ -1,25 +1,26 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
-import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
+import { buildAbsoluteUrl } from "@/shared/lib/helpers/urls"
 
-import {NotificationsPopup} from "./NotificationsPopup"
-
+import { NotificationsPopup } from "./NotificationsPopup"
 
 export default {
     title: "features/NotificationsPopup",
     component: NotificationsPopup,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof NotificationsPopup>
 
-const Template: ComponentStory<typeof NotificationsPopup> = (args) => <NotificationsPopup {...args} />
+const Template: ComponentStory<typeof NotificationsPopup> = (args) => (
+    <NotificationsPopup {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
 Default.decorators = [
     StoreDecorator({
-        user: {authData: {id: "1", username: "admin", password: "admin"}},
+        user: { authData: { id: "1", username: "admin", password: "admin" } },
     }),
 ]
 
@@ -59,6 +60,6 @@ export const EmptyList = Template.bind({})
 EmptyList.args = {}
 EmptyList.decorators = [
     StoreDecorator({
-        user: {authData: {id: "1", username: "admin", password: "admin"}},
+        user: { authData: { id: "1", username: "admin", password: "admin" } },
     }),
 ]

@@ -1,1 +1,1 @@
-export {UpdateProfileForm} from "./update-profile/ui/UpdateProfileForm"
+export { UpdateProfileForm } from "./update-profile/ui/UpdateProfileForm"

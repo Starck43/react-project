@@ -1,19 +1,20 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {CurrencySelect} from "./CurrencySelect"
-
+import { CurrencySelect } from "./CurrencySelect"
 
 export default {
     title: "entities/CurrencySelect",
     component: CurrencySelect,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof CurrencySelect>
 
-const Template: ComponentStory<typeof CurrencySelect> = (args) => <CurrencySelect {...args} />
+const Template: ComponentStory<typeof CurrencySelect> = (args) => (
+    <CurrencySelect {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
 
 export const Compact = Template.bind({})
-Compact.args = {compact: true}
+Compact.args = { compact: true }

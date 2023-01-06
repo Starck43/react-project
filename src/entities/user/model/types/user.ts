@@ -1,5 +1,4 @@
-import {UserRole} from "../consts"
-
+import { UserRole } from "../consts"
 
 export interface User {
     id?: string

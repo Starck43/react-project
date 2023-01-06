@@ -1,5 +1,5 @@
-export type {Profile, ProfileSchema} from "./model/types/profile"
-export {ValidateProfileError} from "./model/consts"
+export type { Profile, ProfileSchema } from "./model/types/profile"
+export { ValidateProfileError } from "./model/consts"
 
 export {
     getProfileData,
@@ -9,7 +9,7 @@ export {
     getProfileValidateErrors,
 } from "./model/selectors/getProfile"
 
-export {profileReducer, profileActions} from "./model/slice/profileSlice"
-export {fetchProfileData} from "./model/services/fetchProfileData"
+export { profileReducer, profileActions } from "./model/slice/profileSlice"
+export { fetchProfileData } from "./model/services/fetchProfileData"
 
-export {ProfileCard} from "./ui/ProfileCard"
+export { ProfileCard } from "./ui/ProfileCard"

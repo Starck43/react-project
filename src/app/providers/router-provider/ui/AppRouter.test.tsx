@@ -1,10 +1,14 @@
-import {screen} from "@testing-library/react"
-import {UserRole} from "@/entities/user"
-import {getRouteArticleCreate, getRouteArticleEdit, getRouteHome, getRouteProfile} from "@/shared/const/router"
-import {componentRender} from "@/shared/lib/tests/componentRender"
+import { screen } from "@testing-library/react"
+import { UserRole } from "@/entities/user"
+import {
+    getRouteArticleCreate,
+    getRouteArticleEdit,
+    getRouteHome,
+    getRouteProfile,
+} from "@/shared/const/router"
+import { componentRender } from "@/shared/lib/tests/componentRender"
 
-import {AppRouter} from "./AppRouter"
-
+import { AppRouter } from "./AppRouter"
 
 describe("Router tests", () => {
     test("Render of exist page", async () => {
@@ -43,7 +47,7 @@ describe("Router tests", () => {
         componentRender(<AppRouter />, {
             route: getRouteProfile("1"),
             initialState: {
-                user: {_mounted: true, authData: {}},
+                user: { _mounted: true, authData: {} },
             },
         })
         const page = await screen.findByTestId("AuthPage")
@@ -54,7 +58,7 @@ describe("Router tests", () => {
         componentRender(<AppRouter />, {
             route: getRouteArticleCreate(),
             initialState: {
-                user: {_mounted: true, authData: {id: "2"}},
+                user: { _mounted: true, authData: { id: "2" } },
             },
         })
         const page = await screen.findByTestId("ForbiddenPage")
@@ -65,7 +69,10 @@ describe("Router tests", () => {
         componentRender(<AppRouter />, {
             route: getRouteArticleEdit("1"),
             initialState: {
-                user: {_mounted: true, authData: {id: "2", roles: [ UserRole.EDITOR ] }},
+                user: {
+                    _mounted: true,
+                    authData: { id: "2", roles: [UserRole.EDITOR] },
+                },
             },
         })
         const page = await screen.findByTestId("ArticleEditPage")

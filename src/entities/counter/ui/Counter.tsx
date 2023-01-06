@@ -1,13 +1,12 @@
-import {Button, ButtonFeature, ButtonSize} from "@/shared/ui/button"
-import {Flex} from "@/shared/ui/stack"
+import { Button, ButtonFeature, ButtonSize } from "@/shared/ui/button"
+import { Flex } from "@/shared/ui/stack"
 
-import {useCounterValue} from "../model/selectors/getCounterValue"
-import {useCounterActions} from "../model/slice/counterSlice"
-
+import { useCounterValue } from "../model/selectors/getCounterValue"
+import { useCounterActions } from "../model/slice/counterSlice"
 
 export const Counter = () => {
     const counterValue = useCounterValue()
-    const {increment, decrement, incrementByAmount} = useCounterActions()
+    const { increment, decrement, incrementByAmount } = useCounterActions()
 
     const incClick = () => increment()
     const decClick = () => decrement()

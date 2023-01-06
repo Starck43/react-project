@@ -1,29 +1,28 @@
-import {memo, useState} from "react"
-import {useTranslation} from "react-i18next"
+import { memo, useState } from "react"
+import { useTranslation } from "react-i18next"
 
 // eslint-disable-next-line paths-observer/layer-imports-order
-import {ErrorTestButton} from "@/app/providers/error-boundary-provider"
+import { ErrorTestButton } from "@/app/providers/error-boundary-provider"
 
-import {getRouteArticleCreate} from "@/shared/const/router"
-import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {AlignType} from "@/shared/types/ui"
-import {NavLink} from "@/shared/ui/link"
-import {ToggleButton} from "@/shared/ui/toggle-button"
+import { getRouteArticleCreate } from "@/shared/const/router"
+import { useWindowDimensions } from "@/shared/lib/hooks/useWindowDimensions"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { AlignType } from "@/shared/types/ui"
+import { NavLink } from "@/shared/ui/link"
+import { ToggleButton } from "@/shared/ui/toggle-button"
 
 import cls from "./Sidebar.module.sass"
 import "./Sidebar.sass"
-
 
 export interface SidebarProps {
     position?: AlignType
     className?: string
 }
 
-function Sidebar({position = "right", className}: SidebarProps) {
-    const {t} = useTranslation("sidebar")
-    const {width} = useWindowDimensions()
-    const [ collapsed, setCollapsed ] = useState(width < 992)
+function Sidebar({ position = "right", className }: SidebarProps) {
+    const { t } = useTranslation("sidebar")
+    const { width } = useWindowDimensions()
+    const [collapsed, setCollapsed] = useState(width < 992)
 
     const toggleSidebar = () => {
         setCollapsed(!collapsed)
@@ -32,7 +31,7 @@ function Sidebar({position = "right", className}: SidebarProps) {
     return (
         <aside
             data-testid="Sidebar"
-            className={classnames(cls, [ "sidebar", position ], {collapsed}, [
+            className={classnames(cls, ["sidebar", position], { collapsed }, [
                 collapsed ? "collapsed" : "",
                 "sidebar",
                 className,
@@ -42,12 +41,18 @@ function Sidebar({position = "right", className}: SidebarProps) {
                 <ToggleButton
                     data-testid="Sidebar.ToggleBtn"
                     position={collapsed ? "right" : "left"}
-                    className={classnames(cls, [ "toggle__btn", position ], {collapsed})}
+                    className={classnames(cls, ["toggle__btn", position], {
+                        collapsed,
+                    })}
                     onClick={toggleSidebar}
                 />
             )}
 
-            <div className={classnames(cls, [], {collapsed}, [ "sidebar__container" ])}>
+            <div
+                className={classnames(cls, [], { collapsed }, [
+                    "sidebar__container",
+                ])}
+            >
                 <NavLink
                     to={getRouteArticleCreate()}
                     title={t("новая статья")}

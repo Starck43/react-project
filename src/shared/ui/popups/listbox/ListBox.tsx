@@ -1,17 +1,16 @@
-import {CSSProperties, Fragment, ReactNode, useMemo} from "react"
-import {Listbox as HeadlessListBox} from "@headlessui/react"
+import { CSSProperties, Fragment, ReactNode, useMemo } from "react"
+import { Listbox as HeadlessListBox } from "@headlessui/react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {ThemeVariant} from "@/shared/types/theme"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { ThemeVariant } from "@/shared/types/theme"
 
-import type {AlignType} from "@/shared/types/ui"
-import {Button} from "@/shared/ui/button"
-import {PopupPositionType} from "../types"
+import type { AlignType } from "@/shared/types/ui"
+import { Button } from "@/shared/ui/button"
+import { PopupPositionType } from "../types"
 import styles from "../styles/Popups.module.sass"
 
 import DropdownIcon from "./assets/arrow-down.svg"
 import cls from "./ListBox.module.sass"
-
 
 interface ListBoxOption {
     value: string
@@ -56,9 +55,16 @@ export const ListBox = (props: ListBoxProps) => {
         className,
     } = props
 
-    const listBoxOptions = useMemo(() => (
-        compact ? [ {value: "_label", content: `${label}:`, disabled: true}, ...items ] : items
-    ), [ compact, items, label ])
+    const listBoxOptions = useMemo(
+        () =>
+            compact
+                ? [
+                    { value: "_label", content: `${label}:`, disabled: true },
+                    ...items,
+                ]
+                : items,
+        [compact, items, label],
+    )
 
     return (
         <HeadlessListBox
@@ -69,21 +75,20 @@ export const ListBox = (props: ListBoxProps) => {
             // multiple
             onChange={onChange}
             style={style}
-            className={classnames(cls, [ "listBox" ], {compact}, [
+            className={classnames(cls, ["listBox"], { compact }, [
                 styles.popup,
                 styles[variant],
                 className,
             ])}
         >
-            {!compact && label
-            && (
+            {!compact && label && (
                 <HeadlessListBox.Label className={cls.label}>
                     {label}
                 </HeadlessListBox.Label>
             )}
 
             <HeadlessListBox.Button as="div" className="button__wrapper">
-                {({open}) => (
+                {({ open }) => (
                     <Button
                         variant={variant}
                         align={align}
@@ -93,8 +98,14 @@ export const ListBox = (props: ListBoxProps) => {
                         className={cls.toggle__button}
                     >
                         <>
-                            {selectedOption?.content || defaultOption?.content || label}
-                            <DropdownIcon className={classnames(cls, [ "dropdown__icon" ], {open})} />
+                            {selectedOption?.content ||
+                                defaultOption?.content ||
+                                label}
+                            <DropdownIcon
+                                className={classnames(cls, ["dropdown__icon"], {
+                                    open,
+                                })}
+                            />
                         </>
                     </Button>
                 )}
@@ -102,7 +113,7 @@ export const ListBox = (props: ListBoxProps) => {
 
             <HeadlessListBox.Options
                 style={style}
-                className={classnames(cls, [ "options" ], {compact}, [
+                className={classnames(cls, ["options"], { compact }, [
                     styles.inner_block,
                     styles[align],
                     styles[position],
@@ -117,17 +128,23 @@ export const ListBox = (props: ListBoxProps) => {
                         value={item.value}
                         disabled={item.disabled}
                     >
-                        {({active, selected, disabled}) => (
-                            <li className={classnames(cls, [ "item" ], {
-                                active,
-                                selected,
-                                disabled,
-                            }, [
-                                styles.item,
-                                active ? styles.active : "",
-                                selected ? styles.selected : "",
-                                disabled ? styles.disabled : "",
-                            ])}
+                        {({ active, selected, disabled }) => (
+                            <li
+                                className={classnames(
+                                    cls,
+                                    ["item"],
+                                    {
+                                        active,
+                                        selected,
+                                        disabled,
+                                    },
+                                    [
+                                        styles.item,
+                                        active ? styles.active : "",
+                                        selected ? styles.selected : "",
+                                        disabled ? styles.disabled : "",
+                                    ],
+                                )}
                             >
                                 {item.content}
                             </li>

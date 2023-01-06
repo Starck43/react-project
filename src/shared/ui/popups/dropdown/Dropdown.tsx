@@ -1,14 +1,13 @@
-import {ReactNode, Fragment, memo, CSSProperties} from "react"
-import {Menu} from "@headlessui/react"
+import { ReactNode, Fragment, memo, CSSProperties } from "react"
+import { Menu } from "@headlessui/react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {ThemeVariant} from "@/shared/types/theme"
-import {Button, ButtonFeature} from "@/shared/ui/button"
-import type {PopupPositionType} from "@/shared/ui/popups"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { ThemeVariant } from "@/shared/types/theme"
+import { Button, ButtonFeature } from "@/shared/ui/button"
+import type { PopupPositionType } from "@/shared/ui/popups"
 
 import styles from "../styles/Popups.module.sass"
 import cls from "./Dropdown.module.sass"
-
 
 export interface DropdownItem {
     value: ReactNode
@@ -44,7 +43,7 @@ export const Dropdown = memo((props: DropdownProps) => {
         <Menu
             as="div"
             style={style}
-            className={classnames(cls, [ "dropdown" ], {}, [
+            className={classnames(cls, ["dropdown"], {}, [
                 styles.popup,
                 styles[variant],
                 className,
@@ -54,7 +53,7 @@ export const Dropdown = memo((props: DropdownProps) => {
                 {toggleElement}
             </Menu.Button>
             <Menu.Items
-                className={classnames(cls, [ "menu" ], {}, [
+                className={classnames(cls, ["menu"], {}, [
                     styles.inner_block,
                     styles[position],
                     rounded ? styles.rounded : "",
@@ -63,8 +62,12 @@ export const Dropdown = memo((props: DropdownProps) => {
             >
                 {items.map((item, index) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <Menu.Item as={Fragment} disabled={item.disabled} key={`menuItem-${index}`}>
-                        {({active, disabled}) => (
+                    <Menu.Item
+                        as={Fragment}
+                        disabled={item.disabled}
+                        key={`menuItem-${index}`}
+                    >
+                        {({ active, disabled }) => (
                             <Button
                                 variant={variant}
                                 feature={ButtonFeature.CLEAR}
@@ -72,14 +75,19 @@ export const Dropdown = memo((props: DropdownProps) => {
                                 disabled={disabled}
                                 href={item.href}
                                 onClick={item.onClick}
-                                className={classnames(cls, [ "item" ], {
-                                    active,
-                                    disabled,
-                                }, [
-                                    styles.item,
-                                    active ? styles.active : "",
-                                    disabled ? styles.disabled : "",
-                                ])}
+                                className={classnames(
+                                    cls,
+                                    ["item"],
+                                    {
+                                        active,
+                                        disabled,
+                                    },
+                                    [
+                                        styles.item,
+                                        active ? styles.active : "",
+                                        disabled ? styles.disabled : "",
+                                    ],
+                                )}
                             >
                                 {item.value}
                             </Button>

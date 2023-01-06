@@ -1,1 +1,1 @@
-export {default as Navbar} from "./ui/navbar/Navbar"
+export { default as Navbar } from "./ui/navbar/Navbar"

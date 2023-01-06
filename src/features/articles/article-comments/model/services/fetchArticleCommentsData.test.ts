@@ -1,6 +1,5 @@
-import {AsyncThunkAction} from "@reduxjs/toolkit"
+import { AsyncThunkAction } from "@reduxjs/toolkit"
 // import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
-
 
 const data = {
     id: "1",
@@ -14,7 +13,7 @@ const data = {
 // TODO: complete test for CommentsData
 describe("CommentsData loading test", () => {
     test("Success comments fetching", async () => {
-/*
+        /*
         const thunk = new TestAsyncFunc(fetchCommentsData)
         thunk.api?.get.mockReturnValue(Promise.resolve({data}))
         const res = await thunk.CallFunc()
@@ -27,7 +26,7 @@ describe("CommentsData loading test", () => {
     })
 
     test("Failed comments fetching", async () => {
-/*
+        /*
         const thunk = new TestAsyncFunc(fetchCommentsData)
         thunk.api.get.mockReturnValue(Promise.resolve({status: 403}))
         const res = await thunk.CallFunc()
@@ -35,6 +34,8 @@ describe("CommentsData loading test", () => {
 */
     })
 })
-function fetchCommentsData(arg: unknown): AsyncThunkAction<unknown, unknown, { rejectValue: unknown }> {
+function fetchCommentsData(
+    arg: unknown,
+): AsyncThunkAction<unknown, unknown, { rejectValue: unknown }> {
     throw new Error("Function not implemented.")
 }

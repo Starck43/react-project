@@ -1,1 +1,1 @@
-export {Rate} from "./Rate"
+export { Rate } from "./Rate"

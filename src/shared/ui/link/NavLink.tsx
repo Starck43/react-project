@@ -1,12 +1,11 @@
-import {memo, ReactNode, SVGProps, FC} from "react"
-import {Link, LinkProps} from "react-router-dom"
+import { memo, ReactNode, SVGProps, FC } from "react"
+import { Link, LinkProps } from "react-router-dom"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {ThemeVariant} from "@/shared/types/theme"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { ThemeVariant } from "@/shared/types/theme"
 
-import {NavLinkFeatureType, NavLinkSizeType} from "./types"
+import { NavLinkFeatureType, NavLinkSizeType } from "./types"
 import cls from "./NavLink.module.sass"
-
 
 export interface NavLinkProps extends Omit<LinkProps, "title"> {
     title?: ReactNode
@@ -48,13 +47,18 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
         <Link
             title={alt}
             {...other}
-            className={classnames(cls, [
-                "link",
-                variant,
-                feature,
-                size,
-                Icon && !title ? "squared" : undefined,
-            ], {fullWidth, squared, reverse, rounded, animation, disabled}, [ className ])}
+            className={classnames(
+                cls,
+                [
+                    "link",
+                    variant,
+                    feature,
+                    size,
+                    Icon && !title ? "squared" : undefined,
+                ],
+                { fullWidth, squared, reverse, rounded, animation, disabled },
+                [className],
+            )}
         >
             {Icon && <Icon className={cls.icon} />}
             {title}

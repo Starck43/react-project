@@ -1,15 +1,14 @@
-import {FC, HTMLAttributeAnchorTarget, HTMLAttributes} from "react"
-import {Link} from "react-router-dom"
-import {TestProps} from "@/shared/types/tests"
+import { FC, HTMLAttributeAnchorTarget, HTMLAttributes } from "react"
+import { Link } from "react-router-dom"
+import { TestProps } from "@/shared/types/tests"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {ThemeVariant} from "@/shared/types/theme"
-import {DirectionType, SizeType, UIFeatureType} from "@/shared/types/ui"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { ThemeVariant } from "@/shared/types/theme"
+import { DirectionType, SizeType, UIFeatureType } from "@/shared/types/ui"
 
-import {Flex} from "../stack"
+import { Flex } from "../stack"
 
 import cls from "./Card.module.sass"
-
 
 interface CardProps extends HTMLAttributes<HTMLDivElement>, TestProps {
     variant?: ThemeVariant
@@ -41,7 +40,6 @@ export const Card: FC<CardProps> = (props) => {
         ...other
     } = props
 
-
     return (
         <Flex
             data-testid={dataTestId}
@@ -50,23 +48,21 @@ export const Card: FC<CardProps> = (props) => {
             fullWidth
             gap={gap}
             direction={direction}
-            className={classnames(cls, [
-                    "card",
-                    variant,
-                    feature,
-                    href ? "linked" : "",
-                ], {bordered, rounded, shadowed}, [ className ])}
+            className={classnames(
+                cls,
+                ["card", variant, feature, href ? "linked" : ""],
+                { bordered, rounded, shadowed },
+                [className],
+            )}
             {...other}
         >
-            {
-                href
-                    ? (
-                        <Link to={href} target={target} className={cls.link}>
-                            {children}
-                        </Link>
-                    )
-                    : children
-            }
+            {href ? (
+                <Link to={href} target={target} className={cls.link}>
+                    {children}
+                </Link>
+            ) : (
+                children
+            )}
         </Flex>
     )
 }

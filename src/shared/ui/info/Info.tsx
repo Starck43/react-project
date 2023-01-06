@@ -1,15 +1,14 @@
-import {FC, SVGProps} from "react"
+import { FC, SVGProps } from "react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {Icon} from "@/shared/ui/icon"
-import {Col, Row} from "@/shared/ui/stack"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { Icon } from "@/shared/ui/icon"
+import { Col, Row } from "@/shared/ui/stack"
 
-import {InfoSize, InfoStatus} from "./consts"
+import { InfoSize, InfoStatus } from "./consts"
 
 import cls from "./Info.module.sass"
 
 type FlexAlign = "start" | "end" | "center"
-
 
 export type InfoProps = {
     Tag?: keyof HTMLElementTagNameMap
@@ -42,13 +41,12 @@ export const Info = (props: InfoProps) => {
         <Col
             fullWidth
             align={align}
-            className={classnames(cls, [ "info__block", status, size ], {}, [ className ])}
+            className={classnames(cls, ["info__block", status, size], {}, [
+                className,
+            ])}
         >
             {title && (
-                <Tag
-                    data-testid={`${dataTestId}.Title`}
-                    className={cls.title}
-                >
+                <Tag data-testid={`${dataTestId}.Title`} className={cls.title}>
                     {title}
                 </Tag>
             )}

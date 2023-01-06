@@ -1,12 +1,12 @@
 export enum ArticleSortType {
     VIEWS = "views",
     TITLE = "title",
-    CREATED = "createdAt"
+    CREATED = "createdAt",
 }
 
 export enum ArticleOrderType {
     ASC = "asc",
-    DESC = "desc"
+    DESC = "desc",
 }
 
 export enum ArticleBlockType {
@@ -26,5 +26,5 @@ export enum ArticleType {
     FINANCE = "FINANCE",
     BUSINESS = "BUSINESS",
     MEDIA = "MEDIA",
-    SCIENCE = "SCIENCE"
+    SCIENCE = "SCIENCE",
 }

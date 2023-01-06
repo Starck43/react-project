@@ -1,13 +1,12 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {Rate} from "./Rate"
-
+import { Rate } from "./Rate"
 
 export default {
     title: "shared/Rate",
     component: Rate,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
     parameters: {
         actions: {},
     },

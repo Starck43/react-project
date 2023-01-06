@@ -1,22 +1,22 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import type {Comment} from "@/entities/comment"
-import {Article, ArticleBlockType, ArticleType} from "@/entities/article"
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
-import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
+import type { Comment } from "@/entities/comment"
+import { Article, ArticleBlockType, ArticleType } from "@/entities/article"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
+import { buildAbsoluteUrl } from "@/shared/lib/helpers/urls"
 
 import ArticleDetailsPage from "./ArticleDetailsPage"
-
 
 export default {
     title: "pages/Articles/DetailsPage",
     component: ArticleDetailsPage,
-    argTypes: {backgroundColor: {control: "color"}},
-
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticleDetailsPage>
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = () => <ArticleDetailsPage />
+const Template: ComponentStory<typeof ArticleDetailsPage> = () => (
+    <ArticleDetailsPage />
+)
 
 const article: Article = {
     id: "1",
@@ -29,7 +29,7 @@ const article: Article = {
         id: "1",
         username: "admin",
     },
-    type: [ ArticleType.IT ],
+    type: [ArticleType.IT],
     blocks: [
         {
             id: "1",
@@ -44,7 +44,7 @@ const article: Article = {
         {
             id: "4",
             type: ArticleBlockType.CODE,
-            code: "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>;",
+            code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
         },
         {
             id: "2",
@@ -103,15 +103,15 @@ const entities = {
 }
 
 export const Default = Template.bind({})
-Default.args = {id: "1"}
+Default.args = { id: "1" }
 
 Default.decorators = [
     StoreDecorator({
-        user: {authData: {id: "1"}},
-        article: {data: article},
+        user: { authData: { id: "1" } },
+        article: { data: article },
         comments: {
             data: comments,
-            ids: [ 0, 1, 2 ],
+            ids: [0, 1, 2],
             entities,
         },
     }),
@@ -134,14 +134,14 @@ Default.parameters = {
             ],
         },
         {
-            url: buildAbsoluteUrl(__API__, "articles", {_limit: 4}),
+            url: buildAbsoluteUrl(__API__, "articles", { _limit: 4 }),
             method: "GET",
             status: 200,
             response: [
-                {...article, id: "1"},
-                {...article, id: "2"},
-                {...article, id: "3"},
-                {...article, id: "4"},
+                { ...article, id: "1" },
+                { ...article, id: "2" },
+                { ...article, id: "3" },
+                { ...article, id: "4" },
             ],
         },
     ],
@@ -151,7 +151,7 @@ export const Loading = Template.bind({})
 Loading.args = {}
 Loading.decorators = [
     StoreDecorator({
-        article: {isLoading: true},
+        article: { isLoading: true },
     }),
 ]
 Loading.parameters = {
@@ -166,7 +166,7 @@ Loading.parameters = {
             response: [],
         },
         {
-            url: buildAbsoluteUrl(__API__, "articles", {_limit: 4}),
+            url: buildAbsoluteUrl(__API__, "articles", { _limit: 4 }),
             method: "GET",
             status: 200,
             response: [],
@@ -178,7 +178,7 @@ export const Error = Template.bind({})
 Error.args = {}
 Error.decorators = [
     StoreDecorator({
-        article: {error: "some error"},
+        article: { error: "some error" },
     }),
 ]
 Error.parameters = {
@@ -193,7 +193,7 @@ Error.parameters = {
             response: [],
         },
         {
-            url: buildAbsoluteUrl(__API__, "articles", {_limit: 4}),
+            url: buildAbsoluteUrl(__API__, "articles", { _limit: 4 }),
             method: "GET",
             status: 200,
             response: [],

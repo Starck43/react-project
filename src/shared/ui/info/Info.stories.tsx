@@ -1,15 +1,13 @@
 import React from "react"
-import {ComponentMeta, Story} from "@storybook/react"
+import { ComponentMeta, Story } from "@storybook/react"
 
-import {Info, InfoProps} from "./Info"
-import {InfoStatus} from "./consts"
-
-
+import { Info, InfoProps } from "./Info"
+import { InfoStatus } from "./consts"
 
 export default {
     title: "shared/Info",
     component: Info,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof Info>
 
 const Template: Story = (args: InfoProps) => <Info {...args} />

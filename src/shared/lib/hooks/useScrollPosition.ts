@@ -1,8 +1,10 @@
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react"
 
-
-export const useScrollPosition = (container = document.documentElement, targetScroll = window.innerHeight) => {
-    const [ scroll, setScroll ] = useState({
+export const useScrollPosition = (
+    container = document.documentElement,
+    targetScroll = window.innerHeight,
+) => {
+    const [scroll, setScroll] = useState({
         position: 0,
         reachedTarget: false,
     })
@@ -17,7 +19,7 @@ export const useScrollPosition = (container = document.documentElement, targetSc
 
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
-    }, [ container.scrollTop, targetScroll ])
+    }, [container.scrollTop, targetScroll])
 
     return scroll
 }

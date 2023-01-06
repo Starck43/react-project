@@ -1,21 +1,24 @@
 import {
-    AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
+    AnyAction,
+    CombinedState,
+    EnhancedStore,
+    Reducer,
+    ReducersMapObject,
 } from "@reduxjs/toolkit"
-import {AxiosInstance} from "axios"
+import { AxiosInstance } from "axios"
 
-import {CounterSchema} from "@/entities/counter"
-import {UserSchema} from "@/entities/user"
-import {ProfileSchema} from "@/entities/profile"
-import {ArticleListSchema, ArticleSchema} from "@/entities/article"
-import {CommentSchema, NewCommentSchema} from "@/entities/comment"
+import { CounterSchema } from "@/entities/counter"
+import { UserSchema } from "@/entities/user"
+import { ProfileSchema } from "@/entities/profile"
+import { ArticleListSchema, ArticleSchema } from "@/entities/article"
+import { CommentSchema, NewCommentSchema } from "@/entities/comment"
 
-import {LoginSchema} from "@/features/auth"
-import {ArticleRelatedSchema} from "@/features/articles"
+import { LoginSchema } from "@/features/auth"
+import { ArticleRelatedSchema } from "@/features/articles"
 
-import {rtkApi} from "@/shared/api/rtkApi"
+import { rtkApi } from "@/shared/api/rtkApi"
 
-import {PageSchema} from "@/widgets/page"
-
+import { PageSchema } from "@/widgets/page"
 
 export interface StateSchema {
     counter: CounterSchema
@@ -37,7 +40,10 @@ export type StateSchemaKey = keyof StateSchema
 
 export interface ReducerManager {
     getReducerMap: () => ReducersMapObject<StateSchema>
-    reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>
+    reduce: (
+        state: StateSchema,
+        action: AnyAction,
+    ) => CombinedState<StateSchema>
     add: (key: StateSchemaKey, reducer: Reducer) => void
     remove: (key: StateSchemaKey) => void
 }
@@ -51,7 +57,7 @@ export interface ThunkExtra {
 }
 
 export interface ThunkConfig<T> {
-    rejectValue: T,
-    extra: ThunkExtra,
+    rejectValue: T
+    extra: ThunkExtra
     state: StateSchema
 }

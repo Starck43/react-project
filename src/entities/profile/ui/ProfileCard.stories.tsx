@@ -1,20 +1,21 @@
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {Country} from "@/entities/country"
+import { Country } from "@/entities/country"
 
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
 import Avatar from "@/shared/assets/icons/avatar-profile.png"
 
-import {ProfileCard} from "./ProfileCard"
-
+import { ProfileCard } from "./ProfileCard"
 
 export default {
     title: "entities/ProfileCard",
     component: ProfileCard,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ProfileCard>
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />
+const Template: ComponentStory<typeof ProfileCard> = (args) => (
+    <ProfileCard {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {

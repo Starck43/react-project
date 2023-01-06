@@ -29,23 +29,26 @@ describe("Article Details Page", () => {
         cy.getByTestId("Article.Info").as("article")
         cy.get("@article").scrollIntoView()
         cy.addComment("some new comment")
-        cy.getByTestId("Comment.Card").should("have.length", 1)
-        .then((subject) => {
-            // eslint-disable-next-line no-console
-            if (subject.length > 0) console.log(subject[0])
-        })
+        cy.getByTestId("Comment.Card")
+            .should("have.length", 1)
+            .then((subject) => {
+                // eslint-disable-next-line no-console
+                if (subject.length > 0) console.log(subject[0])
+            })
     })
 
     it("user can leave a rating with feedback (stubbed data)", () => {
         // mocking data without fetching to DB
-        cy.intercept("GET", "**/articles/*", {fixture: "article-details.json"})
+        cy.intercept("GET", "**/articles/*", {
+            fixture: "article-details.json",
+        })
         const rate = 5
         cy.getByTestId("Article.Info").as("article")
         cy.getByTestId("Article.Rating").as("rating")
         cy.get("@rating").scrollIntoView()
         cy.setArticleRating(rate, "perfect article!!!")
         cy.get("[data-selected=true]").should("have.length", rate)
-        cy.getArticleRating({userId, articleId}).then((data) => {
+        cy.getArticleRating({ userId, articleId }).then((data) => {
             if (data.length) {
                 cy.removeArticleRating(data[0].id)
             }

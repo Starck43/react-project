@@ -1,8 +1,8 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
-import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
+import { buildAbsoluteUrl } from "@/shared/lib/helpers/urls"
 
 import ArticleRatingCard from "./ArticleRatingCard"
 
@@ -10,16 +10,20 @@ import ArticleRatingCard from "./ArticleRatingCard"
 export default {
     title: "features/Article/RatingCard",
     component: ArticleRatingCard,
-    argTypes: {backgroundColor: {control: "color"}},
-    args: {articleId: "1"},
+    argTypes: { backgroundColor: { control: "color" } },
+    args: { articleId: "1" },
     decorators: [
         StoreDecorator({
-            user: {authData: {id: "1", username: "admin", password: "admin"}},
+            user: {
+                authData: { id: "1", username: "admin", password: "admin" },
+            },
         }),
     ],
 } as ComponentMeta<typeof ArticleRatingCard>
 
-const Template: ComponentStory<typeof ArticleRatingCard> = (args) => <ArticleRatingCard {...args} />
+const Template: ComponentStory<typeof ArticleRatingCard> = (args) => (
+    <ArticleRatingCard {...args} />
+)
 
 export const WithRate = Template.bind({})
 WithRate.args = {}

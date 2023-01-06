@@ -1,1 +1,1 @@
-export {NotificationsPopup} from "./ui/NotificationsPopup"
+export { NotificationsPopup } from "./ui/NotificationsPopup"

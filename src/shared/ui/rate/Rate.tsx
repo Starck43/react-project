@@ -1,13 +1,12 @@
-import {memo, useState} from "react"
+import { memo, useState } from "react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {Flex} from "@/shared/ui/stack"
-import {Icon} from "@/shared/ui/icon"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { Flex } from "@/shared/ui/stack"
+import { Icon } from "@/shared/ui/icon"
 import StarIcon from "@/shared/assets/icons/star.svg"
 
-import type {StarsSizeType} from "./types"
+import type { StarsSizeType } from "./types"
 import cls from "./Rate.module.sass"
-
 
 interface RateProps {
     value?: number
@@ -16,12 +15,12 @@ interface RateProps {
     className?: string
 }
 
-const STARS = [ 1, 2, 3, 4, 5 ]
+const STARS = [1, 2, 3, 4, 5]
 
 export const Rate = memo((props: RateProps) => {
-    const {value = 0, onSelect, size = "normal", className} = props
-    const [ currentValue, setCurrentValue ] = useState(value)
-    const [ selected, setSelected ] = useState(Boolean(value))
+    const { value = 0, onSelect, size = "normal", className } = props
+    const [currentValue, setCurrentValue] = useState(value)
+    const [selected, setSelected] = useState(Boolean(value))
 
     const onHover = (val: number) => () => {
         if (!selected) {
@@ -45,14 +44,19 @@ export const Rate = memo((props: RateProps) => {
     return (
         <Flex
             gap="none"
-            className={classnames(cls, [ "rate" ], {selected}, [ className ])}
+            className={classnames(cls, ["rate"], { selected }, [className])}
         >
             {STARS.map((index) => (
                 <Icon
                     data-testid={`Rate.${index}`}
                     data-selected={currentValue >= index}
                     Svg={StarIcon}
-                    className={classnames(cls, [ "star", size, currentValue >= index ? "hovered" : "" ], {}, [])}
+                    className={classnames(
+                        cls,
+                        ["star", size, currentValue >= index ? "hovered" : ""],
+                        {},
+                        [],
+                    )}
                     onClick={onClick(index)}
                     onMouseLeave={onLeave}
                     onMouseEnter={onHover(index)}

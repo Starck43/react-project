@@ -1,10 +1,9 @@
-import {Profile, ValidateProfileError} from "@/entities/profile"
-
+import { Profile, ValidateProfileError } from "@/entities/profile"
 
 export const validateProfileData = (profile?: Profile) => {
-    if (!profile) return [ ValidateProfileError.NO_DATA ]
+    if (!profile) return [ValidateProfileError.NO_DATA]
 
-    const {name, surname, email, phone} = profile
+    const { name, surname, email, phone } = profile
     const errors: ValidateProfileError[] = []
 
     if (!name || !surname) {

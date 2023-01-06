@@ -1,15 +1,14 @@
 import React from "react"
-import {ComponentMeta, Story} from "@storybook/react"
+import { ComponentMeta, Story } from "@storybook/react"
 
-import {ButtonFeature} from "./consts"
-import {Button} from "./Button"
-
+import { ButtonFeature } from "./consts"
+import { Button } from "./Button"
 
 export default {
     title: "shared/Button",
     component: Button,
     argTypes: {
-        bordered: {control: "boolean"},
+        bordered: { control: "boolean" },
         // backgroundColor: {control: "color"},
     },
     args: {
@@ -18,7 +17,6 @@ export default {
 } as ComponentMeta<typeof Button>
 
 const Template: Story = (args) => <Button {...args} />
-
 
 export const Clear = Template.bind({})
 Clear.args = {

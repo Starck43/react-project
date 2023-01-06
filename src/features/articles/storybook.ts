@@ -1,1 +1,1 @@
-export {articleCommentsReducer} from "./article-comments/model/slice/articleCommentsSlice"
+export { articleCommentsReducer } from "./article-comments/model/slice/articleCommentsSlice"

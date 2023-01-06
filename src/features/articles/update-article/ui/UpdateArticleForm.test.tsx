@@ -1,7 +1,7 @@
-import {screen} from "@testing-library/react"
-import {componentRender} from "@/shared/lib/tests/componentRender"
+import { screen } from "@testing-library/react"
+import { componentRender } from "@/shared/lib/tests/componentRender"
 
-import {UpdateArticleForm} from "./UpdateArticleForm"
+import { UpdateArticleForm } from "./UpdateArticleForm"
 
 // TODO: complete test for UpdateArticleForm
 describe("UpdateArticleForm Tests", () => {
@@ -15,6 +15,8 @@ describe("UpdateArticleForm Tests", () => {
                 },
             },
         })
-        expect(screen.getByTestId("UpdateArticleForm.EditButton")).toBeInTheDocument()
+        expect(
+            screen.getByTestId("UpdateArticleForm.EditButton"),
+        ).toBeInTheDocument()
     })
 })

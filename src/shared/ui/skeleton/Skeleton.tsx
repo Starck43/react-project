@@ -1,14 +1,13 @@
-import {CSSProperties, memo, useMemo} from "react"
+import { CSSProperties, memo, useMemo } from "react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {ThemeVariant} from "@/shared/types/theme"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { ThemeVariant } from "@/shared/types/theme"
 
-import {SizeType} from "@/shared/types/ui"
-import {SkeletonElementType} from "@/shared/ui/skeleton/const"
-import {Flex} from "@/shared/ui/stack"
+import { SizeType } from "@/shared/types/ui"
+import { SkeletonElementType } from "@/shared/ui/skeleton/const"
+import { Flex } from "@/shared/ui/stack"
 
 import cls from "./Skeleton.module.sass"
-
 
 interface SkeletonProps {
     elements?: SkeletonElementType[]
@@ -24,7 +23,7 @@ interface SkeletonProps {
 
 export const Skeleton = memo((props: SkeletonProps) => {
     const {
-        elements = [ SkeletonElementType.TITLE ],
+        elements = [SkeletonElementType.TITLE],
         variant = "primary",
         width = "100%",
         height,
@@ -42,19 +41,27 @@ export const Skeleton = memo((props: SkeletonProps) => {
     }
 
     // TODO: styles for every shimmer element inside skeleton
-    const shimmerElements = useMemo(() => (
-        elements?.map((item, index) => (
-            <div
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                className={classnames(cls, [
-                    "shimmer__element",
-                    item,
-                    item === SkeletonElementType.AVATAR ? `avatar__${avatarSize}` : undefined,
-                ], {rounded, inlined})}
-            />
-        ))
-    ), [ avatarSize, elements, inlined, rounded ])
+    const shimmerElements = useMemo(
+        () =>
+            elements?.map((item, index) => (
+                <div
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
+                    className={classnames(
+                        cls,
+                        [
+                            "shimmer__element",
+                            item,
+                            item === SkeletonElementType.AVATAR
+                                ? `avatar__${avatarSize}`
+                                : undefined,
+                        ],
+                        { rounded, inlined },
+                    )}
+                />
+            )),
+        [avatarSize, elements, inlined, rounded],
+    )
 
     return (
         <Flex
@@ -62,7 +69,9 @@ export const Skeleton = memo((props: SkeletonProps) => {
             align="start"
             justify="between"
             gap="sm"
-            className={classnames(cls, [ "skeleton", variant ], {inlined}, [ className ])}
+            className={classnames(cls, ["skeleton", variant], { inlined }, [
+                className,
+            ])}
             style={styles}
         >
             {elements && shimmerElements}

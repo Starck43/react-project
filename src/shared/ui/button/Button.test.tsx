@@ -1,8 +1,7 @@
-import {render, screen} from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 
-import {ButtonFeature} from "./consts"
-import {Button} from "./Button"
-
+import { ButtonFeature } from "./consts"
+import { Button } from "./Button"
 
 describe("Button Tests", () => {
     test("test button in DOM", () => {

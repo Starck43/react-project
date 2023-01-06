@@ -1,8 +1,7 @@
-import {rtkApi} from "@/shared/api/rtkApi"
-import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
+import { rtkApi } from "@/shared/api/rtkApi"
+import { buildAbsoluteUrl } from "@/shared/lib/helpers/urls"
 
-import {Notification} from "../model/types/notification"
-
+import { Notification } from "../model/types/notification"
 
 const notificationApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
@@ -14,4 +13,4 @@ const notificationApi = rtkApi.injectEndpoints({
     }),
 })
 
-export const {useNotificationsQuery} = notificationApi
+export const { useNotificationsQuery } = notificationApi

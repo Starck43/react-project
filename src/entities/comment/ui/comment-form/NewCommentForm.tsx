@@ -1,44 +1,50 @@
-import {useCallback} from "react"
-import {useTranslation} from "react-i18next"
-import {useSelector} from "react-redux"
+import { useCallback } from "react"
+import { useTranslation } from "react-i18next"
+import { useSelector } from "react-redux"
 
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
-import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {Button, ButtonFeature} from "@/shared/ui/button"
-import {Info, InfoStatus} from "@/shared/ui/info"
-import {TextArea} from "@/shared/ui/input"
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { Button, ButtonFeature } from "@/shared/ui/button"
+import { Info, InfoStatus } from "@/shared/ui/info"
+import { TextArea } from "@/shared/ui/input"
 
-import {getNewCommentError, getNewCommentText} from "../../model/selectors/getNewComment"
-import {newCommentActions, newCommentReducer} from "../../model/slice/newCommentSlice"
+import {
+    getNewCommentError,
+    getNewCommentText,
+} from "../../model/selectors/getNewComment"
+import {
+    newCommentActions,
+    newCommentReducer,
+} from "../../model/slice/newCommentSlice"
 
 import cls from "./NewCommentForm.module.sass"
-
 
 interface NewCommentFormProps {
     onSaveComment: (text: string) => void
     className?: string
 }
 
-const initialReducer: ReducerList = {newComment: newCommentReducer}
+const initialReducer: ReducerList = { newComment: newCommentReducer }
 
-const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
-    const {t} = useTranslation("comments")
+const NewCommentForm = ({ onSaveComment, className }: NewCommentFormProps) => {
+    const { t } = useTranslation("comments")
     const dispatch = useAppDispatch()
 
     const text = useSelector(getNewCommentText)
     const error = useSelector(getNewCommentError)
 
-    const onTextChange = useCallback((val: string) => {
-        dispatch(newCommentActions.update(val))
-    }, [ dispatch ])
-
+    const onTextChange = useCallback(
+        (val: string) => {
+            dispatch(newCommentActions.update(val))
+        },
+        [dispatch],
+    )
 
     const onSaveHandler = useCallback(() => {
         onSaveComment(text || "")
         onTextChange("")
-    }, [ onSaveComment, onTextChange, text ])
-
+    }, [onSaveComment, onTextChange, text])
 
     if (error) {
         return (
@@ -54,7 +60,7 @@ const NewCommentForm = ({onSaveComment, className}: NewCommentFormProps) => {
         <DynamicModuleLoader reducers={initialReducer}>
             <form
                 data-testid="NewCommentForm"
-                className={classnames(cls, [ "new_comment" ], {}, [ className ])}
+                className={classnames(cls, ["new_comment"], {}, [className])}
             >
                 <TextArea
                     value={text}

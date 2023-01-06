@@ -1,19 +1,18 @@
-import {memo, useCallback, useMemo, useState} from "react"
-import {useTranslation} from "react-i18next"
+import { memo, useCallback, useMemo, useState } from "react"
+import { useTranslation } from "react-i18next"
 
-import {useSelector} from "react-redux"
-import {getUser} from "@/entities/user"
-import {NotificationList} from "@/entities/notification"
+import { useSelector } from "react-redux"
+import { getUser } from "@/entities/user"
+import { NotificationList } from "@/entities/notification"
 
-import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
-import {ThemeVariant} from "@/shared/types/theme"
-import {Button, ButtonFeature} from "@/shared/ui/button"
-import {Drawer} from "@/shared/ui/modals"
-import {Popover, PopupPositionType} from "@/shared/ui/popups"
+import { useWindowDimensions } from "@/shared/lib/hooks/useWindowDimensions"
+import { ThemeVariant } from "@/shared/types/theme"
+import { Button, ButtonFeature } from "@/shared/ui/button"
+import { Drawer } from "@/shared/ui/modals"
+import { Popover, PopupPositionType } from "@/shared/ui/popups"
 import NotificationIcon from "@/shared/assets/icons/notification.svg"
 
 // import cls from "./Notifications.module.sass"
-
 
 interface NotificationsProps {
     variant?: ThemeVariant
@@ -23,21 +22,16 @@ interface NotificationsProps {
 }
 
 export const NotificationsPopup = memo((props: NotificationsProps) => {
-    const {
-        variant,
-        minified = false,
-        position,
-        className,
-    } = props
+    const { variant, minified = false, position, className } = props
 
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     const user = useSelector(getUser)
-    const {width: screenWidth, isMobile} = useWindowDimensions()
-    const [ showDrawer, setShow ] = useState(false)
+    const { width: screenWidth, isMobile } = useWindowDimensions()
+    const [showDrawer, setShow] = useState(false)
 
     const showDrawerDrawerHandler = useCallback(() => setShow(true), [])
     const closeDrawerHandler = useCallback(() => setShow(false), [])
-    const content = useMemo(() => (<NotificationList />), [])
+    const content = useMemo(() => <NotificationList />, [])
 
     if (!user?.id) return null
 
@@ -54,36 +48,31 @@ export const NotificationsPopup = memo((props: NotificationsProps) => {
         </Button>
     )
 
-
-    return (
-        mobile
-            ? (
-                <>
-                    {toggler}
-                    <Drawer
-                        position="bottom"
-                        rounded
-                        bordered
-                        open={showDrawer}
-                        onClose={closeDrawerHandler}
-                        closeOnOverlayClick
-                        className={className}
-                    >
-                        {content}
-                    </Drawer>
-                </>
-            )
-            : (
-                <Popover
-                    variant={variant}
-                    position={position}
-                    shadowed
-                    rounded
-                    toggleElement={toggler}
-                    className={className}
-                >
-                    {content}
-                </Popover>
-            )
+    return mobile ? (
+        <>
+            {toggler}
+            <Drawer
+                position="bottom"
+                rounded
+                bordered
+                open={showDrawer}
+                onClose={closeDrawerHandler}
+                closeOnOverlayClick
+                className={className}
+            >
+                {content}
+            </Drawer>
+        </>
+    ) : (
+        <Popover
+            variant={variant}
+            position={position}
+            shadowed
+            rounded
+            toggleElement={toggler}
+            className={className}
+        >
+            {content}
+        </Popover>
     )
 })

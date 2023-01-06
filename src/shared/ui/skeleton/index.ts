@@ -1,2 +1,2 @@
-export {Skeleton} from "./Skeleton"
-export {SkeletonElementType} from "./const"
+export { Skeleton } from "./Skeleton"
+export { SkeletonElementType } from "./const"

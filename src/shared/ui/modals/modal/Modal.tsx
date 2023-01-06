@@ -1,20 +1,19 @@
-import {classnames} from "@/shared/lib/helpers/classnames"
+import { classnames } from "@/shared/lib/helpers/classnames"
 import SubmitIcon from "@/shared/assets/icons/check.svg"
 import CancelIcon from "@/shared/assets/icons/close.svg"
 
-import {Button, ButtonFeature} from "@/shared/ui/button"
-import {CloseButton} from "@/shared/ui/close-button"
-import {Header} from "@/shared/ui/header"
-import {Portal} from "@/shared/ui/portal"
-import {Col, Flex, Row} from "@/shared/ui/stack"
+import { Button, ButtonFeature } from "@/shared/ui/button"
+import { CloseButton } from "@/shared/ui/close-button"
+import { Header } from "@/shared/ui/header"
+import { Portal } from "@/shared/ui/portal"
+import { Col, Flex, Row } from "@/shared/ui/stack"
 
-import type {ModalProps} from "../types"
-import {Overlay} from "../overlay/Overlay"
-import {useModal} from "../lib/hooks/useModal"
+import type { ModalProps } from "../types"
+import { Overlay } from "../overlay/Overlay"
+import { useModal } from "../lib/hooks/useModal"
 
 import styles from "../styles/Modals.module.sass"
 import cls from "./Modal.module.sass"
-
 
 export const Modal = (props: ModalProps) => {
     const {
@@ -39,8 +38,13 @@ export const Modal = (props: ModalProps) => {
         children,
     } = props
 
-    const modalProps = useModal({onSubmit, onClose, isOpen: open, animationTime})
-    const {isMounted, isShown: show, handleSubmit, handleClose} = modalProps
+    const modalProps = useModal({
+        onSubmit,
+        onClose,
+        isOpen: open,
+        animationTime,
+    })
+    const { isMounted, isShown: show, handleSubmit, handleClose } = modalProps
 
     if (lazy && !isMounted) return null
 
@@ -55,26 +59,31 @@ export const Modal = (props: ModalProps) => {
                 open={open}
                 show={show}
                 onClick={closeOnOverlayClick ? handleClose : undefined}
-                style={{transitionDuration: `${animationTime}ms`}}
+                style={{ transitionDuration: `${animationTime}ms` }}
             />
             <Col
                 data-testid="Modal"
                 justify="between"
                 gap="md"
-                className={classnames(cls, [ "modal", "shadowed", size ], {
-                    open,
-                    show,
-                    fullSize,
-                    rounded,
-                    bordered,
-                }, [
-                    styles.modals,
-                    open ? styles.open : "",
-                    bordered ? styles.bordered : "",
-                    fullSize ? styles.fullSize : "",
-                    className,
-                ])}
-                style={{...style, transitionDuration: `${animationTime}ms`}}
+                className={classnames(
+                    cls,
+                    ["modal", "shadowed", size],
+                    {
+                        open,
+                        show,
+                        fullSize,
+                        rounded,
+                        bordered,
+                    },
+                    [
+                        styles.modals,
+                        open ? styles.open : "",
+                        bordered ? styles.bordered : "",
+                        fullSize ? styles.fullSize : "",
+                        className,
+                    ],
+                )}
+                style={{ ...style, transitionDuration: `${animationTime}ms` }}
             >
                 <Row
                     gap="sm"
@@ -83,20 +92,33 @@ export const Modal = (props: ModalProps) => {
                     align="center"
                     className={cls.header}
                 >
-                    {typeof header === "string" ? <Header tag="h4" title={header} align="start" /> : header}
-                    {showClose && <CloseButton className={styles.close__button} handleClick={handleClose} />}
+                    {typeof header === "string" ? (
+                        <Header tag="h4" title={header} align="start" />
+                    ) : (
+                        header
+                    )}
+                    {showClose && (
+                        <CloseButton
+                            className={styles.close__button}
+                            handleClick={handleClose}
+                        />
+                    )}
                 </Row>
 
                 <div className={styles.body}>
-                    <Flex justify="between" wrap fullWidth={fullWidth} className={styles.content}>
+                    <Flex
+                        justify="between"
+                        wrap
+                        fullWidth={fullWidth}
+                        className={styles.content}
+                    >
                         {children}
                     </Flex>
                 </div>
 
                 <Flex justify="end" wrap fullWidth className={cls.footer}>
                     {footer}
-                    {handleSubmit
-                    && (
+                    {handleSubmit && (
                         <Button
                             data-testid="Modal.SubmitButton"
                             // variant="primary"
@@ -110,8 +132,7 @@ export const Modal = (props: ModalProps) => {
                         </Button>
                     )}
 
-                    {handleClose
-                    && (
+                    {handleClose && (
                         <Button
                             data-testid="Modal.CancelButton"
                             // variant="secondary"

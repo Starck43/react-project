@@ -1,27 +1,30 @@
-import {memo, useCallback} from "react"
-import {useSearchParams} from "react-router-dom"
-import {useTranslation} from "react-i18next"
+import { memo, useCallback } from "react"
+import { useSearchParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
-import {fetchArticleNextList, articlesReducer, initArticleList} from "@/entities/article"
+import {
+    fetchArticleNextList,
+    articlesReducer,
+    initArticleList,
+} from "@/entities/article"
 
-import {InfiniteArticleList} from "@/features/articles"
+import { InfiniteArticleList } from "@/features/articles"
 
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
-import {useAppDispatch} from "@/shared/lib/hooks/useAppDispatch"
-import {useInitialEffect} from "@/shared/lib/hooks/useInitialEffect"
-import {Header} from "@/shared/ui/header"
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch"
+import { useInitialEffect } from "@/shared/lib/hooks/useInitialEffect"
+import { Header } from "@/shared/ui/header"
 
-import {Page} from "@/widgets/page"
+import { Page } from "@/widgets/page"
 
 import ArticlesPageControls from "./controls-bar/ArticlesPageControls"
 
-
-const initialReducers: ReducerList = {articles: articlesReducer}
+const initialReducers: ReducerList = { articles: articlesReducer }
 
 function ArticlesPage() {
-    const {t} = useTranslation("articles")
+    const { t } = useTranslation("articles")
     const dispatch = useAppDispatch()
-    const [ urlQuery ] = useSearchParams()
+    const [urlQuery] = useSearchParams()
 
     useInitialEffect(() => {
         // it will be done only once on mounting
@@ -30,10 +33,13 @@ function ArticlesPage() {
 
     const LoadNext = useCallback(() => {
         dispatch(fetchArticleNextList())
-    }, [ dispatch ])
+    }, [dispatch])
 
     return (
-        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
+        <DynamicModuleLoader
+            reducers={initialReducers}
+            destroyOnUnmount={false}
+        >
             <Page
                 id="articleListPage"
                 data-testid="ArticleListPage"

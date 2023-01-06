@@ -1,13 +1,13 @@
-import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
+import { TestAsyncFunc } from "@/shared/lib/tests/TestAsyncFunc"
 
-import {saveArticleComment} from "./saveArticleComment"
+import { saveArticleComment } from "./saveArticleComment"
 
 const text = "Added new comment"
 
 describe("NewCommentData loading test", () => {
     test("Success newComment fetching", async () => {
         const thunk = new TestAsyncFunc(saveArticleComment)
-        thunk.api?.post.mockReturnValue(Promise.resolve({text}))
+        thunk.api?.post.mockReturnValue(Promise.resolve({ text }))
         const res = await thunk.CallFunc(text)
         // console.log(res)
 
@@ -18,7 +18,7 @@ describe("NewCommentData loading test", () => {
 
     test("Failed newComment fetching", async () => {
         const thunk = new TestAsyncFunc(saveArticleComment)
-        thunk.api.post.mockReturnValue(Promise.resolve({status: 403}))
+        thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
         const res = await thunk.CallFunc(text)
         expect(res.meta.requestStatus).toBe("rejected")
 

@@ -1,10 +1,9 @@
-import {useContext, useLayoutEffect, MouseEventHandler} from "react"
+import { useContext, useLayoutEffect, MouseEventHandler } from "react"
 
-import {LOCAL_STORAGE_THEME_KEY} from "@/shared/const/localStorage"
-import {Theme} from "@/shared/const/theme"
+import { LOCAL_STORAGE_THEME_KEY } from "@/shared/const/localStorage"
+import { Theme } from "@/shared/const/theme"
 
-import {ThemeContext} from "../context/themeContext"
-
+import { ThemeContext } from "../context/themeContext"
 
 export interface UseThemeResult {
     theme?: Theme
@@ -12,7 +11,7 @@ export interface UseThemeResult {
 }
 
 const useTheme = (current?: Theme): UseThemeResult => {
-    const {theme, setTheme} = useContext(ThemeContext)
+    const { theme, setTheme } = useContext(ThemeContext)
 
     const toggleTheme: MouseEventHandler = (e) => {
         e.preventDefault()
@@ -38,9 +37,9 @@ const useTheme = (current?: Theme): UseThemeResult => {
     useLayoutEffect(() => {
         const root = document.body
         root.className = theme || current || Theme.LIGHT
-    }, [ theme, current ])
+    }, [theme, current])
 
-    return <UseThemeResult>{theme, toggleTheme}
+    return <UseThemeResult>{ theme, toggleTheme }
 }
 
 export default useTheme

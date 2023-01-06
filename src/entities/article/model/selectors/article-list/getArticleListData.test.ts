@@ -1,11 +1,14 @@
-import {StateSchema} from "@/app/providers/store-provider"
+import { StateSchema } from "@/app/providers/store-provider"
 
 import {
-    ArticleBlockType, ArticleOrderType, ArticleSortType, ArticleType, ArticleView,
+    ArticleBlockType,
+    ArticleOrderType,
+    ArticleSortType,
+    ArticleType,
+    ArticleView,
 } from "../../consts"
-import {Article} from "../../types/article"
-import {getArticlesData} from "../../slice/article-list/articleListSlice"
-
+import { Article } from "../../types/article"
+import { getArticlesData } from "../../slice/article-list/articleListSlice"
 
 const article: Article = {
     id: "1",
@@ -14,9 +17,7 @@ const article: Article = {
     img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
     views: 1022,
     createdAt: "26.02.2022",
-    type: [
-        ArticleType.IT,
-    ],
+    type: [ArticleType.IT],
     user: {
         id: "1",
         username: "admin",
@@ -35,7 +36,7 @@ const article: Article = {
         {
             id: "4",
             type: ArticleBlockType.CODE,
-            code: "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>;",
+            code: '<!DOCTYPE html>\n<html>\n  <body>\n    <p id="hello"></p>\n\n    <script>\n      document.getElementById("hello").innerHTML = "Hello, world!";\n    </script>\n  </body>\n</html>;',
         },
         {
             id: "2",
@@ -68,8 +69,8 @@ const data = {
     search: "",
     page: 1,
     hasMore: true,
-    ids: [ "1" ],
-    entities: {1: article},
+    ids: ["1"],
+    entities: { 1: article },
 }
 
 describe("AllArticlesData test", () => {
@@ -77,12 +78,14 @@ describe("AllArticlesData test", () => {
         const state: DeepPartial<StateSchema> = {
             articles: data,
         }
-        expect(getArticlesData.selectAll(state as StateSchema)).toEqual([ article ])
+        expect(getArticlesData.selectAll(state as StateSchema)).toEqual([
+            article,
+        ])
     })
 
     test("Return an empty array", () => {
         const state: DeepPartial<StateSchema> = {
-            articles: {...data, ids: [], entities: {}},
+            articles: { ...data, ids: [], entities: {} },
         }
         expect(getArticlesData.selectAll(state as StateSchema)).toEqual([])
     })

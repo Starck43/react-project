@@ -1,13 +1,12 @@
 import React from "react"
-import {ComponentMeta, Story} from "@storybook/react"
+import { ComponentMeta, Story } from "@storybook/react"
 
-import {LanguageSwitcher} from "./LanguageSwitcher"
-
+import { LanguageSwitcher } from "./LanguageSwitcher"
 
 export default {
     title: "features/LanguageSwitcher",
     component: LanguageSwitcher,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof LanguageSwitcher>
 
 const Template: Story = (args) => <LanguageSwitcher {...args} />

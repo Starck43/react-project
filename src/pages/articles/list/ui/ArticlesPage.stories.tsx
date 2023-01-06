@@ -1,18 +1,21 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {Article, ArticleBlockType, ArticleType, ArticleView} from "@/entities/article"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
+import {
+    Article,
+    ArticleBlockType,
+    ArticleType,
+    ArticleView,
+} from "@/entities/article"
 import Image from "@/shared/assets/icons/avatar-profile.jpeg"
 
-
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
 
 import ArticlesPage from "./ArticlesPage"
-
 
 export default {
     title: "pages/Articles/ListPage",
     component: ArticlesPage,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticlesPage>
 
 const Template: ComponentStory<typeof ArticlesPage> = () => <ArticlesPage />
@@ -24,11 +27,7 @@ const article: Article = {
     img: Image,
     views: 1022,
     createdAt: "26.02.2022",
-    type: [
-        ArticleType.IT,
-        ArticleType.FINANCE,
-        ArticleType.MEDIA,
-    ],
+    type: [ArticleType.IT, ArticleType.FINANCE, ArticleType.MEDIA],
     blocks: [
         {
             id: "1",
@@ -52,15 +51,15 @@ export const Default = Template.bind({})
 Default.args = {}
 Default.decorators = [
     StoreDecorator({
-        user: {authData: {id: "1"}},
+        user: { authData: { id: "1" } },
         articles: {
             _mounted: true,
-            ids: [ 0, 1, 2, 3 ],
+            ids: [0, 1, 2, 3],
             entities: {
-                0: {...article, id: "1"},
-                1: {...article, id: "2"},
-                2: {...article, id: "3"},
-                3: {...article, id: "4"},
+                0: { ...article, id: "1" },
+                1: { ...article, id: "2" },
+                2: { ...article, id: "3" },
+                3: { ...article, id: "4" },
             },
             view: ArticleView.LIST,
         },

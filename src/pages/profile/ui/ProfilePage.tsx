@@ -1,26 +1,25 @@
-import {memo, useCallback, useState} from "react"
-import {useParams} from "react-router-dom"
-import {useTranslation} from "react-i18next"
+import { memo, useCallback, useState } from "react"
+import { useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
-import {ProfileCard, profileReducer} from "@/entities/profile"
+import { ProfileCard, profileReducer } from "@/entities/profile"
 
-import {Logout} from "@/features/auth"
-import {UpdateProfileForm} from "@/features/profile"
+import { Logout } from "@/features/auth"
+import { UpdateProfileForm } from "@/features/profile"
 
 import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
-import {Header} from "@/shared/ui/header"
+import { Header } from "@/shared/ui/header"
 
-import {Page} from "@/widgets/page"
+import { Page } from "@/widgets/page"
 
-
-const initialReducers: ReducerList = {profile: profileReducer}
+const initialReducers: ReducerList = { profile: profileReducer }
 
 function ProfilePage() {
-    const {t} = useTranslation("auth")
-    const {id} = useParams<{ id: string }>()
+    const { t } = useTranslation("auth")
+    const { id } = useParams<{ id: string }>()
 
-    const [ isShowProfile, setShowProfile ] = useState(false)
-    const [ isShowLogout, setShowLogout ] = useState(false)
+    const [isShowProfile, setShowProfile] = useState(false)
+    const [isShowLogout, setShowLogout] = useState(false)
 
     const onCloseProfile = useCallback(() => {
         setShowProfile(false)
@@ -48,10 +47,7 @@ function ProfilePage() {
                 )}
 
                 {isShowLogout && (
-                    <Logout
-                        show={isShowLogout}
-                        closeHandler={onCloseLogout}
-                    />
+                    <Logout show={isShowLogout} closeHandler={onCloseLogout} />
                 )}
             </Page>
         </DynamicModuleLoader>

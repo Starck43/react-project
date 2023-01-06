@@ -1,13 +1,12 @@
-import {memo, ReactNode, ElementType} from "react"
-import {Link} from "react-router-dom"
+import { memo, ReactNode, ElementType } from "react"
+import { Link } from "react-router-dom"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {ThemeVariant} from "@/shared/types/theme"
-import type {SizeType} from "@/shared/types/ui"
-import {Flex} from "@/shared/ui/stack"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { ThemeVariant } from "@/shared/types/theme"
+import type { SizeType } from "@/shared/types/ui"
+import { Flex } from "@/shared/ui/stack"
 
 import cls from "./Header.module.sass"
-
 
 type HeaderProps = {
     tag?: ElementType
@@ -42,19 +41,28 @@ export const Header = memo((props: HeaderProps) => {
         children,
     } = props
 
-    const subtitle = typeof subTitle === "string"
-        ? <p className={cls.subtitle}>{subTitle}</p>
-        : subTitle
+    const subtitle =
+        typeof subTitle === "string" ? (
+            <p className={cls.subtitle}>{subTitle}</p>
+        ) : (
+            subTitle
+        )
 
     const Title = tag
     const content = (
         <Title
-            className={classnames(cls, [
-            "title",
-            align,
-            transform,
-            children ? "fullWidth" : undefined,
-            variant ], {shadowed, fullWidth}, [ (!children && !subtitle) ? className : undefined ])}
+            className={classnames(
+                cls,
+                [
+                    "title",
+                    align,
+                    transform,
+                    children ? "fullWidth" : undefined,
+                    variant,
+                ],
+                { shadowed, fullWidth },
+                [!children && !subtitle ? className : undefined],
+            )}
         >
             {title}
         </Title>
@@ -70,7 +78,9 @@ export const Header = memo((props: HeaderProps) => {
                 wrap
                 fullWidth={inlined || fullWidth}
                 direction={inlined ? "row" : "column"}
-                className={classnames(cls, [ "header", variant ], {inlined}, [ className ])}
+                className={classnames(cls, ["header", variant], { inlined }, [
+                    className,
+                ])}
             >
                 {title && content}
                 {subtitle}
@@ -79,13 +89,11 @@ export const Header = memo((props: HeaderProps) => {
         )
     }
 
-    return (
-        href
-            ? (
-                <Link to={href} className={cls.link}>
-                    {content}
-                </Link>
-            )
-            : content
+    return href ? (
+        <Link to={href} className={cls.link}>
+            {content}
+        </Link>
+    ) : (
+        content
     )
 })

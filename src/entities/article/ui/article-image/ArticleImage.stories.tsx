@@ -1,18 +1,19 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {ArticleBlockType} from "../../model/consts"
+import { ArticleBlockType } from "../../model/consts"
 
-import {ArticleImage} from "./ArticleImage"
-
+import { ArticleImage } from "./ArticleImage"
 
 export default {
     title: "entities/Article/Image",
     component: ArticleImage,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticleImage>
 
-const Template: ComponentStory<typeof ArticleImage> = (args) => <ArticleImage {...args} />
+const Template: ComponentStory<typeof ArticleImage> = (args) => (
+    <ArticleImage {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {

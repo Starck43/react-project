@@ -1,9 +1,8 @@
-import {memo, SVGProps, FC} from "react"
+import { memo, SVGProps, FC } from "react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
+import { classnames } from "@/shared/lib/helpers/classnames"
 
 import cls from "./Icon.module.sass"
-
 
 interface IconProps extends SVGProps<SVGSVGElement> {
     className?: string
@@ -11,11 +10,11 @@ interface IconProps extends SVGProps<SVGSVGElement> {
 }
 
 export const Icon = memo((props: IconProps) => {
-    const {className, Svg, ...other} = props
+    const { className, Svg, ...other } = props
 
     return (
         <Svg
-            className={classnames(cls, [ "icon", "svg-icon" ], {}, [ className ])}
+            className={classnames(cls, ["icon", "svg-icon"], {}, [className])}
             {...other}
         />
     )

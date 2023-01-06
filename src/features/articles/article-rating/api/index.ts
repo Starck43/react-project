@@ -1,15 +1,14 @@
-import type {Rating} from "@/entities/rating"
+import type { Rating } from "@/entities/rating"
 
-import {rtkApi} from "@/shared/api/rtkApi"
-import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
+import { rtkApi } from "@/shared/api/rtkApi"
+import { buildAbsoluteUrl } from "@/shared/lib/helpers/urls"
 
-import type {ArticleRatingSchema} from "../model/types/articleRatingSchema"
-
+import type { ArticleRatingSchema } from "../model/types/articleRatingSchema"
 
 const articleRatingApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getArticleRating: build.query<Rating[], ArticleRatingSchema>({
-            query: ({userId, articleId}) => ({
+            query: ({ userId, articleId }) => ({
                 url: buildAbsoluteUrl(__API__, "article-ratings"),
                 params: {
                     userId,

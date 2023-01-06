@@ -1,1 +1,1 @@
-export {LazyImage as Image} from "./Image"
+export { LazyImage as Image } from "./Image"

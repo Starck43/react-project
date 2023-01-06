@@ -1,22 +1,25 @@
-import {userActions} from "@/entities/user"
+import { userActions } from "@/entities/user"
 
-import {TestAsyncFunc} from "@/shared/lib/tests/TestAsyncFunc"
+import { TestAsyncFunc } from "@/shared/lib/tests/TestAsyncFunc"
 
-import {loginByUsername} from "./loginByUsername"
-
+import { loginByUsername } from "./loginByUsername"
 
 const userValue = {
-    username: "admin", password: "admin", id: "1",
+    username: "admin",
+    password: "admin",
+    id: "1",
 }
 
 describe("loginByUsername test", () => {
     test("Success login", async () => {
         const thunk = new TestAsyncFunc(loginByUsername)
-        thunk.api?.post.mockReturnValue(Promise.resolve({data: userValue}))
+        thunk.api?.post.mockReturnValue(Promise.resolve({ data: userValue }))
         const res = await thunk.CallFunc(userValue)
         // console.log(res)
 
-        expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue))
+        expect(thunk.dispatch).toHaveBeenCalledWith(
+            userActions.setAuthData(userValue),
+        )
         expect(thunk.dispatch).toHaveBeenCalledTimes(3)
         expect(thunk.api?.post).toHaveBeenCalled()
         expect(res.meta.requestStatus).toBe("fulfilled")
@@ -25,9 +28,9 @@ describe("loginByUsername test", () => {
 
     test("Failed login", async () => {
         const thunk = new TestAsyncFunc(loginByUsername)
-        thunk.api.post.mockReturnValue(Promise.resolve({status: 403}))
+        thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
         const res = await thunk.CallFunc(userValue)
-       // console.log(res)
+        // console.log(res)
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2)
         expect(thunk.api.post).toHaveBeenCalled()
@@ -35,7 +38,6 @@ describe("loginByUsername test", () => {
         expect(res.payload).toBe("error")
     })
 })
-
 
 /*
 // first test variant

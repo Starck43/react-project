@@ -1,19 +1,21 @@
-import {useCallback, useEffect} from "react"
+import { useCallback, useEffect } from "react"
 
-import {AnimationProvider, useAnimationModules} from "@/shared/lib/components/AnimationProvider"
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {useWindowDimensions} from "@/shared/lib/hooks/useWindowDimensions"
+import {
+    AnimationProvider,
+    useAnimationModules,
+} from "@/shared/lib/components/AnimationProvider"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { useWindowDimensions } from "@/shared/lib/hooks/useWindowDimensions"
 
-import {CloseButton} from "@/shared/ui/close-button"
-import {Col, Row} from "@/shared/ui/stack"
-import {Portal} from "@/shared/ui/portal"
+import { CloseButton } from "@/shared/ui/close-button"
+import { Col, Row } from "@/shared/ui/stack"
+import { Portal } from "@/shared/ui/portal"
 
-import type {DrawerProps} from "../types"
-import {Overlay} from "../overlay/Overlay"
+import type { DrawerProps } from "../types"
+import { Overlay } from "../overlay/Overlay"
 
 import styles from "../styles/Modals.module.sass"
 import cls from "./Drawer.module.sass"
-
 
 const DrawerContent = (props: DrawerProps) => {
     const {
@@ -31,25 +33,24 @@ const DrawerContent = (props: DrawerProps) => {
         children,
     } = props
 
-
-    const {width, height} = useWindowDimensions()
-    const {Spring, Gesture} = useAnimationModules()
-    const [ {x, y}, api ] = Spring.useSpring(() => ({x: width, y: height}))
+    const { width, height } = useWindowDimensions()
+    const { Spring, Gesture } = useAnimationModules()
+    const [{ x, y }, api] = Spring.useSpring(() => ({ x: width, y: height }))
 
     const openDrawer = useCallback(() => {
-        api.start({x: 0, y: 0, immediate: false})
-    }, [ api ])
+        api.start({ x: 0, y: 0, immediate: false })
+    }, [api])
 
     useEffect(() => {
         if (open) openDrawer()
-    }, [ api, open, openDrawer ])
+    }, [api, open, openDrawer])
 
     const handleClose = (velocity = 0) => {
         api.start({
             x: width,
             y: height,
             immediate: false,
-            config: {...Spring.config.stiff, velocity},
+            config: { ...Spring.config.stiff, velocity },
             onResolve: onClose,
         })
     }
@@ -57,9 +58,9 @@ const DrawerContent = (props: DrawerProps) => {
     const bind = Gesture.useDrag(
         ({
             last,
-            velocity: [ vx, vy ],
-            direction: [ dx, dy ],
-            movement: [ mx, my ],
+            velocity: [vx, vy],
+            direction: [dx, dy],
+            movement: [mx, my],
             cancel,
         }) => {
             if (position === "top" || position === "bottom") {
@@ -72,7 +73,7 @@ const DrawerContent = (props: DrawerProps) => {
                         openDrawer()
                     }
                 } else {
-                    api.start({y: my, immediate: true})
+                    api.start({ y: my, immediate: true })
                 }
             } else {
                 if (mx < -70) cancel()
@@ -84,15 +85,15 @@ const DrawerContent = (props: DrawerProps) => {
                         openDrawer()
                     }
                 } else {
-                    api.start({x: mx, immediate: true})
+                    api.start({ x: mx, immediate: true })
                 }
             }
         },
         {
-            from: () => [ x.get(), y.get() ],
+            from: () => [x.get(), y.get()],
             duration: animationTime,
             filterTaps: true,
-            bounds: {top: 0, left: 0},
+            bounds: { top: 0, left: 0 },
             rubberband: true,
         },
     )
@@ -107,19 +108,19 @@ const DrawerContent = (props: DrawerProps) => {
         const display = y.to((py) => (py < height ? "block" : "none"))
         overlayStyle = {
             display,
-            opacity: y.to([ 0, height ], [ 1, 0 ], "clamp"),
+            opacity: y.to([0, height], [1, 0], "clamp"),
         }
-        drawerStyle = {display, bottom: -100, y}
-        contentStyle = {paddingBottom: "calc(var(--modal-padding) + 100px)"}
+        drawerStyle = { display, bottom: -100, y }
+        contentStyle = { paddingBottom: "calc(var(--modal-padding) + 100px)" }
     } else {
         const display = x.to((px) => (px < width ? "block" : "none"))
 
         overlayStyle = {
             display,
-            opacity: x.to([ 0, width ], [ 1, 0 ], "clamp"),
+            opacity: x.to([0, width], [1, 0], "clamp"),
         }
-        drawerStyle = {display, right: -100, x}
-        contentStyle = {paddingRight: "calc(var(--modal-padding) + 100px)"}
+        drawerStyle = { display, right: -100, x }
+        contentStyle = { paddingRight: "calc(var(--modal-padding) + 100px)" }
     }
 
     let portalRoot
@@ -139,17 +140,22 @@ const DrawerContent = (props: DrawerProps) => {
                     role="link"
                     align="center"
                     justify="between"
-                    className={classnames(cls, [ "drawer__content", "show", "shadowed", position ], {
-                        rounded,
-                        bordered,
-                        fullSize,
-                    }, [
-                        styles.modals,
-                        styles.open,
-                        bordered ? styles.bordered : "",
-                        fullSize ? styles.fullSize : "",
-                        className,
-                    ])}
+                    className={classnames(
+                        cls,
+                        ["drawer__content", "show", "shadowed", position],
+                        {
+                            rounded,
+                            bordered,
+                            fullSize,
+                        },
+                        [
+                            styles.modals,
+                            styles.open,
+                            bordered ? styles.bordered : "",
+                            fullSize ? styles.fullSize : "",
+                            className,
+                        ],
+                    )}
                     style={contentStyle}
                 >
                     <Row
@@ -161,11 +167,16 @@ const DrawerContent = (props: DrawerProps) => {
                     >
                         {header}
                         {showClose && (
-                            <CloseButton className={styles.close__button} handleClick={() => handleClose()} />
+                            <CloseButton
+                                className={styles.close__button}
+                                handleClick={() => handleClose()}
+                            />
                         )}
                     </Row>
 
-                    <div className={classnames(cls, [ "body" ], {}, [ styles.body ])}>
+                    <div
+                        className={classnames(cls, ["body"], {}, [styles.body])}
+                    >
                         {children}
                     </div>
                 </Col>
@@ -182,7 +193,7 @@ const DrawerContent = (props: DrawerProps) => {
 }
 
 const DrawerAsync = (props: DrawerProps) => {
-    const {isLoaded} = useAnimationModules()
+    const { isLoaded } = useAnimationModules()
 
     return isLoaded ? <DrawerContent {...props} /> : null
 }

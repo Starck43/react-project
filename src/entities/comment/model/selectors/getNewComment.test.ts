@@ -1,13 +1,12 @@
-import {StateSchema} from "@/app/providers/store-provider"
-import {getNewCommentText, getNewCommentError} from "./getNewComment"
-
+import { StateSchema } from "@/app/providers/store-provider"
+import { getNewCommentText, getNewCommentError } from "./getNewComment"
 
 const text = "new comment"
 
 describe("NewCommentData test", () => {
     test("Return success newComment data", () => {
         const state: DeepPartial<StateSchema> = {
-            newComment: {text},
+            newComment: { text },
         }
         expect(getNewCommentText(state as StateSchema)).toEqual(text)
     })
@@ -17,7 +16,6 @@ describe("NewCommentData test", () => {
         expect(getNewCommentText(state as StateSchema)).toEqual(undefined)
     })
 })
-
 
 describe("NewCommentError test", () => {
     test("Return success newComment error", () => {

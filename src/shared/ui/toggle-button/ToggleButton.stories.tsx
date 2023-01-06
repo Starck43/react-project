@@ -1,8 +1,7 @@
 import React from "react"
-import {ComponentMeta, Story} from "@storybook/react"
+import { ComponentMeta, Story } from "@storybook/react"
 
-import {ToggleButton, ToggleButtonProps} from "./ToggleButton"
-
+import { ToggleButton, ToggleButtonProps } from "./ToggleButton"
 
 export default {
     title: "shared/ToggleButton",

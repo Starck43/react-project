@@ -1,0 +1,9 @@
+# Ignore artifacts:
+build
+node_modules
+reports
+storybook-static
+.loki
+*.html
+*.sass
+*.scss

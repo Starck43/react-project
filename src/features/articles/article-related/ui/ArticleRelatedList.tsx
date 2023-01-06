@@ -1,24 +1,27 @@
-import React, {memo} from "react"
-import {useTranslation} from "react-i18next"
+import React, { memo } from "react"
+import { useTranslation } from "react-i18next"
 
-import {ArticleList, ArticleView} from "@/entities/article"
+import { ArticleList, ArticleView } from "@/entities/article"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
-import {Header} from "@/shared/ui/header"
-import {Loader} from "@/shared/ui/loader"
+import { classnames } from "@/shared/lib/helpers/classnames"
+import { Header } from "@/shared/ui/header"
+import { Loader } from "@/shared/ui/loader"
 
-import {useArticleRelatedList} from "../api"
+import { useArticleRelatedList } from "../api"
 
 import cls from "./ArticleRelatedList.module.sass"
-
 
 interface ArticleRelatedProps {
     className?: string
 }
 
-export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
-    const {t} = useTranslation("articles")
-    const {isLoading, data: related, error} = useArticleRelatedList({limit: 4})
+export const ArticleRelatedList = memo(({ className }: ArticleRelatedProps) => {
+    const { t } = useTranslation("articles")
+    const {
+        isLoading,
+        data: related,
+        error,
+    } = useArticleRelatedList({ limit: 4 })
 
     if (!related || error) return null
 
@@ -29,7 +32,7 @@ export const ArticleRelatedList = memo(({className}: ArticleRelatedProps) => {
     return (
         <section
             data-testid="Article.Related"
-            className={classnames(cls, [ "related" ], {}, [ className ])}
+            className={classnames(cls, ["related"], {}, [className])}
         >
             <Header
                 tag="h2"

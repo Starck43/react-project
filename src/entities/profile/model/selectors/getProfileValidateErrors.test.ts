@@ -1,8 +1,7 @@
-import type {StateSchema} from "@/app/providers/store-provider"
+import type { StateSchema } from "@/app/providers/store-provider"
 
-import {ValidateProfileError} from "../../model/consts"
-import {getProfileValidateErrors} from "./getProfile"
-
+import { ValidateProfileError } from "../../model/consts"
+import { getProfileValidateErrors } from "./getProfile"
 
 describe("ProfileValidateErrors test", () => {
     test("Return success profile validate errors", () => {
@@ -22,6 +21,8 @@ describe("ProfileValidateErrors test", () => {
 
     test("Return an empty state", () => {
         const state: DeepPartial<StateSchema> = {}
-        expect(getProfileValidateErrors(state as StateSchema)).toEqual(undefined)
+        expect(getProfileValidateErrors(state as StateSchema)).toEqual(
+            undefined,
+        )
     })
 })

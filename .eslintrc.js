@@ -10,6 +10,7 @@ module.exports = {
         "plugin:react/recommended",
         "plugin:i18next/recommended",
         "plugin:storybook/recommended",
+        "prettier",
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -27,19 +28,17 @@ module.exports = {
         "paths-observer", // custom plugin
     ],
     rules: {
-        "no-tabs": 0,
         indent: [
-            0, 4, {
-                SwitchCase: 1,
-                FunctionDeclaration: {parameters: "first"},
-            },
+            "error",
+            4,
+            { SwitchCase: 1, FunctionDeclaration: { parameters: "first" } },
         ],
-        semi: [ 1, "never" ],
-        quotes: [ 1, "double" ],
+        "comma-dangle": ["error", "only-multiline"],
+        "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
         "no-undef": "off",
-        "no-mixed-spaces-and-tabs": [ 2, "smart-tabs" ],
         "max-len": [
-            0, {
+            0,
+            {
                 code: 120,
                 comments: 200,
                 ignorePattern: true,
@@ -49,7 +48,8 @@ module.exports = {
             },
         ],
         "@typescript-eslint/no-unused-vars": [
-            "warn", {
+            "warn",
+            {
                 vars: "local",
                 args: "after-used",
                 ignoreRestSiblings: false,
@@ -57,33 +57,40 @@ module.exports = {
             },
         ],
         "no-unused-vars": "off",
-        "array-bracket-spacing": [ 1, "always" ],
-        "react/jsx-indent": [ 2, 4 ],
-        "react/jsx-indent-props": [ 2, 4 ],
-        "react/jsx-filename-extension": [ 2, {extensions: [ ".js", ".jsx", ".tsx" ] } ],
-        "object-curly-spacing": [ "error", "never", {arraysInObjects: true} ],
-        "react/jsx-uses-react": "off",
-        "react/react-in-jsx-scope": "off",
-        "import/no-unresolved": "off",
-        "import/prefer-default-export": "off",
-        "react/prop-types": "off",
-        "react/require-default-props": "off",
-        "react/jsx-closing-tag-location": "off",
-        "react/function-component-definition": "off",
-        "react/jsx-props-no-spreading": "off",
-        "react-hooks/exhaustive-deps": "error",
-        "react-hooks/rules-of-hooks": "error",
-        "react/display-name": "off",
-        "react/jsx-one-expression-per-line": "off",
         "no-shadow": "off",
         "no-param-reassign": "off",
         "no-underscore-dangle": "off",
         "no-multiple-empty-lines": "off",
         "no-nested-ternary": "off",
-        "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true} ],
-        "no-plusplus": [ "error", {allowForLoopAfterthoughts: true} ],
-        "import/extensions": "off",
-        "import/no-extraneous-dependencies": "off",
+        "no-trailing-spaces": [
+            "warn",
+            { skipBlankLines: false, ignoreComments: true },
+        ],
+        "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
+        "newline-per-chained-call": ["error", { ignoreChainWithDepth: 3 }],
+        "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true}],
+        // "padding-line-between-statements": [ "error", { "blankLine": "always", "prev": "*", "next": "export" }],
+        "react/jsx-filename-extension": [
+            "warn",
+            { extensions: [".tsx", ".jsx"] },
+        ],
+        "react/jsx-max-props-per-line": [
+            "error",
+            { maximum: { single: 4, multi: 2 } },
+        ],
+        "react/jsx-uses-react": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/jsx-closing-tag-location": "off",
+        "react/display-name": "off",
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "react/require-default-props": "off",
+        "react/function-component-definition": "off",
+        "react/no-array-index-key": "warn",
+        "react-hooks/exhaustive-deps": "error",
+        "react-hooks/rules-of-hooks": "error",
+        "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
         "jsx-a11y/no-static-element-interactions": [
             "error",
             {
@@ -98,23 +105,15 @@ module.exports = {
                 allowExpressionValues: true,
             },
         ],
-        "jsx-a11y/no-noninteractive-element-to-interactive-role": "warn",
-        "react/no-array-index-key": "warn",
-        "i18next/no-literal-string": [
-            "warn", {
-                markupOnly: true,
-                // ignoreAttribute: [ "data-testid", "to", "target" ],
-                onlyAttribute: [ "" ],
-            },
-        ],
         "array-element-newline": [
-            "error", {
-                ArrayExpression: "consistent",
-                ArrayPattern: {minItems: 5},
-            },
+            "error",
+            { ArrayExpression: "consistent", ArrayPattern: { minItems: 5 } },
         ],
+        // "array-bracket-spacing": [ 1, "always" ],
+        // "object-curly-spacing": [ "error", "never", {arraysInObjects: true} ],
         "object-curly-newline": [
-            "warn", {
+            "warn",
+            {
                 ObjectPattern: {
                     multiline: true,
                     minProperties: 5,
@@ -129,6 +128,12 @@ module.exports = {
                 },
             },
         ],
+        "unused-imports/no-unused-imports": "warn",
+        // "import/newline-after-import": ["error", { count: 2 }],
+        "import/no-unresolved": "off",
+        "import/prefer-default-export": "off",
+        "import/extensions": "off",
+        "import/no-extraneous-dependencies": "off",
         "import/order": [
             "error",
             {
@@ -178,16 +183,28 @@ module.exports = {
                 "newlines-between": "ignore",
             },
         ],
-        "unused-imports/no-unused-imports": "warn",
-        "paths-observer/only-relative-imports-in-layer": [ "error", {alias: "@"} ],
+        "i18next/no-literal-string": [
+            "warn",
+            {
+                markupOnly: true,
+                // ignoreAttribute: [ "data-testid", "to", "target" ],
+                onlyAttribute: [""],
+            },
+        ],
+        "paths-observer/only-relative-imports-in-layer": [
+            "error",
+            { alias: "@" },
+        ],
         "paths-observer/only-public-api-imports": [
-            "error", {
+            "error",
+            {
                 alias: "@",
-                ignoreFilePatterns: [ "**/StoreDecorator.tsx" ],
+                ignoreFilePatterns: ["**/StoreDecorator.tsx"],
             },
         ],
         "paths-observer/layer-imports-order": [
-            "error", {
+            "error",
+            {
                 alias: "@",
                 ignoreImportPatterns: [
                     "**/store-provider",
@@ -201,7 +218,7 @@ module.exports = {
     },
     overrides: [
         {
-            files: [ "**/src/**/*.{test,stories}.{ts,tsx}" ],
+            files: ["**/src/**/*.{test,stories}.{ts,tsx}"],
             rules: {
                 "i18next/no-literal-string": "off",
                 "max-len": "off",
@@ -213,5 +230,5 @@ module.exports = {
         __API__: true,
         __PROJECT__: true,
     },
-    settings: {react: {version: "detect"}},
+    settings: { react: { version: "detect" } },
 }

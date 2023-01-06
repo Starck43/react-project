@@ -1,25 +1,24 @@
-import {memo} from "react"
-import {useNavigate} from "react-router-dom"
-import {useSelector} from "react-redux"
-import {useTranslation} from "react-i18next"
+import { memo } from "react"
+import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { useTranslation } from "react-i18next"
 
-import {getUser, User} from "@/entities/user"
+import { getUser, User } from "@/entities/user"
 
-import {LoginForm} from "@/features/auth"
+import { LoginForm } from "@/features/auth"
 
-import {getRouteProfile} from "@/shared/const/router"
-import {Info, InfoStatus} from "@/shared/ui/info"
-import {NavLink} from "@/shared/ui/link"
-import {Header} from "@/shared/ui/header"
-import {Col} from "@/shared/ui/stack"
+import { getRouteProfile } from "@/shared/const/router"
+import { Info, InfoStatus } from "@/shared/ui/info"
+import { NavLink } from "@/shared/ui/link"
+import { Header } from "@/shared/ui/header"
+import { Col } from "@/shared/ui/stack"
 
-import {Page} from "@/widgets/page"
-
+import { Page } from "@/widgets/page"
 
 function AuthPage() {
-    const {t} = useTranslation("auth")
+    const { t } = useTranslation("auth")
     const navigate = useNavigate()
-    const {id, username} = useSelector(getUser)
+    const { id, username } = useSelector(getUser)
 
     const successLoginHandler = (res: User) => {
         if (res.id) {
@@ -31,7 +30,7 @@ function AuthPage() {
         return (
             <Col align="center" gap="md" fullWidth>
                 <Info
-                    title={t("вы уже вошли под именем", {username}) || ""}
+                    title={t("вы уже вошли под именем", { username }) || ""}
                     status={InfoStatus.WARNING}
                 />
                 <NavLink

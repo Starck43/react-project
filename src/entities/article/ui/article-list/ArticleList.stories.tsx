@@ -1,26 +1,23 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
 import Image from "@/shared/assets/icons/avatar-profile.jpeg"
 
-import type {Article} from "../../model/types/article"
-import {ArticleView, ArticleBlockType, ArticleType} from "../../model/consts"
+import type { Article } from "../../model/types/article"
+import { ArticleView, ArticleBlockType, ArticleType } from "../../model/consts"
 
-import {ArticleList} from "./ArticleList"
-
+import { ArticleList } from "./ArticleList"
 
 export default {
     title: "entities/Article/ArticleList",
     component: ArticleList,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
     args: {
         view: ArticleView.TILE,
         virtualized: false,
     },
-    decorators: [
-        StoreDecorator({}),
-    ],
+    decorators: [StoreDecorator({})],
 } as ComponentMeta<typeof ArticleList>
 
 const article: Article = {
@@ -30,11 +27,7 @@ const article: Article = {
     img: Image,
     views: 1022,
     createdAt: "26.02.2022",
-    type: [
-        ArticleType.IT,
-        ArticleType.FINANCE,
-        ArticleType.MEDIA,
-    ],
+    type: [ArticleType.IT, ArticleType.FINANCE, ArticleType.MEDIA],
     blocks: [
         {
             id: "1",
@@ -54,17 +47,23 @@ const article: Article = {
     },
 }
 
-const Template: ComponentStory<typeof ArticleList> = (args) => <ArticleList {...args} />
+const Template: ComponentStory<typeof ArticleList> = (args) => (
+    <ArticleList {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {
     isLoading: false,
     virtualized: false,
-    articles: new Array(6).fill(0).map((item, i) => ({...article, id: String(i)})),
+    articles: new Array(6)
+        .fill(0)
+        .map((item, i) => ({ ...article, id: String(i) })),
 }
 
 export const Loading = Template.bind({})
 Loading.args = {
     isLoading: true,
-    articles: new Array(6).fill(0).map((item, i) => ({...article, id: String(i)})),
+    articles: new Array(6)
+        .fill(0)
+        .map((item, i) => ({ ...article, id: String(i) })),
 }

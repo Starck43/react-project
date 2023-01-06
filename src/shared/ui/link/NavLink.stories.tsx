@@ -1,14 +1,14 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {NavLink, NavLinkProps} from "./NavLink"
+import { NavLink, NavLinkProps } from "./NavLink"
 
 import ArrowIcon from "./assets/arrow-shevron-left.svg"
 
 export default {
     title: "shared/Navigation Link",
     component: NavLink,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
     args: {
         to: "#",
         title: <h5>Link</h5>,
@@ -16,7 +16,9 @@ export default {
     },
 } as unknown as ComponentMeta<typeof NavLink>
 
-const Template: ComponentStory<typeof NavLink> = (args: NavLinkProps) => <NavLink {...args} />
+const Template: ComponentStory<typeof NavLink> = (args: NavLinkProps) => (
+    <NavLink {...args} />
+)
 
 export const Clear = Template.bind({})
 Clear.args = {

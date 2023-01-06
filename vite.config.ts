@@ -1,23 +1,20 @@
-import {defineConfig, loadEnv} from "vite"
+import { defineConfig, loadEnv } from "vite"
 import react from "@vitejs/plugin-react"
 import legacy from "@vitejs/plugin-legacy"
 import svgr from "vite-plugin-svgr"
 
-
-export default defineConfig(({mode}) => {
+export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), "")
     return {
         plugins: [
-            svgr({exportAsDefault: true}),
+            svgr({ exportAsDefault: true }),
             react(),
             legacy({
-                targets: [ "defaults", "not IE 11" ],
+                targets: ["defaults", "not IE 11"],
             }),
         ],
         resolve: {
-            alias: [
-                {find: "@", replacement: "/src"},
-            ],
+            alias: [{ find: "@", replacement: "/src" }],
         },
         define: {
             __IS_DEV__: JSON.stringify(true),

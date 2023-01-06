@@ -1,15 +1,14 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {Button, ButtonSize} from "@/shared/ui/button"
+import { Button, ButtonSize } from "@/shared/ui/button"
 
-import {Flex} from "./Flex"
-
+import { Flex } from "./Flex"
 
 export default {
     title: "shared/stack/Flex",
     component: Flex,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
     args: {
         style: {
             position: "absolute",
@@ -20,7 +19,9 @@ export default {
             <>
                 {new Array(3).fill(0).map((_, index) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <Button key={index} bordered size={ButtonSize.NORMAL}>{100 ** (index + 1)}</Button>
+                    <Button key={index} bordered size={ButtonSize.NORMAL}>
+                        {100 ** (index + 1)}
+                    </Button>
                 ))}
             </>
         ),

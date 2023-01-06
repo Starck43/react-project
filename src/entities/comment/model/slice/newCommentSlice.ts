@@ -1,7 +1,6 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import {NewCommentSchema} from "../types/newComment"
-
+import { NewCommentSchema } from "../types/newComment"
 
 const initialState: NewCommentSchema = {
     text: undefined,
@@ -19,5 +18,5 @@ export const newCommentSlice = createSlice({
     // extraReducers: (builder) => {},
 })
 
-export const {actions: newCommentActions} = newCommentSlice
-export const {reducer: newCommentReducer} = newCommentSlice
+export const { actions: newCommentActions } = newCommentSlice
+export const { reducer: newCommentReducer } = newCommentSlice

@@ -1,9 +1,8 @@
-import {ElementType, memo} from "react"
+import { ElementType, memo } from "react"
 
-import {classnames} from "@/shared/lib/helpers/classnames"
+import { classnames } from "@/shared/lib/helpers/classnames"
 
 import cls from "./Overlay.module.sass"
-
 
 interface OverlayProps {
     as?: ElementType
@@ -16,14 +15,16 @@ interface OverlayProps {
 
 export const Overlay = memo((props: OverlayProps) => {
     const {
-        as = "div", open, show, onClick, className, style,
+        as = "div", open, show, onClick, className, style
     } = props
 
     const Tag = as
     return (
         <Tag
             aria-modal
-            className={classnames(cls, [ "overlay" ], {open, show}, [ className ])}
+            className={classnames(cls, ["overlay"], { open, show }, [
+                className,
+            ])}
             onClick={onClick}
             style={style}
         />

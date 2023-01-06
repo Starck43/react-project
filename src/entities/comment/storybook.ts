@@ -1,1 +1,1 @@
-export {newCommentReducer} from "./model/slice/newCommentSlice"
+export { newCommentReducer } from "./model/slice/newCommentSlice"

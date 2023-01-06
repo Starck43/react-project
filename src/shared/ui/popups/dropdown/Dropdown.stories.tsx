@@ -1,14 +1,13 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {Button} from "@/shared/ui/button"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { Button } from "@/shared/ui/button"
 
-import {Dropdown} from "./Dropdown"
-
+import { Dropdown } from "./Dropdown"
 
 export default {
     title: "shared/popups/Dropdown",
     component: Dropdown,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
     args: {
         toggleElement: <Button>Menu</Button>,
         items: [
@@ -26,7 +25,9 @@ export default {
     },
 } as ComponentMeta<typeof Dropdown>
 
-const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} />
+const Template: ComponentStory<typeof Dropdown> = (args) => (
+    <Dropdown {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}

@@ -1,9 +1,8 @@
-import {EntityState} from "@reduxjs/toolkit"
+import { EntityState } from "@reduxjs/toolkit"
 
-import {User} from "@/entities/user"
+import { User } from "@/entities/user"
 
-import {ValidateCommentError} from "../consts"
-
+import { ValidateCommentError } from "../consts"
 
 export interface Comment {
     id: string
@@ -11,7 +10,7 @@ export interface Comment {
     text: string
 }
 
-export interface CommentSchema extends EntityState<Comment>{
+export interface CommentSchema extends EntityState<Comment> {
     data?: Comment[]
     isLoading: boolean
     error?: string

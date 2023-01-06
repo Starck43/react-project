@@ -1,14 +1,13 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
 import avatar from "@/shared/assets/icons/avatar-profile.png"
-import {Avatar} from "./Avatar"
-
+import { Avatar } from "./Avatar"
 
 export default {
     title: "shared/Avatar",
     component: Avatar,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof Avatar>
 
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />
@@ -21,14 +20,14 @@ Default.args = {
 
 export const PlaceholderWithCustomSize = Template.bind({})
 PlaceholderWithCustomSize.args = {
-// @ts-ignore
+    // @ts-ignore
     src: "",
     size: 200,
 }
 
 export const InlinedXS = Template.bind({})
 InlinedXS.args = {
-// @ts-ignore
+    // @ts-ignore
     src: "",
     inlined: true,
     rounded: true,
@@ -38,7 +37,7 @@ InlinedXS.args = {
 
 export const WithAvatarLG = Template.bind({})
 WithAvatarLG.args = {
-// @ts-ignore
+    // @ts-ignore
     src: avatar,
     size: "lg",
     rounded: true,
@@ -47,7 +46,7 @@ WithAvatarLG.args = {
 
 export const WithPlaceholderXS = Template.bind({})
 WithPlaceholderXS.args = {
-// @ts-ignore
+    // @ts-ignore
     src: "",
     size: "xs",
     rounded: true,

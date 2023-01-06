@@ -1,22 +1,23 @@
-import {ComponentMeta, ComponentStory} from "@storybook/react"
-import {buildAbsoluteUrl} from "@/shared/lib/helpers/urls"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { buildAbsoluteUrl } from "@/shared/lib/helpers/urls"
 
-import {StoreDecorator} from "@/shared/config/storybook/StoreDecorator"
+import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"
 
-import {NotificationList} from "./NotificationList"
-
+import { NotificationList } from "./NotificationList"
 
 export default {
     title: "entities/Notifications/List",
     component: NotificationList,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof NotificationList>
 
-const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />
+const Template: ComponentStory<typeof NotificationList> = (args) => (
+    <NotificationList {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {}
-Default.decorators = [ StoreDecorator({}) ]
+Default.decorators = [StoreDecorator({})]
 Default.parameters = {
     mockData: [
         {

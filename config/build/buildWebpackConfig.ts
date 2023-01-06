@@ -32,7 +32,7 @@ export function buildWebpackConfig(options: BuildWebpackOptions): webpack.Config
             modules: [ options.paths.src, "node_modules" ],
             mainFiles: [ "index" ],
             alias: {
-               "@": options.paths.src, // '@' added in tsconfig as well
+                "@": options.paths.src, // '@' added in tsconfig as well
             },
         },
         devtool: isDev ? "eval-cheap-module-source-map" : undefined,

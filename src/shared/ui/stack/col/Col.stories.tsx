@@ -1,15 +1,14 @@
 import React from "react"
-import {ComponentMeta, ComponentStory} from "@storybook/react"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
 
-import {Button, ButtonSize} from "@/shared/ui/button"
+import { Button, ButtonSize } from "@/shared/ui/button"
 
 import Col from "./Col"
-
 
 export default {
     title: "shared/stack/Col",
     component: Col,
-    argTypes: {backgroundColor: {control: "color"}},
+    argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof Col>
 
 const Template: ComponentStory<typeof Col> = (args) => <Col {...args} />
@@ -20,9 +19,15 @@ Default.args = {
     justify: "between",
     children: (
         <>
-            <Button bordered size={ButtonSize.NORMAL}>Item 1</Button>
-            <Button bordered size={ButtonSize.LARGE}>Item 2</Button>
-            <Button bordered size={ButtonSize.SMALL}>Item 3</Button>
+            <Button bordered size={ButtonSize.NORMAL}>
+                Item 1
+            </Button>
+            <Button bordered size={ButtonSize.LARGE}>
+                Item 2
+            </Button>
+            <Button bordered size={ButtonSize.SMALL}>
+                Item 3
+            </Button>
         </>
     ),
 }
@@ -34,9 +39,15 @@ FullWidth.args = {
     fullWidth: true,
     children: (
         <>
-            <Button bordered size={ButtonSize.NORMAL}>Item 1</Button>
-            <Button bordered size={ButtonSize.LARGE}>Item 2</Button>
-            <Button bordered size={ButtonSize.SMALL}>Item 3</Button>
+            <Button bordered size={ButtonSize.NORMAL}>
+                Item 1
+            </Button>
+            <Button bordered size={ButtonSize.LARGE}>
+                Item 2
+            </Button>
+            <Button bordered size={ButtonSize.SMALL}>
+                Item 3
+            </Button>
         </>
     ),
 }

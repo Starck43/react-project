@@ -1,19 +1,24 @@
 import path from "path"
-import webpack, {DefinePlugin, RuleSetRule} from "webpack"
+import webpack, { DefinePlugin, RuleSetRule } from "webpack"
 
-import type {Paths} from "../build/types/config"
-import {buildFileLoader} from "../build/loaders/buildFileLoader"
-import {buildCssLoader} from "../build/loaders/buildCssLoader"
+import type { Paths } from "../build/types/config"
+import { buildFileLoader } from "../build/loaders/buildFileLoader"
+import { buildCssLoader } from "../build/loaders/buildCssLoader"
 
-
-export default ({config}: { config: webpack.Configuration }) => {
+export default ({ config }: { config: webpack.Configuration }) => {
     const paths: Paths = {
         build: "",
         html: "",
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src"),
         publicLocales: path.resolve(__dirname, "..", "..", "public", "locales"),
-        buildLocales: path.resolve(__dirname, "..", "..", "storybook-static", "locales"),
+        buildLocales: path.resolve(
+            __dirname,
+            "..",
+            "..",
+            "storybook-static",
+            "locales",
+        ),
     }
 
     config.resolve!.extensions!.push(".ts", ".tsx")
@@ -24,14 +29,14 @@ export default ({config}: { config: webpack.Configuration }) => {
     }
 
     const rules = config.module!.rules as RuleSetRule[]
-    config.module!.rules = rules.map((rule) => (
+    config.module!.rules = rules.map((rule) =>
         /svg/.test(rule.test as string)
-            ? {...rule, exclude: /\.svg$/i}
-            : rule
-    ))
+            ? { ...rule, exclude: /\.svg$/i }
+            : rule,
+    )
 
     config.module!.rules.push(...buildFileLoader())
-/*
+    /*
     config!.module!.rules.push({
         test: /\.svg$/,
         use: [ "@svgr/webpack" ],
@@ -39,10 +44,14 @@ export default ({config}: { config: webpack.Configuration }) => {
     */
     config.module!.rules.push(buildCssLoader(true))
 
-    config.plugins!.push(new DefinePlugin({
-        __IS_DEV__: JSON.stringify(true),
-        __API__: JSON.stringify(process.env.API_SERVER || "http://localhost:8000"),
-        __PROJECT__: JSON.stringify("storybook"),
-    }))
+    config.plugins!.push(
+        new DefinePlugin({
+            __IS_DEV__: JSON.stringify(true),
+            __API__: JSON.stringify(
+                process.env.API_SERVER || "http://localhost:8000",
+            ),
+            __PROJECT__: JSON.stringify("storybook"),
+        }),
+    )
     return config
 }

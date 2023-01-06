@@ -1,7 +1,11 @@
-import {StateSchema} from "@/app/providers/store-provider"
-import {Country} from "@/entities/country"
-import {getProfileCopy, getProfileData, getProfileError, getProfileLoading} from "./getProfile"
-
+import { StateSchema } from "@/app/providers/store-provider"
+import { Country } from "@/entities/country"
+import {
+    getProfileCopy,
+    getProfileData,
+    getProfileError,
+    getProfileLoading,
+} from "./getProfile"
 
 const profileData = {
     id: "1",

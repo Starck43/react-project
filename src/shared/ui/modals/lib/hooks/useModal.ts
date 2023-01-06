@@ -1,8 +1,10 @@
 import {
-    useCallback, useEffect, useRef, useState,
+    useCallback,
+    useEffect,
+    useRef,
+    useState,
     MutableRefObject,
 } from "react"
-
 
 interface HookModalProps {
     onSubmit?: () => void
@@ -19,9 +21,14 @@ interface HookModalProps {
  * @param animationTime
  */
 
-export const useModal = ({onSubmit, onClose, isOpen, animationTime}: HookModalProps) => {
-    const [ isShown, setIsShown ] = useState(false)
-    const [ isMounted, setIsMounted ] = useState(false)
+export const useModal = ({
+    onSubmit,
+    onClose,
+    isOpen,
+    animationTime,
+}: HookModalProps) => {
+    const [isShown, setIsShown] = useState(false)
+    const [isMounted, setIsMounted] = useState(false)
     const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>
 
     const handleSubmit = useCallback(() => {
@@ -32,7 +39,7 @@ export const useModal = ({onSubmit, onClose, isOpen, animationTime}: HookModalPr
                 onSubmit()
             }, animationTime)
         }
-    }, [ animationTime, onSubmit ])
+    }, [animationTime, onSubmit])
 
     const handleClose = useCallback(() => {
         if (onClose) {
@@ -42,13 +49,16 @@ export const useModal = ({onSubmit, onClose, isOpen, animationTime}: HookModalPr
                 onClose()
             }, animationTime)
         }
-    }, [ animationTime, onClose ])
+    }, [animationTime, onClose])
 
-    const onPressKey = useCallback((e: KeyboardEvent) => {
-        if (e.key === "Escape") {
-            handleClose()
-        }
-    }, [ handleClose ])
+    const onPressKey = useCallback(
+        (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                handleClose()
+            }
+        },
+        [handleClose],
+    )
 
     useEffect(() => {
         if (isOpen) {
@@ -57,7 +67,7 @@ export const useModal = ({onSubmit, onClose, isOpen, animationTime}: HookModalPr
                 setIsShown(true)
             }, 0)
         }
-    }, [ isOpen ])
+    }, [isOpen])
 
     useEffect(() => {
         if (isOpen) {
@@ -68,8 +78,7 @@ export const useModal = ({onSubmit, onClose, isOpen, animationTime}: HookModalPr
             clearTimeout(timerRef.current)
             window.removeEventListener("keydown", onPressKey)
         }
-    }, [ isOpen, onPressKey ])
-
+    }, [isOpen, onPressKey])
 
     return {
         isShown,
