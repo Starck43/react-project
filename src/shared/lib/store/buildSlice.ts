@@ -1,6 +1,10 @@
 import { useMemo } from "react"
 import { useDispatch } from "react-redux"
-import { bindActionCreators, createSlice } from "@reduxjs/toolkit"
+import {
+    bindActionCreators,
+    createSlice,
+    CaseReducerActions,
+} from "@reduxjs/toolkit"
 import { SliceCaseReducers, CreateSliceOptions } from "@reduxjs/toolkit/dist"
 
 export function buildSlice<
@@ -12,9 +16,8 @@ export function buildSlice<
 
     const useActions = (): typeof slice.actions => {
         const dispatch = useDispatch()
-        // @ts-ignore
-        return useMemo(
-            () => bindActionCreators(slice.actions, dispatch),
+        return useMemo<CaseReducerActions<CaseReducers, Name>>(
+            () => bindActionCreators(slice.actions as any, dispatch),
             [dispatch],
         )
     }
