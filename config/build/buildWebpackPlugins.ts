@@ -10,8 +10,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 
 import {BuildWebpackOptions} from "./types/config"
 
-
-const Dotenv = require("dotenv-webpack")
+require("dotenv").config()
 
 
 export function buildWebpackPlugins({
@@ -27,7 +26,7 @@ export function buildWebpackPlugins({
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-            __API__: JSON.stringify(apiUrl),
+            __API__: JSON.stringify(apiUrl || process.env.API_SERVER || "http://localhost:8000"),
             __PROJECT__: JSON.stringify(project),
         }),
         new CircularDependencyPlugin({
@@ -43,7 +42,6 @@ export function buildWebpackPlugins({
                 mode: "write-references",
             },
         }),
-        new Dotenv(),
     ]
 
     if (isDev) {

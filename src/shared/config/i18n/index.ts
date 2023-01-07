@@ -1,25 +1,24 @@
 import i18n from "i18next"
 
+import Backend from "i18next-http-backend"
 import LanguageDetector from "i18next-browser-languagedetector"
 import { initReactI18next } from "react-i18next"
 
-i18n
-    // .use(Backend)
+i18n.use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
         debug: false,
         supportedLngs: ["en", "ru"],
         lng: "ru",
-        ns: "ru",
         fallbackLng: "ru",
         defaultNS: "translation",
         interpolation: { escapeValue: false }, // not needed for react as it escapes by default
-        // lowerCaseLng: true,
+        lowerCaseLng: true,
         // react: {useSuspense: false},
         backend: {
             loadPath: "/locales/{{lng}}/{{ns}}.json",
-            addPath: "../../public/locales/{{lng}}/{{ns}}.json",
+            addPath: "/public/locales/{{lng}}/{{ns}}.json",
         },
     })
 
