@@ -16,7 +16,7 @@ const router = jsonServer.router(path.resolve(__dirname, "db.json"))
 server.use(jsonServer.defaults({}))
 server.use(jsonServer.bodyParser)
 
-// Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
+// fake delay for real loading content imitation
 server.use(async (req, res, next) => {
     await new Promise((res) => {
         setTimeout(res, 800)
@@ -24,7 +24,7 @@ server.use(async (req, res, next) => {
     next()
 })
 
-// Эндпоинт для логина
+// login endpoint
 server.post("/login", (req, res) => {
     try {
         const { username, password } = req.body
@@ -43,12 +43,13 @@ server.post("/login", (req, res) => {
 
         return res.status(403).json({ message: "User not found" })
     } catch (e) {
+        // eslint-disable-next-line no-console
         console.log(e)
         return res.status(500).json({ message: e.message })
     }
 })
 
-// проверяем, авторизован ли пользователь
+// check user authorization
 // eslint-disable-next-line
 server.use((req, res, next) => {
     if (!req.headers.authorization) {
@@ -60,15 +61,17 @@ server.use((req, res, next) => {
 
 server.use(router)
 
-// запуск сервера
+// run server
+const PORT = 8000
 const httpsServer = https.createServer(options, server)
-httpsServer.listen(443, () => {
+
+httpsServer.listen(PORT, () => {
     // eslint-disable-next-line no-console
-    console.log("server is running on 443 port")
+    console.log(`https server is running on ${PORT} port`)
 })
 
 /*
-server.listen(8000, () => {
-    console.log("server is running on 8000 port")
+server.listen(PORT, () => {
+ console.log(`http server is running on ${PORT} port`)
 })
 */
