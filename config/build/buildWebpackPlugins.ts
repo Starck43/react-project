@@ -26,7 +26,7 @@ export function buildWebpackPlugins({
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-            __API__: JSON.stringify(apiUrl || process.env.API_SERVER || "http://localhost:8000"),
+            __API__: JSON.stringify(apiUrl || process.env.REACT_APP_SERVER || "http://localhost:7000"),
             __PROJECT__: JSON.stringify(project),
         }),
         new CircularDependencyPlugin({
