@@ -1,28 +1,23 @@
 const fs = require("fs")
 const path = require("path")
 const https = require("https")
-
 const jsonServer = require("json-server")
 
-const options = {
-    key: fs.readFileSync(path.resolve(__dirname, "key.pem")),
-    cert: fs.readFileSync(path.resolve(__dirname, "cert.pem")),
-}
-
 const server = jsonServer.create()
-
 const router = jsonServer.router(path.resolve(__dirname, "db.json"))
 
 server.use(jsonServer.defaults({}))
 server.use(jsonServer.bodyParser)
 
 // fake delay for real loading content imitation
+/*
 server.use(async (req, res, next) => {
     await new Promise((res) => {
         setTimeout(res, 800)
     })
     next()
 })
+*/
 
 // login endpoint
 server.post("/login", (req, res) => {
@@ -62,13 +57,22 @@ server.use((req, res, next) => {
 server.use(router)
 
 // run server
-const PORT = 8000
-const httpsServer = https.createServer(options, server)
+const PORT = 8443
+const keyFile = path.join(__dirname, "server.key")
+const certFile = path.join(__dirname, "server.cert")
 
-httpsServer.listen(PORT, () => {
-    // eslint-disable-next-line no-console
-    console.log(`https server is running on ${PORT} port`)
-})
+https
+    .createServer(
+        {
+            key: fs.readFileSync(keyFile),
+            cert: fs.readFileSync(certFile),
+        },
+        server,
+    )
+    .listen(PORT, () => {
+        // eslint-disable-next-line no-console
+        console.log(`https server is running on ${PORT} port`)
+    })
 
 /*
 server.listen(PORT, () => {
