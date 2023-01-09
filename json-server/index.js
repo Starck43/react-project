@@ -11,13 +11,13 @@ server.use(jsonServer.bodyParser)
 
 // fake delay for real loading content imitation
 /*
-server.use(async (req, res, next) => {
-    await new Promise((res) => {
-        setTimeout(res, 800)
-    })
-    next()
-})
-*/
+ server.use(async (req, res, next) => {
+ await new Promise((res) => {
+ setTimeout(res, 800)
+ })
+ next()
+ })
+ */
 
 // login endpoint
 server.post("/login", (req, res) => {
@@ -65,20 +65,9 @@ if (require.main === module) {
         console.log(`http server is running on 8000 port`)
     })
 } else {
-    const PORT = 443
-    const keyFile = path.join(__dirname, "key.pem")
-    const certFile = path.join(__dirname, "cert.pem")
-
-    https
-        .createServer(
-            {
-                key: fs.readFileSync(keyFile),
-                cert: fs.readFileSync(certFile),
-            },
-            server,
-        )
-        .listen(PORT, "istarck.ru", () => {
-            // eslint-disable-next-line no-console
-            console.log(`https server is running on ${PORT} port`)
-        })
+    const PORT = 8443
+    server.listen(PORT, () => {
+        // eslint-disable-next-line no-console
+        console.log(`https server is running on ${PORT} port`)
+    })
 }
