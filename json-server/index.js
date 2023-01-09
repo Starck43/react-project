@@ -58,16 +58,24 @@ server.use(router)
 
 // run server
 
-// for development and debugging
-if (require.main === module) {
-    server.listen(8000, () => {
-        // eslint-disable-next-line no-console
-        console.log(`http server is running on 8000 port`)
-    })
-} else {
-    const PORT = 8443
-    server.listen(PORT, () => {
+const PORT = 8443
+const keyFile = path.join(__dirname, "key.pem")
+const certFile = path.join(__dirname, "cert.pem")
+
+https
+    .createServer(
+        {
+            key: fs.readFileSync(keyFile),
+            cert: fs.readFileSync(certFile),
+        },
+        server,
+    )
+    .listen(PORT, () => {
         // eslint-disable-next-line no-console
         console.log(`https server is running on ${PORT} port`)
     })
-}
+
+server.listen(8000, () => {
+    // eslint-disable-next-line no-console
+    console.log(`http server is running on 8000 port`)
+})
