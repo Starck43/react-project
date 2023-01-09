@@ -57,25 +57,28 @@ server.use((req, res, next) => {
 server.use(router)
 
 // run server
-const PORT = 8443
-const keyFile = path.join(__dirname, "server.key")
-const certFile = path.join(__dirname, "server.cert")
 
-https
-    .createServer(
-        {
-            key: fs.readFileSync(keyFile),
-            cert: fs.readFileSync(certFile),
-        },
-        server,
-    )
-    .listen(PORT, () => {
+// for development and debugging
+if (require.main === module) {
+    server.listen(8000, () => {
         // eslint-disable-next-line no-console
-        console.log(`https server is running on ${PORT} port`)
+        console.log(`http server is running on 8000 port`)
     })
+} else {
+    const PORT = 443
+    const keyFile = path.join(__dirname, "key.pem")
+    const certFile = path.join(__dirname, "cert.pem")
 
-/*
-server.listen(PORT, () => {
- console.log(`http server is running on ${PORT} port`)
-})
-*/
+    https
+        .createServer(
+            {
+                key: fs.readFileSync(keyFile),
+                cert: fs.readFileSync(certFile),
+            },
+            server,
+        )
+        .listen(PORT, "istarck.ru", () => {
+            // eslint-disable-next-line no-console
+            console.log(`https server is running on ${PORT} port`)
+        })
+}
