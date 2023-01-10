@@ -4,4 +4,4 @@
 /storybook-static
 /reports/unit/
 /extractedTranslations
-.env
+.env*
