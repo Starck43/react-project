@@ -5,3 +5,4 @@
 /reports/unit/
 /extractedTranslations
 .env*
+*.pem
