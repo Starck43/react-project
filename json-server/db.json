@@ -1,50 +1,5 @@
 {
-  "notifications": [
-    {
-      "id": "1",
-      "title": "Уведомление 1",
-      "description": "Произошло какое-то событие",
-      "userId": "1"
-    },
-    {
-      "id": "2",
-      "title": "Уведомление 2",
-      "description": "Произошло какое-то событие",
-      "userId": "1",
-      "href": "http://localhost:3000/home"
-    },
-    {
-      "id": "3",
-      "title": "Уведомление 3",
-      "description": "Произошло какое-то событие",
-      "userId": "1",
-      "href": "about"
-    },
-    {
-      "id": "4",
-      "title": "Уведомление 4",
-      "description": "Произошло какое-то событие",
-      "userId": "1"
-    },
-    {
-      "id": "5",
-      "title": "Уведомление 1",
-      "description": "Произошло какое-то событие",
-      "userId": "2"
-    }
-  ],
-  "posts": [
-    {
-      "id": "1",
-      "title": "json-server",
-      "userId": "1"
-    },
-    {
-      "id": "2",
-      "title": "json-server",
-      "userId": "2"
-    }
-  ],
+  "posts": [],
   "articles": [
     {
       "id": "1",
@@ -551,6 +506,40 @@
       "userId": "1",
       "text": "second",
       "id": "oCRKhgF"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Уведомление 2",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/home"
+    },
+    {
+      "id": "3",
+      "title": "Уведомление 3",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "about"
+    },
+    {
+      "id": "4",
+      "title": "Уведомление 4",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "5",
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "2"
     }
   ],
   "article-ratings": [

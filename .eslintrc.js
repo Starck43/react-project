@@ -28,11 +28,7 @@ module.exports = {
         "paths-observer", // custom plugin
     ],
     rules: {
-        indent: [
-            "error",
-            4,
-            { SwitchCase: 1, FunctionDeclaration: { parameters: "first" } },
-        ],
+        indent: ["off", 4, { SwitchCase: 1, FunctionDeclaration: { parameters: "first" } }],
         "comma-dangle": ["error", "only-multiline"],
         "no-mixed-spaces-and-tabs": ["error", "smart-tabs"],
         "no-undef": "off",
@@ -62,22 +58,13 @@ module.exports = {
         "no-underscore-dangle": "off",
         "no-multiple-empty-lines": "off",
         "no-nested-ternary": "off",
-        "no-trailing-spaces": [
-            "warn",
-            { skipBlankLines: false, ignoreComments: true },
-        ],
+        "no-trailing-spaces": ["warn", { skipBlankLines: false, ignoreComments: true }],
         "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
         "newline-per-chained-call": ["error", { ignoreChainWithDepth: 3 }],
-        "lines-between-class-members": [ "error", "always", {exceptAfterSingleLine: true}],
+        "lines-between-class-members": ["error", "always", { exceptAfterSingleLine: true }],
         // "padding-line-between-statements": [ "error", { "blankLine": "always", "prev": "*", "next": "export" }],
-        "react/jsx-filename-extension": [
-            "warn",
-            { extensions: [".tsx", ".jsx"] },
-        ],
-        "react/jsx-max-props-per-line": [
-            "error",
-            { maximum: { single: 4, multi: 2 } },
-        ],
+        "react/jsx-filename-extension": ["warn", { extensions: [".tsx", ".jsx"] }],
+        "react/jsx-max-props-per-line": ["off", { maximum: { single: 5, multi: 2 } }],
         "react/jsx-uses-react": "off",
         "react/jsx-props-no-spreading": "off",
         "react/jsx-one-expression-per-line": "off",
@@ -94,25 +81,15 @@ module.exports = {
         "jsx-a11y/no-static-element-interactions": [
             "error",
             {
-                handlers: [
-                    "onClick",
-                    "onMouseDown",
-                    "onMouseUp",
-                    "onKeyPress",
-                    "onKeyDown",
-                    "onKeyUp",
-                ],
+                handlers: ["onClick", "onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"],
                 allowExpressionValues: true,
             },
         ],
-        "array-element-newline": [
-            "error",
-            { ArrayExpression: "consistent", ArrayPattern: { minItems: 5 } },
-        ],
+        "array-element-newline": ["error", { ArrayExpression: "consistent", ArrayPattern: { minItems: 5 } }],
         // "array-bracket-spacing": [ 1, "always" ],
         // "object-curly-spacing": [ "error", "never", {arraysInObjects: true} ],
         "object-curly-newline": [
-            "warn",
+            "off",
             {
                 ObjectPattern: {
                     multiline: true,
@@ -137,16 +114,7 @@ module.exports = {
         "import/order": [
             "error",
             {
-                groups: [
-                    "builtin",
-                    "external",
-                    "internal",
-                    "object",
-                    "type",
-                    "parent",
-                    "sibling",
-                    "index",
-                ],
+                groups: ["builtin", "external", "internal", "object", "type", "parent", "sibling", "index"],
                 pathGroups: [
                     {
                         pattern: "react",
@@ -191,10 +159,7 @@ module.exports = {
                 onlyAttribute: [""],
             },
         ],
-        "paths-observer/only-relative-imports-in-layer": [
-            "error",
-            { alias: "@" },
-        ],
+        "paths-observer/only-relative-imports-in-layer": ["error", { alias: "@" }],
         "paths-observer/only-public-api-imports": [
             "error",
             {
