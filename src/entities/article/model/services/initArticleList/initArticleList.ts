@@ -7,25 +7,24 @@ import { getArticlesMounted } from "../../selectors/article-list/getArticleListD
 import { fetchArticleList } from "../fetchArticleList/fetchArticleList"
 import { articlesActions } from "../../slice/article-list/articleListSlice"
 
-export const initArticleList = createAsyncThunk<
-    void,
-    URLSearchParams,
-    ThunkConfig<string>
->("articles/initArticleList", async (searchParams, thunkAPI) => {
-    const { dispatch, getState } = thunkAPI
+export const initArticleList = createAsyncThunk<void, URLSearchParams, ThunkConfig<string>>(
+    "articles/initArticleList",
+    async (searchParams, thunkAPI) => {
+        const { dispatch, getState } = thunkAPI
 
-    const sortUrl = searchParams.get("sort")
-    const orderUrl = searchParams.get("order")
-    const typeUrl = searchParams.get("type")
+        const sortUrl = searchParams.get("sort")
+        const orderUrl = searchParams.get("order")
+        const typeUrl = searchParams.get("type")
 
-    dispatch?.(articlesActions.setOrder(orderUrl as ArticleOrderType))
-    dispatch?.(articlesActions.setSort(sortUrl as ArticleSortType))
-    dispatch?.(articlesActions.setType(typeUrl as ArticleType))
+        dispatch?.(articlesActions.setOrder(orderUrl as ArticleOrderType))
+        dispatch?.(articlesActions.setSort(sortUrl as ArticleSortType))
+        dispatch?.(articlesActions.setType(typeUrl as ArticleType))
 
-    const mounted = getArticlesMounted(getState())
+        const mounted = getArticlesMounted(getState())
 
-    if (!mounted) {
-        dispatch(articlesActions.initState())
-        dispatch(fetchArticleList({}))
-    }
-})
+        if (!mounted) {
+            dispatch(articlesActions.initState())
+            dispatch(fetchArticleList({}))
+        }
+    },
+)

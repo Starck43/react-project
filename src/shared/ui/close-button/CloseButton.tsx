@@ -6,8 +6,7 @@ import CloseIcon from "@/shared/assets/icons/close.svg"
 
 import cls from "./CloseButton.module.sass"
 
-export interface CloseButtonProps
-    extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface CloseButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     handleClick: () => void
 }

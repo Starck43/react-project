@@ -10,9 +10,7 @@ import RequireAuth from "./RequireAuth"
 
 export const AppRouter = () => {
     const renderRoutesCallback = useCallback((route: AppRoutesProps) => {
-        const element = (
-            <Suspense fallback={<Loader />}>{route.element}</Suspense>
-        )
+        const element = <Suspense fallback={<Loader />}>{route.element}</Suspense>
 
         return (
             <Route
@@ -31,9 +29,7 @@ export const AppRouter = () => {
         )
     }, [])
 
-    return (
-        <Routes>{Object.values(routeConfig).map(renderRoutesCallback)}</Routes>
-    )
+    return <Routes>{Object.values(routeConfig).map(renderRoutesCallback)}</Routes>
 }
 
 export default memo(AppRouter)

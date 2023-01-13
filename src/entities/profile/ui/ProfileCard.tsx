@@ -12,11 +12,7 @@ import { Info, InfoStatus } from "@/shared/ui/info"
 import { Skeleton, SkeletonElementType } from "@/shared/ui/skeleton"
 import { Row } from "@/shared/ui/stack"
 
-import {
-    getProfileData,
-    getProfileError,
-    getProfileLoading,
-} from "../model/selectors/getProfile"
+import { getProfileData, getProfileError, getProfileLoading } from "../model/selectors/getProfile"
 import { fetchProfileData } from "../model/services/fetchProfileData"
 
 import { translatedCountry } from "../lib"
@@ -31,11 +27,7 @@ interface ProfileCardProps {
     onLogout?: () => void
 }
 
-export const ProfileCard = ({
-    id,
-    onShowProfile,
-    onLogout,
-}: ProfileCardProps) => {
+export const ProfileCard = ({ id, onShowProfile, onLogout }: ProfileCardProps) => {
     const { i18n, t } = useTranslation("auth")
     const dispatch = useAppDispatch()
     const profile = useSelector(getProfileData)
@@ -60,52 +52,43 @@ export const ProfileCard = ({
 
     return (
         <div data-testid="ProfileCard" className={cls.profile}>
-            {isLoading && (
-                <Skeleton
-                    rounded
-                    elements={[
-                        SkeletonElementType.AVATAR,
-                        SkeletonElementType.BLOCK,
-                    ]}
-                />
-            )}
+            {isLoading && <Skeleton rounded elements={[SkeletonElementType.AVATAR, SkeletonElementType.BLOCK]} />}
 
             <div className={cls.table}>
-                <Avatar
-                    src={profile?.avatar}
-                    alt={profile?.username}
-                    size="sm"
-                    rounded
-                />
+                <Avatar src={profile?.avatar} alt={profile?.username} size="sm" rounded />
                 <div className={cls.row} id="Username">
                     <span className={cls.cell__title}>{t("ник")}</span>
-                    <span className={cls.cell__value}>{profile?.username}</span>
+                    <span className={cls.cell__value} data-testid="ProfileCard.Username">
+                        {profile?.username}
+                    </span>
                 </div>
                 <div className={cls.row} id="Name">
                     <span className={cls.cell__title}>{t("имя")}</span>
-                    <span className={cls.cell__value}>
+                    <span className={cls.cell__value} data-testid="ProfileCard.Name">
                         {capitalizeFirstLetter(profile?.name)}
                     </span>
                 </div>
                 <div className={cls.row} id="Surname">
                     <span className={cls.cell__title}>{t("фамилия")}</span>
-                    <span className={cls.cell__value}>
+                    <span className={cls.cell__value} data-testid="ProfileCard.Surname">
                         {capitalizeFirstLetter(profile?.surname)}
                     </span>
                 </div>
                 <div className={cls.row} id="Email">
                     <span className={cls.cell__title}>{t("email")}</span>
-                    <span className={cls.cell__value}>
+                    <span className={cls.cell__value} data-testid="ProfileCard.Email">
                         {profile?.email?.toLowerCase()}
                     </span>
                 </div>
                 <div className={cls.row} id="Phone">
                     <span className={cls.cell__title}>{t("телефон")}</span>
-                    <span className={cls.cell__value}>{profile?.phone}</span>
+                    <span className={cls.cell__value} data-testid="ProfileCard.Phone">
+                        {profile?.phone}
+                    </span>
                 </div>
                 <div className={cls.row} id="Country">
                     <span className={cls.cell__title}>{t("страна")}</span>
-                    <span className={cls.cell__value}>
+                    <span className={cls.cell__value} data-testid="ProfileCard.Country">
                         {translatedCountry(profile?.country, i18n.language)}
                     </span>
                 </div>

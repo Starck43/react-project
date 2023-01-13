@@ -11,9 +11,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof LazyImage>
 
-const Template: ComponentStory<typeof LazyImage> = (args) => (
-    <LazyImage {...args} />
-)
+const Template: ComponentStory<typeof LazyImage> = (args) => <LazyImage {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

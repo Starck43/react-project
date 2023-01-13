@@ -1,5 +1,6 @@
 const fs = require("fs")
 const path = require("path")
+const http = require("http")
 const https = require("https")
 const jsonServer = require("json-server")
 
@@ -23,14 +24,10 @@ server.use(jsonServer.bodyParser)
 server.post("/login", (req, res) => {
     try {
         const { username, password } = req.body
-        const db = JSON.parse(
-            fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"),
-        )
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8"))
         const { users = [] } = db
 
-        const userFromBd = users.find(
-            (user) => user.username === username && user.password === password,
-        )
+        const userFromBd = users.find((user) => user.username === username && user.password === password)
 
         if (userFromBd) {
             return res.json(userFromBd)
@@ -59,14 +56,13 @@ server.use(router)
 // run server
 
 const PORT = 8443
-const keyFile = path.join(__dirname, "key.pem")
-const certFile = path.join(__dirname, "cert.pem")
+/*
 
 https
     .createServer(
         {
-            key: fs.readFileSync(keyFile),
-            cert: fs.readFileSync(certFile),
+            key: fs.readFileSync(path.join(__dirname, "key.pem")),
+            cert: fs.readFileSync(path.join(__dirname, "cert.pem")),
         },
         server,
     )
@@ -74,6 +70,7 @@ https
         // eslint-disable-next-line no-console
         console.log(`https server is running on ${PORT} port`)
     })
+*/
 
 server.listen(8000, () => {
     // eslint-disable-next-line no-console

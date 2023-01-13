@@ -42,21 +42,13 @@ export const Rate = memo((props: RateProps) => {
     }
 
     return (
-        <Flex
-            gap="none"
-            className={classnames(cls, ["rate"], { selected }, [className])}
-        >
+        <Flex gap="none" className={classnames(cls, ["rate"], { selected }, [className])}>
             {STARS.map((index) => (
                 <Icon
                     data-testid={`Rate.${index}`}
                     data-selected={currentValue >= index}
                     Svg={StarIcon}
-                    className={classnames(
-                        cls,
-                        ["star", size, currentValue >= index ? "hovered" : ""],
-                        {},
-                        [],
-                    )}
+                    className={classnames(cls, ["star", size, currentValue >= index ? "hovered" : ""], {}, [])}
                     onClick={onClick(index)}
                     onMouseLeave={onLeave}
                     onMouseEnter={onHover(index)}

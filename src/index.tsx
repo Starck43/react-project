@@ -15,9 +15,7 @@ import "@/app/styles/index.sass"
 const container = document.getElementById("root")
 
 if (!container) {
-    throw Error(
-        "Page not loaded, because a root node is absent in HTML document!",
-    )
+    throw Error("Page not loaded, because a root node is absent in HTML document!")
 }
 const root = createRoot(container)
 
@@ -25,9 +23,7 @@ root.render(
     <BrowserRouter>
         <StoreProvider>
             <ErrorBoundary>
-                <ThemeProvider
-                    defaultTheme={isDarkness(18, 7) ? Theme.DARK : Theme.LIGHT}
-                >
+                <ThemeProvider defaultTheme={isDarkness(18, 7) ? Theme.DARK : Theme.LIGHT}>
                     <App />
                 </ThemeProvider>
             </ErrorBoundary>

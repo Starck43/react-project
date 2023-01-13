@@ -61,20 +61,14 @@ const ArticleRatingCard = ({ articleId, className }: ArticleRatingProps) => {
         return (
             <section
                 data-testid="Article.Rating"
-                className={classnames(cls, ["article__rating"], {}, [
-                    "my-2",
-                    className,
-                ])}
+                className={classnames(cls, ["article__rating"], {}, ["my-2", className])}
             >
                 <RatingCard
                     rate={rate}
                     variant="secondary"
                     onSave={onSaveHandler}
                     onCancel={onCancelHandler}
-                    title={
-                        (rate ? t("ваша оценка") : t("оценить статью")) ||
-                        undefined
-                    }
+                    title={(rate ? t("ваша оценка") : t("оценить статью")) || undefined}
                     feedbackTitle={t("оставьте свой отзыв") || undefined}
                 />
             </section>

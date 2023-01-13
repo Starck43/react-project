@@ -13,9 +13,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticleEditPage>
 
-const Template: ComponentStory<typeof ArticleEditPage> = () => (
-    <ArticleEditPage />
-)
+const Template: ComponentStory<typeof ArticleEditPage> = () => <ArticleEditPage />
 
 const article: Article = {
     id: "1",
@@ -35,7 +33,7 @@ Default.decorators = [
     StoreDecorator({
         article: {
             data: article,
-            copy: article,
+            form: article,
         },
     }),
 ]

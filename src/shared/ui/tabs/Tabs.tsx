@@ -22,13 +22,7 @@ interface TabsProps {
 }
 
 export const Tabs = memo((props: TabsProps) => {
-    const {
-        tabs,
-        value,
-        direction = "row",
-        onTabClickHandler,
-        className,
-    } = props
+    const { tabs, value, direction = "row", onTabClickHandler, className } = props
 
     const onTabClick = useCallback(
         (tab: Tab) =>
@@ -47,11 +41,7 @@ export const Tabs = memo((props: TabsProps) => {
                     size={ButtonSize.SMALL}
                     bordered
                     rounded
-                    feature={
-                        tab.value === value
-                            ? ButtonFeature.INVERTED
-                            : ButtonFeature.BLANK
-                    }
+                    feature={tab.value === value ? ButtonFeature.INVERTED : ButtonFeature.BLANK}
                     onClick={onTabClick(tab)}
                 >
                     {tab.content}

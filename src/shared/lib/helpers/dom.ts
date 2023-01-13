@@ -1,13 +1,5 @@
 export function detectMobile() {
-    const devicesToMatch = [
-        /Android/i,
-        /webOS/i,
-        /iPhone/i,
-        /iPad/i,
-        /iPod/i,
-        /BlackBerry/i,
-        /Windows Phone/i,
-    ]
+    const devicesToMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i, /BlackBerry/i, /Windows Phone/i]
 
     return devicesToMatch.some((device) => navigator.userAgent.match(device))
 }

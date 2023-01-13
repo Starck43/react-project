@@ -2,11 +2,7 @@ import { memo, useCallback } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 
-import {
-    articlesActions,
-    getArticlesSearch,
-    fetchArticleList,
-} from "@/entities/article"
+import { articlesActions, getArticlesSearch, fetchArticleList } from "@/entities/article"
 
 import { classnames } from "@/shared/lib/helpers/classnames"
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch"
@@ -20,9 +16,7 @@ export const ArticleSearchControl = memo(() => {
     const dispatch = useAppDispatch()
     const search = useSelector(getArticlesSearch)
 
-    const debouncedSearch = useDebounce(() =>
-        dispatch(fetchArticleList({ replace: true })),
-    )
+    const debouncedSearch = useDebounce(() => dispatch(fetchArticleList({ replace: true })))
 
     const onSearchInputClick = useCallback(
         (newVal: string) => {

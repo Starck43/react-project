@@ -22,16 +22,7 @@ interface AvatarProps {
 }
 
 export const Avatar = (props: AvatarProps) => {
-    const {
-        src = "",
-        alt = "",
-        title,
-        size,
-        inlined = false,
-        rounded = false,
-        bordered = false,
-        className,
-    } = props
+    const { src = "", alt = "", title, size, inlined = false, rounded = false, bordered = false, className } = props
 
     const style = useMemo<CSSProperties>(
         () => ({
@@ -46,12 +37,7 @@ export const Avatar = (props: AvatarProps) => {
         <Flex
             direction={inlined ? "row" : "column"}
             gap={size === "xs" ? "xs" : "sm"}
-            className={classnames(
-                cls,
-                ["avatar", typeof size === "string" ? size : ""],
-                {},
-                [className],
-            )}
+            className={classnames(cls, ["avatar", typeof size === "string" ? size : ""], {}, [className])}
         >
             <Image
                 src={src}

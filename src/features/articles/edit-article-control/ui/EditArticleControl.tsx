@@ -1,28 +1,26 @@
 import { memo } from "react"
 import { useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
-import { getArticleData } from "@/entities/article"
 import { getRouteArticleEdit } from "@/shared/const/router"
 
 import { Button, ButtonFeature } from "@/shared/ui/button"
 
-import { getEditArticleData } from "../model/selectors/getEditArticleData"
+import { getCanEditArticleData } from "../model/selectors/getEditArticleData"
 
 import cls from "./EditArticleControl.module.sass"
 
-export const EditArticleControl = memo(() => {
+export const EditArticleControl = memo(({ articleId }: { articleId: string }) => {
     const { t } = useTranslation("articles")
-    const article = useSelector(getArticleData)
-    const canEdit = useSelector(getEditArticleData)
+    const canEdit = useSelector(getCanEditArticleData)
 
     return canEdit ? (
         <Button
-            data-testid="UpdateArticleForm.EditButton"
+            data-testid="EditArticleControl.EditButton"
             feature={ButtonFeature.BLANK}
             bordered
             rounded
             className={cls.edit__button}
-            href={getRouteArticleEdit(article?.id)}
+            href={getRouteArticleEdit(articleId)}
         >
             {t("изменить")}
         </Button>

@@ -1,6 +1,4 @@
-import {
-    FC, MutableRefObject, ReactNode, UIEvent, useRef
-} from "react"
+import { FC, MutableRefObject, ReactNode, UIEvent, useRef } from "react"
 import { useSelector } from "react-redux"
 import { useLocation } from "react-router-dom"
 
@@ -41,9 +39,7 @@ export const Page: FC<PageProps> = (props) => {
     const dispatch = useAppDispatch()
     const { pathname } = useLocation()
 
-    const scrollPos = useSelector((state: StateSchema) =>
-        getPageByPath(state, pathname),
-    )
+    const scrollPos = useSelector((state: StateSchema) => getPageByPath(state, pathname))
 
     useElementInView({
         containerRef,
@@ -75,9 +71,7 @@ export const Page: FC<PageProps> = (props) => {
             onScroll={onScrollHandler}
         >
             {children}
-            {onScrollToEnd ? (
-                <div ref={loadMoreRef} className={cls.load__more} />
-            ) : null}
+            {onScrollToEnd ? <div ref={loadMoreRef} className={cls.load__more} /> : null}
         </div>
     )
 }

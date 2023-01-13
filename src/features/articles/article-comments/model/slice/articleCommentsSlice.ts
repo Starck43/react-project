@@ -1,8 +1,4 @@
-import {
-    createEntityAdapter,
-    createSlice,
-    PayloadAction,
-} from "@reduxjs/toolkit"
+import { createEntityAdapter, createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 import { StateSchema } from "@/app/providers/store-provider"
 
@@ -39,13 +35,10 @@ const articleCommentsSlice = createSlice({
                 state.isLoading = true
                 state.error = undefined
             })
-            .addCase(
-                fetchArticleCommentsData.fulfilled,
-                (state, action: PayloadAction<Comment[]>) => {
-                    state.isLoading = false
-                    commentsAdapter.setAll(state, action.payload)
-                },
-            )
+            .addCase(fetchArticleCommentsData.fulfilled, (state, action: PayloadAction<Comment[]>) => {
+                state.isLoading = false
+                commentsAdapter.setAll(state, action.payload)
+            })
             .addCase(fetchArticleCommentsData.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload

@@ -11,9 +11,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticleListItem>
 
-const Template: ComponentStory<typeof ArticleListItem> = (args) => (
-    <ArticleListItem {...args} />
-)
+const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />
 
 const article: Article = {
     id: "1",

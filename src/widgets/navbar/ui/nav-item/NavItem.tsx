@@ -10,18 +10,14 @@ import cls from "../navbar/Navbar.module.sass"
 
 // TODO: bring translations to parent
 const NavItem = (props: NavbarItemType) => {
-    const {
-        path, text, Icon, authOnly, ...other
-    } = props
+    const { path, text, Icon, authOnly, ...other } = props
     const { t } = useTranslation("navbar")
 
     return (
         <NavLink
             key={path}
             to={path}
-            title={
-                <span>{t("menu", { context: text, defaultValue: text })}</span>
-            }
+            title={<span>{t("menu", { context: text, defaultValue: text })}</span>}
             Icon={Icon}
             feature="clear"
             className={classnames(cls, ["navbar__item"], {}, ["inline"])}

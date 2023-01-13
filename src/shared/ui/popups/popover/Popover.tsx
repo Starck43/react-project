@@ -35,11 +35,7 @@ export const Popover = (props: PopoverProps) => {
     return (
         <HeadlessPopover
             style={style}
-            className={classnames(cls, ["popover"], {}, [
-                styles.popup,
-                styles[variant],
-                className,
-            ])}
+            className={classnames(cls, ["popover"], {}, [styles.popup, styles[variant], className])}
         >
             <HeadlessPopover.Button as="div" className={styles.toggle__button}>
                 {toggleElement}

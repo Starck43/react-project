@@ -12,9 +12,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof NotificationsPopup>
 
-const Template: ComponentStory<typeof NotificationsPopup> = (args) => (
-    <NotificationsPopup {...args} />
-)
+const Template: ComponentStory<typeof NotificationsPopup> = (args) => <NotificationsPopup {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

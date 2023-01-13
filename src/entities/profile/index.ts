@@ -3,13 +3,16 @@ export { ValidateProfileError } from "./model/consts"
 
 export {
     getProfileData,
-    getProfileCopy,
+    getProfileForm,
     getProfileLoading,
     getProfileError,
     getProfileValidateErrors,
 } from "./model/selectors/getProfile"
 
-export { profileReducer, profileActions } from "./model/slice/profileSlice"
 export { fetchProfileData } from "./model/services/fetchProfileData"
+export { updateProfileData } from "./model/services/updateProfileData"
+export { validateProfileData } from "./model/services/validateProfileData"
+
+export { profileReducer, profileActions } from "./model/slice/profileSlice"
 
 export { ProfileCard } from "./ui/ProfileCard"

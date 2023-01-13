@@ -1,10 +1,4 @@
-import {
-    useLayoutEffect,
-    useState,
-    memo,
-    ImgHTMLAttributes,
-    ReactElement,
-} from "react"
+import { useLayoutEffect, useState, memo, ImgHTMLAttributes, ReactElement } from "react"
 
 import { classnames } from "@/shared/lib/helpers/classnames"
 
@@ -17,17 +11,7 @@ interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export const LazyImage = memo((props: LazyImageProps) => {
-    const {
-        src,
-        alt = "",
-        fallback,
-        errorFallback,
-        className,
-        style,
-        width,
-        height,
-        ...others
-    } = props
+    const { src, alt = "", fallback, errorFallback, className, style, width, height, ...others } = props
     const [isLoading, setIsLoading] = useState(true)
     const [noImage, setNoImage] = useState(false)
 
@@ -64,12 +48,7 @@ export const LazyImage = memo((props: LazyImageProps) => {
     }
 
     return (
-        <div
-            className={classnames(cls, ["wrapper"], { isLoading, noImage }, [
-                className,
-            ])}
-            style={style}
-        >
+        <div className={classnames(cls, ["wrapper"], { isLoading, noImage }, [className])} style={style}>
             {content}
         </div>
     )

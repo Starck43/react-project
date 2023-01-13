@@ -21,9 +21,7 @@ export default {
     ],
 } as ComponentMeta<typeof ArticleRatingCard>
 
-const Template: ComponentStory<typeof ArticleRatingCard> = (args) => (
-    <ArticleRatingCard {...args} />
-)
+const Template: ComponentStory<typeof ArticleRatingCard> = (args) => <ArticleRatingCard {...args} />
 
 export const WithRate = Template.bind({})
 WithRate.args = {}

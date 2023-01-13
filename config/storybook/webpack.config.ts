@@ -14,11 +14,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
         entry: "",
         src: path.resolve(__dirname, "..", "..", "src"),
         publicLocales: path.resolve(__dirname, "..", "..", "public", "locales"),
-        buildLocales: path.resolve(
-            __dirname,
-            "../../storybook-static",
-            "locales",
-        ),
+        buildLocales: path.resolve(__dirname, "../../storybook-static", "locales"),
     }
 
     config.resolve!.extensions!.push(".ts", ".tsx")
@@ -30,9 +26,7 @@ export default ({ config }: { config: webpack.Configuration }) => {
 
     const rules = config.module!.rules as RuleSetRule[]
     config.module!.rules = rules.map((rule) =>
-        /svg/.test(rule.test as string)
-            ? { ...rule, exclude: /\.svg$/i }
-            : rule,
+        /svg/.test(rule.test as string) ? { ...rule, exclude: /\.svg$/i } : rule,
     )
 
     config.module!.rules.push(...buildFileLoader())

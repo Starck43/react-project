@@ -15,9 +15,7 @@ export default {
     args: { articleId: "1" },
 } as ComponentMeta<typeof ArticleDetailsCard>
 
-const Template: ComponentStory<typeof ArticleDetailsCard> = (args) => (
-    <ArticleDetailsCard {...args} />
-)
+const Template: ComponentStory<typeof ArticleDetailsCard> = (args) => <ArticleDetailsCard {...args} />
 
 const article: Article = {
     id: "1",

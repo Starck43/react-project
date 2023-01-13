@@ -10,9 +10,7 @@ export const getArticleRating = ({ articleId, userId }: ArticleRatingSchema) =>
     cy
         .request({
             method: "GET",
-            url: `${Cypress.env(
-                "api_server",
-            )}/article-ratings?articleId=${articleId}&userId=${userId}`,
+            url: `${Cypress.env("api_server")}/article-ratings?articleId=${articleId}&userId=${userId}`,
             headers: { Authorization: "some header" },
         })
         .then((res) => res.body)

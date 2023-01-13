@@ -20,11 +20,7 @@ export const PageError = ({ className }: PageErrorProps) => {
         <Col align="center" className={className}>
             <h1>{t("что-то пошло не так")}</h1>
             {t("непредвиденная ошибка")}
-            <Button
-                feature={ButtonFeature.BLANK}
-                onClick={reloadPage}
-                className="mt-2"
-            >
+            <Button feature={ButtonFeature.BLANK} onClick={reloadPage} className="mt-2">
                 {t("обновить страницу")}
             </Button>
         </Col>

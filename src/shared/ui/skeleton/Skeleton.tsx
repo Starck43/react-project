@@ -52,9 +52,7 @@ export const Skeleton = memo((props: SkeletonProps) => {
                         [
                             "shimmer__element",
                             item,
-                            item === SkeletonElementType.AVATAR
-                                ? `avatar__${avatarSize}`
-                                : undefined,
+                            item === SkeletonElementType.AVATAR ? `avatar__${avatarSize}` : undefined,
                         ],
                         { rounded, inlined },
                     )}
@@ -69,9 +67,7 @@ export const Skeleton = memo((props: SkeletonProps) => {
             align="start"
             justify="between"
             gap="sm"
-            className={classnames(cls, ["skeleton", variant], { inlined }, [
-                className,
-            ])}
+            className={classnames(cls, ["skeleton", variant], { inlined }, [className])}
             style={styles}
         >
             {elements && shimmerElements}

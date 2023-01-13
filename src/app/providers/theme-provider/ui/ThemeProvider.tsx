@@ -11,9 +11,7 @@ interface ThemeProviderProps {
 }
 
 const ThemeProvider = ({ children, defaultTheme }: ThemeProviderProps) => {
-    const [theme, setTheme] = useState<Theme>(
-        currentTheme || defaultTheme || Theme.LIGHT,
-    )
+    const [theme, setTheme] = useState<Theme>(currentTheme || defaultTheme || Theme.LIGHT)
 
     const defaultValue = useMemo(
         () => ({
@@ -23,11 +21,7 @@ const ThemeProvider = ({ children, defaultTheme }: ThemeProviderProps) => {
         [theme],
     )
 
-    return (
-        <ThemeContext.Provider value={defaultValue}>
-            {children}
-        </ThemeContext.Provider>
-    )
+    return <ThemeContext.Provider value={defaultValue}>{children}</ThemeContext.Provider>
 }
 
 // @ts-ignore

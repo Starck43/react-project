@@ -1,9 +1,4 @@
-import {
-    CombinedState,
-    configureStore,
-    Reducer,
-    ReducersMapObject,
-} from "@reduxjs/toolkit"
+import { CombinedState, configureStore, Reducer, ReducersMapObject } from "@reduxjs/toolkit"
 
 import { StateSchema, ThunkExtra } from "@/app/providers/store-provider"
 
@@ -17,10 +12,7 @@ import { pageReducer } from "@/widgets/page"
 
 import { createReducerManager } from "./reducerManager"
 
-export function createStore(
-    initialState?: StateSchema,
-    asyncReducers?: ReducersMapObject<StateSchema>,
-) {
+export function createStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
     const rootReducers: ReducerList = {
         ...asyncReducers,
         counter: counterReducer,
@@ -29,9 +21,7 @@ export function createStore(
         [rtkApi.reducerPath]: rtkApi.reducer,
     }
 
-    const reducerManager = createReducerManager(
-        rootReducers as ReducersMapObject<StateSchema>,
-    )
+    const reducerManager = createReducerManager(rootReducers as ReducersMapObject<StateSchema>)
 
     const args: ThunkExtra = {
         api: $api,
@@ -42,9 +32,7 @@ export function createStore(
         preloadedState: initialState,
         devTools: __IS_DEV__,
         middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware({ thunk: { extraArgument: args } }).concat(
-                rtkApi.middleware,
-            ),
+            getDefaultMiddleware({ thunk: { extraArgument: args } }).concat(rtkApi.middleware),
     })
 
     // @ts-ignore

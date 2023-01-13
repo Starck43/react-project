@@ -6,7 +6,7 @@ export { EditArticleControl } from "./edit-article-control/ui/EditArticleControl
 export { BackToListLink } from "./back-to-list/ui/BackToListLink"
 
 export { InfiniteArticleList } from "./infinite-article-list/ui/InfiniteArticleList"
-export { getEditArticleData } from "./edit-article-control/model/selectors/getEditArticleData"
+export { getCanEditArticleData } from "./edit-article-control/model/selectors/getEditArticleData"
 export { UpdateArticleForm } from "./update-article/ui/UpdateArticleForm"
 
 export { ArticleCommentsCard } from "./article-comments/ui/ArticleCommentsCard"

@@ -13,22 +13,19 @@ interface LanguageSwitcherProps {
     className?: string
 }
 
-export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(
-    ({ minified = false, className }) => {
-        const { i18n, t } = useTranslation()
-        const toggleLanguage = () =>
-            i18n.changeLanguage(i18n.language === "en" ? "ru" : "en")
+export const LanguageSwitcher: FC<LanguageSwitcherProps> = memo(({ minified = false, className }) => {
+    const { i18n, t } = useTranslation()
+    const toggleLanguage = () => i18n.changeLanguage(i18n.language === "en" ? "ru" : "en")
 
-        return (
-            <Button
-                feature={ButtonFeature.CLEAR}
-                squared={minified}
-                Icon={i18n.language === "en" ? FlagEnIcon : FlagRuIcon}
-                onClick={toggleLanguage}
-                className={classnames(cls, [], { minified }, [className])}
-            >
-                {!minified && t("Русский")}
-            </Button>
-        )
-    },
-)
+    return (
+        <Button
+            feature={ButtonFeature.CLEAR}
+            squared={minified}
+            Icon={i18n.language === "en" ? FlagEnIcon : FlagRuIcon}
+            onClick={toggleLanguage}
+            className={classnames(cls, [], { minified }, [className])}
+        >
+            {!minified && t("Русский")}
+        </Button>
+    )
+})

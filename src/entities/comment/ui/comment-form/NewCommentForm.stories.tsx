@@ -12,9 +12,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof NewCommentForm>
 
-const Template: ComponentStory<typeof NewCommentForm> = (args) => (
-    <NewCommentForm {...args} />
-)
+const Template: ComponentStory<typeof NewCommentForm> = (args) => <NewCommentForm {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

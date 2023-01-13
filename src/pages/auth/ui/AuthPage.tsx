@@ -29,14 +29,8 @@ function AuthPage() {
     if (id) {
         return (
             <Col align="center" gap="md" fullWidth>
-                <Info
-                    title={t("вы уже вошли под именем", { username }) || ""}
-                    status={InfoStatus.WARNING}
-                />
-                <NavLink
-                    to={getRouteProfile(id)}
-                    title={t("перейти в профиль")}
-                />
+                <Info title={t("вы уже вошли под именем", { username }) || ""} status={InfoStatus.WARNING} />
+                <NavLink to={getRouteProfile(id)} title={t("перейти в профиль")} />
             </Col>
         )
     }

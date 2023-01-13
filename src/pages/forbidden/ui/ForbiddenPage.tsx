@@ -9,12 +9,7 @@ function ForbiddenPage() {
 
     return (
         <Page data-testid="ForbiddenPage">
-            <Info
-                Tag="h2"
-                title={t("доступ запрещен")}
-                subTitle={t("нет прав доступа")}
-                status={InfoStatus.WARNING}
-            />
+            <Info Tag="h2" title={t("доступ запрещен")} subTitle={t("нет прав доступа")} status={InfoStatus.WARNING} />
         </Page>
     )
 }

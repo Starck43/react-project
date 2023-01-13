@@ -14,17 +14,13 @@ interface OverlayProps {
 }
 
 export const Overlay = memo((props: OverlayProps) => {
-    const {
-        as = "div", open, show, onClick, className, style
-    } = props
+    const { as = "div", open, show, onClick, className, style } = props
 
     const Tag = as
     return (
         <Tag
             aria-modal
-            className={classnames(cls, ["overlay"], { open, show }, [
-                className,
-            ])}
+            className={classnames(cls, ["overlay"], { open, show }, [className])}
             onClick={onClick}
             style={style}
         />

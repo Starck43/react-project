@@ -31,23 +31,15 @@ export const TestProvider = ({ options = {}, children }: TestProviderProps) => {
 
     return (
         <MemoryRouter initialEntries={[route]}>
-            <StoreProvider
-                initialState={initialState}
-                asyncReducers={asyncReducers}
-            >
+            <StoreProvider initialState={initialState} asyncReducers={asyncReducers}>
                 <I18nextProvider i18n={i18nForTests}>
-                    <ThemeProvider defaultTheme={theme || Theme.LIGHT}>
-                        {children}
-                    </ThemeProvider>
+                    <ThemeProvider defaultTheme={theme || Theme.LIGHT}>{children}</ThemeProvider>
                 </I18nextProvider>
             </StoreProvider>
         </MemoryRouter>
     )
 }
 
-export function componentRender(
-    component: ReactNode,
-    options?: RenderWithRouterProps,
-) {
+export function componentRender(component: ReactNode, options?: RenderWithRouterProps) {
     return render(<TestProvider options={options}>{component}</TestProvider>)
 }

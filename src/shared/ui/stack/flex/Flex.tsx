@@ -22,12 +22,9 @@ export interface FlexProps<E extends ElementType = ElementType> {
     children?: ReactNode | ReactNode[]
 }
 
-export type FlexPropsType<E extends ElementType> = FlexProps<E> &
-    Omit<ComponentProps<E>, keyof FlexProps>
+export type FlexPropsType<E extends ElementType> = FlexProps<E> & Omit<ComponentProps<E>, keyof FlexProps>
 
-export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(
-    props: FlexPropsType<E>,
-) => {
+export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(props: FlexPropsType<E>) => {
     const {
         as = "div",
         href,
@@ -45,13 +42,7 @@ export const Flex = <E extends ElementType = keyof HTMLElementTagNameMap>(
 
     const classes = classnames(
         cls,
-        [
-            "flex",
-            `justify__${justify}`,
-            `align__${align}`,
-            `direction__${direction}`,
-            `gap__${gap}`,
-        ],
+        ["flex", `justify__${justify}`, `align__${align}`, `direction__${direction}`, `gap__${gap}`],
         { wrap, fullWidth },
         [className],
     )

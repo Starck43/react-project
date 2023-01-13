@@ -1,9 +1,6 @@
 import { useCallback, useEffect } from "react"
 
-import {
-    AnimationProvider,
-    useAnimationModules,
-} from "@/shared/lib/components/AnimationProvider"
+import { AnimationProvider, useAnimationModules } from "@/shared/lib/components/AnimationProvider"
 import { classnames } from "@/shared/lib/helpers/classnames"
 import { useWindowDimensions } from "@/shared/lib/hooks/useWindowDimensions"
 
@@ -56,13 +53,7 @@ const DrawerContent = (props: DrawerProps) => {
     }
 
     const bind = Gesture.useDrag(
-        ({
-            last,
-            velocity: [vx, vy],
-            direction: [dx, dy],
-            movement: [mx, my],
-            cancel,
-        }) => {
+        ({ last, velocity: [vx, vy], direction: [dx, dy], movement: [mx, my], cancel }) => {
             if (position === "top" || position === "bottom") {
                 if (my < -70) cancel()
 
@@ -130,11 +121,7 @@ const DrawerContent = (props: DrawerProps) => {
 
     return (
         <Portal target={portalRoot || document.body}>
-            <Spring.a.div
-                className={cls.drawer}
-                style={drawerStyle}
-                {...bind()}
-            >
+            <Spring.a.div className={cls.drawer} style={drawerStyle} {...bind()}>
                 <Col
                     data-testid="Drawer.Content"
                     role="link"
@@ -158,27 +145,14 @@ const DrawerContent = (props: DrawerProps) => {
                     )}
                     style={contentStyle}
                 >
-                    <Row
-                        gap="sm"
-                        fullWidth
-                        justify="between"
-                        align="baseline"
-                        className={cls.header}
-                    >
+                    <Row gap="sm" fullWidth justify="between" align="baseline" className={cls.header}>
                         {header}
                         {showClose && (
-                            <CloseButton
-                                className={styles.close__button}
-                                handleClick={() => handleClose()}
-                            />
+                            <CloseButton className={styles.close__button} handleClick={() => handleClose()} />
                         )}
                     </Row>
 
-                    <div
-                        className={classnames(cls, ["body"], {}, [styles.body])}
-                    >
-                        {children}
-                    </div>
+                    <div className={classnames(cls, ["body"], {}, [styles.body])}>{children}</div>
                 </Col>
             </Spring.a.div>
             <Overlay

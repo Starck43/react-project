@@ -16,12 +16,10 @@ export const Default = Template.bind({})
 Default.args = {
     children: (
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate
-            dicta dignissimos excepturi ipsam molestiae nisi pariatur
-            perspiciatis possimus quae quasi quod quos, ratione veniam vero
-            voluptatum. Accusantium adipisci aliquam aliquid animi assumenda
-            autem dolor est excepturi exercitationem expedita fugit hic ipsam
-            laudantium minus provident quasi qui, quo quod totam, vel!
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dicta dignissimos excepturi ipsam
+            molestiae nisi pariatur perspiciatis possimus quae quasi quod quos, ratione veniam vero voluptatum.
+            Accusantium adipisci aliquam aliquid animi assumenda autem dolor est excepturi exercitationem expedita fugit
+            hic ipsam laudantium minus provident quasi qui, quo quod totam, vel!
         </p>
     ),
 }

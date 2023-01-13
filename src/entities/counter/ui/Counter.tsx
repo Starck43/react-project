@@ -8,25 +8,25 @@ export const Counter = () => {
     const counterValue = useCounterValue()
     const { increment, decrement, incrementByAmount } = useCounterActions()
 
-    const incClick = () => increment()
-    const decClick = () => decrement()
+    const OnIncrementBtnClick = () => increment()
+    const OnDecrementBtnClick = () => decrement()
     const incByAmountClick = () => incrementByAmount(10)
 
     return (
         <Flex justify="center" fullWidth>
             <Button
-                data-testid="counterIncrement"
+                data-testid="Counter.Decrement"
                 variant="primary"
                 feature={ButtonFeature.CLEAR}
                 size={ButtonSize.LARGE}
                 squared
                 bordered
-                onClick={decClick}
+                onClick={OnDecrementBtnClick}
             >
                 -
             </Button>
             <Button
-                data-testid="counter-value"
+                data-testid="Counter.Value"
                 variant="primary"
                 size={ButtonSize.LARGE}
                 squared
@@ -35,13 +35,13 @@ export const Counter = () => {
                 {counterValue}
             </Button>
             <Button
-                data-testid="counterIncrement"
+                data-testid="Counter.Increment"
                 variant="primary"
                 feature={ButtonFeature.CLEAR}
                 size={ButtonSize.LARGE}
                 squared
                 bordered
-                onClick={incClick}
+                onClick={OnIncrementBtnClick}
             >
                 +
             </Button>

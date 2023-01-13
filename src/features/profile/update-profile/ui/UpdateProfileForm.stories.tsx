@@ -14,9 +14,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof UpdateProfileForm>
 
-const Template: ComponentStory<typeof UpdateProfileForm> = (args) => (
-    <UpdateProfileForm {...args} />
-)
+const Template: ComponentStory<typeof UpdateProfileForm> = (args) => <UpdateProfileForm {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -26,7 +24,7 @@ Default.decorators = [
     StoreDecorator({
         profile: {
             data: { id: "1" },
-            copy: {
+            form: {
                 id: "1",
                 name: "John",
                 email: "admin@t.me",

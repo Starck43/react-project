@@ -15,38 +15,34 @@ interface NavMenuProps {
     className?: string
 }
 
-export const NavMenu = memo(
-    ({ position = "right", className }: NavMenuProps) => {
-        const [show, setShow] = useState(false)
+export const NavMenu = memo(({ position = "right", className }: NavMenuProps) => {
+    const [show, setShow] = useState(false)
 
-        const showMenuHandler = useCallback(() => setShow(true), [])
-        const closeMenuHandler = useCallback(() => setShow(false), [])
+    const showMenuHandler = useCallback(() => setShow(true), [])
+    const closeMenuHandler = useCallback(() => setShow(false), [])
 
-        return (
-            <>
-                <Button
-                    feature={ButtonFeature.CLEAR}
-                    Icon={BurgerIcon}
-                    squared
-                    onClick={showMenuHandler}
-                    className="menu__toggler"
-                />
+    return (
+        <>
+            <Button
+                feature={ButtonFeature.CLEAR}
+                Icon={BurgerIcon}
+                squared
+                onClick={showMenuHandler}
+                className="menu__toggler"
+            />
 
-                {show && (
-                    <Drawer
-                        position={position}
-                        bordered
-                        fullSize
-                        open={show}
-                        onClose={closeMenuHandler}
-                        className={classnames(cls, ["navbar_menu"], {}, [
-                            className,
-                        ])}
-                    >
-                        <NotificationList />
-                    </Drawer>
-                )}
-            </>
-        )
-    },
-)
+            {show && (
+                <Drawer
+                    position={position}
+                    bordered
+                    fullSize
+                    open={show}
+                    onClose={closeMenuHandler}
+                    className={classnames(cls, ["navbar_menu"], {}, [className])}
+                >
+                    <NotificationList />
+                </Drawer>
+            )}
+        </>
+    )
+})

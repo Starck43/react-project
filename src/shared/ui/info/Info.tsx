@@ -39,11 +39,10 @@ export const Info = (props: InfoProps) => {
 
     return (
         <Col
+            data-testid={dataTestId}
             fullWidth
             align={align}
-            className={classnames(cls, ["info__block", status, size], {}, [
-                className,
-            ])}
+            className={classnames(cls, ["info__block", status, size], {}, [className])}
         >
             {title && (
                 <Tag data-testid={`${dataTestId}.Title`} className={cls.title}>
@@ -52,12 +51,7 @@ export const Info = (props: InfoProps) => {
             )}
 
             {subTitle && (
-                <Row
-                    data-testid={`${dataTestId}.SubTitle`}
-                    as="p"
-                    gap="sm"
-                    className={cls.subtitle}
-                >
+                <Row data-testid={`${dataTestId}.SubTitle`} as="p" gap="sm" className={cls.subtitle}>
                     {icon && <Icon Svg={icon} />}
                     {subTitle}
                 </Row>

@@ -1,11 +1,6 @@
 import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
-import {
-    Article,
-    ArticleBlockType,
-    ArticleType,
-    ArticleView,
-} from "@/entities/article"
+import { Article, ArticleBlockType, ArticleType, ArticleView } from "@/entities/article"
 import Image from "@/shared/assets/icons/avatar-profile.jpeg"
 
 import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator"

@@ -15,7 +15,7 @@ export interface Profile {
 
 export interface ProfileSchema {
     data?: Profile
-    copy?: Profile
+    form?: Profile
     isLoading: boolean
     error?: string
     validateErrors?: ValidateProfileError[]

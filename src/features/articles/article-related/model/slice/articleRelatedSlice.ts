@@ -38,10 +38,8 @@ const articleRelatedSlice = createSlice({
     },
 })
 
-export const getArticleRelatedData =
-    articleRelatedAdapter.getSelectors<StateSchema>(
-        (state) =>
-            state.articleRelated || articleRelatedAdapter.getInitialState(),
-    )
+export const getArticleRelatedData = articleRelatedAdapter.getSelectors<StateSchema>(
+    (state) => state.articleRelated || articleRelatedAdapter.getInitialState(),
+)
 
 export const { reducer: articleRelatedReducer } = articleRelatedSlice

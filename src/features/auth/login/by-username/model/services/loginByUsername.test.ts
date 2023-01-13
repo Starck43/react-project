@@ -17,9 +17,7 @@ describe("loginByUsername test", () => {
         const res = await thunk.CallFunc(userValue)
         // console.log(res)
 
-        expect(thunk.dispatch).toHaveBeenCalledWith(
-            userActions.setAuthData(userValue),
-        )
+        expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue))
         expect(thunk.dispatch).toHaveBeenCalledTimes(3)
         expect(thunk.api?.post).toHaveBeenCalled()
         expect(res.meta.requestStatus).toBe("fulfilled")

@@ -48,11 +48,7 @@ function Sidebar({ position = "right", className }: SidebarProps) {
                 />
             )}
 
-            <div
-                className={classnames(cls, [], { collapsed }, [
-                    "sidebar__container",
-                ])}
-            >
+            <div className={classnames(cls, [], { collapsed }, ["sidebar__container"])}>
                 <NavLink
                     to={getRouteArticleCreate()}
                     title={t("новая статья")}

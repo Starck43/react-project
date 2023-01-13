@@ -2,13 +2,7 @@ import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 
-import {
-    ArticleList,
-    getArticlesData,
-    getArticlesError,
-    getArticlesLoading,
-    getArticlesView,
-} from "@/entities/article"
+import { ArticleList, getArticlesData, getArticlesError, getArticlesLoading, getArticlesView } from "@/entities/article"
 
 import { Info } from "@/shared/ui/info"
 
@@ -28,13 +22,5 @@ export const InfiniteArticleList = memo(() => {
         return <Info title={t("статьи не найдены!")} />
     }
 
-    return (
-        <ArticleList
-            articles={articles}
-            isLoading={isLoading}
-            virtualized={false}
-            view={view}
-            shadowed
-        />
-    )
+    return <ArticleList articles={articles} isLoading={isLoading} virtualized={false} view={view} shadowed />
 })

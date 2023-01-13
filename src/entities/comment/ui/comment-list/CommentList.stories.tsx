@@ -10,9 +10,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof CommentList>
 
-const Template: ComponentStory<typeof CommentList> = (args) => (
-    <CommentList {...args} />
-)
+const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

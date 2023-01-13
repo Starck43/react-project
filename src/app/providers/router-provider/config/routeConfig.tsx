@@ -17,11 +17,7 @@ import { HomePage } from "@/pages/home"
 import { AboutPage } from "@/pages/about"
 import { AuthPage } from "@/pages/auth"
 import { ProfilePage } from "@/pages/profile"
-import {
-    ArticleDetailsPage,
-    ArticleEditPage,
-    ArticlesPage,
-} from "@/pages/articles"
+import { ArticleDetailsPage, ArticleEditPage, ArticlesPage } from "@/pages/articles"
 import { ForbiddenPage } from "@/pages/forbidden"
 import { NotFoundPage } from "@/pages/not-found-page"
 

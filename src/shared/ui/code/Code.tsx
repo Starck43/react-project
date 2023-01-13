@@ -16,31 +16,17 @@ interface CodeProps {
     className?: string
 }
 
-export const Code = ({
-    text,
-    bordered = false,
-    rounded = false,
-    className,
-}: CodeProps) => {
+export const Code = ({ text, bordered = false, rounded = false, className }: CodeProps) => {
     const { t } = useTranslation("articles")
     const titleBtn = t("Копировать код")
 
     const onCopyClick = useCallback(() => {
         // eslint-disable-next-line no-console
-        navigator.clipboard
-            .writeText(text)
-            .then(() => console.log("copied to buffer"))
+        navigator.clipboard.writeText(text).then(() => console.log("copied to buffer"))
     }, [text])
 
     return (
-        <div
-            className={classnames(
-                cls,
-                ["code__wrapper"],
-                { bordered, rounded },
-                [className],
-            )}
-        >
+        <div className={classnames(cls, ["code__wrapper"], { bordered, rounded }, [className])}>
             <Button
                 feature={ButtonFeature.CLEAR}
                 size={ButtonSize.SMALL}

@@ -43,11 +43,7 @@ export const Dropdown = memo((props: DropdownProps) => {
         <Menu
             as="div"
             style={style}
-            className={classnames(cls, ["dropdown"], {}, [
-                styles.popup,
-                styles[variant],
-                className,
-            ])}
+            className={classnames(cls, ["dropdown"], {}, [styles.popup, styles[variant], className])}
         >
             <Menu.Button as="div" className={styles.toggle__button}>
                 {toggleElement}
@@ -62,11 +58,7 @@ export const Dropdown = memo((props: DropdownProps) => {
             >
                 {items.map((item, index) => (
                     // eslint-disable-next-line react/no-array-index-key
-                    <Menu.Item
-                        as={Fragment}
-                        disabled={item.disabled}
-                        key={`menuItem-${index}`}
-                    >
+                    <Menu.Item as={Fragment} disabled={item.disabled} key={`menuItem-${index}`}>
                         {({ active, disabled }) => (
                             <Button
                                 variant={variant}
@@ -82,11 +74,7 @@ export const Dropdown = memo((props: DropdownProps) => {
                                         active,
                                         disabled,
                                     },
-                                    [
-                                        styles.item,
-                                        active ? styles.active : "",
-                                        disabled ? styles.disabled : "",
-                                    ],
+                                    [styles.item, active ? styles.active : "", disabled ? styles.disabled : ""],
                                 )}
                             >
                                 {item.value}

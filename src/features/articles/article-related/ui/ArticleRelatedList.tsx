@@ -12,16 +12,13 @@ import { useArticleRelatedList } from "../api"
 import cls from "./ArticleRelatedList.module.sass"
 
 interface ArticleRelatedProps {
+    articleId?: string
     className?: string
 }
 
-export const ArticleRelatedList = memo(({ className }: ArticleRelatedProps) => {
+export const ArticleRelatedList = memo(({ articleId, className }: ArticleRelatedProps) => {
     const { t } = useTranslation("articles")
-    const {
-        isLoading,
-        data: related,
-        error,
-    } = useArticleRelatedList({ limit: 4 })
+    const { isLoading, data: related, error } = useArticleRelatedList({ limit: 4 })
 
     if (!related || error) return null
 
@@ -30,17 +27,8 @@ export const ArticleRelatedList = memo(({ className }: ArticleRelatedProps) => {
     }
 
     return (
-        <section
-            data-testid="Article.Related"
-            className={classnames(cls, ["related"], {}, [className])}
-        >
-            <Header
-                tag="h2"
-                title={t("связанные статьи")}
-                shadowed
-                align="center"
-                className="mt-2"
-            />
+        <section data-testid="Article.Related" className={classnames(cls, ["related"], {}, [className])}>
+            <Header tag="h2" title={t("связанные статьи")} shadowed align="center" className="mt-2" />
             <div className={cls.articles__wrapper}>
                 <ArticleList
                     articles={related}

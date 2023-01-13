@@ -85,33 +85,13 @@ export const Modal = (props: ModalProps) => {
                 )}
                 style={{ ...style, transitionDuration: `${animationTime}ms` }}
             >
-                <Row
-                    gap="sm"
-                    fullWidth
-                    justify="between"
-                    align="center"
-                    className={cls.header}
-                >
-                    {typeof header === "string" ? (
-                        <Header tag="h4" title={header} align="start" />
-                    ) : (
-                        header
-                    )}
-                    {showClose && (
-                        <CloseButton
-                            className={styles.close__button}
-                            handleClick={handleClose}
-                        />
-                    )}
+                <Row gap="sm" fullWidth justify="between" align="center" className={cls.header}>
+                    {typeof header === "string" ? <Header tag="h4" title={header} align="start" /> : header}
+                    {showClose && <CloseButton className={styles.close__button} handleClick={handleClose} />}
                 </Row>
 
                 <div className={styles.body}>
-                    <Flex
-                        justify="between"
-                        wrap
-                        fullWidth={fullWidth}
-                        className={styles.content}
-                    >
+                    <Flex justify="between" wrap fullWidth={fullWidth} className={styles.content}>
                         {children}
                     </Flex>
                 </div>

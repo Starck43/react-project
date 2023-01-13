@@ -4,10 +4,7 @@ import { Story, StoryContext } from "@storybook/react"
 
 import { i18n } from "../i18n"
 
-export const TranslationDecorator = (
-    StoryComponent: Story,
-    context: StoryContext,
-) => {
+export const TranslationDecorator = (StoryComponent: Story, context: StoryContext) => {
     const { globals } = context
 
     // When the locale global changes

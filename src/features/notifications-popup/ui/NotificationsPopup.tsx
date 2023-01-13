@@ -64,14 +64,7 @@ export const NotificationsPopup = memo((props: NotificationsProps) => {
             </Drawer>
         </>
     ) : (
-        <Popover
-            variant={variant}
-            position={position}
-            shadowed
-            rounded
-            toggleElement={toggler}
-            className={className}
-        >
+        <Popover variant={variant} position={position} shadowed rounded toggleElement={toggler} className={className}>
             {content}
         </Popover>
     )

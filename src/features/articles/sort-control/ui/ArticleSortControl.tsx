@@ -23,83 +23,81 @@ interface ArticleSortControlProps {
     className?: string
 }
 
-export const ArticleSortControl = memo(
-    ({ className }: ArticleSortControlProps) => {
-        const { t } = useTranslation()
-        const dispatch = useAppDispatch()
-        const order = useSelector(getArticlesOrder)
-        const sort = useSelector(getArticlesSort)
+export const ArticleSortControl = memo(({ className }: ArticleSortControlProps) => {
+    const { t } = useTranslation()
+    const dispatch = useAppDispatch()
+    const order = useSelector(getArticlesOrder)
+    const sort = useSelector(getArticlesSort)
 
-        const onOrderClick = useCallback(
-            (newVal: ArticleOrderType) => {
-                dispatch(articlesActions.setOrder(newVal))
-                dispatch(articlesActions.setPage(1))
-                dispatch(fetchArticleList({ replace: true }))
+    const onOrderClick = useCallback(
+        (newVal: ArticleOrderType) => {
+            dispatch(articlesActions.setOrder(newVal))
+            dispatch(articlesActions.setPage(1))
+            dispatch(fetchArticleList({ replace: true }))
+        },
+        [dispatch],
+    )
+
+    const onSortClick = useCallback(
+        (newVal: ArticleSortType) => {
+            dispatch(articlesActions.setSort(newVal))
+            dispatch(articlesActions.setPage(1))
+            dispatch(fetchArticleList({ replace: true }))
+        },
+        [dispatch],
+    )
+
+    const orderOptions = useMemo<SelectOption<ArticleOrderType>[]>(
+        () => [
+            {
+                value: ArticleOrderType.ASC,
+                content: t("order", { context: ArticleOrderType.ASC }),
             },
-            [dispatch],
-        )
-
-        const onSortClick = useCallback(
-            (newVal: ArticleSortType) => {
-                dispatch(articlesActions.setSort(newVal))
-                dispatch(articlesActions.setPage(1))
-                dispatch(fetchArticleList({ replace: true }))
+            {
+                value: ArticleOrderType.DESC,
+                content: t("order", { context: ArticleOrderType.DESC }),
             },
-            [dispatch],
-        )
+        ],
+        [t],
+    )
 
-        const orderOptions = useMemo<SelectOption<ArticleOrderType>[]>(
-            () => [
-                {
-                    value: ArticleOrderType.ASC,
-                    content: t("order", { context: ArticleOrderType.ASC }),
-                },
-                {
-                    value: ArticleOrderType.DESC,
-                    content: t("order", { context: ArticleOrderType.DESC }),
-                },
-            ],
-            [t],
-        )
+    // TODO: Replace direct translations on context for articles
+    const sortOptions = useMemo<SelectOption<ArticleSortType>[]>(
+        () => [
+            {
+                value: ArticleSortType.TITLE,
+                content: t("заголовок"),
+            },
+            {
+                value: ArticleSortType.CREATED,
+                content: t("дата создания"),
+            },
+            {
+                value: ArticleSortType.VIEWS,
+                content: t("количество просмотров"),
+            },
+        ],
+        [t],
+    )
 
-        // TODO: Replace direct translations on context for articles
-        const sortOptions = useMemo<SelectOption<ArticleSortType>[]>(
-            () => [
-                {
-                    value: ArticleSortType.TITLE,
-                    content: t("заголовок"),
-                },
-                {
-                    value: ArticleSortType.CREATED,
-                    content: t("дата создания"),
-                },
-                {
-                    value: ArticleSortType.VIEWS,
-                    content: t("количество просмотров"),
-                },
-            ],
-            [t],
-        )
-
-        return (
-            <Row align="center" gap="sm" wrap className={className}>
-                <Select
-                    label={t("сортировать по")}
-                    value={sort}
-                    options={sortOptions}
-                    compact
-                    rounded
-                    onChange={(val) => onSortClick(val)}
-                />
-                <Select
-                    label={t("по направлению")}
-                    value={order}
-                    options={orderOptions}
-                    compact
-                    rounded
-                    onChange={(val) => onOrderClick(val)}
-                />
-            </Row>
-        )
-    },
-)
+    return (
+        <Row align="center" gap="sm" wrap className={className}>
+            <Select
+                label={t("сортировать по")}
+                value={sort}
+                options={sortOptions}
+                compact
+                rounded
+                onChange={(val) => onSortClick(val)}
+            />
+            <Select
+                label={t("по направлению")}
+                value={order}
+                options={orderOptions}
+                compact
+                rounded
+                onChange={(val) => onOrderClick(val)}
+            />
+        </Row>
+    )
+})

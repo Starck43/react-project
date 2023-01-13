@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { useTranslation } from "react-i18next"
 
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch"
-import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
+import DynamicModuleLoader, { ReducerList } from "@/shared/lib/components/DynamicModuleLoader"
 import { classnames } from "@/shared/lib/helpers/classnames"
 import { ButtonFeature, Button } from "@/shared/ui/button"
 import { Input } from "@/shared/ui/input"
@@ -66,34 +66,13 @@ const LoginForm = ({ className, onSuccess }: LoginFormProps) => {
                 fullWidth
                 className={classnames(cls, ["login"], {}, [className])}
             >
-                <Input
-                    name="name"
-                    type="text"
-                    value={username}
-                    onChange={changeUsername}
-                />
-                <Input
-                    name="password"
-                    type="password"
-                    value={password}
-                    onChange={changePassword}
-                />
+                <Input name="name" type="text" value={username} onChange={changeUsername} />
+                <Input name="password" type="password" value={password} onChange={changePassword} />
 
-                {error && (
-                    <Info
-                        subTitle={t("неверный пароль или логин")}
-                        status={InfoStatus.ERROR}
-                    />
-                )}
+                {error && <Info subTitle={t("неверный пароль или логин")} status={InfoStatus.ERROR} />}
 
                 <Row fullWidth align="center" className={cls.controls}>
-                    <Button
-                        feature={ButtonFeature.BLANK}
-                        fullWidth
-                        bordered
-                        disabled={isLoading}
-                        onClick={loginClick}
-                    >
+                    <Button feature={ButtonFeature.BLANK} fullWidth bordered disabled={isLoading} onClick={loginClick}>
                         {t("войти")}
                     </Button>
                 </Row>

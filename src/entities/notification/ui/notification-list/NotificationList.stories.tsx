@@ -11,9 +11,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof NotificationList>
 
-const Template: ComponentStory<typeof NotificationList> = (args) => (
-    <NotificationList {...args} />
-)
+const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

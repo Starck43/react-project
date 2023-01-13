@@ -1,6 +1,6 @@
 import { memo } from "react"
-import { useTranslation } from "react-i18next"
 import { useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 import { articleReducer, ArticleDetailsCard } from "@/entities/article"
 
@@ -12,7 +12,7 @@ import {
     ArticleRelatedList,
 } from "@/features/articles"
 
-import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
+import DynamicModuleLoader, { ReducerList } from "@/shared/lib/components/DynamicModuleLoader"
 import { Info } from "@/shared/ui/info"
 
 import { Page } from "@/widgets/page"
@@ -32,26 +32,17 @@ function ArticleDetailsPage() {
     const { id = "1" } = useParams<{ id: string }>()
 
     if (!id) {
-        return (
-            <Info
-                Tag="h2"
-                title={t("ошибка")}
-                subTitle={t("статья не найдена!")}
-            />
-        )
+        return <Info Tag="h2" title={t("ошибка")} subTitle={t("статья не найдена!")} />
     }
 
     return (
-        <DynamicModuleLoader
-            reducers={initialReducers}
-            destroyOnUnmount={false}
-        >
+        <DynamicModuleLoader reducers={initialReducers} destroyOnUnmount={false}>
             <Page id={`article-${id}`} data-testid="ArticlePage">
-                <ArticleHeader />
+                <ArticleHeader articleId={id} />
                 <ArticleDetailsCard articleId={id} />
                 <ArticleCommentsCard articleId={id} />
                 <ArticleRatingCard articleId={id} />
-                <ArticleRelatedList />
+                <ArticleRelatedList articleId={id} />
             </Page>
         </DynamicModuleLoader>
     )

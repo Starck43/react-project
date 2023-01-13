@@ -41,25 +41,14 @@ export const Header = memo((props: HeaderProps) => {
         children,
     } = props
 
-    const subtitle =
-        typeof subTitle === "string" ? (
-            <p className={cls.subtitle}>{subTitle}</p>
-        ) : (
-            subTitle
-        )
+    const subtitle = typeof subTitle === "string" ? <p className={cls.subtitle}>{subTitle}</p> : subTitle
 
     const Title = tag
     const content = (
         <Title
             className={classnames(
                 cls,
-                [
-                    "title",
-                    align,
-                    transform,
-                    children ? "fullWidth" : undefined,
-                    variant,
-                ],
+                ["title", align, transform, children ? "fullWidth" : undefined, variant],
                 { shadowed, fullWidth },
                 [!children && !subtitle ? className : undefined],
             )}
@@ -78,9 +67,7 @@ export const Header = memo((props: HeaderProps) => {
                 wrap
                 fullWidth={inlined || fullWidth}
                 direction={inlined ? "row" : "column"}
-                className={classnames(cls, ["header", variant], { inlined }, [
-                    className,
-                ])}
+                className={classnames(cls, ["header", variant], { inlined }, [className])}
             >
                 {title && content}
                 {subtitle}

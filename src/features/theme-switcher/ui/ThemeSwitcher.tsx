@@ -18,13 +18,7 @@ interface ThemeSwitcherProps extends UseThemeResult {
 }
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = memo((props) => {
-    const {
-        theme = Theme.LIGHT,
-        toggleTheme,
-        variant,
-        minified = false,
-        className,
-    } = props
+    const { theme = Theme.LIGHT, toggleTheme, variant, minified = false, className } = props
     const { t } = useTranslation()
 
     return (
@@ -33,10 +27,7 @@ export const ThemeSwitcher: FC<ThemeSwitcherProps> = memo((props) => {
             variant={variant}
             squared={minified}
             Icon={ThemeIcon}
-            className={classnames(cls, ["switcher"], {}, [
-                className,
-                minified ? "minified" : undefined,
-            ])}
+            className={classnames(cls, ["switcher"], {}, [className, minified ? "minified" : undefined])}
             onClick={toggleTheme}
         >
             {minified ? null : t("theme", { context: theme })}

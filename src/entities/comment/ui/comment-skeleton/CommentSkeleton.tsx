@@ -12,26 +12,20 @@ interface CommentSkeletonProps {
     className?: string
 }
 
-export const CommentSkeleton = memo(
-    ({ rounded = false, inlined = false, className }: CommentSkeletonProps) => (
-        <Card
-            data-testid="Comment.Skeleton"
-            direction="row"
+export const CommentSkeleton = memo(({ rounded = false, inlined = false, className }: CommentSkeletonProps) => (
+    <Card
+        data-testid="Comment.Skeleton"
+        direction="row"
+        rounded={rounded}
+        bordered
+        className={classnames(cls, ["comment"], {}, ["my-1", className])}
+    >
+        <Skeleton
+            variant="primary"
+            elements={[SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK]}
             rounded={rounded}
-            bordered
-            className={classnames(cls, ["comment"], {}, ["my-1", className])}
-        >
-            <Skeleton
-                variant="primary"
-                elements={[
-                    SkeletonElementType.AVATAR,
-                    SkeletonElementType.TITLE,
-                    SkeletonElementType.BLOCK,
-                ]}
-                rounded={rounded}
-                inlined={inlined}
-                className={className}
-            />
-        </Card>
-    ),
-)
+            inlined={inlined}
+            className={className}
+        />
+    </Card>
+))

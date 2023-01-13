@@ -9,9 +9,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof CommentSkeleton>
 
-const Template: ComponentStory<typeof CommentSkeleton> = (args) => (
-    <CommentSkeleton {...args} />
-)
+const Template: ComponentStory<typeof CommentSkeleton> = (args) => <CommentSkeleton {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

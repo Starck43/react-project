@@ -32,12 +32,7 @@ const Navbar = ({ theme, toggleTheme, className }: NavbarProps) => {
             Object.keys(itemsList).map((key) => (
                 <div key={key} className={classnames(cls, [`navbar__${key}`])}>
                     {itemsList[key].map((item: NavbarItemType) => (
-                        <NavItem
-                            data-testid={item.id}
-                            text={item.text}
-                            {...item}
-                            key={item.path}
-                        />
+                        <NavItem data-testid={item.id} text={item.text} {...item} key={item.path} />
                     ))}
                 </div>
             )),

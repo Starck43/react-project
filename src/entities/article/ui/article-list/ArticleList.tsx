@@ -22,18 +22,9 @@ interface ArticleListProps {
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
-    const {
-        articles,
-        isLoading,
-        view,
-        shadowed,
-        virtualized = false,
-        inlined = false,
-        className,
-    } = props
+    const { articles, isLoading, view, shadowed, virtualized = false, inlined = false, className } = props
 
-    const container =
-        document.getElementById("articleListPage") || (document.body as Element)
+    const container = document.getElementById("articleListPage") || (document.body as Element)
     const { width } = useWindowDimensions(container)
     const isTile = view === ArticleView.TILE
     const itemsPerRow = isTile && container ? Math.floor(width / 225) : 1
@@ -52,16 +43,9 @@ export const ArticleList = memo((props: ArticleListProps) => {
         <section
             data-testid="ArticleList"
             style={{
-                gridTemplateColumns: inlined
-                    ? undefined
-                    : `repeat(${itemsPerRow}, 1fr)`,
+                gridTemplateColumns: inlined ? undefined : `repeat(${itemsPerRow}, 1fr)`,
             }}
-            className={classnames(
-                cls,
-                ["articles", view],
-                { virtualized, inlined },
-                [className],
-            )}
+            className={classnames(cls, ["articles", view], { virtualized, inlined }, [className])}
         >
             {articles.map((article) => articleListRender(article))}
             {isLoading &&

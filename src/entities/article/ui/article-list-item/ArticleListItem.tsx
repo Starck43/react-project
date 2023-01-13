@@ -27,22 +27,14 @@ interface ArticleListItemProps {
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-    const {
-        article, view, shadowed = false, target, className, style
-    } = props
+    const { article, view, shadowed = false, target, className, style } = props
 
     const { t } = useTranslation("articles")
     // const [ isHover, bindHover ] = useHover()
 
-    const dateBlock = useMemo(
-        () => <span className={cls.created__date}>{article.createdAt}</span>,
-        [article.createdAt],
-    )
+    const dateBlock = useMemo(() => <span className={cls.created__date}>{article.createdAt}</span>, [article.createdAt])
 
-    const typesBlock = useMemo(
-        () => <span className={cls.types}>{article.type?.join(", ")}</span>,
-        [article.type],
-    )
+    const typesBlock = useMemo(() => <span className={cls.types}>{article.type?.join(", ")}</span>, [article.type])
 
     const viewsBlock = useMemo(
         () => (
@@ -55,20 +47,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     )
 
     const imageBlock = useMemo(
-        () => (
-            <Image
-                src={article.img}
-                alt={article.title}
-                className={cls.image}
-            />
-        ),
+        () => <Image src={article.img} alt={article.title} className={cls.image} />,
         [article.img, article.title],
     )
 
     const textBlock = useMemo(() => {
-        const text = article.blocks?.find(
-            (block) => block.type === ArticleBlockType.TEXT,
-        ) as ArticleTextBlock
+        const text = article.blocks?.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock
         return text ? <ArticleText block={text} className={cls.text} /> : null
     }, [article.blocks])
 
@@ -80,20 +64,8 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         {imageBlock}
                         {dateBlock}
                     </div>
-                    <Header
-                        tag="h5"
-                        title={article.title}
-                        align="start"
-                        inlined
-                        className={cls.header}
-                    >
-                        <Row
-                            justify="between"
-                            align="center"
-                            gap="xs"
-                            fullWidth
-                            className={cls.meta}
-                        >
+                    <Header tag="h5" title={article.title} align="start" inlined className={cls.header}>
+                        <Row justify="between" align="center" gap="xs" fullWidth className={cls.meta}>
                             {typesBlock}
                             {viewsBlock}
                         </Row>
@@ -124,22 +96,12 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                         {typesBlock}
                     </Header>
 
-                    <Row
-                        justify="between"
-                        gap="md"
-                        fullWidth
-                        className={classnames(cls, ["body"], {}, ["my-2"])}
-                    >
+                    <Row justify="between" gap="md" fullWidth className={classnames(cls, ["body"], {}, ["my-2"])}>
                         {imageBlock}
                         {textBlock}
                     </Row>
 
-                    <Row
-                        justify="between"
-                        align="center"
-                        fullWidth
-                        className={cls.footer}
-                    >
+                    <Row justify="between" align="center" fullWidth className={cls.footer}>
                         <Button
                             feature={ButtonFeature.BLANK}
                             size={ButtonSize.NORMAL}
@@ -177,11 +139,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             data-testid="ArticleList.Item"
             id={`article-${article.id}`}
             variant="secondary"
-            href={
-                view === ArticleView.TILE
-                    ? getRouteArticleDetails(article.id)
-                    : ""
-            }
+            href={view === ArticleView.TILE ? getRouteArticleDetails(article.id) : ""}
             target={target}
             bordered
             rounded

@@ -1,11 +1,6 @@
 import { screen } from "@testing-library/react"
 import { UserRole } from "@/entities/user"
-import {
-    getRouteArticleCreate,
-    getRouteArticleEdit,
-    getRouteHome,
-    getRouteProfile,
-} from "@/shared/const/router"
+import { getRouteArticleCreate, getRouteArticleEdit, getRouteHome, getRouteProfile } from "@/shared/const/router"
 import { componentRender } from "@/shared/lib/tests/componentRender"
 
 import { AppRouter } from "./AppRouter"

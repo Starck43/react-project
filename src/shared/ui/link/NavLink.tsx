@@ -49,13 +49,7 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
             {...other}
             className={classnames(
                 cls,
-                [
-                    "link",
-                    variant,
-                    feature,
-                    size,
-                    Icon && !title ? "squared" : undefined,
-                ],
+                ["link", variant, feature, size, Icon && !title ? "squared" : undefined],
                 { fullWidth, squared, reverse, rounded, animation, disabled },
                 [className],
             )}

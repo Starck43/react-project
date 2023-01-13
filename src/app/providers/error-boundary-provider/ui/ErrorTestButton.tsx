@@ -18,11 +18,7 @@ export const ErrorTestButton = memo(({ className }: ErrorTestProps) => {
     }, [error])
 
     return (
-        <Button
-            variant="primary"
-            onClick={() => setError(true)}
-            className={className}
-        >
+        <Button variant="primary" onClick={() => setError(true)} className={className}>
             {t("throw error")}
         </Button>
     )

@@ -11,9 +11,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticleCode>
 
-const Template: ComponentStory<typeof ArticleCode> = (args) => (
-    <ArticleCode {...args} />
-)
+const Template: ComponentStory<typeof ArticleCode> = (args) => <ArticleCode {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

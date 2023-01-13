@@ -31,10 +31,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                     <Flex gap="none" fullWidth className={cls.header}>
                         <Skeleton
                             variant="primary"
-                            elements={[
-                                SkeletonElementType.TITLE,
-                                SkeletonElementType.TITLE,
-                            ]}
+                            elements={[SkeletonElementType.TITLE, SkeletonElementType.TITLE]}
                             width="100%"
                             height="3.5em"
                             rounded
@@ -45,10 +42,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                 <>
                     <Skeleton
                         variant="primary"
-                        elements={[
-                            SkeletonElementType.TITLE,
-                            SkeletonElementType.TITLE,
-                        ]}
+                        elements={[SkeletonElementType.TITLE, SkeletonElementType.TITLE]}
                         inlined
                         rounded
                         width="20%"
@@ -72,11 +66,7 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                         width="35%"
                         height="1em"
                     />
-                    <Row
-                        justify="between"
-                        fullWidth
-                        className={classnames(cls, ["body"], {}, ["my-2"])}
-                    >
+                    <Row justify="between" fullWidth className={classnames(cls, ["body"], {}, ["my-2"])}>
                         <Skeleton
                             variant="primary"
                             elements={[SkeletonElementType.AVATAR]}
@@ -87,20 +77,14 @@ export const ArticleListSkeleton = memo((props: ArticleListSkeletonProps) => {
                         />
                         <Skeleton
                             variant="primary"
-                            elements={[
-                                SkeletonElementType.TITLE,
-                                SkeletonElementType.BLOCK,
-                            ]}
+                            elements={[SkeletonElementType.TITLE, SkeletonElementType.BLOCK]}
                             rounded
                             className="g-1"
                         />
                     </Row>
                     <Skeleton
                         variant="primary"
-                        elements={[
-                            SkeletonElementType.TITLE,
-                            SkeletonElementType.TITLE,
-                        ]}
+                        elements={[SkeletonElementType.TITLE, SkeletonElementType.TITLE]}
                         inlined
                         rounded
                         height="2.2em"

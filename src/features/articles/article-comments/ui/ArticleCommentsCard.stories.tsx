@@ -12,9 +12,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ArticleCommentsCard>
 
-const Template: ComponentStory<typeof ArticleCommentsCard> = (args) => (
-    <ArticleCommentsCard {...args} />
-)
+const Template: ComponentStory<typeof ArticleCommentsCard> = (args) => <ArticleCommentsCard {...args} />
 
 const comments: Comment[] = [
     {

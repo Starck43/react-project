@@ -13,9 +13,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof ProfileCard>
 
-const Template: ComponentStory<typeof ProfileCard> = (args) => (
-    <ProfileCard {...args} />
-)
+const Template: ComponentStory<typeof ProfileCard> = (args) => <ProfileCard {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

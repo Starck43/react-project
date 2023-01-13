@@ -21,25 +21,12 @@ export interface SelectProps<T extends string> {
 
 // TODO: Multiselect option
 export const Select = <T extends string>(props: SelectProps<T>) => {
-    const {
-        label = "",
-        rounded = false,
-        compact = false,
-        options,
-        value,
-        onChange,
-        className,
-        ...other
-    } = props
+    const { label = "", rounded = false, compact = false, options, value, onChange, className, ...other } = props
 
     const optionsList = useMemo(
         () =>
             options?.map((opt) => (
-                <option
-                    value={opt.value}
-                    key={opt.value}
-                    className={cls.option}
-                >
+                <option value={opt.value} key={opt.value} className={cls.option}>
                     {opt.content}
                 </option>
             )),
@@ -51,11 +38,7 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
     }
 
     return (
-        <div
-            className={classnames(cls, ["select__wrapper"], { compact }, [
-                className,
-            ])}
-        >
+        <div className={classnames(cls, ["select__wrapper"], { compact }, [className])}>
             {!compact && label && <span className={cls.label}>{label}</span>}
             <select
                 value={value}

@@ -5,10 +5,7 @@ import { useCallback, useRef } from "react"
  * @param callback - the function that starts only every interval time
  * @param interval - time in ms
  */
-export const useThrottle = (
-    callback: (...args: any[]) => void,
-    interval: number = 1000,
-) => {
+export const useThrottle = (callback: (...args: any[]) => void, interval: number = 1000) => {
     const throttleRef = useRef(false)
 
     return useCallback(

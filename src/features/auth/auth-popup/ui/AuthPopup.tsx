@@ -1,6 +1,4 @@
-import {
-    FC, memo, useCallback, useMemo, useState
-} from "react"
+import { FC, memo, useCallback, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { getUser } from "@/entities/user"
@@ -40,15 +38,15 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
         () =>
             user?.id
                 ? [
-                    {
-                        value: t("профиль"),
-                        href: getRouteProfile(user.id),
-                    },
-                    {
-                        value: t("выйти"),
-                        onClick: showLogoutModal,
-                    },
-                ]
+                      {
+                          value: t("профиль"),
+                          href: getRouteProfile(user.id),
+                      },
+                      {
+                          value: t("выйти"),
+                          onClick: showLogoutModal,
+                      },
+                  ]
                 : null,
         [showLogoutModal, t, user],
     )
@@ -59,11 +57,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                 <Dropdown
                     toggleElement={
                         <Button feature={ButtonFeature.CLEAR} squared>
-                            {minified ? (
-                                <Avatar src={user?.avatar} rounded bordered />
-                            ) : (
-                                user?.username
-                            )}
+                            {minified ? <Avatar src={user?.avatar} rounded bordered /> : user?.username}
                         </Button>
                     }
                     items={menuItems}
@@ -79,9 +73,7 @@ export const AuthPopup: FC<LoginSwitcherProps> = memo((props) => {
                 />
             )}
 
-            {isShowLogout && (
-                <Logout show={isShowLogout} closeHandler={hideLogoutModal} />
-            )}
+            {isShowLogout && <Logout show={isShowLogout} closeHandler={hideLogoutModal} />}
         </>
     )
 })

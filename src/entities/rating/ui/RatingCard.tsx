@@ -24,10 +24,7 @@ interface RatingCardProps {
 }
 
 export const RatingCard = memo((props: RatingCardProps) => {
-    const {
-        rate, title, feedbackTitle, variant, onCancel, onSave, className
-    } =
-        props
+    const { rate, title, feedbackTitle, variant, onCancel, onSave, className } = props
     const { t } = useTranslation()
 
     const [selectedStars, setSelectedStars] = useState(rate?.value ?? 0)
@@ -66,17 +63,8 @@ export const RatingCard = memo((props: RatingCardProps) => {
             rounded
             className={classnames(cls, ["rating"], {}, [className])}
         >
-            <Header
-                variant={variant}
-                title={headerTitle}
-                fullWidth
-                align="center"
-            >
-                <Rate
-                    size="large"
-                    value={selectedStars}
-                    onSelect={onSelectClick}
-                />
+            <Header variant={variant} title={headerTitle} fullWidth align="center">
+                <Rate size="large" value={selectedStars} onSelect={onSelectClick} />
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                 {rate?.feedback && <blockquote>"{rate?.feedback}"</blockquote>}
             </Header>
@@ -92,12 +80,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
                     primaryBtnLabel={t("отправить")}
                     secondaryBtnLabel={t("отмена")}
                 >
-                    <TextArea
-                        value={feedback}
-                        width="100%"
-                        placeholder={feedbackTitle || ""}
-                        onChange={setFeedback}
-                    />
+                    <TextArea value={feedback} width="100%" placeholder={feedbackTitle || ""} onChange={setFeedback} />
                 </Modal>
             )}
         </Card>

@@ -9,9 +9,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof CountrySelect>
 
-const Template: ComponentStory<typeof CountrySelect> = (args) => (
-    <CountrySelect {...args} />
-)
+const Template: ComponentStory<typeof CountrySelect> = (args) => <CountrySelect {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

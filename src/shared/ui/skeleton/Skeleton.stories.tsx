@@ -11,9 +11,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" } },
 } as ComponentMeta<typeof Skeleton>
 
-const Template: ComponentStory<typeof Skeleton> = (args) => (
-    <Skeleton {...args} />
-)
+const Template: ComponentStory<typeof Skeleton> = (args) => <Skeleton {...args} />
 
 export const Title = Template.bind({})
 Title.args = {
@@ -45,22 +43,14 @@ AvatarWithAutoSize.args = {
 
 export const Vertical = Template.bind({})
 Vertical.args = {
-    elements: [
-        SkeletonElementType.AVATAR,
-        SkeletonElementType.TITLE,
-        SkeletonElementType.BLOCK,
-    ],
+    elements: [SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK],
     avatarSize: "sm",
     rounded: true,
 }
 
 export const Inlined = Template.bind({})
 Inlined.args = {
-    elements: [
-        SkeletonElementType.AVATAR,
-        SkeletonElementType.TITLE,
-        SkeletonElementType.BLOCK,
-    ],
+    elements: [SkeletonElementType.AVATAR, SkeletonElementType.TITLE, SkeletonElementType.BLOCK],
     inlined: true,
     rounded: true,
     width: "30%",

@@ -13,9 +13,8 @@ export default {
         children: (
             <Header tag="h3" title="Card title" subTitle="excerpt">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Excepturi ipsa itaque iure laudantium possimus quis
-                    reiciendis reprehenderit voluptate voluptatum? Voluptates!
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi ipsa itaque iure laudantium
+                    possimus quis reiciendis reprehenderit voluptate voluptatum? Voluptates!
                 </p>
             </Header>
         ),

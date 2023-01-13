@@ -56,13 +56,7 @@ export const ListBox = (props: ListBoxProps) => {
     } = props
 
     const listBoxOptions = useMemo(
-        () =>
-            compact
-                ? [
-                    { value: "_label", content: `${label}:`, disabled: true },
-                    ...items,
-                ]
-                : items,
+        () => (compact ? [{ value: "_label", content: `${label}:`, disabled: true }, ...items] : items),
         [compact, items, label],
     )
 
@@ -75,17 +69,9 @@ export const ListBox = (props: ListBoxProps) => {
             // multiple
             onChange={onChange}
             style={style}
-            className={classnames(cls, ["listBox"], { compact }, [
-                styles.popup,
-                styles[variant],
-                className,
-            ])}
+            className={classnames(cls, ["listBox"], { compact }, [styles.popup, styles[variant], className])}
         >
-            {!compact && label && (
-                <HeadlessListBox.Label className={cls.label}>
-                    {label}
-                </HeadlessListBox.Label>
-            )}
+            {!compact && label && <HeadlessListBox.Label className={cls.label}>{label}</HeadlessListBox.Label>}
 
             <HeadlessListBox.Button as="div" className="button__wrapper">
                 {({ open }) => (
@@ -98,9 +84,7 @@ export const ListBox = (props: ListBoxProps) => {
                         className={cls.toggle__button}
                     >
                         <>
-                            {selectedOption?.content ||
-                                defaultOption?.content ||
-                                label}
+                            {selectedOption?.content || defaultOption?.content || label}
                             <DropdownIcon
                                 className={classnames(cls, ["dropdown__icon"], {
                                     open,
@@ -122,12 +106,7 @@ export const ListBox = (props: ListBoxProps) => {
                 ])}
             >
                 {listBoxOptions?.map((item) => (
-                    <HeadlessListBox.Option
-                        as={Fragment}
-                        key={item.value}
-                        value={item.value}
-                        disabled={item.disabled}
-                    >
+                    <HeadlessListBox.Option as={Fragment} key={item.value} value={item.value} disabled={item.disabled}>
                         {({ active, selected, disabled }) => (
                             <li
                                 className={classnames(

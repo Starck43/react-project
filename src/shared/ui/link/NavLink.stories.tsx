@@ -16,9 +16,7 @@ export default {
     },
 } as unknown as ComponentMeta<typeof NavLink>
 
-const Template: ComponentStory<typeof NavLink> = (args: NavLinkProps) => (
-    <NavLink {...args} />
-)
+const Template: ComponentStory<typeof NavLink> = (args: NavLinkProps) => <NavLink {...args} />
 
 export const Clear = Template.bind({})
 Clear.args = {

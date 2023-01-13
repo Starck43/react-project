@@ -14,46 +14,30 @@ function isAbsolute(path: string) {
 const layer = process.argv[2] || "shared"
 const slice = "ui"
 const indexFilename = "index.ts"
-const dest = project.getDirectory(
-    path.resolve(__dirname, "..", "src", layer, slice),
-)
+const dest = project.getDirectory(path.resolve(__dirname, "..", "src", layer, slice))
 const directories = dest?.getDirectories()
 
 directories?.forEach((directory) => {
     const folderName = directory.getPath()
-    const isIndexFileExist = directory.getSourceFile(
-        `${folderName}/${indexFilename}`,
-    )
+    const isIndexFileExist = directory.getSourceFile(`${folderName}/${indexFilename}`)
 
     if (!isIndexFileExist) {
-        const filesInFolder = directory.getSourceFiles([
-            "**/*.tsx",
-            "!**/*.stories.*",
-            "!**/*.test.*",
-        ])
+        const filesInFolder = directory.getSourceFiles(["**/*.tsx", "!**/*.stories.*", "!**/*.test.*"])
 
         let content = ""
 
         filesInFolder?.forEach((component) => {
             const folderLen = folderName.length
             const moduleName = component.getBaseNameWithoutExtension()
-            const modulePath = `.${component
-                .getFilePath()
-                .slice(folderLen, -4)}`
+            const modulePath = `.${component.getFilePath().slice(folderLen, -4)}`
             content += `export {${moduleName}} from "${modulePath}"\n`
         })
 
         if (content) {
-            const file = directory.createSourceFile(
-                `${folderName}/${indexFilename}`,
-                content,
-                { overwrite: true },
-            )
+            const file = directory.createSourceFile(`${folderName}/${indexFilename}`, content, { overwrite: true })
 
             // eslint-disable-next-line no-console
-            file.save().then(() =>
-                console.log(`${folderName} --> index.ts created!`),
-            )
+            file.save().then(() => console.log(`${folderName} --> index.ts created!`))
         }
     }
 })
@@ -76,6 +60,4 @@ files.forEach((source) => {
 })
 
 // eslint-disable-next-line no-console
-project
-    .save()
-    .then(() => console.log("Done!", `Updated ${files?.length || 0} file(s)`))
+project.save().then(() => console.log("Done!", `Updated ${files?.length || 0} file(s)`))

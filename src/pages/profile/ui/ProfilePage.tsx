@@ -7,7 +7,7 @@ import { ProfileCard, profileReducer } from "@/entities/profile"
 import { Logout } from "@/features/auth"
 import { UpdateProfileForm } from "@/features/profile"
 
-import DynamicModuleLoader, {ReducerList} from "@/shared/lib/components/DynamicModuleLoader"
+import DynamicModuleLoader, { ReducerList } from "@/shared/lib/components/DynamicModuleLoader"
 import { Header } from "@/shared/ui/header"
 
 import { Page } from "@/widgets/page"
@@ -33,22 +33,11 @@ function ProfilePage() {
         <DynamicModuleLoader reducers={initialReducers}>
             <Page data-testid="ProfilePage">
                 <Header tag="h2" title={t("профиль")} shadowed align="center" />
-                <ProfileCard
-                    id={id}
-                    onShowProfile={() => setShowProfile(true)}
-                    onLogout={() => setShowLogout(true)}
-                />
+                <ProfileCard id={id} onShowProfile={() => setShowProfile(true)} onLogout={() => setShowLogout(true)} />
 
-                {isShowProfile && (
-                    <UpdateProfileForm
-                        show={isShowProfile}
-                        closeHandler={onCloseProfile}
-                    />
-                )}
+                {isShowProfile && <UpdateProfileForm show={isShowProfile} closeHandler={onCloseProfile} />}
 
-                {isShowLogout && (
-                    <Logout show={isShowLogout} closeHandler={onCloseLogout} />
-                )}
+                {isShowLogout && <Logout show={isShowLogout} closeHandler={onCloseLogout} />}
             </Page>
         </DynamicModuleLoader>
     )

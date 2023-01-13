@@ -10,7 +10,7 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 
 import {BuildWebpackOptions} from "./types/config"
 
-require("dotenv").config()
+// require("dotenv").config({path: path.resolve(__dirname, ".env")})
 
 
 export function buildWebpackPlugins({

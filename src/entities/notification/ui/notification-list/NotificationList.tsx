@@ -27,36 +27,10 @@ export const NotificationList = ({ className }: NotificationListProps) => {
 
     if (isLoading) {
         return (
-            <Col
-                data-testid="notification-list"
-                gap="md"
-                fullWidth
-                className={classnames(cls, ["notification_list"])}
-            >
-                <Skeleton
-                    variant="primary"
-                    rounded
-                    elements={[
-                        SkeletonElementType.TITLE,
-                        SkeletonElementType.BLOCK,
-                    ]}
-                />
-                <Skeleton
-                    variant="primary"
-                    rounded
-                    elements={[
-                        SkeletonElementType.TITLE,
-                        SkeletonElementType.BLOCK,
-                    ]}
-                />
-                <Skeleton
-                    variant="primary"
-                    rounded
-                    elements={[
-                        SkeletonElementType.TITLE,
-                        SkeletonElementType.BLOCK,
-                    ]}
-                />
+            <Col data-testid="notification-list" gap="md" fullWidth className={classnames(cls, ["notification_list"])}>
+                <Skeleton variant="primary" rounded elements={[SkeletonElementType.TITLE, SkeletonElementType.BLOCK]} />
+                <Skeleton variant="primary" rounded elements={[SkeletonElementType.TITLE, SkeletonElementType.BLOCK]} />
+                <Skeleton variant="primary" rounded elements={[SkeletonElementType.TITLE, SkeletonElementType.BLOCK]} />
             </Col>
         )
     }
@@ -66,15 +40,8 @@ export const NotificationList = ({ className }: NotificationListProps) => {
     }
 
     return (
-        <Col
-            data-testid="NotificationList"
-            className={classnames(cls, ["notification_list"], {}, [className])}
-        >
-            <Button
-                Icon={RefreshIcon}
-                onClick={refetch}
-                className={cls.refresh__icon}
-            />
+        <Col data-testid="NotificationList" className={classnames(cls, ["notification_list"], {}, [className])}>
+            <Button Icon={RefreshIcon} onClick={refetch} className={cls.refresh__icon} />
             {data?.map((item: Notification) => (
                 <NotificationItem item={item} key={item.id} />
             ))}

@@ -28,13 +28,7 @@ const RequireAuth = (props: RequireAuthProps) => {
     }
 
     if (!hasUserRequiredRoles) {
-        return (
-            <Navigate
-                to={getRouteForbidden()}
-                state={{ from: location }}
-                replace
-            />
-        )
+        return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />
     }
 
     return children

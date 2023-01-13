@@ -8,7 +8,7 @@ import { ArticleSchema } from "../../types/articleSchema"
 const initialState: ArticleSchema = {
     isLoading: false,
     error: undefined,
-    copy: undefined,
+    form: undefined,
 }
 
 export const articleSlice = createSlice({
@@ -16,13 +16,13 @@ export const articleSlice = createSlice({
     initialState,
     reducers: {
         updateCopy: (state, action: PayloadAction<Article>) => {
-            state.copy = { ...state.copy, ...action.payload }
+            state.form = { ...state.form, ...action.payload }
         },
         updateData: (state, action: PayloadAction<Article>) => {
             state.data = action.payload
         },
         revert: (state) => {
-            state.copy = state.data
+            state.form = state.data
         },
     },
     extraReducers: (builder) => {
@@ -31,14 +31,11 @@ export const articleSlice = createSlice({
                 state.isLoading = true
                 state.error = undefined
             })
-            .addCase(
-                fetchArticleById.fulfilled,
-                (state, action: PayloadAction<Article>) => {
-                    state.isLoading = false
-                    state.data = action.payload
-                    state.copy = action.payload
-                },
-            )
+            .addCase(fetchArticleById.fulfilled, (state, action: PayloadAction<Article>) => {
+                state.isLoading = false
+                state.data = action.payload
+                state.form = action.payload
+            })
             .addCase(fetchArticleById.rejected, (state, action) => {
                 state.isLoading = false
                 state.error = action.payload

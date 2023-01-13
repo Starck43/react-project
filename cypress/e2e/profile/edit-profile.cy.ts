@@ -14,9 +14,7 @@ describe("User goes to profile page", () => {
         cy.resetProfile(profileId)
     })
     it("open a guest profile", () => {
-        cy.getByTestId("ProfileCard", "#Username")
-            .find("span:last-child()")
-            .should("have.text", "guest")
+        cy.getByTestId("ProfileCard", "#Username").find("span:last-child()").should("have.text", "guest")
     })
 
     it("edit profile", () => {

@@ -26,9 +26,7 @@ const article: Article = {
     user: { id: "1", username: "admin" },
 }
 
-const Template: ComponentStory<typeof ArticleRelatedList> = (args) => (
-    <ArticleRelatedList {...args} />
-)
+const Template: ComponentStory<typeof ArticleRelatedList> = (args) => <ArticleRelatedList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

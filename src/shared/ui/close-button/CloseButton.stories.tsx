@@ -9,9 +9,7 @@ export default {
     argTypes: { backgroundColor: { control: "color" }, onClick: {} },
 } as ComponentMeta<typeof CloseButton>
 
-const Template: ComponentStory<typeof CloseButton> = (args) => (
-    <CloseButton {...args} />
-)
+const Template: ComponentStory<typeof CloseButton> = (args) => <CloseButton {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}
