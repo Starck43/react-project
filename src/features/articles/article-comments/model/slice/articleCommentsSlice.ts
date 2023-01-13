@@ -21,6 +21,7 @@ const articleCommentsSlice = createSlice({
         entities: {},
     }),
     reducers: {
+        // TODO: finish with comment edit feature
         update: (state, action: PayloadAction<Comment>) => {
             // state.data = {...state.data, ...action.payload}
             // state.copy = {...state.copy, ...action.payload}

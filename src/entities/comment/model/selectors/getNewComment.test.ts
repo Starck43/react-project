@@ -13,7 +13,7 @@ describe("NewCommentData test", () => {
 
     test("Return an empty newComment state", () => {
         const state: DeepPartial<StateSchema> = {}
-        expect(getNewCommentText(state as StateSchema)).toEqual(undefined)
+        expect(getNewCommentText(state as StateSchema)).toEqual("")
     })
 })
 

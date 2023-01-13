@@ -1,13 +1,8 @@
 import { StateSchema } from "@/app/providers/store-provider"
 import { Country } from "@/entities/country"
-import {
-    getProfileCopy,
-    getProfileData,
-    getProfileError,
-    getProfileLoading,
-} from "./getProfile"
+import { getProfileForm, getProfileData, getProfileError, getProfileLoading } from "./getProfile"
 
-const profileData = {
+const profile = {
     id: "1",
     name: "John",
     email: "admin@t.me",
@@ -15,39 +10,39 @@ const profileData = {
 }
 
 describe("getProfileData test", () => {
-    test("Return success profile data", () => {
+    test("Return profile data state", () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
-                data: profileData,
+                data: profile,
             },
         }
-        expect(getProfileData(state as StateSchema)).toEqual(profileData)
+        expect(getProfileData(state as StateSchema)).toEqual(profile)
     })
 
-    test("Return an empty state", () => {
+    test("Return an empty data state", () => {
         const state: DeepPartial<StateSchema> = {}
         expect(getProfileData(state as StateSchema)).toEqual(undefined)
     })
 })
 
-describe("getProfileCopy test", () => {
-    test("Return success profile data", () => {
+describe("getProfileForm test", () => {
+    test("Return profile form state", () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
-                copy: profileData,
+                form: profile,
             },
         }
-        expect(getProfileCopy(state as StateSchema)).toEqual(profileData)
+        expect(getProfileForm(state as StateSchema)).toEqual(profile)
     })
 
-    test("Return an empty state", () => {
+    test("Return an empty form state", () => {
         const state: DeepPartial<StateSchema> = {}
-        expect(getProfileCopy(state as StateSchema)).toEqual(undefined)
+        expect(getProfileForm(state as StateSchema)).toEqual(undefined)
     })
 })
 
 describe("getProfileLoading test", () => {
-    test("Return success profile loading", () => {
+    test("Return state with loading status", () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
                 isLoading: true,
@@ -56,14 +51,14 @@ describe("getProfileLoading test", () => {
         expect(getProfileLoading(state as StateSchema)).toEqual(true)
     })
 
-    test("Return an empty state", () => {
+    test("Return state with not loading status", () => {
         const state: DeepPartial<StateSchema> = {}
         expect(getProfileLoading(state as StateSchema)).toEqual(false)
     })
 })
 
 describe("getProfileError test", () => {
-    test("Return success profile error", () => {
+    test("Return state with some text error", () => {
         const state: DeepPartial<StateSchema> = {
             profile: {
                 error: "error", // anything
@@ -72,7 +67,7 @@ describe("getProfileError test", () => {
         expect(getProfileError(state as StateSchema)).toEqual("error")
     })
 
-    test("Return an empty state", () => {
+    test("Return state with undefined error", () => {
         const state: DeepPartial<StateSchema> = {}
         expect(getProfileError(state as StateSchema)).toEqual(undefined)
     })

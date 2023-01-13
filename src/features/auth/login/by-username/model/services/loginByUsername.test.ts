@@ -15,7 +15,6 @@ describe("loginByUsername test", () => {
         const thunk = new TestAsyncFunc(loginByUsername)
         thunk.api?.post.mockReturnValue(Promise.resolve({ data: userValue }))
         const res = await thunk.CallFunc(userValue)
-        // console.log(res)
 
         expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue))
         expect(thunk.dispatch).toHaveBeenCalledTimes(3)
@@ -28,7 +27,6 @@ describe("loginByUsername test", () => {
         const thunk = new TestAsyncFunc(loginByUsername)
         thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
         const res = await thunk.CallFunc(userValue)
-        // console.log(res)
 
         expect(thunk.dispatch).toHaveBeenCalledTimes(2)
         expect(thunk.api.post).toHaveBeenCalled()

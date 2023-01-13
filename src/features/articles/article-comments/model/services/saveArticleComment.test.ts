@@ -2,26 +2,39 @@ import { TestAsyncFunc } from "@/shared/lib/tests/TestAsyncFunc"
 
 import { saveArticleComment } from "./saveArticleComment"
 
-const text = "Added new comment"
+const comment = {
+    userId: "1",
+    articleId: "1",
+    text: "Added new comment",
+}
 
 describe("NewCommentData loading test", () => {
     test("Success newComment fetching", async () => {
-        const thunk = new TestAsyncFunc(saveArticleComment)
-        thunk.api?.post.mockReturnValue(Promise.resolve({ text }))
-        const res = await thunk.CallFunc(text)
-        // console.log(res)
+        const thunk = new TestAsyncFunc(saveArticleComment, {
+            user: { authData: { id: comment.userId } },
+            article: { data: { id: comment.articleId } },
+        })
+        thunk.api?.post.mockReturnValue(Promise.resolve({ data: comment }))
+        const res = await thunk.CallFunc(comment.text)
+        // eslint-disable-next-line no-console
+        console.log(res)
 
-        expect(thunk.api?.get).toHaveBeenCalled()
+        expect(thunk.dispatch).toBeCalledTimes(3)
         expect(res.meta.requestStatus).toBe("fulfilled")
-        expect(res.payload).toEqual(text)
+        expect(res.payload).toEqual(comment)
     })
 
     test("Failed newComment fetching", async () => {
-        const thunk = new TestAsyncFunc(saveArticleComment)
-        thunk.api.post.mockReturnValue(Promise.resolve({ status: 403 }))
-        const res = await thunk.CallFunc(text)
-        expect(res.meta.requestStatus).toBe("rejected")
+        const thunk = new TestAsyncFunc(saveArticleComment, {
+            // user: { authData: { id: comment.userId } },
+            article: { data: { id: comment.articleId } },
+        })
+        thunk.api.post.mockReturnValue(Promise.resolve({ data: comment }))
+        const res = await thunk.CallFunc(comment.text)
+        // eslint-disable-next-line no-console
+        console.log(res)
 
-        // console.log(res)
+        expect(thunk.dispatch).toBeCalledTimes(2)
+        expect(res.meta.requestStatus).toBe("rejected")
     })
 })

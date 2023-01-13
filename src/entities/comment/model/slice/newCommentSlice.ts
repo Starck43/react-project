@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-import { NewCommentSchema } from "../types/newComment"
+import type { NewCommentSchema } from "../types/newComment"
 
 const initialState: NewCommentSchema = {
     text: undefined,
