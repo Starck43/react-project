@@ -55,22 +55,23 @@ server.use(router)
 
 // run server
 
-const PORT = 8443
-/*
-
-https
-    .createServer(
-        {
-            key: fs.readFileSync(path.join(__dirname, "key.pem")),
-            cert: fs.readFileSync(path.join(__dirname, "cert.pem")),
-        },
-        server,
-    )
-    .listen(PORT, () => {
-        // eslint-disable-next-line no-console
-        console.log(`https server is running on ${PORT} port`)
-    })
-*/
+const HTTPS_PORT = 8443
+const key = path.join(__dirname, "key.pem")
+const cert = path.join(__dirname, "cert.pem")
+if (fs.existsSync(key)) {
+    https
+        .createServer(
+            {
+                key: fs.readFileSync(key),
+                cert: fs.readFileSync(cert),
+            },
+            server,
+        )
+        .listen(HTTPS_PORT, () => {
+            // eslint-disable-next-line no-console
+            console.log(`https server is running on ${HTTPS_PORT} port`)
+        })
+}
 
 server.listen(8000, () => {
     // eslint-disable-next-line no-console
