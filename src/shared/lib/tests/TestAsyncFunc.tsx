@@ -9,13 +9,13 @@ type ActionCreatorType<Return, Arg, RejectedValue> = (
 
 jest.mock("axios")
 
-const mockedAxios = jest.mocked(axios, true)
+const mockedAxios = jest.mocked(axios, { shallow: true })
 
 export class TestAsyncFunc<Return, Arg, RejectedValue> {
     dispatch: jest.MockedFn<any>
     getState: () => StateSchema
     actionCreator: ActionCreatorType<Return, Arg, RejectedValue>
-    api: jest.MockedFunctionDeep<AxiosStatic>
+    api: jest.MockedFn<AxiosStatic>
 
     constructor(actionCreator: ActionCreatorType<Return, Arg, RejectedValue>, state?: DeepPartial<StateSchema>) {
         this.actionCreator = actionCreator

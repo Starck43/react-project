@@ -1,11 +1,13 @@
 import path from "path"
 
-export default {
+import type { Config } from "jest"
+
+const config: Config = {
     // All imported modules in your tests should be mocked automatically
     // automock: false,
 
     // Stop running tests after `n` failures
-    // bail: 0,
+    bail: 1,
 
     // The directory where Jest should store its cached dependency information
     // cacheDirectory: "/private/var/folders/kt/35hkcgs9253gdfq1n79259zh0000gn/T/jest_dx",
@@ -193,3 +195,5 @@ export default {
     // Whether to use watchman for file crawling
     // watchman: true,
 }
+
+export default config
