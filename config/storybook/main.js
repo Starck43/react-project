@@ -1,8 +1,6 @@
 module.exports = {
-    stories: [
-        "../../src/**/*.stories.@(js|jsx|ts|tsx)",
-    ],
-    staticDirs: [ "../../public" ],
+    stories: ["../../src/**/*.stories.@(js|jsx|ts|tsx)"],
+    staticDirs: ["../../public"],
     addons: [
         "@storybook/addon-links",
         "@storybook/addon-essentials",
@@ -11,7 +9,7 @@ module.exports = {
         "storybook-addon-mock",
         // "storybook-i18next",
     ],
-    reactOptions: {legacyRootApi: true},
+    reactOptions: { legacyRootApi: true },
     framework: "@storybook/react",
-    core: {builder: "@storybook/builder-webpack5"},
+    core: { builder: "@storybook/builder-webpack5" },
 }

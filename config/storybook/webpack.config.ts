@@ -12,8 +12,8 @@ export default ({ config }: { config: webpack.Configuration }) => {
         build: "",
         html: "",
         entry: "",
-        src: path.resolve(__dirname, "..", "..", "src"),
-        publicLocales: path.resolve(__dirname, "..", "..", "public", "locales"),
+        src: path.resolve(__dirname, "../../src"),
+        publicLocales: path.resolve(__dirname, "../../public", "locales"),
         buildLocales: path.resolve(__dirname, "../../storybook-static", "locales"),
     }
 

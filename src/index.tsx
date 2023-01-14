@@ -6,13 +6,14 @@ import { ErrorBoundary } from "@/app/providers/error-boundary-provider"
 import { ThemeProvider } from "@/app/providers/theme-provider"
 import App from "@/app/App"
 
+import { ROOT_ID } from "@/shared/const/page"
 import { Theme } from "@/shared/const/theme"
 import { isDarkness } from "@/shared/lib/helpers/datetime"
 import "@/shared/config/i18n"
 
 import "@/app/styles/index.sass"
 
-const container = document.getElementById("root")
+const container = document.getElementById(ROOT_ID)
 
 if (!container) {
     throw Error("Page not loaded, because a root node is absent in HTML document!")

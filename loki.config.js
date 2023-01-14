@@ -1,6 +1,6 @@
 module.exports = {
     diffingEngine: "pixelmatch",
-    chromeSelector: "body > #root > *",
+    chromeSelector: "#root > *",
     configurations: {
         "chrome.laptop": {
             target: "chrome.app",

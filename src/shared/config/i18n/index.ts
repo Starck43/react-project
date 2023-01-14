@@ -13,7 +13,7 @@ i18n.use(Backend)
         lng: "ru",
         fallbackLng: "ru",
         defaultNS: "translation",
-        interpolation: { escapeValue: false }, // not needed for react as it escapes by default
+        interpolation: { escapeValue: false },
         lowerCaseLng: true,
         // react: {useSuspense: false},
         backend: {
