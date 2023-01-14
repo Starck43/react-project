@@ -55,7 +55,7 @@ export const NavLink: FC<NavLinkProps> = memo((props) => {
             )}
         >
             {Icon && <Icon className={cls.icon} />}
-            {title}
+            <span className={cls.title}>{title}</span>
         </Link>
     )
 })

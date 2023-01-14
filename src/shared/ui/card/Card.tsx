@@ -14,6 +14,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement>, TestProps {
     variant?: ThemeVariant
     feature?: UIFeatureType
     gap?: SizeType
+    fullWidth?: boolean
     bordered?: boolean
     rounded?: boolean
     shadowed?: boolean
@@ -29,6 +30,7 @@ export const Card: FC<CardProps> = (props) => {
         variant = "primary",
         feature = "blank",
         gap = "none",
+        fullWidth = true,
         bordered = false,
         rounded = false,
         shadowed = false,
@@ -45,8 +47,8 @@ export const Card: FC<CardProps> = (props) => {
             data-testid={dataTestId}
             wrap={direction === "column"}
             align="start"
-            fullWidth
             gap={gap}
+            fullWidth={fullWidth}
             direction={direction}
             className={classnames(
                 cls,

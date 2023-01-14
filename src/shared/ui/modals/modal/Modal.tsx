@@ -2,6 +2,7 @@ import { classnames } from "@/shared/lib/helpers/classnames"
 import SubmitIcon from "@/shared/assets/icons/check.svg"
 import CancelIcon from "@/shared/assets/icons/close.svg"
 
+import { ROOT_ID } from "@/shared/const/page"
 import { Button, ButtonFeature } from "@/shared/ui/button"
 import { CloseButton } from "@/shared/ui/close-button"
 import { Header } from "@/shared/ui/header"
@@ -50,7 +51,7 @@ export const Modal = (props: ModalProps) => {
 
     let portalRoot
     if (__PROJECT__ === "storybook") {
-        portalRoot = document.getElementById("root")
+        portalRoot = document.getElementById(ROOT_ID)
     }
 
     return (

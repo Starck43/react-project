@@ -5,8 +5,9 @@
 	align-items: center
 	justify-content: center
 	gap: 6px
+	width: max-content
 	min-height: var(--controls-height)
-	padding: $nav-link-margin 0
+	padding: 0 $nav-link-margin
 	font-family: var(--font-family-secondary)
 	color: inherit
 	line-height: 0
@@ -34,6 +35,10 @@
 		.title
 			border-top: var(--border-thickness) solid transparent
 			border-bottom: var(--border-thickness) solid transparent
+
+		&:hover
+			.title
+				border-bottom-color: inherit
 
 	&.animation:hover
 		.icon

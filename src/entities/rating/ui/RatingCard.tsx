@@ -61,6 +61,7 @@ export const RatingCard = memo((props: RatingCardProps) => {
             variant={variant}
             bordered
             rounded
+            fullWidth={false}
             className={classnames(cls, ["rating"], {}, [className])}
         >
             <Header variant={variant} title={headerTitle} fullWidth align="center">

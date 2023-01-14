@@ -41,14 +41,15 @@ WithAvatarLG.args = {
     src: avatar,
     size: "lg",
     rounded: true,
+    bordered: true,
     title: "John Mconory",
 }
 
-export const WithPlaceholderXS = Template.bind({})
-WithPlaceholderXS.args = {
+export const WithPlaceholderMD = Template.bind({})
+WithPlaceholderMD.args = {
     // @ts-ignore
     src: "",
-    size: "xs",
+    size: "md",
     rounded: true,
     bordered: true,
     title: "John Mconory",

@@ -21,6 +21,7 @@ interface AvatarProps {
     className?: string
 }
 
+// TODO: fix problem with blinking fading background on load image
 export const Avatar = (props: AvatarProps) => {
     const { src = "", alt = "", title, size, inlined = false, rounded = false, bordered = false, className } = props
 
