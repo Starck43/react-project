@@ -33,16 +33,16 @@ jobs:
       - name: building production project...
         run: npm run build:prod
         if: always()
-      - name: building storybook screenshots...
-        run: npm run storybook:build
-        if: always()
-      - name: screenshot testing... [loki]
-        run: npm run test:ui:upd
-        if: always()
       - name: unit testing... [jest]
         run: npm run test:unit
         if: always()
-      - name: generating HTML report for screenshots
+      - name: building screenshots... [storybook]
+        run: npm run storybook:build
+        if: always()
+      - name: screenshot testing... [chromatic]
+        run: npm run chromatic:сi
+        if: always()
+      - name: generating HTML report for tests
         run: npm run test:ui:report
         if: always()
       - name: move .loki to reports folder
