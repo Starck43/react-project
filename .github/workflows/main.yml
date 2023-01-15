@@ -40,7 +40,7 @@ jobs:
         run: npm run storybook:build
         if: always()
       - name: screenshot testing... [chromatic]
-        run: npm run chromatic:сi
+        run: npm run chromatic:ci
         if: always()
       - name: generating HTML report for tests
         run: npm run test:ui:report
