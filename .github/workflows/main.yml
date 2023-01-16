@@ -23,30 +23,36 @@ jobs:
       matrix:
         node-version: [ 17.x ]
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # 👈 Required to retrieve git history
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: installing modules...
+      - name: Install modules
         run: npm ci --force
-      - name: building production project...
+      - name: Build production project
         run: npm run build:prod
         if: always()
-      - name: unit testing... [jest]
+      - name: Unit tests... [jest]
         run: npm run test:unit
         if: always()
-      - name: building screenshots... [storybook]
+      - name: Build screenshots... [storybook]
         run: npm run storybook:build
         if: always()
-      - name: screenshot testing... [chromatic]
-        run: npm run chromatic:ci
-        if: always()
-      - name: generating HTML report for tests
+
+      - name: Publish screenshots to Chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true # 👈 Required option to enable TurboSnap
+          exitZeroOnChanges: true
+        run: echo ${{ storybookUrl }}
+
+      - name: Generate HTML report for tests
         run: npm run test:ui:report
-        if: always()
-      - name: move .loki to reports folder
-        run: mv .loki reports/
         if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v2
