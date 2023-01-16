@@ -49,7 +49,6 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           onlyChanged: true # 👈 Required option to enable TurboSnap
           exitZeroOnChanges: true
-        run: echo ${{ storybookUrl }}
 
       - name: Generate HTML report for tests
         run: npm run test:ui:report
