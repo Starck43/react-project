@@ -1,5 +1,6 @@
 const { promisify } = require("util")
-const { fs, readdir, writeFile } = require("fs")
+const fs = require("fs")
+const { readdir, writeFile } = require("fs")
 const { join: joinPath, relative } = require("path")
 
 const asyncReaddir = promisify(readdir)
@@ -10,8 +11,8 @@ const actualDir = joinPath(lokiDir, "current")
 const expectedDir = joinPath(lokiDir, "reference")
 const diffDir = joinPath(lokiDir, "difference")
 
-;(async function main() {
-    if (fs.existsSync(diffDir)) {
+if (fs.existsSync(diffDir)) {
+    ;(async function main() {
         const diffs = await asyncReaddir(diffDir)
 
         await writeFileAsync(
@@ -29,8 +30,8 @@ const diffDir = joinPath(lokiDir, "difference")
                 diffDir: relative(lokiDir, diffDir),
             }),
         )
-    } else {
-        // eslint-disable-next-line no-console
-        console.log("Loki screenshots not found")
-    }
-})()
+    })()
+} else {
+    // eslint-disable-next-line no-console
+    console.log("Loki screenshots not found")
+}
