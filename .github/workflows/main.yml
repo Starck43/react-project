@@ -72,7 +72,7 @@ jobs:
 #          username: ${{ secrets.USERNAME }}
 #          password: ${{ secrets.PASSWORD }}
 #          port: ${{ secrets.PORT }}
-#          script: bash deploy.sh
+#          script: bash ~/react-project/.nginx/deploy.sh react-project
   checks:
     runs-on: ubuntu-latest
     strategy:
