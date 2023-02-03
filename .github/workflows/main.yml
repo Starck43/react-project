@@ -50,9 +50,9 @@ jobs:
           onlyChanged: true # 👈 Required option to enable TurboSnap
           exitZeroOnChanges: true
 
-      - name: Generate HTML report for tests
-        run: npm run test:ui:report
-        if: always()
+#      - name: Generate HTML report for tests
+#        run: npm run test:ui:report
+#        if: always()
       - name: Setup Pages
         uses: actions/configure-pages@v2
         if: always()
@@ -65,7 +65,14 @@ jobs:
         id: deployment
         if: always()
         uses: actions/deploy-pages@v1
-
+#      - name: executing remote ssh deploy
+#        uses: appleboy/ssh-action@v0.1.7
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          port: ${{ secrets.PORT }}
+#          script: bash deploy.sh
   checks:
     runs-on: ubuntu-latest
     strategy:
