@@ -20,7 +20,7 @@ const NavItem = (props: NavbarItemType) => {
             title={<span>{t("menu", { context: text, defaultValue: text })}</span>}
             Icon={Icon}
             feature="clear"
-            className={classnames(cls, ["navbar__item"], {}, ["inline"])}
+            className={classnames(cls, ["navbar__item"])}
             {...other}
         />
     )
