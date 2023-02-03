@@ -1,4 +1,6 @@
+import path from "path";
 import webpack from "webpack"
+import Dotenv from "dotenv-webpack"
 
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
@@ -10,8 +12,6 @@ import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 
 import {BuildWebpackOptions} from "./types/config"
 
-// require("dotenv").config({path: path.resolve(__dirname, ".env")})
-
 
 export function buildWebpackPlugins({
     isDev,
@@ -22,11 +22,14 @@ export function buildWebpackPlugins({
     project,
 }: BuildWebpackOptions): webpack.WebpackPluginInstance[] {
     const plugins = [
+        new Dotenv({
+            path: path.resolve(__dirname, "../..", `.env${isDev ? ".development" : ""}`)
+        }),
         new HtmlWebpackPlugin({template: paths.html}),
         new webpack.ProgressPlugin(),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev),
-            __API__: JSON.stringify(apiUrl || process.env.REACT_APP_SERVER || "http://localhost:7000"),
+            __API__: JSON.stringify(apiUrl),
             __PROJECT__: JSON.stringify(project),
         }),
         new CircularDependencyPlugin({

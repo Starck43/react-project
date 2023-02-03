@@ -5,7 +5,7 @@ import { AUTH_USER_KEY } from "@/shared/const/localStorage"
 export const rtkApi = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: __API__,
+        baseUrl: __API__ || process.env.REACT_APP_SERVER,
         prepareHeaders: (headers) => {
             const token = localStorage.getItem(AUTH_USER_KEY) || ""
             if (token) {
