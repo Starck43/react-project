@@ -24,5 +24,4 @@ const ThemeProvider = ({ children, defaultTheme }: ThemeProviderProps) => {
     return <ThemeContext.Provider value={defaultValue}>{children}</ThemeContext.Provider>
 }
 
-// @ts-ignore
 export default ThemeProvider
